@@ -502,12 +502,18 @@ function snap() {
 }
 
 /* ---------- focus and travel ---------- */
-function setFocus(pi, k, dir) {
+const OWN_HOST = /(^|\.)pastforward\.app$|\.pages\.dev$/.test(location.hostname);
+// On our own site the address bar always holds a real share link (/r/<id>), each with its own preview card.
+function syncURL(pi) {
+  if (!OWN_HOST) return;
+  try { const u = "/r/" + PAIRS[pi].id; if (location.pathname !== u || location.hash) history.replaceState(null, "", u); } catch (e) {}
+}
+function setFocus(pi, k, dir, quiet) {
   const changedPair = !focus || focus.pi !== pi;
   focus = { pi, k };
   renderRhyme(changedPair);
   renderCard(dir || 1);
-  try { history.replaceState(null, "", "#" + PAIRS[pi].id); } catch (e) {}
+  if (!quiet) syncURL(pi);
 }
 function travel(pi, k) {
   hideHint();
@@ -1157,8 +1163,8 @@ function howHTML() {
 }
 /* ---------- sharing and "your future" ---------- */
 const SITE = "pastforward.app";
-const siteBase = () => (location.hostname.endsWith(SITE) ? location.origin + location.pathname : `https://${SITE}/`);
-const rhymeURL = pi => `${siteBase()}#${PAIRS[pi].id}`;
+const siteBase = () => (location.hostname.endsWith(SITE) ? location.origin + "/" : `https://${SITE}/`);
+const rhymeURL = pi => `${siteBase()}r/${PAIRS[pi].id}`;
 
 function wrapLines(c, text, maxW, maxLines) {
   const words = String(text).split(/\s+/), lines = [];
@@ -1338,6 +1344,96 @@ async function shareLife(by) {
   const n = lifeEchoes(by).length;
   shareCanvas(drawLifeCard(by), `pastforward-born-${by}.png`, "My life, played forward", `Born ${by}. If history keeps rhyming, I could live to see ${n} echoes. What will you see?`, siteBase());
 }
+
+/* link-preview images (1200×630), rendered at build time by tools/og.py */
+function ogBase() {
+  const W2 = 1200, H2 = 630, cv2 = document.createElement("canvas");
+  cv2.width = W2; cv2.height = H2;
+  const c = cv2.getContext("2d");
+  const g = c.createLinearGradient(0, 0, W2, H2);
+  g.addColorStop(0, "#17123A"); g.addColorStop(.55, "#0C0A1D"); g.addColorStop(1, "#0B1A22");
+  c.fillStyle = g; c.fillRect(0, 0, W2, H2);
+  const r1 = c.createRadialGradient(150, 0, 0, 150, 0, 760); r1.addColorStop(0, "rgba(120,92,210,.32)"); r1.addColorStop(1, "rgba(120,92,210,0)");
+  c.fillStyle = r1; c.fillRect(0, 0, W2, H2);
+  const r2 = c.createRadialGradient(1100, 630, 0, 1100, 630, 640); r2.addColorStop(0, "rgba(70,170,160,.16)"); r2.addColorStop(1, "rgba(70,170,160,0)");
+  c.fillStyle = r2; c.fillRect(0, 0, W2, H2);
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 160; i++) { c.fillStyle = `rgba(232,226,255,${(.12 + rnd() * .5).toFixed(2)})`; c.beginPath(); c.arc(rnd() * W2, rnd() * H2, .5 + rnd() * 1.5, 0, 6.2832); c.fill(); }
+  return { cv2, c, W2, H2 };
+}
+function ogWordmark(c, x, y, size, align) {
+  c.font = `${size}px "IM Fell English SC", Georgia, serif`; c.textAlign = "left";
+  const wp = c.measureText("Past").width, wf = c.measureText("Forward").width;
+  const x0 = align === "center" ? x - (wp + wf) / 2 : x;
+  c.fillStyle = `rgb(${RGB.then})`; c.fillText("Past", x0, y);
+  c.save(); c.shadowColor = `rgba(${RGB.next},.8)`; c.shadowBlur = size * .4; c.fillStyle = `rgb(${RGB.next})`; c.fillText("Forward", x0 + wp, y); c.restore();
+}
+function ogRow(c, y, cols, gapTxt) {
+  const xs = [230, 600, 970];
+  const lg = c.createLinearGradient(xs[0], 0, xs[2], 0);
+  lg.addColorStop(0, `rgb(${RGB.then})`); lg.addColorStop(.5, `rgb(${RGB.now})`); lg.addColorStop(1, `rgb(${RGB.next})`);
+  c.strokeStyle = lg; c.lineWidth = 3; c.beginPath(); c.moveTo(xs[0], y); c.lineTo(xs[2], y); c.stroke();
+  [[0, 1], [1, 2]].forEach(([a, b]) => {
+    const mx = (xs[a] + xs[b]) / 2;
+    c.strokeStyle = `rgba(${INK},.5)`; c.lineWidth = 2; c.setLineDash(a ? [] : [6, 6]);
+    c.beginPath(); c.moveTo(xs[a], y - 8); c.quadraticCurveTo(mx, y - 92, xs[b], y - 8); c.stroke(); c.setLineDash([]);
+    c.font = `700 24px "Atkinson Hyperlegible", sans-serif`; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`;
+    c.fillText(gapTxt, mx, y - 62);
+  });
+  cols.forEach((col, i) => {
+    const rgb = RGB[col.k], r = col.k === "next" ? 19 : 14;
+    c.save(); c.shadowColor = `rgb(${rgb})`; c.shadowBlur = col.k === "next" ? 40 : 24; c.fillStyle = `rgb(${rgb})`;
+    c.beginPath(); c.arc(xs[i], y, r, 0, 6.2832); c.fill(); c.restore();
+    c.textAlign = "center";
+    c.font = `700 25px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${rgb})`;
+    c.fillText(col.label, xs[i], y + 58);
+    c.font = `700 50px "Atkinson Hyperlegible", sans-serif`;
+    c.fillText(col.year, xs[i], y + 112);
+    c.font = `500 30px "Newsreader", Georgia, serif`; c.fillStyle = `rgb(${INK})`;
+    wrapLines(c, col.name, 330, 2).forEach((l, j) => c.fillText(l, xs[i], y + 156 + j * 36));
+  });
+}
+function drawOGRhyme(pi) {
+  const p = PAIRS[pi], g = gapOf(p), ny = nextYear(p);
+  const { cv2, c, W2 } = ogBase();
+  ogWordmark(c, 64, 84, 40);
+  c.font = `700 19px "Atkinson Hyperlegible", sans-serif`; c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
+  c.fillText("HISTORY RHYMES · WHAT COMES NEXT?", W2 - 64, 80);
+  c.font = `500 46px "Newsreader", Georgia, serif`; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`;
+  const th = wrapLines(c, p.theme, 1040, 2);
+  th.forEach((l, i) => c.fillText(l, W2 / 2, 168 + i * 54));
+  ogRow(c, th.length > 1 ? 330 : 300, [
+    { k: "then", label: "THEN", year: String(p.then.year), name: p.then.short },
+    { k: "now", label: "TODAY", year: String(p.now.year), name: p.now.short },
+    { k: "next", label: "NEXT", year: `c. ${ny}`, name: p.next.short }
+  ], `+${g} years`);
+  c.font = `700 22px "Atkinson Hyperlegible", sans-serif`; c.textAlign = "left"; c.fillStyle = `rgba(${INK},.8)`;
+  c.fillText(`pastforward.app/r/${p.id}`, 64, 592);
+  if ((p.echoes || []).length) {
+    c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
+    c.fillText(`Also seen in ${p.echoes.slice(0, 4).map(e => fmtY(e.year)).join(" · ")}`, W2 - 64, 592);
+  }
+  return cv2;
+}
+function drawOGHome() {
+  const { cv2, c, W2 } = ogBase();
+  ogWordmark(c, W2 / 2, 138, 92, "center");
+  c.font = `500 40px "Newsreader", Georgia, serif`; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`;
+  c.fillText("History rhymes. What comes next?", W2 / 2, 206);
+  ogRow(c, 350, [
+    { k: "then", label: "THEN", year: "1918", name: "Spanish flu" },
+    { k: "now", label: "TODAY", year: "2020", name: "COVID-19" },
+    { k: "next", label: "NEXT", year: "c. 2122", name: "?" }
+  ], "+102 years");
+  c.font = `700 22px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${MUTED})`;
+  c.fillText("48 PATTERNS · 550 YEARS · THE ECHOES DUE IN YOUR LIFETIME", W2 / 2, 600);
+  return cv2;
+}
+window.__pastforward = {
+  ids: () => PAIRS.map(p => p.id),
+  ogRhyme: id => drawOGRhyme(PAIRS.findIndex(p => p.id === id)).toDataURL("image/jpeg", .86),
+  ogHome: () => drawOGHome().toDataURL("image/jpeg", .86)
+};
 
 const BKEY = "pastforward.birthyear";
 function savedYear() { try { const v = +localStorage.getItem(BKEY); return v >= 1920 && v <= NOWY ? v : null; } catch (_) { return null; } }
@@ -1829,12 +1925,16 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => mcac
 
 /* ---------- start ---------- */
 resize();
-const h = decodeURIComponent(location.hash.slice(1));
+const pathId = location.pathname.match(/^\/r\/([a-z0-9_-]+)\/?$/);
+const h = pathId ? pathId[1] : decodeURIComponent(location.hash.slice(1));
 let start = PAIRS.findIndex(p => p.id === h);
+const linked = start >= 0;
 if (start < 0) start = PAIRS.findIndex(p => p.id === "flu");
 if (start < 0) start = 0;
 cam.c = EVI[start].then.yx; cam.s = defaultScale(); clampCam();
-setFocus(start, "then", 1);
+setFocus(start, "then", 1, true);
+if (linked) syncURL(start);   // a shared link: keep it as the clean /r/<id> address
+else if (OWN_HOST && location.hash) { try { history.replaceState(null, "", "/"); } catch (e) {} }
 if (!reduce) $("jump").classList.add("pulse");
 updateDailyDot();
 loadScores();
