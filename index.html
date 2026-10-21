@@ -109,7 +109,8 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .chainchip { display: inline-flex; align-items: center; vertical-align: 2px; margin-left: 4px; min-height: 26px; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(239, 232, 214, .3); background: rgba(239, 232, 214, .06); font: 700 12.5px var(--f-mono); color: var(--ink); cursor: pointer; white-space: nowrap; }
 .chainchip:hover { border-color: var(--ink); }
 .theme .dots { flex: none; display: inline-flex; gap: 3px; transform: translateY(-1px); }
-.dots i { width: 6px; height: 6px; border-radius: 50%; border: 1.2px solid var(--muted); }
+.dots { display: inline-flex; flex: none; gap: 3px; }
+.dots i { display: block; width: 6px; height: 6px; border-radius: 50%; border: 1.2px solid var(--muted); }
 .dots i.on { background: var(--muted); }
 .stepper { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 4px; }
 .st-b { display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 7px 4px 6px; min-height: 50px; border-radius: 14px; border: 1px solid var(--line); background: rgba(22, 19, 52, .7); cursor: pointer; transition: background-color .3s, border-color .3s, box-shadow .3s; }
@@ -338,9 +339,113 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .ixh { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 0 13px; font: 500 12.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
 .ixh .then { color: var(--then); } .ixh .now { color: var(--now); } .ixh .next { color: var(--next); }
 
+/* search + Ask PastForward */
+.srch { position: relative; }
+.srch svg { position: absolute; left: 14px; top: 50%; width: 19px; height: 19px; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.srch input, .askf textarea { width: 100%; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 17px/1.35 var(--f-mono); padding: 13px 14px; -webkit-appearance: none; appearance: none; }
+.srch input { min-height: 50px; padding-left: 44px; }
+.srch input:focus, .askf textarea:focus, .keyrow input:focus { outline: 2px solid var(--next); outline-offset: 1px; }
+.srch input::placeholder, .askf textarea::placeholder, .keyrow input::placeholder { color: var(--muted); opacity: .9; }
+.askrow { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1px 12px; width: 100%; text-align: left; padding: 11px 14px; border-radius: 14px; border: 1px solid rgba(205, 185, 255, .5); background: radial-gradient(ellipse 90% 140% at 0% 0%, rgba(205, 185, 255, .17), transparent 70%), var(--surface); cursor: pointer; }
+.askrow:hover { border-color: var(--next); }
+.askrow .sp { grid-row: span 2; display: inline-flex; color: var(--next); filter: drop-shadow(0 0 8px rgba(205, 185, 255, .6)); }
+.askrow .sp svg { width: 24px; height: 24px; }
+.askrow .at { font: 700 16px/1.3 var(--f-mono); color: var(--next); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.askrow .as { font: 14px/1.35 var(--f-mono); color: var(--muted); }
+.askrow .ga { grid-row: 1 / span 2; grid-column: 3; color: var(--next); font-size: 22px; }
+.ixlist { display: flex; flex-direction: column; gap: 14px; }
+.ixnone { margin: 0; font: 15.5px/1.45 var(--f-mono); color: var(--muted); }
+.askf { display: flex; flex-direction: column; gap: 8px; }
+.askf textarea { resize: none; min-height: 84px; font-size: 18px; }
+.askbar { display: flex; align-items: center; gap: 10px; }
+.askbar .cnt { flex: 1; font: 13px var(--f-mono); color: var(--muted); }
+.askbar .primary { flex: none; min-width: 124px; background: var(--next); }
+.askbar .primary:disabled { opacity: .6; cursor: default; }
+.askmeta { margin: -2px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font: 14px/1.4 var(--f-mono); color: var(--muted); }
+.askmeta:empty { display: none; }
+.askmeta a, .linkbtn { color: var(--next); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.askout { display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { min-height: 38px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(12, 10, 29, .6); font: 14.5px/1.3 var(--f-mono); color: var(--ink); cursor: pointer; text-align: left; }
+.chips button:hover { border-color: var(--next); }
+.aq { margin: 0; font: 15px/1.4 var(--f-mono); color: var(--muted); }
+.aq b { color: var(--ink); font-weight: 700; }
+.ai-tag { display: inline-block; margin-right: 6px; font: 700 11.5px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--next); border: 1px solid rgba(205, 185, 255, .5); border-radius: 999px; padding: 1px 8px; }
+.askerr { margin: 0; padding: 11px 13px; border-radius: 12px; border: 1px solid rgba(229, 140, 122, .5); background: rgba(229, 140, 122, .1); font: 15px/1.45 var(--f-mono); }
+.thinking { display: flex; flex-direction: column; gap: 10px; padding: 6px 0; }
+.thinking p { margin: 0; font: 15px var(--f-mono); color: var(--muted); }
+.thinking i { display: block; height: 14px; border-radius: 7px; background: linear-gradient(90deg, rgba(226, 179, 94, .2), rgba(114, 211, 197, .22), rgba(205, 185, 255, .3), rgba(226, 179, 94, .2)); background-size: 300% 100%; animation: shimmer 1.6s linear infinite; }
+.thinking i:nth-of-type(2) { width: 82%; } .thinking i:nth-of-type(3) { width: 58%; }
+@keyframes shimmer { to { background-position: -300% 0; } }
+.hist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.hist button { width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 15px/1.35 var(--f-mono); }
+.hist button:hover { border-color: rgba(205, 185, 255, .6); }
+.hist .hy { flex: none; color: var(--muted); font-size: 13px; white-space: nowrap; }
+
+/* the preview that plays inside the pay gate */
+.demo { position: relative; flex: none; height: 338px; display: flex; flex-direction: column; border-radius: 16px; border: 1px solid rgba(205, 185, 255, .3); background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(120, 92, 210, .16), transparent 70%), var(--bg); overflow: hidden; box-shadow: 0 16px 44px rgba(0, 0, 0, .4); }
+.demo-bar { flex: none; display: flex; align-items: center; gap: 8px; margin: 10px 10px 2px; padding: 7px 7px 7px 12px; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.demo-q { flex: 1 1 auto; min-width: 0; font: 14.5px/1.3 var(--f-mono); color: var(--ink); }
+.demo-caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 1px; vertical-align: -2px; background: var(--next); animation: blink 1s steps(1) infinite; }
+.demo-btn { flex: none; font: 700 13px var(--f-mono); color: var(--bg); background: var(--next); border-radius: 8px; padding: 7px 11px; transition: transform .15s, box-shadow .3s; }
+.demo-btn.press { transform: scale(.9); box-shadow: 0 0 20px rgba(205, 185, 255, .8); }
+.demo-body { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; padding: 8px 10px 0; transition: opacity .4s ease; }
+.demo-body.out { opacity: 0; }
+.demo .thinking { padding: 12px 4px; }
+.demo .cv::before { left: 59px; top: 12px; bottom: 14px; transform-origin: top; transform: scaleY(0); transition: transform 2.4s ease; }
+.demo .cv.drawn::before { transform: scaleY(1); }
+.demo .cv-i { grid-template-columns: 48px 24px minmax(0, 1fr); padding: 1px 0; opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+.demo .cv-gap { padding: 0 0 0 80px; font-size: 11.5px; line-height: 1.3; opacity: 0; transition: opacity .5s ease; }
+.demo .cv-i.in, .demo .cv-gap.in { opacity: 1; transform: none; }
+.demo .cv-y { font-size: 13px; padding-top: 6px; }
+.demo .cv-d { width: 10px; height: 10px; margin-top: 9px; }
+.demo .cv-i.next .cv-d { width: 13px; height: 13px; margin-top: 8px; }
+.demo .cv-b { padding: 3px 8px; gap: 0; }
+.demo .cv-k { font-size: 10.5px; }
+.demo .cv-t { font-size: 15.5px; line-height: 1.2; }
+.demo .cv-l { display: none; }
+.demo .cv-i.next .cv-l { font-size: 13px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.demo-foot { flex: none; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px 9px; font: 700 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.demo-foot .dd { display: flex; gap: 5px; }
+.demo-foot .dd i { width: 16px; height: 3px; border-radius: 2px; background: var(--line); transition: background-color .3s; }
+.demo-foot .dd i.on { background: var(--next); }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* pay gate */
+.pw-wrap { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; }
+@media (min-width: 700px) { .pw-wrap { align-items: center; } }
+.pw-bd { position: absolute; inset: 0; background: rgba(5, 4, 14, .74); opacity: 0; transition: opacity .3s; }
+.pw { position: relative; width: 100%; max-width: 460px; max-height: calc(100% - 20px); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 12px;
+  padding: 18px max(16px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  border-radius: 22px 22px 0 0; border: 1px solid rgba(205, 185, 255, .4); border-bottom: 0;
+  background: radial-gradient(ellipse 100% 40% at 50% 0%, rgba(205, 185, 255, .17), transparent 75%), var(--bg);
+  transform: translateY(100%); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+@media (min-width: 700px) { .pw { border-radius: 22px; border-bottom: 1px solid rgba(205, 185, 255, .4); } }
+.pw-wrap.open .pw-bd { opacity: 1; }
+.pw-wrap.open .pw { transform: none; }
+.pw-x { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 22px/1 var(--f-mono); color: var(--ink); }
+.pw-k { margin: 0; font: 700 12.5px var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--next); }
+.pw h3 { margin: -6px 0 0; padding-right: 44px; font: 500 28px/1.1 var(--f-body); color: var(--ink); }
+.pw-sub { margin: 0; font-size: 17px; line-height: 1.4; opacity: .92; }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.plan { display: flex; flex-direction: column; gap: 1px; align-items: center; justify-content: center; min-height: 62px; padding: 8px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; text-align: center; }
+.plan b { font: 700 17px var(--f-mono); }
+.plan span { font: 13px var(--f-mono); color: var(--muted); }
+.plan.best { background: var(--next); border-color: var(--next); color: var(--bg); box-shadow: 0 0 26px rgba(205, 185, 255, .25); }
+.plan.best span { color: rgba(12, 10, 29, .78); font-weight: 700; }
+.plans .plan:only-child { grid-column: 1 / -1; }
+.pw-soon { margin: 0; text-align: center; font: 700 15px var(--f-mono); color: var(--next); padding: 8px 0; }
+.pw-fine { margin: -2px 0 0; text-align: center; font: 13px/1.4 var(--f-mono); color: var(--muted); }
+.pw-key summary { cursor: pointer; list-style: none; text-align: center; font: 700 14.5px var(--f-mono); color: var(--ink); padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; }
+.pw-key summary::-webkit-details-marker { display: none; }
+.keyrow { display: flex; gap: 8px; margin-top: 6px; }
+.keyrow input { flex: 1; min-width: 0; min-height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 15px var(--f-mono); padding: 0 12px; }
+.keyrow .secondary { flex: none; min-height: 46px; }
+.pw-key .fnote { margin-top: 6px; }
+
 @media (prefers-reduced-motion: reduce) {
-  .card-in, .deep, .deep-bd, .st-b { transition: none; }
-  .swipe-hint, .pulse { animation: none; }
+  .card-in, .deep, .deep-bd, .st-b, .pw, .pw-bd { transition: none; }
+  .swipe-hint, .pulse, .thinking i, .demo-caret { animation: none; }
 }
 </style>
 
@@ -351,7 +456,7 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
     <div class="bar-r">
       <button type="button" class="ghost daily" id="dailyBtn">Daily</button>
       <button type="button" class="ghost hi" id="futureBtn">Your future</button>
-      <button type="button" class="ghost icon" id="allBtn" aria-label="All rhymes and how it works"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg></button>
+      <button type="button" class="ghost icon" id="allBtn" aria-label="Search, ask, and all rhymes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
     </div>
   </header>
 
@@ -401,6 +506,11 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
     <div class="tabs" id="tabs" role="tablist"></div>
     <div class="db" id="dBody"></div>
   </div>
+</div>
+
+<div class="pw-wrap" id="pwWrap" hidden>
+  <div class="pw-bd" id="pwBd"></div>
+  <div class="pw" id="pw" role="dialog" aria-modal="true" aria-labelledby="pwT"></div>
 </div>
 
 <script>
@@ -1083,7 +1193,10 @@ function closeDeep() {
 }
 $("dClose").addEventListener("click", closeDeep);
 $("deepBd").addEventListener("click", closeDeep);
-document.addEventListener("keydown", e => { if (e.key === "Escape" && !dwrap.hidden) closeDeep(); });
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (payOpen()) closePay(); else if (!dwrap.hidden) closeDeep();
+});
 
 function setHead(kick, kcls, title, tcls) {
   const dk = $("dKick"); dk.className = "dk " + (kcls || ""); dk.textContent = kick;
@@ -1201,24 +1314,54 @@ dBody.addEventListener("click", e => {
   const wr = e.target.closest("[data-r]");
   if (wr && world) setFocusRegion(wr.dataset.r);
 });
-let ixSort = "old";
+let ixSort = "old", ixQuery = "", ixHits = N, HAY = null;
+const fold = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const STOPW = new Set("a an and are as at be been before did do does ever for from has have how in into is it its like of on or our the this that to was we were what when where which who why will with".split(" "));
+const SEARCH_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>`;
+const SPARK_SVG = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 2.5l1.9 6.1 6.1 1.9-6.1 1.9L11 18.5l-1.9-6.1-6.1-1.9 6.1-1.9z"/><path d="M19 14.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></svg>`;
+function ixMatch(i, toks) {
+  if (!HAY) HAY = PAIRS.map(p => fold([p.theme, p.then.title, p.then.short, p.then.where, p.then.year, p.now.title, p.now.short, p.now.where, p.now.year, p.next.title, p.next.short, nextYear(p)].join(" ")));
+  return toks.every(t => HAY[i].includes(t));
+}
 function openIndex() {
-  setHead("All rhymes", "", `${N} rhymes`, "plain");
+  setHead("Search · Ask · All rhymes", "", `${N} rhymes`, "plain");
   tabs.innerHTML = [["old", "Oldest first"], ["agree", "Most convincing"], ["debate", "Most debated"]].map(([id, lab]) => `<button type="button" role="tab" data-sort="${id}" aria-selected="${id === ixSort}">${lab}</button>`).join("");
   world = null;
+  dBody.innerHTML = `<div class="srch">${SEARCH_SVG}<input id="ixQ" type="search" maxlength="${ASK_MAX}" placeholder="Search, or ask anything" autocomplete="off" enterkeyhint="search" aria-label="Search the rhymes, or ask a question"></div>
+    <button type="button" class="askrow" id="askRow"></button>
+    <div class="ixlist" id="ixList"></div>`;
+  const qi = $("ixQ");
+  qi.value = ixQuery;
+  qi.addEventListener("input", () => { ixQuery = qi.value; renderIndex(); });
+  qi.addEventListener("keydown", e => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    const q = qi.value.trim();
+    if (!ixHits && q.length >= 3) openAsk(q, false); else qi.blur();
+  });
+  $("askRow").addEventListener("click", () => { const q = ixQuery.trim(); openAsk(q, q.length >= 3); });
   renderIndex();
   showDeep();
-  const on = dBody.querySelector("button.on"); if (on) on.scrollIntoView({ block: "center" });
+  dBody.scrollTop = 0;
 }
 function renderIndex() {
+  const list = $("ixList"), row = $("askRow");
+  if (!list) return;
+  const q = ixQuery.trim(), toks = fold(q).split(/[^a-z0-9]+/).filter(t => t && !STOPW.has(t));
   const idx = PAIRS.map((_, i) => i);
   const conv = i => { const s = scoreOf(i); return s.tot >= 3 ? s.pct + s.tot / 1000 : PAIRS[i].rhyme * 20 - 100; };
   const deb = i => { const s = scoreOf(i); return s.tot >= 3 ? s.tot * (1 - Math.abs(s.pct - 50) / 50) : -100 + (3 - PAIRS[i].rhyme); };
   if (ixSort === "agree") idx.sort((a, b) => conv(b) - conv(a) || PAIRS[b].rhyme - PAIRS[a].rhyme);
   else if (ixSort === "debate") idx.sort((a, b) => deb(b) - deb(a) || PAIRS[a].rhyme - PAIRS[b].rhyme);
   const note = ixSort === "old" ? "" : `<p class="fnote">${apiOn() ? "Ranked by community votes, then by how readily historians accept the comparison." : "Community votes arrive with the live site. Until then this uses how readily historians accept each comparison."}</p>`;
-  dBody.innerHTML = `${ixSort === "old" ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details>` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
-    idx.map(i => { const p = PAIRS[i], sc = scoreOf(i); return `<li><button type="button" data-pick="${i}" class="${focus && i === focus.pi ? "on" : ""}">` +
+  const shown = toks.length ? idx.filter(i => ixMatch(i, toks)) : idx;
+  ixHits = shown.length;
+  const long = q.length >= 3;
+  row.innerHTML = `<span class="sp">${SPARK_SVG}</span><span class="at">${long ? `Ask: “${esc(q)}”` : "Ask PastForward"}</span>` +
+    `<span class="as">${long ? "Research its echoes across history" : "Ask how any event or trend rhymes"}${askKey() ? "" : " · subscribers"}</span><span class="ga" aria-hidden="true">›</span>`;
+  if (!shown.length) { list.innerHTML = `<p class="ixnone">No rhyme in the list matches “${esc(q)}”. Ask PastForward to research it.</p>`; return; }
+  list.innerHTML = `${ixSort === "old" && !toks.length ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details>` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
+    shown.map(i => { const p = PAIRS[i], sc = scoreOf(i); return `<li><button type="button" data-pick="${i}" class="${focus && i === focus.pi ? "on" : ""}">` +
       `<span class="it then"><b>${p.then.year}</b>${esc(p.then.short)}</span>` +
       `<span class="it now"><b>${p.now.year}</b>${esc(p.now.short)}</span>` +
       `<span class="it next"><b>c. ${nextYear(p)}</b>${esc(p.next.short)}${apiOn() && sc.tot >= 3 ? `<em class="pct">${sc.pct}% agree</em>` : ""}</span></button></li>`; }).join("") + "</ol>";
@@ -1965,6 +2108,338 @@ dBody.addEventListener("click", e => {
   if (b && !b.disabled) answerPuzzle(+b.dataset.pz);
 });
 
+/* ---------- Ask PastForward: subscriber research ----------
+   The server enforces everything that costs money (licence, monthly allowance, a hard spending cap).
+   This side only shows the screens, remembers the key and past answers on this device, and never spends twice. */
+const AKEY = "pastforward.askkey", AHIST = "pastforward.asks", ASK_MAX = 140;
+const ASK_EXAMPLES = ["Is the AI boom like the dot-com bubble?", "When did people last panic about a new medium?", "Is a four-day week a new idea?", "Has a superpower ever stepped aside peacefully?"];
+// Hand-checked answers for the preview in the pay gate (same shape as the server's answers).
+const DEMOS = [
+  { q: "Is the AI boom like the dot-com bubble?", a: { on_topic: true, strength: 2, pattern: "Money rushes into a new technology",
+    summary: "Partly. Investors have poured money into new technology before its profits arrived, and several of those booms ended in crashes. Today’s leaders earn far more than most dot-com firms did.",
+    earlier: [{ year: 1845, title: "Railway Mania", line: "Britons pour their savings into new railway lines. Many schemes collapse within two years." }],
+    then: { year: 2000, title: "Dot-com bubble bursts", where: "United States", line: "The Nasdaq peaks in March, then loses about three quarters of its value by 2002." },
+    now: { year: 2025, title: "AI spending boom", line: "Big tech firms spend hundreds of billions of dollars on AI data centres." },
+    next: { year: 2050, title: "The next technology gold rush", line: "Another breakthrough could draw a rush of money years before its profits are proven." },
+    watch: "Spending on the technology growing much faster than the revenue it brings in.",
+    breaks: "Many dot-com firms had no profits at all. The biggest AI spenders are already very profitable.", related: ["mania", "dotcom"] } },
+  { q: "When did people last panic about a new medium?", a: { on_topic: true, strength: 3, pattern: "A new medium is blamed for harming the young",
+    summary: "Many times. Films, comics and video games were each blamed for harming young people long before social media.",
+    earlier: [{ year: 1933, title: "Films on trial", line: "The Payne Fund Studies examine how films affect children." }],
+    then: { year: 1954, title: "Comic book hearings", where: "United States", line: "A Senate inquiry blames comics for delinquency. Publishers adopt a strict code." },
+    now: { year: 2024, title: "Social media age limits", line: "Australia passes a law banning social media for children under 16." },
+    next: { year: 2094, title: "The next medium on trial", line: "A new medium, perhaps AI companions or immersive worlds, could face age limits and blame." },
+    watch: "Laws that set a minimum age for a new technology.",
+    breaks: "Researchers can now measure effects directly, and the evidence on social media is still debated.", related: [] } },
+  { q: "Is a four-day week a new idea?", a: { on_topic: true, strength: 2, pattern: "A push for shorter working weeks",
+    summary: "No. Big gains in productivity have brought pushes for shorter hours before, from the eight-hour day to the weekend.",
+    earlier: [{ year: 1817, title: "Eight hours’ labour", line: "Robert Owen calls for eight hours of work, eight of recreation and eight of rest." }],
+    then: { year: 1926, title: "Ford’s five-day week", where: "Detroit", line: "Henry Ford moves his factory workers to a five-day, 40-hour week." },
+    now: { year: 2022, title: "Four-day week trials", line: "Dozens of British firms test a four-day week for six months." },
+    next: { year: 2118, title: "A shorter standard week", line: "A four-day or even three-day week could become normal, if gains from automation are shared." },
+    watch: "Laws or union contracts that make a shorter week the standard.",
+    breaks: "Factory output was easy to measure. Office and care work are not.", related: [] } }
+];
+const askKey = () => { const k = store.get(AKEY, ""); return typeof k === "string" ? k : ""; };
+const normQ = s => String(s).toLowerCase().replace(/[^\p{L}\p{N} ]+/gu, " ").replace(/\s+/g, " ").trim();
+const askHist = () => { const h = store.get(AHIST, []); return Array.isArray(h) ? h.filter(x => x && x.q && x.a) : []; };
+function saveHist(q, a) {
+  const h = askHist().filter(x => normQ(x.q) !== normQ(q));
+  h.unshift({ q, a, t: Date.now() });
+  store.set(AHIST, h.slice(0, 30));
+}
+const askState = { left: null, limit: 30, plan: null, busy: false };
+let askCfg = null, askPending = null, lastAns = null;
+async function askConfigLoad() {
+  if (askCfg) return askCfg;
+  if (!apiOn()) return (askCfg = { enabled: false, preview: true, limit: 30 });
+  try { const r = await fetch("/api/ask/config"); askCfg = r.ok ? await r.json() : { enabled: false, limit: 30 }; }
+  catch (_) { return { enabled: false, limit: 30 }; }
+  return askCfg;
+}
+async function askPost(path, body) {
+  const r = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  let d = null;
+  try { d = await r.json(); } catch (_) {}
+  return { status: r.status, d: d || {} };
+}
+const fmtDay = d => { try { return new Date(d + "T00:00:00Z").toLocaleDateString(undefined, { day: "numeric", month: "long", timeZone: "UTC" }); } catch (_) { return d; } };
+function keyText(reason) {
+  return ({
+    expired: "This subscription has ended. Renew it to keep asking.",
+    disabled: "This key has been turned off. If that is a mistake, reply to your receipt email.",
+    "other-store": "That key is for a different product.",
+    unavailable: "Keys could not be checked just now. Try again in a minute.",
+    network: "No connection. Try again.",
+    paused: "Ask PastForward is paused right now."
+  })[reason] || "That key did not work. Check it and try again.";
+}
+const askOut = html => { const o = $("askOut"); if (o) o.innerHTML = html; return o; };
+
+function askChain(a) {
+  const items = [...(a.earlier || []).map(e => ({ ...e, kind: "echo" })), { ...a.then, kind: "then" }, { ...a.now, kind: "now" }];
+  let h = `<ol class="cv">`;
+  items.forEach((e, j) => {
+    if (j) h += `<li class="cv-gap">${e.year - items[j - 1].year} years later</li>`;
+    const lead = e.kind === "then" ? "Then" + (e.where ? " · " + esc(e.where) : "") : e.kind === "now" ? "Today" : "";
+    h += `<li class="cv-i ${e.kind}"><span class="cv-y">${fmtY(e.year)}</span><span class="cv-d"></span><span class="cv-b">${lead ? `<span class="cv-k">${lead}</span>` : ""}<span class="cv-t">${esc(e.title)}</span>${e.line ? `<span class="cv-l">${esc(e.line)}</span>` : ""}</span></li>`;
+  });
+  return h + `<li class="cv-gap">+ ${a.now.year - a.then.year} years, if the rhythm holds</li>
+    <li class="cv-i next"><span class="cv-y">${a.next.year ? "c. " + a.next.year : "Later"}</span><span class="cv-d"></span><span class="cv-b"><span class="cv-k">Next</span><span class="cv-t">${esc(a.next.title)}</span>${a.next.line ? `<span class="cv-l">${esc(a.next.line)}</span>` : ""}</span></li></ol>`;
+}
+function answerHTML(q, a, example) {
+  if (!a || !a.on_topic) return `<p class="aq">You asked <b>“${esc(q)}”</b></p><div class="box"><p>${esc((a && a.note) || "Ask about an event, a trend or a worry.")}</p></div>`;
+  const rel = (a.related || []).map(id => PAIRS.findIndex(p => p.id === id)).filter(i => i >= 0);
+  return `${example ? "" : `<p class="aq">You asked <b>“${esc(q)}”</b></p>`}
+    <p class="hook">${esc(a.summary)}</p>
+    <p class="meta"><span class="dots">${[1, 2, 3].map(n => `<i class="${n <= a.strength ? "on" : ""}"></i>`).join("")}</span>${RHYME[a.strength] || ""} · ${esc(a.pattern)}</p>
+    ${askChain(a)}
+    ${box("Signs to watch for", a.watch, "next")}
+    ${box("Where the rhyme breaks", a.breaks)}
+    ${rel.length ? `<p class="fl">In PastForward</p>${rel.map(i => goBtn(i, "then", `${fmtY(PAIRS[i].then.year)} → ${PAIRS[i].now.year} → c. ${nextYear(PAIRS[i])}`, true)).join("")}` : ""}
+    ${example ? "" : `<div class="actions"><button type="button" class="secondary" data-ask="new">Ask another</button><button type="button" class="primary" data-ask="share" id="askShare">Share answer</button></div>`}
+    <p class="fnote"><span class="ai-tag">AI sketch</span>${example ? "An example answer. " : ""}Written by an AI model from what it knows. It can be wrong, so check key facts. Not advice.</p>`;
+}
+
+/* the preview: types a question, "researches", then draws the rhyme, on a loop */
+function demoHTML() {
+  return `<div class="demo" role="img" aria-label="Preview: Ask PastForward answering “${esc(DEMOS[0].q)}” with ${DEMOS[0].a.then.year}, ${DEMOS[0].a.now.year} and c. ${DEMOS[0].a.next.year}">
+    <div class="demo-bar" aria-hidden="true"><span class="demo-q"><span class="demo-t"></span><span class="demo-caret"></span></span><span class="demo-btn">Ask</span></div>
+    <div class="demo-body" aria-hidden="true"></div>
+    <div class="demo-foot" aria-hidden="true"><span>Preview</span><span class="dd">${DEMOS.map(() => "<i></i>").join("")}</span></div>
+  </div>`;
+}
+function runDemo(root) {
+  if (!root || root.dataset.on) return;
+  root.dataset.on = "1";
+  const tEl = root.querySelector(".demo-t"), body = root.querySelector(".demo-body"), btn = root.querySelector(".demo-btn"), dots = root.querySelectorAll(".dd i");
+  const alive = () => root.isConnected;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const reveal = () => { body.querySelectorAll(".cv-i, .cv-gap").forEach(x => x.classList.add("in")); const cv = body.querySelector(".cv"); if (cv) cv.classList.add("drawn"); };
+  if (reduce) { tEl.textContent = DEMOS[0].q; body.innerHTML = askChain(DEMOS[0].a); reveal(); dots[0].classList.add("on"); return; }
+  (async () => {
+    for (let n = 0; alive(); n++) {
+      const d = DEMOS[n % DEMOS.length];
+      dots.forEach((x, i) => x.classList.toggle("on", i === n % DEMOS.length));
+      body.innerHTML = ""; body.classList.remove("out"); tEl.textContent = "";
+      await wait(n ? 250 : 500);
+      for (const ch of d.q) { if (!alive()) return; tEl.textContent += ch; await wait(30 + Math.random() * 34); }
+      await wait(380); btn.classList.add("press"); await wait(170); btn.classList.remove("press");
+      body.innerHTML = `<div class="thinking"><p>Searching history for the pattern…</p><i></i><i></i><i></i></div>`;
+      await wait(1500);
+      if (!alive()) return;
+      body.innerHTML = askChain(d.a);
+      const cv = body.querySelector(".cv"); void cv.offsetWidth; cv.classList.add("drawn");
+      for (const el of body.querySelectorAll(".cv-i, .cv-gap")) {
+        if (!alive()) return;
+        el.classList.add("in");
+        await wait(el.classList.contains("cv-gap") ? 240 : el.classList.contains("next") ? 300 : 560);
+      }
+      await wait(3800);
+      if (!alive()) return;
+      body.classList.add("out");
+      await wait(450);
+    }
+  })();
+}
+
+/* pay gate */
+const pwWrap = $("pwWrap"), pwEl = $("pw");
+let pwPrev = null, pwT = null;
+const payOpen = () => !pwWrap.hidden;
+function payHTML(msg, openKey) {
+  const c = askCfg || {}, pm = c.priceMonthly || "€3", py = c.priceYearly || "€19";
+  const num = s => parseFloat(String(s).replace(/[^\d.,]/g, "").replace(",", "."));
+  const nm = num(pm), ny = num(py);
+  const save = nm > 0 && ny > 0 && ny < nm * 12 ? `Save ${Math.round(100 * (1 - ny / (nm * 12)))}%` : "Best value";
+  const plans = c.enabled && (c.yearly || c.monthly)
+    ? `<div class="plans">${c.yearly ? `<a class="plan best" href="${esc(c.yearly)}" target="_blank" rel="noopener"><b>${esc(py)} a year</b><span>${save}</span></a>` : ""}${c.monthly ? `<a class="plan" href="${esc(c.monthly)}" target="_blank" rel="noopener"><b>${esc(pm)} a month</b><span>Cancel anytime</span></a>` : ""}</div>`
+    : `<p class="pw-soon">Subscriptions open soon</p>`;
+  return `<button type="button" class="pw-x" id="pwX" aria-label="Close">×</button>
+    <p class="pw-k">Ask PastForward</p>
+    <h3 id="pwT">Ask history anything</h3>
+    ${msg ? `<p class="askerr">${esc(msg)}</p>` : ""}
+    <p class="pw-sub">Type any event, trend or worry. PastForward finds when it happened before, how far apart, and when it may come back.</p>
+    ${demoHTML()}
+    ${plans}
+    <p class="pw-fine">${c.limit || 30} questions a month · answers link to the rhymes in the app · cancel anytime</p>
+    <details class="pw-key"${openKey ? " open" : ""}><summary>I already have a key</summary>
+      <div class="keyrow"><input id="askKey" placeholder="Paste your licence key" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Licence key"><button type="button" class="secondary" id="askUnlock">Unlock</button></div>
+      <p class="fnote" id="keyMsg">It is in your receipt email. It stays on this device.</p></details>`;
+}
+async function openPay(msg, openKey) {
+  await askConfigLoad();
+  clearTimeout(pwT);
+  if (pwWrap.hidden) pwPrev = document.activeElement;
+  pwEl.innerHTML = payHTML(msg, openKey);
+  pwEl.scrollTop = 0;
+  pwWrap.hidden = false; void pwEl.offsetWidth; pwWrap.classList.add("open");
+  document.documentElement.classList.add("lock");
+  runDemo(pwEl.querySelector(".demo"));
+  $("pwX").addEventListener("click", closePay);
+  $("askUnlock").addEventListener("click", unlockKey);
+  $("askKey").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); unlockKey(); } });
+  (openKey ? $("askKey") : $("pwX")).focus({ preventScroll: true });
+}
+function closePay() {
+  if (pwWrap.hidden) return;
+  pwWrap.classList.remove("open");
+  pwT = setTimeout(() => { pwWrap.hidden = true; pwEl.innerHTML = ""; }, reduce ? 0 : 400);
+  if (dwrap.hidden) document.documentElement.classList.remove("lock");
+  if (pwPrev && pwPrev.focus && pwPrev.isConnected) pwPrev.focus({ preventScroll: true });
+}
+$("pwBd").addEventListener("click", closePay);
+async function unlockKey() {
+  const inp = $("askKey"), msg = $("keyMsg"), btn = $("askUnlock");
+  const k = (inp.value || "").trim();
+  if (!/^[A-Za-z0-9-]{16,80}$/.test(k)) { msg.textContent = "That does not look like a licence key. Copy it from your receipt email."; inp.focus(); return; }
+  btn.disabled = true; btn.textContent = "Checking…";
+  let r = null;
+  try { r = await askPost("/api/ask/status", { key: k }); } catch (_) {}
+  btn.disabled = false; btn.textContent = "Unlock";
+  if (r && r.status === 200 && r.d.ok) {
+    store.set(AKEY, k);
+    Object.assign(askState, { left: r.d.left, limit: r.d.limit || askState.limit, plan: r.d.plan });
+    closePay();
+    renderAskMeta();
+    const q = askPending; askPending = null;
+    const ta = $("askQ");
+    if (q && ta) { ta.value = q; updateCnt(); submitAsk(); } else askIdle();
+    return;
+  }
+  msg.textContent = keyText(r ? (r.status === 503 ? "paused" : r.d.reason) : "network");
+}
+
+/* the Ask screen */
+function openAsk(q, run) {
+  setHead("Ask PastForward", "next", "How does it rhyme?", "next");
+  tabs.innerHTML = ""; world = null;
+  dBody.scrollTop = 0;
+  dBody.innerHTML = `<form class="askf" id="askForm" autocomplete="off">
+      <label class="fl" for="askQ">Ask about any event, trend or worry</label>
+      <textarea id="askQ" maxlength="${ASK_MAX}" rows="2" placeholder="e.g. ${esc(DEMOS[0].q)}"></textarea>
+      <div class="askbar"><span class="cnt" id="askCnt"></span><button type="submit" class="primary" id="askGo">Ask</button></div>
+    </form>
+    <p class="askmeta" id="askMeta"></p>
+    <div class="askout" id="askOut"></div>`;
+  const ta = $("askQ");
+  ta.value = (q || "").slice(0, ASK_MAX);
+  updateCnt();
+  ta.addEventListener("input", updateCnt);
+  ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submitAsk(); } });
+  $("askForm").addEventListener("submit", e => { e.preventDefault(); submitAsk(); });
+  showDeep();
+  askIdle();
+  renderAskMeta();
+  refreshAskMeta().then(() => { if (run && q) submitAsk(); });
+  if (!q) setTimeout(() => { const t = $("askQ"); if (t && !payOpen() && matchMedia("(hover: hover)").matches) t.focus({ preventScroll: true }); }, reduce ? 0 : 400);
+}
+function updateCnt() {
+  const ta = $("askQ"), c = $("askCnt");
+  if (ta && c) c.textContent = `${ta.value.length} / ${ASK_MAX}`;
+}
+function renderAskMeta() {
+  const m = $("askMeta");
+  if (!m) return;
+  const c = askCfg;
+  if (!c) { m.innerHTML = ""; return; }
+  if (!c.enabled) { m.textContent = c.preview ? "Preview. Asking works on pastforward.app." : "Ask PastForward opens soon."; return; }
+  if (!askKey()) {
+    m.innerHTML = `<span>For subscribers</span><button type="button" class="linkbtn" data-ask="pay">Subscribe</button><button type="button" class="linkbtn" data-ask="key">I have a key</button>`;
+    return;
+  }
+  m.innerHTML = (askState.left === null ? "" : `<span>${askState.left} of ${askState.limit} questions left this month</span>`) +
+    (c.portal ? `<a href="${esc(c.portal)}" target="_blank" rel="noopener">Manage subscription</a>` : "") +
+    `<button type="button" class="linkbtn" data-ask="forget">Remove key</button>`;
+}
+async function refreshAskMeta() {
+  const c = await askConfigLoad(), k = askKey();
+  if (c.enabled && k && askState.left === null) {
+    let r = null;
+    try { r = await askPost("/api/ask/status", { key: k }); } catch (_) {}
+    if (r && r.status === 200 && r.d.ok) Object.assign(askState, { left: r.d.left, limit: r.d.limit || askState.limit, plan: r.d.plan });
+    else if (r && r.status === 402 && r.d.reason !== "unavailable") {
+      store.set(AKEY, ""); renderAskMeta(); askIdle();
+      if ($("askOut")) openPay(keyText(r.d.reason), true);
+      return;
+    }
+  }
+  renderAskMeta();
+}
+function askIdle() {
+  const k = askKey(), hist = askHist();
+  let h = `<div class="chips" role="group" aria-label="Try a question">${ASK_EXAMPLES.map(x => `<button type="button" data-askq="${esc(x)}">${esc(x)}</button>`).join("")}</div>`;
+  if (!k) h += `<p class="fl">What you get</p>${demoHTML()}<button type="button" class="primary" data-ask="pay">Get Ask PastForward</button>`;
+  if (hist.length) h += `<p class="fl">Your questions</p><ol class="hist">${hist.map((x, i) => `<li><button type="button" data-hist="${i}"><span>${esc(x.q)}</span><span class="hy">${x.a.on_topic ? `${fmtY(x.a.then.year)} → ${fmtY(x.a.now.year)}` : ""}</span></button></li>`).join("")}</ol>`;
+  else if (k) h += `<p class="fl">Example answer</p>${answerHTML(DEMOS[1].q, DEMOS[1].a, true)}`;
+  const o = askOut(h);
+  if (o && !k) runDemo(o.querySelector(".demo"));
+}
+const THINK = ["Reading your question…", "Searching history for the pattern…", "Checking the earlier cases…", "Counting the years forward…"];
+function setGo(busy) { const b = $("askGo"); if (b) { b.disabled = busy; b.textContent = busy ? "Asking…" : "Ask"; } }
+function showAnswer(q, a) {
+  lastAns = { q, a };
+  const o = askOut(answerHTML(q, a));
+  if (o) o.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+}
+async function submitAsk() {
+  const ta = $("askQ");
+  if (!ta || askState.busy) return;
+  const q = ta.value.replace(/\s+/g, " ").trim();
+  if (q.length < 3) { ta.focus(); return; }
+  ta.blur();
+  const prev = askHist().find(x => normQ(x.q) === normQ(q));
+  if (prev) { showAnswer(prev.q, prev.a); return; }          // asked before on this device: free, instant
+  const c = await askConfigLoad();
+  if (!c.enabled) { openPay(c.preview ? "This is a preview. Asking works on pastforward.app." : "Ask PastForward opens soon. Here is what it does."); return; }
+  const k = askKey();
+  if (!k) { askPending = q; openPay(); return; }
+  askState.busy = true; setGo(true);
+  askOut(`<div class="thinking" aria-live="polite"><p id="thinkT">${THINK[0]}</p><i></i><i></i><i></i></div>`);
+  let ti = 0;
+  const tick = setInterval(() => { const el = $("thinkT"); if (el) el.textContent = THINK[ti = Math.min(ti + 1, THINK.length - 1)]; }, 1500);
+  let r = null;
+  try { r = await askPost("/api/ask", { key: k, q }); } catch (_) {}
+  clearInterval(tick); askState.busy = false; setGo(false);
+  const s = r ? r.status : 0, d = r ? r.d : {};
+  if (s === 200 && d.answer) {
+    saveHist(q, d.answer);
+    if (typeof d.left === "number") { askState.left = d.left; askState.limit = d.limit || askState.limit; }
+    renderAskMeta();
+    showAnswer(q, d.answer);
+    return;
+  }
+  if (s === 402) { store.set(AKEY, ""); askState.left = null; askPending = q; renderAskMeta(); askIdle(); openPay(keyText(d.reason), true); return; }
+  const back = `<button type="button" class="secondary" data-ask="new">Back</button>`;
+  if (s === 429) { askState.left = 0; renderAskMeta(); askOut(`<p class="askerr">You have used all ${d.limit || askState.limit} questions this month. They come back on ${esc(fmtDay(d.resets))}. Answers you already have stay free.</p>${back}`); return; }
+  if (s === 503 && d.error === "resting") { askOut(`<p class="askerr">Ask PastForward is resting to stay within its monthly budget. It will be back ${d.until === "tomorrow" ? "tomorrow" : "on " + esc(fmtDay(d.until))}. Your question was not counted.</p>${back}`); return; }
+  if (s === 503) { askOut(`<p class="askerr">Ask PastForward is paused right now. Your question was not counted.</p>${back}`); return; }
+  if (s === 400) { askOut(`<p class="askerr">Keep the question under ${ASK_MAX} characters.</p>`); return; }
+  askOut(`<p class="askerr">PastForward could not answer just now. Your question was not counted. Try again in a moment.</p>${back}`);
+}
+async function shareAnswer() {
+  if (!lastAns || !lastAns.a.on_topic) return;
+  const { q, a } = lastAns, url = siteBase();
+  const text = `“${q}”\n${fmtY(a.then.year)} ${a.then.title} → ${fmtY(a.now.year)} ${a.now.title} → ${a.next.year ? "c. " + a.next.year : "next"}: ${a.next.title}\nAsked on PastForward`;
+  try { if (navigator.share) { await navigator.share({ text, url }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(text + "\n" + url); const b = $("askShare"); if (b) b.textContent = "Copied"; }
+  catch (_) { showSharePreviewText(text + "\n" + url); }
+}
+dBody.addEventListener("click", e => {
+  const ex = e.target.closest("[data-askq]");
+  if (ex) { const ta = $("askQ"); if (ta) { ta.value = ex.dataset.askq; updateCnt(); submitAsk(); } return; }
+  const hi = e.target.closest("[data-hist]");
+  if (hi) { const x = askHist()[+hi.dataset.hist]; if (x) { const ta = $("askQ"); if (ta) { ta.value = x.q; updateCnt(); } showAnswer(x.q, x.a); } return; }
+  const b = e.target.closest("[data-ask]");
+  if (!b) return;
+  const act = b.dataset.ask;
+  if (act === "pay") openPay();
+  else if (act === "key") openPay("", true);
+  else if (act === "share") shareAnswer();
+  else if (act === "forget") { store.set(AKEY, ""); askState.left = null; renderAskMeta(); askIdle(); }
+  else if (act === "new") { const ta = $("askQ"); if (ta) { ta.value = ""; updateCnt(); } askIdle(); dBody.scrollTop = 0; if (ta) ta.focus({ preventScroll: true }); }
+});
+
 /* ---------- night sky ---------- */
 const sky = $("sky"), sctx = sky.getContext("2d");
 let stars = [];
@@ -2020,6 +2495,7 @@ if (!reduce) $("jump").classList.add("pulse");
 updateDailyDot();
 loadScores();
 if (h === "daily") setTimeout(openDaily, 400);
+if (h === "ask") setTimeout(() => openAsk(), 400);
 requestAnimationFrame(loop);
 })();
 </script>
