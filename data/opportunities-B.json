@@ -1,0 +1,122 @@
+{
+  "krakatoa": {
+    "lastTime": "Krakatoa was one of the first disasters reported worldwide within hours by undersea telegraph, and the Royal Society’s 1888 report helped found modern atmospheric science. At Pinatubo in 1991, US and Philippine volcano forecasts saved more than 5,000 lives, showing what monitoring is worth.",
+    "ideas": [
+      { "kind": "build", "title": "Backup links for island nations", "line": "Satellite links, spare cable capacity and repair planning that keep island banks, hospitals and governments online when an eruption cuts a subsea cable." },
+      { "kind": "build", "title": "Cold-year harvest risk tools", "line": "Models that estimate how a year of dimmed sunlight would hit regional harvests and food stocks, for insurers, farm ministries and food agencies." },
+      { "kind": "work", "title": "Volcano and tsunami warning staff", "line": "Observatory technicians, tsunami analysts and infrasound specialists, since Hunga Tonga’s pressure wave raised tsunamis that standard warning models did not expect." },
+      { "kind": "learn", "title": "Reading satellite sulfur and aerosol data", "line": "How to read satellite sulfur dioxide and aerosol measurements, which show within weeks whether an eruption is likely to cool the climate." }
+    ],
+    "watch": "Watch satellite sulfur readings after large eruptions, and whether governments fund cable repair ships, volcano observatories and emergency grain reserves."
+  },
+  "scramble": {
+    "lastTime": "Gains went mostly to outsiders: Leopold II grew rich on Congo rubber sold into the new pneumatic tire market, and chartered firms like Rhodes’s British South Africa Company took mines and land. Africa exported raw materials while processing and profits stayed abroad.",
+    "ideas": [
+      { "kind": "build", "title": "Refining minerals where they are mined", "line": "Plants and services that process lithium, cobalt, copper or manganese in Africa, as Zimbabwe and Namibia now restrict exports of raw ore." },
+      { "kind": "build", "title": "Cross-border trade under AfCFTA", "line": "Customs, payment and logistics services that help small African firms sell to neighboring countries under the African Continental Free Trade Area." },
+      { "kind": "work", "title": "Resource deal negotiators and auditors", "line": "Lawyers, geologists, economists and auditors who help African governments negotiate and monitor mining contracts, debt terms and foreign infrastructure deals." },
+      { "kind": "learn", "title": "Mining contracts and sovereign debt", "line": "How royalties, offtake agreements and sovereign loans are structured, the terms that decided who gained during past scrambles for Africa." }
+    ],
+    "watch": "Watch whether more African states require local mineral processing, and whether trade among African countries grows as a share of their total trade."
+  },
+  "trusts": {
+    "lastTime": "After the 1911 split, Standard Oil’s pieces grew into Exxon, Mobil and Chevron, and their shares rose. After AT&T’s 1984 breakup, long-distance rivals like MCI and Sprint gained customers and long-distance calling prices fell.",
+    "ideas": [
+      { "kind": "build", "title": "Search and AI rivals", "line": "Specialized search and AI assistant services that could use court-ordered access to Google’s search data and the end of exclusive default deals." },
+      { "kind": "build", "title": "Data portability and interoperability tools", "line": "Services that move users’ data, contacts and purchases between platforms, as rules like the EU Digital Markets Act require gatekeepers to open up." },
+      { "kind": "work", "title": "Compliance engineers and antitrust economists", "line": "Antitrust economists, compliance engineers and technical monitors who check whether dominant platforms follow court orders and gatekeeper rules." },
+      { "kind": "learn", "title": "How digital antitrust remedies work", "line": "How the Sherman Act and EU Digital Markets Act treat default deals, data sharing and self-preferencing, and how remedies can reshape a market." }
+    ],
+    "watch": "Watch whether court-ordered data sharing and limits on default deals survive Google’s appeal and actually shift market share in search and AI assistants."
+  },
+  "yellow": {
+    "lastTime": "The backlash rewarded credibility: Adolph Ochs’s New York Times grew by offering sober news under the motto “All the News That’s Fit to Print,” and Missouri opened the first journalism school in 1908. After 2016, fact-checking groups multiplied and Facebook began paying outside fact-checkers.",
+    "ideas": [
+      { "kind": "build", "title": "Content provenance and verification tools", "line": "Tools that attach and check provenance records on photos, video and audio, helping newsrooms, courts and platforms show what is authentic." },
+      { "kind": "build", "title": "Trusted local and specialist news", "line": "Subscription news services that compete on accuracy and sourcing in a niche or town, as the sober press did against the yellow papers." },
+      { "kind": "work", "title": "Verification and open-source investigators", "line": "Verification journalists, open-source investigators and trust-and-safety analysts who check viral images, audio and claims before they shape public decisions." },
+      { "kind": "learn", "title": "Digital forensics for synthetic media", "line": "Geolocation, reverse image search, metadata analysis and detection of AI-generated audio and video, the skills that debunk a fake quickly." }
+    ],
+    "watch": "Watch whether phones, cameras and platforms adopt provenance labels widely, and how long major fakes circulate before being debunked."
+  },
+  "dreadnought": {
+    "lastTime": "Shipbuilders and arms makers like Vickers, Armstrong Whitworth and Krupp filled their order books, and Parsons steam turbines became standard. Churchill’s move to oil-fired warships led Britain to buy control of the Anglo-Persian Oil Company in 1914. After the 1922 treaty, many yards lost orders.",
+    "ideas": [
+      { "kind": "build", "title": "Shipyard capacity and repair", "line": "Ship repair, modular construction and shipyard automation services, as the US and its allies try to rebuild yards that lag far behind China’s." },
+      { "kind": "build", "title": "Tracking dark ships and cables", "line": "Satellite and sensor services that spot vessels with transponders switched off, guard undersea cables and help coast guards protect sea lanes." },
+      { "kind": "work", "title": "Shipyard trades and naval architects", "line": "Welders, pipefitters, marine electricians, naval architects and marine engineers, trades that shipyards in the US and Europe struggle to hire." },
+      { "kind": "learn", "title": "Uncrewed vessel design and operation", "line": "How uncrewed surface and underwater vessels are built, operated and regulated, the new ship type that could make older fleets look dated." }
+    ],
+    "watch": "Watch shipbuilding budgets, orders for uncrewed vessels, and whether rival powers ever agree to limits as Britain, the US and Japan did in 1922."
+  },
+  "ellis": {
+    "lastTime": "Immigrants filled steel mills, mines and garment shops, and services grew around them: A.P. Giannini’s Bank of Italy, founded in 1904 for immigrants, became Bank of America. When war and the 1924 quotas cut arrivals, Northern employers recruited Black Southerners and Mexican workers.",
+    "ideas": [
+      { "kind": "build", "title": "Credential recognition and job matching", "line": "Services that translate foreign qualifications, speed professional licensing and match newcomers to sectors short of workers, like care, construction and transport." },
+      { "kind": "build", "title": "Banking and remittances for newcomers", "line": "Low-cost accounts, remittances and credit-history services for migrants, the role immigrant banks like Giannini’s filled after 1904." },
+      { "kind": "work", "title": "Interpreters, teachers and caseworkers", "line": "Language teachers, interpreters, caseworkers and integration coordinators, especially in aging countries recruiting abroad for care and skilled trades." },
+      { "kind": "learn", "title": "Migration law and integration practice", "line": "How asylum, work visa and integration rules work, including the EU Pact on Migration and Asylum, plus what helps newcomers find work quickly." }
+    ],
+    "watch": "Watch for new quota laws, fences and asylum caps, or the opposite: aging countries widening work visas to fill care and construction jobs."
+  },
+  "modelt": {
+    "lastTime": "Demand rose for oil, tires and roads: Akron, Ohio became the world’s tire capital, drive-in filling stations spread from 1913, and GM’s lending arm GMAC, founded in 1919, made buying cars on credit common. Ford’s 1914 $5 day drew workers to Detroit.",
+    "ideas": [
+      { "kind": "build", "title": "Charging for drivers without garages", "line": "Curbside, workplace and apartment charging for drivers who cannot plug in at home, the filling station of the electric era." },
+      { "kind": "build", "title": "Battery recycling and second life", "line": "Collecting, testing and recycling used EV batteries, or reusing them for grid storage, as the first large waves of packs age out." },
+      { "kind": "work", "title": "EV technicians and charger electricians", "line": "High-voltage vehicle technicians, charger installers and grid electricians, as repair shops and utilities adapt to battery cars as garages once adapted to engines." },
+      { "kind": "learn", "title": "High-voltage battery diagnostics", "line": "Battery health testing, high-voltage safety and power electronics, skills many mechanics trained on engines do not yet have." }
+    ],
+    "watch": "Watch battery prices, used-EV resale values, and whether cities rewrite curb and parking rules for charging and robotaxis."
+  },
+  "titanic": {
+    "lastTime": "Safety gear and skills were suddenly in demand: liners added lifeboats for all and round-the-clock wireless operators, the US Radio Act of 1912 licensed operators, and Reginald Fessenden’s early sonar detected an iceberg by echo in 1914. The International Ice Patrol began tracking ice.",
+    "ideas": [
+      { "kind": "build", "title": "Independent certification for extreme travel", "line": "Third-party testing, inspection and certification for submersibles, private spacecraft and adventure tours, where operators have often avoided outside review." },
+      { "kind": "build", "title": "Fatigue monitoring for composite hulls", "line": "Sensors and analysis that track wear in carbon-fiber hulls and pressure vessels, with alerts reviewed by independent engineers." },
+      { "kind": "work", "title": "Safety inspectors and certification engineers", "line": "Marine surveyors, classification engineers and spaceflight safety specialists, roles that tend to grow when a disaster forces rules on a new industry." },
+      { "kind": "learn", "title": "Composite materials and failure analysis", "line": "How carbon fiber and other composites wear and fail under repeated pressure loads, and how certification standards test for it." }
+    ],
+    "watch": "Watch whether space and deep-sea tourism operators accept outside certification, and whether regulators gain power to set passenger safety rules."
+  },
+  "somme": {
+    "lastTime": "Wounds drove new medicine: Harold Gillies pioneered facial reconstruction at Sidcup from 1917, Oswald Robertson set up the first depot of stored blood in 1917, and limb-fitting centers like Roehampton expanded prosthetics for disabled veterans.",
+    "ideas": [
+      { "kind": "build", "title": "Demining survey and clearance tools", "line": "Drone surveys, mapping software and machinery that find and clear mines and unexploded shells, which in France still surface a century later." },
+      { "kind": "build", "title": "Prosthetics and remote rehabilitation", "line": "Affordable prosthetics, 3D-printed limb sockets and remote rehabilitation services for wounded soldiers and civilians in Ukraine and other conflict zones." },
+      { "kind": "work", "title": "Deminers, prosthetists and trauma therapists", "line": "Deminers, prosthetists, physical therapists and trauma psychologists, roles that grew after the Somme and are needed again in Ukraine." },
+      { "kind": "learn", "title": "Drone defense for civilian sites", "line": "How to detect and defend against small drones, a skill now needed at power plants, airports and prisons, not only on battlefields." }
+    ],
+    "watch": "Watch ceasefire talks and reconstruction funding for Ukraine, which could shift demand toward demining, rebuilding and long-term rehabilitation."
+  },
+  "sykes": {
+    "lastTime": "Oil interests gained most: Britain kept oil-rich Mosul in Iraq, the Turkish Petroleum Company struck oil at Baba Gurgur near Kirkuk in 1927, and the 1928 Red Line Agreement divided former Ottoman oil among Western firms, with Calouste Gulbenkian keeping 5%.",
+    "ideas": [
+      { "kind": "build", "title": "Shared river data and monitoring", "line": "Satellite and sensor services that measure river flows, dam releases and groundwater, giving neighbors shared facts in disputes over the Tigris and Euphrates." },
+      { "kind": "build", "title": "Rebuilding war-damaged historic cities", "line": "Reconstruction, 3D documentation and restoration of war-damaged cities, as UNESCO-led teams did in Mosul, where the al-Nuri Mosque reopened in 2025." },
+      { "kind": "work", "title": "Mediators and local service engineers", "line": "Mediators, water diplomats, civil engineers and local governance advisers who help fragile border regions deliver services so armed groups cannot fill the gap." },
+      { "kind": "learn", "title": "Border history and transboundary water law", "line": "The history of colonial-era borders and the law of shared rivers, useful in diplomacy, journalism, humanitarian work and risk analysis." }
+    ],
+    "watch": "Watch Tigris and Euphrates flows and dam disputes, and whether governments restore services in border areas that armed groups exploit."
+  },
+  "flu": {
+    "lastTime": "After the Black Death, scarce laborers won higher wages despite England’s 1351 Statute of Labourers. In the 1918 pandemic, Vicks VapoRub sales rose from $900,000 to $2.9 million in a year. After 2020, demand jumped for telehealth, home delivery, video calls and mRNA vaccines.",
+    "ideas": [
+      { "kind": "build", "title": "Wastewater and air pathogen monitoring", "line": "Services that test sewage, airport air and farm sites for new pathogens, giving cities and farms earlier warning than clinic case counts." },
+      { "kind": "build", "title": "Cleaner indoor air for buildings", "line": "Ventilation upgrades, filtration and air-quality monitoring for schools, offices and clinics, guided by standards like ASHRAE 241, written after COVID." },
+      { "kind": "work", "title": "Epidemiologists and veterinary disease specialists", "line": "Field epidemiologists, veterinary disease specialists and lab technicians who track bird flu where farms, wildlife and people meet." },
+      { "kind": "learn", "title": "Health risk communication and trust", "line": "How to explain uncertain health risks clearly and build trust, which tends to decide how fast people accept a new vaccine." }
+    ],
+    "watch": "Watch bird flu infections in mammals and people, any sign of human-to-human spread, and whether surveillance funding grows or shrinks."
+  },
+  "weimar": {
+    "lastTime": "Debtors holding real assets gained: industrialist Hugo Stinnes borrowed marks, built an empire of some 4,500 companies and repaid in near-worthless money, while savers lost. In Venezuela, people turned to US dollars, remittances and dollar stablecoins, and import shops called bodegones spread.",
+    "ideas": [
+      { "kind": "build", "title": "Independent price tracking", "line": "Independent price indexes and apps that track real prices when official inflation data is late or distrusted, as happened in Venezuela and Argentina." },
+      { "kind": "build", "title": "Safe remittance and savings channels", "line": "Low-cost, regulated ways for families in high-inflation countries to receive remittances and hold savings in stable currencies, with fraud protection." },
+      { "kind": "work", "title": "Inflation-aware finance and payroll staff", "line": "Accountants, payroll and treasury staff skilled in indexed contracts, multi-currency books and hyperinflation accounting for firms in unstable economies." },
+      { "kind": "learn", "title": "Monetary history and inflation accounting", "line": "How hyperinflations start and end, from the Rentenmark to dollarization, plus IAS 29, the accounting standard for hyperinflationary economies." }
+    ],
+    "watch": "Watch for central banks funding governments directly, a widening gap between official and street exchange rates, and rising emigration."
+  }
+}
