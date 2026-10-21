@@ -1,0 +1,314 @@
+{
+ "lisbon": {
+  "lastTime": "Rebuilding Lisbon put military engineers like Manuel da Maia and Eugénio dos Santos to work, using building parts made outside the city and quake-resistant “gaiola” frames. After Mexico City’s 1985 quake, a stricter 1987 building code raised demand for seismic design.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Seismic checks for older housing",
+    "line": "Services that survey and strengthen older apartment blocks in quake zones, from Istanbul to Lisbon, could see steady demand as codes and insurers tighten."
+   },
+   {
+    "kind": "build",
+    "title": "Open records of building approvals",
+    "line": "Digital registries showing who designed, approved and inspected each building may be in demand where quake anger turns on builders and inspectors."
+   },
+   {
+    "kind": "work",
+    "title": "Independent building inspectors",
+    "line": "Structural engineers, independent inspectors and retrofit crews tend to be needed after deadly quakes, as Turkey’s 2023 investigations into contractors showed."
+   },
+   {
+    "kind": "learn",
+    "title": "Retrofitting weak older buildings",
+    "line": "How engineers assess and strengthen old masonry and soft-storey buildings, using standards such as Eurocode 8, is a skill quake-prone cities may need."
+   }
+  ],
+  "watch": "Watch whether quake-prone cities like Istanbul fund retrofits of older housing, and whether insurers start pricing quake risk building by building."
+ },
+ "revolution": {
+  "lastTime": "After 1789, over 1,300 new newspapers appeared in France within a decade, and buyers of confiscated church lands, mostly townsmen and better-off peasants, gained property. After 2011, Tunisia’s civil society grew, and four of its groups won the 2015 Nobel Peace Prize.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Food price early-warning tools",
+    "line": "Dashboards that track bread, rice and fuel prices against local wages could help aid groups and cities target food support before shortages bite."
+   },
+   {
+    "kind": "build",
+    "title": "Independent local news",
+    "line": "When closed regimes open up, independent local news and fact-checking tend to be in demand, as the 1,300 new French papers after 1789 showed."
+   },
+   {
+    "kind": "work",
+    "title": "Food security analysts",
+    "line": "Roles tracking grain stocks, import bills and subsidy costs in governments, aid agencies and food importers may grow as climate shocks hit crops."
+   },
+   {
+    "kind": "learn",
+    "title": "How subsidies and currencies interact",
+    "line": "Understanding how bread subsidies, currency falls and wheat import bills interact, as in Egypt and Lebanon, shows where the next price shock may bite."
+   }
+  ],
+  "watch": "Watch the FAO Food Price Index, the wheat import bills of large importers like Egypt, and sudden cuts to bread or fuel subsidies."
+ },
+ "hamilton": {
+  "lastTime": "Speculators who had bought soldiers’ and states’ IOUs cheaply profited. Congress chartered Hamilton’s Bank of the United States in 1791, and trading in the new federal bonds led to the 1792 Buttonwood Agreement, the root of the New York Stock Exchange.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Tools to track joint-fund milestones",
+    "line": "Software that helps towns and firms apply for, track and report on milestone-based EU funds could stay in demand if joint borrowing becomes routine."
+   },
+   {
+    "kind": "build",
+    "title": "Cross-border project partnerships",
+    "line": "Services that match firms across member states for jointly funded EU projects, such as defence or grid links, may grow as shared funding expands."
+   },
+   {
+    "kind": "work",
+    "title": "EU funds and public debt roles",
+    "line": "Grant managers, auditors and debt specialists may be needed to run and check pooled EU spending, and to plan its repayment through 2058."
+   },
+   {
+    "kind": "learn",
+    "title": "Shared bonds and fiscal rules",
+    "line": "Learning how joint bonds, credit ratings and EU fiscal rules work helps explain fights like the one between the “frugal” states and southern members."
+   }
+  ],
+  "watch": "Watch whether joint EU borrowing, like the 2025 SAFE defence loans, continues after NextGenerationEU ends in 2026, making shared debt a habit."
+ },
+ "vaccine": {
+  "lastTime": "Vaccinators were in demand: Spain’s Balmis Expedition carried cowpox to the Americas, the Philippines and China from 1803, and Britain’s 1840 Vaccination Act made vaccination free. In 2021 the WHO set up an mRNA technology hub in Cape Town.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Regional vaccine manufacturing",
+    "line": "Vaccine and mRNA production closer to home, like the WHO-backed hub in Cape Town, could grow as regions seek their own supply."
+   },
+   {
+    "kind": "build",
+    "title": "Plain-language vaccine answers",
+    "line": "Services that answer vaccine questions in local languages, for clinics, schools and pharmacies, may be needed as false health claims spread online."
+   },
+   {
+    "kind": "work",
+    "title": "Vaccine safety monitoring",
+    "line": "Pharmacovigilance roles that track side effects, needed since the 1955 Cutter incident, tend to grow with each new type of vaccine."
+   },
+   {
+    "kind": "learn",
+    "title": "Explaining risk with real numbers",
+    "line": "Explaining absolute versus relative risk, base rates and side-effect reports, such as the UK’s Yellow Card scheme, is a skill health debates keep needing."
+   }
+  ],
+  "watch": "Watch approvals of personalised mRNA cancer vaccines, public funding for mRNA research, and childhood vaccination rates as a gauge of trust."
+ },
+ "luddites": {
+  "lastTime": "Machine builders gained: Manchester’s Richard Roberts improved the power loom and built a self-acting spinning mule, and mechanics’ institutes opened in Edinburgh, Glasgow and London in the early 1820s to teach workers mechanical skills.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Labels for human-made work",
+    "line": "Tools that verify and label human-made writing, art and voice work, using standards like C2PA content credentials, could grow as AI content spreads."
+   },
+   {
+    "kind": "work",
+    "title": "People who check AI output",
+    "line": "Like the mechanics who kept looms running, people who check, correct and supervise AI output in law, medicine and media may be in demand."
+   },
+   {
+    "kind": "work",
+    "title": "Negotiators of automation clauses",
+    "line": "Union staff, lawyers and HR specialists who write AI clauses into contracts, as Hollywood writers won in 2023, may be needed across more industries."
+   },
+   {
+    "kind": "learn",
+    "title": "Spotting AI errors in your field",
+    "line": "Deep knowledge of one trade, plus the ability to judge where AI tools fail in it, tends to hold value as routine tasks automate."
+   }
+  ],
+  "watch": "Watch whether AI clauses spread from Hollywood into other union contracts, and whether wages rise along with productivity in AI-heavy jobs."
+ },
+ "railway": {
+  "lastTime": "Railways created new trades: George Bradshaw’s printed timetables from 1839, Thomas Cook’s first rail excursion in 1841 and W. H. Smith’s station bookstalls from 1848, plus thousands of jobs for porters, signalmen and clerks.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Depots for driverless fleets",
+    "line": "Charging, cleaning and repair depots for robotaxi fleets could be in demand as driverless rides expand to more cities."
+   },
+   {
+    "kind": "build",
+    "title": "Independent safety checks for robot cars",
+    "line": "Independent testing and crash investigation for driverless vehicles, serving insurers, cities and regulators, may grow as public trust follows safety records."
+   },
+   {
+    "kind": "work",
+    "title": "Remote assistants and fleet technicians",
+    "line": "Remote operators who help stuck vehicles, sensor technicians and fleet mechanics may grow in number, offering paths for some displaced drivers."
+   },
+   {
+    "kind": "learn",
+    "title": "Safety cases for autonomous systems",
+    "line": "Learning how safety cases are built for autonomous vehicles, under standards like ISO 21448 and UL 4600, is a niche likely to grow."
+   }
+  ],
+  "watch": "Watch how many cities license driverless rides without safety drivers, and whether insurers charge less to cover them than human-driven taxis."
+ },
+ "mania": {
+  "lastTime": "Contractors like Thomas Brassey and Samuel Morton Peto, and up to 250,000 navvies, were in demand. After the 2001 telecom bust, unused “dark fibre” sold cheaply and later carried the broadband and online video boom.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Reusing data-centre waste heat",
+    "line": "Systems that pipe data-centre heat into homes, greenhouses or district heating may spread as power-hungry sites face local pushback."
+   },
+   {
+    "kind": "build",
+    "title": "Second-hand computing capacity",
+    "line": "If the build-out overshoots, services that rent surplus chips and server space cheaply to universities and small firms could grow, like post-2001 dark fibre."
+   },
+   {
+    "kind": "work",
+    "title": "Electricians and grid engineers",
+    "line": "Data centres need electricians, high-voltage engineers and cooling technicians, skills that stay useful even if the boom cools."
+   },
+   {
+    "kind": "learn",
+    "title": "Reading a boom’s numbers",
+    "line": "Comparing capital spending with revenue, and spotting building funded by debt, helps judge whether an infrastructure boom is overreaching."
+   }
+  ],
+  "watch": "Watch whether AI revenue catches up with data-centre spending, and how much new building is funded by debt instead of existing profits."
+ },
+ "springtime": {
+  "lastTime": "Peasants in the Austrian Empire were freed from forced labour dues in September 1848, and Piedmont, Switzerland and the Netherlands gained new constitutions. Exiled “Forty-Eighters” like Carl Schurz built new careers in the United States.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Tools for citizens’ assemblies",
+    "line": "Platforms that run citizens’ assemblies, consultations and participatory budgets may be in demand where protests push governments to rewrite rules, as in Chile."
+   },
+   {
+    "kind": "build",
+    "title": "Verifying viral protest footage",
+    "line": "Services that verify viral videos and images by time and place could help newsrooms and rights groups when protests leap between countries."
+   },
+   {
+    "kind": "work",
+    "title": "Mediators and dialogue facilitators",
+    "line": "Mediators who bring governments, unions and protest groups to the table, as Tunisia’s National Dialogue Quartet did, tend to be needed after protest waves."
+   },
+   {
+    "kind": "learn",
+    "title": "Constitutional design basics",
+    "line": "Knowing how constitutions, electoral systems and term limits are designed helps, as Chile’s 2019 protests led to two rejected drafts in 2022 and 2023."
+   }
+  ],
+  "watch": "Watch for the same living-cost shock, such as a fuel or food price spike, hitting many import-dependent countries in the same season."
+ },
+ "cable": {
+  "lastTime": "Cable makers like the Telegraph Construction and Maintenance Company thrived, demand for gutta-percha insulation thinned wild trees in Southeast Asia, and news agencies like Reuters sold fast foreign news. William Thomson, later Lord Kelvin, grew rich from cable patents.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Services for newly connected places",
+    "line": "Telehealth, remote schooling and farm monitoring for villages, ships and islands newly reached by satellite internet could grow, as cables once opened markets."
+   },
+   {
+    "kind": "build",
+    "title": "Tracking crowded orbits",
+    "line": "Services that track satellites and debris and warn of collisions may be in demand as tens of thousands more satellites launch."
+   },
+   {
+    "kind": "work",
+    "title": "Cable and satellite network technicians",
+    "line": "Subsea cable repair crews, ground-station engineers and satellite operators may be in short supply, as Baltic and Red Sea cable cuts showed."
+   },
+   {
+    "kind": "learn",
+    "title": "How spectrum and orbits are shared",
+    "line": "Learning how the ITU coordinates radio spectrum and orbital filings, and how countries license satellite internet, is useful as networks compete for space."
+   }
+  ],
+  "watch": "Watch whether rival satellite networks, such as the EU’s IRIS² and China’s constellations, reach service, and how often subsea cables are cut."
+ },
+ "carrington": {
+  "lastTime": "After the 1989 Quebec blackout, Hydro-Québec spent heavily on grid protection, and US rules approved in 2016 required utilities to assess solar storm risk. NOAA’s DSCOVR satellite was launched in 2015 to give earlier warnings from about 1.5 million km away.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Backup positioning and timing",
+    "line": "Positioning and timing backups that keep farms, ships, phone networks and banks running when GPS signals fail may be needed, as May 2024 showed."
+   },
+   {
+    "kind": "build",
+    "title": "Storm-current protection for grids",
+    "line": "Sensors and blocking devices that protect large transformers from storm-induced currents could find demand as grids electrify and solar storms recur."
+   },
+   {
+    "kind": "work",
+    "title": "Space weather forecasters",
+    "line": "Space weather forecasters and grid resilience engineers tend to be needed, as national services like the UK Met Office’s, running since 2014, show."
+   },
+   {
+    "kind": "learn",
+    "title": "How solar storms hit technology",
+    "line": "Learning NOAA’s storm scales and how storms affect transformers, GPS and satellites, like the roughly 40 Starlink satellites lost in February 2022, is useful."
+   }
+  ],
+  "watch": "Watch first data from new solar monitors like NOAA’s SWFO-L1, launched in 2025, and grid rules on geomagnetic risk."
+ },
+ "commune": {
+  "lastTime": "After the 1907 winegrowers’ revolt, France cracked down on wine fraud. After the Yellow Vests, minimum-wage earners got up to €100 a month more through a top-up benefit, and France ran a Great National Debate and a citizens’ climate convention.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Household climate-cost calculators",
+    "line": "Tools that show rural and car-dependent households how fuel taxes and climate rules affect them, and what aid they can claim, may be needed."
+   },
+   {
+    "kind": "build",
+    "title": "Rural transport options",
+    "line": "Affordable rural mobility, such as shared rides, on-demand buses and low-cost electric car leasing like France’s 2024 social leasing, could see demand."
+   },
+   {
+    "kind": "work",
+    "title": "Citizens’ assembly facilitators",
+    "line": "Facilitators and organisers of citizens’ assemblies, debates and consultations may be in demand as governments seek consent for costly climate rules."
+   },
+   {
+    "kind": "learn",
+    "title": "Who pays for a policy",
+    "line": "Distributional analysis, working out how a tax or climate rule hits households by income and place, helps design rules that hold up."
+   }
+  ],
+  "watch": "Watch the EU’s carbon price on road fuel and heating, delayed to 2028, and how governments compensate rural and low-income households."
+ },
+ "phone": {
+  "lastTime": "The phone created a big new job for women: Emma Nutt became the first woman telephone operator, in Boston, in 1878, and by 1950 about 342,000 operators worked for US phone companies. After 2007, building smartphone apps became a new trade.",
+  "ideas": [
+   {
+    "kind": "build",
+    "title": "Neural data privacy tools",
+    "line": "Consent and privacy tools for brain and body data may be needed as states like Colorado and California treat neural data as sensitive."
+   },
+   {
+    "kind": "build",
+    "title": "Hands-free services on smart glasses",
+    "line": "Services built for smart glasses, such as live captions for deaf users or step-by-step guidance for field repairs, could grow like early apps."
+   },
+   {
+    "kind": "work",
+    "title": "Neurotech clinical and support roles",
+    "line": "Trial coordinators, neurosurgical nurses and rehabilitation therapists who help people learn brain-computer interfaces may grow, much as operators grew around the phone."
+   },
+   {
+    "kind": "learn",
+    "title": "Designing beyond the touchscreen",
+    "line": "Designing interfaces for voice, gaze and gesture, with privacy and accessibility in mind, is a skill the next device shift may reward."
+   }
+  ],
+  "watch": "Watch brain-implant trials moving beyond paralysed patients, sales of smart glasses, and new laws treating neural data as sensitive."
+ }
+}
