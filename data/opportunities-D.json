@@ -1,0 +1,132 @@
+{
+  "springs": {
+    "lastTime": "The 1970 National Environmental Policy Act required environmental impact statements for major federal projects, fueling an environmental consulting industry, and Clean Air Act rules put catalytic converters on most new US cars from 1975. Environmental law became a field of its own.",
+    "ideas": [
+      { "kind": "build", "title": "Testing for microplastics and PFAS", "line": "Affordable testing and filtration for microplastics and “forever chemicals” in water, food and homes may see demand as alarm and legal limits grow." },
+      { "kind": "build", "title": "Product passports and supply data", "line": "Software that records a product’s materials, chemicals and emissions for buyers and regulators, as EU digital product passports phase in over coming years." },
+      { "kind": "work", "title": "Environmental compliance and cleanup", "line": "Like the consultants who multiplied after NEPA, PFAS remediation engineers, environmental health scientists and compliance staff may grow as chemical rules tighten." },
+      { "kind": "learn", "title": "Toxicology and chemical regulation", "line": "How pollutants like PFAS and microplastics move through bodies and ecosystems, and how EU and US rules measure and limit them." }
+    ],
+    "watch": "New legal limits on PFAS or microplastics, and youth-led campaigns turning into laws, would signal rising demand; rollbacks of rules would signal the reverse."
+  },
+  "protests": {
+    "lastTime": "After 1968, France’s Grenelle agreements raised the minimum wage 35%, and US universities opened Black and ethnic studies departments, such as San Francisco State’s College of Ethnic Studies in 1969. The 1968 Safe Streets Act funneled federal money into police training and equipment.",
+    "ideas": [
+      { "kind": "build", "title": "Verifying viral protest footage", "line": "Tools that help newsrooms, courts and platforms verify the time, place and authenticity of protest videos could see demand as AI fakes spread." },
+      { "kind": "build", "title": "Civic trackers for local reform", "line": "Tools that let residents track police budgets, council votes and reform pledges, helping street protest turn into lasting local policy." },
+      { "kind": "work", "title": "Crisis responders and mediators", "line": "Civilian crisis responders, police oversight investigators and community mediators may grow as cities test alternatives to armed response after protest waves." },
+      { "kind": "learn", "title": "Open-source investigation", "line": "Geolocating and verifying photos and videos, a skill newsrooms and human-rights groups use to document protests and crackdowns accurately." }
+    ],
+    "watch": "Cities funding and publishing results for civilian crisis teams, and courts or platforms adopting content provenance standards, would show these areas opening."
+  },
+  "oil": {
+    "lastTime": "After 1973, fuel-efficient Japanese cars won over US buyers, France’s 1974 Messmer plan began building dozens of nuclear reactors, and Brazil launched its Proálcool ethanol program in 1975. The US set its first car fuel economy standards the same year.",
+    "ideas": [
+      { "kind": "build", "title": "Battery and magnet metal recycling", "line": "Recovering lithium, nickel, cobalt and rare earths from old batteries and magnets could gain value as supply chokepoints and export controls tighten." },
+      { "kind": "build", "title": "Home efficiency and heat pumps", "line": "Insulation, heat pumps and smart controls that cut household fuel use, echoing the 1970s efficiency push, may stay in demand while energy prices swing." },
+      { "kind": "work", "title": "Efficiency and critical-mineral specialists", "line": "Energy auditors, heat pump installers and mineral processing engineers may be needed as countries reduce reliance on any single energy or metals supplier." },
+      { "kind": "learn", "title": "Supply chain chokepoint mapping", "line": "Tracing where critical minerals are mined, refined and processed, and how export controls and stockpiles work, a skill procurement and policy teams increasingly need." }
+    ],
+    "watch": "New export controls on critical minerals, national stockpile programs and refineries opening outside today’s dominant suppliers would signal this opportunity widening."
+  },
+  "saigon": {
+    "lastTime": "In 1975 about 130,000 Vietnamese evacuees reached the US, where resettlement agencies, sponsors and caseworkers were in sudden demand; the 1980 Refugee Act made that system permanent. Refugee entrepreneurs built Little Saigon in California’s Orange County.",
+    "ideas": [
+      { "kind": "build", "title": "Credential recognition for refugees", "line": "Services that verify and translate refugees’ diplomas, licenses and work histories could help newcomers rejoin skilled work faster after sudden evacuations." },
+      { "kind": "build", "title": "Verified records for local staff", "line": "Secure digital records of local employees’ service with foreign forces or aid groups could speed visa cases, a recurring bottleneck in rushed withdrawals." },
+      { "kind": "work", "title": "Resettlement caseworkers and interpreters", "line": "Resettlement caseworkers, immigration lawyers and community interpreters may stay in demand, since each rushed withdrawal has produced years of displacement." },
+      { "kind": "learn", "title": "Evacuation and duty-of-care planning", "line": "Evacuation planning and duty-of-care for staff abroad, useful for aid groups, firms and agencies working in fragile states that depend on foreign troops." }
+    ],
+    "watch": "Fixed withdrawal deadlines for foreign forces and growing visa backlogs for local staff would signal rising need for evacuation and resettlement work."
+  },
+  "volcker": {
+    "lastTime": "As rates rose toward 20%, savers moved cash into money market funds, which grew from about $4 billion in 1977 to $185 billion in 1981. The 1989 Brady Plan then turned Latin America’s bad bank loans into tradable bonds, helping create an emerging-market debt market.",
+    "ideas": [
+      { "kind": "build", "title": "Refinancing help for cheap-era debt", "line": "Services helping households and small firms refinance or restructure loans taken at near-zero rates may be needed as that cheap debt comes due." },
+      { "kind": "build", "title": "Cash management for small firms", "line": "Tools that help small businesses manage cash, interest costs and payment timing, which matter far more when money is no longer nearly free." },
+      { "kind": "work", "title": "Credit risk and insolvency roles", "line": "Credit analysts, insolvency practitioners and debt counselors tend to be in demand when debt taken on cheaply must be refinanced at higher rates." },
+      { "kind": "learn", "title": "Interest rate risk basics", "line": "Bond duration and interest rate risk, the blind spot that sank many 1980s savings and loan lenders and some US banks in 2023." }
+    ],
+    "watch": "Inflation stuck above central bank targets, rising defaults as cheap loans reset, and political pressure on central banks would signal this pattern returning."
+  },
+  "chernobyl": {
+    "lastTime": "After Chernobyl, IAEA safety advisers coined the term “safety culture”, and plant operators founded the World Association of Nuclear Operators in 1989 to run peer reviews. Italy voted to quit nuclear power in 1987 and turned to imported gas and electricity.",
+    "ideas": [
+      { "kind": "build", "title": "Public radiation monitoring networks", "line": "Low-cost public radiation sensor networks, like the volunteer ones that grew after Fukushima, could matter as reactors age or sit near front lines." },
+      { "kind": "build", "title": "Reactor decommissioning and waste robotics", "line": "Robots and services for dismantling old reactors and handling waste may see steady demand as plants built in the 1970s and 1980s retire." },
+      { "kind": "work", "title": "Nuclear safety and licensing staff", "line": "Reactor operators, safety inspectors and licensing specialists may be scarce as small reactor projects multiply and regulators face pressure to approve faster." },
+      { "kind": "learn", "title": "Safety culture and risk analysis", "line": "Probabilistic risk assessment and human-factors engineering, core lessons from both disasters, transfer to small reactors and other safety-critical systems." }
+    ],
+    "watch": "Fast-tracked licensing for small reactors, shortages of trained inspectors, or fighting near nuclear plants would show where safety work is most needed."
+  },
+  "tiananmen": {
+    "lastTime": "Hong Kong emigration averaged about 55,000 people a year from 1988 to 1994, bringing skills and capital to Vancouver, Toronto and Sydney. On the mainland, Deng Xiaoping’s 1992 southern tour set off a surge of foreign investment and factory building around Shenzhen.",
+    "ideas": [
+      { "kind": "build", "title": "Relocation help for professionals", "line": "Services that help relocating families move pensions, qualifications and small businesses abroad, a need seen in Hong Kong’s 1990s and 2020s emigration waves." },
+      { "kind": "build", "title": "Preserving records and community archives", "line": "Tools that preserve news, records and community archives against deletion, since protest histories in this pattern are often censored or erased." },
+      { "kind": "work", "title": "Digital safety trainers", "line": "Digital security trainers for journalists, researchers and diaspora groups may be needed as concern grows over surveillance and transnational repression." },
+      { "kind": "learn", "title": "China and Hong Kong legal literacy", "line": "Understanding China’s national security, data and exit-ban rules helps firms, journalists and researchers work safely with or in China and Hong Kong." }
+    ],
+    "watch": "Emigration figures from Hong Kong, new visa routes for its residents and debate over 2047 would signal shifting demand for relocation and legal help."
+  },
+  "netscape": {
+    "lastTime": "After Netscape, “webmaster” and web designer became common jobs, online shops and search engines multiplied, and in 1998 the US raised the H-1B visa cap from 65,000 to 115,000 as tech firms sought programmers. App stores set off a similar developer rush after 2008.",
+    "ideas": [
+      { "kind": "build", "title": "Making small firms AI-ready", "line": "Services that organize small firms’ documents, data and workflows so AI tools can use them, as web agencies once built firms’ first websites." },
+      { "kind": "build", "title": "Visibility in AI answers", "line": "Services helping organizations appear accurately in AI assistant answers could grow, much as search engine optimization grew out of the late-1990s web." },
+      { "kind": "work", "title": "AI integration and evaluation roles", "line": "Roles that fit AI into everyday work, such as integration engineers and model evaluation specialists, may grow the way webmaster jobs did after 1995." },
+      { "kind": "learn", "title": "Competition rules for AI platforms", "line": "Antitrust and interoperability rules for AI platforms, as regulators revisit browser-war questions about bundling, defaults and access for smaller rivals." }
+    ],
+    "watch": "Falling prices per AI task, small firms hiring for AI roles, and antitrust cases over bundled AI assistants would show where openings are forming."
+  },
+  "dolly": {
+    "lastTime": "After the 1973 gene-splicing breakthrough, Herbert Boyer co-founded Genentech, whose lab-made human insulin won US approval in 1982, and after 1978 IVF grew into a global fertility industry. Dolly prompted national bioethics reviews and inspired research into reprogramming adult cells.",
+    "ideas": [
+      { "kind": "build", "title": "Clear genetic counseling services", "line": "Services that explain embryo screening and gene-therapy results clearly to patients could see demand as reproductive genetics moves from labs into clinics." },
+      { "kind": "build", "title": "Compliance tools for fertility clinics", "line": "Consent, record-keeping and audit systems helping fertility and gene-therapy clinics meet tightening, country-by-country rules on embryo testing and editing." },
+      { "kind": "work", "title": "Genetic counselors and embryologists", "line": "Genetic counselors, clinical embryologists and bioethics staff at hospitals and regulators may grow, as each breakthrough here has brought new oversight." },
+      { "kind": "learn", "title": "Reproductive technology law and ethics", "line": "How countries regulate embryo editing, screening and lab-grown eggs and sperm, including the UK’s licensing model, useful for clinicians, lawyers and policy staff." }
+    ],
+    "watch": "Lab-grown human eggs or sperm reaching clinical trials, or new national rules on embryo screening, would signal rising demand for oversight and counseling."
+  },
+  "deepblue": {
+    "lastTime": "Chess did not fade after Deep Blue: engines became every player’s coach, and the youngest-grandmaster record fell from 14 years in 1997 to 12 in 2002. Kasparov launched “Advanced Chess” in 1998, pairing humans with computers.",
+    "ideas": [
+      { "kind": "build", "title": "Practice tools against AI", "line": "Training tools where professionals practice against AI, as chess players did with engines, could spread to medicine, law, negotiation and engineering." },
+      { "kind": "build", "title": "Proving work was done unaided", "line": "As chess needed engine-cheating detection, exams, contests and hiring tests may need trustworthy ways to confirm work was done without AI." },
+      { "kind": "work", "title": "Human-AI team leads", "line": "Roles pairing deep field expertise with AI tools, like Kasparov’s human-computer teams, may grow in drug discovery, materials research and mathematics." },
+      { "kind": "learn", "title": "Proof assistants and formal verification", "line": "Proof assistants such as Lean and formal verification methods, increasingly used to check machine-generated mathematics and software before people rely on them." }
+    ],
+    "watch": "AI-produced proofs or drug candidates passing peer review, and professionals shifting to supervising machine work, would signal demand for verification and teaming skills."
+  },
+  "y2k": {
+    "lastTime": "Y2K fixes created heavy demand for COBOL programmers, helped India’s IT services industry win major Western clients, and pushed many companies to write formal IT contingency plans for the first time.",
+    "ideas": [
+      { "kind": "build", "title": "Year 2038 audits", "line": "Audits and fixes for the 2038 time overflow in embedded devices, industrial controllers and old databases, a known deadline much like Y2K." },
+      { "kind": "build", "title": "Safer software update rollouts", "line": "Tools for staged rollouts, automatic rollback and pre-release testing of security updates could be in demand after one faulty update grounded flights worldwide." },
+      { "kind": "work", "title": "Resilience and third-party risk roles", "line": "Site reliability engineers, resilience officers and vendor risk analysts may grow as the EU’s DORA rules make financial firms manage supplier risk." },
+      { "kind": "learn", "title": "Legacy code and recovery drills", "line": "Maintaining legacy code such as COBOL and running manual fallback drills, skills that grow scarce as older engineers retire while critical systems keep running." }
+    ],
+    "watch": "Regulators requiring tested recovery plans for critical software vendors, and 2038 date bugs surfacing early in long-dated systems, would show demand rising."
+  },
+  "dotcom": {
+    "lastTime": "The crash left a glut of cheap, mostly unused fiber-optic cable that later carried broadband, online video and cloud services at low cost. Britain’s Railway Mania likewise ruined many investors but left the country 6,220 miles of new railway.",
+    "ideas": [
+      { "kind": "build", "title": "Reusing overbuilt infrastructure", "line": "If AI spending outruns revenue, surplus data center space and chips could become cheap inputs for new services, as unused fiber did after 2000." },
+      { "kind": "build", "title": "Flagging misleading investment promotions", "line": "Tools that flag paid promotions and unrealistic claims in investment ads, a recurring feature of manias from railways to crypto." },
+      { "kind": "work", "title": "Forensic accounting and insolvency", "line": "Forensic accountants, blockchain tracers and insolvency administrators tend to be busy after bubbles burst, helping recover funds for creditors, as in FTX’s bankruptcy." },
+      { "kind": "learn", "title": "Reading unit economics", "line": "Judging revenue, cash burn and unit economics critically, the skill that separated dot-com survivors from failures like Pets.com." }
+    ],
+    "watch": "Spending far outpacing revenue and a rush of first-time investors would signal a bubble; cheap surplus capacity after a crash would signal openings."
+  },
+  "blackout": {
+    "lastTime": "The 1965 blackout led to NERC’s founding in 1968, and after 2003 the Energy Policy Act gave it power to enforce mandatory reliability rules. Utilities stepped up tree trimming and installed phasor measurement units, sensors that track the grid in real time.",
+    "ideas": [
+      { "kind": "build", "title": "Backup power for homes and shops", "line": "Home batteries and small backup kits that keep phones, fridges, medical devices and card terminals running could see demand after highly visible blackouts." },
+      { "kind": "build", "title": "Voltage control for renewable-heavy grids", "line": "Equipment and services that keep voltage stable on grids with much solar and wind, such as grid-forming inverters and synchronous condensers, may be needed." },
+      { "kind": "work", "title": "Grid protection and control engineers", "line": "Power system engineers, protection specialists and control room operators may be in short supply as grids electrify and blackout inquiries rewrite operating rules." },
+      { "kind": "learn", "title": "Power system stability basics", "line": "How voltage, frequency and inertia interact on grids rich in solar and wind, the questions at the center of the Iberian blackout investigation." }
+    ],
+    "watch": "New grid rules letting solar and wind plants control voltage, stronger links between national grids, and household preparedness guidance would signal growing demand."
+  }
+}
