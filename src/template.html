@@ -233,7 +233,9 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .dtitle.plain { font-family: var(--f-body); font-weight: 500; font-size: 27px; }
 .tabs { flex: none; display: flex; gap: 6px; margin: 12px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); padding: 4px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
 .tabs:empty { display: none; }
-.tabs button { flex: 1; min-height: 40px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: 500 13.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.tabs { overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { flex: 1 0 auto; min-height: 40px; padding: 0 12px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: 700 14.5px var(--f-mono); cursor: pointer; white-space: nowrap; }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .db { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 14px; }
 .hook { margin: 0; font-size: 20px; line-height: 1.4; }
@@ -249,6 +251,13 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .go .ga { margin-left: auto; font-size: 20px; color: var(--muted); }
 .go.then .gk { color: var(--then); } .go.now .gk { color: var(--now); } .go.next .gk { color: var(--next); }
 .meta { font: 13px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+.opps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.op { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 3px 10px; align-items: baseline; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); }
+.op .ok { grid-row: span 2; align-self: start; margin-top: 2px; font: 700 12px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.op.build .ok { color: var(--next); } .op.work .ok { color: var(--now); } .op.learn .ok { color: var(--then); }
+.op .ot { font: 700 17px/1.3 var(--f-mono); }
+.op .ol { font: 15.5px/1.45 var(--f-mono); color: rgba(239, 232, 214, .78); }
+.gl-t b.k-build { color: var(--next); } .gl-t b.k-work { color: var(--now); } .gl-t b.k-learn { color: var(--then); }
 .cv { list-style: none; margin: 0; padding: 0; position: relative; }
 .cv::before { content: ""; position: absolute; left: 75px; top: 14px; bottom: 18px; width: 2px; border-radius: 2px; background: linear-gradient(var(--then), var(--now) 75%, var(--next)); opacity: .55; }
 .cv-i { position: relative; display: grid; grid-template-columns: 62px 28px minmax(0, 1fr) auto; align-items: start; padding: 4px 0; }
@@ -933,9 +942,18 @@ function fillGlimpse() {
       <text x="150" y="86" fill="rgba(${INK},.7)" font-family="Newsreader, Georgia, serif" font-size="11" text-anchor="middle">${esc(p.now.short)}</text>
       <text x="270" y="86" fill="rgba(${INK},.7)" font-family="Newsreader, Georgia, serif" font-size="11" text-anchor="middle">${esc(p.next.short)}</text>
     </svg>`;
-    $("glK").textContent = `Why c. ${ny}`;
-    $("glT").textContent = `the same ${g}-year gap, once more`;
-    $("glimpse").setAttribute("aria-label", `Why around ${ny}`);
+    const ideas = (p.opp && p.opp.ideas) || [];
+    if (ideas.length) {
+      oppGl = { ideas, i: -1, t0: performance.now() };
+      $("glK").textContent = "What it could mean now";
+      $("glimpse").setAttribute("aria-label", "Opportunities this pattern suggests");
+      showOppIdea(0);
+    } else {
+      oppGl = null;
+      $("glK").textContent = `Why c. ${ny}`;
+      $("glT").textContent = `the same ${g}-year gap, once more`;
+      $("glimpse").setAttribute("aria-label", `Why around ${ny}`);
+    }
     return;
   }
   gmap.hidden = false; $("eqm").hidden = true;
@@ -950,6 +968,16 @@ function fillGlimpse() {
   $("glimpse").setAttribute("aria-label", `The world in ${yr}. Tap a region to explore.`);
   showGlimpseRegion(0);
 }
+let oppGl = null;
+const KIND = { build: "Build", work: "Work", learn: "Learn" };
+function showOppIdea(i) {
+  if (!oppGl || oppGl.i === i) return;
+  oppGl.i = i;
+  const it = oppGl.ideas[i], t = $("glT");
+  const set = () => { t.innerHTML = `<b class="k-${it.kind}">${KIND[it.kind] || ""}</b>${esc(it.title)}`; t.classList.remove("fade"); };
+  if (reduce || t.textContent === "") { set(); return; }
+  t.classList.add("fade"); setTimeout(set, 260);
+}
 function showGlimpseRegion(i) {
   if (!glim) return;
   glim.i = i; glim.shown = i;
@@ -963,6 +991,7 @@ function drawGlimpse(t) {
   if (focus && focus.k === "next") {   // only show the little equation when there is room to read it
     const box = document.querySelector(".gl-map"), eq = $("eqm");
     if (box && eq) eq.style.visibility = box.getBoundingClientRect().height >= 72 ? "visible" : "hidden";
+    if (oppGl && !reduce && dwrap.hidden) showOppIdea(Math.floor((t - oppGl.t0) / 3200) % oppGl.ideas.length);
     return;
   }
   if (!glim || !gview || gmap.hidden || !dwrap.hidden) return;
@@ -974,7 +1003,7 @@ function drawGlimpse(t) {
 }
 $("glimpse").addEventListener("click", e => {
   if (!focus) return;
-  if (focus.k === "next") return openDeep("why");
+  if (focus.k === "next") return openDeep(PAIRS[focus.pi].opp ? "opp" : "why");
   let r = glim ? glim.order[glim.i] : null;
   if (e.target === gmap && gview) { const hit = gview.regionAt(e.clientX, e.clientY); if (hit) r = hit; }
   openDeep("world", r);
@@ -1039,7 +1068,10 @@ function openDeep(tab, region) {
   const p = PAIRS[focus.pi], k = focus.k;
   const y = k === "next" ? nextYear(p) : p[k].year;
   setHead(k === "next" ? `Next · c. ${y} · ${ahead(y)}` : `${STEP[k]} · ${y} · ${p[k].where}`, k, k === "next" ? p.next.title : p[k].title, k);
-  const tlist = k === "next" ? [["story", "The future"], ["chain", "The chain"]] : [["story", "Story"], ["chain", "The chain"], ["world", `World ${y}`]];
+  const hasOpp = !!p.opp;
+  const tlist = k === "next"
+    ? [["story", "The future"], ...(hasOpp ? [["opp", "Opportunities"]] : []), ["chain", "Chain"]]
+    : [["story", "Story"], ["chain", "Chain"], ["world", `World ${y}`], ...(hasOpp ? [["opp", "Opportunities"]] : [])];
   if (tab === "why") tab = "chain";
   deepTab = tab && tlist.some(t => t[0] === tab) ? tab : "story";
   tabs.innerHTML = tlist.map(([id, lab]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${id === deepTab}">${esc(lab)}</button>`).join("");
@@ -1055,6 +1087,15 @@ tabs.addEventListener("click", e => {
   tabs.querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", x === b ? "true" : "false"));
   renderTab();
 });
+function oppHTML(pi) {
+  const p = PAIRS[pi], o = p.opp;
+  if (!o) return "<p class='txt'>Opportunities for this rhyme are coming soon.</p>";
+  return `<p class="txt">Last time this pattern played out, some people and places came out ahead. If it rhymes again, these areas may be worth a look.</p>
+    ${box("Last time, who gained", o.lastTime)}
+    <ol class="opps">${o.ideas.map(i => `<li class="op ${i.kind}"><span class="ok">${KIND[i.kind] || ""}</span><span class="ot">${esc(i.title)}</span><span class="ol">${esc(i.line)}</span></li>`).join("")}</ol>
+    ${box("Signal to watch", o.watch, "next")}
+    <p class="fnote">Patterns from history, not financial or career advice.</p>`;
+}
 function chainOf(pi) {
   const p = PAIRS[pi];
   return [...(p.echoes || []).map(e => ({ ...e, kind: "echo" })),
@@ -1085,6 +1126,7 @@ function renderTab() {
   dBody.scrollTop = 0;
   world = null;
   if (deepTab === "chain") { dBody.innerHTML = chainHTML(pi); return; }
+  if (deepTab === "opp") { dBody.innerHTML = oppHTML(pi); return; }
   if (deepTab === "world") {
     const e = p[k];
     dBody.innerHTML = worldHTML(e.year, e.region, k);
@@ -1453,6 +1495,18 @@ function openFuture() {
   showDeep();
   if (!sy) setTimeout(() => inp.focus({ preventScroll: true }), reduce ? 0 : 360);
 }
+function prepHTML(rows) {
+  const picks = [];
+  for (const e of rows.slice(0, 6)) {
+    const o = PAIRS[e.pi].opp; if (!o) continue;
+    const it = o.ideas.find(i => i.kind === "learn") || o.ideas.find(i => i.kind === "work");
+    if (it) picks.push({ it, e });
+    if (picks.length >= 4) break;
+  }
+  if (!picks.length) return "";
+  return `<p class="fl" style="margin-top:6px">Worth preparing for</p><ol class="opps">${picks.map(({ it, e }) =>
+    `<li class="op ${it.kind}"><span class="ok">${KIND[it.kind]}</span><span class="ot">${esc(it.title)}</span><span class="ol">For c. ${e.y}: ${esc(PAIRS[e.pi].next.title)}</span></li>`).join("")}</ol>`;
+}
 function renderFuture(by) {
   const out = $("fres");
   if (!out) return;
@@ -1468,6 +1522,7 @@ function renderFuture(by) {
       const p = PAIRS[e.pi];
       return `<li><button type="button" data-travel="${e.pi}:next"><span class="fy">${e.y}</span><span class="ft">${esc(p.next.title)}</span><span class="fa">age ${e.y - by}</span><span class="fe">echo of ${yrShort(p.then)} · ${yrShort(p.now)}</span></button></li>`;
     }).join("")}</ol>
+    ${prepHTML(rows)}
     <button type="button" class="primary fshare" id="fshare">Share my future</button>`;
   $("fshare").addEventListener("click", () => shareLife(by));
 }

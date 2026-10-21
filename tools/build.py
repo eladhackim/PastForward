@@ -31,6 +31,8 @@ for n in files("pairs-"): pairs += load(n)
 for n in files("world-"): world.update(load(n))
 for n in files("headlines-"): heads.update(load(n))
 for n in files("echoes-"): echoes.update(load(n))
+opps = {}
+for n in files("opportunities-"): opps.update(load(n))
 MAP = load("map.json")
 
 # ---- checks ----
@@ -80,6 +82,17 @@ for p in pairs:
         if e.get("region") not in REG: e["region"] = "world"
         keep.append(e)
     p["echoes"] = keep
+
+# ---- opportunities ----
+for p in pairs:
+    o = opps.get(p["id"])
+    if not o: continue
+    ideas = [i for i in o.get("ideas", []) if i.get("kind") in ("build", "work", "learn") and i.get("title") and i.get("line")]
+    if not o.get("lastTime") or len(ideas) < 3:
+        problems.append(f"{p['id']}: opportunities incomplete")
+        continue
+    for i in ideas: no_em_dash(f"{p['id']}.opp", i["title"] + i["line"])
+    p["opp"] = {"lastTime": o["lastTime"], "ideas": ideas, "watch": o.get("watch", "")}
 
 # ---- "Today" lines read as plain facts, not prompts to the reader ----
 OVERRIDE = {
