@@ -1,0 +1,285 @@
+{
+ "lisbon": [
+  {
+   "year": 1972,
+   "short": "Managua Quake",
+   "title": "The 1972 Managua earthquake",
+   "region": "latam",
+   "line": "A quake killed thousands in Nicaragua’s capital, and claims that Somoza’s circle pocketed foreign aid fed the revolt that toppled him."
+  },
+  {
+   "year": 1976,
+   "short": "Tangshan Quake",
+   "title": "The 1976 Tangshan earthquake",
+   "region": "china",
+   "line": "Officially 242,000 died, the toll stayed hidden for three years, and Mao’s death weeks later made the quake look like an omen."
+  },
+  {
+   "year": 1985,
+   "short": "Mexico Quake",
+   "title": "The 1985 Mexico City earthquake",
+   "region": "latam",
+   "line": "As thousands died and the government stalled, volunteers dug out survivors themselves, and anger over shoddy buildings weakened the ruling PRI."
+  },
+  {
+   "year": 2008,
+   "short": "Sichuan Quake",
+   "title": "The 2008 Sichuan earthquake",
+   "region": "china",
+   "line": "Over 69,000 died, including thousands of pupils in poorly built “tofu-dreg” schools, and grieving parents who demanded answers faced police pressure."
+  }
+ ],
+ "revolution": [
+  {
+   "year": 1644,
+   "short": "Ming Falls",
+   "title": "Peasant rebels topple the Ming dynasty",
+   "region": "china",
+   "line": "After years of famine and a court mired in factions, Li Zicheng’s rebels took Beijing, and the last Ming emperor hanged himself."
+  },
+  {
+   "year": 1917,
+   "short": "Tsar Falls",
+   "title": "Russia’s February Revolution",
+   "region": "russia",
+   "line": "Bread protests by Petrograd women grew into strikes and army mutinies, and within a week Tsar Nicholas II abdicated."
+  },
+  {
+   "year": 1998,
+   "short": "Suharto Falls",
+   "title": "Indonesia’s 1998 revolt topples Suharto",
+   "region": "world",
+   "line": "As the Asian financial crisis sent food and fuel prices soaring, protests and riots ended Suharto’s 32-year rule, criticised for cronyism."
+  }
+ ],
+ "hamilton": [
+  {
+   "year": 1861,
+   "short": "Italy’s Ledger",
+   "title": "United Italy merges its states’ debts",
+   "region": "europe",
+   "line": "The new Kingdom of Italy gathered the debts of the old states it absorbed into a single national ledger, the Gran Libro."
+  },
+  {
+   "year": 1867,
+   "short": "Canada Unites",
+   "title": "Canadian Confederation takes on provincial debts",
+   "region": "world",
+   "line": "At Confederation, the new Dominion of Canada took on the debts of its provinces, a key bargain in uniting them."
+  }
+ ],
+ "vaccine": [
+  {
+   "year": 1721,
+   "short": "Boston Smallpox",
+   "title": "Boston’s smallpox inoculation fight",
+   "region": "us",
+   "line": "Cotton Mather and Zabdiel Boylston promoted inoculation during an epidemic, and the backlash was fierce: someone threw a bomb into Mather’s house."
+  },
+  {
+   "year": 1904,
+   "short": "Vaccine Revolt",
+   "title": "Rio de Janeiro’s Vaccine Revolt",
+   "region": "latam",
+   "line": "A law making smallpox vaccination compulsory sparked a week of riots in Rio, leaving about 30 dead before the mandate was suspended."
+  },
+  {
+   "year": 1955,
+   "short": "Polio Vaccine",
+   "title": "Salk’s polio vaccine and the Cutter incident",
+   "region": "us",
+   "line": "Weeks after Jonas Salk’s polio vaccine was declared safe, faulty Cutter batches with live virus caused paralysis and ten deaths, shaking trust."
+  }
+ ],
+ "luddites": [
+  {
+   "year": 1675,
+   "short": "Weavers’ Riot",
+   "title": "London weavers riot against engine looms",
+   "region": "europe",
+   "line": "London silk weavers rioted for days, smashing and burning the engine looms they feared would undercut their pay and jobs."
+  },
+  {
+   "year": 1830,
+   "short": "Swing Riots",
+   "title": "The Swing Riots",
+   "region": "europe",
+   "line": "Farm labourers across southern England smashed threshing machines that took their winter work, sending threats signed “Captain Swing”; 19 were hanged."
+  },
+  {
+   "year": 1986,
+   "short": "Wapping Dispute",
+   "title": "The Wapping print dispute",
+   "region": "europe",
+   "line": "Rupert Murdoch’s papers moved to a computerised plant at Wapping; about 6,000 print workers struck, were dismissed, and lost after a year."
+  }
+ ],
+ "railway": [
+  {
+   "year": 1857,
+   "short": "Otis Elevator",
+   "title": "The first passenger elevator opens",
+   "region": "us",
+   "line": "Elisha Otis, whose safety brake eased fears of falling, installed the first passenger elevator in a New York store."
+  },
+  {
+   "year": 1914,
+   "short": "Airboat Line",
+   "title": "A flying boat starts scheduled airline service",
+   "region": "us",
+   "line": "The St. Petersburg–Tampa Airboat Line flew paying passengers across Tampa Bay; the first ticket, auctioned off, went to an ex-mayor for $400."
+  },
+  {
+   "year": 1952,
+   "short": "Comet Jetliner",
+   "title": "The first jet airliner enters service",
+   "region": "europe",
+   "line": "BOAC’s Comet began the first jet passenger flights, but two mid-air breakups in 1954, traced to metal fatigue, grounded the fleet."
+  }
+ ],
+ "mania": [
+  {
+   "year": 1793,
+   "short": "Canal Mania",
+   "title": "Britain’s canal mania",
+   "region": "europe",
+   "line": "Investors piled into canal schemes, and Parliament approved dozens in a few years; some never paid a dividend or were never finished."
+  },
+  {
+   "year": 1873,
+   "short": "Panic of 1873",
+   "title": "America’s railroad boom ends in panic",
+   "region": "us",
+   "line": "After 33,000 miles of new track in five years, Jay Cooke’s bank failed with unsold Northern Pacific bonds, setting off a depression."
+  },
+  {
+   "year": 2001,
+   "short": "Telecom Bust",
+   "title": "The fibre-optic telecom bust",
+   "region": "us",
+   "line": "Telecom firms borrowed to lay fibre-optic cable far beyond demand; when the bubble burst, much sat unused and Global Crossing went bankrupt."
+  }
+ ],
+ "springtime": [
+  {
+   "year": 1830,
+   "short": "1830 Revolts",
+   "title": "The revolutions of 1830",
+   "region": "europe",
+   "line": "France’s July Revolution toppled Charles X, and within months revolts broke out in Belgium, which won independence, and in Russian-ruled Poland."
+  },
+  {
+   "year": 1968,
+   "short": "1968 Protests",
+   "title": "The global protests of 1968",
+   "region": "world",
+   "line": "Protests swept Paris, West Germany, Mexico City and US campuses within months, as students worldwide shared slogans and television images."
+  },
+  {
+   "year": 1989,
+   "short": "1989 Revolutions",
+   "title": "The fall of communism in Eastern Europe",
+   "region": "europe",
+   "line": "Within months, communist governments fell in Poland, Hungary, East Germany, Bulgaria, Czechoslovakia and Romania, each crowd inspired by the last."
+  },
+  {
+   "year": 2011,
+   "short": "Arab Spring",
+   "title": "The Arab Spring",
+   "region": "mideast",
+   "line": "After Tunisia’s ruler fled, protests leapt within weeks to Egypt, Libya, Yemen, Bahrain and Syria, spread by satellite TV and social media."
+  }
+ ],
+ "cable": [
+  {
+   "year": 1901,
+   "short": "Marconi Signal",
+   "title": "Marconi’s radio signal crosses the Atlantic",
+   "region": "world",
+   "line": "Guglielmo Marconi reported hearing the Morse letter “S” in Newfoundland, sent by radio from Cornwall, showing signals could cross oceans without wires."
+  },
+  {
+   "year": 1956,
+   "short": "TAT-1 Cable",
+   "title": "The first transatlantic telephone cable opens",
+   "region": "world",
+   "line": "TAT-1 linked Scotland and Newfoundland, carrying 707 calls on its first day, far clearer than the old radio telephone service."
+  },
+  {
+   "year": 1962,
+   "short": "Telstar",
+   "title": "Telstar beams live TV across the Atlantic",
+   "region": "world",
+   "line": "The Telstar satellite relayed the first live TV across the Atlantic, and like the 1858 cable, it failed within months."
+  }
+ ],
+ "carrington": [
+  {
+   "year": 1921,
+   "short": "Railroad Storm",
+   "title": "The 1921 New York Railroad Storm",
+   "region": "world",
+   "line": "Storm currents set a Swedish telegraph exchange and New York railroad signal equipment ablaze, and disrupted telegraphs on several continents."
+  },
+  {
+   "year": 1972,
+   "short": "Sea Mine Storm",
+   "title": "The August 1972 solar storm",
+   "region": "world",
+   "line": "A fast solar storm knocked out a Midwest phone cable and likely set off dozens of US sea mines off Vietnam."
+  },
+  {
+   "year": 1989,
+   "short": "Quebec Blackout",
+   "title": "Solar storm blacks out Quebec",
+   "region": "world",
+   "line": "A geomagnetic storm collapsed Hydro-Québec’s grid in under 90 seconds, leaving millions in Quebec without power for about nine hours."
+  },
+  {
+   "year": 2003,
+   "short": "Halloween Storms",
+   "title": "The 2003 Halloween solar storms",
+   "region": "world",
+   "line": "Solar storms blacked out part of southern Sweden for an hour, forced satellites into safe mode and rerouted polar flights."
+  }
+ ],
+ "commune": [
+  {
+   "year": 1358,
+   "short": "Paris Revolt",
+   "title": "Étienne Marcel’s revolt in Paris",
+   "region": "europe",
+   "line": "After the king’s capture by the English, Paris merchant leader Étienne Marcel defied the Dauphin’s government and briefly controlled the capital."
+  },
+  {
+   "year": 1675,
+   "short": "Red Caps Revolt",
+   "title": "Brittany’s Bonnets Rouges revolt",
+   "region": "europe",
+   "line": "Breton peasants in red caps rose against Louis XIV’s new taxes on stamped paper, tobacco and tin goods, and were harshly crushed."
+  },
+  {
+   "year": 1907,
+   "short": "Winegrowers",
+   "title": "The revolt of the Languedoc winegrowers",
+   "region": "europe",
+   "line": "As wine prices collapsed, up to 800,000 rallied in Montpellier, local officials resigned en masse, and Clemenceau sent troops."
+  },
+  {
+   "year": 2013,
+   "short": "Red Caps Return",
+   "title": "Brittany’s red caps return",
+   "region": "europe",
+   "line": "Bretons in red caps recalling 1675 wrecked gantries built to collect a new truck ecotax, and the government suspended the tax."
+  }
+ ],
+ "phone": [
+  {
+   "year": 1973,
+   "short": "First Cellphone",
+   "title": "The first handheld mobile phone call",
+   "region": "us",
+   "line": "On a Manhattan sidewalk, Motorola’s Martin Cooper called a rival at AT&T’s Bell Labs on a brick-sized prototype, starting the mobile age."
+  }
+ ]
+}

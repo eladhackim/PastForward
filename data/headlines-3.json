@@ -1,0 +1,152 @@
+{
+ "2007": {
+  "us": "iPhone unveiled",
+  "latam": "Argentina elects Kirchner",
+  "europe": "Northern Rock bank run",
+  "russia": "Putin picks Medvedev",
+  "mideast": "Hamas seizes Gaza",
+  "africa": "Kenya election unrest",
+  "india": "Bhutto assassinated",
+  "china": "Xi joins top leadership"
+ },
+ "2008": {
+  "us": "Lehman Brothers collapses",
+  "latam": "Raúl Castro succeeds Fidel",
+  "europe": "Kosovo declares independence",
+  "russia": "Five-day Russia-Georgia war",
+  "mideast": "Israel launches Gaza offensive",
+  "africa": "Kenya rivals share power",
+  "india": "Mumbai attacks kill 166",
+  "china": "Sichuan earthquake"
+ },
+ "2011": {
+  "us": "SEALs kill bin Laden",
+  "latam": "Rousseff becomes president",
+  "europe": "Euro crisis topples leaders",
+  "russia": "Putin to return as president",
+  "mideast": "Arab Spring topples rulers",
+  "africa": "South Sudan is newest nation",
+  "india": "India wins Cricket World Cup",
+  "china": "Japan quake and tsunami"
+ },
+ "2014": {
+  "us": "Ferguson protests erupt",
+  "latam": "Brazil loses 7-1 to Germany",
+  "europe": "Ukraine president flees",
+  "russia": "Russia annexes Crimea",
+  "mideast": "Islamic State seizes Mosul",
+  "africa": "Ebola outbreak spreads",
+  "india": "Modi wins landslide",
+  "china": "Hong Kong Umbrella protests"
+ },
+ "2015": {
+  "us": "Same-sex marriage legalized",
+  "latam": "Zika spreads across Brazil",
+  "europe": "Million refugees reach Europe",
+  "russia": "Nemtsov shot dead",
+  "mideast": "Iran nuclear deal agreed",
+  "africa": "Buhari wins Nigeria vote",
+  "india": "Nepal earthquake strikes",
+  "china": "China stock market crashes"
+ },
+ "2016": {
+  "us": "Trump wins presidency",
+  "latam": "Rousseff removed in Brazil",
+  "europe": "Britain votes to leave EU",
+  "russia": "Russian state doping report",
+  "mideast": "Turkey coup attempt fails",
+  "africa": "Jammeh refuses to step down",
+  "india": "India scraps large banknotes",
+  "china": "AlphaGo beats Lee Sedol"
+ },
+ "2017": {
+  "us": "Trump takes office",
+  "latam": "Venezuela protests turn deadly",
+  "europe": "Macron elected in France",
+  "russia": "Navalny video sparks protests",
+  "mideast": "Iraq retakes Mosul",
+  "africa": "Mugabe resigns",
+  "india": "India launches national GST",
+  "china": "North Korea nuclear bomb test"
+ },
+ "2018": {
+  "us": "Parkland students march",
+  "latam": "López Obrador wins in Mexico",
+  "europe": "Yellow vest protests spread",
+  "russia": "Putin wins fourth term",
+  "mideast": "US quits Iran nuclear deal",
+  "africa": "Ethiopia, Eritrea make peace",
+  "india": "India decriminalizes gay sex",
+  "china": "China removes term limits"
+ },
+ "2019": {
+  "us": "Trump impeached by House",
+  "latam": "Chile subway fare protests",
+  "europe": "Notre-Dame roof burns",
+  "russia": "Moscow protests erupt",
+  "mideast": "Mass protests oust Bouteflika",
+  "africa": "Sudan army removes Bashir",
+  "india": "Kashmir status revoked",
+  "china": "Hong Kong extradition protests"
+ },
+ "2020": {
+  "us": "COVID halts much of US",
+  "latam": "Chile backs new constitution",
+  "europe": "Britain leaves the EU",
+  "russia": "Navalny poisoned",
+  "mideast": "Beirut port explosion",
+  "africa": "Tigray war breaks out",
+  "india": "India locks down for COVID",
+  "china": "Wuhan locked down"
+ },
+ "2021": {
+  "us": "Trump supporters storm Capitol",
+  "latam": "Haiti president assassinated",
+  "europe": "Floods hit Germany, Belgium",
+  "russia": "Navalny arrested on return",
+  "mideast": "Ever Given blocks Suez Canal",
+  "africa": "Zuma jailing triggers riots",
+  "india": "Delta wave swamps India",
+  "china": "Evergrande defaults on debts"
+ },
+ "2022": {
+  "us": "Roe v. Wade overturned",
+  "latam": "Lula narrowly beats Bolsonaro",
+  "europe": "Millions flee Ukraine invasion",
+  "russia": "Russia invades Ukraine",
+  "mideast": "Iran protests over Amini death",
+  "africa": "Ethiopia, Tigray sign peace",
+  "india": "Rajapaksa flees Sri Lanka",
+  "china": "Shinzo Abe shot dead"
+ },
+ "2023": {
+  "us": "Silicon Valley Bank collapses",
+  "latam": "Brazil Congress stormed",
+  "europe": "Finland joins NATO",
+  "russia": "Prigozhin leads brief mutiny",
+  "mideast": "Hamas-led attacks hit Israel",
+  "africa": "War erupts in Sudan",
+  "india": "Chandrayaan-3 lunar landing",
+  "china": "China reopens its borders"
+ },
+ "2024": {
+  "us": "Trump wins second term",
+  "latam": "Sheinbaum elected in Mexico",
+  "europe": "Starmer becomes British PM",
+  "russia": "Navalny dies in prison",
+  "mideast": "Rebels sweep into Damascus",
+  "africa": "Kenya finance bill protests",
+  "india": "Modi wins third term",
+  "china": "Yoon declares martial law"
+ },
+ "2025": {
+  "us": "Trump tariffs shake markets",
+  "latam": "Bolsonaro gets 27-year term",
+  "europe": "Leo XIV, first American pope",
+  "russia": "Putin meets Trump in Alaska",
+  "mideast": "Israel-Iran 12-day war",
+  "africa": "M23 seizes Goma and Bukavu",
+  "india": "India-Pakistan missile strikes",
+  "china": "DeepSeek AI jolts tech stocks"
+ }
+}

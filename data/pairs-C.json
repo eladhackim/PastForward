@@ -1,0 +1,350 @@
+[
+  {
+    "id": "crash",
+    "theme": "A speculative boom ends in a global crash",
+    "rhyme": 3,
+    "then": {
+      "year": 1929,
+      "short": "Wall St Crash",
+      "title": "The Wall Street Crash",
+      "where": "New York, USA",
+      "region": "us",
+      "hook": "Black Tuesday: the day Wall Street's Roaring Twenties boom collapsed into panic.",
+      "text": "On Black Thursday, 24 October 1929, panic selling hit Wall Street. Over the next Monday and Tuesday the Dow fell about 23%, as a record 16 million shares changed hands on 29 October. By July 1932, the Dow had lost 89% of its 1929 peak."
+    },
+    "now": {
+      "year": 2008,
+      "short": "Lehman Crash",
+      "title": "The Global Financial Crisis",
+      "where": "New York, USA",
+      "region": "us",
+      "hook": "Remember September 2008: Lehman Brothers staff leaving their offices carrying cardboard boxes.",
+      "text": "On 15 September 2008, Lehman Brothers filed for bankruptcy with $639 billion in assets, the largest in US history. Credit froze worldwide. Congress passed a $700 billion bank rescue, and governments from Britain to China spent heavily to stop a collapse."
+    },
+    "followed": "The Great Depression followed. Thousands of banks failed, US unemployment reached about 25% in 1933, and economic misery helped extremist movements rise in Europe.",
+    "next": {
+      "short": "The Next Bust",
+      "title": "A crash in machine-run markets",
+      "text": "Around 2087, a crash might begin in assets that barely exist today, traded by AI systems in milliseconds. Panic could cross the globe before any human trader or central banker has time to react.",
+      "watch": "Soaring debt, a new asset everyone says is different this time, and risk piling up in lightly regulated corners of finance."
+    },
+    "breaks": "Governments in 2008 rescued banks and pumped in money within weeks, so the Great Recession, with US unemployment peaking at 10%, stayed far milder than the Depression.",
+    "older": "The South Sea Bubble, 1720"
+  },
+  {
+    "id": "tariffs",
+    "theme": "Tariff walls rise and trading partners hit back",
+    "rhyme": 2,
+    "then": {
+      "year": 1930,
+      "short": "Smoot–Hawley",
+      "title": "The Smoot–Hawley Tariff",
+      "where": "Washington, DC, USA",
+      "region": "us",
+      "hook": "The tariff law often blamed for deepening the Great Depression.",
+      "text": "President Herbert Hoover signed the Smoot–Hawley Tariff Act on 17 June 1930, raising duties on over 20,000 imported goods. More than 1,000 economists had urged him to veto it. Canada, France, Italy, Spain and others answered with tariffs of their own."
+    },
+    "now": {
+      "year": 2025,
+      "short": "Liberation Day",
+      "title": "Trump's “Liberation Day” Tariffs",
+      "where": "Washington, DC, USA",
+      "region": "us",
+      "hook": "Remember 2 April 2025: Trump's Rose Garden chart of tariff rates, then plunging stock markets.",
+      "text": "On 2 April 2025, President Donald Trump announced a 10% tariff on most imports and higher rates on dozens of countries. Supporters said it would revive American industry and counter unfair trade, while critics warned of higher prices. China retaliated, and US tariffs on Chinese goods briefly reached 145%."
+    },
+    "followed": "As the Depression deepened, world trade shrank by about two-thirds between 1929 and 1934. In 1934 Congress let the president negotiate tariff cuts, paving the way for the GATT trade system in 1947.",
+    "next": {
+      "short": "Trade Blocs",
+      "title": "A world split into trade blocs",
+      "text": "Around 2120, a leading power might wall off its markets over AI, data or carbon, and rivals could answer in kind. The world might split into blocs that trade freely inside and little across.",
+      "watch": "Rising tariffs and carbon border taxes, hardening trade blocs, and leaders promising that self-sufficiency will bring back jobs."
+    },
+    "breaks": "Smoot–Hawley was a law passed by Congress as a depression began; the 2025 tariffs came by presidential emergency order, which the Supreme Court ruled unlawful in February 2026.",
+    "older": "The Tariff of Abominations, 1828"
+  },
+  {
+    "id": "bankrun",
+    "theme": "Panicked depositors rush to pull their money",
+    "rhyme": 2,
+    "then": {
+      "year": 1933,
+      "short": "Bank Holiday",
+      "title": "Roosevelt's Bank Holiday",
+      "where": "United States",
+      "region": "us",
+      "hook": "Lines of desperate savers outside locked banks, and Roosevelt's calming Fireside Chat.",
+      "text": "About 9,000 US banks failed between 1930 and 1933, and a new wave of runs swept the country that winter. On 6 March 1933, two days after taking office, Franklin D. Roosevelt closed every bank. In his first Fireside Chat he told Americans a reopened bank was safer than a mattress."
+    },
+    "now": {
+      "year": 2023,
+      "short": "SVB Collapse",
+      "title": "Silicon Valley Bank Collapses",
+      "where": "Santa Clara, California, USA",
+      "region": "us",
+      "hook": "Remember March 2023: founders racing to pull money as Silicon Valley Bank collapsed in two days.",
+      "text": "On 9 March 2023, customers withdrew $42 billion from Silicon Valley Bank in a single day, as warnings spread through group chats and social media. Regulators closed the bank the next morning. Two days later, officials guaranteed all its deposits to stop the panic spreading."
+    },
+    "followed": "In June 1933 Congress created federal deposit insurance through the new FDIC, which began covering deposits in January 1934. Mass bank runs then largely vanished from American life for generations.",
+    "next": {
+      "short": "Instant Run",
+      "title": "A bank run at machine speed",
+      "text": "Around 2113, a run might happen in minutes, as AI assistants managing millions of accounts react to the same rumor at once. Regulators could need automated brakes just to keep up.",
+      "watch": "Money flowing into new kinds of digital accounts and currencies, and automated systems allowed to move savings without a human in the loop."
+    },
+    "breaks": "In 1933 thousands of banks failed and ordinary savers lost money; in 2023 a few banks failed, mostly holding uninsured business deposits, and depositors were made whole.",
+    "older": "The Panic of 1907"
+  },
+  {
+    "id": "dust",
+    "theme": "The sky goes dark over a strained land",
+    "rhyme": 2,
+    "then": {
+      "year": 1935,
+      "short": "Black Sunday",
+      "title": "The Black Sunday Dust Storm",
+      "where": "Great Plains, USA",
+      "region": "us",
+      "hook": "The Dust Bowl's darkest day, when a black wall of dust swallowed the Plains.",
+      "text": "On 14 April 1935, a towering wall of dust rolled across the southern Great Plains and turned a sunny afternoon pitch black. The storm carried an estimated 300,000 tons of topsoil. A reporter's story about it gave the region its name: the Dust Bowl."
+    },
+    "now": {
+      "year": 2023,
+      "short": "Orange Sky",
+      "title": "New York's Orange Sky",
+      "where": "New York, USA",
+      "region": "us",
+      "hook": "Remember June 2023: New York under an eerie orange sky, and masks back on outdoors.",
+      "text": "Smoke from wildfires in Quebec drifted south, and on 7 June 2023 New York's sky turned orange. The city's air quality index passed 400, in the highest ‘hazardous’ category. Canada's season burned about 18 million hectares, by far its worst on record."
+    },
+    "followed": "Within two weeks, Congress created the Soil Conservation Service to fight erosion. Drought and storms lasted until about 1940, and hundreds of thousands of people left the Plains, many heading to California.",
+    "next": {
+      "short": "Dark Skies",
+      "title": "Smoke and dust darken whole continents",
+      "text": "Around 2111, a long megadrought or fire season might cloud the sky over half a continent for weeks. Cities could open clean-air shelters as routinely as they open cooling centers today.",
+      "watch": "Longer fire seasons, shrinking groundwater under farm regions, and more days each year when officials tell people to stay indoors."
+    },
+    "breaks": "The Dust Bowl grew from local plowing that stripped the soil, while New York's smoke blew in from distant Canadian forests burning in heat and drought.",
+    "older": "New England's Dark Day, 1780"
+  },
+  {
+    "id": "munich",
+    "theme": "Land seized in the name of ethnic kin",
+    "rhyme": 1,
+    "then": {
+      "year": 1938,
+      "short": "Munich Deal",
+      "title": "The Munich Agreement",
+      "where": "Munich, Germany",
+      "region": "europe",
+      "hook": "Neville Chamberlain waving a piece of paper and promising “peace for our time”.",
+      "text": "On 30 September 1938, Britain, France and Italy agreed to let Nazi Germany annex Czechoslovakia's Sudetenland, home to three million ethnic Germans Hitler claimed to be protecting. The Czechoslovaks were not at the table, and Neville Chamberlain flew home promising peace."
+    },
+    "now": {
+      "year": 2014,
+      "short": "Crimea Annexed",
+      "title": "Russia Annexes Crimea",
+      "where": "Crimea, Ukraine",
+      "region": "europe",
+      "hook": "Remember March 2014: masked soldiers without insignia taking over Crimea, then Russia claiming it.",
+      "text": "In late February 2014, Russian troops without insignia seized Crimea from Ukraine. After a 16 March referendum that Ukraine and Western governments rejected as illegal, Russia annexed the peninsula on 18 March, saying it was protecting Russian speakers. On 24 February 2022, Russia launched a full-scale invasion of Ukraine."
+    },
+    "followed": "In March 1939 Hitler seized the rest of the Czech lands. He invaded Poland on 1 September 1939, and Britain and France declared war two days later.",
+    "next": {
+      "short": "Border Redrawn",
+      "title": "A border redrawn for ethnic kin",
+      "text": "Around 2090, a power might claim a neighbor's land to protect people who share its language or faith. Others could answer with deals, sanctions or force, and the old Munich debate might return.",
+      "watch": "Passports handed to people across a border, claims that kin abroad are under threat, and troops massing near a frontier."
+    },
+    "breaks": "Many scholars dispute the Munich analogy: no Western leader signed away Crimea, and the comparison has been invoked to argue for wars from Suez to Iraq."
+  },
+  {
+    "id": "martians",
+    "theme": "A fake that fools the public",
+    "rhyme": 2,
+    "then": {
+      "year": 1938,
+      "short": "War of Worlds",
+      "title": "The War of the Worlds Broadcast",
+      "where": "United States",
+      "region": "us",
+      "hook": "Orson Welles' radio play about invading Martians that supposedly sent America into a panic.",
+      "text": "On 30 October 1938, Orson Welles staged H.G. Wells' novel on CBS radio as a string of fake news bulletins about Martians landing in New Jersey. Newspapers reported mass panic the next morning. Later research found few listeners actually panicked and the papers greatly exaggerated the scare."
+    },
+    "now": {
+      "year": 2023,
+      "short": "Puffer Pope",
+      "title": "Viral AI Deepfakes",
+      "where": "Online, worldwide",
+      "region": "world",
+      "hook": "Remember March 2023: the Pope in a stylish white puffer jacket, and learning it was fake.",
+      "text": "In March 2023, an image of Pope Francis in a white puffer jacket, made with the AI tool Midjourney, fooled many people online. On 22 May, a fake picture of an explosion near the Pentagon spread from verified Twitter accounts, and US stocks briefly dipped before officials debunked it."
+    },
+    "followed": "Welles apologized the next morning, and the FCC took no action against CBS. The fame helped him win a Hollywood contract with rare creative control, which led to Citizen Kane in 1941.",
+    "next": {
+      "short": "Live Deepfake",
+      "title": "A fully faked live news event",
+      "text": "Around 2108, a fake might be an entire live event, with video, voices and eyewitness posts all generated at once. It could move markets or spark unrest before anyone can check what really happened.",
+      "watch": "Fakes that fool experts, markets reacting to unverified images, and fights over watermarks and who certifies what is real."
+    },
+    "breaks": "Welles' drama was announced as fiction on a single network, while today's AI fakes often carry no label and can spread worldwide within minutes.",
+    "older": "The Great Moon Hoax, 1835"
+  },
+  {
+    "id": "einstein",
+    "theme": "Scientists warn about their own creation",
+    "rhyme": 2,
+    "then": {
+      "year": 1939,
+      "short": "Atomic Warning",
+      "title": "The Einstein–Szilárd Letter",
+      "where": "United States",
+      "region": "us",
+      "hook": "The letter in which Einstein warned President Roosevelt that atomic bombs were possible.",
+      "text": "In a letter dated 2 August 1939, Albert Einstein warned President Franklin Roosevelt that uranium could power “extremely powerful bombs of a new type”, and hinted that Nazi Germany might be working on them. Physicist Leo Szilárd drafted it, and economist Alexander Sachs handed it to Roosevelt in October."
+    },
+    "now": {
+      "year": 2023,
+      "short": "AI Warning",
+      "title": "AI Leaders Warn of Extinction",
+      "where": "Worldwide",
+      "region": "world",
+      "hook": "Remember May 2023: headlines saying AI's own creators warned it could wipe out humanity.",
+      "text": "On 30 May 2023, hundreds of AI scientists and executives, including Geoffrey Hinton, Sam Altman and Demis Hassabis, signed a one-sentence statement ranking AI extinction risk alongside pandemics and nuclear war. In November, 28 countries, including the US and China, signed the Bletchley Declaration at Britain's AI Safety Summit."
+    },
+    "followed": "Roosevelt formed a uranium committee, the Manhattan Project began in 1942, and US atomic bombs destroyed Hiroshima and Nagasaki in 1945. Einstein later called signing the letter his “one great mistake”.",
+    "next": {
+      "short": "Next Warning",
+      "title": "Inventors warn about a new creation",
+      "text": "Around 2107, a warning might come from pioneers of a field barely born today, perhaps synthetic life or brain-computer links, urging leaders to act before their discovery outruns any control.",
+      "watch": "Top researchers quitting to speak out, open letters from inventors about their own work, and summits devoted to a single technology."
+    },
+    "breaks": "Einstein urged Roosevelt to speed up atomic research before Hitler got there first, while the AI signers urged caution about a technology many were still building."
+  },
+  {
+    "id": "transistor",
+    "theme": "A small lab invention that remakes the world",
+    "rhyme": 2,
+    "then": {
+      "year": 1947,
+      "short": "Transistor",
+      "title": "The Transistor Is Born",
+      "where": "Murray Hill, New Jersey, USA",
+      "region": "us",
+      "hook": "The tiny switch inside every computer, phone and gadget you have ever used.",
+      "text": "In December 1947 at Bell Labs in New Jersey, John Bardeen and Walter Brattain built the first working transistor, a small device that could amplify and switch electric signals. Transistors would soon replace bulky vacuum tubes. With William Shockley, the pair won the 1956 Nobel Prize in Physics."
+    },
+    "now": {
+      "year": 2017,
+      "short": "Transformer",
+      "title": "The Transformer Paper",
+      "where": "Mountain View, California, USA",
+      "region": "us",
+      "hook": "Remember late 2022: typing your first question into ChatGPT, built on a 2017 Google idea.",
+      "text": "In June 2017, eight Google researchers posted a paper called “Attention Is All You Need”, introducing a neural network design named the Transformer. It let AI learn from huge amounts of text far more efficiently. The “T” in ChatGPT stands for Transformer."
+    },
+    "followed": "Transistors went into hearing aids and pocket radios in the 1950s, then onto integrated circuits. Intel's 4004 put a whole processor on one chip in 1971, and today's largest chips hold over 100 billion transistors.",
+    "next": {
+      "short": "The Next Leap",
+      "title": "A quiet lab result remakes everything",
+      "text": "Around 2087, the next leap might start as an obscure lab result, perhaps in quantum, optical or biological computing. Within a lifetime it could reshape work, war and daily life as the transistor did.",
+      "watch": "Obscure papers that suddenly get copied by every lab, new materials for computing, and machines that keep getting cheaper at a startling pace."
+    },
+    "breaks": "The transistor was hardware that took decades to reshape daily life, while the Transformer is software that reached hundreds of millions of people within a few years.",
+    "older": "Gutenberg's printing press, about 1440"
+  },
+  {
+    "id": "mccarthy",
+    "theme": "Careers ended over opinions and associations",
+    "rhyme": 1,
+    "then": {
+      "year": 1950,
+      "short": "McCarthyism",
+      "title": "McCarthyism and the Blacklists",
+      "where": "United States",
+      "region": "us",
+      "hook": "Senator McCarthy's lists, loyalty oaths, and Hollywood writers who suddenly could not find work.",
+      "text": "In February 1950, Senator Joseph McCarthy claimed to hold a list of Communists working in the State Department. Federal workers faced loyalty reviews, the Hollywood Ten went to prison for contempt of Congress, and a pamphlet called Red Channels named 151 broadcasters and entertainers, many of whom lost work."
+    },
+    "now": {
+      "year": 2020,
+      "short": "Online Pile-on",
+      "title": "Online Pile-ons and Firings",
+      "where": "Social media, USA",
+      "region": "us",
+      "hook": "Remember 2020: an old tweet resurfaces, the internet piles on, and someone loses their job.",
+      "text": "Around 2020, online pile-ons got people fired over posts, jokes and old tweets, with pressure coming from left and right. Critics called it cancel culture, while supporters called it accountability. In January 2021, after the Capitol riot, major platforms suspended President Donald Trump."
+    },
+    "followed": "After televised hearings in 1954, the Senate censured McCarthy, and his influence collapsed. Blacklists faded slowly: screenwriter Dalton Trumbo regained screen credit only in 1960, for Spartacus and Exodus.",
+    "next": {
+      "short": "Speech Scores",
+      "title": "Speech judged by automated systems",
+      "text": "Around 2090, automated systems might scan everything a person has ever said online, so one old remark could cost a job, a loan or a visa before any human reviews it.",
+      "watch": "Employers and governments screening people's online histories, speech rules enforced by algorithms, and rising numbers of people afraid to voice opinions."
+    },
+    "breaks": "McCarthyism targeted one suspected ideology using government power, while 2020-era pressure came from many directions, mostly through crowds, employers and private platforms.",
+    "older": "The Spanish Inquisition, 1478"
+  },
+  {
+    "id": "suez",
+    "theme": "A blocked sea route sends ships around Africa",
+    "rhyme": 2,
+    "then": {
+      "year": 1956,
+      "short": "Suez Crisis",
+      "title": "The Suez Crisis",
+      "where": "Suez Canal, Egypt",
+      "region": "mideast",
+      "hook": "The 1956 fight over the Suez Canal that humbled Britain and France.",
+      "text": "After Egypt's President Gamal Abdel Nasser nationalized the Suez Canal Company in July 1956, Israel, Britain and France attacked in late October. Egypt sank dozens of ships to block the canal, which stayed closed until April 1957. Oil tankers had to sail around Africa's Cape of Good Hope."
+    },
+    "now": {
+      "year": 2024,
+      "short": "Red Sea Crisis",
+      "title": "Houthi Attacks in the Red Sea",
+      "where": "Red Sea, off Yemen",
+      "region": "mideast",
+      "hook": "Remember early 2024: container ships turning away from the Red Sea to sail around Africa.",
+      "text": "From November 2023, Yemen's Houthi movement attacked ships in the Red Sea with missiles and drones, saying it acted in support of Palestinians in Gaza. Through 2024, most large container lines avoided the Suez route, sailing around the Cape of Good Hope and adding one to two weeks."
+    },
+    "followed": "Under heavy pressure from the US and the Soviet Union, the invaders withdrew. The UN deployed its first peacekeeping force, and British Prime Minister Anthony Eden resigned in January 1957.",
+    "next": {
+      "short": "Choke Point",
+      "title": "Another chokepoint closes to shipping",
+      "text": "Around 2092, a narrow sea lane such as the Strait of Malacca or a new Arctic route might be shut by war or swarms of drones. Ships could detour for weeks, pushing up prices worldwide.",
+      "watch": "Cheap missiles and drones in the hands of small armed groups, insurers pulling out of key waterways, and navies escorting merchant ships."
+    },
+    "breaks": "In 1956 states fought over who controlled the canal, while in 2024 a Yemeni armed movement attacked ships far to the south, and the canal itself stayed open."
+  },
+  {
+    "id": "sputnik",
+    "theme": "A rival's breakthrough jolts America into a race",
+    "rhyme": 2,
+    "then": {
+      "year": 1957,
+      "short": "Sputnik",
+      "title": "Sputnik Shocks America",
+      "where": "Baikonur, Soviet Union",
+      "region": "russia",
+      "hook": "The beeping Soviet satellite that convinced Americans they were losing the space race.",
+      "text": "On 4 October 1957, the Soviet Union launched Sputnik 1, the first artificial satellite, an 84-kilogram metal ball that circled Earth every 96 minutes. Radio stations and amateurs around the world picked up its beeps. Many Americans feared their country had fallen behind in science and missiles."
+    },
+    "now": {
+      "year": 2025,
+      "short": "DeepSeek",
+      "title": "DeepSeek's “Sputnik Moment”",
+      "where": "Hangzhou, China",
+      "region": "china",
+      "hook": "Remember January 2025: a Chinese AI app called DeepSeek topping charts and rattling Wall Street.",
+      "text": "On 20 January 2025, Chinese startup DeepSeek released R1, a free AI model that rivaled leading American systems and, the company said, cost far less to train. Investor Marc Andreessen called it “AI's Sputnik moment”. On 27 January, Nvidia lost about $590 billion in market value, a one-day record."
+    },
+    "followed": "The US founded NASA in 1958 and poured money into science teaching through the National Defense Education Act. The space race peaked with Americans walking on the Moon in July 1969.",
+    "next": {
+      "short": "Next Sputnik",
+      "title": "A rival's leap sparks a race",
+      "text": "Around 2093, a rival might suddenly leap ahead in a technology seen as decisive, perhaps fusion power or quantum computing. The shock could set off a new national race in labs, schools and budgets.",
+      "watch": "Surprise breakthroughs from unexpected labs, sharp drops in tech stocks, and governments launching crash programs in science and education."
+    },
+    "breaks": "Sputnik was a state project that beat America to a world first, while DeepSeek, a private startup, caught up with existing US models at lower reported cost."
+  }
+]

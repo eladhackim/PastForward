@@ -1,0 +1,299 @@
+{
+  "krakatoa": [
+    {
+      "year": 1783,
+      "short": "Laki",
+      "title": "Iceland’s Laki eruption",
+      "region": "europe",
+      "line": "Laki erupted for eight months; its sulfur haze sickened Europe and chilled the Northern Hemisphere, and famine killed a fifth of Icelanders."
+    },
+    {
+      "year": 1815,
+      "short": "Tambora",
+      "title": "Mount Tambora erupts in Indonesia",
+      "region": "world",
+      "line": "Tambora, the largest eruption in recorded history, killed tens of thousands and brought 1816’s “Year Without a Summer” to Europe and America."
+    },
+    {
+      "year": 1991,
+      "short": "Pinatubo",
+      "title": "Mount Pinatubo erupts in the Philippines",
+      "region": "world",
+      "line": "The 20th century’s second-largest eruption lofted about 15 million tonnes of sulfur dioxide and cooled the planet by about 0.5°C."
+    }
+  ],
+  "scramble": [
+    {
+      "year": 1637,
+      "short": "Elmina",
+      "title": "The Dutch seize Elmina Castle",
+      "region": "africa",
+      "line": "The Dutch seized Portugal’s Elmina Castle in today’s Ghana as European rivals fought over forts for the gold and slave trades."
+    },
+    {
+      "year": 1960,
+      "short": "Congo Crisis",
+      "title": "The Congo Crisis",
+      "region": "africa",
+      "line": "As Congo won independence, Belgium, the US, the Soviet Union and the UN intervened, making it a Cold War battleground."
+    },
+    {
+      "year": 1975,
+      "short": "Angola",
+      "title": "Angola becomes a Cold War battlefield",
+      "region": "africa",
+      "line": "At Angola’s independence, Cuban troops and Soviet arms backed one side while the US and South Africa backed its rivals."
+    }
+  ],
+  "trusts": [
+    {
+      "year": 1624,
+      "short": "Monopolies Act",
+      "title": "England’s Statute of Monopolies",
+      "region": "europe",
+      "line": "England’s Parliament voided most royal grants of monopoly over everyday trades, but allowed patents for new inventions."
+    },
+    {
+      "year": 1984,
+      "short": "AT&T Breakup",
+      "title": "The breakup of AT&T’s Bell System",
+      "region": "us",
+      "line": "To settle a federal antitrust suit, AT&T, which ran most US phone service, split off seven regional “Baby Bells.”"
+    },
+    {
+      "year": 1998,
+      "short": "US v. Microsoft",
+      "title": "The US sues Microsoft",
+      "region": "us",
+      "line": "The US accused Microsoft of using Windows to crush rivals like Netscape; a 2000 breakup order was overturned on appeal."
+    }
+  ],
+  "yellow": [
+    {
+      "year": 1475,
+      "short": "Trent Libel",
+      "title": "The Simon of Trent blood libel",
+      "region": "europe",
+      "line": "After a boy died in Trent, printed accounts spread a false claim that local Jews killed him, among print’s first viral lies."
+    },
+    {
+      "year": 1835,
+      "short": "Moon Hoax",
+      "title": "The Great Moon Hoax",
+      "region": "us",
+      "line": "The New York Sun, a cheap new penny paper, claimed astronomers had spotted bat-winged people on the Moon, and its sales soared."
+    },
+    {
+      "year": 1938,
+      "short": "Martian Panic",
+      "title": "The War of the Worlds broadcast",
+      "region": "us",
+      "line": "Orson Welles’s radio drama of a Martian invasion fooled some listeners, and newspapers then spread exaggerated tales of nationwide panic."
+    },
+    {
+      "year": 2018,
+      "short": "WhatsApp Rumors",
+      "title": "India’s WhatsApp rumor lynchings",
+      "region": "india",
+      "line": "False WhatsApp rumors of child kidnappers spread among India’s new smartphone users, and mobs killed more than a dozen innocent people."
+    }
+  ],
+  "dreadnought": [
+    {
+      "year": -260,
+      "short": "Rome’s Fleet",
+      "title": "Rome builds a fleet against Carthage",
+      "region": "europe",
+      "line": "Rome, a land power, copied a captured Carthaginian warship, built about 100 in two months, and beat Carthage’s navy at Mylae."
+    },
+    {
+      "year": 1652,
+      "short": "Anglo-Dutch War",
+      "title": "The First Anglo-Dutch War",
+      "region": "europe",
+      "line": "England’s growing navy and trade laws aimed at Dutch shipping sparked war with the Dutch Republic, Europe’s leading sea power."
+    },
+    {
+      "year": 1922,
+      "short": "Naval Treaty",
+      "title": "The Washington Naval Treaty",
+      "region": "us",
+      "line": "Facing a costly race, Britain, the US and Japan capped battleships at a 5:5:3 ratio, with Britain accepting parity with America."
+    }
+  ],
+  "ellis": [
+    {
+      "year": 376,
+      "short": "Danube Crossing",
+      "title": "The Goths cross the Danube",
+      "region": "europe",
+      "line": "Fleeing the Huns, tens of thousands of Goths entered the Roman Empire; abuse by officials sparked a revolt that killed Emperor Valens."
+    },
+    {
+      "year": 1845,
+      "short": "Irish Famine",
+      "title": "Ireland’s famine exodus",
+      "region": "us",
+      "line": "Fleeing the Great Famine, over a million Irish emigrated, many to America, where the anti-Catholic Know-Nothing movement surged in the 1850s."
+    },
+    {
+      "year": 1882,
+      "short": "Exclusion Act",
+      "title": "The Chinese Exclusion Act",
+      "region": "us",
+      "line": "After Chinese workers came for gold mines and railroads, Congress banned Chinese laborers, the first major US law to bar one nationality."
+    },
+    {
+      "year": 1948,
+      "short": "Windrush",
+      "title": "The Empire Windrush reaches Britain",
+      "region": "europe",
+      "line": "The Empire Windrush brought Caribbean migrants to postwar Britain; as more followed, riots erupted in 1958 and entry laws tightened from 1962."
+    }
+  ],
+  "modelt": [
+    {
+      "year": 1885,
+      "short": "Safety Bicycle",
+      "title": "The Rover safety bicycle",
+      "region": "europe",
+      "line": "Starley’s chain-driven Rover replaced the risky high-wheeler, and cheap safety bicycles set off a worldwide cycling craze in the 1890s."
+    },
+    {
+      "year": 1945,
+      "short": "VW Beetle",
+      "title": "The Volkswagen Beetle goes global",
+      "region": "europe",
+      "line": "After World War II, Volkswagen mass-produced the Beetle for ordinary buyers; in 1972 it passed the Model T’s production record."
+    },
+    {
+      "year": 1958,
+      "short": "Super Cub",
+      "title": "Honda’s Super Cub motorbike",
+      "region": "world",
+      "line": "Honda’s cheap, easy-to-ride Super Cub put millions on motorized wheels; over 100 million built make it the best-selling motor vehicle ever."
+    }
+  ],
+  "titanic": [
+    {
+      "year": 1628,
+      "short": "Vasa",
+      "title": "The warship Vasa sinks",
+      "region": "europe",
+      "line": "Sweden’s king demanded a mighty showpiece warship, but the top-heavy Vasa capsized less than a mile into its maiden voyage."
+    },
+    {
+      "year": 1937,
+      "short": "Hindenburg",
+      "title": "The Hindenburg disaster",
+      "region": "us",
+      "line": "The hydrogen-filled luxury airship burst into flames while landing in New Jersey, killing 36 and ending the era of passenger airships."
+    },
+    {
+      "year": 2000,
+      "short": "Concorde Crash",
+      "title": "The Concorde crash near Paris",
+      "region": "europe",
+      "line": "The supersonic jet for wealthy travelers, with a spotless safety record, crashed after takeoff from Paris, killing 113; Concorde retired in 2003."
+    }
+  ],
+  "somme": [
+    {
+      "year": 1864,
+      "short": "Petersburg",
+      "title": "The Siege of Petersburg",
+      "region": "us",
+      "line": "Union and Confederate armies faced off in trenches around Petersburg for nine months, with mortars, mines and repeating rifles foreshadowing 1916."
+    },
+    {
+      "year": 1904,
+      "short": "Port Arthur",
+      "title": "The Siege of Port Arthur",
+      "region": "china",
+      "line": "Japanese troops stormed Russian forts through barbed wire and machine-gun fire, losing tens of thousands in a preview of World War I."
+    },
+    {
+      "year": 1980,
+      "short": "Iran–Iraq War",
+      "title": "The Iran–Iraq War",
+      "region": "mideast",
+      "line": "Iran and Iraq fought eight years of World War I-style trench warfare, with human-wave attacks, poison gas and missiles fired at cities."
+    }
+  ],
+  "sykes": [
+    {
+      "year": 1772,
+      "short": "Poland Divided",
+      "title": "The First Partition of Poland",
+      "region": "europe",
+      "line": "Russia, Prussia and Austria seized about a third of Poland; Polish insurgents rose against the partitions in 1794, 1830 and 1863."
+    },
+    {
+      "year": 1893,
+      "short": "Durand Line",
+      "title": "Britain draws the Durand Line",
+      "region": "india",
+      "line": "Britain drew a border splitting Pashtun lands between Afghanistan and British India; Afghanistan never recognized it, and Pashtun fighters defied it."
+    },
+    {
+      "year": 1967,
+      "short": "Biafra",
+      "title": "The Biafran War",
+      "region": "africa",
+      "line": "Biafra declared independence from Nigeria, a country whose borders Britain had drawn; the war and famine that followed killed perhaps a million."
+    }
+  ],
+  "flu": [
+    {
+      "year": 541,
+      "short": "Justinian Plague",
+      "title": "The Plague of Justinian",
+      "region": "europe",
+      "line": "Bubonic plague rode grain ships from Egypt to Constantinople and spread along Mediterranean trade routes, killing millions across the Roman world."
+    },
+    {
+      "year": 1347,
+      "short": "Black Death",
+      "title": "The Black Death",
+      "region": "world",
+      "line": "Plague spread along Silk Road caravans and Genoese trading ships, killing perhaps a third to half of Europe’s people within five years."
+    },
+    {
+      "year": 1889,
+      "short": "Russian Flu",
+      "title": "The 1889 Russian flu",
+      "region": "world",
+      "line": "Carried by rail and steamship, a new flu swept the Northern Hemisphere in about four months, killing roughly a million people."
+    },
+    {
+      "year": 1957,
+      "short": "Asian Flu",
+      "title": "The 1957 Asian flu",
+      "region": "world",
+      "line": "A new flu strain from China spread worldwide within months, killing over a million, as labs raced to make vaccines."
+    }
+  ],
+  "weimar": [
+    {
+      "year": 1779,
+      "short": "Continentals",
+      "title": "The collapse of the Continental dollar",
+      "region": "us",
+      "line": "Congress printed Continental dollars to pay for the Revolution until they were nearly worthless, giving rise to “not worth a Continental.”"
+    },
+    {
+      "year": 1946,
+      "short": "Hungary’s Pengő",
+      "title": "Hungary’s record hyperinflation",
+      "region": "europe",
+      "line": "In the worst hyperinflation ever recorded, Hungarian prices doubled about every 15 hours, and a 100 quintillion pengő note was issued."
+    },
+    {
+      "year": 2008,
+      "short": "Zimbabwe",
+      "title": "Zimbabwe’s hyperinflation",
+      "region": "africa",
+      "line": "Zimbabwe’s central bank printed money until monthly inflation hit about 80 billion percent and a 100 trillion dollar note appeared."
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "crash": [
+    {
+      "year": 1873,
+      "short": "Panic of 1873",
+      "title": "The Panic of 1873",
+      "region": "world",
+      "line": "A railway and property boom burst on the Vienna stock exchange, spread to New York, and opened a long worldwide slump."
+    },
+    {
+      "year": 1987,
+      "short": "Black Monday",
+      "title": "Black Monday",
+      "region": "us",
+      "line": "After a five-year bull market, the Dow fell 22.6% on 19 October 1987, its worst day ever, as markets crashed worldwide."
+    },
+    {
+      "year": 2000,
+      "short": "Dot-com Bust",
+      "title": "The dot-com bubble bursts",
+      "region": "us",
+      "line": "Investors poured money into internet startups until the Nasdaq peaked in March 2000, then it lost about 78% over two years."
+    }
+  ],
+  "tariffs": [
+    {
+      "year": 1667,
+      "short": "Colbert Tariff",
+      "title": "Colbert's tariff war on the Dutch",
+      "region": "europe",
+      "line": "France's minister Colbert put steep duties on Dutch goods, the Dutch banned French wares, and the trade war fed France's 1672 invasion."
+    },
+    {
+      "year": 1963,
+      "short": "Chicken War",
+      "title": "The Chicken War",
+      "region": "europe",
+      "line": "When Europe's Common Market taxed cheap American chicken, the US hit back with a 25% tariff on light trucks that still stands."
+    },
+    {
+      "year": 2018,
+      "short": "Trade War 2018",
+      "title": "The US–China trade war",
+      "region": "china",
+      "line": "The US taxed steel, aluminum and hundreds of billions in Chinese imports, and China hit back with tariffs on American farm goods."
+    }
+  ],
+  "bankrun": [
+    {
+      "year": 1866,
+      "short": "Overend Gurney",
+      "title": "The Overend, Gurney collapse",
+      "region": "europe",
+      "line": "London's biggest discount bank failed, crowds besieged banks on “Black Friday”, and the Bank of England lent freely to stop the panic."
+    },
+    {
+      "year": 2001,
+      "short": "Corralito",
+      "title": "Argentina freezes bank accounts",
+      "region": "latam",
+      "line": "As savers drained Argentina's banks, the government capped cash withdrawals in December 2001, sparking riots and a debt default."
+    },
+    {
+      "year": 2007,
+      "short": "Northern Rock",
+      "title": "The run on Northern Rock",
+      "region": "europe",
+      "line": "Savers queued outside Northern Rock branches after it sought emergency Bank of England help, Britain's first bank run in over a century."
+    }
+  ],
+  "dust": [
+    {
+      "year": 1783,
+      "short": "Laki Haze",
+      "title": "The Laki haze over Europe",
+      "region": "europe",
+      "line": "Iceland's Laki eruption spread a sulfurous haze across Europe, and about a fifth of Icelanders died in the famine that followed."
+    },
+    {
+      "year": 1952,
+      "short": "Great Smog",
+      "title": "London's Great Smog",
+      "region": "europe",
+      "line": "Coal smoke and fog blacked out London for five days, killing thousands and pushing Parliament to pass the 1956 Clean Air Act."
+    },
+    {
+      "year": 2020,
+      "short": "SF Orange Sky",
+      "title": "San Francisco's orange sky",
+      "region": "us",
+      "line": "Smoke from record wildfires amid heat and drought turned San Francisco's sky dark orange, with streetlights on at midday."
+    }
+  ],
+  "munich": [
+    {
+      "year": 1919,
+      "short": "Fiume Seized",
+      "title": "D'Annunzio seizes Fiume",
+      "region": "europe",
+      "line": "Poet Gabriele D'Annunzio led armed volunteers into the Adriatic port, claiming it for its Italian majority; Italy annexed it in 1924."
+    },
+    {
+      "year": 1974,
+      "short": "Cyprus Split",
+      "title": "Turkish troops land in Cyprus",
+      "region": "europe",
+      "line": "After a Greek-backed coup, Turkey sent troops, saying it was protecting Turkish Cypriots, and took about a third of the island."
+    },
+    {
+      "year": 2008,
+      "short": "Georgia War",
+      "title": "The Russia–Georgia war",
+      "region": "europe",
+      "line": "Russia fought Georgia over South Ossetia, saying it was defending residents holding Russian passports, then recognized two breakaway regions as independent."
+    }
+  ],
+  "martians": [
+    {
+      "year": 1726,
+      "short": "Rabbit Births",
+      "title": "Mary Toft's rabbit births",
+      "region": "europe",
+      "line": "An English servant claimed to give birth to rabbits, and even a royal surgeon believed her until she confessed to the hoax."
+    },
+    {
+      "year": 1917,
+      "short": "Fairy Photos",
+      "title": "The Cottingley Fairies",
+      "region": "europe",
+      "line": "Two English girls photographed paper cutout fairies, and Sherlock Holmes author Arthur Conan Doyle championed the pictures as real."
+    },
+    {
+      "year": 1957,
+      "short": "Spaghetti Trees",
+      "title": "The BBC's spaghetti harvest",
+      "region": "europe",
+      "line": "A straight-faced BBC report showed Swiss farmers picking spaghetti from trees on April Fools' Day, and viewers asked how to grow it."
+    },
+    {
+      "year": 1983,
+      "short": "Hitler Diaries",
+      "title": "The Hitler Diaries",
+      "region": "europe",
+      "line": "German magazine Stern paid millions for diaries said to be Hitler's, and within two weeks experts exposed them as modern forgeries."
+    }
+  ],
+  "einstein": [
+    {
+      "year": 1947,
+      "short": "Doomsday Clock",
+      "title": "Atomic scientists start the Doomsday Clock",
+      "region": "us",
+      "line": "Manhattan Project scientists launched the Doomsday Clock, set at seven minutes to midnight, to warn the world about nuclear war."
+    },
+    {
+      "year": 1975,
+      "short": "Asilomar",
+      "title": "The Asilomar gene-splicing conference",
+      "region": "us",
+      "line": "Biologists who had just invented gene splicing paused their own experiments and met at Asilomar, California, to draft safety rules."
+    },
+    {
+      "year": 2015,
+      "short": "CRISPR Pause",
+      "title": "Gene editors call for a pause",
+      "region": "us",
+      "line": "CRISPR pioneer Jennifer Doudna urged a pause on editing human embryos, and a Washington summit called heritable edits irresponsible for now."
+    }
+  ],
+  "transistor": [
+    {
+      "year": 1831,
+      "short": "Faraday Dynamo",
+      "title": "Faraday turns magnetism into electricity",
+      "region": "europe",
+      "line": "Michael Faraday showed in his London lab that moving magnets make electric current, the principle behind every power station generator."
+    },
+    {
+      "year": 1909,
+      "short": "Haber Ammonia",
+      "title": "Haber pulls fertilizer from the air",
+      "region": "europe",
+      "line": "Fritz Haber made ammonia from air on a tabletop machine; scaled up as Haber-Bosch, its fertilizer now helps feed billions."
+    },
+    {
+      "year": 1928,
+      "short": "Penicillin",
+      "title": "Fleming discovers penicillin",
+      "region": "europe",
+      "line": "Alexander Fleming noticed mold killing bacteria in a London lab dish, and mass-produced penicillin later launched the antibiotic age."
+    },
+    {
+      "year": 1989,
+      "short": "World Wide Web",
+      "title": "Berners-Lee invents the Web",
+      "region": "europe",
+      "line": "At CERN, Tim Berners-Lee proposed a system of linked documents, and the World Wide Web he built now connects billions."
+    }
+  ],
+  "mccarthy": [
+    {
+      "year": 1633,
+      "short": "Galileo Trial",
+      "title": "The trial of Galileo",
+      "region": "europe",
+      "line": "The Inquisition convicted Galileo for teaching that Earth circles the Sun, banned his book and kept him under house arrest for life."
+    },
+    {
+      "year": 1919,
+      "short": "Palmer Raids",
+      "title": "The first Red Scare raids",
+      "region": "us",
+      "line": "In the first Red Scare, federal raids rounded up thousands of suspected radicals for their politics and deported hundreds, including Emma Goldman."
+    },
+    {
+      "year": 2003,
+      "short": "Dixie Chicks",
+      "title": "The Dixie Chicks boycott",
+      "region": "us",
+      "line": "After singer Natalie Maines criticized President George W. Bush before the Iraq War, country radio stations across America stopped playing the band."
+    }
+  ],
+  "suez": [
+    {
+      "year": 1967,
+      "short": "Canal Shut",
+      "title": "The Suez Canal closes for eight years",
+      "region": "mideast",
+      "line": "The Six-Day War closed the Suez Canal until 1975, trapping a fleet of cargo ships and sending tankers around Africa."
+    },
+    {
+      "year": 2021,
+      "short": "Ever Given",
+      "title": "The Ever Given blocks Suez",
+      "region": "mideast",
+      "line": "The giant container ship Ever Given wedged across the Suez Canal for six days, and some ships detoured around Africa instead."
+    }
+  ],
+  "sputnik": [
+    {
+      "year": 1949,
+      "short": "Soviet A-Bomb",
+      "title": "The Soviets test an atomic bomb",
+      "region": "russia",
+      "line": "The Soviet Union tested its first atomic bomb years before US experts expected, and Truman ordered a crash hydrogen bomb program."
+    },
+    {
+      "year": 1987,
+      "short": "Japan's Chips",
+      "title": "Japan's chip lead alarms America",
+      "region": "world",
+      "line": "Japanese firms had overtaken America in memory chips, so Washington backed the new SEMATECH consortium with federal money to catch up."
+    }
+  ]
+}

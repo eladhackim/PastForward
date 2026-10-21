@@ -1,0 +1,232 @@
+{
+ "1929": {
+  "us": "Wall Street crashes",
+  "latam": "Cristero War ends",
+  "europe": "Vatican City created",
+  "russia": "Stalin expels Trotsky",
+  "mideast": "Palestine riots kill 250",
+  "africa": "Igbo Women's War erupts",
+  "india": "Congress demands Purna Swaraj",
+  "china": "Soviets clash in Manchuria"
+ },
+ "1930": {
+  "us": "Smoot-Hawley tariff signed",
+  "latam": "Uruguay wins first World Cup",
+  "europe": "Nazis surge in elections",
+  "russia": "Forced collectivization drive",
+  "mideast": "Iraq independence treaty",
+  "africa": "Haile Selassie crowned",
+  "india": "Gandhi's Salt March",
+  "china": "Chiang beats warlords"
+ },
+ "1933": {
+  "us": "FDR launches New Deal",
+  "latam": "Cuba's Machado toppled",
+  "europe": "Hitler becomes chancellor",
+  "russia": "Soviet famine kills millions",
+  "mideast": "Saudi oil concession granted",
+  "africa": "Hertzog and Smuts coalition",
+  "india": "Pakistan name coined",
+  "china": "Japan quits League of Nations"
+ },
+ "1935": {
+  "us": "Social Security Act signed",
+  "latam": "Chaco War ends",
+  "europe": "Nuremberg Laws enacted",
+  "russia": "Moscow Metro opens",
+  "mideast": "Persia renamed Iran",
+  "africa": "Italy invades Ethiopia",
+  "india": "Quetta earthquake strikes",
+  "china": "Long March ends"
+ },
+ "1938": {
+  "us": "Superman debuts",
+  "latam": "Mexico nationalizes oil",
+  "europe": "Kristallnacht attacks Jews",
+  "russia": "Bukharin convicted and shot",
+  "mideast": "Atatürk dies",
+  "africa": "Great Trek centenary marked",
+  "india": "Bose leads Congress",
+  "china": "Yellow River dikes breached"
+ },
+ "1939": {
+  "us": "Marian Anderson sings",
+  "latam": "Chillán quake kills 28,000",
+  "europe": "Germany invades Poland",
+  "russia": "Stalin signs pact with Hitler",
+  "mideast": "White Paper caps immigration",
+  "africa": "South Africa joins the war",
+  "india": "Congress governments resign",
+  "china": "Japan bombs Chongqing"
+ },
+ "1947": {
+  "us": "Robinson breaks color line",
+  "latam": "Argentine women win vote",
+  "europe": "Marshall Plan offered",
+  "russia": "Postwar Soviet famine",
+  "mideast": "UN backs Palestine partition",
+  "africa": "Madagascar revolt crushed",
+  "india": "India and Pakistan born",
+  "china": "Taiwan uprising crushed"
+ },
+ "1950": {
+  "us": "Truman sends troops to Korea",
+  "latam": "Uruguay stuns Brazil",
+  "europe": "Schuman Plan proposed",
+  "russia": "Stalin-Mao friendship treaty",
+  "mideast": "Israel's Law of Return",
+  "africa": "Apartheid race laws passed",
+  "india": "India becomes a republic",
+  "china": "China enters Korean War"
+ },
+ "1956": {
+  "us": "Interstate Highway Act signed",
+  "latam": "Castro lands in Cuba",
+  "europe": "Hungarian uprising crushed",
+  "russia": "Khrushchev denounces Stalin",
+  "mideast": "Nasser seizes Suez Canal",
+  "africa": "Sudan becomes independent",
+  "india": "States redrawn by language",
+  "china": "Hundred Flowers campaign"
+ },
+ "1957": {
+  "us": "Troops enter Little Rock",
+  "latam": "Papa Doc wins Haiti",
+  "europe": "Treaty of Rome signed",
+  "russia": "Sputnik launched",
+  "mideast": "Suez Canal reopens",
+  "africa": "Ghana wins independence",
+  "india": "Kerala elects Communists",
+  "china": "Anti-Rightist Campaign"
+ },
+ "1962": {
+  "us": "Cuban Missile Crisis",
+  "latam": "Jamaica wins independence",
+  "europe": "Vatican II opens",
+  "russia": "Missiles placed in Cuba",
+  "mideast": "Algeria wins independence",
+  "africa": "Mandela arrested",
+  "india": "India loses China border war",
+  "china": "Mao admits Great Leap errors"
+ },
+ "1968": {
+  "us": "King and Kennedy assassinated",
+  "latam": "Tlatelolco protesters shot",
+  "europe": "Soviets crush Prague Spring",
+  "russia": "Tanks enter Czechoslovakia",
+  "mideast": "Ba'ath takes power in Iraq",
+  "africa": "Biafra famine shocks world",
+  "india": "Green Revolution wheat boom",
+  "china": "Youths sent to countryside"
+ },
+ "1973": {
+  "us": "Roe v. Wade decided",
+  "latam": "Pinochet seizes Chile",
+  "europe": "Britain joins the EEC",
+  "russia": "Brezhnev tours America",
+  "mideast": "Yom Kippur War begins",
+  "africa": "Guinea-Bissau independence",
+  "india": "Kesavananda Bharati ruling",
+  "china": "Deng Xiaoping returns"
+ },
+ "1975": {
+  "us": "Microsoft founded",
+  "latam": "Suriname gains independence",
+  "europe": "Spain's Franco dies",
+  "russia": "Helsinki Accords signed",
+  "mideast": "Lebanon's civil war begins",
+  "africa": "Angola, Mozambique independent",
+  "india": "Indira declares Emergency",
+  "china": "Chiang Kai-shek dies"
+ },
+ "1980": {
+  "us": "Mount St. Helens erupts",
+  "latam": "Archbishop Romero shot dead",
+  "europe": "Solidarity union born",
+  "russia": "Moscow Olympics boycotted",
+  "mideast": "Iraq invades Iran",
+  "africa": "Zimbabwe becomes independent",
+  "india": "Indira Gandhi returns",
+  "china": "Shenzhen becomes special zone"
+ },
+ "1986": {
+  "us": "Challenger disaster",
+  "latam": "Duvalier flees Haiti",
+  "europe": "Olof Palme shot dead",
+  "russia": "Chernobyl reactor explodes",
+  "mideast": "US bombs Libya",
+  "africa": "South Africa under emergency",
+  "india": "Shah Bano ruling reversed",
+  "china": "Student protests spread"
+ },
+ "1989": {
+  "us": "Exxon Valdez oil spill",
+  "latam": "US invades Panama",
+  "europe": "Berlin Wall opens",
+  "russia": "Soviets leave Afghanistan",
+  "mideast": "Khomeini issues Rushdie fatwa",
+  "africa": "De Klerk becomes president",
+  "india": "Rajiv Gandhi loses election",
+  "china": "Tiananmen crackdown"
+ },
+ "1994": {
+  "us": "NAFTA takes effect",
+  "latam": "Zapatistas rise in Chiapas",
+  "europe": "Channel Tunnel opens",
+  "russia": "Yeltsin sends army to Chechnya",
+  "mideast": "Arafat returns to Gaza",
+  "africa": "Rwanda genocide erupts",
+  "india": "Plague hits Surat",
+  "china": "Kim Il-sung dies"
+ },
+ "1996": {
+  "us": "Clinton wins re-election",
+  "latam": "Guatemala civil war ends",
+  "europe": "EU bans British beef",
+  "russia": "Yeltsin wins re-election",
+  "mideast": "Netanyahu wins Israeli vote",
+  "africa": "First Congo War begins",
+  "india": "Taliban capture Kabul",
+  "china": "Missile tests near Taiwan"
+ },
+ "1997": {
+  "us": "Pathfinder lands on Mars",
+  "latam": "Lima hostage crisis ends",
+  "europe": "Princess Diana dies",
+  "russia": "NATO-Russia Founding Act",
+  "mideast": "Khatami wins Iran election",
+  "africa": "Kabila ousts Mobutu",
+  "india": "India's first Dalit president",
+  "china": "Hong Kong returns to China"
+ },
+ "1999": {
+  "us": "Clinton acquitted by Senate",
+  "latam": "Chávez becomes president",
+  "europe": "Euro currency launches",
+  "russia": "Yeltsin resigns, names Putin",
+  "mideast": "Jordan, Morocco kings die",
+  "africa": "Nigeria restores civilian rule",
+  "india": "Kargil conflict erupts",
+  "china": "Macau returned to China"
+ },
+ "2000": {
+  "us": "Bush wins Florida recount",
+  "latam": "Fox ends PRI rule",
+  "europe": "Milošević toppled in Belgrade",
+  "russia": "Kursk submarine sinks",
+  "mideast": "Second Intifada begins",
+  "africa": "Mozambique floods devastate",
+  "india": "India passes one billion",
+  "china": "First inter-Korean summit"
+ },
+ "2003": {
+  "us": "US invades Iraq",
+  "latam": "Lula becomes Brazil president",
+  "europe": "Millions protest Iraq war",
+  "russia": "Khodorkovsky arrested",
+  "mideast": "Saddam Hussein toppled",
+  "africa": "Darfur conflict escalates",
+  "india": "Kashmir ceasefire agreed",
+  "china": "SARS outbreak spreads"
+ }
+}

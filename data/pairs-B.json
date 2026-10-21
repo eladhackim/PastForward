@@ -1,0 +1,386 @@
+[
+  {
+    "id": "krakatoa",
+    "theme": "An eruption the whole planet feels",
+    "rhyme": 3,
+    "then": {
+      "year": 1883,
+      "short": "Krakatoa",
+      "title": "The Eruption of Krakatoa",
+      "where": "Sunda Strait, Dutch East Indies",
+      "region": "world",
+      "hook": "The volcano heard 4,800 km away, often called the loudest sound in recorded history.",
+      "text": "On 27 August 1883, Krakatoa in the Dutch East Indies blew itself apart. The blast was heard 4,800 km away, and its pressure wave circled the globe more than three times. Tsunamis killed over 36,000 people, and ash turned sunsets red worldwide."
+    },
+    "now": {
+      "year": 2022,
+      "short": "Hunga Tonga",
+      "title": "The Hunga Tonga Eruption",
+      "where": "Tonga, South Pacific",
+      "region": "world",
+      "hook": "Remember January 2022: satellite loops of a vast ash cloud bursting over the Pacific near Tonga.",
+      "text": "On 15 January 2022 the undersea volcano Hunga Tonga–Hunga Ha’apai produced the largest atmospheric explosion recorded by modern instruments. Its plume rose about 57 km, and its pressure wave circled the globe several times. Tsunamis reached Peru, and Tonga’s internet cable was cut."
+    },
+    "followed": "Ash and sulfur dimmed sunlight, and Northern Hemisphere summers cooled by up to 0.4°C the next year. In 1927 a new volcano, Anak Krakatau, “Child of Krakatoa,” rose from the sea.",
+    "next": {
+      "short": "Dimmed Skies",
+      "title": "An eruption that dims the whole sky",
+      "text": "Around 2161, a bigger blast on the scale of Tambora could veil the sun for a year or two, cooling the planet and cutting harvests in a crowded, tightly linked world.",
+      "watch": "Swelling ground and gas bursts at restless volcanoes, sulfur readings from satellites, and whether nations stockpile food for a sudden cold year."
+    },
+    "breaks": "Hunga Tonga killed fewer than ten people and released little sulfur, so it barely changed global temperatures, while Krakatoa killed over 36,000 and cooled summers.",
+    "older": "Tambora, 1815"
+  },
+  {
+    "id": "scramble",
+    "theme": "Outside powers compete for Africa",
+    "rhyme": 2,
+    "then": {
+      "year": 1884,
+      "short": "The Scramble",
+      "title": "The Berlin Conference and the Scramble",
+      "where": "Berlin, Germany",
+      "region": "europe",
+      "hook": "European powers met in Berlin to set rules for claiming Africa, with no Africans present.",
+      "text": "From November 1884 to February 1885, 14 states met in Berlin at Bismarck’s invitation to set rules for claiming African land. No Africans were invited. The talks recognized King Leopold II’s claim to the Congo and sped up a land grab already under way."
+    },
+    "now": {
+      "year": 2018,
+      "short": "New Scramble",
+      "title": "The New Scramble for Africa",
+      "where": "Across Africa",
+      "region": "africa",
+      "hook": "Remember September 2018: African leaders gathered in Beijing as Xi Jinping pledged $60 billion.",
+      "text": "At the September 2018 China–Africa summit in Beijing, Xi Jinping pledged $60 billion in finance. Russia’s Wagner Group arrived in the Central African Republic, Gulf states built ports and bases in the Horn of Africa, and the US unveiled an Africa strategy to counter China and Russia."
+    },
+    "followed": "By 1914 Europeans ruled about 90% of Africa, and only Liberia and Ethiopia, which beat Italy at Adwa in 1896, stayed independent. Most colonies won independence in the late 1950s and 1960s.",
+    "next": {
+      "short": "Africa’s Terms",
+      "title": "Africa sets the terms for outsiders",
+      "text": "Around 2152, Africa might be home to a third or more of humanity. Outside powers could compete for its workers, markets and minerals, while African blocs decide who gets access and on what terms.",
+      "watch": "Deals for battery minerals, new foreign military bases, debt talks, and whether the African Continental Free Trade Area gives the continent one voice."
+    },
+    "breaks": "African states are now sovereign: they sign or refuse deals, choose partners, and bargain with China, Russia, the Gulf and the West for better terms.",
+    "older": "The Treaty of Tordesillas, 1494"
+  },
+  {
+    "id": "trusts",
+    "theme": "Government takes on a dominant monopoly",
+    "rhyme": 3,
+    "then": {
+      "year": 1890,
+      "short": "Sherman Act",
+      "title": "The Sherman Antitrust Act",
+      "where": "Washington, D.C.",
+      "region": "us",
+      "hook": "America’s first federal law against monopolies, later used to break up Rockefeller’s Standard Oil.",
+      "text": "In July 1890 President Benjamin Harrison signed the Sherman Antitrust Act, passed almost unanimously, banning monopolization and conspiracies in restraint of trade. Its biggest target became John D. Rockefeller’s Standard Oil, which had controlled about 90% of US oil refining. In 1911 the Supreme Court split it into 34 companies."
+    },
+    "now": {
+      "year": 2020,
+      "short": "US v. Google",
+      "title": "The US Sues Google",
+      "where": "Washington, D.C.",
+      "region": "us",
+      "hook": "Remember October 2020: the US government sued Google, its biggest tech monopoly case since Microsoft.",
+      "text": "On 20 October 2020 the Justice Department and 11 states sued Google under the Sherman Act over its search dominance. Google paid $26 billion in 2021 alone to be the default search engine. In August 2024 Judge Amit Mehta ruled that Google is a monopolist."
+    },
+    "followed": "The breakup made Rockefeller richer as shares in the pieces soared, and they grew into Exxon, Mobil and Chevron. Congress added the Clayton Act and the Federal Trade Commission in 1914.",
+    "next": {
+      "short": "Next Breakup",
+      "title": "Breaking up tomorrow’s digital gatekeeper",
+      "text": "Around 2150, governments might try to break up whatever firm runs the dominant AI, energy or space network, perhaps still using a law first aimed at oil trusts.",
+      "watch": "One company controlling the main gateway to information or computing power, paying to be the default, and lawmakers rewriting rules to catch up."
+    },
+    "breaks": "Standard Oil sold a physical product; Google gives search away free, so harm is harder to prove, and in 2025 a judge declined to break it up.",
+    "older": "England’s Statute of Monopolies, 1624"
+  },
+  {
+    "id": "yellow",
+    "theme": "False stories spread by new media",
+    "rhyme": 2,
+    "then": {
+      "year": 1898,
+      "short": "USS Maine",
+      "title": "Yellow Journalism and the USS Maine",
+      "where": "New York and Havana",
+      "region": "us",
+      "hook": "Newspapers cried “Remember the Maine!” and blamed Spain as America rushed toward war.",
+      "text": "On 15 February 1898 the battleship USS Maine exploded in Havana harbor, killing 266 men. William Randolph Hearst’s Journal and Joseph Pulitzer’s World blamed Spain without evidence, in lurid stories that boosted sales. A 1976 US Navy study pointed to an accidental coal fire aboard."
+    },
+    "now": {
+      "year": 2016,
+      "short": "Fake News",
+      "title": "The Year of Fake News",
+      "where": "United States",
+      "region": "us",
+      "hook": "Remember 2016: a fake story saying Pope Francis endorsed Donald Trump raced across Facebook.",
+      "text": "During the 2016 US election, invented stories spread fast on social media. A BuzzFeed News analysis found the top 20 fake election stories drew more Facebook engagement than the top 20 from major outlets. Teenagers in Veles, Macedonia, ran pro-Trump hoax sites for ad money."
+    },
+    "followed": "The press frenzy fed demands for war. The US declared war on Spain in April 1898, won within four months, and took Puerto Rico, Guam and the Philippines.",
+    "next": {
+      "short": "Deepfake Spark",
+      "title": "A fabricated incident sparks a crisis",
+      "text": "Around 2134, machines could fake any video, voice or document in seconds. A fabricated attack might go viral and push nations toward conflict before anyone can prove it false.",
+      "watch": "Fakes that experts cannot debunk quickly, news feeds written entirely by machines, and falling trust in any shared source of facts."
+    },
+    "breaks": "In 1898 a few press barons drove the story; in 2016 falsehoods spread through millions of users and platform algorithms, with no editor in charge.",
+    "older": "The Great Moon Hoax, 1835"
+  },
+  {
+    "id": "dreadnought",
+    "theme": "A rising sea power alarms the ruling one",
+    "rhyme": 2,
+    "then": {
+      "year": 1906,
+      "short": "Dreadnought",
+      "title": "HMS Dreadnought Starts a Naval Race",
+      "where": "Portsmouth, England",
+      "region": "europe",
+      "hook": "The British battleship so advanced it made every other battleship obsolete overnight.",
+      "text": "Launched in February 1906 and completed that December, HMS Dreadnought carried ten 12-inch guns and fast steam turbines. It made older battleships obsolete, so Britain and a rising Germany raced to build the new type. In a 1909 naval scare, the British slogan was “We want eight and we won’t wait.”"
+    },
+    "now": {
+      "year": 2020,
+      "short": "China’s Navy",
+      "title": "China Builds the World’s Largest Navy",
+      "where": "China",
+      "region": "china",
+      "hook": "Remember 2020: amid the pandemic, the Pentagon reported China’s navy had overtaken America’s in ship count.",
+      "text": "In September 2020 the Pentagon’s annual report said China had the world’s largest navy, about 350 ships and submarines against roughly 293 for the US. Chinese shipyards were launching warships at a rapid pace, and Beijing had built military bases on reefs in the South China Sea."
+    },
+    "followed": "The rivalry deepened British-German hostility before 1914. Their great fleets met only once, at Jutland in 1916, and the German battle fleet then stayed mostly in port.",
+    "next": {
+      "short": "New Sea Power",
+      "title": "A new naval challenger rises",
+      "text": "Around 2134, another rising power might challenge the leading navy, perhaps with fleets of cheap drone ships that make today’s carriers look as dated as pre-dreadnoughts did.",
+      "watch": "A newcomer outbuilding the leader in shipyards, a new ship type that makes old fleets obsolete, and rival alliances forming around sea lanes."
+    },
+    "breaks": "The US Navy still leads in tonnage, aircraft carriers and global bases, and nuclear weapons make a direct war between great powers far more dangerous than in 1914.",
+    "older": "The Anglo-Dutch Wars, 1652"
+  },
+  {
+    "id": "ellis",
+    "theme": "A great migration wave, then backlash",
+    "rhyme": 2,
+    "then": {
+      "year": 1907,
+      "short": "Ellis Island",
+      "title": "Ellis Island’s Record Year",
+      "where": "New York, USA",
+      "region": "us",
+      "hook": "The island gateway where millions of immigrants first set foot in America.",
+      "text": "In 1907 nearly 1.3 million immigrants entered the United States, a record at the time, and over a million passed through Ellis Island. Most came from southern and eastern Europe. On 17 April alone, inspectors processed 11,747 people."
+    },
+    "now": {
+      "year": 2015,
+      "short": "Migrant Crisis",
+      "title": "Europe’s Migrant Crisis",
+      "where": "Europe",
+      "region": "europe",
+      "hook": "Remember September 2015: the photo of drowned toddler Alan Kurdi, then crowds cheering refugees in Munich.",
+      "text": "More than a million migrants and refugees reached Europe by sea in 2015, many fleeing Syria’s civil war. Angela Merkel told Germans “We can do this,” and Germany took in about 890,000 asylum seekers. Hungary built a border fence."
+    },
+    "followed": "Backlash followed. Congress imposed a literacy test in 1917, and the 1924 quota law sharply cut arrivals from southern and eastern Europe and barred most Asians.",
+    "next": {
+      "short": "Climate Exodus",
+      "title": "A climate-driven wave of migration",
+      "text": "Around 2123, heat, drought and rising seas could push tens of millions to move, perhaps toward aging countries short of workers, setting off the same cycle of welcome and backlash.",
+      "watch": "Regions growing too hot to farm, labor shortages in aging societies, and new walls or quota laws in the countries people head for."
+    },
+    "breaks": "Ellis Island arrivals mostly came legally, seeking work in an America with few limits on Europeans; many 2015 arrivals were war refugees crossing irregularly into a 28-nation union.",
+    "older": "The Irish famine exodus, 1845"
+  },
+  {
+    "id": "modelt",
+    "theme": "A new vehicle goes mass market",
+    "rhyme": 2,
+    "then": {
+      "year": 1908,
+      "short": "Model T",
+      "title": "Ford’s Model T",
+      "where": "Detroit, Michigan",
+      "region": "us",
+      "hook": "Henry Ford’s simple, cheap car that put ordinary Americans on the road.",
+      "text": "Ford launched the Model T on 1 October 1908 at about $850. After the moving assembly line arrived in 1913, prices eventually fell below $300, and over 15 million were built by 1927. By 1918, half the cars in America were Model Ts."
+    },
+    "now": {
+      "year": 2023,
+      "short": "Electric Cars",
+      "title": "Electric Cars Go Mass Market",
+      "where": "Worldwide, led by China",
+      "region": "world",
+      "hook": "Remember 2023: a Tesla, the Model Y, became the world’s best-selling car of any kind.",
+      "text": "Nearly 14 million electric cars were sold worldwide in 2023, about 18% of all new cars, up from about 4% in 2020. China accounted for about 60% of sales, and in late 2023 China’s BYD passed Tesla in quarterly battery-car sales."
+    },
+    "followed": "Cars reshaped America with paved highways, suburbs and a booming oil industry. In 1927 Ford replaced the Model T with the Model A, as General Motors offered more style and choice.",
+    "next": {
+      "short": "Robot Rides",
+      "title": "Self-driving or flying vehicles for everyone",
+      "text": "Around 2138, another vehicle could go from rich people’s novelty to everyday tool, perhaps self-driving pods or small electric aircraft, and cities might redraw streets and parking around it.",
+      "watch": "Prices falling year after year, one model that suddenly everyone buys, and cities rewriting street and parking rules."
+    },
+    "breaks": "The Model T created mass car ownership from almost nothing; electric cars replace a machine people already own, helped by climate policy and subsidies.",
+    "older": "Stephenson’s Rocket, 1829"
+  },
+  {
+    "id": "titanic",
+    "theme": "Confidence in a machine built for the wealthy",
+    "rhyme": 2,
+    "then": {
+      "year": 1912,
+      "short": "Titanic",
+      "title": "The Sinking of the Titanic",
+      "where": "North Atlantic",
+      "region": "europe",
+      "hook": "The “unsinkable” luxury liner that hit an iceberg on its maiden voyage.",
+      "text": "On 14 April 1912 the luxury liner Titanic, carrying millionaires like John Jacob Astor, struck an iceberg on its maiden voyage. It sank in under three hours. With lifeboats for only 1,178 of about 2,224 aboard, more than 1,500 died."
+    },
+    "now": {
+      "year": 2023,
+      "short": "Titan Sub",
+      "title": "The Titan Submersible Implodes",
+      "where": "North Atlantic",
+      "region": "us",
+      "hook": "Remember June 2023: the world counted down the Titan’s oxygen, not knowing it had already imploded.",
+      "text": "On 18 June 2023 OceanGate’s Titan submersible imploded on a dive to the Titanic wreck, killing all five aboard, including CEO Stockton Rush. Seats cost $250,000. The carbon-fiber craft had never been certified, and experts had warned about its safety."
+    },
+    "followed": "Inquiries in Britain and the US led to lifeboats for all aboard and round-the-clock radio watches. The 1914 SOLAS safety treaty and the International Ice Patrol followed.",
+    "next": {
+      "short": "Space Tragedy",
+      "title": "A luxury space trip ends in disaster",
+      "text": "Around 2134, wealthy tourists might ride to orbit, the Moon or the deep ocean on craft sold as safe. One disaster could force the safety rules the industry skipped, as Titanic did.",
+      "watch": "Private tourist trips to space or extreme places, operators avoiding outside certification, and marketing that promises total safety."
+    },
+    "breaks": "Titanic carried over 2,200 people of every class; Titan carried five people who signed waivers for an uncertified experimental craft.",
+    "older": "The warship Vasa sinks, 1628"
+  },
+  {
+    "id": "somme",
+    "theme": "Trench attrition meets new war machines",
+    "rhyme": 3,
+    "then": {
+      "year": 1916,
+      "short": "The Somme",
+      "title": "The Battle of the Somme",
+      "where": "Somme, France",
+      "region": "europe",
+      "hook": "The battle where Britain suffered 57,000 casualties in one day and tanks made their debut.",
+      "text": "On 1 July 1916 British and French troops attacked German trenches along the Somme. Britain suffered 57,470 casualties that day, including over 19,000 dead. Tanks first appeared in September, and by November the Allies had advanced only about 10 km, at a cost of over a million casualties on both sides."
+    },
+    "now": {
+      "year": 2023,
+      "short": "Bakhmut",
+      "title": "The Battle of Bakhmut",
+      "where": "Bakhmut, Ukraine",
+      "region": "europe",
+      "hook": "Remember 2023: drone videos from Bakhmut showing a city ground down to rubble and craters.",
+      "text": "Russian forces, spearheaded by the Wagner Group, fought for Bakhmut from August 2022 until claiming it in May 2023. Soldiers dug trenches, and both sides used cheap drones to spot targets and drop grenades. Tens of thousands were killed or wounded; exact figures remain disputed."
+    },
+    "followed": "The war ground on for two more years. By 1918 armies combined tanks, aircraft and artillery to break the trench deadlock, and Germany signed an armistice in November.",
+    "next": {
+      "short": "Robot Trenches",
+      "title": "A war of attrition fought by machines",
+      "text": "Around 2130, two evenly matched armies might again stall in a grinding war, with swarms of autonomous drones making any open ground deadly and pushing soldiers back underground.",
+      "watch": "Cheap autonomous weapons that favor defenders, armies digging in instead of maneuvering, and nations racing to mass-produce shells and drones."
+    },
+    "breaks": "The Somme was one front of a world war between empires; Bakhmut was far smaller, and constant drone surveillance meant almost nothing could move unseen.",
+    "older": "The Siege of Petersburg, 1864"
+  },
+  {
+    "id": "sykes",
+    "theme": "Borders drawn by outsiders, defied by insurgents",
+    "rhyme": 2,
+    "then": {
+      "year": 1916,
+      "short": "Sykes–Picot",
+      "title": "The Sykes–Picot Agreement",
+      "where": "Ottoman Middle East",
+      "region": "mideast",
+      "hook": "The secret British-French pact that split the Ottoman Arab lands into zones on a map.",
+      "text": "In May 1916 Britain’s Mark Sykes and France’s François Georges-Picot secretly agreed how to split the Ottoman Empire’s Arab lands after the war. Their map drew zones of British and French control and influence across today’s Syria, Lebanon, Iraq and Jordan. The Bolsheviks exposed the deal in 1917."
+    },
+    "now": {
+      "year": 2014,
+      "short": "ISIS Caliphate",
+      "title": "ISIS Declares a Caliphate",
+      "where": "Iraq and Syria",
+      "region": "mideast",
+      "hook": "Remember summer 2014: ISIS fighters seized Mosul and bulldozed the sand berm marking the Iraq–Syria border.",
+      "text": "In June 2014 ISIS seized Mosul, Iraq’s second-largest city, and on 29 June declared a caliphate under Abu Bakr al-Baghdadi. A propaganda video titled “The End of Sykes–Picot” showed a bulldozer flattening a sand berm on the Iraq–Syria border. At its peak ISIS ruled millions of people."
+    },
+    "followed": "After the Ottoman defeat, the 1920 San Remo conference gave France mandates over Syria and Lebanon and Britain over Iraq and Palestine. Many Arab leaders felt betrayed by British wartime promises of independence.",
+    "next": {
+      "short": "Lines Redrawn",
+      "title": "Old borders crack under new pressures",
+      "text": "Around 2112, armed movements might again try to erase borders drawn by outsiders, perhaps where heat and water shortages leave weak states unable to hold their frontier regions.",
+      "watch": "Governments losing control of border areas, groups invoking colonial-era maps as a grievance, and disputes over shared rivers like the Tigris and Euphrates."
+    },
+    "breaks": "Today’s borders were mostly set by deals after 1918 that departed from the 1916 map, and ISIS lost its last territory in 2019.",
+    "older": "The First Partition of Poland, 1772"
+  },
+  {
+    "id": "flu",
+    "theme": "A pandemic in a hyper-connected world",
+    "rhyme": 3,
+    "then": {
+      "year": 1918,
+      "short": "Spanish Flu",
+      "title": "The Spanish Flu",
+      "where": "Worldwide",
+      "region": "world",
+      "hook": "The pandemic that killed more people than the First World War.",
+      "text": "From 1918 to 1920 an influenza pandemic infected about a third of the world’s people and killed an estimated 50 million. It struck healthy young adults especially hard. It was called “Spanish” because neutral Spain’s uncensored press reported it openly."
+    },
+    "now": {
+      "year": 2020,
+      "short": "COVID-19",
+      "title": "The COVID-19 Pandemic",
+      "where": "Worldwide",
+      "region": "world",
+      "hook": "Remember spring 2020: empty streets, homemade bread, and life on video calls.",
+      "text": "The WHO declared COVID-19 a pandemic on 11 March 2020. By April about half of humanity lived under some form of lockdown. Vaccines arrived within a year, and over 7 million deaths were officially reported, though the true toll was likely much higher."
+    },
+    "followed": "After further waves the flu faded in 1920. Many countries invested in public health, with Britain creating a Ministry of Health in 1919, and the Roaring Twenties followed.",
+    "next": {
+      "short": "Next Pandemic",
+      "title": "A new virus in a crowded world",
+      "text": "Around 2122, a new virus, perhaps a bird flu, could circle the globe within weeks. Vaccines might be designed in days, but how fast people accept them could decide the death toll.",
+      "watch": "Bird flu spreading between mammals, outbreaks where farms and forests meet, and how quickly vaccines can be made, shipped and trusted."
+    },
+    "breaks": "In 1918 doctors did not know a virus caused flu; in 2020 scientists sequenced the virus within weeks and had vaccines within a year.",
+    "older": "The Black Death, 1347"
+  },
+  {
+    "id": "weimar",
+    "theme": "Printing money until it is worthless",
+    "rhyme": 3,
+    "then": {
+      "year": 1923,
+      "short": "Hyperinflation",
+      "title": "Weimar Germany’s Hyperinflation",
+      "where": "Germany",
+      "region": "europe",
+      "hook": "Germans carted banknotes in wheelbarrows, and children played with bundles of worthless money.",
+      "text": "In January 1923 France and Belgium occupied the Ruhr after Germany fell behind on reparations. The government printed money to pay striking workers, and by autumn prices doubled every few days. By November one US dollar cost 4.2 trillion marks."
+    },
+    "now": {
+      "year": 2018,
+      "short": "Venezuela",
+      "title": "Venezuela’s Hyperinflation",
+      "where": "Venezuela",
+      "region": "latam",
+      "hook": "Remember 2018: a chicken pictured beside stacks of bolívars, and handbags woven from worthless notes.",
+      "text": "In 2018 Venezuela’s prices rose 130,060% by the central bank’s own count, and outside estimates ran far higher. In August the government cut five zeros from the bolívar. By November the UN said 3 million Venezuelans had left the country."
+    },
+    "followed": "A new currency, the Rentenmark, ended the crisis in November 1923, and the 1924 Dawes Plan eased reparations. Many Germans had lost their savings, a wound many historians link to later support for extremists.",
+    "next": {
+      "short": "Money Collapse",
+      "title": "A currency printed into worthlessness",
+      "text": "Around 2113, a government buried in debt or cut off from markets might again print money until its currency collapses, as savers flee into foreign or digital money.",
+      "watch": "Central banks funding governments directly, price controls, mass emigration, and ordinary people switching to dollars or cryptocurrencies to protect savings."
+    },
+    "breaks": "Germany stabilized its money in late 1923; Venezuela’s crisis dragged on for years, blamed by many economists on mismanagement and by its government on US sanctions.",
+    "older": "Revolutionary France’s assignats, 1795"
+  }
+]

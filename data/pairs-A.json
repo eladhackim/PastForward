@@ -1,0 +1,381 @@
+[
+  {
+    "id": "lisbon",
+    "theme": "A great quake shakes faith in authority",
+    "rhyme": 2,
+    "then": {
+      "year": 1755,
+      "short": "Lisbon Quake",
+      "title": "The Great Lisbon Earthquake",
+      "where": "Lisbon, Portugal",
+      "region": "europe",
+      "hook": "On All Saints’ Day, a quake, a tsunami and fire wrecked Lisbon and shook Europe.",
+      "text": "On the morning of 1 November 1755, a powerful quake struck as churches filled for Mass. A tsunami and fires followed, killing perhaps 30,000 to 40,000 people in Lisbon. In Candide, Voltaire mocked the belief that all is for the best, and minister Pombal rebuilt the Baixa with quake-resistant “gaiola” timber frames."
+    },
+    "now": {
+      "year": 2023,
+      "short": "Turkey Quakes",
+      "title": "The Turkey–Syria Earthquakes",
+      "where": "Southern Turkey and northern Syria",
+      "region": "mideast",
+      "hook": "Remember February 2023: rescuers pulling survivors from flattened apartment blocks in freezing winter nights.",
+      "text": "Before dawn on 6 February, a magnitude 7.8 quake struck, followed hours later by a 7.5. More than 50,000 people died in Turkey and thousands more in Syria. Anger focused on poorly built housing, construction amnesties and weak code enforcement, and prosecutors investigated over 600 people, including contractors."
+    },
+    "followed": "Pombal used the crisis to gather power and rebuilt downtown Lisbon on a planned grid. His questionnaire to every parish about the shaking is often called an early step toward modern seismology.",
+    "next": {
+      "short": "Megacity Quake",
+      "title": "A megacity quake tests building promises",
+      "text": "Around 2291, a great quake might hit a crowded megacity of glass towers and old apartment blocks. If some buildings fall while others stand, anger could turn on whoever approved, inspected or insured them.",
+      "watch": "Watch how strictly fast-growing cities enforce quake codes, whether old housing gets retrofitted, and whether building amnesties return."
+    },
+    "breaks": "Lisbon mainly shook faith in Providence and left its government stronger, while in 2023 public anger targeted builders and the officials meant to inspect them."
+  },
+  {
+    "id": "revolution",
+    "theme": "Food prices and a closed elite spark revolt",
+    "rhyme": 2,
+    "then": {
+      "year": 1789,
+      "short": "Bastille Falls",
+      "title": "The Storming of the Bastille",
+      "where": "Paris, France",
+      "region": "europe",
+      "hook": "On 14 July 1789, Parisians stormed a royal fortress-prison, and France still celebrates it.",
+      "text": "With the crown nearly bankrupt and bread near record prices, the Estates-General met in May 1789 for the first time since 1614. On 14 July, Parisians hunting for gunpowder stormed the Bastille, which held just seven prisoners. They killed its governor and paraded his head on a pike."
+    },
+    "now": {
+      "year": 2011,
+      "short": "Arab Spring",
+      "title": "The Arab Spring",
+      "where": "Tunisia, Egypt and beyond",
+      "region": "mideast",
+      "hook": "Remember early 2011: crowds packing Cairo’s Tahrir Square and cheering when Mubarak stepped down.",
+      "text": "After a Tunisian fruit seller set himself on fire in December 2010, protests over food prices, jobs and corruption swept the region. Tunisia’s Ben Ali fled on 14 January 2011 and Egypt’s Mubarak resigned on 11 February. Uprisings followed in Libya, Yemen, Syria and Bahrain."
+    },
+    "followed": "The revolution turned radical: the king was executed in 1793 and the Terror followed. In 1799 Napoleon Bonaparte seized power in a coup.",
+    "next": {
+      "short": "Hunger Revolt",
+      "title": "Price shocks topple a closed regime",
+      "text": "Around 2233, a sudden jump in food or energy prices, perhaps after failed harvests, might hit a country run by a narrow elite. Protests could spread across a whole region within weeks.",
+      "watch": "Watch staple food prices, youth unemployment, state debt and how tightly a ruling circle guards its privileges."
+    },
+    "breaks": "The French Revolution remade a great power and spread its ideas across Europe, while most Arab Spring uprisings ended in civil war or renewed authoritarian rule."
+  },
+  {
+    "id": "hamilton",
+    "theme": "A union starts sharing its debts",
+    "rhyme": 2,
+    "then": {
+      "year": 1790,
+      "short": "Hamilton Plan",
+      "title": "Hamilton’s Plan to Assume State Debts",
+      "where": "New York, United States",
+      "region": "us",
+      "hook": "The dinner deal from the musical Hamilton: state debts for a capital on the Potomac.",
+      "text": "Treasury Secretary Alexander Hamilton proposed that the federal government take over the states’ war debts, up to $21.5 million in the final law. States that had paid down theirs, like Virginia, objected. At a June 1790 dinner hosted by Jefferson, Madison agreed not to block it in return for a capital on the Potomac."
+    },
+    "now": {
+      "year": 2020,
+      "short": "EU Joint Debt",
+      "title": "The EU’s NextGenerationEU Recovery Fund",
+      "where": "Brussels, Belgium",
+      "region": "europe",
+      "hook": "Remember July 2020: masked EU leaders haggling for days over a €750 billion pandemic fund.",
+      "text": "In July 2020, EU leaders agreed on a €750 billion recovery fund, including €390 billion in grants, paid for by joint borrowing through the European Commission. German finance minister Olaf Scholz called the plan Europe’s “Hamiltonian moment”. The “frugal” Netherlands, Austria, Sweden and Denmark pushed back on grants."
+    },
+    "followed": "Assumption gave the young US strong credit, and the fight over it helped create the first political parties. When eight states defaulted in the 1840s, Congress refused to take on their debts.",
+    "next": {
+      "short": "Shared Debt",
+      "title": "A new union pools its debts",
+      "text": "Around 2250, a looser union, perhaps in Africa or Latin America, or even a global climate body, might issue its first shared bonds after a crisis. Leaders could again trade debt deals for symbols of power.",
+      "watch": "Watch for crises that push members of a union to borrow together, and for “one-off” joint funds that quietly become permanent."
+    },
+    "breaks": "The US took on states’ old debts for good, while NextGenerationEU borrowed new money as an officially one-off fund, and the EU still lacks a federal treasury."
+  },
+  {
+    "id": "vaccine",
+    "theme": "A breakthrough vaccine meets fear and backlash",
+    "rhyme": 3,
+    "then": {
+      "year": 1796,
+      "short": "First Vaccine",
+      "title": "Edward Jenner’s Smallpox Vaccine",
+      "where": "Berkeley, England",
+      "region": "europe",
+      "hook": "A country doctor used cowpox to protect a boy from smallpox, giving us the word “vaccine”.",
+      "text": "On 14 May 1796, Edward Jenner put cowpox from milkmaid Sarah Nelmes into scratches on eight-year-old James Phipps, who later resisted smallpox. In 1802 a James Gillray cartoon showed vaccinated people sprouting cows. After England made infant vaccination compulsory in 1853, anti-vaccination leagues formed."
+    },
+    "now": {
+      "year": 2020,
+      "short": "mRNA Vaccines",
+      "title": "The mRNA COVID-19 Vaccines",
+      "where": "Worldwide",
+      "region": "world",
+      "hook": "Remember winter 2020–21: vaccine queues, sore arms, and heated family arguments about the jab.",
+      "text": "Less than a year after the virus was identified, Britain approved the Pfizer-BioNTech vaccine on 2 December 2020, the first mRNA vaccine ever approved. Moderna’s followed weeks later. Billions of doses followed, and so did false claims about microchips and altered DNA and protests against mandates."
+    },
+    "followed": "Vaccination spread worldwide despite resistance, and in 1898 Britain let parents opt out as “conscientious objectors”. Smallpox was declared eradicated in 1980.",
+    "next": {
+      "short": "Gene Shots",
+      "title": "A gene-editing shot meets old fears",
+      "text": "Around 2244, a new kind of shot might reprogram cells, perhaps editing genes or training immunity against cancer and old age. Its promise could meet fears of tampering with human nature, spreading faster than any cartoon.",
+      "watch": "Watch trust in health agencies, how fast false health claims spread, and fights over mandates and opt-outs."
+    },
+    "breaks": "Smallpox killed about three in ten people it infected, while COVID-19 was far milder for most people, which made the case for mandates more contested.",
+    "older": "The Boston smallpox inoculation fight, 1721"
+  },
+  {
+    "id": "luddites",
+    "theme": "Workers fear machines will take their jobs",
+    "rhyme": 3,
+    "then": {
+      "year": 1811,
+      "short": "Luddites",
+      "title": "The Luddite Machine-Breakers",
+      "where": "Nottinghamshire, England",
+      "region": "europe",
+      "hook": "English textile workers smashed machines taking their jobs and gave us the word “Luddite”.",
+      "text": "From March 1811, stocking knitters near Nottingham, signing letters as “General Ludd”, smashed the frames of employers who cut pay and used cheaper, less-skilled labour. The revolt spread to Yorkshire and Lancashire. Parliament made machine-breaking a capital crime in 1812, and about 12,000 troops were deployed."
+    },
+    "now": {
+      "year": 2023,
+      "short": "AI Anxiety",
+      "title": "AI Anxiety and the Writers’ Strike",
+      "where": "Hollywood, United States",
+      "region": "us",
+      "hook": "Remember 2023: ChatGPT writing office emails, and Hollywood writers on picket lines over AI.",
+      "text": "Months after ChatGPT’s launch, generative AI spread into offices. Hollywood writers struck for 148 days from May 2023 and won rules that AI cannot count as a writer and studios cannot make writers use it. Actors struck too, partly over digital replicas."
+    },
+    "followed": "Troops, hangings and mass trials at York in 1813 crushed the movement within a few years. Mechanised mills spread, and hand weavers’ earnings collapsed, though average wages rose decades later.",
+    "next": {
+      "short": "Human-Made",
+      "title": "Workers bargain over what stays human",
+      "text": "Around 2235, a new wave of machines, perhaps robots with general skills, might reach work once thought safe, like care or teaching. Workers could strike or push for laws and labels that keep some tasks human.",
+      "watch": "Watch contract clauses that limit automation, how fast humanoid robots get cheaper, and whether productivity gains reach wages."
+    },
+    "breaks": "The Luddites faced soldiers and the gallows and lost, while the 2023 writers bargained within the law and won limits on AI in their contract."
+  },
+  {
+    "id": "railway",
+    "theme": "A new machine starts carrying the public",
+    "rhyme": 2,
+    "then": {
+      "year": 1830,
+      "short": "Liverpool Line",
+      "title": "The Liverpool and Manchester Railway Opens",
+      "where": "Liverpool and Manchester, England",
+      "region": "europe",
+      "hook": "The world’s first inter-city railway opened, and a locomotive ran over a leading politician.",
+      "text": "The 31-mile line opened on 15 September 1830, with Prime Minister the Duke of Wellington aboard. At a stop, Liverpool MP William Huskisson stepped onto the track and was hit by the locomotive Rocket, dying that evening. Even so, the line carried over a million passengers in its first two years."
+    },
+    "now": {
+      "year": 2024,
+      "short": "Robotaxis",
+      "title": "Robotaxis Open to the Public",
+      "where": "San Francisco and Wuhan",
+      "region": "world",
+      "hook": "Remember 2024: driverless cars ferrying riders around San Francisco, and a crowd setting one ablaze.",
+      "text": "In June 2024 Waymo opened its driverless taxis to anyone in San Francisco. Rival Cruise had its California permit suspended after one of its cars dragged a pedestrian in 2023. In Wuhan, Baidu’s Apollo Go ran hundreds of robotaxis, worrying local taxi drivers."
+    },
+    "followed": "Despite the death, passengers flocked to the line, and its success set off railway building across Britain and the world. By 1850 Britain had about 6,000 miles of railway.",
+    "next": {
+      "short": "Rocket Commute",
+      "title": "Pilotless rockets carry everyday travellers",
+      "text": "Around 2218, a new machine, perhaps a pilotless rocket crossing continents in under an hour, might open to ordinary travellers. Its first public trips could bring a famous accident, and fears that fade only once trips become routine.",
+      "watch": "Watch how courts assign blame when self-driving machines crash, and whether public trust follows their safety records."
+    },
+    "breaks": "The railway still had human drivers and created many new jobs, while robotaxis take the human out of the driving seat."
+  },
+  {
+    "id": "mania",
+    "theme": "A building boom races ahead of profits",
+    "rhyme": 2,
+    "then": {
+      "year": 1845,
+      "short": "Railway Mania",
+      "title": "Britain’s Railway Mania",
+      "where": "Britain",
+      "region": "europe",
+      "hook": "Victorian Britons poured their savings into railway shares, until the bubble burst.",
+      "text": "Cheap money and a hunt for returns sent railway shares soaring. In 1846 alone, Parliament authorised about 9,500 miles of new line. Middle-class savers, including the Brontë sisters, bought in, and George Hudson, the “Railway King”, became the face of the boom."
+    },
+    "now": {
+      "year": 2024,
+      "short": "AI Build-Out",
+      "title": "The AI Data-Centre Building Boom",
+      "where": "United States and beyond",
+      "region": "us",
+      "hook": "Remember 2024: Nvidia briefly becoming the world’s most valuable company as tech giants built data centres.",
+      "text": "In 2024 Microsoft, Alphabet, Amazon and Meta together spent over $200 billion on capital projects, much of it on AI data centres and chips. Microsoft signed a deal to restart a Three Mile Island reactor for power. A Sequoia partner called the gap between spending and revenue “AI’s $600 billion question”."
+    },
+    "followed": "By 1849 railway shares had lost nearly two-thirds of their value, and Hudson was disgraced for fraud. Yet the lines that were built became the core of Britain’s rail network.",
+    "next": {
+      "short": "Orbital Rush",
+      "title": "A rush to build in orbit",
+      "text": "Around 2203, investors might pour fortunes into the next big infrastructure bet, perhaps power or computing in orbit, long before customers pay for it. A crash could ruin backers yet leave useful hardware behind.",
+      "watch": "Watch for spending growing far faster than revenue, building funded by debt, and claims that “this time is different”."
+    },
+    "breaks": "Railway Mania was fed by small investors in new companies, while most AI building in 2024 was paid for by tech giants with large existing profits.",
+    "older": "Britain’s canal mania, 1793"
+  },
+  {
+    "id": "springtime",
+    "theme": "Uprisings leap across many countries at once",
+    "rhyme": 2,
+    "then": {
+      "year": 1848,
+      "short": "1848 Revolts",
+      "title": "The Revolutions of 1848",
+      "where": "Across Europe",
+      "region": "europe",
+      "hook": "The “Springtime of Peoples”: in weeks, revolt spread from Paris to Vienna, Berlin and Budapest.",
+      "text": "Revolt broke out in Palermo in January 1848, and Parisians toppled King Louis-Philippe in February. In March, Vienna’s uprising forced Chancellor Metternich to flee, and Berliners fought troops on barricades. Rebels demanded constitutions, free speech and national unity after bad harvests and an economic crisis."
+    },
+    "now": {
+      "year": 2019,
+      "short": "2019 Protests",
+      "title": "The Global Protest Wave of 2019",
+      "where": "From Santiago to Beirut",
+      "region": "world",
+      "hook": "Remember October 2019: huge crowds in Santiago, Beirut and Baghdad, all in the same weeks.",
+      "text": "In 2019, protests often sparked by everyday costs spread across continents: a metro fare rise in Chile, a WhatsApp tax in Lebanon, fuel subsidy cuts in Ecuador. Sudan’s Omar al-Bashir and Algeria’s Abdelaziz Bouteflika were forced out, and the prime ministers of Lebanon and Iraq resigned."
+    },
+    "followed": "By 1849 most revolts had been crushed and conservative rule restored. Yet the Austrian Empire’s end of serfdom stuck, and nationalism fed Italian and German unification within about two decades.",
+    "next": {
+      "short": "Protest Wave",
+      "title": "Protests leap across a connected planet",
+      "text": "Around 2190, a shared shock, perhaps a price spike or a viral image, might set off protests in dozens of countries within days. Some leaders could fall while the systems behind them adapt and survive.",
+      "watch": "Watch for living-cost shocks hitting many countries at once, crowded young cities, and leaders who stay in power for decades."
+    },
+    "breaks": "The 1848 rebels shared ideas of liberty and nationhood across one continent, while the 2019 protests had mostly separate, local causes across many.",
+    "older": "The revolutions of 1830"
+  },
+  {
+    "id": "cable",
+    "theme": "Wiring the planet for instant contact",
+    "rhyme": 2,
+    "then": {
+      "year": 1858,
+      "short": "Atlantic Cable",
+      "title": "The First Transatlantic Telegraph Cable",
+      "where": "Ireland to Newfoundland",
+      "region": "world",
+      "hook": "Queen Victoria and President Buchanan traded messages under the Atlantic, and then the cable died.",
+      "text": "Cyrus Field’s company completed a cable from Ireland to Newfoundland on 5 August 1858. Queen Victoria’s 98-word greeting to President Buchanan took about 16 hours to send. New York celebrated with fireworks that set City Hall alight, but the cable failed after about three weeks."
+    },
+    "now": {
+      "year": 2019,
+      "short": "Starlink",
+      "title": "SpaceX Launches the First Starlink Satellites",
+      "where": "Cape Canaveral, United States",
+      "region": "us",
+      "hook": "Remember 2019: a neat line of bright dots gliding across the night sky, Starlink’s first satellites.",
+      "text": "In May 2019 a Falcon 9 rocket carried 60 Starlink satellites into orbit, the start of SpaceX’s plan to beam internet everywhere. Astronomers soon complained of streaks across their images. Within six years, thousands of satellites served millions of users, including Ukraine’s military."
+    },
+    "followed": "In 1866 the giant steamship Great Eastern laid a lasting cable. Within decades, undersea lines linked every inhabited continent, letting markets, newspapers and empires react within hours.",
+    "next": {
+      "short": "Solar Web",
+      "title": "A network stretching across the solar system",
+      "text": "Around 2180, laser links might join Earth, the Moon and settlements on Mars into one network. Even at light speed, each message to Mars would take between about 3 and 22 minutes.",
+      "watch": "Watch deep-space laser tests, the crowding of low Earth orbit, and how much of the world’s connectivity a few companies control."
+    },
+    "breaks": "The 1858 cable linked just two points and soon died, while Starlink kept growing into a global network run by a single company.",
+    "older": "Claude Chappe’s optical telegraph, 1794"
+  },
+  {
+    "id": "carrington",
+    "theme": "A solar storm tests a wired world",
+    "rhyme": 2,
+    "then": {
+      "year": 1859,
+      "short": "Carrington",
+      "title": "The Carrington Event",
+      "where": "Worldwide",
+      "region": "world",
+      "hook": "The most intense solar storm on record made telegraphs spark and lit auroras near the tropics.",
+      "text": "On 1 September 1859, English astronomer Richard Carrington saw a brilliant white flare on the Sun. About 18 hours later a severe geomagnetic storm struck, shocking telegraph operators and letting some lines work with batteries disconnected. Auroras were seen as far south as Cuba and Hawaii."
+    },
+    "now": {
+      "year": 2024,
+      "short": "Gannon Storm",
+      "title": "The May 2024 Gannon Solar Storm",
+      "where": "Worldwide",
+      "region": "world",
+      "hook": "Remember May 2024: phone photos of pink and green skies from places that rarely see auroras.",
+      "text": "From 10 May 2024, eruptions from a giant sunspot group caused the first “extreme” G5 geomagnetic storm since 2003, later named after scientist Jennifer Gannon. Auroras appeared as far south as Mexico and northern India. GPS errors stalled some self-steering tractors at planting time, but no major blackouts followed."
+    },
+    "followed": "Telegraphs recovered within days, and 1859 became the benchmark for worst-case planning. In March 1989 a weaker storm blacked out Quebec’s power grid for about nine hours.",
+    "next": {
+      "short": "Superstorm",
+      "title": "A Carrington-sized storm hits a wired world",
+      "text": "Around 2189, a storm as strong as 1859’s might hit a world running on satellites, grids and perhaps settlements in space. A day’s warning could let operators power down in time; a late warning could mean weeks of blackouts.",
+      "watch": "Watch investment in solar early-warning spacecraft, grid hardening against geomagnetic currents, and near misses like the large July 2012 eruption."
+    },
+    "breaks": "The 2024 storm was far weaker than 1859’s, and forecasters issued warnings a day or more ahead, something Victorian telegraph operators never had.",
+    "older": "The great aurora seen over Japan and China, 1770"
+  },
+  {
+    "id": "commune",
+    "theme": "French crowds rise against a distant government",
+    "rhyme": 1,
+    "then": {
+      "year": 1871,
+      "short": "Paris Commune",
+      "title": "The Paris Commune",
+      "where": "Paris, France",
+      "region": "europe",
+      "hook": "After France lost to Prussia, Paris workers ran the city themselves for 72 days.",
+      "text": "On 18 March 1871, Paris National Guards stopped the army seizing their cannons, and Adolphe Thiers’ government withdrew to Versailles. The Commune separated church and state and banned night work in bakeries. In the “Bloody Week” of late May, Communards shot hostages including the archbishop, and troops retaking Paris killed thousands."
+    },
+    "now": {
+      "year": 2018,
+      "short": "Yellow Vests",
+      "title": "The Yellow Vest Protests",
+      "where": "France",
+      "region": "europe",
+      "hook": "Remember late 2018: high-visibility vests on French roundabouts, and tear gas by the Arc de Triomphe.",
+      "text": "From 17 November 2018, protesters in the high-visibility vests French drivers must carry blocked roundabouts over a planned fuel tax rise. Organised on Facebook, the movement drew heavily from small towns and the countryside. After riots in Paris, President Macron dropped the tax rise and announced about €10 billion in help for low earners."
+    },
+    "followed": "Tens of thousands were arrested and thousands deported to New Caledonia before an amnesty in 1880. The Third Republic survived, and Marx and later Lenin held up the Commune as a model.",
+    "next": {
+      "short": "Cost Revolt",
+      "title": "A revolt against costs set from above",
+      "text": "Around 2165, people far from power, perhaps in fading towns, might rise against costs set by a faraway capital, such as climate rules or new taxes. Their badge could again be something ordinary, like a vest.",
+      "watch": "Watch for climate or tax rules that hit rural and car-dependent people hardest, and leaderless protests organised online."
+    },
+    "breaks": "The Commune was an armed takeover of Paris crushed by the army, while the Yellow Vests were a mostly provincial protest movement that won concessions.",
+    "older": "Étienne Marcel’s Paris revolt, 1358"
+  },
+  {
+    "id": "phone",
+    "theme": "A new phone rewires daily life",
+    "rhyme": 2,
+    "then": {
+      "year": 1876,
+      "short": "Bell’s Phone",
+      "title": "Bell Patents the Telephone",
+      "where": "Boston, United States",
+      "region": "us",
+      "hook": "“Mr. Watson, come here, I want to see you”: the famous first telephone call.",
+      "text": "Alexander Graham Bell filed his telephone patent on 14 February 1876, the same day rival Elisha Gray filed notice of a similar idea. It was granted on 7 March. Three days later in Boston, Bell called his assistant Thomas Watson from the next room."
+    },
+    "now": {
+      "year": 2007,
+      "short": "iPhone",
+      "title": "Apple Unveils the iPhone",
+      "where": "San Francisco, United States",
+      "region": "us",
+      "hook": "Remember 2007: Steve Jobs unveiling the iPhone on stage, then fans queuing overnight to buy one.",
+      "text": "On 9 January 2007 at Macworld in San Francisco, Steve Jobs unveiled the iPhone, a touchscreen phone, iPod and internet device in one. It went on sale in the US on 29 June from $499 with an AT&T contract. The App Store followed in 2008."
+    },
+    "followed": "Bell’s company fought off hundreds of patent challenges and grew into the Bell System. In 1915 Bell, in New York, made the first transcontinental call, to Watson in San Francisco.",
+    "next": {
+      "short": "Thought Phone",
+      "title": "A device that reads thoughts goes mainstream",
+      "text": "Around 2138, a new personal device, perhaps a brain implant or smart lens, might replace the phone. People could send words or images by thought, and daily life could reorganise around it within a decade.",
+      "watch": "Watch brain implants moving from medical trials to healthy users, and early laws on who owns neural data."
+    },
+    "breaks": "Bell’s phone took decades to reach most homes and carried only voice, while smartphones reached billions within about a decade and carried the internet.",
+    "older": "Samuel Morse’s telegraph, 1844"
+  }
+]

@@ -1,0 +1,273 @@
+{
+  "springs": [
+    {
+      "year": 1892,
+      "short": "John Muir",
+      "title": "John Muir founds the Sierra Club",
+      "region": "us",
+      "line": "Naturalist John Muir’s writings rallied Americans to save wild places; he co-founded the Sierra Club and inspired the national parks movement."
+    },
+    {
+      "year": 1977,
+      "short": "Green Belt",
+      "title": "Wangari Maathai’s Green Belt Movement",
+      "region": "africa",
+      "line": "Kenyan scientist Wangari Maathai got rural women planting trees, growing a movement that planted tens of millions and earned her a Nobel."
+    },
+    {
+      "year": 2006,
+      "short": "Al Gore’s Film",
+      "title": "Al Gore’s An Inconvenient Truth",
+      "region": "us",
+      "line": "Al Gore’s climate slideshow became a hit film that alarmed millions about global warming; he shared the 2007 Nobel Peace Prize."
+    }
+  ],
+  "protests": [
+    {
+      "year": 1848,
+      "short": "1848 Revolutions",
+      "title": "The Revolutions of 1848",
+      "region": "europe",
+      "line": "Revolutions spread from Paris to Vienna, Berlin, Milan and Budapest within weeks, as crowds demanded constitutions, voting rights and national freedom."
+    },
+    {
+      "year": 1989,
+      "short": "1989 Revolutions",
+      "title": "The revolutions of 1989 in Eastern Europe",
+      "region": "europe",
+      "line": "Protests and strikes swept Eastern Europe, toppling communist governments from Poland to Romania within months and bringing down the Berlin Wall."
+    },
+    {
+      "year": 2003,
+      "short": "Iraq War Protest",
+      "title": "The global Iraq war protests",
+      "region": "world",
+      "line": "On one day, millions marched against the coming Iraq war in about 600 cities, from Rome and London to Sydney."
+    },
+    {
+      "year": 2011,
+      "short": "Arab Spring",
+      "title": "The Arab Spring and Occupy protests",
+      "region": "world",
+      "line": "Uprisings spread from Tunisia across the Arab world, and Occupy protest camps soon appeared in hundreds of cities worldwide."
+    }
+  ],
+  "oil": [
+    {
+      "year": 1941,
+      "short": "Japan Embargo",
+      "title": "The US oil embargo on Japan",
+      "region": "china",
+      "line": "The US halted oil exports to Japan, which imported most of its oil from America, pushing Tokyo toward war."
+    },
+    {
+      "year": 1956,
+      "short": "Suez Crisis",
+      "title": "The Suez Crisis",
+      "region": "mideast",
+      "line": "During the Suez war, Egypt blocked the canal and Saudi Arabia embargoed Britain and France, bringing petrol rationing to Britain."
+    },
+    {
+      "year": 2009,
+      "short": "Gas Cutoff 2009",
+      "title": "The 2009 Russia-Ukraine gas cutoff",
+      "region": "europe",
+      "line": "Russia cut gas to Ukraine in a price dispute, and transit stopped for two weeks, leaving parts of Europe cold in midwinter."
+    }
+  ],
+  "saigon": [
+    {
+      "year": 1842,
+      "short": "Kabul 1842",
+      "title": "The British retreat from Kabul",
+      "region": "india",
+      "line": "About 4,500 British and Indian troops and 12,000 civilians left Kabul in winter under a truce; almost all were killed or captured."
+    },
+    {
+      "year": 1947,
+      "short": "Partition",
+      "title": "Britain’s rushed exit from India",
+      "region": "india",
+      "line": "Britain moved India’s independence up by ten months; partition into India and Pakistan uprooted over 10 million people amid mass killings."
+    },
+    {
+      "year": 1962,
+      "short": "Algeria 1962",
+      "title": "France’s exit from Algeria",
+      "region": "africa",
+      "line": "After an eight-year war, France left Algeria; some 800,000 settlers fled within months, and many Algerians who served France were killed."
+    }
+  ],
+  "volcker": [
+    {
+      "year": 1920,
+      "short": "Fed Hikes 1920",
+      "title": "The Fed’s post-war rate hikes",
+      "region": "us",
+      "line": "To stop post-World War I inflation, the Fed raised its discount rate to 7%; prices fell sharply and a severe recession followed."
+    },
+    {
+      "year": 2023,
+      "short": "Turkey 2023",
+      "title": "Turkey’s steep rate hikes",
+      "region": "europe",
+      "line": "After cutting rates as inflation soared past 80%, Turkey’s central bank raised them from 8.5% to 50% in under a year."
+    }
+  ],
+  "chernobyl": [
+    {
+      "year": 1979,
+      "short": "Three Mile",
+      "title": "The Three Mile Island accident",
+      "region": "us",
+      "line": "A Pennsylvania reactor partly melted down; no one died, but public fear soared and many Americans turned against nuclear power."
+    }
+  ],
+  "tiananmen": [
+    {
+      "year": 1919,
+      "short": "May Fourth",
+      "title": "The May Fourth Movement",
+      "region": "china",
+      "line": "Beijing students protested the Versailles deal giving Shandong to Japan, sparking a movement for democracy and science that 1989 protesters invoked."
+    },
+    {
+      "year": 1976,
+      "short": "April Fifth",
+      "title": "The 1976 Tiananmen Incident",
+      "region": "china",
+      "line": "Crowds mourning Premier Zhou Enlai filled Tiananmen Square with wreaths and poems criticizing radical leaders, until police and militia cleared them."
+    },
+    {
+      "year": 2014,
+      "short": "Umbrella 2014",
+      "title": "Hong Kong’s Umbrella Movement",
+      "region": "china",
+      "line": "Protesters occupied main Hong Kong streets for 79 days, demanding open elections for the city’s leader and shielding themselves with umbrellas."
+    },
+    {
+      "year": 2022,
+      "short": "Blank Paper",
+      "title": "China’s blank paper protests",
+      "region": "china",
+      "line": "After a deadly Urumqi fire, crowds in Shanghai, Beijing and other cities protested COVID lockdowns, holding blank paper to signal censored speech."
+    }
+  ],
+  "netscape": [
+    {
+      "year": 1920,
+      "short": "Radio Boom",
+      "title": "The first radio broadcasting boom",
+      "region": "us",
+      "line": "Pittsburgh’s KDKA began regular commercial broadcasts, setting off a craze that put radio sets in millions of homes within five years."
+    },
+    {
+      "year": 2007,
+      "short": "iPhone",
+      "title": "The launch of the iPhone",
+      "region": "us",
+      "line": "Apple’s iPhone put the web, music and phone in one touchscreen device; within a decade, billions of people carried smartphones."
+    }
+  ],
+  "dolly": [
+    {
+      "year": 1973,
+      "short": "Gene Splicing",
+      "title": "The first genetically engineered bacteria",
+      "region": "us",
+      "line": "Stanley Cohen and Herbert Boyer spliced foreign genes into bacteria, prompting scientists to pause such work and meet at Asilomar in 1975."
+    },
+    {
+      "year": 1978,
+      "short": "IVF Baby",
+      "title": "Louise Brown, the first IVF baby",
+      "region": "europe",
+      "line": "Louise Brown, the first baby conceived outside the body, was born in England, setting off a global debate over “test-tube babies”."
+    },
+    {
+      "year": 2010,
+      "short": "Synthetic Cell",
+      "title": "The first cell with a synthetic genome",
+      "region": "us",
+      "line": "Craig Venter’s team made a bacterium run on a lab-built genome, and President Obama asked his bioethics commission to study the risks."
+    }
+  ],
+  "deepblue": [
+    {
+      "year": 2011,
+      "short": "Watson",
+      "title": "IBM’s Watson wins Jeopardy!",
+      "region": "us",
+      "line": "IBM’s Watson beat Ken Jennings and Brad Rutter, the quiz show’s biggest champions, by answering clues written in everyday language."
+    },
+    {
+      "year": 2017,
+      "short": "Libratus",
+      "title": "AI beats top poker pros",
+      "region": "us",
+      "line": "Carnegie Mellon’s Libratus beat four top professionals at no-limit Texas hold’em, a game of bluffing and hidden cards, over 120,000 hands."
+    }
+  ],
+  "y2k": [
+    {
+      "year": 1990,
+      "short": "AT&T Crash",
+      "title": "The AT&T long-distance network crash",
+      "region": "us",
+      "line": "A bug in a software update crashed AT&T’s long-distance network for nine hours, blocking tens of millions of calls across the US."
+    },
+    {
+      "year": 2017,
+      "short": "WannaCry",
+      "title": "The WannaCry ransomware attack",
+      "region": "world",
+      "line": "WannaCry ransomware locked over 200,000 computers in about 150 countries, forcing British hospitals to cancel thousands of appointments."
+    },
+    {
+      "year": 2021,
+      "short": "Facebook Outage",
+      "title": "The great Facebook outage",
+      "region": "world",
+      "line": "A faulty command during routine maintenance knocked Facebook, Instagram and WhatsApp offline for about six hours for billions of users."
+    }
+  ],
+  "dotcom": [
+    {
+      "year": 1846,
+      "short": "Railway Mania",
+      "title": "Britain’s Railway Mania",
+      "region": "europe",
+      "line": "Britons poured savings into hundreds of new railway schemes, many never built; when share prices collapsed, thousands of investors were ruined."
+    },
+    {
+      "year": 1873,
+      "short": "Panic of 1873",
+      "title": "The Panic of 1873",
+      "region": "us",
+      "line": "After a US railroad boom, Jay Cooke’s bank collapsed under Northern Pacific debts, setting off a panic and a years-long depression."
+    }
+  ],
+  "blackout": [
+    {
+      "year": 1965,
+      "short": "1965 Blackout",
+      "title": "The Northeast blackout of 1965",
+      "region": "us",
+      "line": "A wrongly set relay near Niagara Falls triggered a cascade that left about 30 million people in the Northeast and Ontario dark."
+    },
+    {
+      "year": 1977,
+      "short": "NYC Blackout",
+      "title": "The New York City blackout of 1977",
+      "region": "us",
+      "line": "Lightning strikes blacked out New York City for about a day, and looting and arson broke out across many neighborhoods."
+    },
+    {
+      "year": 2012,
+      "short": "India Blackout",
+      "title": "India’s 2012 grid collapse",
+      "region": "india",
+      "line": "Two grid failures in two days left over 600 million people in northern and eastern India without power, the largest blackout recorded."
+    }
+  ]
+}
