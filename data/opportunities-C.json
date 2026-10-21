@@ -1,0 +1,288 @@
+{
+  "crash": {
+    "lastTime": "After 1929, new US securities laws required audited accounts, lifting demand for accountants, while 60 to 80 million Americans a week sought cheap escape at the movies. After 2008, the Dodd-Frank Act set off waves of hiring in bank compliance and risk.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Reporting tools for lightly regulated finance",
+        "line": "Compliance and reporting software for private credit, crypto and AI-run trading, where new rules tend to land after a crash."
+      },
+      {
+        "kind": "build",
+        "title": "Budgeting and debt repair services",
+        "line": "Low-cost budgeting, debt counseling and repair-over-replace services, which tend to see demand rise as households cut back after a bust."
+      },
+      {
+        "kind": "work",
+        "title": "Risk, audit and compliance roles",
+        "line": "Auditors, compliance officers and risk analysts tend to be hired in waves after crashes, as new rules follow the losses."
+      },
+      {
+        "kind": "learn",
+        "title": "Reading leverage and liquidity",
+        "line": "How to read leverage, liquidity and funding risk in filings, the warning signs behind 1929 margin loans and 2008 mortgage debt."
+      }
+    ],
+    "watch": "Borrowed money piling into one hot asset, and regulators opening inquiries into private credit or AI-driven trading."
+  },
+  "tariffs": {
+    "lastTime": "After 1930, Britain and its dominions turned to “imperial preference” trade deals at Ottawa in 1932. In the 2018 trade war, China shifted its soybean buying to Brazil, and in 2023 Mexico overtook China as the top source of US imports.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Tariff and origin tracking tools",
+        "line": "Software that tracks tariff codes, rules of origin and duty refunds for small importers when rates change month to month."
+      },
+      {
+        "kind": "build",
+        "title": "Supplier vetting in new hubs",
+        "line": "Services that find and vet suppliers in places like Mexico, Vietnam or India as buyers shift away from tariffed partners."
+      },
+      {
+        "kind": "work",
+        "title": "Customs brokers and trade compliance",
+        "line": "Licensed customs brokers, trade compliance analysts and sourcing managers tend to be in demand whenever tariff rules shift often."
+      },
+      {
+        "kind": "learn",
+        "title": "Rules of origin and HS codes",
+        "line": "How Harmonized System codes, rules of origin and trade agreements decide what a product pays at the border, including new carbon border taxes."
+      }
+    ],
+    "watch": "Carbon border taxes like the EU's CBAM, new bloc-only trade deals, and firms moving production to allied or neighboring countries."
+  },
+  "bankrun": {
+    "lastTime": "In the 1930s runs, savers moved cash to the government's Postal Savings System, whose deposits grew about eightfold to $1.2 billion by 1933. In the week after SVB failed in 2023, the 25 largest US banks gained about $120 billion in deposits.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Brakes for automated money agents",
+        "line": "Safeguards that stop AI assistants and apps from moving savings all at once on a rumor, such as delays and human confirmation."
+      },
+      {
+        "kind": "work",
+        "title": "Bank liquidity and treasury risk",
+        "line": "Liquidity risk analysts and bank treasury staff, roles regulators pushed banks to strengthen after the fast failures of 2023."
+      },
+      {
+        "kind": "work",
+        "title": "Financial crisis communications",
+        "line": "Staff who track social media and explain things plainly to customers during a scare, as Roosevelt's Fireside Chat did in 1933."
+      },
+      {
+        "kind": "learn",
+        "title": "How deposit protection works",
+        "line": "How deposit insurance limits, bank liquidity rules and central bank emergency lending work, so you can judge where cash is protected."
+      }
+    ],
+    "watch": "Runs that spread through social media in hours, AI agents allowed to move deposits on their own, and debates over raising insured deposit limits."
+  },
+  "dust": {
+    "lastTime": "After the Dust Bowl, the new Soil Conservation Service promoted contour plowing and terracing, and the Shelterbelt project planted about 220 million trees. When smoke hit New York in June 2023, air purifier searches jumped over 450% and some stores sold out.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Clean-air rooms for public buildings",
+        "line": "Filtration upgrades and clean-air rooms for schools, clinics and care homes in regions where smoke seasons are getting longer."
+      },
+      {
+        "kind": "work",
+        "title": "Soil, fire and air quality jobs",
+        "line": "Soil conservationists, prescribed-burn crews and air quality forecasters, much as the 1930s created soil and forestry jobs across the Plains."
+      },
+      {
+        "kind": "work",
+        "title": "Ventilation and filtration technicians",
+        "line": "HVAC technicians and building engineers who can upgrade filtration, as smoke days make indoor air a public health concern."
+      },
+      {
+        "kind": "learn",
+        "title": "Soil and groundwater care",
+        "line": "Cover cropping, no-till farming and groundwater management, the modern versions of the contour plowing and shelterbelts that eased the Dust Bowl."
+      }
+    ],
+    "watch": "More smoke-advisory days each year, falling groundwater under farm regions, and cities funding clean-air shelters or school filter upgrades."
+  },
+  "munich": {
+    "lastTime": "After Munich, Britain sped up civil defense, and about 1.5 million Anderson air-raid shelters were up by September 1939. After 2022, Germany built its first LNG import terminal in under 200 days to replace Russian gas, and European defense budgets rose.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Backup supply for towns and firms",
+        "line": "Services that help towns and firms reduce reliance on one risky supplier through local energy storage, alternate fuels and backup sourcing."
+      },
+      {
+        "kind": "work",
+        "title": "Civil protection and emergency planning",
+        "line": "Emergency planners, civil protection staff and infrastructure security specialists, as European states rebuild shelters, stockpiles and preparedness programs."
+      },
+      {
+        "kind": "work",
+        "title": "Demining and reconstruction",
+        "line": "Deminers, structural engineers and recovery planners could be needed for years, with Ukraine's recovery needs put at $588 billion in February 2026."
+      },
+      {
+        "kind": "learn",
+        "title": "Open-source investigation skills",
+        "line": "Verifying troop movements and official claims from public data, the skill used to test pretexts such as protecting threatened kin abroad."
+      }
+    ],
+    "watch": "European governments funding shelters, stockpiles and reservists, or a lasting ceasefire that shifts money and people toward rebuilding Ukraine."
+  },
+  "martians": {
+    "lastTime": "Hadley Cantril's 1940 study of the scare, The Invasion from Mars, became a classic of media research. The Hitler Diaries fell to police lab tests of paper, thread and ink, and after 2023 “Content Credentials” for tracing image origins spread to cameras and phones.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Provenance checks before money moves",
+        "line": "Tools that check an image or video's origin before it moves markets or headlines, for newsrooms, trading desks and insurers."
+      },
+      {
+        "kind": "build",
+        "title": "AI content labeling compliance",
+        "line": "Services that help firms label AI-generated media to meet transparency rules such as those in the EU AI Act."
+      },
+      {
+        "kind": "work",
+        "title": "Verification and digital forensics roles",
+        "line": "Verification editors, trust and safety analysts and digital forensics examiners tend to be in demand once fakes start fooling experts."
+      },
+      {
+        "kind": "learn",
+        "title": "Media forensics and provenance",
+        "line": "How content credentials, watermarks and metadata work, and how to spot edits, much as document examiners learned to date paper and ink."
+      }
+    ],
+    "watch": "Markets or officials reacting to unverified media, and whether phones, cameras and platforms show content credentials by default."
+  },
+  "einstein": {
+    "lastTime": "The 1939 warning led to the Manhattan Project, which employed nearly 130,000 people and left lasting national labs such as Los Alamos and Oak Ridge. After Asilomar, 1976 NIH rules required biosafety committees, and in 2023 Britain and the US set up AI safety institutes.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Independent AI testing services",
+        "line": "Third-party labs that test AI models for dangerous capabilities before release, much as biosafety reviews became routine after Asilomar."
+      },
+      {
+        "kind": "build",
+        "title": "DNA order screening tools",
+        "line": "Screening that checks DNA synthesis orders for dangerous sequences, a safeguard that may grow as AI and biology tools combine."
+      },
+      {
+        "kind": "work",
+        "title": "AI evaluation and governance roles",
+        "line": "AI evaluation researchers, red-teamers and governance officers in labs, companies and government, a field that may grow as testing rules take effect."
+      },
+      {
+        "kind": "learn",
+        "title": "Dual-use risk assessment",
+        "line": "How to judge when useful research could also cause harm, a method shaped by nuclear arms control and Asilomar, now applied to AI."
+      }
+    ],
+    "watch": "Researchers leaving labs to speak out, governments requiring pre-release testing of AI models, and summits devoted to one technology."
+  },
+  "transistor": {
+    "lastTime": "The 1954 Regency TR-1 pocket radio brought transistors to shoppers, and Silicon Valley grew after eight engineers left Shockley's lab to found Fairchild Semiconductor in 1957. After the 1989 Web proposal, web designer became a common new job.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Small AI devices that run locally",
+        "line": "Low-power devices that run AI models on board, such as hearing aids, translators and farm sensors, as transistors first spread through hearing aids."
+      },
+      {
+        "kind": "work",
+        "title": "Chip plant and data center technicians",
+        "line": "Fab technicians, electricians and cooling specialists for chip plants and data centers, the physical workforce the AI build-out tends to need."
+      },
+      {
+        "kind": "work",
+        "title": "AI integration for small businesses",
+        "line": "People who fit AI tools into the daily work of clinics, workshops and offices, as radio and TV technicians once serviced new electronics."
+      },
+      {
+        "kind": "learn",
+        "title": "Adapting small open models",
+        "line": "Fine-tuning and testing small open models for one field, the way 1950s engineers learned circuit design around a new component."
+      }
+    ],
+    "watch": "The cost of each AI task falling year after year, and whether one model design keeps spreading or a new one replaces it."
+  },
+  "mccarthy": {
+    "lastTime": "The 1919 Palmer Raids prompted the founding of the ACLU in 1920. Blacklisted writers like Dalton Trumbo kept working under fronts and pen names, winning Oscars for Roman Holiday and The Brave One, and in 2022 the campus group FIRE widened its work nationwide.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Fair process before discipline",
+        "line": "HR and legal services that give staff a documented, fair review before discipline over speech, rather than decisions made under online pressure."
+      },
+      {
+        "kind": "build",
+        "title": "Context for resurfaced posts",
+        "line": "Tools that show the date and full context of resurfaced posts, so employers and audiences can judge old remarks fairly."
+      },
+      {
+        "kind": "work",
+        "title": "Employment and free-speech law",
+        "line": "Employment lawyers, ombudspeople and workplace investigators, roles that tend to grow when firings over opinions lead to disputes and lawsuits."
+      },
+      {
+        "kind": "learn",
+        "title": "Speech rights and digital footprints",
+        "line": "What laws protect off-duty speech where you live, and how employer and visa social media screening works."
+      }
+    ],
+    "watch": "Job, visa or loan decisions based on automated scans of online history, and new laws that protect or restrict off-duty speech."
+  },
+  "suez": {
+    "lastTime": "After the 1956 closure, owners ordered tankers too big for the canal, many from Japanese yards, which made the Cape route pay. In 2024, Asia-Europe container rates more than tripled and Red Sea war-risk insurance premiums rose about tenfold.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Detour and delay planning tools",
+        "line": "Tools that model detours, delays and insurance costs so smaller importers can plan around a blocked chokepoint."
+      },
+      {
+        "kind": "build",
+        "title": "Overland routes around chokepoints",
+        "line": "Rail, road and pipeline links that bypass sea chokepoints, like Egypt's SUMED oil pipeline, planned after the canal's 1967 closure."
+      },
+      {
+        "kind": "work",
+        "title": "Supply chain risk and maritime security",
+        "line": "Supply chain risk analysts, freight planners and maritime security staff, roles that tend to be needed when a sea lane closes."
+      },
+      {
+        "kind": "learn",
+        "title": "Chokepoints and shipping economics",
+        "line": "How sea chokepoints, freight rates, transit times and marine insurance connect, so you can read a shipping shock early."
+      }
+    ],
+    "watch": "War-risk premiums for key straits, navies escorting merchant ships, and big container lines announcing a return to or exit from a route."
+  },
+  "sputnik": {
+    "lastTime": "After Sputnik, the US created NASA and ARPA in 1958, and the National Defense Education Act funded student loans and math, science and language teaching. US college enrollment roughly doubled in the 1960s, and Apollo employed about 400,000 people.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Math, science and AI teaching tools",
+        "line": "Courses and classroom tools for math, science and AI basics, the kind of education push the 1958 act funded."
+      },
+      {
+        "kind": "work",
+        "title": "Researchers in national tech programs",
+        "line": "Engineers, researchers and technicians in government-funded AI, chip and energy programs, which tend to expand quickly after a rival's surprise."
+      },
+      {
+        "kind": "work",
+        "title": "Math and science teachers",
+        "line": "Math, science and computing teachers, as governments tend to fund teacher training and scholarships after a technology scare."
+      },
+      {
+        "kind": "learn",
+        "title": "Doing more with less compute",
+        "line": "Methods for training and running AI models with less computing power, the approach that let DeepSeek compete at lower reported cost."
+      }
+    ],
+    "watch": "New crash programs or education acts for AI, chips or fusion, and surprise model releases from unexpected labs."
+  }
+}
