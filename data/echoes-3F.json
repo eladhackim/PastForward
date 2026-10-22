@@ -1,0 +1,171 @@
+{
+  "revolution": [
+    {
+      "year": 875,
+      "short": "Huang Chao",
+      "title": "Huang Chao’s revolt shakes the Tang",
+      "region": "china",
+      "line": "After drought, famine and higher taxes, failed exam candidate Huang Chao led a revolt that took Chang’an; the Tang never recovered."
+    },
+    {
+      "year": 1351,
+      "short": "Red Turbans",
+      "title": "The Red Turbans rise against the Yuan",
+      "region": "china",
+      "line": "After Yellow River floods and famine, drafted dike workers joined the Red Turbans against Mongol rule, which collapsed in 1368."
+    },
+    {
+      "year": 1378,
+      "short": "Ciompi Revolt",
+      "title": "The Ciompi revolt seizes Florence",
+      "region": "europe",
+      "line": "Florence’s wool workers, barred from the guilds that ran the city and crushed by taxes, seized the government for six weeks."
+    }
+  ],
+  "railway": [],
+  "carrington": [
+    {
+      "year": 774,
+      "short": "Miyake Event",
+      "title": "Tree rings record the 774 solar storm",
+      "region": "world",
+      "line": "Tree rings worldwide record a carbon-14 spike, likely from a solar storm, the strongest in 11,000 years; a repeat could cripple satellites."
+    },
+    {
+      "year": 1770,
+      "short": "1770 Aurora",
+      "title": "The great aurora over Japan and China",
+      "region": "world",
+      "line": "Auroras lit skies over Japan and China for about nine nights, and Cook’s crew saw them near Timor, a storm rivaling Carrington’s."
+    }
+  ],
+  "scramble": [
+    {
+      "year": 1479,
+      "short": "Alcáçovas",
+      "title": "Castile and Portugal split Africa’s Atlantic coast",
+      "region": "africa",
+      "line": "After a naval war over Guinea’s gold and slaves, Castile got the Canaries and Portugal sole rights to Africa’s coast beyond them."
+    },
+    {
+      "year": 1494,
+      "short": "Tordesillas",
+      "title": "The Treaty of Tordesillas",
+      "region": "world",
+      "line": "Spain and Portugal split the world along a line west of Cape Verde, leaving Africa’s coasts to Portugal; other powers rejected it."
+    }
+  ],
+  "ellis": [
+    {
+      "year": -2034,
+      "short": "Amorite Wall",
+      "title": "Ur builds a wall against the Amorites",
+      "region": "mideast",
+      "line": "As Amorite herders moved into Sumer, Ur’s king built a wall called “Holding back the Tidnum”; Amorite dynasties later ruled Mesopotamia anyway."
+    },
+    {
+      "year": 1381,
+      "short": "Flemings 1381",
+      "title": "London rebels massacre Flemish immigrants",
+      "region": "europe",
+      "line": "After Edward III welcomed Flemish weavers, rebels in the Peasants’ Revolt hunted Flemings in London, killing dozens identified by their accents."
+    }
+  ],
+  "sykes": [
+    {
+      "year": -167,
+      "short": "Macedonia Split",
+      "title": "Rome splits Macedonia into four republics",
+      "region": "europe",
+      "line": "Rome cut Macedonia into four republics, banning marriage across the new lines; in 149 BC the pretender Andriscus reunited it in revolt."
+    }
+  ],
+  "tariffs": [
+    {
+      "year": -220,
+      "short": "Bosporus Toll",
+      "title": "Rhodes goes to war over Byzantium’s toll",
+      "region": "europe",
+      "line": "Byzantium taxed ships leaving the Black Sea; Rhodes, speaking for the merchants, declared war and forced the toll’s repeal."
+    },
+    {
+      "year": 1358,
+      "short": "Hanse Embargo",
+      "title": "The Hanseatic League embargoes Flanders",
+      "region": "europe",
+      "line": "When Flanders raised taxes on Hanseatic traders, the League embargoed it and nearly caused a famine until the count expanded their privileges."
+    },
+    {
+      "year": 1828,
+      "short": "Abominations",
+      "title": "The Tariff of Abominations",
+      "region": "us",
+      "line": "Congress sharply raised import duties; Southern planters, fearing lost cotton sales to Britain, protested, and South Carolina later tried to nullify it."
+    }
+  ],
+  "martians": [
+    {
+      "year": 69,
+      "short": "False Nero",
+      "title": "A false Nero appears in Greece",
+      "region": "europe",
+      "line": "According to Tacitus, a lyre-playing lookalike claiming to be the dead emperor Nero gathered deserters in Greece until Roman soldiers killed him."
+    },
+    {
+      "year": 1165,
+      "short": "Prester John",
+      "title": "The letter of Prester John",
+      "region": "europe",
+      "line": "A forged letter from a mythical Christian king in Asia, “Prester John,” swept Europe; a pope wrote to him in 1177."
+    },
+    {
+      "year": 1440,
+      "short": "Fake Donation",
+      "title": "Valla exposes the Donation of Constantine",
+      "region": "europe",
+      "line": "Lorenzo Valla proved the Donation of Constantine, a decree popes had cited for centuries to back their worldly power, was a forgery."
+    },
+    {
+      "year": 1835,
+      "short": "Moon Hoax",
+      "title": "The Great Moon Hoax",
+      "region": "us",
+      "line": "The New York Sun reported that astronomer John Herschel had found bat-winged people on the Moon; the hoax went unexposed for weeks."
+    }
+  ],
+  "suez": [
+    {
+      "year": 1498,
+      "short": "Cape Route",
+      "title": "Vasco da Gama sails around Africa",
+      "region": "world",
+      "line": "To bypass Venice and Egypt’s hold on the Red Sea spice route, Portugal’s Vasco da Gama sailed around Africa and reached India."
+    }
+  ],
+  "oil": [],
+  "tiananmen": [
+    {
+      "year": 166,
+      "short": "Partisan Purge",
+      "title": "Han China purges its student critics",
+      "region": "china",
+      "line": "When Imperial Academy students backed officials denouncing palace eunuchs, Emperor Huan arrested some 200 and banned the critics from office for life."
+    },
+    {
+      "year": 1126,
+      "short": "Chen Dong 1126",
+      "title": "Song students besiege the palace gate",
+      "region": "china",
+      "line": "Imperial University students led crowds to Kaifeng’s palace gate demanding a sacked minister back; the court yielded, but later executed their leader."
+    }
+  ],
+  "y2k": [
+    {
+      "year": 1980,
+      "short": "ARPANET Crash",
+      "title": "A glitch crashes the ARPANET",
+      "region": "us",
+      "line": "A hardware fault sent corrupted routing updates circling endlessly, and for several hours almost no ARPANET node could reach another."
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "vaccine": [
+    {
+      "year": 1763,
+      "short": "Paris Ban",
+      "title": "Paris bans smallpox inoculation",
+      "region": "europe",
+      "line": "Amid a smallpox outbreak some blamed on inoculation, the Paris Parlement banned the practice in the city until doctors and theologians ruled."
+    },
+    {
+      "year": 1774,
+      "short": "Marblehead Riot",
+      "title": "Marblehead burns its smallpox hospital",
+      "region": "us",
+      "line": "Fearing a new private inoculation hospital would spread smallpox and scare off ships, Marblehead townspeople sneaked onto its island and burned it."
+    }
+  ],
+  "springtime": [
+    {
+      "year": -499,
+      "short": "Ionian Revolt",
+      "title": "The Ionian Revolt against Persia",
+      "region": "mideast",
+      "line": "Miletus’s leader ousted Persian-backed tyrants across Ionia, and the revolt leapt to Caria, Byzantium and Cyprus, according to Herodotus, the main source."
+    },
+    {
+      "year": 1381,
+      "short": "Revolts 1378–82",
+      "title": "Europe’s wave of revolts, 1378 to 1382",
+      "region": "europe",
+      "line": "Within five years, worker, peasant and tax revolts erupted in Florence, Ghent, England, Rouen and Paris, as news passed between them."
+    }
+  ],
+  "phone": [
+    {
+      "year": 1844,
+      "short": "Morse Telegraph",
+      "title": "Morse’s telegraph sends its first message",
+      "region": "us",
+      "line": "Samuel Morse tapped “What hath God wrought” from Washington to Baltimore; within 17 years wires spanned the continent, carrying news in minutes."
+    }
+  ],
+  "yellow": [
+    {
+      "year": 1193,
+      "short": "Song Xiaobao",
+      "title": "Song China’s “small papers” spread fabrications",
+      "region": "china",
+      "line": "Song officials warned that xiaobao, popular private news sheets, invented imperial orders and appointments out of nothing and spread them widely."
+    }
+  ],
+  "titanic": [
+    {
+      "year": 1120,
+      "short": "White Ship",
+      "title": "The White Ship sinks off Normandy",
+      "region": "europe",
+      "line": "Nobles partying aboard the newly refitted White Ship pushed it to overtake the king’s vessel; it hit a rock, drowning his heir."
+    }
+  ],
+  "weimar": [
+    {
+      "year": 301,
+      "short": "Roman Debasement",
+      "title": "Rome’s debased coins and Diocletian’s price edict",
+      "region": "europe",
+      "line": "Emperors debased Rome’s silver coins to pay soldiers until prices soared; Diocletian’s edict capped prices on pain of death, but largely failed."
+    },
+    {
+      "year": 1214,
+      "short": "Jin Paper Money",
+      "title": "The Jin dynasty prints notes without limit",
+      "region": "china",
+      "line": "Fighting the Mongols, northern China’s Jin dynasty printed notes without limit; by 1214 it issued 1,000-string notes, and people turned to silver."
+    },
+    {
+      "year": 1330,
+      "short": "Tughluq Tokens",
+      "title": "Delhi’s token currency collapses",
+      "region": "india",
+      "line": "Sultan Muhammad bin Tughluq issued brass and copper tokens valued as silver; people forged them at home until the coins were worthless."
+    },
+    {
+      "year": 1795,
+      "short": "Assignats",
+      "title": "Revolutionary France’s assignats collapse",
+      "region": "europe",
+      "line": "Revolutionary France printed about 45 billion livres in assignats to pay debts and wars; by 1796 they were nearly worthless."
+    }
+  ],
+  "dust": [
+    {
+      "year": -44,
+      "short": "Caesar’s Dim Sun",
+      "title": "The dim sun after Caesar’s murder",
+      "region": "europe",
+      "line": "Amid turmoil after Caesar’s murder, Romans described a darkened sun; eruptions of Etna and Alaska’s Okmok brought cold, failed harvests and famine."
+    },
+    {
+      "year": 1780,
+      "short": "Dark Day",
+      "title": "New England’s Dark Day",
+      "region": "us",
+      "line": "Smoke, likely from Canadian wildfires in a drought year, darkened New England at midday during the Revolutionary War; many feared Judgment Day."
+    }
+  ],
+  "transistor": [
+    {
+      "year": 105,
+      "short": "Cai Lun’s Paper",
+      "title": "Cai Lun improves papermaking",
+      "region": "china",
+      "line": "Cai Lun, head of the Han palace workshop, presented an improved papermaking method using bark, rags and fishnets; paper later spread worldwide."
+    },
+    {
+      "year": 1044,
+      "short": "Gunpowder",
+      "title": "China records the first gunpowder formulas",
+      "region": "china",
+      "line": "Chinese alchemists seeking an elixir of life likely stumbled on gunpowder; its first formulas date to 1044, and it remade warfare worldwide."
+    },
+    {
+      "year": 1440,
+      "short": "Gutenberg Press",
+      "title": "Gutenberg’s printing press",
+      "region": "europe",
+      "line": "Goldsmith Johannes Gutenberg developed a movable-type press; by 1500, presses in about 270 European cities had printed over 20 million copies."
+    }
+  ],
+  "springs": [
+    {
+      "year": 1485,
+      "short": "Bishnoi Rules",
+      "title": "Guru Jambheshwar founds the Bishnoi community",
+      "region": "india",
+      "line": "In Rajasthan, Guru Jambheshwar founded the Bishnoi community, whose 29 rules forbid felling green trees and killing animals; followers still protect wildlife."
+    }
+  ],
+  "volcker": [],
+  "dolly": [
+    {
+      "year": 1803,
+      "short": "Aldini’s Corpse",
+      "title": "Aldini tries to revive a corpse",
+      "region": "europe",
+      "line": "In London, Giovanni Aldini electrified a hanged murderer’s corpse; the jaw quivered, an eye opened, and onlookers thought the man might revive."
+    }
+  ],
+  "blackout": []
+}

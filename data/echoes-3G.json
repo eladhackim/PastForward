@@ -1,0 +1,166 @@
+{
+  "hamilton": [
+    {
+      "year": 1798,
+      "short": "Batavian Debts",
+      "title": "The Dutch provinces merge their debts",
+      "region": "europe",
+      "line": "The Batavian Republic’s 1798 constitution declared the debts of the old Dutch provinces, mostly Holland’s, national debts of the whole Batavian people."
+    },
+    {
+      "year": 1815,
+      "short": "Belgian Burden",
+      "title": "Belgium shares the Dutch national debt",
+      "region": "europe",
+      "line": "In the new Kingdom of the Netherlands, Belgians shared a large Dutch debt they had not run up, a lasting grievance."
+    }
+  ],
+  "mania": [
+    {
+      "year": 1841,
+      "short": "State Defaults",
+      "title": "US states default after a canal boom",
+      "region": "us",
+      "line": "US states borrowed for canals and railways, expecting tolls to repay the loans; after the 1837 panic, Indiana, Pennsylvania and others defaulted."
+    }
+  ],
+  "commune": [
+    {
+      "year": 1112,
+      "short": "Laon Commune",
+      "title": "Laon’s commune rises against its bishop",
+      "region": "europe",
+      "line": "Laon’s townspeople obtained a commune charter; when their bishop paid the king to revoke it, they rose up and killed him."
+    },
+    {
+      "year": 1382,
+      "short": "Maillotins",
+      "title": "The Maillotins revolt against a new tax",
+      "region": "europe",
+      "line": "When young Charles VI’s regents imposed a new sales tax, Parisians seized mallets from the city hall and attacked tax collectors."
+    }
+  ],
+  "trusts": [
+    {
+      "year": -386,
+      "short": "Grain Cartel",
+      "title": "Athens tries its grain dealers’ cartel",
+      "region": "europe",
+      "line": "Athens tried grain dealers who colluded to buy cheaply from importers and hoarded grain, one of the earliest recorded antitrust trials."
+    },
+    {
+      "year": 483,
+      "short": "Zeno’s Edict",
+      "title": "Emperor Zeno outlaws monopolies",
+      "region": "europe",
+      "line": "Eastern Roman Emperor Zeno banned monopolies and price-fixing pacts, even those earlier emperors had granted, on pain of confiscation and exile."
+    }
+  ],
+  "modelt": [
+    {
+      "year": 1829,
+      "short": "The Rocket",
+      "title": "Stephenson’s Rocket wins the Rainhill Trials",
+      "region": "europe",
+      "line": "Stephenson’s Rocket won the Rainhill Trials, and the Liverpool and Manchester steam railway was soon carrying 1,200 passengers a day."
+    }
+  ],
+  "flu": [
+    {
+      "year": -430,
+      "short": "Athens Plague",
+      "title": "The Plague of Athens",
+      "region": "europe",
+      "line": "Thucydides says a plague from Ethiopia, via Egypt, first struck Athens at its port, Piraeus; about a quarter of Athenians died."
+    },
+    {
+      "year": 249,
+      "short": "Cyprian Plague",
+      "title": "The Plague of Cyprian",
+      "region": "europe",
+      "line": "A new disease spread from Egypt across the Roman Empire, reaching Rome by 251, where up to 5,000 a day reportedly died."
+    },
+    {
+      "year": 735,
+      "short": "Japan Smallpox",
+      "title": "The great smallpox epidemic in Japan",
+      "region": "china",
+      "line": "Smallpox, reportedly carried from Korea by a fisherman, reached the capital with travelling officials and killed perhaps a third of Japan’s people."
+    }
+  ],
+  "bankrun": [
+    {
+      "year": 1499,
+      "short": "Venice Bank Run",
+      "title": "Runs topple Venice’s biggest banks",
+      "region": "europe",
+      "line": "Amid war costs and rumours, depositors rushed Venice’s banks; the Garzoni failed, and three of four main banks collapsed by 1500."
+    },
+    {
+      "year": 1907,
+      "short": "Panic of 1907",
+      "title": "The Panic of 1907",
+      "region": "us",
+      "line": "Depositors pulled $8 million from New York’s Knickerbocker Trust within three hours; J. P. Morgan rallied bankers to stop the runs."
+    }
+  ],
+  "einstein": [
+    {
+      "year": 1508,
+      "short": "Leonardo’s Dive",
+      "title": "Leonardo keeps an underwater invention secret",
+      "region": "europe",
+      "line": "In his notebooks, Leonardo withheld his method of staying underwater “by reason of the evil nature of men,” who might sink ships."
+    }
+  ],
+  "sputnik": [
+    {
+      "year": -260,
+      "short": "Rome’s Navy",
+      "title": "Rome races to build a navy",
+      "region": "europe",
+      "line": "According to Polybius, Rome, a land power outmatched at sea by Carthage, copied a stranded Carthaginian warship and built 120 warships."
+    }
+  ],
+  "saigon": [
+    {
+      "year": -413,
+      "short": "Sicily Retreat",
+      "title": "Athens’ doomed retreat from Sicily",
+      "region": "europe",
+      "line": "After failing to take Syracuse, some 40,000 Athenians, allies and camp followers fled overland; nearly all were killed or captured."
+    },
+    {
+      "year": 1291,
+      "short": "Fall of Acre",
+      "title": "Crusaders flee the fall of Acre",
+      "region": "mideast",
+      "line": "Mamluks stormed Acre, the crusader kingdom’s capital; in a chaotic flight to the ships, the rich paid fortunes for passage."
+    },
+    {
+      "year": 1368,
+      "short": "Yuan Flees",
+      "title": "The last Yuan emperor flees Beijing",
+      "region": "china",
+      "line": "As Ming armies neared, the last Yuan emperor abandoned Dadu, today’s Beijing, and fled north, ending Mongol rule over China."
+    }
+  ],
+  "netscape": [
+    {
+      "year": 1839,
+      "short": "Daguerreotype",
+      "title": "France gives photography free to the world",
+      "region": "europe",
+      "line": "France bought Daguerre’s process and gave it free to the world; by 1853 Americans made an estimated three million daguerreotypes a year."
+    }
+  ],
+  "dotcom": [
+    {
+      "year": 1693,
+      "short": "Patent Boom",
+      "title": "England’s patent share boom bursts",
+      "region": "europe",
+      "line": "In London’s first stock market boom, investors rushed into firms with new patents such as diving engines; few survived the decade."
+    }
+  ]
+}

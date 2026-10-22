@@ -599,15 +599,15 @@ const FONT = {
 const LEX = {
   rhyme: ["Rhyme", "A pattern history keeps repeating. PastForward follows 48 of them.", "Pandemics in a connected world"],
   motif: ["Motif", "The one line that sums up a rhyme: the idea that keeps coming back. From music: a short theme a piece keeps returning to.", "“A pandemic in a hyper-connected world”"],
-  echo: ["Echo", "Each time a rhyme happened. The more echoes, the stronger the signal that it may sound again: twice is a hint, six times is a pattern.", "165, 541, 1347, 1831, 1889, 1918, 1957, 2009, 2020"],
-  seed: ["Seed", "The first known echo of a rhyme.", "165, the Antonine Plague"],
+  echo: ["Echo", "Each time a rhyme happened. The more echoes, the stronger the signal that it may sound again: twice is a hint, six times is a pattern.", "430 BC, 165, 249, 541, 735, 1347, 1831, 1889, 1918, 1957, 2009, 2020"],
+  seed: ["Seed", "The first known echo of a rhyme.", "430 BC, the Plague of Athens"],
   match: ["Match", "The two echoes PastForward matches to measure a rhyme: Then and Today.", "1918 and 2020"],
   then: ["Then", "The earlier half of the match.", "1918, the Spanish flu"],
   today: ["Today", "The recent half, the one you lived through.", "2020, COVID-19"],
   cadence: ["Cadence", "The years between Then and Today. From music: the rhythm a phrase falls in.", "102 years"],
   next: ["Next", "Where the rhyme may sound again: Today plus the cadence. A way to imagine, not a forecast.", "c. 2122, a new virus in a crowded world"],
   due: ["Due date", "The year a rhyme’s Next lands: Today plus the cadence. That year, the rhyme “comes due”.", "2020 + 102 years = c. 2122"],
-  score: ["Score", "Every echo of a rhyme laid out in time, from seed to Next. From music: the sheet that shows every part at once.", "165 → 541 → 1347 → 1831 → 1889 → 1918 → 1957 → 2009 → 2020 → c. 2122"],
+  score: ["Score", "Every echo of a rhyme laid out in time, from seed to Next. From music: the sheet that shows every part at once.", "430 BC → 165 → 541 → … → 1918 → 1957 → 2009 → 2020 → c. 2122"],
   strong: ["Strong rhyme", "Historians commonly draw this comparison.", "1918 Spanish flu → 2020 COVID-19"],
   medium: ["Medium rhyme", "Alike in important ways, different in others.", "1845 Railway Mania → 2024 AI build-out"],
   weak: ["Weak rhyme", "Alike on the surface; the differences run deep.", "1871 Paris Commune → 2018 Yellow Vests"],
@@ -2603,7 +2603,15 @@ const IP = PAIRS.find(p => p.id === "flu") || PAIRS[0];
 const I_THEN = IP.then.year, I_NOW = IP.now.year, I_GAP = I_NOW - I_THEN, I_NEXT = I_NOW + I_GAP;
 const I_ROWS = ["crash", "luddites", "titanic"].map(id => PAIRS.find(p => p.id === id)).filter(Boolean);
 const I_BY = 1990;
-const I_ECHO = (() => { const i = PAIRS.indexOf(IP); return [...(IP.echoes || []).map(e => ({ ...e, kind: "echo" })), { kind: "then", year: I_THEN, short: IP.then.short }, { kind: "now", year: I_NOW, short: IP.now.short }].sort((a, b) => a.year - b.year); })();
+const I_ECHO_ALL = [...(IP.echoes || []).map(e => ({ ...e, kind: "echo" })), { kind: "then", year: I_THEN, short: IP.then.short }, { kind: "now", year: I_NOW, short: IP.now.short }].sort((a, b) => a.year - b.year);
+// The scene shows at most 9 rows: the seed, Then, Today, and an even spread of the rest; the counter still counts every echo.
+const I_ECHO = (() => {
+  if (I_ECHO_ALL.length <= 9) return I_ECHO_ALL;
+  const fixed = [I_ECHO_ALL[0], ...I_ECHO_ALL.filter(e => e.kind !== "echo")];
+  const rest = I_ECHO_ALL.filter(e => !fixed.includes(e)), want = 9 - fixed.length;
+  const pick = Array.from({ length: want }, (_, i) => rest[Math.round(i * (rest.length - 1) / Math.max(1, want - 1))]);
+  return [...new Set([...fixed, ...pick])].sort((a, b) => a.year - b.year);
+})();
 const BEAT = 1;   // the intro's metronome: lists reveal one item per beat, so each lands before the next
 const I_LIFE = lifeEchoes(I_BY).length;
 const I_REVEAL = .45 + BEAT + .3;   // "It rhymes." arrives one beat after the first line has settled
@@ -2626,7 +2634,7 @@ const CAP = {
   then: { k: "Then", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
   now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same rhyme, ${I_GAP} years later.` },
   next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `Count the same ${I_GAP} years forward. That is where the rhyme may return.` },
-  echoes: { k: "Echoes", kc: "now", t: "Every echo makes the signal stronger.", l: `Twice is a hint. ${(NUMW[I_ECHO.length] || String(I_ECHO.length)).replace(/^./, ch => ch.toUpperCase())} times is a pattern.` },
+  echoes: { k: "Echoes", kc: "now", t: "Every echo makes the signal stronger.", l: `Twice is a hint. ${(NUMW[I_ECHO_ALL.length] || String(I_ECHO_ALL.length)).replace(/^./, ch => ch.toUpperCase())} times is a pattern.` },
   more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime, and counts every time it has sounded." },
   how: { k: "How to use it", t: "Swipe through time. Tap to jump.", l: "Follow a rhyme from Then to Today to Next. Dive deeper to see the rest of the world that year." },
   you: { k: "Your future", kc: "next", t: "Which rhymes come due in your lifetime?", l: "Add your birth year. Play the daily puzzle, or ask about anything." },
@@ -2744,7 +2752,8 @@ function inEchoes(c, W, H, lt) {
   const n = I_ECHO.length, rows = n + 1, rh = Math.min(46, (H * .76) / rows), y0 = Math.round(H * .54 - (rows - 1) * rh / 2), cx = Math.round(W / 2 - 34);
   const fy = rh < 30 ? 13.5 : 15, fn = rh < 30 ? 14.5 : 16.5, FADE = .9;
   const at = i => .8 + i * BEAT;
-  const shown = I_ECHO.filter((e, i) => lt >= at(i)).length;
+  const rowsShown = I_ECHO.filter((e, i) => lt >= at(i)).length;
+  const shown = Math.round(rowsShown * I_ECHO_ALL.length / n);   // counts every echo, not just the rows on screen
   // the line walks down to each new echo as it arrives, never jumping
   const k = (lt - at(0)) / BEAT;
   if (k > 0) {

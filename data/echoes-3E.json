@@ -1,0 +1,163 @@
+{
+  "lisbon": [
+    {
+      "year": -464,
+      "short": "Sparta Quake",
+      "title": "An earthquake sparks Sparta’s helot revolt",
+      "region": "europe",
+      "line": "A quake devastated Sparta and its helot serfs seized the moment to revolt, a rising that took Sparta years to put down."
+    },
+    {
+      "year": -70,
+      "short": "Han Quake Edict",
+      "title": "A quake humbles Han Emperor Xuan",
+      "region": "china",
+      "line": "After quakes hit 49 commanderies, Emperor Xuan called disasters Heaven’s warning, asked for frank criticism and wore plain dress for five days."
+    },
+    {
+      "year": 1257,
+      "short": "Kamakura Quake",
+      "title": "Nichiren blames Japan’s rulers for disasters",
+      "region": "china",
+      "line": "After a quake and famines, monk Nichiren blamed the disasters on Japan’s rulers backing teachings he called false, and was exiled."
+    }
+  ],
+  "luddites": [],
+  "cable": [
+    {
+      "year": 840,
+      "short": "Beacon Chain",
+      "title": "Byzantium’s fire beacons warn the capital",
+      "region": "europe",
+      "line": "Under Emperor Theophilos, nine hilltop fire beacons could flash warnings of Arab raids about 720 km to Constantinople within an hour."
+    },
+    {
+      "year": 1794,
+      "short": "Chappe Telegraph",
+      "title": "Chappe’s optical telegraph links Paris and Lille",
+      "region": "europe",
+      "line": "Claude Chappe’s 15 semaphore towers spanned 230 km from Lille to Paris and reported the recapture of Le Quesnoy within an hour."
+    }
+  ],
+  "krakatoa": [
+    {
+      "year": -43,
+      "short": "Okmok Eruption",
+      "title": "Alaska’s Okmok volcano chills Rome and Egypt",
+      "region": "world",
+      "line": "Alaska’s Okmok made 43 and 42 BC among the coldest years in recent millennia, linked to failed harvests in Rome and Egypt."
+    },
+    {
+      "year": 1257,
+      "short": "Samalas",
+      "title": "Indonesia’s Samalas volcano erupts",
+      "region": "world",
+      "line": "Indonesia’s Samalas left twice Tambora’s sulfur in polar ice, and European chroniclers recorded a cold, rainy 1258 with failed harvests."
+    }
+  ],
+  "dreadnought": [
+    {
+      "year": 1025,
+      "short": "Chola Navy",
+      "title": "Chola India’s navy humbles Srivijaya",
+      "region": "india",
+      "line": "Rajendra Chola’s growing navy sacked Srivijaya’s capital and seized its king, breaking the trade monopoly of Southeast Asia’s leading sea power."
+    },
+    {
+      "year": 1499,
+      "short": "Zonchio",
+      "title": "The Ottoman navy defeats Venice at Zonchio",
+      "region": "europe",
+      "line": "The Ottomans’ growing fleet beat Venice, the eastern Mediterranean’s leading sea power, at Zonchio, marking their arrival as a serious naval force."
+    }
+  ],
+  "somme": [
+    {
+      "year": -213,
+      "short": "Syracuse Siege",
+      "title": "Archimedes’ machines stall Rome at Syracuse",
+      "region": "europe",
+      "line": "Archimedes’ cranes and catapults wrecked Roman assaults on Syracuse, forcing a long stalemate and blockade until the city fell in 212 BC."
+    },
+    {
+      "year": 1268,
+      "short": "Xiangyang Siege",
+      "title": "The Mongol siege of Xiangyang",
+      "region": "china",
+      "line": "Mongols besieged Song China’s twin river fortresses for nearly five years until Persian-designed counterweight trebuchets broke them in 1273."
+    },
+    {
+      "year": 1453,
+      "short": "Constantinople",
+      "title": "Ottoman cannon pound Constantinople’s walls",
+      "region": "europe",
+      "line": "Mehmed II’s giant cannon pounded Constantinople’s walls for 53 days while sappers and defenders fought in tunnels below, until the city fell."
+    }
+  ],
+  "crash": [
+    {
+      "year": 1345,
+      "short": "Bardi & Peruzzi",
+      "title": "Florence’s great banks collapse",
+      "region": "europe",
+      "line": "Florence’s Bardi and Peruzzi banks, with branches across Europe, had lent fortunes to warring kings; defaults helped topple both by 1346."
+    },
+    {
+      "year": 1720,
+      "short": "South Sea Bubble",
+      "title": "The South Sea Bubble bursts",
+      "region": "europe",
+      "line": "South Sea Company shares soared from £128 to £1,000 in 1720, then fell to £150 by September as Paris’s Mississippi bubble burst."
+    }
+  ],
+  "munich": [
+    {
+      "year": 1500,
+      "short": "Ivan III’s War",
+      "title": "Ivan III seizes a third of Lithuania",
+      "region": "russia",
+      "line": "Citing persecution of Orthodox believers, Ivan III, “sovereign of all Rus,” warred on Lithuania and took about a third of its land."
+    }
+  ],
+  "mccarthy": [
+    {
+      "year": 166,
+      "short": "Partisan Ban",
+      "title": "Han eunuchs ban scholar-officials for life",
+      "region": "china",
+      "line": "Han eunuchs had scholar-officials and about 200 students, accused of forming a faction to criticize the court, barred from office for life."
+    },
+    {
+      "year": 833,
+      "short": "The Mihna",
+      "title": "The Abbasid Mihna tests officials’ beliefs",
+      "region": "mideast",
+      "line": "Caliph al-Ma’mun made judges and scholars affirm that the Quran was created; refusers lost posts or were jailed, among them Ibn Hanbal."
+    },
+    {
+      "year": 1104,
+      "short": "Song Blacklist",
+      "title": "Song China’s stone blacklist",
+      "region": "china",
+      "line": "Chancellor Cai Jing named 309 officials of a rival faction on a stone blacklist, copied across China, that sidelined them for years."
+    },
+    {
+      "year": 1478,
+      "short": "Inquisition",
+      "title": "Spain’s Inquisition is founded",
+      "region": "europe",
+      "line": "The Inquisition investigated converts suspected of secretly practicing Judaism, using anonymous denunciations, and barred the convicted and their descendants from office."
+    }
+  ],
+  "protests": [
+    {
+      "year": 1378,
+      "short": "Europe’s Revolts",
+      "title": "Revolts sweep Europe’s cities, 1378–1382",
+      "region": "europe",
+      "line": "From Florence’s Ciompi to Ghent, England’s Peasants’ Revolt, Rouen and Paris, revolts against taxes and elites swept Europe in 1378–1382."
+    }
+  ],
+  "chernobyl": [],
+  "deepblue": []
+}
