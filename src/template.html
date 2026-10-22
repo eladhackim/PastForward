@@ -181,6 +181,21 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .flist .fa { font: 700 13px var(--f-mono); color: var(--muted); white-space: nowrap; }
 .flist .fe { grid-column: 2 / -1; font: 14px/1.35 var(--f-mono); color: rgba(239, 232, 214, .72); }
 .fshare { margin-top: 4px; width: 100%; }
+.coach { flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: start; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(205, 185, 255, .35); background: rgba(205, 185, 255, .08); }
+.coach p { margin: 0; font: 15px/1.42 var(--f-mono); color: var(--ink); }
+.coach p b { color: var(--next); }
+.coach .cx { width: 30px; height: 30px; margin: -4px -6px 0 0; border: 0; border-radius: 50%; background: none; color: var(--muted); font: 20px/1 var(--f-mono); cursor: pointer; }
+.coach .cx:hover { color: var(--ink); }
+.coach .linkbtn { font: 700 14px var(--f-mono); }
+.card.coaching .card-in { flex-shrink: 0; }
+@media (max-height: 760px) { .card.coaching .glimpse, .card.coaching #cVote { display: none; } }
+@media (max-height: 700px) { #tl { height: 148px; } }
+@media (max-height: 600px) { html.coaching .theme .rchips, html.coaching .coach .linkbtn, html.coaching .coach br { display: none; } html.coaching .card .ct { font-size: 23px; } html.coaching .coach p { font-size: 13.5px; } html.coaching .coach { padding: 8px 10px; } html.coaching .coach .cl { display: none; } }
+@media (max-width: 340px) { .actions .primary, .actions .secondary { font-size: 13px; padding: 0 6px; } .actions #share { display: none; } }
+.actions .primary, .actions .secondary { min-width: 0; }
+@media (max-width: 380px) { .actions .primary, .actions .secondary { padding: 0 10px; font-size: 14px; } .actions { gap: 6px; } }
+@media (max-height: 680px) { .card.coaching .ch, .card.coaching .ck { display: none; } .coach p { font-size: 14px; } }
+.mk { display: block; font: 700 11.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 1px; }
 .vote { flex: none; display: flex; flex-direction: column; gap: 7px; }
 .vote-q { display: flex; align-items: center; justify-content: space-between; gap: 6px 10px; flex-wrap: wrap; }
 .vote-q > span:first-child { font: 500 13px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
@@ -354,6 +369,17 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
   background: radial-gradient(ellipse 90% 45% at 50% 32%, rgba(120, 92, 210, .2), transparent 70%), radial-gradient(ellipse 70% 40% at 100% 100%, rgba(70, 170, 160, .08), transparent 70%), var(--bg);
   opacity: 0; transition: opacity .45s ease; }
 .intro.open { opacity: 1; }
+.intro::before, .intro::after { content: ""; position: absolute; left: 0; right: 0; height: 5.5vh; background: #000; z-index: 0; pointer-events: none; }
+.intro::before { top: 0; } .intro::after { bottom: 0; }
+.intro > * { position: relative; z-index: 1; }
+.intro > .in-vig { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(0, 0, 0, .55) 100%); }
+.intro > .in-card { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 0 max(28px, 8vw); text-align: center; pointer-events: none; }
+.ic-l { margin: 0; max-width: 640px; font: 500 clamp(24px, 6.4vw, 40px)/1.15 var(--f-body); color: var(--ink); text-wrap: balance; will-change: opacity, transform, filter; }
+.ic-l.lead { font-size: clamp(27px, 7.4vw, 46px); }
+.ic-l .x { color: var(--next); text-shadow: 0 0 24px rgba(205, 185, 255, .4); }
+.in-brand { display: inline-block; margin-bottom: 6px; font: 400 clamp(40px, 12vw, 72px)/1 var(--f-then); }
+.in-brand .p { color: var(--then); } .in-brand .f { color: var(--next); text-shadow: 0 0 26px rgba(205, 185, 255, .5); }
+.intro.rec .in-top, .intro.rec .in-prog { visibility: hidden; }
 .in-top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; max-width: 640px; min-height: 40px; margin: 0 auto; }
 .in-logo { font: 400 22px/1 var(--f-then); white-space: nowrap; }
 .in-logo .p { color: var(--then); }
@@ -490,6 +516,7 @@ h1.tap { cursor: pointer; }
   .card-in, .deep, .deep-bd, .st-b, .pw, .pw-bd { transition: none; }
   .swipe-hint, .pulse, .thinking i, .demo-caret { animation: none; }
   .intro { transition: none; }
+  .ic-l { filter: none !important; }
   .cv.reveal > li, .cv.reveal::before { animation: none; }
 }
 </style>
@@ -531,6 +558,7 @@ h1.tap { cursor: pointer; }
       <span class="gl-map"><canvas id="gmap" aria-hidden="true"></canvas><span class="eqm" id="eqm"></span></span>
       <span class="gl-cap"><span class="gl-row"><span class="gl-k" id="glK"></span><span class="gl-more">Explore ›</span></span><span class="gl-t" id="glT"></span></span>
     </button>
+    <div class="coach" id="coach" hidden></div>
     <div id="cVote"></div>
     <div class="actions">
       <button type="button" class="primary" id="jump"></button>
@@ -557,6 +585,8 @@ h1.tap { cursor: pointer; }
   <div class="in-top"><span class="in-logo" aria-hidden="true"><span class="p">Past</span><span class="f">Forward</span></span><button type="button" class="in-skip" id="inSkip">Skip</button></div>
   <div class="in-prog" id="inProg" aria-hidden="true"></div>
   <div class="in-stage" id="inStage"><canvas id="inCv" aria-hidden="true"></canvas></div>
+  <div class="in-card" id="inCard" aria-live="polite"></div>
+  <div class="in-vig" aria-hidden="true"></div>
   <div class="in-cap" id="inCap" aria-live="polite"><p class="in-k" id="inK"></p><h2 class="in-t" id="inT"></h2><p class="in-l" id="inL"></p><div class="in-act" id="inAct"></div></div>
   <p class="in-tap" id="inTap">Tap to continue</p>
 </div>
@@ -770,6 +800,7 @@ const nextStep = { then: "now", now: "next" };
 const prevStep = { next: "now", now: "then" };
 function forward() {
   if (!focus) return;
+  if (focus.k === "next") store.set(COACH_KEY, 1);
   const n = nextStep[focus.k];
   if (n) travel(focus.pi, n); else travel((focus.pi + 1) % N, "then");
 }
@@ -1125,7 +1156,7 @@ function onTap(px, py) {
 const card = $("card"), cardIn = $("cardIn");
 function renderRhyme() {
   const p = PAIRS[focus.pi], g = gapOf(p);
-  $("theme").innerHTML = `<b class="motif">${esc(p.theme)}</b><span class="rchips">${rateHTML(p.rhyme)}<button type="button" class="chainchip" id="chainChip" title="Seen ${echoCount(p)} times: ${sigWord(echoCount(p))}">${sigHTML(echoCount(p))}Seen ${echoCount(p)} times ›</button>${communityLine(focus.pi)}</span>`;
+  $("theme").innerHTML = `<span><span class="mk">The pattern</span><b class="motif">${esc(p.theme)}</b></span><span class="rchips">${rateHTML(p.rhyme)}<button type="button" class="chainchip" id="chainChip" title="Seen ${echoCount(p)} times: ${sigWord(echoCount(p))}">${sigHTML(echoCount(p))}Seen ${echoCount(p)} times ›</button>${communityLine(focus.pi)}</span>`;
   const cc = $("chainChip"); if (cc) cc.addEventListener("click", () => openDeep("chain"));
   $("syThen").textContent = p.then.year;
   $("syNow").textContent = p.now.year;
@@ -1138,14 +1169,36 @@ function fillCard() {
   const p = PAIRS[focus.pi], k = focus.k, g = gapOf(p);
   card.classList.remove("then", "now", "next"); card.classList.add(k);
   const y = k === "next" ? nextYear(p) : p[k].year;
-  $("cKick").innerHTML = `<span class="lb">${STEP[k]}</span>${k === "next" ? "c. " + y + " · " + ahead(y) : y + " · " + ago(y)}`;
+  $("cKick").innerHTML = `<span class="lb">${STEP[k]}</span>${k === "then" ? y + " · " + ago(y) : k === "now" ? `${y} · ${g} years later` : `c. ${y} · ${g} years on`}`;
   $("cTitle").textContent = k === "next" ? p.next.title : p[k].title;
   $("cHook").textContent = k === "next" ? p.next.text.split(/(?<=[.!?])\s/)[0] : p[k].hook;
-  $("jump").innerHTML = k === "then" ? `Jump to ${p.now.year} <span aria-hidden="true">→</span>` : k === "now" ? `Jump to c. ${nextYear(p)} <span aria-hidden="true">→</span>` : `Next rhyme <span aria-hidden="true">→</span>`;
-  $("jump").setAttribute("aria-label", k === "next" ? "Next rhyme" : `Jump ${g} years ahead`);
+  $("jump").innerHTML = k === "then" ? `See its echo <span aria-hidden="true">→</span>` : k === "now" ? `Count forward <span aria-hidden="true">→</span>` : `Next rhyme <span aria-hidden="true">→</span>`;
+  $("jump").setAttribute("aria-label", k === "then" ? `See its echo in ${p.now.year}` : k === "now" ? `Count ${g} years forward to about ${nextYear(p)}` : "Next rhyme");
+  fillCoach(p, k, g);
   fillGlimpse();
   $("cVote").innerHTML = k === "next" ? voteHTML(focus.pi) : "";
 }
+
+/* the guide line: says what this step means and what to do, until someone has followed one rhyme all the way */
+const COACH_KEY = "pastforward.coached";
+function fillCoach(p, k, g) {
+  const el = $("coach");
+  if (store.get(COACH_KEY, 0)) { el.hidden = true; card.classList.remove("coaching"); document.documentElement.classList.remove("coaching"); return; }
+  const ny = nextYear(p);
+  el.innerHTML = `<p>${k === "then"
+      ? `This happened ${NOWY - p.then.year} years ago. Tap <b>See its echo</b> to find the same pattern in your lifetime.`
+      : k === "now"
+      ? `Same pattern, <b>${g} years</b> later. Tap <b>Count forward</b> to add the same ${g} years again.`
+      : `That is the method<span class="cl">: find the pattern, measure its rhythm, count forward</span>. ${N - 1} more rhymes to explore.`}
+    ${k === "then" ? `<br><button type="button" class="linkbtn" data-coach="intro">Watch the intro</button>` : ""}</p>
+    <button type="button" class="cx" data-coach="close" aria-label="Hide these tips">×</button>`;
+  el.hidden = false; card.classList.add("coaching"); document.documentElement.classList.add("coaching");
+}
+$("coach").addEventListener("click", e => {
+  const b = e.target.closest("[data-coach]"); if (!b) return;
+  if (b.dataset.coach === "intro") { openIntro(); return; }
+  store.set(COACH_KEY, 1); $("coach").hidden = true; card.classList.remove("coaching"); document.documentElement.classList.remove("coaching");
+});
 
 /* the glimpse: a small map that cycles through what happened elsewhere that year */
 const gmap = $("gmap");
@@ -1356,6 +1409,7 @@ function chainHTML(pi) {
 function motifBox(p) {
   return `<div class="box mbox"><h4>${T("motif")} · the rhyme in one line</h4><p>${esc(p.theme)}</p><div class="rchips">${rateHTML(p.rhyme)}${(p.echoes || []).length ? `<span class="apat">Seen ${echoCount(p)} times</span>` : ""}</div></div>`;
 }
+const SHARE_BTN = `<button type="button" class="secondary" data-share-rhyme="1" style="width:100%">Share this rhyme</button>`;
 function box(h, txt, cls) { return txt ? `<div class="box ${cls || ""}"><h4>${h}</h4><p>${esc(txt)}</p></div>` : ""; }
 function goBtn(pi, k, lead, noYear) {
   const p = PAIRS[pi], y = k === "next" ? "c. " + nextYear(p) : p[k].year;
@@ -1379,13 +1433,13 @@ function renderTab() {
       ${motifBox(p)}
       ${goBtn(pi, "now", `Its echo, ${g} years later`)}
       ${goBtn(pi, "next", `And ${g} years after that`)}
-      ${voteHTML(pi)}`;
+      ${voteHTML(pi)}${SHARE_BTN}`;
   } else if (k === "now") {
     dBody.innerHTML = `<p class="hook">${esc(p.now.hook)}</p><p class="txt">${esc(p.now.text)}</p>
       ${motifBox(p)}
       ${goBtn(pi, "then", `It echoes, ${g} years earlier`)}
       ${goBtn(pi, "next", `The same cadence, ${g} years ahead`)}
-      ${voteHTML(pi)}`;
+      ${voteHTML(pi)}${SHARE_BTN}`;
   } else if (deepTab === "why") {
     dBody.innerHTML = `<div class="eq">
         <span class="ey t">${p.then.year}</span><span class="en">${esc(p.then.title)}</span>
@@ -1404,7 +1458,7 @@ function renderTab() {
       ${motifBox(p)}
       ${voteHTML(pi)}
       ${goBtn(pi, "then", "Where it started")}
-      ${goBtn(pi, "now", "Its recent echo")}`;
+      ${goBtn(pi, "now", "Its recent echo")}${SHARE_BTN}`;
   }
 }
 dBody.addEventListener("click", e => {
@@ -1415,6 +1469,7 @@ dBody.addEventListener("click", e => {
   const wr = e.target.closest("[data-r]");
   if (wr && world) setFocusRegion(wr.dataset.r);
   if (e.target.closest("[data-intro]")) { closeDeep(); setTimeout(() => openIntro(), 200); }
+  if (e.target.closest("[data-share-rhyme]") && focus) shareRhyme(focus.pi);
 });
 let ixSort = "old", ixQuery = "", ixHits = N, HAY = null;
 const fold = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
@@ -1469,7 +1524,7 @@ function renderIndex() {
       `<span class="it next"><b>c. ${nextYear(p)}</b>${esc(p.next.short)}${apiOn() && sc.tot >= 3 ? `<em class="pct">${sc.pct}% hear it</em>` : ""}${isNew(p) ? `<em class="pct newtag">New</em>` : ""}</span></button></li>`; }).join("") + "</ol>";
 }
 function howHTML() {
-  return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the 30-second intro</button>
+  return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the intro</button>
     <p class="hook">Every rhyme has a ${T("match", "match")}: an event from history (Then) and one you lived through (Today). The years between them are its ${T("cadence", "cadence")}. Count them forward once more and you reach the Next: where the rhyme may sound again.</p>
     <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic</span></div>
     ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. Use Jump to follow a rhyme from Then to Today to Next. Dive deeper for the story, the counterpoint (the rest of the world that year), the score of every echo, and openings.")}
@@ -2616,30 +2671,49 @@ const BEAT = 1;   // the intro's metronome: lists reveal one item per beat, so e
 const I_LIFE = lifeEchoes(I_BY).length;
 const I_REVEAL = .45 + BEAT + .3;   // "It rhymes." arrives one beat after the first line has settled
 const NUMW = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+const I_SPAN = I_NOW - I_ECHO_ALL[0].year;
+const fmtN = n => n.toLocaleString("en-US");
+// Title cards: the trailer's spoken lines. Each line lands on its own beat.
+const CARD_GAP = 1.6;
+const CARDS = {
+  cycles: ["For thousands of years, humanity has moved in cycles.", "Plagues. Crashes. Revolutions. Inventions.", "Each one fades, then returns in a new form."],
+  read: ["Read the pattern.", "Find where we stand in the cycle.", `And you can see <span class="x">what may come next.</span>`],
+  again: ["One method.", "Every pattern has its own rhythm."],
+  why: ["Some of these rhymes", `will come due <span class="x">in your lifetime.</span>`],
+  prepare: ["Last time, some people saw it coming.", "They built, worked and learned for it.", `<span class="x">This time, it could be you.</span>`]
+};
+const CARD_LEAD = { cycles: 1, read: 1, again: 1, prepare: 1 };
+const cardDur = id => .9 + CARDS[id].length * CARD_GAP + 1.9;
 const SCENES = [
   { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
-  { id: "then", view: "tl", dur: 4.3, cam: [I_THEN + 12, 150] },
-  { id: "now", view: "tl", dur: 5.4, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
-  { id: "next", view: "tl", dur: 6.2, cam: [I_NOW, I_GAP * 2.78] },
-  { id: "echoes", view: "echoes", dur: .8 + (I_ECHO.length + 1) * BEAT + 2.6 },
-  { id: "more", view: "more", dur: .4 + 2 * BEAT * I_ROWS.length + 2.2 },
-  { id: "how", view: "how", dur: 3.1 + 3 * BEAT + 2.2 },
-  { id: "you", view: "you", dur: 1.6 + I_LIFE * .4 * BEAT + 2.6 },
+  { id: "cycles", view: "card", dur: cardDur("cycles") },
+  { id: "read", view: "card", dur: cardDur("read") },
+  { id: "echoes", view: "echoes", dur: .8 + (I_ECHO.length + 1) * BEAT + 2.8 },
+  { id: "then", view: "tl", dur: 4.6, cam: [I_THEN + 12, 150] },
+  { id: "now", view: "tl", dur: 5.6, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
+  { id: "next", view: "tl", dur: 6.4, cam: [I_NOW, I_GAP * 2.78] },
+  { id: "again", view: "card", dur: cardDur("again") },
+  { id: "more", view: "more", dur: .4 + 2 * BEAT * I_ROWS.length + 2.4 },
+  { id: "why", view: "card", dur: cardDur("why") },
+  { id: "you", view: "you", dur: 1.6 + I_LIFE * .4 * BEAT + 2.8 },
+  { id: "prepare", view: "card", dur: cardDur("prepare") },
+  { id: "how", view: "how", dur: 3.1 + 3 * BEAT + 2.4 },
   { id: "end", view: "tl", dur: Infinity, cam: [I_NOW, I_GAP * 2.78] }
 ];
 { let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
 const INTRO_END = SCENES[SCENES.length - 1].at;
 const CAP = {
   title: { k: "", t: `History does not repeat itself.<br><span class="x" id="inRhymes">It rhymes.</span>`, l: "" },
-  then: { k: "Then", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
-  now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same rhyme, ${I_GAP} years later.` },
-  next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `Count the same ${I_GAP} years forward. That is where the rhyme may return.` },
-  echoes: { k: "Echoes", kc: "now", t: "Every echo makes the signal stronger.", l: `Twice is a hint. ${(NUMW[I_ECHO_ALL.length] || String(I_ECHO_ALL.length)).replace(/^./, ch => ch.toUpperCase())} times is a pattern.` },
-  more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime, and counts every time it has sounded." },
-  how: { k: "How to use it", t: "Swipe through time. Tap to jump.", l: "Follow a rhyme from Then to Today to Next. Dive deeper to see the rest of the world that year." },
-  you: { k: "Your future", kc: "next", t: "Which rhymes come due in your lifetime?", l: "Add your birth year. Play the daily puzzle, or ask about anything." },
-  end: { k: "", t: "Where will you start?", l: "" }
+  echoes: { k: "Step 1 · Find the pattern", kc: "now", t: "Pandemics, again and again.", l: `Seen ${I_ECHO_ALL.length} times in ${fmtN(I_SPAN)} years. Every echo makes the signal stronger.` },
+  then: { k: "Step 2 · Measure the rhythm", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
+  now: { k: "Step 2 · Measure the rhythm", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. ${I_GAP} years later, the pattern returns.` },
+  next: { k: "Step 3 · Count forward", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `The same ${I_GAP} years, once more. That is where the pattern points.` },
+  more: { k: `${N} rhymes`, t: "Crashes, machines, disasters", l: "The same three steps, across 2,500 years of history." },
+  you: { k: "Your lifeline", kc: "next", t: `${I_LIFE} rhymes come due in one lifetime`, l: "Enter your birth year to see yours, and how old you will be." },
+  how: { k: "How it works", t: "Swipe through time. Tap a rhyme.", l: "Follow it from Then to Today to Next. Dive deeper for the story, the world that year, and every echo." },
+  end: { k: "", t: `<span class="in-brand"><span class="p">Past</span><span class="f">Forward</span></span>`, l: "History rhymes. See what comes next." }
 };
+for (const id in CARDS) CAP[id] = { k: "", t: "", l: "" };
 const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
 const c01 = v => Math.max(0, Math.min(1, v));
 const iEase = x => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -2745,6 +2819,16 @@ function inTimeline(c, W, H, t) {
     inText(c, String(y), xs[i], y0 + 44, FONT.monoB(17), `rgba(${RGB[kk]},${a})`, W);
     inText(c, name, xs[i], y0 + 66, FONT.then(16), `rgba(${INK},${(a * .85).toFixed(3)})`, W);
   });
+}
+
+/* title cards: a slow light along the horizon behind the words */
+function inCardBg(c, W, H, lt) {
+  const y = Math.round(H * .5), sweep = ((lt * .09) % 1.4) - .2;
+  const g = c.createLinearGradient(0, 0, W, 0);
+  g.addColorStop(0, `rgba(${INK},0)`); g.addColorStop(c01(sweep - .15), `rgba(${INK},0)`);
+  g.addColorStop(c01(sweep), `rgba(${RGB.next},.28)`); g.addColorStop(c01(sweep + .15), `rgba(${INK},0)`); g.addColorStop(1, `rgba(${INK},0)`);
+  c.fillStyle = `rgba(${INK},.05)`; c.fillRect(0, y, W, 1);
+  c.fillStyle = g; c.fillRect(0, y - 1, W, 2);
 }
 
 /* echoes: every time the rhyme has sounded, and the signal that grows with each one */
@@ -2924,6 +3008,7 @@ function inSize() {
 }
 function inCaption(i) {
   const s = SCENES[i], cp = CAP[s.id];
+  $("inCard").innerHTML = s.view === "card" ? CARDS[s.id].map((l, j) => `<p class="ic-l${!j && CARD_LEAD[s.id] ? " lead" : ""}">${l}</p>`).join("") : "";
   const k = $("inK"); k.className = "in-k " + (cp.kc || ""); k.textContent = cp.k;
   $("inT").innerHTML = cp.t; $("inL").textContent = cp.l;
   $("inAct").innerHTML = s.id !== "end" ? "" : intro.rec ? `<p class="in-url">pastforward.app</p>`
@@ -2954,12 +3039,20 @@ function renderIntro(t) {
   else if (s.view === "more") inRows(c, W, H, lt);
   else if (s.view === "echoes") inEchoes(c, W, H, lt);
   else if (s.view === "how") inHow(c, W, H, lt);
+  else if (s.view === "card") inCardBg(c, W, H, lt);
   else inYou(c, W, H, lt);
   c.globalAlpha = 1;
   // caption: fade and rise in, fade out before the next scene
   const ca = (reduce && !intro.rec) ? 1 : c01(lt / .45) * (end ? 1 : c01((s.dur - lt) / .3));
-  const cap = $("inCap");
-  cap.style.opacity = ca.toFixed(3);
+  const cap = $("inCap"), cardEl = $("inCard"), isCard = s.view === "card";
+  cap.style.opacity = isCard ? "0" : ca.toFixed(3);
+  cardEl.style.opacity = isCard ? ((reduce && !intro.rec) ? 1 : c01((s.dur - lt) / .55)).toFixed(3) : "0";
+  if (isCard) cardEl.querySelectorAll(".ic-l").forEach((el, j) => {
+    const r = (reduce && !intro.rec) ? 1 : iOut(c01((lt - .7 - j * CARD_GAP) / 1.1));
+    el.style.opacity = r.toFixed(3);
+    el.style.transform = `translateY(${((1 - r) * 16).toFixed(1)}px) scale(${(1.03 - .03 * r).toFixed(4)})`;
+    el.style.filter = r < 1 ? `blur(${((1 - r) * 7).toFixed(2)}px)` : "none";
+  });
   cap.style.transform = `translateY(${((1 - iOut(c01(lt / .5))) * 12).toFixed(1)}px)`;
   const rh = $("inRhymes");
   if (rh) {
@@ -2970,6 +3063,7 @@ function renderIntro(t) {
   }
   $("inProg").querySelectorAll("b").forEach((b, j) => { b.style.width = (j < i ? 100 : j === i ? 100 * c01(lt / s.dur) : 0) + "%"; });
   $("inTap").style.visibility = end || intro.rec ? "hidden" : "visible";
+  introEl.classList.toggle("rec", intro.rec);
   $("inSkip").style.visibility = end || intro.rec ? "hidden" : "visible";
 }
 function introLoop(now) {
