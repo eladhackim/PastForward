@@ -2617,9 +2617,10 @@ const I_BY = 1990;
 const I_ECHO = (() => { const i = PAIRS.indexOf(IP); return [...(IP.echoes || []).map(e => ({ ...e, kind: "echo" })), { kind: "then", year: I_THEN, short: IP.then.short }, { kind: "now", year: I_NOW, short: IP.now.short }].sort((a, b) => a.year - b.year); })();
 const BEAT = 1;   // the intro's metronome: lists reveal one item per beat, so each lands before the next
 const I_LIFE = lifeEchoes(I_BY).length;
+const I_REVEAL = .45 + BEAT + .3;   // "It rhymes." arrives one beat after the first line has settled
 const NUMW = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 const SCENES = [
-  { id: "title", view: "tl", dur: 4.8, cam: [1860, 760] },
+  { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
   { id: "then", view: "tl", dur: 4.3, cam: [I_THEN + 12, 150] },
   { id: "now", view: "tl", dur: 5.4, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
   { id: "next", view: "tl", dur: 6.2, cam: [I_NOW, I_GAP * 2.78] },
@@ -2632,7 +2633,7 @@ const SCENES = [
 { let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
 const INTRO_END = SCENES[SCENES.length - 1].at;
 const CAP = {
-  title: { k: "", t: `History does not repeat itself,<br><span class="x">but it rhymes.</span>`, l: "" },
+  title: { k: "", t: `History does not repeat itself.<br><span class="x" id="inRhymes">It rhymes.</span>`, l: "" },
   then: { k: "Then", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
   now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same rhyme, ${I_GAP} years later.` },
   next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic?`, l: `Count the same ${I_GAP} years forward. That is where the rhyme may return.` },
@@ -2701,7 +2702,7 @@ function inTimeline(c, W, H, t) {
   const pThen = c01((t - T("then") - .7) / .7), pNow = c01((t - T("now") - 1.5) / .7);
   const pArc1 = iEase(c01((t - T("now") - 1.7) / 2.2)), pArc2 = iEase(c01((t - T("next") - 1.5) / 2.3));
   const tPop = T("next") + 3.8, pNext = c01((t - tPop) / .7);
-  const bg = 1 - c01((t - T("then")) / 1.5);
+  const bg = (1 - c01((t - T("then")) / 1.5)) * c01((t - I_REVEAL) / .8);
   const xs = [X(I_THEN), X(I_NOW), X(I_NEXT)];
   // axis and ticks
   c.strokeStyle = `rgba(${INK},.22)`; c.lineWidth = 1.5;
@@ -2949,6 +2950,13 @@ function renderIntro(t) {
   const cap = $("inCap");
   cap.style.opacity = ca.toFixed(3);
   cap.style.transform = `translateY(${((1 - iOut(c01(lt / .5))) * 12).toFixed(1)}px)`;
+  const rh = $("inRhymes");
+  if (rh) {
+    const r = (reduce && !intro.rec) ? 1 : c01((lt - I_REVEAL) / .5);
+    rh.style.display = "inline-block";
+    rh.style.opacity = r.toFixed(3);
+    rh.style.transform = `translateY(${((1 - iOut(r)) * 10).toFixed(1)}px)`;
+  }
   $("inProg").querySelectorAll("b").forEach((b, j) => { b.style.width = (j < i ? 100 : j === i ? 100 * c01(lt / s.dur) : 0) + "%"; });
   $("inTap").style.visibility = end || intro.rec ? "hidden" : "visible";
   $("inSkip").style.visibility = end || intro.rec ? "hidden" : "visible";
