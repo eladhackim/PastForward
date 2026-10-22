@@ -59,6 +59,7 @@ for p in pairs:
         no_em_dash(f"{pid}.next.{f}", p["next"].get(f))
     ny = 2 * p["now"]["year"] - p["then"]["year"]
     if not (2027 <= ny <= 2300): problems.append(f"{pid}: next year {ny} out of range")
+    if "added" in p and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(p["added"])): problems.append(f"{pid}: added must be YYYY-MM-DD")
 for y, w in world.items():
     for r in WREG:
         if not w.get(r): problems.append(f"world {y}: missing {r}")
