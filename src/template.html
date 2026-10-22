@@ -315,6 +315,40 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .ixh { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 0 13px; font: 500 12.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
 .ixh .then { color: var(--then); } .ixh .now { color: var(--now); } .ixh .next { color: var(--next); }
 
+/* intro: what PastForward is, in about 30 seconds */
+.intro { position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; gap: 8px; cursor: pointer; user-select: none; -webkit-user-select: none;
+  padding: max(10px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(14px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: radial-gradient(ellipse 90% 45% at 50% 32%, rgba(120, 92, 210, .2), transparent 70%), radial-gradient(ellipse 70% 40% at 100% 100%, rgba(70, 170, 160, .08), transparent 70%), var(--bg);
+  opacity: 0; transition: opacity .45s ease; }
+.intro.open { opacity: 1; }
+.in-top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; max-width: 640px; min-height: 40px; margin: 0 auto; }
+.in-logo { font: 400 22px/1 var(--f-then); white-space: nowrap; }
+.in-logo .p { color: var(--then); }
+.in-logo .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
+.in-skip { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(22, 19, 52, .7); color: var(--ink); font: 700 14px var(--f-mono); cursor: pointer; }
+.in-skip:hover { border-color: var(--ink); }
+.in-prog { flex: none; display: flex; gap: 4px; width: 100%; max-width: 640px; margin: 0 auto; }
+.in-prog i { flex: 1; height: 3px; border-radius: 2px; background: rgba(239, 232, 214, .18); overflow: hidden; }
+.in-prog b { display: block; height: 100%; width: 0; background: var(--ink); }
+.in-stage { position: relative; flex: 1 1 auto; min-height: 180px; width: 100%; max-width: 820px; margin: 0 auto; }
+#inCv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.in-cap { flex: none; display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 560px; min-height: 190px; margin: 0 auto; text-align: center; will-change: opacity, transform; }
+.in-k { margin: 0; min-height: 1.2em; font: 700 13.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.in-k.then { color: var(--then); } .in-k.now { color: var(--now); } .in-k.next { color: var(--next); }
+.in-t { margin: 0; font: 500 clamp(28px, 7.8vw, 42px)/1.08 var(--f-body); text-wrap: balance; }
+.in-t .t { color: var(--then); } .in-t .n { color: var(--now); }
+.in-t .x { color: var(--next); text-shadow: 0 0 24px rgba(205, 185, 255, .35); }
+.in-l { margin: 0; font-size: 18.5px; line-height: 1.4; opacity: .9; text-wrap: balance; }
+.in-l:empty { display: none; }
+.in-act { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.in-act:empty { display: none; }
+.in-act .in-row { display: flex; gap: 8px; }
+.in-act .in-row .secondary { flex: 1; }
+.in-act .primary { background: linear-gradient(90deg, var(--then), var(--now), var(--next)); }
+.in-url { margin: 4px 0 0; font: 700 22px var(--f-mono); letter-spacing: .02em; color: var(--next); }
+.in-tap { flex: none; margin: 0; text-align: center; font: 13px var(--f-mono); letter-spacing: .04em; color: var(--muted); transition: opacity .3s; }
+h1.tap { cursor: pointer; }
+
 /* search + Ask PastForward */
 .srch { position: relative; }
 .srch svg { position: absolute; left: 14px; top: 50%; width: 19px; height: 19px; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
@@ -422,13 +456,14 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 @media (prefers-reduced-motion: reduce) {
   .card-in, .deep, .deep-bd, .st-b, .pw, .pw-bd { transition: none; }
   .swipe-hint, .pulse, .thinking i, .demo-caret { animation: none; }
+  .intro { transition: none; }
 }
 </style>
 
 <canvas id="sky" aria-hidden="true"></canvas>
 <div class="app">
   <header class="bar">
-    <h1><span class="p">Past</span><span class="f">Forward</span></h1>
+    <h1 class="tap" id="logo" title="What is PastForward?"><span class="p">Past</span><span class="f">Forward</span></h1>
     <div class="bar-r">
       <button type="button" class="ghost daily" id="dailyBtn">Daily</button>
       <button type="button" class="ghost hi" id="futureBtn">Your future</button>
@@ -482,6 +517,14 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
     <div class="tabs" id="tabs" role="tablist"></div>
     <div class="db" id="dBody"></div>
   </div>
+</div>
+
+<div class="intro" id="intro" hidden role="dialog" aria-modal="true" aria-label="What PastForward is">
+  <div class="in-top"><span class="in-logo" aria-hidden="true"><span class="p">Past</span><span class="f">Forward</span></span><button type="button" class="in-skip" id="inSkip">Skip</button></div>
+  <div class="in-prog" id="inProg" aria-hidden="true"></div>
+  <div class="in-stage" id="inStage"><canvas id="inCv" aria-hidden="true"></canvas></div>
+  <div class="in-cap" id="inCap" aria-live="polite"><p class="in-k" id="inK"></p><h2 class="in-t" id="inT"></h2><p class="in-l" id="inL"></p><div class="in-act" id="inAct"></div></div>
+  <p class="in-tap" id="inTap">Tap to continue</p>
 </div>
 
 <div class="pw-wrap" id="pwWrap" hidden>
@@ -1289,6 +1332,7 @@ dBody.addEventListener("click", e => {
   if (sel) { closeDeep(); setTimeout(() => travel(+sel.dataset.pick, "then"), 120); return; }
   const wr = e.target.closest("[data-r]");
   if (wr && world) setFocusRegion(wr.dataset.r);
+  if (e.target.closest("[data-intro]")) { closeDeep(); setTimeout(() => openIntro(), 200); }
 });
 let ixSort = "old", ixQuery = "", ixHits = N, HAY = null;
 const fold = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
@@ -1343,7 +1387,8 @@ function renderIndex() {
       `<span class="it next"><b>c. ${nextYear(p)}</b>${esc(p.next.short)}${apiOn() && sc.tot >= 3 ? `<em class="pct">${sc.pct}% agree</em>` : ""}</span></button></li>`; }).join("") + "</ol>";
 }
 function howHTML() {
-  return `<p class="hook">Take an event from history and one you lived through that follows the same pattern. Count the years between them, then count the same number forward. That is where the pattern may return.</p>
+  return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the 30-second intro</button>
+    <p class="hook">Take an event from history and one you lived through that follows the same pattern. Count the years between them, then count the same number forward. That is where the pattern may return.</p>
     <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic?</span></div>
     ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. Use Jump to follow a rhyme from then to today to next, and Dive deeper for the full story and what was happening elsewhere in the world that year.")}
     ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, partial or loose by how readily historians accept the comparison.")}`;
@@ -2420,6 +2465,357 @@ dBody.addEventListener("click", e => {
   else if (act === "new") { const ta = $("askQ"); if (ta) { ta.value = ""; updateCnt(); } askIdle(); dBody.scrollTop = 0; if (ta) ta.focus({ preventScroll: true }); }
 });
 
+/* ---------- intro: what PastForward is, in about 30 seconds ----------
+   Every frame is a pure function of one clock (t, in seconds), so the same code plays in the app
+   and can be exported frame by frame as a video (window.__pastforward.introFrame). */
+const INTRO_KEY = "pastforward.intro";
+const introEl = $("intro"), inCv = $("inCv"), inStage = $("inStage"), ic = inCv.getContext("2d");
+const IP = PAIRS.find(p => p.id === "flu") || PAIRS[0];
+const I_THEN = IP.then.year, I_NOW = IP.now.year, I_GAP = I_NOW - I_THEN, I_NEXT = I_NOW + I_GAP;
+const I_ROWS = ["crash", "luddites", "titanic"].map(id => PAIRS.find(p => p.id === id)).filter(Boolean);
+const I_BY = 1990;
+const SCENES = [
+  { id: "title", view: "tl", dur: 4, cam: [1860, 760] },
+  { id: "then", view: "tl", dur: 3.4, cam: [I_THEN + 12, 150] },
+  { id: "now", view: "tl", dur: 4.2, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
+  { id: "next", view: "tl", dur: 4.8, cam: [I_NOW, I_GAP * 2.78] },
+  { id: "more", view: "more", dur: 4.6 },
+  { id: "how", view: "how", dur: 5 },
+  { id: "you", view: "you", dur: 4.6 },
+  { id: "end", view: "tl", dur: Infinity, cam: [I_NOW, I_GAP * 2.78] }
+];
+{ let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
+const INTRO_END = SCENES[SCENES.length - 1].at;
+const CAP = {
+  title: { k: "", t: `History does not repeat itself,<br><span class="x">but it rhymes.</span>`, l: "" },
+  then: { k: "Then", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
+  now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same pattern, ${I_GAP} years later.` },
+  next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic?`, l: `Count the same ${I_GAP} years forward. That is where the pattern may return.` },
+  more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime." },
+  how: { k: "How to use it", t: "Swipe through time. Tap to jump.", l: "Follow a rhyme from Then to Today to Next. Dive deeper to see the rest of the world that year." },
+  you: { k: "Your future", kc: "next", t: "Which echoes are due in your lifetime?", l: "Add your birth year. Play the daily puzzle, or ask about anything." },
+  end: { k: "", t: "Where will you start?", l: "" }
+};
+const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
+const c01 = v => Math.max(0, Math.min(1, v));
+const iEase = x => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const iOut = x => 1 - Math.pow(1 - x, 3);
+const iBack = x => 1 + 2.70158 * Math.pow(x - 1, 3) + 1.70158 * Math.pow(x - 1, 2);
+const iStars = (() => { const r = mulberry(1918); return Array.from({ length: 70 }, () => ({ x: r(), y: r(), s: .4 + r() * 1.1, p: r() * 6.28, v: .5 + r() * 1.5 })); })();
+const sceneAt = t => { let i = 0; while (i < SCENES.length - 1 && t >= SCENES[i + 1].at) i++; return i; };
+
+function inCam(t) {
+  const i = sceneAt(t), s = SCENES[i], lt = t - s.at, prev = SCENES[i - 1];
+  let c = s.cam[0] + (s.id === "title" ? lt * 9 : 0), span = s.cam[1];
+  if (prev && prev.view === "tl") {
+    const pc = prev.cam[0] + (prev.id === "title" ? prev.dur * 9 : 0), ps = prev.cam[1], e = iEase(c01(lt / 1.25));
+    c = pc + (c - pc) * e;
+    span = Math.exp(Math.log(ps) + (Math.log(span) - Math.log(ps)) * e);
+  }
+  return { c, span };
+}
+function inText(c, s, x, y, font, color, W) {
+  c.font = font; c.fillStyle = color; c.textAlign = "center";
+  const w = c.measureText(s).width;
+  c.fillText(s, W ? Math.max(w / 2 + 6, Math.min(W - w / 2 - 6, x)) : x, y);
+}
+function inDot(c, x, y, rgb, r, p, glow) {
+  if (p <= 0) return;
+  if (p < 1) { c.strokeStyle = `rgba(${rgb},${(.65 * (1 - p)).toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.arc(x, y, r + 28 * p, 0, 6.2832); c.stroke(); }
+  c.save(); c.shadowColor = `rgba(${rgb},.95)`; c.shadowBlur = glow || 14; c.fillStyle = `rgb(${rgb})`;
+  c.beginPath(); c.arc(x, y, r * (p < 1 ? iBack(p) : 1), 0, 6.2832); c.fill(); c.restore();
+}
+function inArc(c, x1, x2, y0, h, p, rgb1, rgb2, dashed) {
+  if (p <= 0) return null;
+  const cx = (x1 + x2) / 2, cy = y0 - 2 * h;
+  const pt = u => ({ x: (1 - u) * (1 - u) * x1 + 2 * (1 - u) * u * cx + u * u * x2, y: (1 - u) * (1 - u) * y0 + 2 * (1 - u) * u * cy + u * u * y0 });
+  const g = c.createLinearGradient(x1, 0, x2, 0);
+  g.addColorStop(0, `rgb(${rgb1})`); g.addColorStop(1, `rgb(${rgb2})`);
+  c.save(); c.strokeStyle = g; c.lineWidth = 2.6; c.lineCap = "round"; if (dashed) c.setLineDash([7, 7]);
+  c.beginPath(); c.moveTo(x1, y0);
+  const n = 72; for (let i = 1; i <= Math.floor(n * p); i++) { const q = pt(i / n); c.lineTo(q.x, q.y); }
+  const e = pt(p); c.lineTo(e.x, e.y); c.stroke(); c.restore();
+  if (p < 1) {
+    const rg = c.createRadialGradient(e.x, e.y, 0, e.x, e.y, 16);
+    rg.addColorStop(0, `rgba(${rgb2},.95)`); rg.addColorStop(1, `rgba(${rgb2},0)`);
+    c.fillStyle = rg; c.beginPath(); c.arc(e.x, e.y, 16, 0, 6.2832); c.fill();
+  }
+  return { x: cx, y: y0 - h };
+}
+function inSpark(c, x, y, r, a) {
+  c.save(); c.globalAlpha *= a; c.fillStyle = `rgb(${RGB.next})`; c.beginPath();
+  c.moveTo(x, y - r); c.quadraticCurveTo(x, y, x + r, y); c.quadraticCurveTo(x, y, x, y + r); c.quadraticCurveTo(x, y, x - r, y); c.quadraticCurveTo(x, y, x, y - r);
+  c.fill(); c.restore();
+}
+
+/* the timeline scenes: title, then, today, next, and the end card */
+function inTimeline(c, W, H, t) {
+  const cam = inCam(t), k = W / cam.span, X = y => W / 2 + (y - cam.c) * k, y0 = Math.round(H * .58);
+  const T = id => SCENES.find(s => s.id === id).at;
+  const pThen = c01((t - T("then") - .45) / .55), pNow = c01((t - T("now") - 1.05) / .55);
+  const pArc1 = iEase(c01((t - T("now") - 1.2) / 1.6)), pArc2 = iEase(c01((t - T("next") - 1.05) / 1.7));
+  const tPop = T("next") + 2.75, pNext = c01((t - tPop) / .6);
+  const bg = 1 - c01((t - T("then")) / 1.1);
+  const xs = [X(I_THEN), X(I_NOW), X(I_NEXT)];
+  // axis and ticks
+  c.strokeStyle = `rgba(${INK},.22)`; c.lineWidth = 1.5;
+  c.beginPath(); c.moveTo(0, y0); c.lineTo(W, y0); c.stroke();
+  const major = cam.span > 420 ? 100 : cam.span > 190 ? 50 : 20, minor = major === 50 ? 10 : major / 2;
+  const vis = [pThen > 0 && xs[0], pNow > 0 && xs[1], pNext > 0 && xs[2]].filter(v => v !== false);
+  for (let y = Math.ceil((cam.c - cam.span / 2) / minor) * minor; y <= cam.c + cam.span / 2; y += minor) {
+    const x = X(y), big = y % major === 0;
+    c.strokeStyle = `rgba(${INK},${big ? .35 : .16})`; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(x, y0 - (big ? 5 : 3)); c.lineTo(x, y0 + (big ? 5 : 3)); c.stroke();
+    if (big && vis.every(v => Math.abs(v - x) > 40)) inText(c, String(y), x, y0 + 22, FONT.mono(12), `rgba(${MUTED},.8)`);
+  }
+  // 550 years of events, twinkling, before we zoom into one rhyme
+  if (bg > 0) {
+    PAIRS.forEach((p, i) => ["then", "now"].forEach((kk, j) => {
+      const x = X(p[kk].year); if (x < -10 || x > W + 10) return;
+      const tw = .45 + .45 * Math.sin(t * 2.2 + i * 1.7 + j);
+      c.fillStyle = `rgba(${RGB[kk]},${(bg * tw).toFixed(3)})`;
+      c.beginPath(); c.arc(x, y0 - 6 - ((i * 37 + j * 13) % 5) * 7, 2.4, 0, 6.2832); c.fill();
+    }));
+  }
+  // the rhyme
+  const h = Math.min(H * .34, (xs[1] - xs[0]) * .42);
+  const a1 = inArc(c, xs[0], xs[1], y0, h, pArc1, RGB.then, RGB.now, false);
+  const a2 = inArc(c, xs[1], xs[2], y0, h, pArc2, RGB.now, RGB.next, true);
+  if (a1) inText(c, `+${Math.round(I_GAP * pArc1)} years`, a1.x, a1.y - 12, FONT.monoB(15), `rgba(${INK},${c01(pArc1 * 3).toFixed(3)})`);
+  if (a2) inText(c, `+${Math.round(I_GAP * pArc2)} years`, a2.x, a2.y - 12, FONT.monoB(15), `rgba(${RGB.next},${c01(pArc2 * 3).toFixed(3)})`);
+  if (pNext > 0) {
+    const pp = c01((t - tPop) / 1.3);
+    const halo = 18 + 5 * Math.sin(t * 2.6);
+    const rg = c.createRadialGradient(xs[2], y0, 0, xs[2], y0, halo * 2.2);
+    rg.addColorStop(0, `rgba(${RGB.next},.35)`); rg.addColorStop(1, `rgba(${RGB.next},0)`);
+    c.fillStyle = rg; c.beginPath(); c.arc(xs[2], y0, halo * 2.2, 0, 6.2832); c.fill();
+    if (pp < 1) for (let i = 0; i < 8; i++) { const an = i * .785 + .3, d = 14 + 40 * iOut(pp); inSpark(c, xs[2] + Math.cos(an) * d, y0 + Math.sin(an) * d, 5 * (1 - pp * .5), 1 - pp); }
+  }
+  inDot(c, xs[0], y0, RGB.then, 7, pThen);
+  inDot(c, xs[1], y0, RGB.now, 7, pNow);
+  inDot(c, xs[2], y0, RGB.next, 9, pNext, 22);
+  // labels under each event
+  [[pThen, I_THEN, IP.then.short, "then"], [pNow, I_NOW, IP.now.short, "now"], [pNext, "c. " + I_NEXT, IP.next.short, "next"]].forEach(([p, y, name, kk], i) => {
+    if (p <= 0) return;
+    const a = c01(p * 1.6).toFixed(3);
+    inText(c, String(y), xs[i], y0 + 44, FONT.monoB(17), `rgba(${RGB[kk]},${a})`, W);
+    inText(c, name, xs[i], y0 + 66, FONT.then(16), `rgba(${INK},${(a * .85).toFixed(3)})`, W);
+  });
+}
+
+/* 48 rhymes: three more, drawn quickly */
+function inRows(c, W, H, lt) {
+  const top = H * .1, rowH = (H * .9 - top) / I_ROWS.length, xs = [W * .16, W * .5, W * .84];
+  I_ROWS.forEach((p, i) => {
+    const y = Math.round(top + rowH * i + rowH * .38), st = .2 + i * .7;
+    const pd = [0, .5, 1.05].map(d => c01((lt - st - d) / .35));
+    const pa = [.15, .7].map(d => iEase(c01((lt - st - d) / .5)));
+    c.strokeStyle = `rgba(${INK},${(.14 * c01((lt - st) * 3)).toFixed(3)})`; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(xs[0] - 30, y); c.lineTo(xs[2] + 30, y); c.stroke();
+    const g = p.now.year - p.then.year, h = Math.min(rowH * .3, 26);
+    const a1 = inArc(c, xs[0], xs[1], y, h, pa[0], RGB.then, RGB.now, false);
+    const a2 = inArc(c, xs[1], xs[2], y, h, pa[1], RGB.now, RGB.next, true);
+    if (a1) inText(c, `${g} yrs`, a1.x, a1.y - 7, FONT.mono(12), `rgba(${MUTED},${pa[0].toFixed(3)})`);
+    if (a2) inText(c, `${g} yrs`, a2.x, a2.y - 7, FONT.mono(12), `rgba(${MUTED},${pa[1].toFixed(3)})`);
+    [["then", p.then.year, p.then.short], ["now", p.now.year, p.now.short], ["next", "c. " + nextYear(p), p.next.short]].forEach(([kk, yr, name], j) => {
+      if (pd[j] <= 0) return;
+      inDot(c, xs[j], y, RGB[kk], 6, pd[j], 10);
+      inText(c, String(yr), xs[j], y + 23, FONT.monoB(14), `rgba(${RGB[kk]},${pd[j].toFixed(3)})`, W);
+      inText(c, name, xs[j], y + 41, FONT.then(14.5), `rgba(${INK},${(pd[j] * .85).toFixed(3)})`, W);
+    });
+  });
+}
+
+/* how to use it: a swipe through time, then the Then / Today / Next stepper */
+function inHow(c, W, H, lt) {
+  const y0 = Math.round(H * .4), span = 120;
+  const cc = 1790 + (I_THEN - 1790) * iOut(c01((lt - .3) / 1.7));
+  const X = y => W / 2 + (y - cc) * (W / span);
+  c.strokeStyle = `rgba(${INK},.22)`; c.lineWidth = 1.5; c.beginPath(); c.moveTo(0, y0); c.lineTo(W, y0); c.stroke();
+  for (let y = Math.ceil((cc - span / 2) / 10) * 10; y <= cc + span / 2; y += 10) {
+    const x = X(y), big = y % 50 === 0;
+    c.strokeStyle = `rgba(${INK},${big ? .35 : .15})`; c.lineWidth = 1; c.beginPath(); c.moveTo(x, y0 - (big ? 5 : 3)); c.lineTo(x, y0 + (big ? 5 : 3)); c.stroke();
+    if (big) inText(c, String(y), x, y0 + 22, FONT.mono(12), `rgba(${MUTED},.8)`);
+  }
+  // the focus line: whatever sits in the middle comes into focus
+  c.strokeStyle = `rgba(${INK},.25)`; c.setLineDash([3, 4]); c.beginPath(); c.moveTo(W / 2, y0 - 46); c.lineTo(W / 2, y0 - 10); c.stroke(); c.setLineDash([]);
+  let best = null;
+  PAIRS.forEach(p => ["then", "now"].forEach(kk => {
+    const x = X(p[kk].year); if (x < -10 || x > W + 10) return;
+    const d = Math.abs(x - W / 2); if (!best || d < best.d) best = { d, x, p, kk };
+    c.fillStyle = `rgba(${RGB[kk]},.75)`; c.beginPath(); c.arc(x, y0, 3.4, 0, 6.2832); c.fill();
+  }));
+  const settled = c01((lt - 1.9) / .4);
+  if (best && best.d < 6 && settled > 0) {
+    inDot(c, best.x, y0, RGB[best.kk], 7, settled);
+    inText(c, `${best.p[best.kk].year} ${best.p[best.kk].short}`, best.x, y0 - 22, FONT.then(17), `rgba(${INK},${settled.toFixed(3)})`, W);
+  }
+  // a finger swiping left
+  const fs = c01((lt - .25) / .8);
+  if (fs > 0 && fs < 1) {
+    const fx = W * (.78 - .56 * iEase(fs)), fa = Math.sin(fs * Math.PI);
+    c.fillStyle = `rgba(${INK},${(.28 * fa).toFixed(3)})`; c.beginPath(); c.arc(fx, y0, 20, 0, 6.2832); c.fill();
+    c.strokeStyle = `rgba(${INK},${(.6 * fa).toFixed(3)})`; c.lineWidth = 1.5; c.stroke();
+  }
+  // the stepper, tapped in turn
+  const sy = Math.round(H * .76), pw = Math.min(W * .29, 170), ph = 52, cs = [W / 2 - pw - 10, W / 2, W / 2 + pw + 10];
+  const show = c01((lt - 2.05) / .35);
+  if (show <= 0) return;
+  [["then", "Then", I_THEN], ["now", "Today", I_NOW], ["next", "Next", "c. " + I_NEXT]].forEach(([kk, lab, yr], j) => {
+    const on = c01((lt - 2.45 - j * .7) / .25), x = cs[j] - pw / 2;
+    c.save(); c.globalAlpha *= show;
+    c.fillStyle = on > 0 ? `rgba(${RGB[kk]},${(.14 * on).toFixed(3)})` : `rgba(22,19,52,.8)`;
+    c.strokeStyle = on > 0 ? `rgba(${RGB[kk]},${(.4 + .6 * on).toFixed(3)})` : `rgba(${INK},.18)`;
+    c.lineWidth = 1.5; if (on > 0) { c.shadowColor = `rgba(${RGB[kk]},.5)`; c.shadowBlur = 18 * on; }
+    c.beginPath(); c.roundRect ? c.roundRect(x, sy - ph / 2, pw, ph, 14) : c.rect(x, sy - ph / 2, pw, ph); c.fill(); c.stroke(); c.shadowBlur = 0;
+    inText(c, lab.toUpperCase(), cs[j], sy - 4, FONT.monoB(12), `rgb(${RGB[kk]})`);
+    inText(c, String(yr), cs[j], sy + 15, FONT.mono(15), `rgb(${INK})`);
+    const tp = c01((lt - 2.4 - j * .7) / .45);
+    if (tp > 0 && tp < 1) { c.strokeStyle = `rgba(${INK},${(.7 * (1 - tp)).toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.arc(cs[j], sy, 10 + 26 * tp, 0, 6.2832); c.stroke(); }
+    c.restore();
+  });
+  [0, 1].forEach(j => {
+    const p = c01((lt - 2.75 - j * .7) / .4); if (p <= 0) return;
+    inText(c, "→", (cs[j] + cs[j + 1]) / 2, sy + 6, FONT.monoB(16), `rgba(${MUTED},${(p * show).toFixed(3)})`);
+  });
+}
+
+/* your future: the echoes due in one lifetime */
+function inYou(c, W, H, lt) {
+  const y = Math.round(H * .52), x0 = W * .09, x1 = W * .91, X = yr => x0 + (yr - I_BY) / 90 * (x1 - x0);
+  const grow = iOut(c01((lt - .15) / 1));
+  const g = c.createLinearGradient(x0, 0, x1, 0);
+  g.addColorStop(0, `rgba(${MUTED},.5)`); g.addColorStop(1, `rgba(${RGB.next},.9)`);
+  c.strokeStyle = g; c.lineWidth = 3; c.lineCap = "round"; c.beginPath(); c.moveTo(x0, y); c.lineTo(x0 + (x1 - x0) * grow, y); c.stroke();
+  inDot(c, x0, y, MUTED, 5, c01(lt / .3), 6);
+  inText(c, `Born ${I_BY}`, x0, y + 26, FONT.mono(13), `rgba(${MUTED},${c01(lt / .4).toFixed(3)})`, W);
+  if (grow >= 1) inText(c, "Age 90", x1, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - 1.15) / .3).toFixed(3)})`, W);
+  const tx = X(NOWY), ta = c01((lt - .7) / .3);
+  if (ta > 0) {
+    c.strokeStyle = `rgba(${RGB.now},${ta.toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.moveTo(tx, y - 9); c.lineTo(tx, y + 9); c.stroke();
+    inText(c, "Today", tx, y + 26, FONT.monoB(13), `rgba(${RGB.now},${ta.toFixed(3)})`, W);
+  }
+  // every echo due before age 90 pops in; a few get labels, alternating above and below the line
+  const all = lifeEchoes(I_BY).map(e => ({ ...e, x: X(e.y) })), labels = [];
+  all.forEach(e => { if (!labels.length || e.x - labels[labels.length - 1].x >= Math.max(70, W * .2)) labels.push(e); });
+  let shown = 0;
+  all.forEach((e, i) => {
+    const p = c01((lt - 1.15 - i * .14) / .35); if (p <= 0) return;
+    shown++;
+    inDot(c, e.x, y, RGB.next, 5.5, p, 14);
+  });
+  labels.slice(0, 4).forEach((e, i) => {
+    const p = c01((lt - 1.4 - all.indexOf(e) * .14) / .4); if (p <= 0) return;
+    const up = i % 2 === 0, a = c01(p * 1.5).toFixed(3), p2 = PAIRS[e.pi];
+    c.strokeStyle = `rgba(${RGB.next},${(.35 * p).toFixed(3)})`; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(e.x, up ? y - 9 : y + 9); c.lineTo(e.x, up ? y - 20 : y + 38); c.stroke();
+    inText(c, p2.next.short, e.x, up ? y - 44 : y + 56, FONT.then(15), `rgba(${INK},${a})`, W);
+    inText(c, `c. ${e.y} · age ${e.y - I_BY}`, e.x, up ? y - 26 : y + 74, FONT.mono(12), `rgba(${RGB.next},${a})`, W);
+  });
+  if (shown) inText(c, `${shown} echo${shown === 1 ? "" : "es"} in one lifetime`, W / 2, Math.round(H * .2), FONT.monoB(18), `rgba(${RGB.next},${c01((lt - 1.2) / .4).toFixed(3)})`);
+}
+
+function inSize() {
+  const r = inStage.getBoundingClientRect(), d = Math.min(3, window.devicePixelRatio || 1);
+  const w = Math.max(1, Math.round(r.width)), h = Math.max(1, Math.round(r.height));
+  if (w !== intro.w || h !== intro.h || d !== intro.dpr) { intro.w = w; intro.h = h; intro.dpr = d; inCv.width = Math.round(w * d); inCv.height = Math.round(h * d); }
+}
+function inCaption(i) {
+  const s = SCENES[i], cp = CAP[s.id];
+  const k = $("inK"); k.className = "in-k " + (cp.kc || ""); k.textContent = cp.k;
+  $("inT").innerHTML = cp.t; $("inL").textContent = cp.l;
+  $("inAct").innerHTML = s.id !== "end" ? "" : intro.rec ? `<p class="in-url">pastforward.app</p>`
+    : `<button type="button" class="primary" data-in="start">Start with ${I_THEN} →</button>
+       <div class="in-row"><button type="button" class="secondary" data-in="future">See my future</button><button type="button" class="secondary" data-in="again">Watch again</button></div>`;
+  $("inProg").innerHTML = SCENES.filter(x => x.id !== "end").map(() => "<i><b></b></i>").join("");
+}
+function renderIntro(t) {
+  inSize();
+  const W = intro.w, H = intro.h, i = sceneAt(t), s = SCENES[i];
+  let lt = t - s.at;
+  if (i !== intro.cur) { intro.cur = i; inCaption(i); }
+  const end = s.dur === Infinity;
+  if (reduce && !intro.rec && !end) lt = s.dur - .001;     // reduced motion: each scene appears in its finished state
+  const tt = s.at + lt;
+  const c = ic;
+  c.setTransform(intro.dpr, 0, 0, intro.dpr, 0, 0);
+  c.clearRect(0, 0, W, H);
+  for (const st of iStars) {
+    c.fillStyle = `rgba(232,226,255,${(.18 + .3 * (.5 + .5 * Math.sin(tt * st.v + st.p))).toFixed(3)})`;
+    c.beginPath(); c.arc(st.x * W, st.y * H * .9, st.s, 0, 6.2832); c.fill();
+  }
+  const prev = SCENES[i - 1], next = SCENES[i + 1];
+  const aIn = prev && prev.view === s.view ? 1 : c01(lt / .45);
+  const aOut = end || !next || next.view === s.view ? 1 : c01((s.dur - lt) / .35);
+  c.globalAlpha = aIn * aOut;
+  if (s.view === "tl") inTimeline(c, W, H, tt);
+  else if (s.view === "more") inRows(c, W, H, lt);
+  else if (s.view === "how") inHow(c, W, H, lt);
+  else inYou(c, W, H, lt);
+  c.globalAlpha = 1;
+  // caption: fade and rise in, fade out before the next scene
+  const ca = (reduce && !intro.rec) ? 1 : c01(lt / .45) * (end ? 1 : c01((s.dur - lt) / .3));
+  const cap = $("inCap");
+  cap.style.opacity = ca.toFixed(3);
+  cap.style.transform = `translateY(${((1 - iOut(c01(lt / .5))) * 12).toFixed(1)}px)`;
+  $("inProg").querySelectorAll("b").forEach((b, j) => { b.style.width = (j < i ? 100 : j === i ? 100 * c01(lt / s.dur) : 0) + "%"; });
+  $("inTap").style.visibility = end || intro.rec ? "hidden" : "visible";
+  $("inSkip").style.visibility = end || intro.rec ? "hidden" : "visible";
+}
+function introLoop(now) {
+  if (!intro.open) return;
+  const dt = Math.min(.05, (now - intro.last) / 1000); intro.last = now;
+  if (!document.hidden && !intro.rec) intro.t += dt;
+  renderIntro(intro.t);
+  intro.raf = requestAnimationFrame(introLoop);
+}
+function openIntro(rec) {
+  if (intro.open) return;
+  intro.open = true; intro.rec = !!rec; intro.t = 0; intro.cur = -1;
+  introEl.style.transition = rec ? "none" : "";
+  introEl.hidden = false; void introEl.offsetWidth; introEl.classList.add("open");
+  document.documentElement.classList.add("lock");
+  if (!rec) { intro.last = performance.now(); intro.raf = requestAnimationFrame(introLoop); $("inSkip").focus({ preventScroll: true }); }
+}
+function closeIntro(after) {
+  if (!intro.open) return;
+  intro.open = false; cancelAnimationFrame(intro.raf);
+  store.set(INTRO_KEY, 1);
+  introEl.classList.remove("open");
+  setTimeout(() => { introEl.hidden = true; }, reduce ? 0 : 450);
+  if (dwrap.hidden && pwWrap.hidden) document.documentElement.classList.remove("lock");
+  if (after) after();
+}
+function introStep(d) {
+  const i = sceneAt(intro.t), j = Math.max(0, Math.min(SCENES.length - 1, i + d));
+  intro.t = d < 0 && intro.t - SCENES[i].at > 1 ? SCENES[i].at : SCENES[j].at;
+}
+introEl.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) { if (sceneAt(intro.t) < SCENES.length - 1) introStep(1); return; }
+  if (b.id === "inSkip") return closeIntro(() => $("jump").focus({ preventScroll: true }));
+  const a = b.dataset.in;
+  if (a === "again") { intro.t = 0; intro.cur = -1; }
+  else if (a === "future") closeIntro(() => setTimeout(openFuture, 250));
+  else if (a === "start") closeIntro(() => {
+    const fi = PAIRS.indexOf(IP);
+    if (!focus || focus.pi !== fi || focus.k !== "then") travel(fi, "then");
+    if (!reduce) $("jump").classList.add("pulse");
+    $("jump").focus({ preventScroll: true });
+  });
+});
+document.addEventListener("keydown", e => {
+  if (!intro.open) return;
+  if (e.key === "Escape") { e.stopImmediatePropagation(); closeIntro(); }
+  else if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); introStep(1); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); introStep(-1); }
+}, true);
+$("logo").addEventListener("click", () => openIntro());
+window.__pastforward = Object.assign(window.__pastforward || {}, {
+  introLength: INTRO_END + 2.5,
+  introFrame: t => { if (!intro.open) openIntro(true); renderIntro(t); }
+});
+
 /* ---------- night sky ---------- */
 const sky = $("sky"), sctx = sky.getContext("2d");
 let stars = [];
@@ -2448,7 +2844,7 @@ setTimeout(hideHint, 6000);
 let lastT = performance.now(), frame = 0;
 function loop(t) {
   const dt = Math.min(48, t - lastT); lastT = t;
-  if (!document.hidden) {
+  if (!document.hidden && !intro.open) {
     stepFly(t); stepInertia(dt);
     draw(t); drawWorld(t); drawGlimpse(t);
     if (frame++ % 2 === 0) drawSky(t);
@@ -2476,6 +2872,8 @@ updateDailyDot();
 loadScores();
 if (h === "daily") setTimeout(openDaily, 400);
 if (h === "ask") setTimeout(() => openAsk(), 400);
+// first visit to the home page: show what PastForward is (shared links go straight to their rhyme)
+if (!linked && !h && !store.get(INTRO_KEY, 0)) setTimeout(() => openIntro(), 450);
 requestAnimationFrame(loop);
 })();
 </script>
