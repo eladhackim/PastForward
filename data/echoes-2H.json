@@ -1,0 +1,229 @@
+{
+ "vaccine": [
+  {
+   "year": 1885,
+   "short": "Leicester March",
+   "title": "The Leicester anti-vaccination march",
+   "region": "europe",
+   "line": "Tens of thousands marched in Leicester against compulsory smallpox vaccination, led by men jailed for not vaccinating their children."
+  },
+  {
+   "year": 1998,
+   "short": "MMR Scare",
+   "title": "Wakefield’s MMR autism scare",
+   "region": "europe",
+   "line": "A Lancet paper by Andrew Wakefield, later retracted, linked the MMR vaccine to autism; UK vaccination rates fell and measles cases rose."
+  },
+  {
+   "year": 2003,
+   "short": "Polio Boycott",
+   "title": "Northern Nigeria’s polio vaccine boycott",
+   "region": "africa",
+   "line": "Kano and other northern Nigerian states halted polio vaccination amid rumors it caused infertility and HIV; polio cases surged and spread abroad."
+  }
+ ],
+ "springtime": [
+  {
+   "year": 1820,
+   "short": "1820 Revolts",
+   "title": "The revolutions of 1820",
+   "region": "europe",
+   "line": "A Spanish army revolt forced the king to restore a liberal constitution, and within months revolts broke out in Naples and Portugal."
+  },
+  {
+   "year": 1919,
+   "short": "1919 Uprisings",
+   "title": "The anticolonial uprisings of 1919",
+   "region": "world",
+   "line": "In spring 1919, mass protests against foreign domination erupted in Egypt, Korea, India and China, all invoking Wilson’s promise of self-determination."
+  }
+ ],
+ "phone": [
+  {
+   "year": 1992,
+   "short": "First Text",
+   "title": "The first text message is sent",
+   "region": "europe",
+   "line": "Engineer Neil Papworth sent “Merry Christmas” to a Vodafone director’s phone, the first SMS, and texting went on to reshape daily life."
+  },
+  {
+   "year": 1999,
+   "short": "i-mode",
+   "title": "Japan’s i-mode puts the web on phones",
+   "region": "world",
+   "line": "NTT DoCoMo’s i-mode put email and websites on ordinary phones, drew over 30 million Japanese users by 2002 and popularized emoji."
+  }
+ ],
+ "yellow": [
+  {
+   "year": 1870,
+   "short": "Ems Dispatch",
+   "title": "Bismarck’s edited Ems telegram",
+   "region": "europe",
+   "line": "Bismarck edited a royal telegram to read like an insult and fed it to the press; French outrage helped spark war."
+  },
+  {
+   "year": 2023,
+   "short": "Fake Pentagon",
+   "title": "The AI-faked Pentagon explosion",
+   "region": "us",
+   "line": "An apparently AI-generated image of an explosion near the Pentagon spread via verified Twitter accounts, briefly knocking US stock markets lower."
+  }
+ ],
+ "titanic": [
+  {
+   "year": 1954,
+   "short": "Comet Jet",
+   "title": "The de Havilland Comet crashes",
+   "region": "europe",
+   "line": "Britain’s Comet, the first jet airliner and a prestige symbol, was grounded after two broke apart in midair from metal fatigue."
+  },
+  {
+   "year": 1956,
+   "short": "Andrea Doria",
+   "title": "The sinking of the Andrea Doria",
+   "region": "europe",
+   "line": "Italy’s luxury liner, billed as one of the safest afloat, sank after a collision; its tilt left half its lifeboats unusable."
+  }
+ ],
+ "weimar": [
+  {
+   "year": 1352,
+   "short": "Yuan Paper Money",
+   "title": "The Yuan dynasty’s paper money collapse",
+   "region": "china",
+   "line": "To fund wars against rebels, China’s Mongol-led Yuan dynasty printed paper money ever faster in the 1350s until it was nearly worthless."
+  },
+  {
+   "year": 1948,
+   "short": "Gold Yuan",
+   "title": "Nationalist China’s gold yuan collapse",
+   "region": "china",
+   "line": "Launched in August 1948, Nationalist China’s gold yuan was printed without limit and was nearly worthless within a year, sapping middle-class support."
+  },
+  {
+   "year": 1993,
+   "short": "Yugoslav Dinar",
+   "title": "Yugoslavia’s hyperinflation under sanctions",
+   "region": "europe",
+   "line": "Printing money to cover deficits amid war and sanctions, Yugoslavia saw prices rise about 313 million percent in January 1994 alone."
+  }
+ ],
+ "dust": [
+  {
+   "year": 536,
+   "short": "Year 536",
+   "title": "The mystery haze of 536",
+   "region": "world",
+   "line": "Volcanic haze dimmed the sun for about 18 months; Procopius said it shone like the moon, and crops failed across Eurasia."
+  },
+  {
+   "year": 1997,
+   "short": "Asian Haze",
+   "title": "The 1997 Southeast Asian haze",
+   "region": "world",
+   "line": "Land-clearing fires in drought-hit Indonesia smothered Southeast Asia in smoke, often cutting visibility in Sumatra and Borneo below 100 meters."
+  },
+  {
+   "year": 2009,
+   "short": "Sydney Red Dust",
+   "title": "Sydney’s red dust storm",
+   "region": "world",
+   "line": "Winds lifted topsoil from drought-stricken inland Australia and turned Sydney’s sky red in the biggest dust storm in about 70 years."
+  }
+ ],
+ "transistor": [
+  {
+   "year": 1800,
+   "short": "Volta’s Battery",
+   "title": "Volta builds the first battery",
+   "region": "europe",
+   "line": "Alessandro Volta stacked zinc and silver discs with brine-soaked cloth to make the first battery, which opened the age of electricity."
+  },
+  {
+   "year": 1938,
+   "short": "Fission",
+   "title": "The discovery of nuclear fission",
+   "region": "europe",
+   "line": "In a Berlin lab, Hahn and Strassmann split uranium atoms; within seven years, fission had produced nuclear reactors and atomic bombs."
+  },
+  {
+   "year": 1960,
+   "short": "First Laser",
+   "title": "Maiman builds the first laser",
+   "region": "us",
+   "line": "Theodore Maiman built the first laser, jokingly called “a solution looking for a problem”; lasers now carry internet data and scan barcodes."
+  }
+ ],
+ "springs": [
+  {
+   "year": 1978,
+   "short": "Love Canal",
+   "title": "Lois Gibbs and Love Canal",
+   "region": "us",
+   "line": "Homemaker Lois Gibbs organized neighbors over toxic waste buried under their Niagara Falls neighborhood, forcing evacuations and helping inspire the Superfund law."
+  },
+  {
+   "year": 1988,
+   "short": "Chico Mendes",
+   "title": "Chico Mendes defends the Amazon",
+   "region": "latam",
+   "line": "Rubber tapper Chico Mendes fought ranchers clearing the Amazon; his 1988 murder made world headlines and led Brazil to create forest reserves."
+  }
+ ],
+ "volcker": [
+  {
+   "year": 1989,
+   "short": "Lawson Hikes",
+   "title": "Britain doubles rates to 15%",
+   "region": "europe",
+   "line": "To cool a boom and rising inflation, Nigel Lawson doubled UK interest rates from 7.5% to 15%; a recession followed in 1990."
+  },
+  {
+   "year": 2024,
+   "short": "Russia 21%",
+   "title": "Russia raises rates to a record 21%",
+   "region": "russia",
+   "line": "As wartime spending fueled inflation, Russia’s central bank raised its key rate from 7.5% to a record 21% within 16 months."
+  }
+ ],
+ "dolly": [
+  {
+   "year": 1927,
+   "short": "Ivanov’s Apes",
+   "title": "Ivanov’s human-ape hybrid experiments",
+   "region": "russia",
+   "line": "Funded by the Soviet government, biologist Ilya Ivanov inseminated chimpanzees in French Guinea with human sperm, trying to create a human-ape hybrid."
+  },
+  {
+   "year": 2016,
+   "short": "Three-Parent",
+   "title": "The Mexico three-parent baby",
+   "region": "latam",
+   "line": "A US doctor went to Mexico, where he said “there are no rules,” to make a baby with DNA from three people."
+  }
+ ],
+ "blackout": [
+  {
+   "year": 1999,
+   "short": "Brazil Blackout",
+   "title": "The southern Brazil blackout of 1999",
+   "region": "latam",
+   "line": "Lightning at one substation triggered a cascade that darkened São Paulo and Rio, affecting an estimated 75 to 97 million Brazilians."
+  },
+  {
+   "year": 2006,
+   "short": "Europe Blackout",
+   "title": "The European blackout of 2006",
+   "region": "europe",
+   "line": "Switching off a German power line so a cruise ship could pass split Europe’s grid, cutting power to over 15 million customers."
+  },
+  {
+   "year": 2019,
+   "short": "Argentina Outage",
+   "title": "The Argentina and Uruguay blackout",
+   "region": "latam",
+   "line": "A grid operator’s error set off a 30-second cascade that blacked out nearly all of Argentina and Uruguay, about 48 million people."
+  }
+ ]
+}
