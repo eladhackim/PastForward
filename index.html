@@ -104,8 +104,35 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 
 /* the rhyme + stepper */
 .rhyme { flex: none; display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 640px; margin: 0 auto; }
-.theme { margin: 2px 0 0; display: flex; align-items: baseline; gap: 8px; font-size: 17px; color: var(--muted); line-height: 1.25; }
+.theme { margin: 2px 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; font-size: 17px; color: var(--muted); line-height: 1.25; }
 .theme b { font-weight: 500; color: var(--ink); }
+.rchips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.rchip { display: inline-flex; align-items: center; gap: 7px; min-height: 26px; padding: 0 10px; border-radius: 999px; border: 1px dashed rgba(171, 166, 201, .5); background: none; font: 700 12.5px var(--f-mono); color: var(--muted); cursor: help; white-space: nowrap; }
+.rchip:hover { border-color: var(--ink); color: var(--ink); }
+.heard { font: 700 12.5px var(--f-mono); color: var(--next); white-space: nowrap; }
+.sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; margin-right: 7px; }
+.sig i { display: block; width: 3px; border-radius: 1px; background: rgba(239, 232, 214, .22); }
+.sig i:nth-child(1) { height: 4px; } .sig i:nth-child(2) { height: 7px; } .sig i:nth-child(3) { height: 10px; } .sig i:nth-child(4) { height: 13px; }
+.sig.s1 i:nth-child(-n+1), .sig.s2 i:nth-child(-n+2), .sig.s3 i:nth-child(-n+3), .sig.s4 i { background: var(--now); }
+@media (max-width: 379px) { .rchips .heard { display: none; } }
+.sigline { display: flex; align-items: center; gap: 2px; margin: 0; font: 700 14px var(--f-mono); color: var(--now); }
+.term { display: inline; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; cursor: help; text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: rgba(171, 166, 201, .75); text-underline-offset: 3px; }
+.term:hover { text-decoration-color: currentColor; }
+.tip { position: fixed; z-index: 70; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(205, 185, 255, .45); background: var(--surface2); box-shadow: 0 16px 44px rgba(0, 0, 0, .55); }
+.tip b { display: block; font: 500 21px/1.15 var(--f-body); color: var(--next); }
+.tip p { margin: 4px 0 8px; font: 15px/1.45 var(--f-mono); color: var(--ink); }
+.lx-g { margin: 8px 0 0; font: 700 13px var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.lx { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.lx li { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); scroll-margin: 16px; transition: border-color .4s; }
+.lx li.hl { border-color: var(--next); box-shadow: 0 0 22px rgba(205, 185, 255, .15); }
+.lx .lt { display: block; font: 500 23px/1.15 var(--f-body); color: var(--ink); }
+.lx .ld { margin: 4px 0 0; font: 15.5px/1.45 var(--f-mono); }
+.lx .le { margin: 6px 0 0; font: 14px/1.4 var(--f-mono); color: var(--muted); }
+.lx .le span { font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-size: 11.5px; margin-right: 6px; }
+.mbox p { font-size: 18px; }
+.mbox .rchips { margin-top: 8px; }
+.wnote { margin: 0; font: 14px/1.4 var(--f-mono); color: var(--muted); }
+.apat { font: 700 12.5px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .chainchip { display: inline-flex; align-items: center; vertical-align: 2px; margin-left: 4px; min-height: 26px; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(239, 232, 214, .3); background: rgba(239, 232, 214, .06); font: 700 12.5px var(--f-mono); color: var(--ink); cursor: pointer; white-space: nowrap; }
 .chainchip:hover { border-color: var(--ink); }
 .theme .dots { flex: none; display: inline-flex; gap: 3px; transform: translateY(-1px); }
@@ -262,7 +289,8 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .tabs:empty { display: none; }
 .tabs { overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
-.tabs button { flex: 1 0 auto; min-height: 40px; padding: 0 12px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: 700 14.5px var(--f-mono); cursor: pointer; white-space: nowrap; }
+.tabs button { flex: 1 0 auto; min-height: 40px; padding: 0 10px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: 700 13.5px var(--f-mono); cursor: pointer; white-space: nowrap; }
+@media (max-width: 379px) { .tabs button { padding: 0 8px; font-size: 13px; } }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .db { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 14px; }
 .hook { margin: 0; font-size: 20px; line-height: 1.4; }
@@ -553,6 +581,8 @@ h1.tap { cursor: pointer; }
   <p class="in-tap" id="inTap">Tap to continue</p>
 </div>
 
+<div class="tip" id="tip" role="tooltip" hidden><b id="tipT"></b><p id="tipD"></p><button type="button" class="linkbtn" id="tipMore">All terms ›</button></div>
+
 <div class="pw-wrap" id="pwWrap" hidden>
   <div class="pw-bd" id="pwBd"></div>
   <div class="pw" id="pw" role="dialog" aria-modal="true" aria-labelledby="pwT"></div>
@@ -585,7 +615,43 @@ const FONT = {
   mono: s => `${s}px ${UIF}`,
   monoB: s => `700 ${s}px ${UIF}`
 };
-const RHYME = { 3: "strong rhyme", 2: "partial rhyme", 1: "loose rhyme" };
+/* ---------- the lexicon: every PastForward term, defined once (rename a word here and it changes everywhere) ---------- */
+const LEX = {
+  rhyme: ["Rhyme", "A pattern history keeps repeating. PastForward follows 48 of them.", "Pandemics in a connected world"],
+  motif: ["Motif", "The one line that sums up a rhyme: the idea that keeps coming back. From music: a short theme a piece keeps returning to.", "“A pandemic in a hyper-connected world”"],
+  echo: ["Echo", "Each time a rhyme happened. The more echoes, the stronger the signal that it may sound again: twice is a hint, six times is a pattern.", "541, 1347, 1889, 1918, 1957, 2020"],
+  seed: ["Seed", "The first known echo of a rhyme.", "541, the Plague of Justinian"],
+  match: ["Match", "The two echoes PastForward matches to measure a rhyme: Then and Today.", "1918 and 2020"],
+  then: ["Then", "The earlier half of the match.", "1918, the Spanish flu"],
+  today: ["Today", "The recent half, the one you lived through.", "2020, COVID-19"],
+  cadence: ["Cadence", "The years between Then and Today. From music: the rhythm a phrase falls in.", "102 years"],
+  next: ["Next", "Where the rhyme may sound again: Today plus the cadence. A way to imagine, not a forecast.", "c. 2122, a new virus in a crowded world"],
+  due: ["Due date", "The year a rhyme’s Next lands: Today plus the cadence. That year, the rhyme “comes due”.", "2020 + 102 years = c. 2122"],
+  score: ["Score", "Every echo of a rhyme laid out in time, from seed to Next. From music: the sheet that shows every part at once.", "541 → 1347 → 1889 → 1918 → 1957 → 2020 → c. 2122"],
+  strong: ["Strong rhyme", "Historians commonly draw this comparison.", "1918 Spanish flu → 2020 COVID-19"],
+  medium: ["Medium rhyme", "Alike in important ways, different in others.", "1845 Railway Mania → 2024 AI build-out"],
+  weak: ["Weak rhyme", "Alike on the surface; the differences run deep.", "1871 Paris Commune → 2018 Yellow Vests"],
+  coda: ["Coda", "What followed Then. From music: the closing passage.", "After 1918: new ministries of health, then the Roaring Twenties"],
+  counterpoint: ["Counterpoint", "What the rest of the world was doing that year, region by region. From music: separate melodies played at once.", "Europe, 1918: the Armistice ends the fighting"],
+  murmurs: ["Murmurs", "Early signs that a rhyme may be sounding again.", "Bird flu spreading between mammals"],
+  brk: ["The Break", "Where the comparison stops working. Every rhyme has one.", "In 1918 doctors did not know a virus caused flu"],
+  openings: ["Openings", "Who gained last time, and what may be in demand if the rhyme returns: ideas to build, work on and learn.", "Build: air and wastewater monitoring for new pathogens"],
+  lifeline: ["Lifeline", "Your life on the timeline, from your birth year to age 90, with the rhymes that come due in it.", "Born 1990: 13 rhymes come due"],
+  dailymatch: ["Daily Match", "The daily puzzle: match three Thens to their Todays. The same for everyone, new at midnight UTC.", "Daily Match #2 · 3/3"],
+  hear: ["I hear it", "The community vote on a rhyme. Results read “82% hear it”.", "The pandemic rhyme: 82% hear it"],
+  trace: ["Trace", "An Ask PastForward answer: a rhyme researched on request by AI, for subscribers.", "“Is the AI boom like the dot-com bubble?”"]
+};
+const LEX_GROUPS = [["The shape of a rhyme", ["rhyme", "motif", "echo", "seed", "match", "then", "today", "cadence", "next", "due", "score"]], ["How strongly it rhymes", ["strong", "medium", "weak"]], ["Reading a rhyme", ["coda", "counterpoint", "murmurs", "brk", "openings"]], ["You and PastForward", ["lifeline", "dailymatch", "hear", "trace"]]];
+const RKEY = { 3: "strong", 2: "medium", 1: "weak" };
+const RHYME = { 3: LEX.strong[0], 2: LEX.medium[0], 1: LEX.weak[0] };
+const L = k => LEX[k][0];
+const T = (k, label) => `<button type="button" class="term" data-term="${k}">${label || L(k)}</button>`;
+// How often a rhyme has sounded is a signal of its own: twice is a hint, six times is a pattern.
+const sigLevel = n => (n >= 6 ? 4 : n >= 4 ? 3 : n >= 3 ? 2 : 1);
+const sigWord = n => (n >= 6 ? "a strong pattern" : n >= 4 ? "a clear pattern" : n >= 3 ? "an early pattern" : "a hint, not yet a pattern");
+const sigHTML = n => `<span class="sig s${sigLevel(n)}" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
+const echoCount = p => (p.echoes || []).length + 2;
+const rateHTML = r => `<button type="button" class="rchip" data-term="${RKEY[r] || "weak"}"><span class="dots" aria-hidden="true">${[1, 2, 3].map(j => `<i class="${j <= r ? "on" : ""}"></i>`).join("")}</span>${RHYME[r] || RHYME[1]}</button>`;
 const RORDER = ["us", "latam", "europe", "russia", "mideast", "africa", "india", "china"];
 function regionName(r, y) {
   if (r === "us") return y < 1776 ? "North America" : "United States";
@@ -799,10 +865,10 @@ function drawToday(c, xt) {
   c.strokeStyle = `rgba(${RGB.now},.75)`; c.lineWidth = 1; c.setLineDash([3, 3]);
   line(c, Math.round(xt) + .5, TOPB, Math.round(xt) + .5, BASE + 6);
   c.setLineDash([]);
-  const f = FONT.monoB(10.5), tw = mw(f, "TODAY") + 14, px = clamp(xt - tw / 2, 2, W - tw - 2);
+  const f = FONT.monoB(10.5), tw = mw(f, "YOU ARE HERE") + 14, px = clamp(xt - tw / 2, 2, W - tw - 2);
   rrect(c, px, 4, tw, 16, 8); c.fillStyle = `rgba(${BG},.95)`; c.fill();
   c.strokeStyle = `rgba(${RGB.now},.85)`; c.stroke();
-  c.font = f; c.textAlign = "center"; c.fillStyle = `rgb(${RGB.now})`; c.fillText("TODAY", px + tw / 2, 15.5);
+  c.font = f; c.textAlign = "center"; c.fillStyle = `rgb(${RGB.now})`; c.fillText("YOU ARE HERE", px + tw / 2, 15.5);
   c.restore();
 }
 
@@ -1078,7 +1144,7 @@ function onTap(px, py) {
 const card = $("card"), cardIn = $("cardIn");
 function renderRhyme() {
   const p = PAIRS[focus.pi], g = gapOf(p);
-  $("theme").innerHTML = `<span class="dots" aria-label="${RHYME[p.rhyme]}">${[1, 2, 3].map(j => `<i class="${j <= p.rhyme ? "on" : ""}"></i>`).join("")}</span><span><b>${esc(p.theme)}</b>${communityLine(focus.pi)}${(p.echoes || []).length ? ` <button type="button" class="chainchip" id="chainChip">Seen ${p.echoes.length + 2} times ›</button>` : ""}</span>`;
+  $("theme").innerHTML = `<b class="motif">${esc(p.theme)}</b><span class="rchips">${rateHTML(p.rhyme)}<button type="button" class="chainchip" id="chainChip" title="Seen ${echoCount(p)} times: ${sigWord(echoCount(p))}">${sigHTML(echoCount(p))}Seen ${echoCount(p)} times ›</button>${communityLine(focus.pi)}</span>`;
   const cc = $("chainChip"); if (cc) cc.addEventListener("click", () => openDeep("chain"));
   $("syThen").textContent = p.then.year;
   $("syNow").textContent = p.now.year;
@@ -1126,8 +1192,8 @@ function fillGlimpse() {
     const ideas = (p.opp && p.opp.ideas) || [];
     if (ideas.length) {
       oppGl = { ideas, i: -1, t0: performance.now() };
-      $("glK").textContent = "What it could mean now";
-      $("glimpse").setAttribute("aria-label", "Opportunities this pattern suggests");
+      $("glK").textContent = L("openings");
+      $("glimpse").setAttribute("aria-label", `${L("openings")}: what this rhyme could mean now`);
       showOppIdea(0);
     } else {
       oppGl = null;
@@ -1145,7 +1211,7 @@ function fillGlimpse() {
   gview.set({ home, focus: order[0], k, yr, order });
   gview.restart();
   glim = { yr, k, home, order, i: 0, t0: performance.now(), shown: -1 };
-  $("glK").textContent = `Elsewhere in ${yr}`;
+  $("glK").textContent = `${L("counterpoint")} · ${yr}`;
   $("glimpse").setAttribute("aria-label", `The world in ${yr}. Tap a region to explore.`);
   showGlimpseRegion(0);
 }
@@ -1155,6 +1221,7 @@ function showOppIdea(i) {
   if (!oppGl || oppGl.i === i) return;
   oppGl.i = i;
   const it = oppGl.ideas[i], t = $("glT");
+  if (!it) return;
   const set = () => { t.innerHTML = `<b class="k-${it.kind}">${KIND[it.kind] || ""}</b>${esc(it.title)}`; t.classList.remove("fade"); };
   if (reduce || t.textContent === "") { set(); return; }
   t.classList.add("fade"); setTimeout(set, 260);
@@ -1162,9 +1229,10 @@ function showOppIdea(i) {
 function showGlimpseRegion(i) {
   if (!glim) return;
   glim.i = i; glim.shown = i;
-  const r = glim.order[i], t = $("glT");
+  const g = glim, r = g.order[i], t = $("glT");
+  if (!r) return;
   gview.set({ focus: r });
-  const set = () => { t.innerHTML = `<b>${regionName(r, glim.yr)}</b>${esc(headline(glim.yr, r))}`; t.classList.remove("fade"); };
+  const set = () => { t.innerHTML = `<b>${regionName(r, g.yr)}</b>${esc(headline(g.yr, r))}`; t.classList.remove("fade"); };
   if (reduce || t.textContent === "") { set(); return; }
   t.classList.add("fade"); setTimeout(set, 260);
 }
@@ -1172,12 +1240,12 @@ function drawGlimpse(t) {
   if (focus && focus.k === "next") {   // only show the little equation when there is room to read it
     const box = document.querySelector(".gl-map"), eq = $("eqm");
     if (box && eq) eq.style.visibility = box.getBoundingClientRect().height >= 72 ? "visible" : "hidden";
-    if (oppGl && !reduce && dwrap.hidden) showOppIdea(Math.floor((t - oppGl.t0) / 3200) % oppGl.ideas.length);
+    if (oppGl && !reduce && dwrap.hidden) showOppIdea(Math.max(0, Math.floor((t - oppGl.t0) / 3200)) % oppGl.ideas.length);
     return;
   }
   if (!glim || !gview || gmap.hidden || !dwrap.hidden) return;
   if (!reduce) {
-    const idx = Math.floor((t - glim.t0) / 3200) % glim.order.length;
+    const idx = Math.max(0, Math.floor((t - glim.t0) / 3200)) % glim.order.length;
     if (idx !== glim.shown) showGlimpseRegion(idx);
   }
   gview.draw(t);
@@ -1240,7 +1308,7 @@ $("dClose").addEventListener("click", closeDeep);
 $("deepBd").addEventListener("click", closeDeep);
 document.addEventListener("keydown", e => {
   if (e.key !== "Escape") return;
-  if (payOpen()) closePay(); else if (!dwrap.hidden) closeDeep();
+  if (!tip.hidden) hideTip(); else if (payOpen()) closePay(); else if (!dwrap.hidden) closeDeep();
 });
 
 function setHead(kick, kcls, title, tcls) {
@@ -1254,8 +1322,8 @@ function openDeep(tab, region) {
   setHead(k === "next" ? `Next · c. ${y} · ${ahead(y)}` : `${STEP[k]} · ${y} · ${p[k].where}`, k, k === "next" ? p.next.title : p[k].title, k);
   const hasOpp = !!p.opp;
   const tlist = k === "next"
-    ? [["story", "The future"], ...(hasOpp ? [["opp", "Opportunities"]] : []), ["chain", "Chain"]]
-    : [["story", "Story"], ["chain", "Chain"], ["world", `World ${y}`], ...(hasOpp ? [["opp", "Opportunities"]] : [])];
+    ? [["story", "Story"], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])]
+    : [["story", "Story"], ["world", L("counterpoint")], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])];
   if (tab === "why") tab = "chain";
   deepTab = tab && tlist.some(t => t[0] === tab) ? tab : "story";
   tabs.innerHTML = tlist.map(([id, lab]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${id === deepTab}">${esc(lab)}</button>`).join("");
@@ -1273,8 +1341,8 @@ tabs.addEventListener("click", e => {
 });
 function oppHTML(pi) {
   const p = PAIRS[pi], o = p.opp;
-  if (!o) return "<p class='txt'>Opportunities for this rhyme are coming soon.</p>";
-  return `<p class="txt">Last time this pattern played out, some people and places came out ahead. If it rhymes again, these areas may be worth a look.</p>
+  if (!o) return `<p class='txt'>${L("openings")} for this rhyme are coming soon.</p>`;
+  return `<p class="txt">${T("openings")}: last time this rhyme sounded, some people and places came out ahead. If it sounds again, these areas may be worth a look.</p>
     ${box("Last time, who gained", o.lastTime)}
     <ol class="opps">${o.ideas.map(i => `<li class="op ${i.kind}"><span class="ok">${KIND[i.kind] || ""}</span><span class="ot">${esc(i.title)}</span><span class="ol">${esc(i.line)}</span></li>`).join("")}</ol>
     ${box("Signal to watch", o.watch, "next")}
@@ -1288,17 +1356,21 @@ function chainOf(pi) {
 }
 function chainHTML(pi) {
   const p = PAIRS[pi], items = chainOf(pi), g = gapOf(p), ny = nextYear(p);
-  let h = `<p class="txt">${items.length > 2 ? `This pattern has played out at least <b>${items.length} times</b>. The two highlighted events set the rhythm for the next one.` : "Two clear cases so far. Their gap sets the rhythm for the next one."}</p><ol class="cv">`;
+  let h = `<p class="sigline">${sigHTML(items.length)}Seen ${items.length} times: ${sigWord(items.length)}</p>
+    <p class="txt">The ${T("score", "score")} of this rhyme, from its ${T("seed", "seed")} in ${fmtY(items[0].year)}. Every ${T("echo", "echo")} makes the signal stronger. Then and Today form the ${T("match", "match")}; their ${g}-year ${T("cadence", "cadence")} sets the Next.</p><ol class="cv">`;
   items.forEach((e, j) => {
     if (j) h += `<li class="cv-gap">${e.year - items[j - 1].year} years later</li>`;
-    const lead = e.kind === "then" ? "Then" : e.kind === "now" ? "Today" : "";
+    const lead = e.kind === "then" ? "Then" : e.kind === "now" ? "Today" : j === 0 ? L("seed") : "";
     const go = e.kind === "echo" ? "" : `<button type="button" class="cv-go" data-travel="${pi}:${e.kind}" aria-label="Go to ${esc(e.title)}">→</button>`;
     h += `<li class="cv-i ${e.kind}"><span class="cv-y">${fmtY(e.year)}</span><span class="cv-d"></span><span class="cv-b">${lead ? `<span class="cv-k">${lead}</span>` : ""}<span class="cv-t">${esc(e.title)}</span>${e.line ? `<span class="cv-l">${esc(e.line)}</span>` : ""}</span>${go}</li>`;
   });
-  h += `<li class="cv-gap">+ ${g} years, if the rhythm holds</li>
+  h += `<li class="cv-gap">+ ${g} years, the same cadence</li>
     <li class="cv-i next"><span class="cv-y">c. ${ny}</span><span class="cv-d"></span><span class="cv-b"><span class="cv-k">Next</span><span class="cv-t">${esc(p.next.title)}</span></span><button type="button" class="cv-go" data-travel="${pi}:next" aria-label="Go to the next echo">→</button></li></ol>`;
-  h += box(`Why c. ${ny}`, `${p.then.title} (${p.then.year}) and ${p.now.title} (${p.now.year}) are ${g} years apart. The same gap counted forward from ${p.now.year} gives about ${ny}. It is a way to imagine, not a forecast.`);
+  h += box(`${T("due")} · c. ${ny}`, `${p.then.title} (${p.then.year}) and ${p.now.title} (${p.now.year}) are ${g} years apart. Counted forward once more from ${p.now.year}, the same cadence lands around ${ny}. A way to imagine, not a forecast.`);
   return h;
+}
+function motifBox(p) {
+  return `<div class="box mbox"><h4>${T("motif")} · the rhyme in one line</h4><p>${esc(p.theme)}</p><div class="rchips">${rateHTML(p.rhyme)}${(p.echoes || []).length ? `<span class="apat">Seen ${echoCount(p)} times</span>` : ""}</div></div>`;
 }
 function box(h, txt, cls) { return txt ? `<div class="box ${cls || ""}"><h4>${h}</h4><p>${esc(txt)}</p></div>` : ""; }
 function goBtn(pi, k, lead, noYear) {
@@ -1319,16 +1391,16 @@ function renderTab() {
   }
   if (k === "then") {
     dBody.innerHTML = `<p class="hook">${esc(p.then.hook)}</p><p class="txt">${esc(p.then.text)}</p>
-      ${box("What happened next", p.followed)}
-      <p class="meta">${RHYME[p.rhyme]} · the pattern: ${esc(p.theme)}</p>
+      ${box(`${T("coda")} · what followed`, p.followed)}
+      ${motifBox(p)}
       ${goBtn(pi, "now", `Its echo, ${g} years later`)}
       ${goBtn(pi, "next", `And ${g} years after that`)}
       ${voteHTML(pi)}`;
   } else if (k === "now") {
     dBody.innerHTML = `<p class="hook">${esc(p.now.hook)}</p><p class="txt">${esc(p.now.text)}</p>
-      ${box("The pattern", p.theme)}
+      ${motifBox(p)}
       ${goBtn(pi, "then", `It echoes, ${g} years earlier`)}
-      ${goBtn(pi, "next", `If the rhythm holds, ${g} years ahead`)}
+      ${goBtn(pi, "next", `The same cadence, ${g} years ahead`)}
       ${voteHTML(pi)}`;
   } else if (deepTab === "why") {
     dBody.innerHTML = `<div class="eq">
@@ -1339,13 +1411,13 @@ function renderTab() {
         <span class="ey x">c. ${ny}</span><span class="en">${esc(p.next.title)}</span>
       </div>
       <p class="txt">The same gap that separates the first two events, counted forward once more. It is a way to imagine, not a forecast.</p>
-      ${box("Last time, what happened next", p.followed)}
+      ${box(`${T("coda")} · last time`, p.followed)}
       ${p.older ? box("An even older rhyme", p.older) : ""}`;
   } else {
     dBody.innerHTML = `<p class="hook" style="font-style:normal">${esc(p.next.text)}</p>
-      ${box("Signs to watch for", p.next.watch, "next")}
-      ${box("Where the rhyme breaks", p.breaks)}
-      <p class="meta">${RHYME[p.rhyme]} · the pattern: ${esc(p.theme)}</p>
+      ${box(`${T("murmurs")} · signs to watch for`, p.next.watch, "next")}
+      ${box(`${T("brk")} · where it stops rhyming`, p.breaks)}
+      ${motifBox(p)}
       ${voteHTML(pi)}
       ${goBtn(pi, "then", "Where it started")}
       ${goBtn(pi, "now", "Its recent echo")}`;
@@ -1371,7 +1443,7 @@ function ixMatch(i, toks) {
 }
 function openIndex() {
   setHead("Search · Ask · All rhymes", "", `${N} rhymes`, "plain");
-  tabs.innerHTML = [["old", "Oldest first"], ["agree", "Most convincing"], ["debate", "Most debated"]].map(([id, lab]) => `<button type="button" role="tab" data-sort="${id}" aria-selected="${id === ixSort}">${lab}</button>`).join("");
+  tabs.innerHTML = [["old", "Oldest first"], ["agree", "Most heard"], ["debate", "Most debated"]].map(([id, lab]) => `<button type="button" role="tab" data-sort="${id}" aria-selected="${id === ixSort}">${lab}</button>`).join("");
   world = null;
   dBody.innerHTML = `<div class="srch">${SEARCH_SVG}<input id="ixQ" type="search" maxlength="${ASK_MAX}" placeholder="Search, or ask anything" autocomplete="off" enterkeyhint="search" aria-label="Search the rhymes, or ask a question"></div>
     <button type="button" class="askrow" id="askRow"></button>
@@ -1399,25 +1471,26 @@ function renderIndex() {
   const deb = i => { const s = scoreOf(i); return s.tot >= 3 ? s.tot * (1 - Math.abs(s.pct - 50) / 50) : -100 + (3 - PAIRS[i].rhyme); };
   if (ixSort === "agree") idx.sort((a, b) => conv(b) - conv(a) || PAIRS[b].rhyme - PAIRS[a].rhyme);
   else if (ixSort === "debate") idx.sort((a, b) => deb(b) - deb(a) || PAIRS[a].rhyme - PAIRS[b].rhyme);
-  const note = ixSort === "old" ? "" : `<p class="fnote">${apiOn() ? "Ranked by community votes, then by how readily historians accept the comparison." : "Community votes arrive with the live site. Until then this uses how readily historians accept each comparison."}</p>`;
+  const note = ixSort === "old" ? "" : `<p class="fnote">${apiOn() ? "Ranked by how many people hear each rhyme, then by its rating: strong, medium or weak." : "Votes arrive with the live site. Until then this uses each rhyme’s rating: strong, medium or weak."}</p>`;
   const shown = toks.length ? idx.filter(i => ixMatch(i, toks)) : idx;
   ixHits = shown.length;
   const long = q.length >= 3;
   row.innerHTML = `<span class="sp">${SPARK_SVG}</span><span class="at">${long ? `Ask: “${esc(q)}”` : "Ask PastForward"}</span>` +
     `<span class="as">${long ? "Research its echoes across history" : "Ask how any event or trend rhymes"}${askKey() ? "" : " · subscribers"}</span><span class="ga" aria-hidden="true">›</span>`;
   if (!shown.length) { list.innerHTML = `<p class="ixnone">No rhyme in the list matches “${esc(q)}”. Ask PastForward to research it.</p>`; return; }
-  list.innerHTML = `${ixSort === "old" && !toks.length ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details>` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
+  list.innerHTML = `${ixSort === "old" && !toks.length ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details><button type="button" class="go" data-lex=""><span><span class="gk">Lexicon</span><span class="gt">The words PastForward uses</span></span><span class="ga" aria-hidden="true">→</span></button>` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
     shown.map(i => { const p = PAIRS[i], sc = scoreOf(i); return `<li><button type="button" data-pick="${i}" class="${focus && i === focus.pi ? "on" : ""}">` +
       `<span class="it then"><b>${p.then.year}</b>${esc(p.then.short)}</span>` +
       `<span class="it now"><b>${p.now.year}</b>${esc(p.now.short)}</span>` +
-      `<span class="it next"><b>c. ${nextYear(p)}</b>${esc(p.next.short)}${apiOn() && sc.tot >= 3 ? `<em class="pct">${sc.pct}% agree</em>` : ""}</span></button></li>`; }).join("") + "</ol>";
+      `<span class="it next"><b>c. ${nextYear(p)}</b>${esc(p.next.short)}${apiOn() && sc.tot >= 3 ? `<em class="pct">${sc.pct}% hear it</em>` : ""}</span></button></li>`; }).join("") + "</ol>";
 }
 function howHTML() {
   return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the 30-second intro</button>
-    <p class="hook">Take an event from history and one you lived through that follows the same pattern. Count the years between them, then count the same number forward. That is where the pattern may return.</p>
+    <p class="hook">Every rhyme has a ${T("match", "match")}: an event from history (Then) and one you lived through (Today). The years between them are its ${T("cadence", "cadence")}. Count them forward once more and you reach the Next: where the rhyme may sound again.</p>
     <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic?</span></div>
-    ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. Use Jump to follow a rhyme from then to today to next, and Dive deeper for the full story and what was happening elsewhere in the world that year.")}
-    ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, partial or loose by how readily historians accept the comparison.")}`;
+    ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. Use Jump to follow a rhyme from Then to Today to Next. Dive deeper for the story, the counterpoint (the rest of the world that year), the score of every echo, and openings.")}
+    ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, medium or weak by how readily historians accept the comparison, and shows how many times it has echoed: the more echoes, the stronger the signal.")}
+    <button type="button" class="secondary" data-lex="" style="width:100%">The lexicon: words PastForward uses</button>`;
 }
 /* ---------- sharing and "your future" ---------- */
 const SITE = "pastforward.app";
@@ -1489,7 +1562,7 @@ function drawRhymeCard(pi) {
   let top = 360 + th.length * 70 + 60;
   if ((p.echoes || []).length) {
     c.font = `30px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgba(${INK},.75)`; c.textAlign = "center";
-    c.fillText(`Also seen in ${p.echoes.slice(0, 4).map(e => fmtY(e.year)).join(" · ")}`, W2 / 2, top - 10);
+    c.fillText(`Echoes: ${p.echoes.slice(0, 4).map(e => fmtY(e.year)).join(" · ")}`, W2 / 2, top - 10);
     top += 40;
   }
   const lx = 150, step = 400;
@@ -1526,7 +1599,7 @@ function drawRhymeCard(pi) {
     const hy = n.y + 44 + (tl.length - 1) * (n.size + 8) + 58;
     wrapLines(c, n.hook, tw, 3).forEach((l, i) => c.fillText(l, tx, hy + i * 44));
   });
-  cardFooter(c, W2, H2, `${SITE}/#${p.id}`, "Find the echoes in your own lifetime");
+  cardFooter(c, W2, H2, `${SITE}/r/${p.id}`, "Find the rhymes due in your lifetime");
   return cv2;
 }
 function yrShort(e) { return String(e.short).startsWith(String(e.year)) ? esc(e.short) : `${e.year} ${esc(e.short)}`; }
@@ -1540,11 +1613,11 @@ function drawLifeCard(by) {
   const W2 = 1080, H2 = 1920, { cv2, c } = cardBase(W2, H2);
   c.textAlign = "center";
   c.font = `500 26px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
-  c.fillText("MY LIFE, PLAYED FORWARD", W2 / 2, 228);
+  c.fillText("MY LIFELINE", W2 / 2, 228);
   c.font = `500 92px "Newsreader", Georgia, serif`; c.fillStyle = `rgb(${INK})`;
   c.fillText(`Born ${by}.`, W2 / 2, 390);
   c.font = `42px "Newsreader", Georgia, serif`; c.fillStyle = `rgba(${INK},.85)`;
-  c.fillText(list.length ? `If history keeps rhyming, I could see ${list.length} echoes:` : "History's next echoes:", W2 / 2, 470);
+  c.fillText(list.length ? `${list.length} rhymes come due in my lifetime:` : "The next rhymes to come due:", W2 / 2, 470);
   const rows = (list.length ? list : PAIRS.map((p, i) => ({ pi: i, y: nextYear(p) })).filter(e => e.y > NOWY).sort((a, b) => a.y - b.y)).slice(0, 7);
   let y = 600;
   const lx = 150;
@@ -1669,7 +1742,7 @@ function drawOGRhyme(pi) {
   c.fillText(`pastforward.app/r/${p.id}`, 64, 592);
   if ((p.echoes || []).length) {
     c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
-    c.fillText(`Also seen in ${p.echoes.slice(0, 4).map(e => fmtY(e.year)).join(" · ")}`, W2 - 64, 592);
+    c.fillText(`Echoes: ${p.echoes.slice(0, 4).map(e => fmtY(e.year)).join(" · ")}`, W2 - 64, 592);
   }
   return cv2;
 }
@@ -1696,7 +1769,7 @@ window.__pastforward = {
 const BKEY = "pastforward.birthyear";
 function savedYear() { try { const v = +localStorage.getItem(BKEY); return v >= 1920 && v <= NOWY ? v : null; } catch (_) { return null; } }
 function openFuture() {
-  setHead("Your future", "next", "Your life, played forward", "next");
+  setHead("Your future", "next", "Your lifeline", "next");
   tabs.innerHTML = ""; world = null;
   const sy = savedYear();
   dBody.innerHTML = `<div class="fut">
@@ -1733,13 +1806,13 @@ function renderFuture(by) {
   try { localStorage.setItem(BKEY, String(by)); } catch (_) {}
   const list = lifeEchoes(by);
   const rows = list.length ? list : PAIRS.map((p, i) => ({ pi: i, y: nextYear(p) })).filter(e => e.y > NOWY).sort((a, b) => a.y - b.y).slice(0, 3);
-  out.innerHTML = `<p class="fsum">${list.length ? `If history keeps rhyming, you could live to see <b>${list.length} echoes</b>, up to age 90.` : "The next echoes land after age 90. Here are the nearest:"}</p>
+  out.innerHTML = `<p class="fsum">${list.length ? `If history keeps rhyming, <b>${list.length} rhymes</b> come due in your lifetime, up to age 90.` : "No rhymes come due before age 90. Here are the nearest:"}</p>
     <ol class="flist">${rows.map(e => {
       const p = PAIRS[e.pi];
-      return `<li><button type="button" data-travel="${e.pi}:next"><span class="fy">${e.y}</span><span class="ft">${esc(p.next.title)}</span><span class="fa">age ${e.y - by}</span><span class="fe">echo of ${yrShort(p.then)} · ${yrShort(p.now)}</span></button></li>`;
+      return `<li><button type="button" data-travel="${e.pi}:next"><span class="fy">${e.y}</span><span class="ft">${esc(p.next.title)}</span><span class="fa">age ${e.y - by}</span><span class="fe">rhymes with ${yrShort(p.then)} · ${yrShort(p.now)}</span></button></li>`;
     }).join("")}</ol>
     ${prepHTML(rows)}
-    <button type="button" class="primary fshare" id="fshare">Share my future</button>`;
+    <button type="button" class="primary fshare" id="fshare">Share my lifeline</button>`;
   $("fshare").addEventListener("click", () => shareLife(by));
 }
 
@@ -1937,7 +2010,7 @@ function worldHTML(yr, home, k) {
   const w = WORLD[yr]; if (!w) return "<p class='txt'>No snapshot for this year.</p>";
   const hasHome = home && home !== "world" && w[home];
   const order = (hasHome ? [home, ...RORDER.filter(r => r !== home)] : RORDER.slice()).filter(r => w[r]);
-  return `<div class="wmapbox"><canvas id="wmap" role="img" aria-label="World map of ${yr}. Tap a region."></canvas></div>
+  return `<p class="wnote">${T("counterpoint")}: the rest of the world in ${yr}. Tap a region for more.</p><div class="wmapbox"><canvas id="wmap" role="img" aria-label="World map of ${yr}. Tap a region."></canvas></div>
     <ul class="wl world-${k}">${order.map(r => `<li data-li="${r}" class="${r === home ? "home" : ""}"><button type="button" data-r="${r}" aria-expanded="false">
       <span class="wd0"></span><span class="wr">${regionName(r, yr)}</span><span class="wh">${esc(headline(yr, r))}</span>${r === home ? '<span class="tag">Here</span>' : "<span></span>"}
       <span class="wdet" hidden>${esc(w[r])}</span></button></li>`).join("")}</ul>`;
@@ -2027,12 +2100,12 @@ function voteHTML(pi) {
   let res = "";
   if (mine) {
     res = apiOn() && sc.tot >= 3
-      ? `<div class="vbar" aria-hidden="true"><i style="width:${sc.pct}%"></i></div><div class="vres"><span>${sc.pct}% say it rhymes</span><span>${sc.tot} votes</span></div>`
-      : `<div class="vres"><span>${mine === 1 ? "You say it rhymes." : "You say it does not."} Results show as more people vote.</span></div>`;
+      ? `<div class="vbar" aria-hidden="true"><i style="width:${sc.pct}%"></i></div><div class="vres"><span>${sc.pct}% hear it</span><span>${sc.tot} votes</span></div>`
+      : `<div class="vres"><span>${mine === 1 ? "You hear it." : "You don’t hear it."} Results show as more people vote.</span></div>`;
   }
   return `<div class="vote" data-votebox="${pi}">
-    <div class="vote-q"><span>Does this rhyme?</span><span class="vote-b">
-      <button type="button" data-vote="${pi}:1" aria-pressed="${mine === 1}">It rhymes</button>
+    <div class="vote-q"><span>Do you hear it?</span><span class="vote-b">
+      <button type="button" data-vote="${pi}:1" aria-pressed="${mine === 1}">I hear it</button>
       <button type="button" data-vote="${pi}:-1" aria-pressed="${mine === -1}">Not really</button></span></div>${res}</div>`;
 }
 function refreshVotes() {
@@ -2047,7 +2120,7 @@ document.addEventListener("click", e => {
 });
 function communityLine(pi) {
   const sc = scoreOf(pi);
-  return apiOn() && sc.tot >= 10 ? ` <span class="agree">· ${sc.pct}% agree</span>` : "";
+  return apiOn() && sc.tot >= 10 ? `<span class="heard">${sc.pct}% hear it</span>` : "";
 }
 
 /* ---------- daily puzzle: find the echo ---------- */
@@ -2077,7 +2150,7 @@ function updateDailyDot() {
 }
 function openDaily() {
   const day = pzDay();
-  setHead(`Daily · #${day} · ${new Date().toLocaleDateString(undefined, { day: "numeric", month: "short" })}`, "then", "Find the echo", "plain");
+  setHead(`${L("dailymatch")} · #${day} · ${new Date().toLocaleDateString(undefined, { day: "numeric", month: "short" })}`, "then", "Find the echo", "plain");
   tabs.innerHTML = ""; world = null;
   renderPuzzle();
   showDeep();
@@ -2117,7 +2190,7 @@ function answerPuzzle(choice) {
 }
 function pzShareText(day, rounds, st) {
   const score = rounds.filter((r, j) => st.answers[j] === r.pi).length;
-  return `PastForward Daily #${day} · ${score}/${rounds.length}\n${rounds.map((r, j) => st.answers[j] === r.pi ? "🟩" : "🟥").join("")}\n${siteBase()}`;
+  return `PastForward ${L("dailymatch")} #${day} · ${score}/${rounds.length}\n${rounds.map((r, j) => st.answers[j] === r.pi ? "🟩" : "🟥").join("")}\n${siteBase()}`;
 }
 function renderPuzzleResult(day, rounds, st) {
   const score = rounds.filter((r, j) => st.answers[j] === r.pi).length, streak = pzStreak(day);
@@ -2227,7 +2300,7 @@ function keyText(reason) {
 const askOut = html => { const o = $("askOut"); if (o) o.innerHTML = html; return o; };
 
 function askChain(a) {
-  const items = [...(a.earlier || []).map(e => ({ ...e, kind: "echo" })), { ...a.then, kind: "then" }, { ...a.now, kind: "now" }];
+  const items = [...(a.earlier || []).map(e => ({ ...e, kind: "echo" })), { ...a.then, kind: "then" }, { ...a.now, kind: "now" }].sort((x, y) => x.year - y.year);
   let h = `<ol class="cv">`;
   items.forEach((e, j) => {
     if (j) h += `<li class="cv-gap">${e.year - items[j - 1].year} years later</li>`;
@@ -2242,14 +2315,15 @@ function answerHTML(q, a, example) {
   const rel = (a.related || []).map(id => PAIRS.findIndex(p => p.id === id)).filter(i => i >= 0);
   return `${example ? "" : `<p class="aq">You asked <b>“${esc(q)}”</b></p>`}
     <p class="hook">${esc(a.summary)}</p>
-    <p class="meta"><span class="dots">${[1, 2, 3].map(n => `<i class="${n <= a.strength ? "on" : ""}"></i>`).join("")}</span>${RHYME[a.strength] || ""} · ${esc(a.pattern)}</p>
+    <div class="rchips">${rateHTML(a.strength)}<span class="apat">${sigHTML((a.earlier || []).length + 2)}Seen ${(a.earlier || []).length + 2} times</span></div>
+    <p class="apat">${T("motif")} · ${esc(a.pattern)}</p>
     ${askChain(a)}
     ${box("For today’s case", a.soon, "now")}
-    ${box("Signs to watch for", a.watch, "next")}
-    ${box("Where the rhyme breaks", a.breaks)}
+    ${box(`${T("murmurs")} · signs to watch for`, a.watch, "next")}
+    ${box(`${T("brk")} · where it stops rhyming`, a.breaks)}
     ${rel.length ? `<p class="fl">In PastForward</p>${rel.map(i => goBtn(i, "then", `${fmtY(PAIRS[i].then.year)} → ${PAIRS[i].now.year} → c. ${nextYear(PAIRS[i])}`, true)).join("")}` : ""}
     ${example ? "" : `<div class="actions"><button type="button" class="secondary" data-ask="new">Ask another</button><button type="button" class="primary" data-ask="share" id="askShare">Share answer</button></div>`}
-    <p class="fnote"><span class="ai-tag">AI sketch</span>${example ? "An example answer. " : ""}Written by an AI model from what it knows. It can be wrong, so check key facts. Not advice.</p>`;
+    <p class="fnote"><span class="ai-tag">AI ${L("trace").toLowerCase()}</span>${example ? "An example answer. " : ""}Written by an AI model from what it knows. It can be wrong, so check key facts. Not advice.</p>`;
 }
 
 /* the preview: types a question, "researches", then draws the rhyme, on a loop */
@@ -2491,6 +2565,46 @@ dBody.addEventListener("click", e => {
   else if (act === "new") { const ta = $("askQ"); if (ta) { ta.value = ""; updateCnt(); } askIdle(); dBody.scrollTop = 0; if (ta) ta.focus({ preventScroll: true }); }
 });
 
+/* ---------- the lexicon on screen: tap any dotted term, or open the full list ---------- */
+const tip = $("tip");
+let tipFor = null;
+function showTip(el) {
+  const k = el.dataset.term, e = LEX[k];
+  if (!e) return;
+  if (tipFor === el && !tip.hidden) { hideTip(); return; }
+  tipFor = el;
+  $("tipT").textContent = e[0]; $("tipD").textContent = e[1]; $("tipMore").dataset.k = k;
+  const tw = Math.min(300, innerWidth - 24);
+  tip.style.width = tw + "px"; tip.style.left = "0px"; tip.style.top = "0px";
+  tip.hidden = false;
+  const r = el.getBoundingClientRect(), th = tip.offsetHeight;
+  const x = Math.max(12, Math.min(innerWidth - tw - 12, r.left + r.width / 2 - tw / 2));
+  let y = r.bottom + 8;
+  if (y + th > innerHeight - 12) y = Math.max(12, r.top - th - 8);
+  tip.style.left = Math.round(x) + "px"; tip.style.top = Math.round(y) + "px";
+}
+function hideTip() { tip.hidden = true; tipFor = null; }
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-term]");
+  if (t) { e.preventDefault(); e.stopPropagation(); showTip(t); return; }
+  if (!e.target.closest("#tip")) hideTip();
+}, true);
+window.addEventListener("scroll", () => { if (!tip.hidden) hideTip(); }, true);
+window.addEventListener("resize", () => { if (!tip.hidden) hideTip(); });
+function openLexicon(k) {
+  hideTip();
+  setHead("Lexicon", "", "The words PastForward uses", "plain");
+  tabs.innerHTML = ""; world = null;
+  dBody.innerHTML = `<p class="txt">History rhymes, so PastForward borrows its words from poetry and music. Each names one part of how a rhyme works. Tap any dotted word in the app to see its meaning.</p>` +
+    LEX_GROUPS.map(([g, keys]) => `<p class="lx-g">${g}</p><ul class="lx">${keys.map(x => `<li id="lx-${x}"><span class="lt">${esc(LEX[x][0])}</span><p class="ld">${esc(LEX[x][1])}</p><p class="le"><span>Example</span>${esc(LEX[x][2])}</p></li>`).join("")}</ul>`).join("");
+  dBody.scrollTop = 0;
+  showDeep();
+  const li = k && $("lx-" + k);
+  if (li) { li.classList.add("hl"); setTimeout(() => li.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }), 80); }
+}
+$("tipMore").addEventListener("click", () => openLexicon($("tipMore").dataset.k));
+dBody.addEventListener("click", e => { if (e.target.closest("[data-lex]")) openLexicon(); });
+
 /* ---------- intro: what PastForward is, in about 30 seconds ----------
    Every frame is a pure function of one clock (t, in seconds), so the same code plays in the app
    and can be exported frame by frame as a video (window.__pastforward.introFrame). */
@@ -2500,14 +2614,17 @@ const IP = PAIRS.find(p => p.id === "flu") || PAIRS[0];
 const I_THEN = IP.then.year, I_NOW = IP.now.year, I_GAP = I_NOW - I_THEN, I_NEXT = I_NOW + I_GAP;
 const I_ROWS = ["crash", "luddites", "titanic"].map(id => PAIRS.find(p => p.id === id)).filter(Boolean);
 const I_BY = 1990;
+const I_ECHO = (() => { const i = PAIRS.indexOf(IP); return [...(IP.echoes || []).map(e => ({ ...e, kind: "echo" })), { kind: "then", year: I_THEN, short: IP.then.short }, { kind: "now", year: I_NOW, short: IP.now.short }].sort((a, b) => a.year - b.year); })();
+const NUMW = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 const SCENES = [
-  { id: "title", view: "tl", dur: 4, cam: [1860, 760] },
-  { id: "then", view: "tl", dur: 3.4, cam: [I_THEN + 12, 150] },
-  { id: "now", view: "tl", dur: 4.2, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
-  { id: "next", view: "tl", dur: 4.8, cam: [I_NOW, I_GAP * 2.78] },
-  { id: "more", view: "more", dur: 4.6 },
-  { id: "how", view: "how", dur: 5 },
-  { id: "you", view: "you", dur: 4.6 },
+  { id: "title", view: "tl", dur: 4.8, cam: [1860, 760] },
+  { id: "then", view: "tl", dur: 4.3, cam: [I_THEN + 12, 150] },
+  { id: "now", view: "tl", dur: 5.4, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
+  { id: "next", view: "tl", dur: 6.2, cam: [I_NOW, I_GAP * 2.78] },
+  { id: "echoes", view: "echoes", dur: 3.2 + I_ECHO.length * .7 },
+  { id: "more", view: "more", dur: 5.8 },
+  { id: "how", view: "how", dur: 6.2 },
+  { id: "you", view: "you", dur: 5.8 },
   { id: "end", view: "tl", dur: Infinity, cam: [I_NOW, I_GAP * 2.78] }
 ];
 { let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
@@ -2515,9 +2632,10 @@ const INTRO_END = SCENES[SCENES.length - 1].at;
 const CAP = {
   title: { k: "", t: `History does not repeat itself,<br><span class="x">but it rhymes.</span>`, l: "" },
   then: { k: "Then", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
-  now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same pattern, ${I_GAP} years later.` },
-  next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic?`, l: `Count the same ${I_GAP} years forward. That is where the pattern may return.` },
-  more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime." },
+  now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same rhyme, ${I_GAP} years later.` },
+  next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic?`, l: `Count the same ${I_GAP} years forward. That is where the rhyme may return.` },
+  echoes: { k: "Echoes", kc: "now", t: `Seen ${NUMW[I_ECHO.length] || I_ECHO.length} times, not twice`, l: "Every echo makes the signal stronger. Twice is a hint. Six times is a pattern." },
+  more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime, and counts every time it has sounded." },
   how: { k: "How to use it", t: "Swipe through time. Tap to jump.", l: "Follow a rhyme from Then to Today to Next. Dive deeper to see the rest of the world that year." },
   you: { k: "Your future", kc: "next", t: "Which echoes are due in your lifetime?", l: "Add your birth year. Play the daily puzzle, or ask about anything." },
   end: { k: "", t: "Where will you start?", l: "" }
@@ -2534,7 +2652,7 @@ function inCam(t) {
   const i = sceneAt(t), s = SCENES[i], lt = t - s.at, prev = SCENES[i - 1];
   let c = s.cam[0] + (s.id === "title" ? lt * 9 : 0), span = s.cam[1];
   if (prev && prev.view === "tl") {
-    const pc = prev.cam[0] + (prev.id === "title" ? prev.dur * 9 : 0), ps = prev.cam[1], e = iEase(c01(lt / 1.25));
+    const pc = prev.cam[0] + (prev.id === "title" ? prev.dur * 9 : 0), ps = prev.cam[1], e = iEase(c01(lt / 1.7));
     c = pc + (c - pc) * e;
     span = Math.exp(Math.log(ps) + (Math.log(span) - Math.log(ps)) * e);
   }
@@ -2578,10 +2696,10 @@ function inSpark(c, x, y, r, a) {
 function inTimeline(c, W, H, t) {
   const cam = inCam(t), k = W / cam.span, X = y => W / 2 + (y - cam.c) * k, y0 = Math.round(H * .58);
   const T = id => SCENES.find(s => s.id === id).at;
-  const pThen = c01((t - T("then") - .45) / .55), pNow = c01((t - T("now") - 1.05) / .55);
-  const pArc1 = iEase(c01((t - T("now") - 1.2) / 1.6)), pArc2 = iEase(c01((t - T("next") - 1.05) / 1.7));
-  const tPop = T("next") + 2.75, pNext = c01((t - tPop) / .6);
-  const bg = 1 - c01((t - T("then")) / 1.1);
+  const pThen = c01((t - T("then") - .7) / .7), pNow = c01((t - T("now") - 1.5) / .7);
+  const pArc1 = iEase(c01((t - T("now") - 1.7) / 2.2)), pArc2 = iEase(c01((t - T("next") - 1.5) / 2.3));
+  const tPop = T("next") + 3.8, pNext = c01((t - tPop) / .7);
+  const bg = 1 - c01((t - T("then")) / 1.5);
   const xs = [X(I_THEN), X(I_NOW), X(I_NEXT)];
   // axis and ticks
   c.strokeStyle = `rgba(${INK},.22)`; c.lineWidth = 1.5;
@@ -2629,13 +2747,56 @@ function inTimeline(c, W, H, t) {
   });
 }
 
+/* echoes: every time the rhyme has sounded, and the signal that grows with each one */
+function inEchoes(c, W, H, lt) {
+  const n = I_ECHO.length, rows = n + 1, rh = Math.min(46, (H * .74) / rows), y0 = Math.round(H * .5 - (rows - 1) * rh / 2 + 6), cx = Math.round(W / 2 - 34);
+  const at = i => .5 + i * .7;
+  const shown = I_ECHO.filter((e, i) => lt >= at(i)).length;
+  const lineP = c01((lt - .3) / (at(n) - .1));
+  c.strokeStyle = `rgba(${INK},.18)`; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(cx, y0); c.lineTo(cx, y0 + (rows - 1) * rh * lineP); c.stroke();
+  I_ECHO.forEach((e, i) => {
+    const p = c01((lt - at(i)) / .45); if (p <= 0) return;
+    const y = y0 + i * rh, rgb = e.kind === "then" ? RGB.then : e.kind === "now" ? RGB.now : INK;
+    if (e.kind === "echo") {
+      if (p < 1) { c.strokeStyle = `rgba(${INK},${(.5 * (1 - p)).toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.arc(cx, y, 6 + 22 * p, 0, 6.2832); c.stroke(); }
+      c.fillStyle = `rgb(${BG})`; c.strokeStyle = `rgba(${INK},${(.85 * p).toFixed(3)})`; c.lineWidth = 2;
+      c.beginPath(); c.arc(cx, y, 5.5 * (p < 1 ? iBack(p) : 1), 0, 6.2832); c.fill(); c.stroke();
+    } else inDot(c, cx, y, rgb, 6.5, p, 12);
+    c.save(); c.globalAlpha *= c01(p * 1.6); c.textAlign = "right"; c.font = FONT.monoB(15); c.fillStyle = `rgb(${rgb})`; c.fillText(fmtY(e.year), cx - 20, y + 5);
+    c.textAlign = "left"; c.font = FONT.then(16.5); c.fillStyle = `rgba(${INK},.9)`; c.fillText(e.short, cx + 20, y + 5); c.restore();
+  });
+  const pn = c01((lt - at(n)) / .6);
+  if (pn > 0) {
+    const y = y0 + n * rh;
+    c.save(); c.setLineDash([3, 4]); c.strokeStyle = `rgba(${RGB.next},${(.7 * pn).toFixed(3)})`; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(cx, y0 + (n - 1) * rh + 8); c.lineTo(cx, y - 9); c.stroke(); c.restore();
+    inDot(c, cx, y, RGB.next, 7.5, pn, 18);
+    c.save(); c.globalAlpha *= pn; c.textAlign = "right"; c.font = FONT.monoB(15); c.fillStyle = `rgb(${RGB.next})`; c.fillText("c. " + I_NEXT, cx - 20, y + 5);
+    c.textAlign = "left"; c.font = FONT.then(16.5); c.fillStyle = `rgb(${RGB.next})`; c.fillText("Next?", cx + 20, y + 5); c.restore();
+  }
+  // the signal meter fills as the echoes add up
+  if (shown > 0) {
+    const lvl = sigLevel(shown), label = `${shown} echo${shown === 1 ? "" : "es"} · ${sigWord(shown)}`;
+    c.font = FONT.monoB(15);
+    const mx = Math.round((W - 40 - c.measureText(label).width) / 2), my = Math.round(y0 - rh - 14);
+    for (let b = 0; b < 4; b++) {
+      const bh = 6 + b * 5;
+      c.fillStyle = b < lvl ? `rgb(${RGB.now})` : `rgba(${INK},.18)`;
+      c.beginPath(); c.roundRect ? c.roundRect(mx + b * 8, my - bh, 5, bh, 1.5) : c.rect(mx + b * 8, my - bh, 5, bh); c.fill();
+    }
+    c.textAlign = "left"; c.font = FONT.monoB(15); c.fillStyle = `rgb(${RGB.now})`;
+    c.fillText(label, mx + 40, my - 3);
+  }
+}
+
 /* 48 rhymes: three more, drawn quickly */
 function inRows(c, W, H, lt) {
   const top = H * .1, rowH = (H * .9 - top) / I_ROWS.length, xs = [W * .16, W * .5, W * .84];
   I_ROWS.forEach((p, i) => {
-    const y = Math.round(top + rowH * i + rowH * .38), st = .2 + i * .7;
-    const pd = [0, .5, 1.05].map(d => c01((lt - st - d) / .35));
-    const pa = [.15, .7].map(d => iEase(c01((lt - st - d) / .5)));
+    const y = Math.round(top + rowH * i + rowH * .38), st = .3 + i * .95;
+    const pd = [0, .65, 1.35].map(d => c01((lt - st - d) / .45));
+    const pa = [.2, .9].map(d => iEase(c01((lt - st - d) / .65)));
     c.strokeStyle = `rgba(${INK},${(.14 * c01((lt - st) * 3)).toFixed(3)})`; c.lineWidth = 1;
     c.beginPath(); c.moveTo(xs[0] - 30, y); c.lineTo(xs[2] + 30, y); c.stroke();
     const g = p.now.year - p.then.year, h = Math.min(rowH * .3, 26);
@@ -2655,7 +2816,7 @@ function inRows(c, W, H, lt) {
 /* how to use it: a swipe through time, then the Then / Today / Next stepper */
 function inHow(c, W, H, lt) {
   const y0 = Math.round(H * .4), span = 120;
-  const cc = 1790 + (I_THEN - 1790) * iOut(c01((lt - .3) / 1.7));
+  const cc = 1790 + (I_THEN - 1790) * iOut(c01((lt - .4) / 2.1));
   const X = y => W / 2 + (y - cc) * (W / span);
   c.strokeStyle = `rgba(${INK},.22)`; c.lineWidth = 1.5; c.beginPath(); c.moveTo(0, y0); c.lineTo(W, y0); c.stroke();
   for (let y = Math.ceil((cc - span / 2) / 10) * 10; y <= cc + span / 2; y += 10) {
@@ -2671,13 +2832,13 @@ function inHow(c, W, H, lt) {
     const d = Math.abs(x - W / 2); if (!best || d < best.d) best = { d, x, p, kk };
     c.fillStyle = `rgba(${RGB[kk]},.75)`; c.beginPath(); c.arc(x, y0, 3.4, 0, 6.2832); c.fill();
   }));
-  const settled = c01((lt - 1.9) / .4);
+  const settled = c01((lt - 2.4) / .5);
   if (best && best.d < 6 && settled > 0) {
     inDot(c, best.x, y0, RGB[best.kk], 7, settled);
     inText(c, `${best.p[best.kk].year} ${best.p[best.kk].short}`, best.x, y0 - 22, FONT.then(17), `rgba(${INK},${settled.toFixed(3)})`, W);
   }
   // a finger swiping left
-  const fs = c01((lt - .25) / .8);
+  const fs = c01((lt - .3) / 1.05);
   if (fs > 0 && fs < 1) {
     const fx = W * (.78 - .56 * iEase(fs)), fa = Math.sin(fs * Math.PI);
     c.fillStyle = `rgba(${INK},${(.28 * fa).toFixed(3)})`; c.beginPath(); c.arc(fx, y0, 20, 0, 6.2832); c.fill();
@@ -2685,10 +2846,10 @@ function inHow(c, W, H, lt) {
   }
   // the stepper, tapped in turn
   const sy = Math.round(H * .76), pw = Math.min(W * .29, 170), ph = 52, cs = [W / 2 - pw - 10, W / 2, W / 2 + pw + 10];
-  const show = c01((lt - 2.05) / .35);
+  const show = c01((lt - 2.7) / .45);
   if (show <= 0) return;
   [["then", "Then", I_THEN], ["now", "Today", I_NOW], ["next", "Next", "c. " + I_NEXT]].forEach(([kk, lab, yr], j) => {
-    const on = c01((lt - 2.45 - j * .7) / .25), x = cs[j] - pw / 2;
+    const on = c01((lt - 3.15 - j * .85) / .3), x = cs[j] - pw / 2;
     c.save(); c.globalAlpha *= show;
     c.fillStyle = on > 0 ? `rgba(${RGB[kk]},${(.14 * on).toFixed(3)})` : `rgba(22,19,52,.8)`;
     c.strokeStyle = on > 0 ? `rgba(${RGB[kk]},${(.4 + .6 * on).toFixed(3)})` : `rgba(${INK},.18)`;
@@ -2696,12 +2857,12 @@ function inHow(c, W, H, lt) {
     c.beginPath(); c.roundRect ? c.roundRect(x, sy - ph / 2, pw, ph, 14) : c.rect(x, sy - ph / 2, pw, ph); c.fill(); c.stroke(); c.shadowBlur = 0;
     inText(c, lab.toUpperCase(), cs[j], sy - 4, FONT.monoB(12), `rgb(${RGB[kk]})`);
     inText(c, String(yr), cs[j], sy + 15, FONT.mono(15), `rgb(${INK})`);
-    const tp = c01((lt - 2.4 - j * .7) / .45);
+    const tp = c01((lt - 3.1 - j * .85) / .5);
     if (tp > 0 && tp < 1) { c.strokeStyle = `rgba(${INK},${(.7 * (1 - tp)).toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.arc(cs[j], sy, 10 + 26 * tp, 0, 6.2832); c.stroke(); }
     c.restore();
   });
   [0, 1].forEach(j => {
-    const p = c01((lt - 2.75 - j * .7) / .4); if (p <= 0) return;
+    const p = c01((lt - 3.5 - j * .85) / .45); if (p <= 0) return;
     inText(c, "→", (cs[j] + cs[j + 1]) / 2, sy + 6, FONT.monoB(16), `rgba(${MUTED},${(p * show).toFixed(3)})`);
   });
 }
@@ -2709,14 +2870,14 @@ function inHow(c, W, H, lt) {
 /* your future: the echoes due in one lifetime */
 function inYou(c, W, H, lt) {
   const y = Math.round(H * .52), x0 = W * .09, x1 = W * .91, X = yr => x0 + (yr - I_BY) / 90 * (x1 - x0);
-  const grow = iOut(c01((lt - .15) / 1));
+  const grow = iOut(c01((lt - .2) / 1.3));
   const g = c.createLinearGradient(x0, 0, x1, 0);
   g.addColorStop(0, `rgba(${MUTED},.5)`); g.addColorStop(1, `rgba(${RGB.next},.9)`);
   c.strokeStyle = g; c.lineWidth = 3; c.lineCap = "round"; c.beginPath(); c.moveTo(x0, y); c.lineTo(x0 + (x1 - x0) * grow, y); c.stroke();
   inDot(c, x0, y, MUTED, 5, c01(lt / .3), 6);
   inText(c, `Born ${I_BY}`, x0, y + 26, FONT.mono(13), `rgba(${MUTED},${c01(lt / .4).toFixed(3)})`, W);
-  if (grow >= 1) inText(c, "Age 90", x1, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - 1.15) / .3).toFixed(3)})`, W);
-  const tx = X(NOWY), ta = c01((lt - .7) / .3);
+  if (grow >= 1) inText(c, "Age 90", x1, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - 1.5) / .4).toFixed(3)})`, W);
+  const tx = X(NOWY), ta = c01((lt - .9) / .4);
   if (ta > 0) {
     c.strokeStyle = `rgba(${RGB.now},${ta.toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.moveTo(tx, y - 9); c.lineTo(tx, y + 9); c.stroke();
     inText(c, "Today", tx, y + 26, FONT.monoB(13), `rgba(${RGB.now},${ta.toFixed(3)})`, W);
@@ -2726,19 +2887,19 @@ function inYou(c, W, H, lt) {
   all.forEach(e => { if (!labels.length || e.x - labels[labels.length - 1].x >= Math.max(70, W * .2)) labels.push(e); });
   let shown = 0;
   all.forEach((e, i) => {
-    const p = c01((lt - 1.15 - i * .14) / .35); if (p <= 0) return;
+    const p = c01((lt - 1.6 - i * .2) / .4); if (p <= 0) return;
     shown++;
     inDot(c, e.x, y, RGB.next, 5.5, p, 14);
   });
   labels.slice(0, 4).forEach((e, i) => {
-    const p = c01((lt - 1.4 - all.indexOf(e) * .14) / .4); if (p <= 0) return;
+    const p = c01((lt - 1.9 - all.indexOf(e) * .2) / .45); if (p <= 0) return;
     const up = i % 2 === 0, a = c01(p * 1.5).toFixed(3), p2 = PAIRS[e.pi];
     c.strokeStyle = `rgba(${RGB.next},${(.35 * p).toFixed(3)})`; c.lineWidth = 1;
     c.beginPath(); c.moveTo(e.x, up ? y - 9 : y + 9); c.lineTo(e.x, up ? y - 20 : y + 38); c.stroke();
     inText(c, p2.next.short, e.x, up ? y - 44 : y + 56, FONT.then(15), `rgba(${INK},${a})`, W);
     inText(c, `c. ${e.y} · age ${e.y - I_BY}`, e.x, up ? y - 26 : y + 74, FONT.mono(12), `rgba(${RGB.next},${a})`, W);
   });
-  if (shown) inText(c, `${shown} echo${shown === 1 ? "" : "es"} in one lifetime`, W / 2, Math.round(H * .2), FONT.monoB(18), `rgba(${RGB.next},${c01((lt - 1.2) / .4).toFixed(3)})`);
+  if (shown) inText(c, `${shown} echo${shown === 1 ? "" : "es"} in one lifetime`, W / 2, Math.round(H * .2), FONT.monoB(18), `rgba(${RGB.next},${c01((lt - 1.6) / .4).toFixed(3)})`);
 }
 
 function inSize() {
@@ -2776,6 +2937,7 @@ function renderIntro(t) {
   c.globalAlpha = aIn * aOut;
   if (s.view === "tl") inTimeline(c, W, H, tt);
   else if (s.view === "more") inRows(c, W, H, lt);
+  else if (s.view === "echoes") inEchoes(c, W, H, lt);
   else if (s.view === "how") inHow(c, W, H, lt);
   else inYou(c, W, H, lt);
   c.globalAlpha = 1;

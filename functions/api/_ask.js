@@ -20,7 +20,7 @@ export const MAX_Q = 140;
 const MAX_OUT = 1100;
 const CACHE_DAYS = 180;
 // Bump when the instructions or answer shape change, so old cached answers are not served again.
-const PROMPT_VERSION = "v2";
+const PROMPT_VERSION = "v3";
 export const cacheKey = qn => sha256(PROMPT_VERSION + "|" + qn);
 
 export function askConfig(env) {
@@ -174,7 +174,7 @@ The user asks about an event, trend, technology, idea or worry. Find the stronge
 - pattern: the recurring pattern in plain words.
 - summary: a direct answer to the question.
 - then: the clearest earlier case of the same pattern. Real and checkable: year, name, place.
-- earlier: up to 3 other real cases, older than "then", only if you are sure of them.
+- earlier: up to 4 other real cases of the same pattern, before "then" or between "then" and "now". Each real case makes the signal stronger, so look for them, but only include ones you are sure of. Never invent one to raise the count.
 - now: the most recent case, usually what the user asks about. Its year must be ${YEAR_NOW()} or earlier.
 - soon: if the recent case is still unfolding, what the earlier cases suggest happens to it in the coming years, and roughly how soon (for example "Last time, prices fell within about two years of the peak"). Hedge. Leave empty if it is over.
 - next: the NEXT REPEAT of the whole pattern, a new case of its own. PastForward dates it at now + (now − then). It is never the ending or aftermath of the recent case; that belongs in soon. Describe what that later case could look like. Hedge with "could" or "may".
@@ -207,7 +207,7 @@ export const ANSWER_TOOL = {
       pattern: STR("The recurring pattern.", 8),
       summary: STR("Direct answer to the question.", 45),
       then: EVENT({ where: STR("Place.", 4) }),
-      earlier: { type: "array", maxItems: 3, items: EVENT({}) },
+      earlier: { type: "array", maxItems: 4, items: EVENT({}) },
       now: EVENT({}),
       soon: STR("For the recent case, if still unfolding: what the earlier cases suggest, and roughly when. Empty if it is over.", 28),
       next: { type: "object", properties: { title: STR("The next repeat of the whole pattern, a new case (not the end of the recent one).", 8), line: STR("What that next case could look like.", 30) }, required: ["title", "line"] },
@@ -278,8 +278,9 @@ export function cleanAnswer(x) {
   const then = ev(x.then, true), now = ev(x.now);
   if (!then || !now || now.year <= then.year) return null;
   const ny = 2 * now.year - then.year;
-  const earlier = (Array.isArray(x.earlier) ? x.earlier : []).map(e => ev(e)).filter(e => e && e.year < then.year)
-    .sort((a, b) => a.year - b.year).filter((e, i, a) => !i || e.year !== a[i - 1].year).slice(0, 3);
+  const earlier = (Array.isArray(x.earlier) ? x.earlier : []).map(e => ev(e))
+    .filter(e => e && e.year < now.year && Math.abs(e.year - then.year) > 1)
+    .sort((a, b) => a.year - b.year).filter((e, i, a) => !i || e.year !== a[i - 1].year).slice(0, 4);
   const related = [...new Set((Array.isArray(x.related) ? x.related : []).map(String).filter(id => RHYME_IDS.has(id)))].slice(0, 3);
   return {
     on_topic: true,

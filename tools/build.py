@@ -30,7 +30,8 @@ pairs, world, heads, echoes, problems = [], {}, {}, {}, []
 for n in files("pairs-"): pairs += load(n)
 for n in files("world-"): world.update(load(n))
 for n in files("headlines-"): heads.update(load(n))
-for n in files("echoes-"): echoes.update(load(n))
+for n in files("echoes-"):            # several research passes: lists for the same rhyme are combined
+    for rid, lst in load(n).items(): echoes.setdefault(rid, []).extend(lst)
 opps = {}
 for n in files("opportunities-"): opps.update(load(n))
 MAP = load("map.json")
@@ -79,6 +80,7 @@ for p in pairs:
     for e in sorted(lst, key=lambda e: e["year"]):
         same = lambda k: abs(e["year"] - p[k]["year"]) <= 1 and e["short"].lower()[:5] == p[k]["short"].lower()[:5]
         if same("then") or same("now"): continue
+        if any(abs(e["year"] - k["year"]) <= 2 for k in keep): continue   # one episode, found twice
         if e.get("region") not in REG: e["region"] = "world"
         keep.append(e)
     p["echoes"] = keep
