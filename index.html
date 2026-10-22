@@ -272,6 +272,8 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .box p { margin: 0; font-size: 16.5px; }
 .box.next { background: rgba(205, 185, 255, .08); border-color: rgba(205, 185, 255, .3); }
 .box.next h4 { color: var(--next); }
+.box.now { background: rgba(114, 211, 197, .08); border-color: rgba(114, 211, 197, .3); }
+.box.now h4 { color: var(--now); }
 .go { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; min-height: 52px; }
 .go .gk { font: 500 13px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; display: block; }
 .go .gt { font-size: 17px; display: block; }
@@ -2120,6 +2122,7 @@ const DEMOS = [
     earlier: [{ year: 1845, title: "Railway Mania", line: "Britons pour their savings into new railway lines. Many schemes collapse within two years." }],
     then: { year: 2000, title: "Dot-com bubble bursts", where: "United States", line: "The Nasdaq peaks in March, then loses about three quarters of its value by 2002." },
     now: { year: 2025, title: "AI spending boom", line: "Big tech firms spend hundreds of billions of dollars on AI data centres." },
+    soon: "In past booms, the shakeout came within a few years of peak spending. That part, if it comes, is much nearer than the next repeat.",
     next: { year: 2050, title: "The next technology gold rush", line: "Another breakthrough could draw a rush of money years before its profits are proven." },
     watch: "Spending on the technology growing much faster than the revenue it brings in.",
     breaks: "Many dot-com firms had no profits at all. The biggest AI spenders are already very profitable.", related: ["mania", "dotcom"] } },
@@ -2128,6 +2131,7 @@ const DEMOS = [
     earlier: [{ year: 1933, title: "Films on trial", line: "The Payne Fund Studies examine how films affect children." }],
     then: { year: 1954, title: "Comic book hearings", where: "United States", line: "A Senate inquiry blames comics for delinquency. Publishers adopt a strict code." },
     now: { year: 2024, title: "Social media age limits", line: "Australia passes a law banning social media for children under 16." },
+    soon: "Past panics faded within a decade or two as the medium became normal, but often left lasting rules behind, like the Comics Code.",
     next: { year: 2094, title: "The next medium on trial", line: "A new medium, perhaps AI companions or immersive worlds, could face age limits and blame." },
     watch: "Laws that set a minimum age for a new technology.",
     breaks: "Researchers can now measure effects directly, and the evidence on social media is still debated.", related: [] } },
@@ -2136,6 +2140,7 @@ const DEMOS = [
     earlier: [{ year: 1817, title: "Eight hours’ labour", line: "Robert Owen calls for eight hours of work, eight of recreation and eight of rest." }],
     then: { year: 1926, title: "Ford’s five-day week", where: "Detroit", line: "Henry Ford moves his factory workers to a five-day, 40-hour week." },
     now: { year: 2022, title: "Four-day week trials", line: "Dozens of British firms test a four-day week for six months." },
+    soon: "Ford’s week took years to spread, and the US made 40 hours the legal standard only in 1940. Today’s trials may move as slowly.",
     next: { year: 2118, title: "A shorter standard week", line: "A four-day or even three-day week could become normal, if gains from automation are shared." },
     watch: "Laws or union contracts that make a shorter week the standard.",
     breaks: "Factory output was easy to measure. Office and care work are not.", related: [] } }
@@ -2194,6 +2199,7 @@ function answerHTML(q, a, example) {
     <p class="hook">${esc(a.summary)}</p>
     <p class="meta"><span class="dots">${[1, 2, 3].map(n => `<i class="${n <= a.strength ? "on" : ""}"></i>`).join("")}</span>${RHYME[a.strength] || ""} · ${esc(a.pattern)}</p>
     ${askChain(a)}
+    ${box("For today’s case", a.soon, "now")}
     ${box("Signs to watch for", a.watch, "next")}
     ${box("Where the rhyme breaks", a.breaks)}
     ${rel.length ? `<p class="fl">In PastForward</p>${rel.map(i => goBtn(i, "then", `${fmtY(PAIRS[i].then.year)} → ${PAIRS[i].now.year} → c. ${nextYear(PAIRS[i])}`, true)).join("")}` : ""}

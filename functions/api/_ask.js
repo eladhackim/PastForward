@@ -17,8 +17,11 @@ const PRICES = {
   "claude-sonnet-5-5": [2, 10]
 };
 export const MAX_Q = 140;
-const MAX_OUT = 900;
+const MAX_OUT = 1100;
 const CACHE_DAYS = 180;
+// Bump when the instructions or answer shape change, so old cached answers are not served again.
+const PROMPT_VERSION = "v2";
+export const cacheKey = qn => sha256(PROMPT_VERSION + "|" + qn);
 
 export function askConfig(env) {
   const model = env.ASK_MODEL || "claude-haiku-5-5";
@@ -173,7 +176,8 @@ The user asks about an event, trend, technology, idea or worry. Find the stronge
 - then: the clearest earlier case of the same pattern. Real and checkable: year, name, place.
 - earlier: up to 3 other real cases, older than "then", only if you are sure of them.
 - now: the most recent case, usually what the user asks about. Its year must be ${YEAR_NOW()} or earlier.
-- next: what the next echo could look like. Hedge with "could" or "may".
+- soon: if the recent case is still unfolding, what the earlier cases suggest happens to it in the coming years, and roughly how soon (for example "Last time, prices fell within about two years of the peak"). Hedge. Leave empty if it is over.
+- next: the NEXT REPEAT of the whole pattern, a new case of its own. PastForward dates it at now + (now − then). It is never the ending or aftermath of the recent case; that belongs in soon. Describe what that later case could look like. Hedge with "could" or "may".
 - watch: one concrete signal that would show the pattern returning.
 - breaks: where the comparison fails.
 - strength: 3 if historians commonly make this comparison, 2 if partial, 1 if loose.
@@ -205,18 +209,19 @@ export const ANSWER_TOOL = {
       then: EVENT({ where: STR("Place.", 4) }),
       earlier: { type: "array", maxItems: 3, items: EVENT({}) },
       now: EVENT({}),
-      next: { type: "object", properties: { title: STR("The possible next echo.", 8), line: STR("What it could look like.", 30) }, required: ["title", "line"] },
+      soon: STR("For the recent case, if still unfolding: what the earlier cases suggest, and roughly when. Empty if it is over.", 28),
+      next: { type: "object", properties: { title: STR("The next repeat of the whole pattern, a new case (not the end of the recent one).", 8), line: STR("What that next case could look like.", 30) }, required: ["title", "line"] },
       watch: STR("A signal to watch.", 25),
       breaks: STR("Where the comparison fails.", 30),
       strength: { type: "integer", enum: [1, 2, 3] },
       related: { type: "array", maxItems: 3, items: { type: "string" } }
     },
-    required: ["on_topic", "pattern", "summary", "then", "now", "next", "watch", "breaks", "strength", "related"]
+    required: ["on_topic", "pattern", "summary", "then", "now", "soon", "next", "watch", "breaks", "strength", "related"]
   }
 };
 export function reserveMicro(cfg, q) {
   const chars = systemPrompt().length + JSON.stringify(ANSWER_TOOL).length + q.length + 200;
-  const estIn = Math.ceil(chars / 3);            // generous: real tokenisers average closer to 4 chars per token
+  const estIn = Math.ceil(chars / 2) + 600;      // generous: covers tool-use overhead and dense tokenisation (a real call measured ~3,000)
   return Math.ceil(estIn * cfg.pin + MAX_OUT * cfg.pout);
 }
 export function costMicro(cfg, u) {
@@ -247,7 +252,17 @@ export async function callModel(env, cfg, q) {
 }
 
 /* ---------- output hygiene: never trust model output blindly ---------- */
-const S = (v, n) => String(v ?? "").replace(/\s*—\s*/g, ", ").replace(/\s+/g, " ").trim().slice(0, n);
+// End a sentence-like field with a full stop if the model left it open.
+const P = t => (t && !/[.!?…”"’)]$/.test(t) ? t + "." : t);
+// Trim to n characters, ending on a full sentence where possible (never mid-sentence without an ellipsis).
+function S(v, n) {
+  const t = String(v ?? "").replace(/\s*—\s*/g, ", ").replace(/\s+/g, " ").trim();
+  if (t.length <= n) return t;
+  const cut = t.slice(0, n);
+  const end = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("? "), cut.lastIndexOf("! "));
+  if (end >= n * 0.45) return cut.slice(0, end + 1);
+  return cut.slice(0, Math.max(cut.lastIndexOf(" "), 1)).replace(/[\s,;:]+$/, "") + "…";
+}
 const YR = v => (Number.isInteger(v) && v >= -3000 && v <= YEAR_NOW() ? v : null);
 function ev(e, where) {
   if (!e || typeof e !== "object") return null;
@@ -268,10 +283,10 @@ export function cleanAnswer(x) {
   const related = [...new Set((Array.isArray(x.related) ? x.related : []).map(String).filter(id => RHYME_IDS.has(id)))].slice(0, 3);
   return {
     on_topic: true,
-    pattern: S(x.pattern, 80), summary: S(x.summary, 320),
+    pattern: S(x.pattern, 90), summary: P(S(x.summary, 380)), soon: P(S(x.soon, 280)),
     then, earlier, now,
-    next: { year: ny <= 2600 ? ny : null, title: S(x.next && x.next.title, 90), line: S(x.next && x.next.line, 260) },
-    watch: S(x.watch, 200), breaks: S(x.breaks, 240),
+    next: { year: ny <= 2600 ? ny : null, title: S(x.next && x.next.title, 90), line: P(S(x.next && x.next.line, 280)) },
+    watch: P(S(x.watch, 240)), breaks: P(S(x.breaks, 280)),
     strength: [1, 2, 3].includes(x.strength) ? x.strength : 1,
     related
   };

@@ -2,7 +2,7 @@
 // Paid only. See ../_ask.js for the gates every question passes before any money is spent.
 import { json, allowedOrigin, readJSON } from "../_shared.js";
 import {
-  askConfig, ensureTables, checkLicence, KEY_RE, MAX_Q, cleanQuestion, normQuestion, sha256,
+  askConfig, ensureTables, checkLicence, KEY_RE, MAX_Q, cleanQuestion, normQuestion, cacheKey,
   cachedAnswer, storeAnswer, usedThisMonth, reserveAllowance, releaseAllowance,
   reserveSpend, settleSpend, reserveMicro, costMicro, callModel, cleanAnswer, nextMonthStart
 } from "../_ask.js";
@@ -22,7 +22,7 @@ export async function onRequestPost({ request, env }) {
   if (!lic.ok) return json({ error: "licence", reason: lic.status || "invalid" }, 402);
 
   const qn = normQuestion(q);
-  const qHash = await sha256(qn);
+  const qHash = await cacheKey(qn);
   const hit = await cachedAnswer(env, qHash);
   if (hit) {
     const used = await usedThisMonth(env, lic.hash);
