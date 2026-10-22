@@ -2589,16 +2589,18 @@ const I_THEN = IP.then.year, I_NOW = IP.now.year, I_GAP = I_NOW - I_THEN, I_NEXT
 const I_ROWS = ["crash", "luddites", "titanic"].map(id => PAIRS.find(p => p.id === id)).filter(Boolean);
 const I_BY = 1990;
 const I_ECHO = (() => { const i = PAIRS.indexOf(IP); return [...(IP.echoes || []).map(e => ({ ...e, kind: "echo" })), { kind: "then", year: I_THEN, short: IP.then.short }, { kind: "now", year: I_NOW, short: IP.now.short }].sort((a, b) => a.year - b.year); })();
+const BEAT = 1;   // the intro's metronome: lists reveal one item per beat, so each lands before the next
+const I_LIFE = lifeEchoes(I_BY).length;
 const NUMW = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 const SCENES = [
   { id: "title", view: "tl", dur: 4.8, cam: [1860, 760] },
   { id: "then", view: "tl", dur: 4.3, cam: [I_THEN + 12, 150] },
   { id: "now", view: "tl", dur: 5.4, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
   { id: "next", view: "tl", dur: 6.2, cam: [I_NOW, I_GAP * 2.78] },
-  { id: "echoes", view: "echoes", dur: 3.2 + I_ECHO.length * .7 },
-  { id: "more", view: "more", dur: 5.8 },
-  { id: "how", view: "how", dur: 6.2 },
-  { id: "you", view: "you", dur: 5.8 },
+  { id: "echoes", view: "echoes", dur: .8 + (I_ECHO.length + 1) * BEAT + 2.6 },
+  { id: "more", view: "more", dur: .4 + 2 * BEAT * I_ROWS.length + 2.2 },
+  { id: "how", view: "how", dur: 3.1 + 3 * BEAT + 2.2 },
+  { id: "you", view: "you", dur: 1.6 + I_LIFE * .4 * BEAT + 2.6 },
   { id: "end", view: "tl", dur: Infinity, cam: [I_NOW, I_GAP * 2.78] }
 ];
 { let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
@@ -2611,7 +2613,7 @@ const CAP = {
   echoes: { k: "Echoes", kc: "now", t: `Seen ${NUMW[I_ECHO.length] || I_ECHO.length} times, not twice`, l: "Every echo makes the signal stronger. Twice is a hint. Six times is a pattern." },
   more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime, and counts every time it has sounded." },
   how: { k: "How to use it", t: "Swipe through time. Tap to jump.", l: "Follow a rhyme from Then to Today to Next. Dive deeper to see the rest of the world that year." },
-  you: { k: "Your future", kc: "next", t: "Which echoes are due in your lifetime?", l: "Add your birth year. Play the daily puzzle, or ask about anything." },
+  you: { k: "Your future", kc: "next", t: "Which rhymes come due in your lifetime?", l: "Add your birth year. Play the daily puzzle, or ask about anything." },
   end: { k: "", t: "Where will you start?", l: "" }
 };
 const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
@@ -2723,8 +2725,9 @@ function inTimeline(c, W, H, t) {
 
 /* echoes: every time the rhyme has sounded, and the signal that grows with each one */
 function inEchoes(c, W, H, lt) {
-  const n = I_ECHO.length, rows = n + 1, rh = Math.min(46, (H * .74) / rows), y0 = Math.round(H * .5 - (rows - 1) * rh / 2 + 6), cx = Math.round(W / 2 - 34);
-  const at = i => .5 + i * .7;
+  const n = I_ECHO.length, rows = n + 1, rh = Math.min(46, (H * .76) / rows), y0 = Math.round(H * .54 - (rows - 1) * rh / 2), cx = Math.round(W / 2 - 34);
+  const fy = rh < 30 ? 13.5 : 15, fn = rh < 30 ? 14.5 : 16.5;
+  const at = i => .8 + i * BEAT;
   const shown = I_ECHO.filter((e, i) => lt >= at(i)).length;
   const lineP = c01((lt - .3) / (at(n) - .1));
   c.strokeStyle = `rgba(${INK},.18)`; c.lineWidth = 2;
@@ -2737,8 +2740,8 @@ function inEchoes(c, W, H, lt) {
       c.fillStyle = `rgb(${BG})`; c.strokeStyle = `rgba(${INK},${(.85 * p).toFixed(3)})`; c.lineWidth = 2;
       c.beginPath(); c.arc(cx, y, 5.5 * (p < 1 ? iBack(p) : 1), 0, 6.2832); c.fill(); c.stroke();
     } else inDot(c, cx, y, rgb, 6.5, p, 12);
-    c.save(); c.globalAlpha *= c01(p * 1.6); c.textAlign = "right"; c.font = FONT.monoB(15); c.fillStyle = `rgb(${rgb})`; c.fillText(fmtY(e.year), cx - 20, y + 5);
-    c.textAlign = "left"; c.font = FONT.then(16.5); c.fillStyle = `rgba(${INK},.9)`; c.fillText(e.short, cx + 20, y + 5); c.restore();
+    c.save(); c.globalAlpha *= c01(p * 1.6); c.textAlign = "right"; c.font = FONT.monoB(fy); c.fillStyle = `rgb(${rgb})`; c.fillText(fmtY(e.year), cx - 20, y + 5);
+    c.textAlign = "left"; c.font = FONT.then(fn); c.fillStyle = `rgba(${INK},.9)`; c.fillText(e.short, cx + 20, y + 5); c.restore();
   });
   const pn = c01((lt - at(n)) / .6);
   if (pn > 0) {
@@ -2746,8 +2749,8 @@ function inEchoes(c, W, H, lt) {
     c.save(); c.setLineDash([3, 4]); c.strokeStyle = `rgba(${RGB.next},${(.7 * pn).toFixed(3)})`; c.lineWidth = 2;
     c.beginPath(); c.moveTo(cx, y0 + (n - 1) * rh + 8); c.lineTo(cx, y - 9); c.stroke(); c.restore();
     inDot(c, cx, y, RGB.next, 7.5, pn, 18);
-    c.save(); c.globalAlpha *= pn; c.textAlign = "right"; c.font = FONT.monoB(15); c.fillStyle = `rgb(${RGB.next})`; c.fillText("c. " + I_NEXT, cx - 20, y + 5);
-    c.textAlign = "left"; c.font = FONT.then(16.5); c.fillStyle = `rgb(${RGB.next})`; c.fillText("Next?", cx + 20, y + 5); c.restore();
+    c.save(); c.globalAlpha *= pn; c.textAlign = "right"; c.font = FONT.monoB(fy); c.fillStyle = `rgb(${RGB.next})`; c.fillText("c. " + I_NEXT, cx - 20, y + 5);
+    c.textAlign = "left"; c.font = FONT.then(fn); c.fillStyle = `rgb(${RGB.next})`; c.fillText("Next?", cx + 20, y + 5); c.restore();
   }
   // the signal meter fills as the echoes add up
   if (shown > 0) {
@@ -2766,14 +2769,14 @@ function inEchoes(c, W, H, lt) {
 
 /* 48 rhymes: three more, drawn quickly */
 function inRows(c, W, H, lt) {
-  const top = H * .1, rowH = (H * .9 - top) / I_ROWS.length, xs = [W * .16, W * .5, W * .84];
+  const top = H * .03, rowH = (H * .98 - top) / I_ROWS.length, xs = [W * .16, W * .5, W * .84];
   I_ROWS.forEach((p, i) => {
-    const y = Math.round(top + rowH * i + rowH * .38), st = .3 + i * .95;
-    const pd = [0, .65, 1.35].map(d => c01((lt - st - d) / .45));
-    const pa = [.2, .9].map(d => iEase(c01((lt - st - d) / .65)));
+    const y = Math.round(top + rowH * i + Math.min(40, rowH * .4)), st = .4 + i * 2 * BEAT;
+    const pd = [0, .9, 1.7].map(d => c01((lt - st - d * BEAT) / .45));
+    const pa = [.3, 1.1].map(d => iEase(c01((lt - st - d * BEAT) / .7)));
     c.strokeStyle = `rgba(${INK},${(.14 * c01((lt - st) * 3)).toFixed(3)})`; c.lineWidth = 1;
     c.beginPath(); c.moveTo(xs[0] - 30, y); c.lineTo(xs[2] + 30, y); c.stroke();
-    const g = p.now.year - p.then.year, h = Math.min(rowH * .3, 26);
+    const g = p.now.year - p.then.year, h = Math.min(rowH * .22, 24);
     const a1 = inArc(c, xs[0], xs[1], y, h, pa[0], RGB.then, RGB.now, false);
     const a2 = inArc(c, xs[1], xs[2], y, h, pa[1], RGB.now, RGB.next, true);
     if (a1) inText(c, `${g} yrs`, a1.x, a1.y - 7, FONT.mono(12), `rgba(${MUTED},${pa[0].toFixed(3)})`);
@@ -2823,7 +2826,7 @@ function inHow(c, W, H, lt) {
   const show = c01((lt - 2.7) / .45);
   if (show <= 0) return;
   [["then", "Then", I_THEN], ["now", "Today", I_NOW], ["next", "Next", "c. " + I_NEXT]].forEach(([kk, lab, yr], j) => {
-    const on = c01((lt - 3.15 - j * .85) / .3), x = cs[j] - pw / 2;
+    const on = c01((lt - 3.15 - j * BEAT) / .3), x = cs[j] - pw / 2;
     c.save(); c.globalAlpha *= show;
     c.fillStyle = on > 0 ? `rgba(${RGB[kk]},${(.14 * on).toFixed(3)})` : `rgba(22,19,52,.8)`;
     c.strokeStyle = on > 0 ? `rgba(${RGB[kk]},${(.4 + .6 * on).toFixed(3)})` : `rgba(${INK},.18)`;
@@ -2831,12 +2834,12 @@ function inHow(c, W, H, lt) {
     c.beginPath(); c.roundRect ? c.roundRect(x, sy - ph / 2, pw, ph, 14) : c.rect(x, sy - ph / 2, pw, ph); c.fill(); c.stroke(); c.shadowBlur = 0;
     inText(c, lab.toUpperCase(), cs[j], sy - 4, FONT.monoB(12), `rgb(${RGB[kk]})`);
     inText(c, String(yr), cs[j], sy + 15, FONT.mono(15), `rgb(${INK})`);
-    const tp = c01((lt - 3.1 - j * .85) / .5);
+    const tp = c01((lt - 3.1 - j * BEAT) / .5);
     if (tp > 0 && tp < 1) { c.strokeStyle = `rgba(${INK},${(.7 * (1 - tp)).toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.arc(cs[j], sy, 10 + 26 * tp, 0, 6.2832); c.stroke(); }
     c.restore();
   });
   [0, 1].forEach(j => {
-    const p = c01((lt - 3.5 - j * .85) / .45); if (p <= 0) return;
+    const p = c01((lt - 3.6 - j * BEAT) / .45); if (p <= 0) return;
     inText(c, "→", (cs[j] + cs[j + 1]) / 2, sy + 6, FONT.monoB(16), `rgba(${MUTED},${(p * show).toFixed(3)})`);
   });
 }
@@ -2861,19 +2864,19 @@ function inYou(c, W, H, lt) {
   all.forEach(e => { if (!labels.length || e.x - labels[labels.length - 1].x >= Math.max(70, W * .2)) labels.push(e); });
   let shown = 0;
   all.forEach((e, i) => {
-    const p = c01((lt - 1.6 - i * .2) / .4); if (p <= 0) return;
+    const p = c01((lt - 1.6 - i * .4 * BEAT) / .4); if (p <= 0) return;
     shown++;
     inDot(c, e.x, y, RGB.next, 5.5, p, 14);
   });
   labels.slice(0, 4).forEach((e, i) => {
-    const p = c01((lt - 1.9 - all.indexOf(e) * .2) / .45); if (p <= 0) return;
+    const p = c01((lt - 1.75 - all.indexOf(e) * .4 * BEAT) / .45); if (p <= 0) return;
     const up = i % 2 === 0, a = c01(p * 1.5).toFixed(3), p2 = PAIRS[e.pi];
     c.strokeStyle = `rgba(${RGB.next},${(.35 * p).toFixed(3)})`; c.lineWidth = 1;
     c.beginPath(); c.moveTo(e.x, up ? y - 9 : y + 9); c.lineTo(e.x, up ? y - 20 : y + 38); c.stroke();
     inText(c, p2.next.short, e.x, up ? y - 44 : y + 56, FONT.then(15), `rgba(${INK},${a})`, W);
     inText(c, `c. ${e.y} · age ${e.y - I_BY}`, e.x, up ? y - 26 : y + 74, FONT.mono(12), `rgba(${RGB.next},${a})`, W);
   });
-  if (shown) inText(c, `${shown} echo${shown === 1 ? "" : "es"} in one lifetime`, W / 2, Math.round(H * .2), FONT.monoB(18), `rgba(${RGB.next},${c01((lt - 1.6) / .4).toFixed(3)})`);
+  if (shown) inText(c, `${shown} rhyme${shown === 1 ? "" : "s"} due in one lifetime`, W / 2, Math.round(H * .2), FONT.monoB(18), `rgba(${RGB.next},${c01((lt - 1.6) / .4).toFixed(3)})`);
 }
 
 function inSize() {

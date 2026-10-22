@@ -1,0 +1,257 @@
+{
+  "lisbon": [
+    {
+      "year": 1980,
+      "short": "Irpinia Quake",
+      "title": "The 1980 Irpinia earthquake",
+      "region": "europe",
+      "line": "Rescuers took days to reach ruined villages in southern Italy, and President Pertini went on television to condemn the state’s failures."
+    },
+    {
+      "year": 1988,
+      "short": "Armenia Quake",
+      "title": "The 1988 Armenian earthquake",
+      "region": "russia",
+      "line": "At least 25,000 died in Soviet Armenia; shoddy Brezhnev-era buildings and slow rescues were blamed, deepening Armenians’ distrust of Moscow."
+    },
+    {
+      "year": 1999,
+      "short": "İzmit Quake",
+      "title": "The 1999 İzmit earthquake",
+      "region": "mideast",
+      "line": "Over 17,000 died; anger at shoddy buildings and a disorganized state response helped sweep the ruling coalition from power in 2002."
+    }
+  ],
+  "luddites": [
+    {
+      "year": 1826,
+      "short": "Power-Loom Riots",
+      "title": "Lancashire’s power-loom riots",
+      "region": "europe",
+      "line": "Handloom weavers, impoverished by factory looms, smashed over 1,000 power looms across east Lancashire; troops shot six rioters dead."
+    },
+    {
+      "year": 2024,
+      "short": "Port Strike",
+      "title": "US dockworkers strike over automation",
+      "region": "us",
+      "line": "About 45,000 dockworkers shut 36 East and Gulf Coast ports for three days, demanding higher pay and a full ban on automation."
+    }
+  ],
+  "cable": [
+    {
+      "year": 1903,
+      "short": "Pacific Cable",
+      "title": "Roosevelt’s message circles the globe by cable",
+      "region": "world",
+      "line": "A new Pacific cable via Hawaii reached Manila, and Roosevelt’s July 4 greeting became the first message sent around the world."
+    },
+    {
+      "year": 1988,
+      "short": "TAT-8 Fiber",
+      "title": "The first transatlantic fiber-optic cable",
+      "region": "world",
+      "line": "TAT-8 linked the US, Britain and France with glass fibers able to carry 40,000 calls, the first optical cable across an ocean."
+    },
+    {
+      "year": 1998,
+      "short": "Iridium",
+      "title": "The Iridium satellite phone network",
+      "region": "world",
+      "line": "Motorola-backed Iridium put 66 satellites in low orbit so phones could call from anywhere, but went bankrupt nine months after service began."
+    }
+  ],
+  "krakatoa": [
+    {
+      "year": 536,
+      "short": "536 Dust Veil",
+      "title": "The volcanic winter of 536",
+      "region": "world",
+      "line": "A volcanic haze dimmed the sun for about 18 months; summers turned cold and harvests failed from Ireland to China."
+    },
+    {
+      "year": 1600,
+      "short": "Huaynaputina",
+      "title": "Peru’s Huaynaputina erupts",
+      "region": "world",
+      "line": "South America’s largest recorded eruption chilled the Northern Hemisphere and is linked to the cold that brought Russia’s 1601–1603 famine."
+    },
+    {
+      "year": 2010,
+      "short": "Eyjafjallajökull",
+      "title": "Iceland’s ash cloud grounds Europe’s flights",
+      "region": "europe",
+      "line": "Ash from Iceland’s Eyjafjallajökull closed much of Europe’s airspace for about a week, cancelling over 100,000 flights and stranding millions worldwide."
+    }
+  ],
+  "dreadnought": [
+    {
+      "year": -431,
+      "short": "Athens vs Sparta",
+      "title": "The Peloponnesian War begins",
+      "region": "europe",
+      "line": "Thucydides wrote that the growth of Athens’ power, built on its navy, and the fear it caused in Sparta made war inevitable."
+    },
+    {
+      "year": 1934,
+      "short": "Japan’s Yamato",
+      "title": "Japan abandons the naval treaty limits",
+      "region": "china",
+      "line": "Denied parity with Britain and the US, Japan gave notice it would leave the naval treaties, then secretly built giant battleships."
+    },
+    {
+      "year": 1970,
+      "short": "Soviet Navy",
+      "title": "The Soviet Okean naval exercise",
+      "region": "russia",
+      "line": "Admiral Gorshkov’s fast-growing Soviet fleet staged the largest peacetime naval exercise yet across several oceans, challenging US command of the seas."
+    }
+  ],
+  "somme": [
+    {
+      "year": 1854,
+      "short": "Sevastopol",
+      "title": "The Siege of Sevastopol",
+      "region": "europe",
+      "line": "Allied troops besieged Sevastopol for 11 months in trench lines fed by a new military railway, a foretaste of World War I."
+    },
+    {
+      "year": 1951,
+      "short": "Korea Stalemate",
+      "title": "Korea’s trench stalemate",
+      "region": "china",
+      "line": "From mid-1951 Korea’s front froze into trenches and hill battles like Pork Chop Hill, while jet fighters dueled overhead in “MiG Alley.”"
+    },
+    {
+      "year": 1998,
+      "short": "Eritrea–Ethiopia",
+      "title": "The Eritrea–Ethiopia border war",
+      "region": "africa",
+      "line": "Ethiopia and Eritrea fought a trench war likened to World War I, with jet strikes and human-wave assaults; tens of thousands died."
+    }
+  ],
+  "crash": [
+    {
+      "year": 1857,
+      "short": "Panic of 1857",
+      "title": "The Panic of 1857",
+      "region": "world",
+      "line": "When a US railroad and land boom collapsed, panic spread to Britain and Europe in what is called the first worldwide crisis."
+    },
+    {
+      "year": 1990,
+      "short": "Japan’s Bubble",
+      "title": "Japan’s asset bubble bursts",
+      "region": "china",
+      "line": "After a stock and property frenzy, Tokyo’s Nikkei peaked in December 1989 and lost about 60% by 1992, starting Japan’s “Lost Decade.”"
+    },
+    {
+      "year": 1997,
+      "short": "Asian Crisis",
+      "title": "The Asian financial crisis",
+      "region": "world",
+      "line": "Southeast Asia’s borrowing and property boom ended when Thailand’s baht collapsed, and panic spread to South Korea, Russia and Wall Street."
+    }
+  ],
+  "munich": [
+    {
+      "year": 1864,
+      "short": "Schleswig War",
+      "title": "Prussia and Austria seize Schleswig-Holstein",
+      "region": "europe",
+      "line": "Amid German nationalist calls to free German speakers from Danish rule, Prussia and Austria seized Schleswig, Holstein and Lauenburg from Denmark."
+    },
+    {
+      "year": 1920,
+      "short": "Vilnius Seized",
+      "title": "Poland’s staged seizure of Vilnius",
+      "region": "europe",
+      "line": "Polish General Żeligowski staged a “mutiny” to take Lithuanian-claimed Vilnius, citing its Polish-speaking majority; Poland annexed the region in 1922."
+    },
+    {
+      "year": 1991,
+      "short": "Serb Krajina",
+      "title": "Serb rebels seize a third of Croatia",
+      "region": "europe",
+      "line": "As Croatia left Yugoslavia, Yugoslav army-backed Serb rebels took about a third of it, saying they were protecting Croatia’s Serbs."
+    }
+  ],
+  "mccarthy": [
+    {
+      "year": -399,
+      "short": "Socrates Trial",
+      "title": "The trial of Socrates",
+      "region": "europe",
+      "line": "Athens sentenced Socrates to death for impiety and corrupting the young, charges colored by his questioning and his ties to oligarch Critias."
+    },
+    {
+      "year": 1957,
+      "short": "Anti-Rightist",
+      "title": "China’s Anti-Rightist Campaign",
+      "region": "china",
+      "line": "After Mao’s Hundred Flowers campaign invited criticism, over 550,000 people were branded “rightists” and many lost jobs or were sent to camps."
+    },
+    {
+      "year": 1972,
+      "short": "Radicals Decree",
+      "title": "West Germany’s Radicals Decree",
+      "region": "europe",
+      "line": "West Germany checked about 3.5 million people for public jobs; 1,250 were refused posts and 265 dismissed over alleged extremist ties."
+    }
+  ],
+  "protests": [
+    {
+      "year": 1919,
+      "short": "1919 Protests",
+      "title": "The anticolonial protests of 1919",
+      "region": "world",
+      "line": "Hopes raised by Wilson’s talk of self-determination fed near-simultaneous protests in Korea, Egypt, India and China during the Paris peace talks."
+    },
+    {
+      "year": 2025,
+      "short": "Gen Z Protests",
+      "title": "The Gen Z protest wave",
+      "region": "world",
+      "line": "Youth-led protests spread from Indonesia and Nepal to Madagascar, Morocco and Peru, many under a One Piece anime flag, toppling two governments."
+    }
+  ],
+  "chernobyl": [
+    {
+      "year": 1957,
+      "short": "Windscale Fire",
+      "title": "The Windscale reactor fire",
+      "region": "europe",
+      "line": "Britain’s worst nuclear accident spread radioactive iodine; milk was dumped, and Macmillan censored the report to protect public confidence in nuclear power."
+    },
+    {
+      "year": 1999,
+      "short": "Tokaimura",
+      "title": "Japan’s Tokaimura nuclear accident",
+      "region": "china",
+      "line": "Workers mixing uranium in steel buckets set off a chain reaction that killed two, shaking Japanese trust in the nuclear industry."
+    }
+  ],
+  "deepblue": [
+    {
+      "year": 1979,
+      "short": "Backgammon Bot",
+      "title": "A program beats the backgammon world champion",
+      "region": "europe",
+      "line": "BKG 9.8 beat backgammon world champion Luigi Villa 7–1 in Monte Carlo, the first program to beat a reigning world champion."
+    },
+    {
+      "year": 2019,
+      "short": "OpenAI Five",
+      "title": "OpenAI Five beats Dota 2 world champions",
+      "region": "us",
+      "line": "OpenAI’s bots beat OG, reigning world champions of the team video game Dota 2, two games to none in San Francisco."
+    },
+    {
+      "year": 2022,
+      "short": "Racing Drone AI",
+      "title": "An AI drone outraces champion pilots",
+      "region": "europe",
+      "line": "The University of Zurich’s autonomous drone Swift beat three champion pilots in head-to-head races, a first for AI in a physical sport."
+    }
+  ]
+}

@@ -80,7 +80,7 @@ for p in pairs:
     for e in sorted(lst, key=lambda e: e["year"]):
         same = lambda k: abs(e["year"] - p[k]["year"]) <= 1 and e["short"].lower()[:5] == p[k]["short"].lower()[:5]
         if same("then") or same("now"): continue
-        if any(abs(e["year"] - k["year"]) <= 2 for k in keep): continue   # one episode, found twice
+        if any(abs(e["year"] - k["year"]) <= 1 and e["short"].lower()[:5] == k["short"].lower()[:5] for k in keep): continue   # one episode, found twice
         if e.get("region") not in REG: e["region"] = "world"
         keep.append(e)
     p["echoes"] = keep

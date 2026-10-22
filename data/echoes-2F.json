@@ -1,229 +1,214 @@
 {
- "revolution": [
-  {
-   "year": 184,
-   "short": "Yellow Turbans",
-   "title": "China’s Yellow Turban Rebellion",
-   "region": "china",
-   "line": "After floods and poor harvests, peasants rose against a Han court run by corrupt eunuchs, and the revolt fatally weakened the dynasty."
-  },
-  {
-   "year": 1848,
-   "short": "Europe’s 1848",
-   "title": "Europe’s revolutions of 1848",
-   "region": "europe",
-   "line": "After blight and failed harvests sent food prices soaring, Paris toppled a monarchy where under 1% could vote, and revolt swept Europe."
-  },
-  {
-   "year": 2022,
-   "short": "Rajapaksas Fall",
-   "title": "Sri Lanka’s protests oust the Rajapaksas",
-   "region": "india",
-   "line": "With food and fuel scarce and inflation over 50%, protesters stormed the president’s house, ending the Rajapaksa family’s hold on power."
-  }
- ],
- "railway": [
-  {
-   "year": 1807,
-   "short": "Fulton’s Steamer",
-   "title": "Fulton’s steamboat starts passenger service",
-   "region": "us",
-   "line": "Robert Fulton’s steamboat began scheduled trips between New York and Albany, becoming the first steamboat service to make money."
-  },
-  {
-   "year": 1863,
-   "short": "The Underground",
-   "title": "London opens the first underground railway",
-   "region": "europe",
-   "line": "Steam trains began carrying passengers through tunnels under London, and 38,000 people rode the Metropolitan Railway on its first day."
-  },
-  {
-   "year": 1964,
-   "short": "Bullet Train",
-   "title": "Japan’s bullet train opens",
-   "region": "world",
-   "line": "The Tokaido Shinkansen opened between Tokyo and Osaka days before the Olympics, the first railway built to run regularly above 200 km/h."
-  }
- ],
- "carrington": [
-  {
-   "year": 1872,
-   "short": "1872 Storm",
-   "title": "The great solar storm of 1872",
-   "region": "world",
-   "line": "A storm rivaling Carrington’s lit auroras as far south as Bombay and disrupted telegraph lines, including the Bombay to Aden undersea cable."
-  },
-  {
-   "year": 1967,
-   "short": "Radar Jammed",
-   "title": "A solar storm jams US radar",
-   "region": "us",
-   "line": "A solar storm jammed US missile-warning radars, and commanders who suspected Soviet jamming readied aircraft until forecasters blamed the sun."
-  },
-  {
-   "year": 2022,
-   "short": "Starlink Losses",
-   "title": "A solar storm downs Starlink satellites",
-   "region": "world",
-   "line": "A minor geomagnetic storm swelled the upper atmosphere, dragging 38 of 49 newly launched Starlink satellites down to burn up."
-  }
- ],
- "scramble": [
-  {
-   "year": 1541,
-   "short": "Ethiopia 1541",
-   "title": "Portugal and the Ottomans clash in Ethiopia",
-   "region": "africa",
-   "line": "Portugal sent musketeers to aid Ethiopia while the Ottomans armed the rival Adal sultanate, as both empires vied for the Red Sea."
-  },
-  {
-   "year": 1798,
-   "short": "Napoleon’s Egypt",
-   "title": "Napoleon invades Egypt",
-   "region": "africa",
-   "line": "France seized Egypt to threaten Britain’s route to India, but Nelson sank its fleet and British and Ottoman troops forced it out."
-  }
- ],
- "ellis": [
-  {
-   "year": 1979,
-   "short": "Boat People",
-   "title": "Vietnam’s boat people are turned away",
-   "region": "world",
-   "line": "As hundreds of thousands fled Vietnam by sea, neighboring states pushed boats back and declared they would accept no more."
-  },
-  {
-   "year": 1994,
-   "short": "Prop 187",
-   "title": "California passes Proposition 187",
-   "region": "us",
-   "line": "After years of heavy immigration, California voters approved barring undocumented immigrants from public schools and services, though courts blocked the law."
-  },
-  {
-   "year": 2008,
-   "short": "S. Africa Riots",
-   "title": "South Africa’s 2008 anti-migrant riots",
-   "region": "africa",
-   "line": "As millions fled Zimbabwe’s economic collapse for South Africa, mobs attacked foreign migrants in its townships, killing at least 62."
-  }
- ],
- "sykes": [
-  {
-   "year": 1920,
-   "short": "Sèvres Defied",
-   "title": "Turkish nationalists overturn the Treaty of Sèvres",
-   "region": "mideast",
-   "line": "The victorious Allies carved up Anatolia at Sèvres, but Mustafa Kemal’s nationalists fought on and won new borders at Lausanne in 1923."
-  },
-  {
-   "year": 2012,
-   "short": "Azawad Declared",
-   "title": "Tuareg rebels declare Azawad",
-   "region": "africa",
-   "line": "Tuareg rebels declared northern Mali independent as Azawad, saying France had joined it to Mali without consent in 1960."
-  }
- ],
- "tariffs": [
-  {
-   "year": 1888,
-   "short": "Italy vs France",
-   "title": "The Franco-Italian tariff war",
-   "region": "europe",
-   "line": "Italy raised tariffs to protect its industry, France struck back with punitive duties, and trade between them halved for a decade."
-  },
-  {
-   "year": 2002,
-   "short": "Steel Tariffs",
-   "title": "Bush’s steel tariffs meet EU threats",
-   "region": "us",
-   "line": "The US put tariffs of up to 30% on steel, the EU threatened $2.2 billion in retaliation, and Bush lifted them."
-  }
- ],
- "martians": [
-  {
-   "year": 1869,
-   "short": "Cardiff Giant",
-   "title": "The Cardiff Giant",
-   "region": "us",
-   "line": "A “petrified man” dug up on a New York farm drew paying crowds, but it was a planted gypsum statue."
-  },
-  {
-   "year": 1912,
-   "short": "Piltdown Man",
-   "title": "The Piltdown Man forgery",
-   "region": "europe",
-   "line": "Fossils hailed as a missing link fooled experts for 41 years until tests showed a human skull paired with an orangutan jaw."
-  },
-  {
-   "year": 1934,
-   "short": "Nessie Photo",
-   "title": "The Loch Ness “surgeon’s photo”",
-   "region": "europe",
-   "line": "The Daily Mail’s photo of the Loch Ness Monster was believed for about 60 years, but it showed a toy submarine."
-  }
- ],
- "suez": [
-  {
-   "year": 1940,
-   "short": "Cape Route 1940",
-   "title": "Italy’s war entry closes the Mediterranean",
-   "region": "europe",
-   "line": "After Italy entered the war, most Allied shipping to the Middle East was diverted around the Cape of Good Hope until 1943."
-  }
- ],
- "oil": [
-  {
-   "year": 1967,
-   "short": "1967 Embargo",
-   "title": "The 1967 Arab oil embargo",
-   "region": "mideast",
-   "line": "After the Six-Day War, Arab producers cut oil to the US, Britain and West Germany, but extra US output blunted the embargo."
-  },
-  {
-   "year": 2026,
-   "short": "Hormuz Closed",
-   "title": "Iran closes the Strait of Hormuz",
-   "region": "mideast",
-   "line": "In retaliation for US and Israeli strikes, Iran effectively closed the Strait of Hormuz, through which a fifth of world oil passes."
-  }
- ],
- "tiananmen": [
-  {
-   "year": 1978,
-   "short": "Democracy Wall",
-   "title": "Beijing’s Democracy Wall movement",
-   "region": "china",
-   "line": "Crowds read posters on a Beijing wall calling democracy the “Fifth Modernization,” until a 1979 crackdown jailed Wei Jingsheng for 15 years."
-  },
-  {
-   "year": 2003,
-   "short": "HK March 2003",
-   "title": "Half a million march in Hong Kong",
-   "region": "china",
-   "line": "About 500,000 people marched against a national security bill they feared would curb free speech, and the government shelved it."
-  }
- ],
- "y2k": [
-  {
-   "year": 1988,
-   "short": "Morris Worm",
-   "title": "The Morris worm hits the early internet",
-   "region": "us",
-   "line": "A student’s program copied itself far faster than intended, jamming thousands of computers and forcing networks to disconnect for days."
-  },
-  {
-   "year": 2000,
-   "short": "ILOVEYOU Worm",
-   "title": "The ILOVEYOU email worm",
-   "region": "world",
-   "line": "A fake love letter spread by email worldwide, infecting tens of millions of PCs and forcing many organizations to shut email down."
-  },
-  {
-   "year": 2023,
-   "short": "FAA Outage",
-   "title": "An FAA computer failure grounds US flights",
-   "region": "us",
-   "line": "A contractor’s deleted files crashed the FAA’s pilot-alert system, prompting the first nationwide ground stop since 9/11 and delaying over 10,000 flights."
-  }
- ]
+  "revolution": [
+    {
+      "year": 184,
+      "short": "Yellow Turbans",
+      "title": "China’s Yellow Turban Rebellion",
+      "region": "china",
+      "line": "After floods and poor harvests, peasants rose against a Han court run by corrupt eunuchs, and the revolt fatally weakened the dynasty."
+    },
+    {
+      "year": 1848,
+      "short": "Europe’s 1848",
+      "title": "Europe’s revolutions of 1848",
+      "region": "europe",
+      "line": "After blight and failed harvests sent food prices soaring, Paris toppled a monarchy where under 1% could vote, and revolt swept Europe."
+    },
+    {
+      "year": 2022,
+      "short": "Rajapaksas Fall",
+      "title": "Sri Lanka’s protests oust the Rajapaksas",
+      "region": "india",
+      "line": "With food and fuel scarce and inflation over 50%, protesters stormed the president’s house, ending the Rajapaksa family’s hold on power."
+    }
+  ],
+  "railway": [
+    {
+      "year": 1807,
+      "short": "Fulton’s Steamer",
+      "title": "Fulton’s steamboat starts passenger service",
+      "region": "us",
+      "line": "Robert Fulton’s steamboat began scheduled trips between New York and Albany, becoming the first steamboat service to make money."
+    },
+    {
+      "year": 1863,
+      "short": "The Underground",
+      "title": "London opens the first underground railway",
+      "region": "europe",
+      "line": "Steam trains began carrying passengers through tunnels under London, and 38,000 people rode the Metropolitan Railway on its first day."
+    },
+    {
+      "year": 1964,
+      "short": "Bullet Train",
+      "title": "Japan’s bullet train opens",
+      "region": "world",
+      "line": "The Tokaido Shinkansen opened between Tokyo and Osaka days before the Olympics, the first railway built to run regularly above 200 km/h."
+    }
+  ],
+  "carrington": [
+    {
+      "year": 1872,
+      "short": "1872 Storm",
+      "title": "The great solar storm of 1872",
+      "region": "world",
+      "line": "A storm rivaling Carrington’s lit auroras as far south as Bombay and disrupted telegraph lines, including the Bombay to Aden undersea cable."
+    },
+    {
+      "year": 1967,
+      "short": "Radar Jammed",
+      "title": "A solar storm jams US radar",
+      "region": "us",
+      "line": "A solar storm jammed US missile-warning radars, and commanders who suspected Soviet jamming readied aircraft until forecasters blamed the sun."
+    },
+    {
+      "year": 2022,
+      "short": "Starlink Losses",
+      "title": "A solar storm downs Starlink satellites",
+      "region": "world",
+      "line": "A minor geomagnetic storm swelled the upper atmosphere, dragging 38 of 49 newly launched Starlink satellites down to burn up."
+    }
+  ],
+  "scramble": [],
+  "ellis": [
+    {
+      "year": 1979,
+      "short": "Boat People",
+      "title": "Vietnam’s boat people are turned away",
+      "region": "world",
+      "line": "As hundreds of thousands fled Vietnam by sea, neighboring states pushed boats back and declared they would accept no more."
+    },
+    {
+      "year": 1994,
+      "short": "Prop 187",
+      "title": "California passes Proposition 187",
+      "region": "us",
+      "line": "After years of heavy immigration, California voters approved barring undocumented immigrants from public schools and services, though courts blocked the law."
+    },
+    {
+      "year": 2008,
+      "short": "S. Africa Riots",
+      "title": "South Africa’s 2008 anti-migrant riots",
+      "region": "africa",
+      "line": "As millions fled Zimbabwe’s economic collapse for South Africa, mobs attacked foreign migrants in its townships, killing at least 62."
+    }
+  ],
+  "sykes": [
+    {
+      "year": 1920,
+      "short": "Sèvres Defied",
+      "title": "Turkish nationalists overturn the Treaty of Sèvres",
+      "region": "mideast",
+      "line": "The victorious Allies carved up Anatolia at Sèvres, but Mustafa Kemal’s nationalists fought on and won new borders at Lausanne in 1923."
+    },
+    {
+      "year": 2012,
+      "short": "Azawad Declared",
+      "title": "Tuareg rebels declare Azawad",
+      "region": "africa",
+      "line": "Tuareg rebels declared northern Mali independent as Azawad, saying France had joined it to Mali without consent in 1960."
+    }
+  ],
+  "tariffs": [
+    {
+      "year": 1888,
+      "short": "Italy vs France",
+      "title": "The Franco-Italian tariff war",
+      "region": "europe",
+      "line": "Italy raised tariffs to protect its industry, France struck back with punitive duties, and trade between them halved for a decade."
+    },
+    {
+      "year": 2002,
+      "short": "Steel Tariffs",
+      "title": "Bush’s steel tariffs meet EU threats",
+      "region": "us",
+      "line": "The US put tariffs of up to 30% on steel, the EU threatened $2.2 billion in retaliation, and Bush lifted them."
+    }
+  ],
+  "martians": [
+    {
+      "year": 1869,
+      "short": "Cardiff Giant",
+      "title": "The Cardiff Giant",
+      "region": "us",
+      "line": "A “petrified man” dug up on a New York farm drew paying crowds, but it was a planted gypsum statue."
+    },
+    {
+      "year": 1912,
+      "short": "Piltdown Man",
+      "title": "The Piltdown Man forgery",
+      "region": "europe",
+      "line": "Fossils hailed as a missing link fooled experts for 41 years until tests showed a human skull paired with an orangutan jaw."
+    },
+    {
+      "year": 1934,
+      "short": "Nessie Photo",
+      "title": "The Loch Ness “surgeon’s photo”",
+      "region": "europe",
+      "line": "The Daily Mail’s photo of the Loch Ness Monster was believed for about 60 years, but it showed a toy submarine."
+    }
+  ],
+  "suez": [
+    {
+      "year": 1940,
+      "short": "Cape Route 1940",
+      "title": "Italy’s war entry closes the Mediterranean",
+      "region": "europe",
+      "line": "After Italy entered the war, most Allied shipping to the Middle East was diverted around the Cape of Good Hope until 1943."
+    }
+  ],
+  "oil": [
+    {
+      "year": 1967,
+      "short": "1967 Embargo",
+      "title": "The 1967 Arab oil embargo",
+      "region": "mideast",
+      "line": "After the Six-Day War, Arab producers cut oil to the US, Britain and West Germany, but extra US output blunted the embargo."
+    },
+    {
+      "year": 2026,
+      "short": "Hormuz Closed",
+      "title": "Iran closes the Strait of Hormuz",
+      "region": "mideast",
+      "line": "In retaliation for US and Israeli strikes, Iran effectively closed the Strait of Hormuz, through which a fifth of world oil passes."
+    }
+  ],
+  "tiananmen": [
+    {
+      "year": 1978,
+      "short": "Democracy Wall",
+      "title": "Beijing’s Democracy Wall movement",
+      "region": "china",
+      "line": "Crowds read posters on a Beijing wall calling democracy the “Fifth Modernization,” until a 1979 crackdown jailed Wei Jingsheng for 15 years."
+    },
+    {
+      "year": 2003,
+      "short": "HK March 2003",
+      "title": "Half a million march in Hong Kong",
+      "region": "china",
+      "line": "About 500,000 people marched against a national security bill they feared would curb free speech, and the government shelved it."
+    }
+  ],
+  "y2k": [
+    {
+      "year": 1988,
+      "short": "Morris Worm",
+      "title": "The Morris worm hits the early internet",
+      "region": "us",
+      "line": "A student’s program copied itself far faster than intended, jamming thousands of computers and forcing networks to disconnect for days."
+    },
+    {
+      "year": 2000,
+      "short": "ILOVEYOU Worm",
+      "title": "The ILOVEYOU email worm",
+      "region": "world",
+      "line": "A fake love letter spread by email worldwide, infecting tens of millions of PCs and forcing many organizations to shut email down."
+    },
+    {
+      "year": 2023,
+      "short": "FAA Outage",
+      "title": "An FAA computer failure grounds US flights",
+      "region": "us",
+      "line": "A contractor’s deleted files crashed the FAA’s pilot-alert system, prompting the first nationwide ground stop since 9/11 and delaying over 10,000 flights."
+    }
+  ]
 }
