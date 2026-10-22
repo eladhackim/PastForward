@@ -1461,7 +1461,7 @@ function renderIndex() {
 function howHTML() {
   return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the 30-second intro</button>
     <p class="hook">Every rhyme has a ${T("match", "match")}: an event from history (Then) and one you lived through (Today). The years between them are its ${T("cadence", "cadence")}. Count them forward once more and you reach the Next: where the rhyme may sound again.</p>
-    <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic?</span></div>
+    <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic</span></div>
     ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. Use Jump to follow a rhyme from Then to Today to Next. Dive deeper for the story, the counterpoint (the rest of the world that year), the score of every echo, and openings.")}
     ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, medium or weak by how readily historians accept the comparison, and shows how many times it has echoed: the more echoes, the stronger the signal.")}
     <button type="button" class="secondary" data-lex="" style="width:100%">The lexicon: words PastForward uses</button>`;
@@ -1728,7 +1728,7 @@ function drawOGHome() {
   ogRow(c, 350, [
     { k: "then", label: "THEN", year: "1918", name: "Spanish flu" },
     { k: "now", label: "TODAY", year: "2020", name: "COVID-19" },
-    { k: "next", label: "NEXT", year: "c. 2122", name: "?" }
+    { k: "next", label: "NEXT", year: "c. 2122", name: "Next pandemic" }
   ], "+102 years");
   c.font = `700 22px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${MUTED})`;
   c.fillText("48 PATTERNS · 550 YEARS · THE ECHOES DUE IN YOUR LIFETIME", W2 / 2, 600);
@@ -2610,7 +2610,7 @@ const CAP = {
   title: { k: "", t: `History does not repeat itself.<br><span class="x" id="inRhymes">It rhymes.</span>`, l: "" },
   then: { k: "Then", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
   now: { k: "Today", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. Same rhyme, ${I_GAP} years later.` },
-  next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic?`, l: `Count the same ${I_GAP} years forward. That is where the rhyme may return.` },
+  next: { k: "Next", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `Count the same ${I_GAP} years forward. That is where the rhyme may return.` },
   echoes: { k: "Echoes", kc: "now", t: "Every echo makes the signal stronger.", l: `Twice is a hint. ${(NUMW[I_ECHO.length] || String(I_ECHO.length)).replace(/^./, ch => ch.toUpperCase())} times is a pattern.` },
   more: { k: `${N} rhymes`, t: "Crashes, plagues, inventions, revolutions", l: "Each one pairs an event from history with its echo in your lifetime, and counts every time it has sounded." },
   how: { k: "How to use it", t: "Swipe through time. Tap to jump.", l: "Follow a rhyme from Then to Today to Next. Dive deeper to see the rest of the world that year." },
@@ -2761,7 +2761,7 @@ function inEchoes(c, W, H, lt) {
     c.save(); c.globalAlpha *= pn; c.shadowColor = `rgba(${RGB.next},.9)`; c.shadowBlur = 18 * pn; c.fillStyle = `rgb(${RGB.next})`;
     c.beginPath(); c.arc(cx, y, 7.5 * (.55 + .45 * pn), 0, 6.2832); c.fill(); c.shadowBlur = 0;
     c.textAlign = "right"; c.font = FONT.monoB(fy); c.fillText("c. " + I_NEXT, cx - 20 - 8 * (1 - pn), y + 5);
-    c.textAlign = "left"; c.font = FONT.then(fn); c.fillText("Next?", cx + 20 + 8 * (1 - pn), y + 5); c.restore();
+    c.textAlign = "left"; c.font = FONT.then(fn); c.fillText(IP.next.short, cx + 20 + 8 * (1 - pn), y + 5); c.restore();
   }
   // the signal meter: each bar glows in as the echoes add up
   if (lt > at(0)) {
