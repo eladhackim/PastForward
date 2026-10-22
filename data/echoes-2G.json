@@ -1,0 +1,229 @@
+{
+ "hamilton": [
+  {
+   "year": 1707,
+   "short": "The Equivalent",
+   "title": "Scotland shares England’s debt at Union",
+   "region": "europe",
+   "line": "Under the 1707 Union, Scotland took on part of England’s much larger national debt, compensated by a lump sum called the Equivalent."
+  },
+  {
+   "year": 1927,
+   "short": "Australia Debts",
+   "title": "Australia’s Commonwealth takes over state debts",
+   "region": "world",
+   "line": "The 1927 Financial Agreement had the federal government take over state debts and created a Loan Council to manage all borrowing."
+  },
+  {
+   "year": 1990,
+   "short": "German Unity",
+   "title": "Reunified Germany absorbs East German debts",
+   "region": "europe",
+   "line": "At reunification, Bonn and the western states borrowed jointly for a unity fund, and federal funds later took over East German debts."
+  }
+ ],
+ "mania": [
+  {
+   "year": 1931,
+   "short": "Empty State",
+   "title": "The Empire State Building opens mostly empty",
+   "region": "us",
+   "line": "Built in a late-1920s skyscraper race, the Empire State Building opened 75 percent empty and earned no profit until the 1950s."
+  },
+  {
+   "year": 2008,
+   "short": "Spain’s Bust",
+   "title": "Spain’s building boom goes bust",
+   "region": "europe",
+   "line": "Spain’s construction boom crashed, leaving empty flats and ghost airports like Ciudad Real, built for €1.1 billion and sold for €10,000."
+  },
+  {
+   "year": 2021,
+   "short": "Evergrande",
+   "title": "China’s property giant Evergrande defaults",
+   "region": "china",
+   "line": "China’s long building boom left developers with unsold flats and huge debts, and Evergrande, owing about $300 billion, defaulted."
+  }
+ ],
+ "commune": [
+  {
+   "year": 1789,
+   "short": "Versailles March",
+   "title": "The Women’s March on Versailles",
+   "region": "europe",
+   "line": "Angry at bread prices, Parisians led by market women marched on Versailles and forced the king to leave it for Paris."
+  },
+  {
+   "year": 1968,
+   "short": "May 1968",
+   "title": "France’s May 1968 protests and strikes",
+   "region": "europe",
+   "line": "Student protests grew into a general strike of millions that shook de Gaulle’s government, which protesters saw as outdated and repressive."
+  }
+ ],
+ "trusts": [
+  {
+   "year": 1813,
+   "short": "EIC Loses India",
+   "title": "Parliament ends the East India Company’s monopoly",
+   "region": "europe",
+   "line": "The Charter Act of 1813 ended the East India Company’s monopoly on trade with India, opening it to private British merchants."
+  },
+  {
+   "year": 1911,
+   "short": "Standard Oil",
+   "title": "The Supreme Court breaks up Standard Oil",
+   "region": "us",
+   "line": "Standard Oil once controlled about 90 percent of US refining, and the Supreme Court ordered it split into dozens of firms."
+  }
+ ],
+ "modelt": [
+  {
+   "year": 1970,
+   "short": "Jumbo Jet",
+   "title": "Boeing’s 747 jumbo jet enters service",
+   "region": "us",
+   "line": "Pan Am began 747 service in 1970, and the jumbo jet’s huge capacity cut fares and made long-haul flying a mass market."
+  }
+ ],
+ "flu": [
+  {
+   "year": 165,
+   "short": "Antonine Plague",
+   "title": "The Antonine Plague sweeps Rome’s empire",
+   "region": "europe",
+   "line": "Brought back by soldiers from Mesopotamia, a plague spread along Roman roads and sea lanes, killing perhaps 5 to 10 million."
+  },
+  {
+   "year": 1831,
+   "short": "Cholera Pandemic",
+   "title": "Asiatic cholera reaches Europe and America",
+   "region": "world",
+   "line": "Cholera from India’s Ganges Delta followed trade routes and armies into Russia and Europe by 1831, then crossed the Atlantic by ship."
+  },
+  {
+   "year": 2009,
+   "short": "Swine Flu",
+   "title": "The 2009 swine flu pandemic",
+   "region": "world",
+   "line": "A new H1N1 flu found in Mexico spread worldwide within two months, and WHO declared the first flu pandemic in 41 years."
+  }
+ ],
+ "bankrun": [
+  {
+   "year": 1797,
+   "short": "Bank Restriction",
+   "title": "A run on the Bank of England",
+   "region": "europe",
+   "line": "After a French landing in Wales, depositors rushed for gold, and the government let the Bank of England stop paying it out."
+  },
+  {
+   "year": 1931,
+   "short": "German Bank Run",
+   "title": "Germany shuts its banks after Danatbank fails",
+   "region": "europe",
+   "line": "When Danatbank said it could not pay, panic spread and Germany declared a bank holiday, two years before Roosevelt’s."
+  },
+  {
+   "year": 2013,
+   "short": "Cyprus Freeze",
+   "title": "Cyprus shuts banks to stop a run",
+   "region": "europe",
+   "line": "To stop a run, Cyprus shut banks for 12 days, capped withdrawals and imposed losses on large deposits in its biggest banks."
+  }
+ ],
+ "einstein": [
+  {
+   "year": 1955,
+   "short": "Russell–Einstein",
+   "title": "The Russell–Einstein Manifesto",
+   "region": "world",
+   "line": "Einstein and other leading scientists, with philosopher Bertrand Russell, warned that nuclear weapons could put an end to the human race."
+  },
+  {
+   "year": 2012,
+   "short": "Bird Flu Pause",
+   "title": "Flu researchers pause risky bird flu work",
+   "region": "world",
+   "line": "After two labs made bird flu strains that spread between ferrets, 39 researchers paused such work so its risks could be debated."
+  }
+ ],
+ "sputnik": [
+  {
+   "year": 1961,
+   "short": "Gagarin Orbits",
+   "title": "Gagarin becomes the first human in space",
+   "region": "russia",
+   "line": "Yuri Gagarin’s orbit beat America into space, and six weeks later Kennedy asked Congress to land a man on the Moon."
+  },
+  {
+   "year": 2010,
+   "short": "Tianhe-1A",
+   "title": "China builds the world’s fastest computer",
+   "region": "china",
+   "line": "China’s Tianhe-1A topped the world supercomputer ranking, and Obama called rivals’ advances “our generation’s Sputnik moment,” urging new research spending."
+  },
+  {
+   "year": 2021,
+   "short": "Hypersonic Test",
+   "title": "China’s reported hypersonic test alarms Washington",
+   "region": "china",
+   "line": "A reported Chinese hypersonic glide vehicle circled the globe, and the top US general called it “very close” to a Sputnik moment."
+  }
+ ],
+ "saigon": [
+  {
+   "year": 1984,
+   "short": "Beirut Exit",
+   "title": "US Marines leave Beirut",
+   "region": "mideast",
+   "line": "As the Lebanese army it backed collapsed, the US pulled its Marines out of Beirut, months after a bombing killed 241 servicemen."
+  }
+ ],
+ "netscape": [
+  {
+   "year": 1455,
+   "short": "Printing Press",
+   "title": "Gutenberg’s printing press spreads across Europe",
+   "region": "europe",
+   "line": "After Gutenberg’s Bible of the 1450s, presses spread to over 200 European towns by 1500, turning out millions of books."
+  },
+  {
+   "year": 1900,
+   "short": "Kodak Brownie",
+   "title": "Kodak’s $1 Brownie camera",
+   "region": "us",
+   "line": "Kodak’s $1 Brownie shipped over 150,000 cameras in its first year, bringing snapshot photography to ordinary people."
+  },
+  {
+   "year": 1948,
+   "short": "TV Boom",
+   "title": "Television sweeps into American homes",
+   "region": "us",
+   "line": "The share of US homes with a television jumped from 1 percent in 1948 to 75 percent in 1955."
+  }
+ ],
+ "dotcom": [
+  {
+   "year": 1897,
+   "short": "Bicycle Bubble",
+   "title": "Britain’s bicycle share bubble bursts",
+   "region": "europe",
+   "line": "Hundreds of cycle firms floated as shares soared in 1896, then the index lost over 70 percent and many makers went bust."
+  },
+  {
+   "year": 1929,
+   "short": "Radio Stocks",
+   "title": "Radio stocks crash with Wall Street",
+   "region": "us",
+   "line": "RCA, the leading radio stock of the 1920s, lost about 98 percent of its value between its 1929 peak and 1932."
+  },
+  {
+   "year": 1962,
+   "short": "Tronics Crash",
+   "title": "The early-1960s “tronics” boom collapses",
+   "region": "us",
+   "line": "New electronics issues, often named “-tronics”, soared in 1960 and 1961, then many lost 90 percent of their value in 1962."
+  }
+ ]
+}
