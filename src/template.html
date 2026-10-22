@@ -290,6 +290,10 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .op .ol { font: 15.5px/1.45 var(--f-mono); color: rgba(239, 232, 214, .78); }
 .gl-t b.k-build { color: var(--next); } .gl-t b.k-work { color: var(--now); } .gl-t b.k-learn { color: var(--then); }
 .cv { list-style: none; margin: 0; padding: 0; position: relative; }
+.cv.reveal > li { animation: cvIn .7s cubic-bezier(.2, .7, .2, 1) both; animation-delay: var(--d, 0s); }
+.cv.reveal::before { transform-origin: top; animation: cvLine 2.4s cubic-bezier(.3, .6, .2, 1) both; }
+@keyframes cvIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes cvLine { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 .cv::before { content: ""; position: absolute; left: 75px; top: 14px; bottom: 18px; width: 2px; border-radius: 2px; background: linear-gradient(var(--then), var(--now) 75%, var(--next)); opacity: .55; }
 .cv-i { position: relative; display: grid; grid-template-columns: 62px 28px minmax(0, 1fr) auto; align-items: start; padding: 4px 0; }
 .cv-y { grid-column: 1; text-align: right; font: 700 15px var(--f-mono); color: var(--muted); padding-top: 9px; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -485,6 +489,7 @@ h1.tap { cursor: pointer; }
   .card-in, .deep, .deep-bd, .st-b, .pw, .pw-bd { transition: none; }
   .swipe-hint, .pulse, .thinking i, .demo-caret { animation: none; }
   .intro { transition: none; }
+  .cv.reveal > li, .cv.reveal::before { animation: none; }
 }
 </style>
 
@@ -1330,16 +1335,19 @@ function chainOf(pi) {
 }
 function chainHTML(pi) {
   const p = PAIRS[pi], items = chainOf(pi), g = gapOf(p), ny = nextYear(p);
-  let h = `<p class="sigline">${sigHTML(items.length)}Seen ${items.length} times: ${sigWord(items.length)}</p>
-    <p class="txt">The ${T("score", "score")} of this rhyme, from its ${T("seed", "seed")} in ${fmtY(items[0].year)}. Every ${T("echo", "echo")} makes the signal stronger. Then and Today form the ${T("match", "match")}; their ${g}-year ${T("cadence", "cadence")} sets the Next.</p><ol class="cv">`;
+  let h = `<p class="hook">Every ${T("echo", "echo")} makes the signal stronger.</p>
+    <p class="sigline">${sigHTML(items.length)}Seen ${items.length} times: ${sigWord(items.length)}</p>
+    <p class="txt">The ${T("score", "score")} of this rhyme, from its ${T("seed", "seed")} in ${fmtY(items[0].year)}. Then and Today form the ${T("match", "match")}; their ${g}-year ${T("cadence", "cadence")} sets the Next.</p><ol class="cv reveal">`;
+  let d = 0;
+  const dl = () => ` style="--d:${(d++ * .16).toFixed(2)}s"`;
   items.forEach((e, j) => {
-    if (j) h += `<li class="cv-gap">${e.year - items[j - 1].year} years later</li>`;
+    if (j) h += `<li class="cv-gap"${dl()}>${e.year - items[j - 1].year} years later</li>`;
     const lead = e.kind === "then" ? "Then" : e.kind === "now" ? "Today" : j === 0 ? L("seed") : "";
     const go = e.kind === "echo" ? "" : `<button type="button" class="cv-go" data-travel="${pi}:${e.kind}" aria-label="Go to ${esc(e.title)}">→</button>`;
-    h += `<li class="cv-i ${e.kind}"><span class="cv-y">${fmtY(e.year)}</span><span class="cv-d"></span><span class="cv-b">${lead ? `<span class="cv-k">${lead}</span>` : ""}<span class="cv-t">${esc(e.title)}</span>${e.line ? `<span class="cv-l">${esc(e.line)}</span>` : ""}</span>${go}</li>`;
+    h += `<li class="cv-i ${e.kind}"${dl()}><span class="cv-y">${fmtY(e.year)}</span><span class="cv-d"></span><span class="cv-b">${lead ? `<span class="cv-k">${lead}</span>` : ""}<span class="cv-t">${esc(e.title)}</span>${e.line ? `<span class="cv-l">${esc(e.line)}</span>` : ""}</span>${go}</li>`;
   });
-  h += `<li class="cv-gap">+ ${g} years, the same cadence</li>
-    <li class="cv-i next"><span class="cv-y">c. ${ny}</span><span class="cv-d"></span><span class="cv-b"><span class="cv-k">Next</span><span class="cv-t">${esc(p.next.title)}</span></span><button type="button" class="cv-go" data-travel="${pi}:next" aria-label="Go to the next echo">→</button></li></ol>`;
+  h += `<li class="cv-gap"${dl()}>+ ${g} years, the same cadence</li>
+    <li class="cv-i next"${dl()}><span class="cv-y">c. ${ny}</span><span class="cv-d"></span><span class="cv-b"><span class="cv-k">Next</span><span class="cv-t">${esc(p.next.title)}</span></span><button type="button" class="cv-go" data-travel="${pi}:next" aria-label="Go to the next echo">→</button></li></ol>`;
   h += box(`${T("due")} · c. ${ny}`, `${p.then.title} (${p.then.year}) and ${p.now.title} (${p.now.year}) are ${g} years apart. Counted forward once more from ${p.now.year}, the same cadence lands around ${ny}. A way to imagine, not a forecast.`);
   return h;
 }
