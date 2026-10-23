@@ -3607,9 +3607,10 @@ const SCORE = (() => {
   add(STEP2.now, "bell", { m: 78, v: .3, pan: .1 });
   add(STEP2.now + .2, "whoosh", { d: STEP2.land - STEP2.now - .2, f0: 260, f1: 1900, v: .55, p0: -.6, p1: .5 });
   add(STEP2.land, "bell", { m: MOTIF[1], v: .72, pan: .3 });
-  // measure the rhythm: a slow beat from the moment 1918 lands, until Step 3 begins (one last kick lands on it)
-  for (let t = STEP2.then, k = 0; t < S("next") + 2 * BEAT; t += BEAT, k++) {
-    const kick = k % 2 === 0, last = t >= S("next");
+  // measure the rhythm: a slow beat from the moment 1918 lands, through Step 3, to one last kick as "One method." arrives
+  const beatEnd = S("method") + CARD_T.method.lines[0] - .3;
+  for (let t = STEP2.then, k = 0; t < beatEnd + 2 * BEAT; t += BEAT, k++) {
+    const kick = k % 2 === 0, last = t >= beatEnd;
     if (last && !kick) break;
     if (kick) add(t, "kick", { v: Math.min(1, .85 + k * .03) });
     else add(t, "snare", { v: Math.min(1, .8 + k * .04) });
