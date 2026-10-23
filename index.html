@@ -528,6 +528,20 @@ button.op:hover { border-color: rgba(var(--ink-rgb), .35); }
 .in-act-in { display: flex; flex-direction: column; gap: 8px; }
 .in-act .in-row .secondary { flex: 1; }
 .in-url { margin: 4px 0 0; font: 600 22px var(--f-ui); letter-spacing: .02em; color: var(--next); }
+@media (min-width: 700px) {   /* tablets upright: a shorter picture, its caption close under it, the pair a little above the middle */
+  .in-stage { flex: 0 1 auto; height: min(50vh, 560px); margin-top: auto; }
+  .in-cap { min-height: 120px; margin-bottom: auto; padding-bottom: 8vh; }
+  .intro.nocap .in-cap { display: flex; visibility: hidden; }   /* keep its room, so the picture does not jump */
+  .intro > .in-card { padding-bottom: 7vh; }
+}
+@media (min-width: 900px) and (min-aspect-ratio: 5/4) {   /* wide screens: the picture on the left, its words beside it at eye level */
+  .intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); grid-template-rows: auto auto minmax(0, 1fr) auto; column-gap: 3vw; }
+  .in-top, .in-prog, .in-tap { grid-column: 1 / -1; }
+  .in-stage { grid-column: 1; grid-row: 3; align-self: center; height: min(72vh, 680px); max-width: 860px; width: 100%; margin: 0 0 4vh auto; }
+  .in-cap { grid-column: 2; grid-row: 3; align-self: center; justify-content: center; text-align: left; min-height: 0; max-width: 440px; margin: 0 0 8vh; padding: 0; }
+  .intro.nocap .in-stage { grid-column: 1 / -1; margin: 0 auto 4vh; }
+  .intro.nocap .in-cap { display: none; }
+}
 .in-tap { flex: none; margin: 0; text-align: center; font: 13px var(--f-ui); letter-spacing: .04em; color: var(--muted); transition: opacity .3s; }
 h1.tap { cursor: pointer; }
 
@@ -2876,6 +2890,9 @@ for (const s of SCENES) if (s.dur !== Infinity) s.dur = onGrid(s.dur, BEAT);
 { const beats = Math.round(SCENES.reduce((a, s) => a + (s.dur === Infinity ? 0 : s.dur), 0) / BEAT); SCENES[0].dur += ((4 - beats % 4) % 4) * BEAT; }
 { let q = 0; for (const s of SCENES) { s.at = q * QB; if (s.dur !== Infinity) q += Math.round(s.dur / QB); } }
 const INTRO_END = SCENES[SCENES.length - 1].at;
+// the opening sways: the words drift a little to the left and come back by Step 1; the world behind moves half as far
+const SWAY_END = SCENES.find(x => x.id === "s1").at;
+const sway = (t, W) => -Math.min(32, W * .045) * (1 - Math.cos(2 * Math.PI * c01(t / SWAY_END))) / 2;
 // the beat grid starts at 0 in bars of four beats; the kick falls on beats 1 and 3
 const kickAt = t => onGrid(t, 2 * BEAT);
 // Step 2, measure the rhythm: 1918 lands on a kick, 2020 on the next beat after its scene settles,
@@ -3197,15 +3214,15 @@ function inBackdrop(c, W, H, t) {
   const g = c.createLinearGradient(0, 0, 0, H);
   g.addColorStop(0, "#08071A"); g.addColorStop(1, "#12103A");
   c.fillStyle = g; c.fillRect(0, 0, W, H);
-  const drift = t * 2.2;
+  const drift = t * 2.2, wx = sway(t, W) * .5;   // the world sways with the words, half as far
   for (const st of BG_STARS) {
-    const x = ((st.x * W - drift * (.4 + st.s * .4)) % W + W) % W;
+    const x = ((st.x * W - drift * (.4 + st.s * .4) + wx * .5) % W + W) % W;
     c.fillStyle = `rgba(232,226,255,${(.12 + .3 * (.5 + .5 * Math.sin(t * st.v + st.p))).toFixed(3)})`;
     c.beginPath(); c.arc(x, st.y * H * .5, st.s, 0, 6.2832); c.fill();
   }
   // the earth, large and quiet behind everything. It turns once over the film; the sun climbs to its horizon,
   // and the moon rises from behind it, crosses the sky and sets into the dawn: the three move together.
-  const R = Math.min(W * 1.35, H * 1.1), cx = W / 2, cy = H * .3 + R;
+  const R = Math.min(W * 1.35, H * 1.1), cx = W / 2 + wx, cy = H * .3 + R;
   const limbY = x => cy - Math.sqrt(Math.max(0, R * R - (x - cx) ** 2));
   const sx = lerp(W * 1.16, W * .86, u), sy = limbY(sx) + H * .07 * (1 - iOut(u));
   // its strip of sky: halfway between the progress line and the first line of the story, on any screen
@@ -3547,6 +3564,8 @@ function renderIntro(t) {
   const cap = $("inCap"), cardEl = $("inCard");
   cap.style.opacity = s.view === "card" ? "0" : ca.toFixed(3);
   cardEl.style.opacity = s.card ? (still ? 1 : c01((s.dur - lt) / .55)).toFixed(3) : "0";
+  const sw = still ? 0 : sway(tt, intro.fw);
+  cardEl.style.transform = sw ? `translateX(${sw.toFixed(1)}px)` : "";
   if (s.card) cardEl.querySelectorAll(".ic-l").forEach((el, j) => {
     const r = still ? 1 : iOut(c01((lt - CARD_T[s.card].lines[j]) / 1.1));
     el.style.opacity = r.toFixed(3);
@@ -3557,7 +3576,7 @@ function renderIntro(t) {
     const pgs = [...cardEl.querySelectorAll(".ic-pg")];
     pgs.forEach((p, k) => { p.style.opacity = still ? (k === pgs.length - 1 ? "1" : "0") : p.dataset.out ? (1 - c01((lt - +p.dataset.out) / .45)).toFixed(3) : "1"; });
   }
-  cap.style.transform = `translateY(${((1 - iOut(c01(lt / .5))) * 12).toFixed(1)}px)`;
+  cap.style.transform = `translateX(${sw.toFixed(1)}px) translateY(${((1 - iOut(c01(lt / .5))) * 12).toFixed(1)}px)`;
   cap.querySelectorAll("[data-at]").forEach(el => {   // timed parts: a soft focus pull as they arrive
     const r = still ? 1 : c01((lt - +el.dataset.at) / .7);
     if (getComputedStyle(el).display === "inline") el.style.display = "inline-block";
