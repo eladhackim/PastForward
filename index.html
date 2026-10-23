@@ -131,9 +131,21 @@ h1.tap { cursor: pointer; }
 .stage.next { --k: var(--next-rgb); }
 .pattern { flex: none; display: flex; flex-direction: column; align-items: flex-start; }
 .motif { margin: 0; font: italic 400 19px/1.3 var(--f-body); color: var(--ink); text-wrap: balance; }
-.pmeta { display: inline-flex; align-items: center; gap: 8px; min-height: 30px; margin-top: 1px; padding: 0; border: 0; background: none; font: 500 14px var(--f-ui); color: var(--muted); cursor: pointer; text-align: left; }
-.pmeta:hover { color: var(--ink); }
-.pmeta .chev { font-size: 16px; line-height: 1; opacity: .75; }
+.echoes { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; min-height: 36px; margin-top: 8px; padding: 0 12px 0 12px; border: 0; border-radius: 999px; background: rgba(var(--ink-rgb), .07); font: 500 14.5px var(--f-ui); color: var(--muted); cursor: pointer; white-space: nowrap; transition: background-color .2s; }
+.echoes:hover { background: rgba(var(--ink-rgb), .12); color: var(--ink); }
+.echoes b { font-weight: 600; color: var(--ink); }
+.echoes .chev { font-size: 17px; line-height: 1; margin-left: -3px; opacity: .7; }
+.echoes .w { display: none; }
+@media (min-width: 420px) { .echoes .w { display: inline; } }
+@media (max-width: 335px) { .echoes .s { display: none; } }
+/* one bead for each time the rhyme has happened, Then and Today in their colours, the Next still open */
+.beads { display: inline-flex; align-items: center; gap: 3px; }
+.beads i { display: block; width: 6px; height: 6px; border-radius: 50%; background: rgba(var(--ink-rgb), .5); }
+.beads i.then { background: var(--then); }
+.beads i.now { background: var(--now); }
+.beads i.next { width: 7px; height: 7px; margin-left: 3px; background: none; box-shadow: inset 0 0 0 1.5px var(--next); }
+.beads.pop i { animation: beadIn .5s cubic-bezier(.3, .7, .3, 1.5) both; animation-delay: var(--d, 0s); }
+@keyframes beadIn { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
 .sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 13px; }
 .sig i { display: block; width: 3px; border-radius: 1px; background: rgba(var(--ink-rgb), .2); }
 .sig i:nth-child(1) { height: 4px; } .sig i:nth-child(2) { height: 7px; } .sig i:nth-child(3) { height: 10px; } .sig i:nth-child(4) { height: 13px; }
@@ -212,7 +224,7 @@ h1.tap { cursor: pointer; }
 @media (max-height: 680px) { #tl { height: 140px; } .steps { margin-top: 12px; } .story { margin-top: 12px; } .ct { font-size: 27px; } }
 @media (max-height: 650px) { .motif { font-size: 17.5px; } .guide { font-size: 14.5px; } .more { min-height: 30px; } .foot { gap: 10px; } }
 @media (max-height: 600px) { .bar { min-height: 46px; } #tl { height: 128px; } .guide .gx { display: none; } .steps { margin-top: 10px; } .story { margin-top: 10px; } .foot { padding-top: 10px; } }
-@media (max-height: 590px) { .pmeta { display: none; } .story { margin-top: 12px; } .ct { font-size: 26px; } }
+@media (max-height: 590px) { .echoes { margin-top: 4px; min-height: 30px; font-size: 14px; } .motif { font-size: 16.5px; } .story { margin-top: 12px; } .ct { font-size: 26px; } }
 @media (max-width: 359px) { .primary { padding: 0 12px; font-size: 15px; } .actions { gap: 6px; } .iconbtn { width: 48px; } }
 
 /* shared pieces used across the sheets */
@@ -569,7 +581,7 @@ h1.tap { cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   .story, .deep, .deep-bd, .st i, .st .sy, .steps::after, .primary, .pw, .pw-bd { transition: none; }
-  .swipe-hint, .pulse, .thinking i, .demo-caret { animation: none; }
+  .swipe-hint, .pulse, .thinking i, .demo-caret, .beads.pop i { animation: none; }
   .intro { transition: none; }
   .ic-l { filter: none !important; }
   .cv.reveal > li, .cv.reveal::before { animation: none; }
@@ -595,7 +607,7 @@ h1.tap { cursor: pointer; }
   <main class="stage then" id="card" aria-live="polite">
     <div class="pattern">
       <p class="motif" id="motif"></p>
-      <button type="button" class="pmeta" id="pmeta"></button>
+      <button type="button" class="echoes" id="echoRow"></button>
     </div>
     <nav class="steps" id="steps" aria-label="Then, Today, Next">
       <button type="button" class="st then" data-k="then"><i aria-hidden="true"></i><span class="sy" id="syThen"></span><span class="sl">Then</span></button>
@@ -702,7 +714,7 @@ const LEX = {
   cadence: ["Cadence", "The years between Then and Today. From music: the rhythm a phrase falls in.", "102 years"],
   next: ["Next", "Where the rhyme may sound again: Today plus the cadence. A way to imagine, not a forecast.", "c. 2122, a new virus in a crowded world"],
   due: ["Due date", "The year a rhyme’s Next lands: Today plus the cadence. That year, the rhyme “comes due”.", "2020 + 102 years = c. 2122"],
-  score: ["Score", "Every echo of a rhyme laid out in time, from seed to Next. From music: the sheet that shows every part at once.", "430 BC → 165 → 541 → … → 1918 → 1957 → 2009 → 2020 → c. 2122"],
+  score: ["Echoes", "Every echo of a rhyme laid out in time, from its seed to the Next. Tap “12 times since…” under the pattern, or the Echoes tab.", "430 BC → 165 → 541 → … → 1918 → 1957 → 2009 → 2020 → c. 2122"],
   strong: ["Strong rhyme", "Historians commonly draw this comparison.", "1918 Spanish flu → 2020 COVID-19"],
   medium: ["Medium rhyme", "Alike in important ways, different in others.", "1845 Railway Mania → 2024 AI build-out"],
   weak: ["Weak rhyme", "Alike on the surface; the differences run deep.", "1871 Paris Commune → 2018 Yellow Vests"],
@@ -1142,12 +1154,13 @@ function onTap(px, py) {
 
 /* ---------- rhyme strip and card ---------- */
 const card = $("card"), cardIn = $("cardIn");
-function renderRhyme() {
-  const p = PAIRS[focus.pi], g = gapOf(p), n = echoCount(p), sc = scoreOf(focus.pi);
-  const rate = RHYME[p.rhyme] || RHYME[1], heard = apiOn() && sc.tot >= 10 ? `, ${sc.pct}% hear it` : "";
+function renderRhyme(changed) {
+  const p = PAIRS[focus.pi], g = gapOf(p), items = chainOf(focus.pi), n = items.length, seed = fmtY(items[0].year);
   $("motif").textContent = p.theme;
-  $("pmeta").innerHTML = `${sigHTML(n)}<span>${rate}, seen ${n} times${heard}</span><span class="chev" aria-hidden="true">›</span>`;
-  $("pmeta").setAttribute("aria-label", `${rate}, seen ${n} times${heard}. Show every echo.`);
+  const beads = items.map((e, j) => `<i class="${e.kind}" style="--d:${(j * .045).toFixed(3)}s"></i>`).join("") + `<i class="next" style="--d:${(n * .045 + .1).toFixed(3)}s"></i>`;
+  const row = $("echoRow");
+  row.innerHTML = `<span class="beads${changed && !reduce ? " pop" : ""}" aria-hidden="true">${beads}</span><span><span class="w">Happened </span><b>${n} times</b><span class="s"> since ${seed}</span></span><span class="chev" aria-hidden="true">›</span>`;
+  row.setAttribute("aria-label", `This pattern happened ${n} times since ${seed}. Show every echo.`);
   $("syThen").textContent = fmtY(p.then.year);
   $("syNow").textContent = p.now.year;
   $("syNext").textContent = "c. " + nextYear(p);
@@ -1158,7 +1171,7 @@ function renderRhyme() {
   steps.classList.toggle("at-next", focus.k === "next");
   document.querySelectorAll(".st").forEach(b => { const on = b.dataset.k === focus.k; b.classList.toggle("on", on); b.setAttribute("aria-current", on ? "step" : "false"); });
 }
-$("pmeta").addEventListener("click", () => openDeep("chain"));
+$("echoRow").addEventListener("click", () => openDeep("chain"));
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 const sentence1 = s => String(s).split(/(?<=[.!?])\s/)[0];
 // one sentence under the story that says what this step means and what the button will do
@@ -1191,7 +1204,9 @@ function fitText() {
   el.textContent = txt;
   el.hidden = true; vote.hidden = false; hook.style.webkitLineClamp = "3";
   if (!fits()) vote.hidden = true;   // the vote gives way first: it is also in the full story
+  hook.hidden = false;
   for (let n = 3; n >= 1; n--) { hook.style.webkitLineClamp = String(n); if (fits()) break; }
+  if (!fits()) hook.hidden = true;   // the smallest screens keep the title, the way on, and the button
   if (!txt || hook.scrollHeight > hook.clientHeight + 1 || !fits()) return;
   el.hidden = false;
   for (let n = 7; n >= 2; n--) {
@@ -1268,8 +1283,8 @@ function openDeep(tab, region) {
   setHead(k === "next" ? `Next · c. ${y} · ${ahead(y)}` : `${STEP[k]} · ${y} · ${p[k].where}`, k, k === "next" ? p.next.title : p[k].title, k);
   const hasOpp = !!p.opp;
   const tlist = k === "next"
-    ? [["story", "Story"], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])]
-    : [["story", "Story"], ["world", `World in ${fmtY(p[k].year)}`], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])];
+    ? [["story", "Story"], ["chain", "Echoes"], ...(hasOpp ? [["opp", L("openings")]] : [])]
+    : [["story", "Story"], ["chain", "Echoes"], ["world", `World in ${fmtY(p[k].year)}`], ...(hasOpp ? [["opp", L("openings")]] : [])];
   if (tab === "why") tab = "chain";
   deepTab = tab && tlist.some(t => t[0] === tab) ? tab : "story";
   tabs.innerHTML = tlist.map(([id, lab]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${id === deepTab}">${esc(lab)}</button>`).join("");
@@ -1303,8 +1318,8 @@ function chainOf(pi) {
 function chainHTML(pi) {
   const p = PAIRS[pi], items = chainOf(pi), g = gapOf(p), ny = nextYear(p);
   let h = `<p class="hook">Every ${T("echo", "echo")} makes the signal stronger.</p>
-    <p class="sigline">${sigHTML(items.length)}Seen ${items.length} times: ${sigWord(items.length)}</p>
-    <p class="txt">The ${T("score", "score")} of this rhyme, from its ${T("seed", "seed")} in ${fmtY(items[0].year)}. Then and Today form the ${T("match", "match")}; their ${g}-year ${T("cadence", "cadence")} sets the Next.</p><ol class="cv reveal">`;
+    <div class="rchips">${rateHTML(p.rhyme)}<span class="apat">${sigHTML(items.length)}Seen ${items.length} times: ${sigWord(items.length)}</span></div>
+    <p class="txt">Every time this pattern has happened, from its ${T("seed", "seed")} in ${fmtY(items[0].year)}. Then and Today form the ${T("match", "match")}; the ${g}-year ${T("cadence", "cadence")} between them sets the Next.</p><ol class="cv reveal">`;
   let d = 0;
   const dl = () => ` style="--d:${(d++ * .16).toFixed(2)}s"`;
   items.forEach((e, j) => {
