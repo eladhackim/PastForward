@@ -28,6 +28,7 @@ Write `/tmp/pastforward-daily/rhyme.json` with this shape. Every fact must be ve
     "id": "short-lowercase-id",           // 2 to 20 letters, digits or dashes; not already used
     "theme": "The motif in 3 to 8 words",
     "rhyme": 2,                           // 3 = historians commonly draw it; 2 = alike in important ways; 1 = loose. Never add a 1.
+    "topic": "tech",                      // one of: health, money, power, tech, disaster, society (sets its colour in the app)
     "then": {
       "year": 1666, "short": "Great Fire",            // short: max 14 characters
       "title": "The Great Fire of London",           // max 6 words

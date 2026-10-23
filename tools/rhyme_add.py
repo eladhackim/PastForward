@@ -53,6 +53,7 @@ if missing:
 
 if not 3 <= words(p["theme"]) <= 8: E("pair.theme: 3 to 8 words")
 if p["rhyme"] not in (2, 3): E("pair.rhyme: must be 2 or 3 (weak rhymes are not added)")
+if p.get("topic") not in ("health", "money", "power", "tech", "disaster", "society"): E("pair.topic: one of health, money, power, tech, disaster, society")
 for k in ("then", "now"):
     e = p[k]
     for f in ["year", "short", "title", "where", "region", "hook", "text"]:

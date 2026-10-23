@@ -35,6 +35,11 @@ for n in files("echoes-"):            # several research passes: lists for the s
 opps = {}
 for n in files("opportunities-"): opps.update(load(n))
 MAP = load("map.json")
+TOPICS = {"health", "money", "power", "tech", "disaster", "society"}
+topics = load("topics.json") if os.path.exists(os.path.join(DATA, "topics.json")) else {}
+guides = {}
+for n in files("guides-"):             # the what, why and how behind each Opening idea
+    for rid, by_title in load(n).items(): guides.setdefault(rid, {}).update(by_title)
 
 # ---- checks ----
 ids = set()
@@ -59,6 +64,8 @@ for p in pairs:
         no_em_dash(f"{pid}.next.{f}", p["next"].get(f))
     ny = 2 * p["now"]["year"] - p["then"]["year"]
     if not (2027 <= ny <= 2300): problems.append(f"{pid}: next year {ny} out of range")
+    p["topic"] = p.get("topic") or topics.get(pid, "")
+    if p["topic"] not in TOPICS: problems.append(f"{pid}: topic must be one of {sorted(TOPICS)} (set it in the rhyme or data/topics.json)")
     if "added" in p and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(p["added"])): problems.append(f"{pid}: added must be YYYY-MM-DD")
 for y, w in world.items():
     for r in WREG:
@@ -95,6 +102,8 @@ for p in pairs:
         problems.append(f"{p['id']}: opportunities incomplete")
         continue
     for i in ideas: no_em_dash(f"{p['id']}.opp", i["title"] + i["line"])
+    g = guides.get(p["id"], {})
+    ideas = [dict(i, guide=g[i["title"]]) if i["title"] in g else i for i in ideas]
     p["opp"] = {"lastTime": o["lastTime"], "ideas": ideas, "watch": o.get("watch", "")}
 
 # ---- "Today" lines read as plain facts, not prompts to the reader ----
