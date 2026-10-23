@@ -456,7 +456,8 @@ button.op:hover { border-color: rgba(var(--ink-rgb), .35); }
 .intro > .in-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 .intro > .in-card.low { padding-top: 26vh; }
 .intro > .in-vig { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(var(--shade), .55) 100%); }
-.intro > .in-card { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 0 max(28px, 8vw); text-align: center; pointer-events: none; }
+.intro > .in-card { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; align-content: center; padding: 0 max(28px, 8vw); text-align: center; pointer-events: none; }
+.ic-pg { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; gap: 18px; }   /* a card's pages share one place: each replaces the one before */
 .ic-l { margin: 0; max-width: 640px; font: 500 clamp(24px, 6.4vw, 40px)/1.15 var(--f-body); color: var(--ink); text-wrap: balance; will-change: opacity, transform, filter; }
 .ic-l.lead { font-size: clamp(27px, 7.4vw, 46px); }
 .ic-l .x { color: var(--next); }
@@ -2763,16 +2764,21 @@ const CARDS = {
   onrecord: ["Some people sensed the cycle, and prepared."]
 };
 const CARD_LEAD = { cycles: 1, read: 1, method: 1, onrecord: 1 };
+const CARD_PAGE = { cycles: [0, 1, 2], read: [0, 1, 1], method: [0, 0], onrecord: [0] };   // one paragraph at a time, unless lines complete each other
 const CARD_T = {};   // per card: when each line arrives, and when each of its words lights
 for (const id in CARDS) {
   let at = (id === "method" ? 2 : 1) * BEAT;   // each line arrives on a beat
-  const lines = [], words = [];
-  CARDS[id].forEach(h => {
+  const lines = [], words = [], out = [], pg = CARD_PAGE[id];
+  CARDS[id].forEach((h, j) => {
     const p = document.createElement("p"); p.innerHTML = h;
-    const ts = readTimes(splitWords(p), at + 2 * QB);
-    lines.push(at); words.push(ts); at = onGrid(ts[ts.length - 1] + LIT + .15, BEAT);   // the next beat after a breath
+    const ts = readTimes(splitWords(p), at + 2 * QB), read = ts[ts.length - 1] + LIT;
+    lines.push(at); words.push(ts);
+    if (j + 1 < CARDS[id].length && pg[j + 1] !== pg[j]) {   // this page is read: rest on it, let it fade, and the next arrives on a beat
+      for (let k = 0; k <= j; k++) if (pg[k] === pg[j]) out[k] = read + HOLD;
+      at = onGrid(read + HOLD + .45, BEAT);
+    } else at = onGrid(read + .15, BEAT);   // the next line of the same page: the next beat after a breath
   });
-  CARD_T[id] = { lines, words, end: words[words.length - 1][words[words.length - 1].length - 1] + LIT + HOLD };
+  CARD_T[id] = { lines, words, out, end: words[words.length - 1][words[words.length - 1].length - 1] + LIT + HOLD };
 }
 const cardDur = id => onGrid(CARD_T[id].end + .3, BEAT);
 // one per kind of cycle: a harvest, a crash, a tsunami, a pandemic. All on record:
@@ -3447,7 +3453,11 @@ function inSize() {
 function inCaption(i) {
   const s = SCENES[i], cp = CAP[s.id], card = $("inCard");
   card.className = "in-card" + (s.id === "method" ? " low" : "");
-  card.innerHTML = s.card ? CARDS[s.card].map((l, j) => `<p class="ic-l${!j && CARD_LEAD[s.card] ? " lead" : ""}">${l}</p>`).join("") : "";
+  card.innerHTML = !s.card ? "" : CARDS[s.card].reduce((h, l, j, a) => {   // lines grouped into pages, each page fading when the next arrives
+    const pg = CARD_PAGE[s.card], o = CARD_T[s.card].out[j];
+    return h + (j === 0 || pg[j] !== pg[j - 1] ? `<div class="ic-pg"${o == null ? "" : ` data-out="${o}"`}>` : "")
+      + `<p class="ic-l${!j && CARD_LEAD[s.card] ? " lead" : ""}">${l}</p>` + (j === a.length - 1 || pg[j + 1] !== pg[j] ? "</div>" : "");
+  }, "");
   intro.words = [];
   if (s.card) card.querySelectorAll(".ic-l").forEach((el, j) => splitWords(el).forEach((w, k) => intro.words.push({ w, t: CARD_T[s.card].words[j][k] })));
   const k = $("inK"); k.className = "in-k " + (cp.kc || ""); k.textContent = cp.k;
@@ -3493,6 +3503,10 @@ function renderIntro(t) {
     el.style.transform = `translateY(${((1 - r) * 16).toFixed(1)}px) scale(${(1.03 - .03 * r).toFixed(4)})`;
     el.style.filter = r < 1 ? `blur(${((1 - r) * 7).toFixed(2)}px)` : "none";
   });
+  if (s.card) {   // a read page fades as the next one comes; with reduced motion, only the last page shows
+    const pgs = [...cardEl.querySelectorAll(".ic-pg")];
+    pgs.forEach((p, k) => { p.style.opacity = still ? (k === pgs.length - 1 ? "1" : "0") : p.dataset.out ? (1 - c01((lt - +p.dataset.out) / .45)).toFixed(3) : "1"; });
+  }
   cap.style.transform = `translateY(${((1 - iOut(c01(lt / .5))) * 12).toFixed(1)}px)`;
   cap.querySelectorAll("[data-at]").forEach(el => {   // timed parts: a soft focus pull as they arrive
     const r = still ? 1 : c01((lt - +el.dataset.at) / .7);
