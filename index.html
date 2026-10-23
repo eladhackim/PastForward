@@ -137,7 +137,7 @@ h1.tap { cursor: pointer; }
 .stage.now { --k: var(--now-rgb); }
 .stage.next { --k: var(--next-rgb); }
 .pattern { flex: none; display: flex; flex-direction: column; align-items: flex-start; }
-.motif { margin: 0; font: italic 400 19px/1.3 var(--f-body); color: var(--ink); text-wrap: balance; }
+.motif { margin: 0; font: italic 400 19px/1.3 var(--f-body); color: var(--ink); text-wrap: balance; cursor: pointer; }
 .echoes { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; min-height: 36px; margin-top: 8px; padding: 0 12px 0 12px; border: 0; border-radius: 999px; background: rgba(var(--ink-rgb), .07); font: 500 14.5px var(--f-ui); color: var(--muted); cursor: pointer; white-space: nowrap; transition: background-color .2s; }
 .echoes:hover { background: rgba(var(--ink-rgb), .12); color: var(--ink); }
 .echoes b { font-weight: 600; color: var(--ink); }
@@ -1208,6 +1208,7 @@ function renderRhyme(changed) {
   document.querySelectorAll(".st").forEach(b => { const on = b.dataset.k === focus.k; b.classList.toggle("on", on); b.setAttribute("aria-current", on ? "step" : "false"); });
 }
 $("echoRow").addEventListener("click", () => openDeep("chain"));
+$("motif").addEventListener("click", () => openDeep("chain"));
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 const sentence1 = s => String(s).split(/(?<=[.!?])\s/)[0];
 // one sentence under the story that says what this step means and what the button will do
