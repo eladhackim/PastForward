@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0C0A1D">
+<meta name="theme-color" content="#0F0D22" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F3F9" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -26,27 +27,59 @@
 <meta name="twitter:description" content="History rhymes. Swipe through 550 years, follow each event to its echo today, and see where the pattern may return. Find the echoes due in your own lifetime.">
 <meta name="twitter:image" content="https://pastforward.app/og/home.jpg">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;height:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>try{var m=JSON.parse(localStorage.getItem("pastforward.theme"));if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Atkinson+Hyperlegible:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
 <style>
-/* Layout: one phone screen. A swipeable river of time on top (about 50 years per screen, snapping to events),
-   a Then → Today → Next stepper, one story card with a big jump button. Depth lives in a full-screen "dive deeper" view.
-   Deliberately single-theme (night sky). */
-:root {
+/* PastForward on one screen: a river of time on top, then one rhyme told in three steps (Then, Today, Next),
+   with one button that always says where it goes. Everything else is one tap away, in the full story.
+   Two themes from one set of tokens: night (dark) and day (light). The trailer and share images always use night. */
+:root, .night {
   color-scheme: dark;
-  --bg: #0C0A1D;
-  --surface: #161334;
-  --surface2: #1E1A46;
-  --ink: #EFE8D6;
-  --muted: #ABA6C9;
-  --line: #2E2955;
-  --then: #E2B35E;
-  --now: #72D3C5;
-  --next: #CDB9FF;
-  --bad: #E58C7A;
+  --bg-rgb: 15, 13, 34;
+  --surface-rgb: 27, 24, 58;
+  --surface2: #241F4C;
+  --ink-rgb: 241, 236, 223;
+  --muted-rgb: 164, 159, 194;
+  --then-rgb: 230, 184, 102;
+  --now-rgb: 116, 214, 200;
+  --next-rgb: 201, 182, 255;
+  --bad-rgb: 229, 140, 122;
+  --glow-rgb: 120, 92, 210;
+  --glow-a: .16;
+  --on-accent: #0F0D22;
+  --shade: 0, 0, 0;
+  --bg: rgb(var(--bg-rgb));
+  --surface: rgb(var(--surface-rgb));
+  --ink: rgb(var(--ink-rgb));
+  --muted: rgb(var(--muted-rgb));
+  --then: rgb(var(--then-rgb));
+  --now: rgb(var(--now-rgb));
+  --next: rgb(var(--next-rgb));
+  --bad: rgb(var(--bad-rgb));
+  --line: rgba(var(--ink-rgb), .11);
+}
+.night { color: var(--ink); }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg-rgb: 245, 243, 249; --surface-rgb: 255, 255, 255; --surface2: #ECE9F4;
+  --ink-rgb: 28, 25, 48; --muted-rgb: 94, 89, 118;
+  --then-rgb: 138, 92, 10; --now-rgb: 10, 118, 106; --next-rgb: 100, 71, 201; --bad-rgb: 176, 66, 46;
+  --glow-a: .08; --on-accent: #FFFFFF; --shade: 40, 34, 80;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg-rgb: 245, 243, 249; --surface-rgb: 255, 255, 255; --surface2: #ECE9F4;
+    --ink-rgb: 28, 25, 48; --muted-rgb: 94, 89, 118;
+    --then-rgb: 138, 92, 10; --now-rgb: 10, 118, 106; --next-rgb: 100, 71, 201; --bad-rgb: 176, 66, 46;
+    --glow-a: .08; --on-accent: #FFFFFF; --shade: 40, 34, 80;
+  }
+}
+:root {
   --f-then: "IM Fell English SC", "Iowan Old Style", Georgia, serif;
-  --f-mono: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-ui: "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
   --f-body: "Newsreader", "Iowan Old Style", Georgia, serif;
 }
 * { box-sizing: border-box; }
@@ -54,11 +87,8 @@
 html { height: 100%; background: var(--bg); -webkit-text-size-adjust: 100%; }
 html.lock { overflow: hidden; }
 body {
-  height: 100%; margin: 0; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-  background:
-    radial-gradient(ellipse 90% 40% at 10% 0%, rgba(120, 92, 210, .17), transparent 70%),
-    radial-gradient(ellipse 80% 50% at 100% 100%, rgba(70, 170, 160, .08), transparent 70%),
-    var(--bg);
+  height: 100%; margin: 0; overflow-x: clip; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  background: radial-gradient(ellipse 120% 36% at 50% 0%, rgba(var(--glow-rgb), var(--glow-a)), transparent 72%), var(--bg);
   color: var(--ink);
   font-family: var(--f-body); font-size: 17px; line-height: 1.45;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
@@ -67,217 +97,216 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 #sky { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-.app { position: relative; z-index: 1; height: 100%; min-height: 560px; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; padding-block: 10px 14px; }
+.app { position: relative; z-index: 1; height: 100%; min-height: 530px; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; padding-block: 2px 16px; }
 button { font: inherit; color: inherit; }
-button:focus-visible { outline: 2px solid var(--next); outline-offset: 2px; }
+button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--next); outline-offset: 2px; }
 
-/* top bar */
-.bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 40px; }
-h1 { margin: 0; font-family: var(--f-then); font-weight: 400; font-size: clamp(19px, 5.4vw, 24px); line-height: 1; white-space: nowrap; }
+/* top bar: the name, and three places to go */
+.bar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; }
+h1 { margin: 0; font-family: var(--f-then); font-weight: 400; font-size: clamp(19px, 5.6vw, 23px); line-height: 1; white-space: nowrap; }
 h1 .p { color: var(--then); }
-h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
-.bar-r { display: flex; gap: 6px; }
-.ghost { position: relative; min-height: 38px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(22, 19, 52, .7); font: 700 14px var(--f-mono); letter-spacing: .01em; cursor: pointer; }
-.ghost.icon { width: 38px; padding: 0; font-size: 15px; display: inline-flex; align-items: center; justify-content: center; }
-.ghost.daily { color: var(--then); border-color: rgba(226, 179, 94, .5); background: rgba(226, 179, 94, .09); }
-.ghost.daily.new::after { content: ""; position: absolute; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: var(--then); box-shadow: 0 0 8px var(--then); }
-.ghost.hi { color: var(--next); border-color: rgba(205, 185, 255, .55); background: rgba(205, 185, 255, .1); box-shadow: 0 0 18px rgba(205, 185, 255, .15); }
-.ghost svg, .iconbtn svg { width: 18px; height: 18px; }
-.ghost:hover { border-color: var(--next); }
+h1 .f { color: var(--next); }
+h1.tap { cursor: pointer; }
+.bar-r { display: flex; align-items: center; gap: 2px; margin-right: -8px; }
+.navb { position: relative; min-height: 40px; padding: 0 9px; border: 0; border-radius: 10px; background: none; font: 500 15px var(--f-ui); color: rgba(var(--ink-rgb), .8); cursor: pointer; white-space: nowrap; }
+.navb:hover { color: var(--ink); background: rgba(var(--ink-rgb), .07); }
+.navb.icon { width: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.navb svg { width: 19px; height: 19px; }
+.navb.new::after { content: ""; position: absolute; top: 9px; right: 2px; width: 6px; height: 6px; border-radius: 50%; background: var(--then); }
+@media (max-width: 350px) { .navb { padding: 0 6px; font-size: 14.5px; } .bar-r { margin-right: -6px; } }
 
-/* timeline */
-.tl { position: relative; flex: none; background: rgba(22, 19, 52, .55); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-@media (max-width: 699px) {
-  .tl {
-    margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
-    margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
-    border-radius: 0; border-left: 0; border-right: 0;
-  }
-}
-#tl { display: block; width: 100%; height: 184px; touch-action: pan-y; cursor: grab; outline: none; user-select: none; -webkit-user-select: none; }
+/* the river of time: full width, no frame */
+.tl { position: relative; flex: none; margin-inline: calc(50% - 50vw); }
+#tl { display: block; width: 100%; height: clamp(150px, 23vh, 210px); touch-action: pan-y; cursor: grab; outline: none; user-select: none; -webkit-user-select: none; }
 #tl.dragging { cursor: grabbing; }
 #tl:focus-visible { box-shadow: inset 0 0 0 2px var(--next); }
-@media (min-width: 700px) { #tl { height: 220px; } }
-.swipe-hint { position: absolute; left: 50%; bottom: 3px; transform: translateX(-50%); font: 500 13px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--ink); background: rgba(12, 10, 29, .85); border: 1px solid var(--line); padding: 5px 12px; border-radius: 999px; pointer-events: none; white-space: nowrap; transition: opacity .6s ease; animation: nudge 1.8s ease-in-out infinite; }
+@media (min-width: 700px) { #tl { height: clamp(200px, 27vh, 290px); } }
+.swipe-hint { position: absolute; left: 50%; bottom: 1px; transform: translateX(-50%); padding: 2px 12px; border-radius: 999px; background: var(--bg); font: 500 13.5px var(--f-ui); color: var(--muted); pointer-events: none; white-space: nowrap; transition: opacity .6s ease; animation: nudge 2.4s ease-in-out infinite; }
 .swipe-hint.gone { opacity: 0; }
-@keyframes nudge { 0%, 100% { transform: translateX(-50%); } 50% { transform: translateX(calc(-50% - 10px)); } }
+@keyframes nudge { 0%, 100% { transform: translateX(-50%); } 50% { transform: translateX(calc(-50% - 8px)); } }
 
-/* the rhyme + stepper */
-.rhyme { flex: none; display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 640px; margin: 0 auto; }
-.theme { margin: 2px 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; font-size: 17px; color: var(--muted); line-height: 1.25; }
-.theme b { font-weight: 500; color: var(--ink); }
-.rchips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.rchip { display: inline-flex; align-items: center; gap: 7px; min-height: 26px; padding: 0 10px; border-radius: 999px; border: 1px dashed rgba(171, 166, 201, .5); background: none; font: 700 12.5px var(--f-mono); color: var(--muted); cursor: help; white-space: nowrap; }
-.rchip:hover { border-color: var(--ink); color: var(--ink); }
-.heard { font: 700 12.5px var(--f-mono); color: var(--next); white-space: nowrap; }
-.sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; margin-right: 7px; }
-.sig i { display: block; width: 3px; border-radius: 1px; background: rgba(239, 232, 214, .22); }
+/* one rhyme: its pattern, the three steps, the current step, and the way on */
+.stage { --k: var(--then-rgb); position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; padding-top: 12px; touch-action: pan-y; }
+.stage.now { --k: var(--now-rgb); }
+.stage.next { --k: var(--next-rgb); }
+.pattern { flex: none; display: flex; flex-direction: column; align-items: flex-start; }
+.motif { margin: 0; font: italic 400 19px/1.3 var(--f-body); color: var(--ink); text-wrap: balance; }
+.pmeta { display: inline-flex; align-items: center; gap: 8px; min-height: 30px; margin-top: 1px; padding: 0; border: 0; background: none; font: 500 14px var(--f-ui); color: var(--muted); cursor: pointer; text-align: left; }
+.pmeta:hover { color: var(--ink); }
+.pmeta .chev { font-size: 16px; line-height: 1; opacity: .75; }
+.sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 13px; }
+.sig i { display: block; width: 3px; border-radius: 1px; background: rgba(var(--ink-rgb), .2); }
 .sig i:nth-child(1) { height: 4px; } .sig i:nth-child(2) { height: 7px; } .sig i:nth-child(3) { height: 10px; } .sig i:nth-child(4) { height: 13px; }
-.sig.s1 i:nth-child(-n+1), .sig.s2 i:nth-child(-n+2), .sig.s3 i:nth-child(-n+3), .sig.s4 i { background: var(--now); }
-@media (max-width: 379px) { .rchips .heard { display: none; } }
-.sigline { display: flex; align-items: center; gap: 2px; margin: 0; font: 700 14px var(--f-mono); color: var(--now); }
-.term { display: inline; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; cursor: help; text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: rgba(171, 166, 201, .75); text-underline-offset: 3px; }
+.sig.s1 i:nth-child(-n+1), .sig.s2 i:nth-child(-n+2), .sig.s3 i:nth-child(-n+3), .sig.s4 i { background: rgba(var(--ink-rgb), .82); }
+
+/* the three steps on one track: the line fills in as you go */
+.steps { --fill: 100%; position: relative; flex: none; display: grid; grid-template-columns: 4.3em minmax(0, 1fr) 4.3em minmax(0, 1fr) 4.3em; margin-top: 18px; font-size: 16px; }
+.steps::before, .steps::after { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; border-radius: 1px; }
+.steps::before { background: rgba(var(--muted-rgb), .3); }
+.steps::after { background: linear-gradient(90deg, var(--then), var(--now) 50%, var(--next)); clip-path: inset(0 var(--fill) 0 0); transition: clip-path .7s cubic-bezier(.3, .7, .2, 1); }
+.steps.at-now { --fill: 50%; }
+.steps.at-next { --fill: 0%; }
+.st { --c: var(--then-rgb); position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 0 0 4px; border: 0; background: none; cursor: pointer; text-align: left; white-space: nowrap; }
+.st.now { --c: var(--now-rgb); align-items: center; text-align: center; }
+.st.next { --c: var(--next-rgb); align-items: flex-end; text-align: right; }
+.st i { display: block; width: 14px; height: 14px; margin-bottom: 9px; border-radius: 50%; border: 2px solid rgb(var(--c)); background: var(--bg); transition: background-color .3s, box-shadow .3s; }
+.st .sy { font: 600 17px/1.2 var(--f-ui); font-variant-numeric: tabular-nums; color: rgba(var(--ink-rgb), .72); transition: color .3s; }
+.st .sl { font: 500 13.5px/1.35 var(--f-ui); color: var(--muted); }
+.st:hover .sy { color: var(--ink); }
+.st.on i { background: rgb(var(--c)); box-shadow: 0 0 0 5px rgba(var(--c), .2); }
+.st.on .sy { color: rgb(var(--c)); }
+.st.on .sl { color: var(--ink); }
+.st-g { align-self: start; min-width: 0; padding: 25px 4px 0; text-align: center; font: 500 13px/1.25 var(--f-ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 380px) { .st-g .yrs { display: none; } }
+
+/* the current step */
+.story { flex: none; margin-top: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; transition: opacity .2s ease, transform .2s ease; }
+.story.out { opacity: 0; transform: translateX(var(--dx, -14px)); }
+.ct { margin: 0; font: 500 clamp(28px, 7.6vw, 36px)/1.1 var(--f-body); color: rgb(var(--k)); text-wrap: balance; }
+.ch { margin: 0; font: 400 18.5px/1.45 var(--f-body); color: rgba(var(--ink-rgb), .88); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.cx { margin: 4px 0 0; font: 400 16.5px/1.55 var(--f-body); color: rgba(var(--ink-rgb), .7); display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.more { margin-top: 2px; min-height: 36px; padding: 0; border: 0; background: none; font: 500 15px var(--f-ui); color: var(--ink); text-decoration: underline; text-decoration-color: rgba(var(--ink-rgb), .3); text-decoration-thickness: 1px; text-underline-offset: 4px; cursor: pointer; }
+.more:hover { text-decoration-color: currentColor; }
+
+/* the way on: what happens next, said once, and the one button that does it */
+.foot { flex: none; margin-top: auto; padding-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+#cVote:empty { display: none; }
+.guide { margin: 0; font: 400 15px/1.45 var(--f-ui); color: var(--muted); text-wrap: pretty; }
+.actions { display: flex; gap: 8px; }
+.primary, .secondary { min-height: 52px; min-width: 0; border: 0; border-radius: 14px; cursor: pointer; font: 600 16px var(--f-ui); padding: 0 16px; white-space: nowrap; }
+.primary { --acc: var(--ink-rgb); flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--on-accent); background: rgb(var(--acc)); transition: background-color .3s, transform .15s; }
+.primary:active { transform: scale(.985); }
+.primary.to-then { --acc: var(--then-rgb); }
+.primary.to-now { --acc: var(--now-rgb); }
+.primary.to-next { --acc: var(--next-rgb); }
+.secondary { background: rgba(var(--ink-rgb), .08); color: var(--ink); }
+.secondary:hover { background: rgba(var(--ink-rgb), .13); }
+.iconbtn { flex: none; width: 52px; min-height: 52px; border: 0; border-radius: 14px; background: rgba(var(--ink-rgb), .08); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.iconbtn:hover { background: rgba(var(--ink-rgb), .13); }
+.iconbtn svg { width: 19px; height: 19px; }
+.pulse { animation: glow 2.2s ease-in-out 3; }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(var(--acc, var(--ink-rgb)), 0); } 50% { box-shadow: 0 0 0 7px rgba(var(--acc, var(--ink-rgb)), .22); } }
+.vote { flex: none; display: flex; flex-direction: column; gap: 8px; }
+.vote-q { display: flex; align-items: center; justify-content: space-between; gap: 6px 10px; flex-wrap: wrap; }
+.vote-q > span:first-child { font: 500 15px var(--f-ui); color: var(--ink); }
+.vote-b { display: inline-flex; gap: 6px; }
+.vote-b button { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(var(--ink-rgb), .2); background: none; font: 500 14.5px var(--f-ui); cursor: pointer; }
+.vote-b button:hover { border-color: rgba(var(--ink-rgb), .5); }
+.vote-b button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.vbar { height: 6px; border-radius: 3px; background: rgba(var(--muted-rgb), .2); overflow: hidden; }
+.vbar i { display: block; height: 100%; border-radius: 3px; background: var(--next); transition: width .6s ease; }
+.vres { display: flex; justify-content: space-between; gap: 8px; font: 14px var(--f-ui); color: var(--muted); }
+
+@media (min-width: 700px) {
+  .stage { padding-top: 8px; }
+  .pattern { margin-top: auto; }
+  .foot { margin-top: 30px; margin-bottom: auto; }
+  .motif { font-size: 21px; }
+  .steps { margin-top: 22px; }
+  .story { margin-top: 26px; }
+  .ct { font-size: 44px; }
+  .ch { font-size: 21px; }
+  .cx { font-size: 18px; }
+}
+@media (max-height: 740px) { .story { margin-top: 16px; } .steps { margin-top: 14px; } }
+@media (max-height: 680px) { #tl { height: 140px; } .steps { margin-top: 12px; } .story { margin-top: 12px; } .ct { font-size: 27px; } }
+@media (max-height: 650px) { .motif { font-size: 17.5px; } .guide { font-size: 14.5px; } .more { min-height: 30px; } .foot { gap: 10px; } }
+@media (max-height: 600px) { .bar { min-height: 46px; } #tl { height: 128px; } .guide .gx { display: none; } .steps { margin-top: 10px; } .story { margin-top: 10px; } .foot { padding-top: 10px; } }
+@media (max-height: 590px) { .pmeta { display: none; } .story { margin-top: 12px; } .ct { font-size: 26px; } }
+@media (max-width: 359px) { .primary { padding: 0 12px; font-size: 15px; } .actions { gap: 6px; } .iconbtn { width: 48px; } }
+
+/* shared pieces used across the sheets */
+.rchips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.rchip { display: inline-flex; align-items: center; gap: 7px; min-height: 28px; padding: 0 10px; border-radius: 999px; border: 1px dashed rgba(var(--muted-rgb), .55); background: none; font: 500 13.5px var(--f-ui); color: var(--muted); cursor: help; white-space: nowrap; }
+.rchip:hover { border-color: var(--ink); color: var(--ink); }
+.sigline { display: flex; align-items: center; gap: 8px; margin: 0; font: 600 15px var(--f-ui); color: var(--ink); }
+.term { display: inline; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; cursor: help; text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: rgba(var(--muted-rgb), .75); text-underline-offset: 3px; }
 .term:hover { text-decoration-color: currentColor; }
-.tip { position: fixed; z-index: 70; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(205, 185, 255, .45); background: var(--surface2); box-shadow: 0 16px 44px rgba(0, 0, 0, .55); }
+.tip { position: fixed; z-index: 70; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface2); box-shadow: 0 16px 44px rgba(var(--shade), .4); }
 .tip b { display: block; font: 500 21px/1.15 var(--f-body); color: var(--next); }
-.tip p { margin: 4px 0 8px; font: 15px/1.45 var(--f-mono); color: var(--ink); }
-.lx-g { margin: 8px 0 0; font: 700 13px var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.tip p { margin: 4px 0 8px; font: 15px/1.45 var(--f-ui); color: var(--ink); }
+.lx-g { margin: 8px 0 0; font: 600 14px var(--f-ui); color: var(--muted); }
 .lx { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .lx li { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); scroll-margin: 16px; transition: border-color .4s; }
-.lx li.hl { border-color: var(--next); box-shadow: 0 0 22px rgba(205, 185, 255, .15); }
+.lx li.hl { border-color: var(--next); }
 .lx .lt { display: block; font: 500 23px/1.15 var(--f-body); color: var(--ink); }
-.lx .ld { margin: 4px 0 0; font: 15.5px/1.45 var(--f-mono); }
-.lx .le { margin: 6px 0 0; font: 14px/1.4 var(--f-mono); color: var(--muted); }
-.lx .le span { font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-size: 11.5px; margin-right: 6px; }
+.lx .ld { margin: 4px 0 0; font: 15.5px/1.45 var(--f-ui); }
+.lx .le { margin: 6px 0 0; font: 14px/1.4 var(--f-ui); color: var(--muted); }
+.lx .le span { font-weight: 600; margin-right: 6px; }
 .mbox p { font-size: 18px; }
 .mbox .rchips { margin-top: 8px; }
-.wnote { margin: 0; font: 14px/1.4 var(--f-mono); color: var(--muted); }
-.apat { font: 700 12.5px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.chainchip { display: inline-flex; align-items: center; vertical-align: 2px; margin-left: 4px; min-height: 26px; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(239, 232, 214, .3); background: rgba(239, 232, 214, .06); font: 700 12.5px var(--f-mono); color: var(--ink); cursor: pointer; white-space: nowrap; }
-.chainchip:hover { border-color: var(--ink); }
-.theme .dots { flex: none; display: inline-flex; gap: 3px; transform: translateY(-1px); }
+.wnote { margin: 0; font: 14px/1.4 var(--f-ui); color: var(--muted); }
+.apat { display: inline-flex; align-items: center; gap: 7px; font: 500 13.5px var(--f-ui); color: var(--muted); }
 .dots { display: inline-flex; flex: none; gap: 3px; }
 .dots i { display: block; width: 6px; height: 6px; border-radius: 50%; border: 1.2px solid var(--muted); }
 .dots i.on { background: var(--muted); }
-.stepper { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 4px; }
-.st-b { display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 7px 4px 6px; min-height: 50px; border-radius: 14px; border: 1px solid var(--line); background: rgba(22, 19, 52, .7); cursor: pointer; transition: background-color .3s, border-color .3s, box-shadow .3s; }
-.st-b .sl { font: 500 12.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
-.st-b .sy { font: 500 16px var(--f-mono); }
-.st-b.then .sl { color: var(--then); } .st-b.now .sl { color: var(--now); } .st-b.next .sl { color: var(--next); }
-.st-b.on.then { background: rgba(226, 179, 94, .14); border-color: var(--then); box-shadow: 0 0 22px rgba(226, 179, 94, .18); }
-.st-b.on.now { background: rgba(114, 211, 197, .13); border-color: var(--now); box-shadow: 0 0 22px rgba(114, 211, 197, .18); }
-.st-b.on.next { background: rgba(205, 185, 255, .13); border-color: var(--next); box-shadow: 0 0 22px rgba(205, 185, 255, .2); }
-.st-g { font: 500 13px var(--f-mono); color: var(--muted); text-align: center; line-height: 1.15; white-space: nowrap; }
-.st-g b { display: block; color: var(--ink); font-weight: 500; font-size: 12px; }
+.heard { font: 500 13.5px var(--f-ui); color: var(--muted); white-space: nowrap; }
+.linkbtn { color: var(--next); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.seg { display: inline-flex; padding: 3px; border-radius: 12px; background: rgba(var(--ink-rgb), .07); }
+.seg button { min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: none; font: 500 14.5px var(--f-ui); color: var(--muted); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(var(--shade), .2); }
+.prefs { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; font: 500 15px var(--f-ui); }
 
-/* card */
-.card { position: relative; flex: 1 1 auto; min-height: 0; width: 100%; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; border-radius: 18px; border: 1px solid var(--line); background: var(--surface); overflow: hidden; touch-action: pan-y; transition: border-color .4s, box-shadow .4s; }
-.card.then { border-color: rgba(226, 179, 94, .35); }
-.card.now { border-color: rgba(114, 211, 197, .35); }
-.card.next { border-color: rgba(205, 185, 255, .4); background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(205, 185, 255, .14), transparent 75%), var(--surface); box-shadow: 0 0 40px rgba(205, 185, 255, .08); }
-.card-in { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 6px; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
-.card-in.out { opacity: 0; transform: translateX(var(--dx, -14px)); }
-.ck { margin: 0; font: 500 13.5px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-.ck .lb { margin-right: 6px; }
-.card.then .ck .lb { color: var(--then); } .card.now .ck .lb { color: var(--now); } .card.next .ck .lb { color: var(--next); }
-.ct { margin: 0; font-weight: 400; line-height: 1.08; text-wrap: balance; }
-.card.then .ct { font-family: var(--f-body); font-weight: 500; font-size: clamp(26px, 7.2vw, 34px); color: var(--then); }
-.card.now .ct { font-family: var(--f-body); font-weight: 500; font-size: clamp(26px, 7.2vw, 34px); color: var(--now); }
-.card.next .ct { font-family: var(--f-body); font-weight: 500; font-size: clamp(25px, 7vw, 34px); color: var(--next); text-shadow: 0 0 22px rgba(205, 185, 255, .3); }
-.ch { margin: 0; font-size: 18.5px; line-height: 1.4; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
-
-.card-in { flex: 0 1 auto; }
-.glimpse { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 6px; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
-.gl-map { position: relative; flex: 1 1 auto; min-height: 0; display: block; border-radius: 12px; background: radial-gradient(ellipse 70% 80% at 50% 45%, rgba(120, 92, 210, .12), transparent 75%); }
-#gmap { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.eqm { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.eqm[hidden] { display: none; }
-.eqm svg { width: 100%; height: 100%; max-height: 120px; overflow: visible; }
-.gl-cap { flex: none; display: flex; flex-direction: column; gap: 1px; min-width: 0; padding: 0 2px; }
-.gl-row { display: flex; justify-content: space-between; gap: 8px; }
-.gl-more { font: 500 12.5px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.gl-k { flex: none; font: 500 12.5px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-.gl-t { min-width: 0; font-size: 16.5px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .3s ease; }
-.gl-t b { font: 500 12.5px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-right: 6px; font-weight: 500; }
-.gl-t.fade { opacity: 0; }
-.glimpse:hover .gl-k { color: var(--ink); }
-.actions { flex: none; display: flex; gap: 8px; }
-.primary, .secondary { min-height: 48px; border-radius: 14px; cursor: pointer; font: 700 15px var(--f-mono); padding: 0 12px; white-space: nowrap; }
-.primary { flex: 1.5; border: 0; color: var(--bg); background: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-.card.then .primary { background: linear-gradient(90deg, var(--then), var(--now)); }
-.card.now .primary { background: linear-gradient(90deg, var(--now), var(--next)); }
-.card.next .primary { background: var(--next); }
-.secondary { flex: 1; border: 1px solid var(--line); background: rgba(12, 10, 29, .6); }
-.secondary:hover { border-color: var(--ink); }
-.iconbtn { flex: none; width: 48px; min-height: 48px; border-radius: 14px; border: 1px solid var(--line); background: rgba(12, 10, 29, .6); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-.iconbtn:hover { border-color: var(--next); color: var(--next); }
 /* your future */
 .fut { display: flex; flex-direction: column; gap: 10px; }
-.fl { font: 500 13px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-#byear { width: 100%; min-height: 56px; border-radius: 14px; border: 1px solid rgba(205, 185, 255, .45); background: var(--surface); color: var(--ink); font: 500 27px var(--f-mono); padding: 0 16px; letter-spacing: .06em; }
+.fl { font: 600 14px var(--f-ui); color: var(--muted); }
+#byear { width: 100%; min-height: 56px; border-radius: 14px; border: 1px solid rgba(var(--next-rgb), .45); background: var(--surface); color: var(--ink); font: 500 27px var(--f-ui); padding: 0 16px; letter-spacing: .04em; }
 #byear:focus { outline: 2px solid var(--next); outline-offset: 2px; }
-.fnote { margin: -2px 0 0; font: 13px var(--f-mono); color: var(--muted); letter-spacing: .04em; }
+.fnote { margin: -2px 0 0; font: 13.5px/1.4 var(--f-ui); color: var(--muted); }
 .fsum { margin: 4px 0 0; font-size: 20px; line-height: 1.3; }
 .fsum b { color: var(--next); font-weight: 500; }
 .flist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .flist button { width: 100%; display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 1px 12px; align-items: baseline; text-align: left; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
-.flist button:hover { border-color: rgba(205, 185, 255, .6); }
-.flist .fy { font: 700 17px var(--f-mono); color: var(--next); font-variant-numeric: tabular-nums; }
-.flist .ft { font: 700 17px/1.3 var(--f-mono); color: var(--ink); }
-.flist .fa { font: 700 13px var(--f-mono); color: var(--muted); white-space: nowrap; }
-.flist .fe { grid-column: 2 / -1; font: 14px/1.35 var(--f-mono); color: rgba(239, 232, 214, .72); }
+.flist button:hover { border-color: rgba(var(--next-rgb), .6); }
+.flist .fy { font: 600 17px var(--f-ui); color: var(--next); font-variant-numeric: tabular-nums; }
+.flist .ft { font: 600 17px/1.3 var(--f-ui); color: var(--ink); }
+.flist .fa { font: 600 13px var(--f-ui); color: var(--muted); white-space: nowrap; }
+.flist .fe { grid-column: 2 / -1; font: 14.5px/1.4 var(--f-ui); color: rgba(var(--ink-rgb), .72); }
 .fshare { margin-top: 4px; width: 100%; }
-.coach { flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: start; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(205, 185, 255, .35); background: rgba(205, 185, 255, .08); }
-.coach p { margin: 0; font: 15px/1.42 var(--f-mono); color: var(--ink); }
-.coach p b { color: var(--next); }
-.coach .cx { width: 30px; height: 30px; margin: -4px -6px 0 0; border: 0; border-radius: 50%; background: none; color: var(--muted); font: 20px/1 var(--f-mono); cursor: pointer; }
-.coach .cx:hover { color: var(--ink); }
-.coach .linkbtn { font: 700 14px var(--f-mono); }
-.card.coaching .card-in { flex-shrink: 0; }
-@media (max-height: 760px) { .card.coaching .glimpse, .card.coaching #cVote { display: none; } }
-@media (max-height: 700px) { #tl { height: 148px; } }
-@media (max-height: 600px) { html.coaching .theme .rchips, html.coaching .coach .linkbtn, html.coaching .coach br { display: none; } html.coaching .card .ct { font-size: 23px; } html.coaching .coach p { font-size: 13.5px; } html.coaching .coach { padding: 8px 10px; } html.coaching .coach .cl { display: none; } }
-@media (max-width: 340px) { .actions .primary, .actions .secondary { font-size: 13px; padding: 0 6px; } .actions #share { display: none; } }
-.actions .primary, .actions .secondary { min-width: 0; }
-@media (max-width: 380px) { .actions .primary, .actions .secondary { padding: 0 10px; font-size: 14px; } .actions { gap: 6px; } }
-@media (max-height: 680px) { .card.coaching .ch, .card.coaching .ck { display: none; } .coach p { font-size: 14px; } }
-.mk { display: block; font: 700 11.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 1px; }
-.vote { flex: none; display: flex; flex-direction: column; gap: 7px; }
-.vote-q { display: flex; align-items: center; justify-content: space-between; gap: 6px 10px; flex-wrap: wrap; }
-.vote-q > span:first-child { font: 500 13px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-.vote-b { display: inline-flex; gap: 6px; }
-.vote-b button { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(12, 10, 29, .6); font: 500 13.5px var(--f-mono); cursor: pointer; }
-.vote-b button:hover { border-color: var(--ink); }
-.vote-b button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.vbar { height: 7px; border-radius: 4px; background: rgba(157, 151, 188, .2); overflow: hidden; }
-.vbar i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--now), var(--next)); transition: width .6s ease; }
-.vres { display: flex; justify-content: space-between; gap: 8px; font: 13.5px var(--f-mono); color: var(--muted); }
 .agree { color: var(--muted); font-size: 14px; }
-.ix .pct { font: 500 12.5px var(--f-mono); font-style: normal; color: var(--next); margin-top: 2px; }
+.ix .pct { font: 500 12.5px var(--f-ui); font-style: normal; color: var(--next); margin-top: 2px; }
 .ix .newtag { align-self: flex-start; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--now); color: var(--now); font-weight: 700; }
 .pz-prog { display: flex; gap: 6px; }
 .pz-prog i { flex: 1; height: 5px; border-radius: 3px; background: var(--line); }
 .pz-prog i.cur { background: var(--ink); }
 .pz-prog i.ok { background: var(--now); }
 .pz-prog i.bad { background: var(--bad); }
-.pz-q { margin: 0; font: 500 13px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-.pz-then { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 16px; border: 1px solid rgba(226, 179, 94, .45); background: rgba(226, 179, 94, .08); }
-.pz-then .y { font: 500 13.5px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--then); }
+.pz-q { margin: 0; font: 500 13px var(--f-ui); color: var(--muted); }
+.pz-then { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 16px; border: 1px solid rgba(var(--then-rgb), .45); background: rgba(var(--then-rgb), .08); }
+.pz-then .y { font: 500 13.5px var(--f-ui); color: var(--then); }
 .pz-then .t { font-family: var(--f-body); font-weight: 500; font-size: 27px; line-height: 1.1; color: var(--then); }
 .pz-then .h { font-size: 17.5px; line-height: 1.4; }
 .pz-opts { display: flex; flex-direction: column; gap: 6px; }
 .pz-opts button { display: grid; grid-template-columns: 50px minmax(0, 1fr); gap: 10px; align-items: baseline; text-align: left; padding: 12px 14px; min-height: 52px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; transition: border-color .2s, background-color .2s, opacity .3s; }
 .pz-opts button:hover:not(:disabled) { border-color: var(--now); }
-.pz-opts .oy { font: 500 15px var(--f-mono); color: var(--now); }
+.pz-opts .oy { font: 500 15px var(--f-ui); color: var(--now); }
 .pz-opts .ot { font-size: 17px; line-height: 1.25; }
 .pz-opts button:disabled { cursor: default; opacity: .45; }
-.pz-opts button.ok { opacity: 1; border-color: var(--now); background: rgba(114, 211, 197, .15); }
-.pz-opts button.bad { opacity: 1; border-color: var(--bad); background: rgba(229, 140, 122, .13); }
+.pz-opts button.ok { opacity: 1; border-color: var(--now); background: rgba(var(--now-rgb), .15); }
+.pz-opts button.bad { opacity: 1; border-color: var(--bad); background: rgba(var(--bad-rgb), .13); }
 .pz-rev { display: flex; flex-direction: column; gap: 8px; }
 .pz-rev:empty { display: none; }
 .pz-verdict { margin: 0; font-size: 18px; font-weight: 500; }
 .pz-verdict.ok { color: var(--now); } .pz-verdict.bad { color: var(--bad); }
 .pz-next { margin: 0; font-size: 16.5px; }
-.pz-next b { color: var(--next); font: 500 16px var(--f-mono); }
+.pz-next b { color: var(--next); font: 500 16px var(--f-ui); }
 .pz-next i { color: var(--next); font-style: normal; }
 .pz-go, #pzShare { width: 100%; flex: none; }
 .pz-res { text-align: center; display: flex; flex-direction: column; gap: 4px; padding: 6px 0; }
 .pz-score { margin: 0; font: 500 72px/1 var(--f-body); }
 .pz-score span { font-size: 36px; color: var(--muted); }
 .pz-emoji { margin: 4px 0 0; font-size: 30px; letter-spacing: 6px; }
-.pz-meta { margin: 0; font: 13.5px var(--f-mono); color: var(--muted); letter-spacing: .04em; }
+.pz-meta { margin: 0; font: 13.5px var(--f-ui); color: var(--muted); letter-spacing: .04em; }
 .pz-meta:empty { display: none; }
-.pz-copy { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 15px var(--f-mono); padding: 10px 12px; resize: none; }
-.how summary { cursor: pointer; font: 500 13.5px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 6px 0; }
+.pz-copy { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 15px var(--f-ui); padding: 10px 12px; resize: none; }
+.how summary { cursor: pointer; font: 500 13.5px var(--f-ui); color: var(--muted); padding: 6px 0; }
 .how[open] summary { color: var(--ink); }
 .how .hb { display: flex; flex-direction: column; gap: 10px; padding: 6px 0 4px; }
 .sharebox { display: flex; flex-direction: column; gap: 12px; align-items: center; }
-.sharebox img { display: block; width: auto; max-width: 100%; max-height: 58vh; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+.sharebox img { display: block; width: auto; max-width: 100%; max-height: 58vh; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(var(--shade), .5); }
 .sharebox p { margin: 0; text-align: center; color: var(--muted); font-size: 15px; }
 .linkrow { display: flex; gap: 8px; width: 100%; }
-.linkrow input { flex: 1; min-width: 0; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 14.5px var(--f-mono); padding: 0 12px; }
-.pulse { animation: glow 2.2s ease-in-out 3; }
-@keyframes glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(239, 232, 214, 0); } 50% { box-shadow: 0 0 0 6px rgba(239, 232, 214, .12); } }
+.linkrow input { flex: 1; min-width: 0; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 14.5px var(--f-ui); padding: 0 12px; }
 
 /* deep view */
 .deep-wrap { position: fixed; inset: 0; z-index: 40; }
@@ -285,7 +314,7 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .deep {
   position: absolute; left: 0; right: 0; bottom: 0; top: 0; margin: 0 auto; max-width: 680px;
   display: flex; flex-direction: column; background: var(--bg);
-  background-image: radial-gradient(ellipse 90% 35% at 50% 0%, rgba(120, 92, 210, .16), transparent 70%);
+  background-image: radial-gradient(ellipse 90% 35% at 50% 0%, rgba(var(--glow-rgb), .16), transparent 70%);
   transform: translateY(100%); transition: transform .38s cubic-bezier(.2, .8, .2, 1);
   padding-top: env(safe-area-inset-top, 0px);
 }
@@ -293,8 +322,8 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .deep-wrap.open .deep-bd { opacity: 1; }
 .deep-wrap.open .deep { transform: none; }
 .dh { flex: none; display: flex; align-items: center; gap: 10px; padding: 10px max(16px, env(safe-area-inset-right, 0px)) 4px max(12px, env(safe-area-inset-left, 0px)); }
-.dback { min-height: 40px; padding: 0 12px 0 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 500 13.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
-.dk { font: 500 13.5px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dback { min-height: 40px; padding: 0 12px 0 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 500 13.5px var(--f-ui); }
+.dk { font: 500 13.5px var(--f-ui); color: var(--muted); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dk.then { color: var(--then); } .dk.now { color: var(--now); } .dk.next { color: var(--next); }
 .dtitle { flex: none; margin: 6px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); font-weight: 400; line-height: 1.08; text-wrap: balance; }
 .dtitle.then { font-family: var(--f-body); font-weight: 500; font-size: 30px; color: var(--then); }
@@ -305,31 +334,31 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .tabs:empty { display: none; }
 .tabs { overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
-.tabs button { flex: 1 0 auto; min-height: 40px; padding: 0 10px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: 700 13.5px var(--f-mono); cursor: pointer; white-space: nowrap; }
+.tabs button { flex: 1 0 auto; min-height: 40px; padding: 0 10px; border: 0; border-radius: 10px; background: none; color: var(--muted); font: 600 13.5px var(--f-ui); cursor: pointer; white-space: nowrap; }
 @media (max-width: 379px) { .tabs button { padding: 0 8px; font-size: 13px; } }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .db { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 14px; }
 .hook { margin: 0; font-size: 20px; line-height: 1.4; }
 .txt { margin: 0; font-size: 17px; opacity: .92; }
 .box { border-radius: 14px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); }
-.box h4 { margin: 0 0 4px; font: 500 13px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.box h4 { margin: 0 0 4px; font: 500 13px var(--f-ui); color: var(--muted); }
 .box p { margin: 0; font-size: 16.5px; }
-.box.next { background: rgba(205, 185, 255, .08); border-color: rgba(205, 185, 255, .3); }
+.box.next { background: rgba(var(--next-rgb), .08); border-color: rgba(var(--next-rgb), .3); }
 .box.next h4 { color: var(--next); }
-.box.now { background: rgba(114, 211, 197, .08); border-color: rgba(114, 211, 197, .3); }
+.box.now { background: rgba(var(--now-rgb), .08); border-color: rgba(var(--now-rgb), .3); }
 .box.now h4 { color: var(--now); }
 .go { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; min-height: 52px; }
-.go .gk { font: 500 13px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; display: block; }
+.go .gk { font: 500 13px var(--f-ui); display: block; }
 .go .gt { font-size: 17px; display: block; }
 .go .ga { margin-left: auto; font-size: 20px; color: var(--muted); }
 .go.then .gk { color: var(--then); } .go.now .gk { color: var(--now); } .go.next .gk { color: var(--next); }
-.meta { font: 13px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+.meta { font: 13px var(--f-ui); color: var(--muted); display: flex; gap: 8px; align-items: center; }
 .opps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .op { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 3px 10px; align-items: baseline; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); }
-.op .ok { grid-row: span 2; align-self: start; margin-top: 2px; font: 700 12px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.op .ok { grid-row: span 2; align-self: start; margin-top: 2px; font: 600 12px var(--f-ui); padding: 3px 8px; border-radius: 999px; border: 1px solid currentColor; }
 .op.build .ok { color: var(--next); } .op.work .ok { color: var(--now); } .op.learn .ok { color: var(--then); }
-.op .ot { font: 700 17px/1.3 var(--f-mono); }
-.op .ol { font: 15.5px/1.45 var(--f-mono); color: rgba(239, 232, 214, .78); }
+.op .ot { font: 600 17px/1.3 var(--f-ui); }
+.op .ol { font: 15.5px/1.45 var(--f-ui); color: rgba(var(--ink-rgb), .78); }
 .gl-t b.k-build { color: var(--next); } .gl-t b.k-work { color: var(--now); } .gl-t b.k-learn { color: var(--then); }
 .cv { list-style: none; margin: 0; padding: 0; position: relative; }
 .cv.reveal > li { animation: cvIn .7s cubic-bezier(.2, .7, .2, 1) both; animation-delay: var(--d, 0s); }
@@ -338,91 +367,91 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 @keyframes cvLine { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 .cv::before { content: ""; position: absolute; left: 75px; top: 14px; bottom: 18px; width: 2px; border-radius: 2px; background: linear-gradient(var(--then), var(--now) 75%, var(--next)); opacity: .55; }
 .cv-i { position: relative; display: grid; grid-template-columns: 62px 28px minmax(0, 1fr) auto; align-items: start; padding: 4px 0; }
-.cv-y { grid-column: 1; text-align: right; font: 700 15px var(--f-mono); color: var(--muted); padding-top: 9px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cv-y { grid-column: 1; text-align: right; font: 600 15px var(--f-ui); color: var(--muted); padding-top: 9px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .cv-d { grid-column: 2; justify-self: center; width: 12px; height: 12px; margin-top: 13px; border-radius: 50%; border: 2px solid var(--muted); background: var(--bg); z-index: 1; }
 .cv-b { grid-column: 3; display: flex; flex-direction: column; gap: 2px; padding: 6px 10px; border-radius: 12px; min-width: 0; }
-.cv-k { font: 700 12.5px var(--f-mono); letter-spacing: .03em; text-transform: uppercase; }
+.cv-k { font: 600 12.5px var(--f-ui); }
 .cv-t { font-size: 18px; font-weight: 500; line-height: 1.25; }
-.cv-l { font: 15px/1.4 var(--f-mono); color: rgba(239, 232, 214, .75); }
+.cv-l { font: 15px/1.4 var(--f-ui); color: rgba(var(--ink-rgb), .75); }
 .cv-go { grid-column: 4; align-self: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 17px; }
-.cv-gap { padding: 2px 0 2px 100px; font: 13px var(--f-mono); color: var(--muted); }
+.cv-gap { padding: 2px 0 2px 100px; font: 13px var(--f-ui); color: var(--muted); }
 .cv-i.then .cv-y, .cv-i.then .cv-k { color: var(--then); }
 .cv-i.then .cv-d { background: var(--then); border-color: var(--then); box-shadow: 0 0 10px var(--then); }
-.cv-i.then .cv-b { background: rgba(226, 179, 94, .09); }
+.cv-i.then .cv-b { background: rgba(var(--then-rgb), .09); }
 .cv-i.now .cv-y, .cv-i.now .cv-k { color: var(--now); }
 .cv-i.now .cv-d { background: var(--now); border-color: var(--now); box-shadow: 0 0 10px var(--now); }
-.cv-i.now .cv-b { background: rgba(114, 211, 197, .09); }
+.cv-i.now .cv-b { background: rgba(var(--now-rgb), .09); }
 .cv-i.next .cv-y, .cv-i.next .cv-k { color: var(--next); }
 .cv-i.next .cv-d { width: 16px; height: 16px; margin-top: 11px; background: var(--next); border-color: var(--next); box-shadow: 0 0 14px var(--next); }
-.cv-i.next .cv-b { background: rgba(205, 185, 255, .1); }
+.cv-i.next .cv-b { background: rgba(var(--next-rgb), .1); }
 .cv-i.next .cv-t { color: var(--next); }
 .eq { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 12px; align-items: center; }
-.eq .ey { font: 500 16px var(--f-mono); text-align: right; }
+.eq .ey { font: 500 16px var(--f-ui); text-align: right; }
 .eq .en { font-size: 17px; padding: 8px 0; }
-.eq .gap { grid-column: 2; font: 500 13.5px var(--f-mono); color: var(--muted); border-left: 2px solid var(--line); padding: 4px 0 4px 10px; margin-left: -12px; }
+.eq .gap { grid-column: 2; font: 500 13.5px var(--f-ui); color: var(--muted); border-left: 2px solid var(--line); padding: 4px 0 4px 10px; margin-left: -12px; }
 .eq .t { color: var(--then); } .eq .n { color: var(--now); } .eq .x { color: var(--next); }
 
 /* world */
-.wmapbox { border-radius: 16px; border: 1px solid var(--line); padding: 8px 4px 6px; background: radial-gradient(ellipse 75% 85% at 50% 40%, rgba(120, 92, 210, .14), transparent 75%), var(--surface); }
+.wmapbox { border-radius: 16px; border: 1px solid var(--line); padding: 8px 4px 6px; background: radial-gradient(ellipse 75% 85% at 50% 40%, rgba(var(--glow-rgb), .14), transparent 75%), var(--surface); }
 #wmap { display: block; width: 100%; height: auto; aspect-ratio: 150 / 67; cursor: pointer; touch-action: manipulation; }
 .wl { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
 .wl button { width: 100%; display: grid; grid-template-columns: 8px 86px minmax(0, 1fr) auto; align-items: baseline; gap: 2px 10px; text-align: left; padding: 8px 10px; min-height: 40px; border-radius: 12px; border: 1px solid transparent; background: none; cursor: pointer; }
 .wl .wd0 { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); opacity: .6; align-self: center; }
-.wl .wr { font: 500 12px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.25; }
+.wl .wr { font: 500 12px var(--f-ui); color: var(--muted); line-height: 1.25; }
 .wl .wh { font-size: 16.5px; line-height: 1.25; }
-.wl .tag { font: 500 12px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--hc); color: var(--hc); }
+.wl .tag { font: 500 12px var(--f-ui); padding: 2px 8px; border-radius: 999px; border: 1px solid var(--hc); color: var(--hc); }
 .wl .wdet { grid-column: 2 / -1; margin: 4px 0 2px; font-size: 15.5px; line-height: 1.4; color: var(--ink); opacity: .88; }
 .wl li.on button { background: var(--surface); border-color: var(--line); }
 .wl li.on .wd0 { background: var(--ink); opacity: 1; box-shadow: 0 0 8px var(--ink); }
 .wl li.home .wd0 { background: var(--hc); opacity: 1; box-shadow: 0 0 8px var(--hc); }
 .wl li.home.on button { border-color: var(--hs); background: var(--hb); }
-.world-then { --hc: var(--then); --hs: rgba(226, 179, 94, .5); --hb: rgba(226, 179, 94, .09); }
-.world-now { --hc: var(--now); --hs: rgba(114, 211, 197, .5); --hb: rgba(114, 211, 197, .09); }
+.world-then { --hc: var(--then); --hs: rgba(var(--then-rgb), .5); --hb: rgba(var(--then-rgb), .09); }
+.world-now { --hc: var(--now); --hs: rgba(var(--now-rgb), .5); --hb: rgba(var(--now-rgb), .09); }
 
 .ix { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .ix button { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer; }
-.ix button.on { border-color: rgba(205, 185, 255, .6); background: rgba(205, 185, 255, .08); }
+.ix button.on { border-color: rgba(var(--next-rgb), .6); background: rgba(var(--next-rgb), .08); }
 .ix .it { display: flex; flex-direction: column; min-width: 0; font-size: 14.5px; line-height: 1.25; overflow-wrap: anywhere; }
-.ix .it b { font: 500 13.5px var(--f-mono); }
+.ix .it b { font: 500 13.5px var(--f-ui); }
 .ix .then b { color: var(--then); } .ix .now b { color: var(--now); } .ix .next b { color: var(--next); }
 
-.ixh { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 0 13px; font: 500 12.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.ixh { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 0 13px; font: 500 12.5px var(--f-ui); }
 .ixh .then { color: var(--then); } .ixh .now { color: var(--now); } .ixh .next { color: var(--next); }
 
 /* intro: what PastForward is, in about 30 seconds */
 .intro { position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; gap: 8px; cursor: pointer; user-select: none; -webkit-user-select: none;
   padding: max(10px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(14px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
-  background: radial-gradient(ellipse 90% 45% at 50% 32%, rgba(120, 92, 210, .2), transparent 70%), radial-gradient(ellipse 70% 40% at 100% 100%, rgba(70, 170, 160, .08), transparent 70%), var(--bg);
+  background: radial-gradient(ellipse 90% 45% at 50% 32%, rgba(var(--glow-rgb), .2), transparent 70%), radial-gradient(ellipse 70% 40% at 100% 100%, rgba(70, 170, 160, .08), transparent 70%), var(--bg);
   opacity: 0; transition: opacity .45s ease; }
 .intro.open { opacity: 1; }
 .intro::before, .intro::after { content: ""; position: absolute; left: 0; right: 0; height: 5.5vh; background: #000; z-index: 0; pointer-events: none; }
 .intro::before { top: 0; } .intro::after { bottom: 0; }
 .intro > * { position: relative; z-index: 1; }
-.intro > .in-vig { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(0, 0, 0, .55) 100%); }
+.intro > .in-vig { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(var(--shade), .55) 100%); }
 .intro > .in-card { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 0 max(28px, 8vw); text-align: center; pointer-events: none; }
 .ic-l { margin: 0; max-width: 640px; font: 500 clamp(24px, 6.4vw, 40px)/1.15 var(--f-body); color: var(--ink); text-wrap: balance; will-change: opacity, transform, filter; }
 .ic-l.lead { font-size: clamp(27px, 7.4vw, 46px); }
-.ic-l .x { color: var(--next); text-shadow: 0 0 24px rgba(205, 185, 255, .4); }
+.ic-l .x { color: var(--next); text-shadow: 0 0 24px rgba(var(--next-rgb), .4); }
 .in-brand { display: inline-block; margin-bottom: 6px; font: 400 clamp(40px, 12vw, 72px)/1 var(--f-then); }
-.in-brand .p { color: var(--then); } .in-brand .f { color: var(--next); text-shadow: 0 0 26px rgba(205, 185, 255, .5); }
+.in-brand .p { color: var(--then); } .in-brand .f { color: var(--next); text-shadow: 0 0 26px rgba(var(--next-rgb), .5); }
 .intro.rec .in-top, .intro.rec .in-prog { visibility: hidden; }
 .in-top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; max-width: 640px; min-height: 40px; margin: 0 auto; }
 .in-logo { font: 400 22px/1 var(--f-then); white-space: nowrap; }
 .in-logo .p { color: var(--then); }
-.in-logo .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
-.in-skip { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(22, 19, 52, .7); color: var(--ink); font: 700 14px var(--f-mono); cursor: pointer; }
+.in-logo .f { color: var(--next); text-shadow: 0 0 18px rgba(var(--next-rgb), .45); }
+.in-skip { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(var(--surface-rgb), .7); color: var(--ink); font: 600 14px var(--f-ui); cursor: pointer; }
 .in-skip:hover { border-color: var(--ink); }
 .in-prog { flex: none; display: flex; gap: 4px; width: 100%; max-width: 640px; margin: 0 auto; }
-.in-prog i { flex: 1; height: 3px; border-radius: 2px; background: rgba(239, 232, 214, .18); overflow: hidden; }
+.in-prog i { flex: 1; height: 3px; border-radius: 2px; background: rgba(var(--ink-rgb), .18); overflow: hidden; }
 .in-prog b { display: block; height: 100%; width: 0; background: var(--ink); }
 .in-stage { position: relative; flex: 1 1 auto; min-height: 180px; width: 100%; max-width: 820px; margin: 0 auto; }
 #inCv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .in-cap { flex: none; display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 560px; min-height: 190px; margin: 0 auto; text-align: center; will-change: opacity, transform; }
-.in-k { margin: 0; min-height: 1.2em; font: 700 13.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.in-k { margin: 0; min-height: 1.2em; font: 600 13.5px var(--f-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .in-k.then { color: var(--then); } .in-k.now { color: var(--now); } .in-k.next { color: var(--next); }
 .in-t { margin: 0; font: 500 clamp(28px, 7.8vw, 42px)/1.08 var(--f-body); text-wrap: balance; }
 .in-t .t { color: var(--then); } .in-t .n { color: var(--now); }
-.in-t .x { color: var(--next); text-shadow: 0 0 24px rgba(205, 185, 255, .35); }
+.in-t .x { color: var(--next); text-shadow: 0 0 24px rgba(var(--next-rgb), .35); }
 .in-l { margin: 0; font-size: 18.5px; line-height: 1.4; opacity: .9; text-wrap: balance; }
 .in-l:empty { display: none; }
 .in-act { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
@@ -430,60 +459,60 @@ h1 .f { color: var(--next); text-shadow: 0 0 18px rgba(205, 185, 255, .45); }
 .in-act .in-row { display: flex; gap: 8px; }
 .in-act .in-row .secondary { flex: 1; }
 .in-act .primary { background: linear-gradient(90deg, var(--then), var(--now), var(--next)); }
-.in-url { margin: 4px 0 0; font: 700 22px var(--f-mono); letter-spacing: .02em; color: var(--next); }
-.in-tap { flex: none; margin: 0; text-align: center; font: 13px var(--f-mono); letter-spacing: .04em; color: var(--muted); transition: opacity .3s; }
+.in-url { margin: 4px 0 0; font: 600 22px var(--f-ui); letter-spacing: .02em; color: var(--next); }
+.in-tap { flex: none; margin: 0; text-align: center; font: 13px var(--f-ui); letter-spacing: .04em; color: var(--muted); transition: opacity .3s; }
 h1.tap { cursor: pointer; }
 
 /* search + Ask PastForward */
 .srch { position: relative; }
 .srch svg { position: absolute; left: 14px; top: 50%; width: 19px; height: 19px; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
-.srch input, .askf textarea { width: 100%; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 17px/1.35 var(--f-mono); padding: 13px 14px; -webkit-appearance: none; appearance: none; }
+.srch input, .askf textarea { width: 100%; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 17px/1.35 var(--f-ui); padding: 13px 14px; -webkit-appearance: none; appearance: none; }
 .srch input { min-height: 50px; padding-left: 44px; }
 .srch input:focus, .askf textarea:focus, .keyrow input:focus { outline: 2px solid var(--next); outline-offset: 1px; }
 .srch input::placeholder, .askf textarea::placeholder, .keyrow input::placeholder { color: var(--muted); opacity: .9; }
-.askrow { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1px 12px; width: 100%; text-align: left; padding: 11px 14px; border-radius: 14px; border: 1px solid rgba(205, 185, 255, .5); background: radial-gradient(ellipse 90% 140% at 0% 0%, rgba(205, 185, 255, .17), transparent 70%), var(--surface); cursor: pointer; }
+.askrow { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1px 12px; width: 100%; text-align: left; padding: 11px 14px; border-radius: 14px; border: 1px solid rgba(var(--next-rgb), .5); background: radial-gradient(ellipse 90% 140% at 0% 0%, rgba(var(--next-rgb), .17), transparent 70%), var(--surface); cursor: pointer; }
 .askrow:hover { border-color: var(--next); }
-.askrow .sp { grid-row: span 2; display: inline-flex; color: var(--next); filter: drop-shadow(0 0 8px rgba(205, 185, 255, .6)); }
+.askrow .sp { grid-row: span 2; display: inline-flex; color: var(--next); filter: drop-shadow(0 0 8px rgba(var(--next-rgb), .6)); }
 .askrow .sp svg { width: 24px; height: 24px; }
-.askrow .at { font: 700 16px/1.3 var(--f-mono); color: var(--next); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.askrow .as { font: 14px/1.35 var(--f-mono); color: var(--muted); }
+.askrow .at { font: 600 16px/1.3 var(--f-ui); color: var(--next); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.askrow .as { font: 14px/1.35 var(--f-ui); color: var(--muted); }
 .askrow .ga { grid-row: 1 / span 2; grid-column: 3; color: var(--next); font-size: 22px; }
 .ixlist { display: flex; flex-direction: column; gap: 14px; }
-.ixnone { margin: 0; font: 15.5px/1.45 var(--f-mono); color: var(--muted); }
+.ixnone { margin: 0; font: 15.5px/1.45 var(--f-ui); color: var(--muted); }
 .askf { display: flex; flex-direction: column; gap: 8px; }
 .askf textarea { resize: none; min-height: 84px; font-size: 18px; }
 .askbar { display: flex; align-items: center; gap: 10px; }
-.askbar .cnt { flex: 1; font: 13px var(--f-mono); color: var(--muted); }
+.askbar .cnt { flex: 1; font: 13px var(--f-ui); color: var(--muted); }
 .askbar .primary { flex: none; min-width: 124px; background: var(--next); }
 .askbar .primary:disabled { opacity: .6; cursor: default; }
-.askmeta { margin: -2px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font: 14px/1.4 var(--f-mono); color: var(--muted); }
+.askmeta { margin: -2px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font: 14px/1.4 var(--f-ui); color: var(--muted); }
 .askmeta:empty { display: none; }
 .askmeta a, .linkbtn { color: var(--next); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
 .askout { display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips button { min-height: 38px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(12, 10, 29, .6); font: 14.5px/1.3 var(--f-mono); color: var(--ink); cursor: pointer; text-align: left; }
+.chips button { min-height: 38px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(var(--bg-rgb), .6); font: 14.5px/1.3 var(--f-ui); color: var(--ink); cursor: pointer; text-align: left; }
 .chips button:hover { border-color: var(--next); }
-.aq { margin: 0; font: 15px/1.4 var(--f-mono); color: var(--muted); }
+.aq { margin: 0; font: 15px/1.4 var(--f-ui); color: var(--muted); }
 .aq b { color: var(--ink); font-weight: 700; }
-.ai-tag { display: inline-block; margin-right: 6px; font: 700 11.5px var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--next); border: 1px solid rgba(205, 185, 255, .5); border-radius: 999px; padding: 1px 8px; }
-.askerr { margin: 0; padding: 11px 13px; border-radius: 12px; border: 1px solid rgba(229, 140, 122, .5); background: rgba(229, 140, 122, .1); font: 15px/1.45 var(--f-mono); }
+.ai-tag { display: inline-block; margin-right: 6px; font: 600 11.5px var(--f-ui); color: var(--next); border: 1px solid rgba(var(--next-rgb), .5); border-radius: 999px; padding: 1px 8px; }
+.askerr { margin: 0; padding: 11px 13px; border-radius: 12px; border: 1px solid rgba(var(--bad-rgb), .5); background: rgba(var(--bad-rgb), .1); font: 15px/1.45 var(--f-ui); }
 .thinking { display: flex; flex-direction: column; gap: 10px; padding: 6px 0; }
-.thinking p { margin: 0; font: 15px var(--f-mono); color: var(--muted); }
-.thinking i { display: block; height: 14px; border-radius: 7px; background: linear-gradient(90deg, rgba(226, 179, 94, .2), rgba(114, 211, 197, .22), rgba(205, 185, 255, .3), rgba(226, 179, 94, .2)); background-size: 300% 100%; animation: shimmer 1.6s linear infinite; }
+.thinking p { margin: 0; font: 15px var(--f-ui); color: var(--muted); }
+.thinking i { display: block; height: 14px; border-radius: 7px; background: linear-gradient(90deg, rgba(var(--then-rgb), .2), rgba(var(--now-rgb), .22), rgba(var(--next-rgb), .3), rgba(var(--then-rgb), .2)); background-size: 300% 100%; animation: shimmer 1.6s linear infinite; }
 .thinking i:nth-of-type(2) { width: 82%; } .thinking i:nth-of-type(3) { width: 58%; }
 @keyframes shimmer { to { background-position: -300% 0; } }
 .hist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
-.hist button { width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 15px/1.35 var(--f-mono); }
-.hist button:hover { border-color: rgba(205, 185, 255, .6); }
+.hist button { width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 15px/1.35 var(--f-ui); }
+.hist button:hover { border-color: rgba(var(--next-rgb), .6); }
 .hist .hy { flex: none; color: var(--muted); font-size: 13px; white-space: nowrap; }
 
 /* the preview that plays inside the pay gate */
-.demo { position: relative; flex: none; height: 338px; display: flex; flex-direction: column; border-radius: 16px; border: 1px solid rgba(205, 185, 255, .3); background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(120, 92, 210, .16), transparent 70%), var(--bg); overflow: hidden; box-shadow: 0 16px 44px rgba(0, 0, 0, .4); }
+.demo { position: relative; flex: none; height: 338px; display: flex; flex-direction: column; border-radius: 16px; border: 1px solid rgba(var(--next-rgb), .3); background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(var(--glow-rgb), .16), transparent 70%), var(--bg); overflow: hidden; box-shadow: 0 16px 44px rgba(var(--shade), .4); }
 .demo-bar { flex: none; display: flex; align-items: center; gap: 8px; margin: 10px 10px 2px; padding: 7px 7px 7px 12px; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
-.demo-q { flex: 1 1 auto; min-width: 0; font: 14.5px/1.3 var(--f-mono); color: var(--ink); }
+.demo-q { flex: 1 1 auto; min-width: 0; font: 14.5px/1.3 var(--f-ui); color: var(--ink); }
 .demo-caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 1px; vertical-align: -2px; background: var(--next); animation: blink 1s steps(1) infinite; }
-.demo-btn { flex: none; font: 700 13px var(--f-mono); color: var(--bg); background: var(--next); border-radius: 8px; padding: 7px 11px; transition: transform .15s, box-shadow .3s; }
-.demo-btn.press { transform: scale(.9); box-shadow: 0 0 20px rgba(205, 185, 255, .8); }
+.demo-btn { flex: none; font: 600 13px var(--f-ui); color: var(--bg); background: var(--next); border-radius: 8px; padding: 7px 11px; transition: transform .15s, box-shadow .3s; }
+.demo-btn.press { transform: scale(.9); box-shadow: 0 0 20px rgba(var(--next-rgb), .8); }
 .demo-body { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; padding: 8px 10px 0; transition: opacity .4s ease; }
 .demo-body.out { opacity: 0; }
 .demo .thinking { padding: 12px 4px; }
@@ -500,7 +529,7 @@ h1.tap { cursor: pointer; }
 .demo .cv-t { font-size: 15.5px; line-height: 1.2; }
 .demo .cv-l { display: none; }
 .demo .cv-i.next .cv-l { font-size: 13px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.demo-foot { flex: none; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px 9px; font: 700 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.demo-foot { flex: none; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px 9px; font: 600 11px var(--f-ui); color: var(--muted); }
 .demo-foot .dd { display: flex; gap: 5px; }
 .demo-foot .dd i { width: 16px; height: 3px; border-radius: 2px; background: var(--line); transition: background-color .3s; }
 .demo-foot .dd i.on { background: var(--next); }
@@ -512,34 +541,34 @@ h1.tap { cursor: pointer; }
 .pw-bd { position: absolute; inset: 0; background: rgba(5, 4, 14, .74); opacity: 0; transition: opacity .3s; }
 .pw { position: relative; width: 100%; max-width: 460px; max-height: calc(100% - 20px); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 12px;
   padding: 18px max(16px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
-  border-radius: 22px 22px 0 0; border: 1px solid rgba(205, 185, 255, .4); border-bottom: 0;
-  background: radial-gradient(ellipse 100% 40% at 50% 0%, rgba(205, 185, 255, .17), transparent 75%), var(--bg);
+  border-radius: 22px 22px 0 0; border: 1px solid rgba(var(--next-rgb), .4); border-bottom: 0;
+  background: radial-gradient(ellipse 100% 40% at 50% 0%, rgba(var(--next-rgb), .17), transparent 75%), var(--bg);
   transform: translateY(100%); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
-@media (min-width: 700px) { .pw { border-radius: 22px; border-bottom: 1px solid rgba(205, 185, 255, .4); } }
+@media (min-width: 700px) { .pw { border-radius: 22px; border-bottom: 1px solid rgba(var(--next-rgb), .4); } }
 .pw-wrap.open .pw-bd { opacity: 1; }
 .pw-wrap.open .pw { transform: none; }
-.pw-x { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 22px/1 var(--f-mono); color: var(--ink); }
-.pw-k { margin: 0; font: 700 12.5px var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--next); }
+.pw-x { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font: 22px/1 var(--f-ui); color: var(--ink); }
+.pw-k { margin: 0; font: 600 12.5px var(--f-ui); color: var(--next); }
 .pw h3 { margin: -6px 0 0; padding-right: 44px; font: 500 28px/1.1 var(--f-body); color: var(--ink); }
 .pw-sub { margin: 0; font-size: 17px; line-height: 1.4; opacity: .92; }
 .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .plan { display: flex; flex-direction: column; gap: 1px; align-items: center; justify-content: center; min-height: 62px; padding: 8px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; text-align: center; }
-.plan b { font: 700 17px var(--f-mono); }
-.plan span { font: 13px var(--f-mono); color: var(--muted); }
-.plan.best { background: var(--next); border-color: var(--next); color: var(--bg); box-shadow: 0 0 26px rgba(205, 185, 255, .25); }
-.plan.best span { color: rgba(12, 10, 29, .78); font-weight: 700; }
+.plan b { font: 600 17px var(--f-ui); }
+.plan span { font: 13px var(--f-ui); color: var(--muted); }
+.plan.best { background: var(--next); border-color: var(--next); color: var(--bg); box-shadow: 0 0 26px rgba(var(--next-rgb), .25); }
+.plan.best span { color: rgba(var(--bg-rgb), .78); font-weight: 700; }
 .plans .plan:only-child { grid-column: 1 / -1; }
-.pw-soon { margin: 0; text-align: center; font: 700 15px var(--f-mono); color: var(--next); padding: 8px 0; }
-.pw-fine { margin: -2px 0 0; text-align: center; font: 13px/1.4 var(--f-mono); color: var(--muted); }
-.pw-key summary { cursor: pointer; list-style: none; text-align: center; font: 700 14.5px var(--f-mono); color: var(--ink); padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; }
+.pw-soon { margin: 0; text-align: center; font: 600 15px var(--f-ui); color: var(--next); padding: 8px 0; }
+.pw-fine { margin: -2px 0 0; text-align: center; font: 13px/1.4 var(--f-ui); color: var(--muted); }
+.pw-key summary { cursor: pointer; list-style: none; text-align: center; font: 600 14.5px var(--f-ui); color: var(--ink); padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; }
 .pw-key summary::-webkit-details-marker { display: none; }
 .keyrow { display: flex; gap: 8px; margin-top: 6px; }
-.keyrow input { flex: 1; min-width: 0; min-height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 15px var(--f-mono); padding: 0 12px; }
+.keyrow input { flex: 1; min-width: 0; min-height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 15px var(--f-ui); padding: 0 12px; }
 .keyrow .secondary { flex: none; min-height: 46px; }
 .pw-key .fnote { margin-top: 6px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-in, .deep, .deep-bd, .st-b, .pw, .pw-bd { transition: none; }
+  .story, .deep, .deep-bd, .st i, .st .sy, .steps::after, .primary, .pw, .pw-bd { transition: none; }
   .swipe-hint, .pulse, .thinking i, .demo-caret { animation: none; }
   .intro { transition: none; }
   .ic-l { filter: none !important; }
@@ -551,47 +580,45 @@ h1.tap { cursor: pointer; }
 <div class="app">
   <header class="bar">
     <h1 class="tap" id="logo" title="What is PastForward?"><span class="p">Past</span><span class="f">Forward</span></h1>
-    <div class="bar-r">
-      <button type="button" class="ghost daily" id="dailyBtn">Daily</button>
-      <button type="button" class="ghost hi" id="futureBtn">Your future</button>
-      <button type="button" class="ghost icon" id="allBtn" aria-label="Search, ask, and all rhymes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
-    </div>
+    <nav class="bar-r" aria-label="Main">
+      <button type="button" class="navb" id="dailyBtn">Daily</button>
+      <button type="button" class="navb" id="futureBtn">Your future</button>
+      <button type="button" class="navb icon" id="allBtn" aria-label="Search, ask, and all rhymes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
+    </nav>
   </header>
 
   <section class="tl" aria-label="Timeline">
     <canvas id="tl" tabindex="0" aria-label="Timeline of events. Swipe or use the arrow keys to move through time; the event in the middle is shown below."></canvas>
-    <div class="swipe-hint" id="hint">← swipe through time →</div>
+    <div class="swipe-hint" id="hint">Swipe to travel through time</div>
   </section>
 
-  <section class="rhyme" aria-label="This rhyme">
-    <p class="theme" id="theme"></p>
-    <nav class="stepper" aria-label="Then, today, next">
-      <button type="button" class="st-b then" data-k="then"><span class="sl">Then</span><span class="sy" id="syThen"></span></button>
+  <main class="stage then" id="card" aria-live="polite">
+    <div class="pattern">
+      <p class="motif" id="motif"></p>
+      <button type="button" class="pmeta" id="pmeta"></button>
+    </div>
+    <nav class="steps" id="steps" aria-label="Then, Today, Next">
+      <button type="button" class="st then" data-k="then"><i aria-hidden="true"></i><span class="sy" id="syThen"></span><span class="sl">Then</span></button>
       <span class="st-g" id="sg1"></span>
-      <button type="button" class="st-b now" data-k="now"><span class="sl">Today</span><span class="sy" id="syNow"></span></button>
+      <button type="button" class="st now" data-k="now"><i aria-hidden="true"></i><span class="sy" id="syNow"></span><span class="sl">Today</span></button>
       <span class="st-g" id="sg2"></span>
-      <button type="button" class="st-b next" data-k="next"><span class="sl">Next</span><span class="sy" id="syNext"></span></button>
+      <button type="button" class="st next" data-k="next"><i aria-hidden="true"></i><span class="sy" id="syNext"></span><span class="sl">Next</span></button>
     </nav>
-  </section>
-
-  <section class="card" id="card" aria-live="polite">
-    <div class="card-in" id="cardIn">
-      <p class="ck" id="cKick"></p>
+    <div class="story" id="cardIn">
       <h2 class="ct" id="cTitle"></h2>
       <p class="ch" id="cHook"></p>
+      <p class="cx" id="cText" hidden></p>
+      <button type="button" class="more" id="dive">Full story</button>
     </div>
-    <button type="button" class="glimpse" id="glimpse">
-      <span class="gl-map"><canvas id="gmap" aria-hidden="true"></canvas><span class="eqm" id="eqm"></span></span>
-      <span class="gl-cap"><span class="gl-row"><span class="gl-k" id="glK"></span><span class="gl-more">Explore ›</span></span><span class="gl-t" id="glT"></span></span>
-    </button>
-    <div class="coach" id="coach" hidden></div>
-    <div id="cVote"></div>
-    <div class="actions">
-      <button type="button" class="primary" id="jump"></button>
-      <button type="button" class="secondary" id="dive">Dive deeper</button>
-      <button type="button" class="iconbtn" id="share" aria-label="Share this rhyme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></button>
+    <div class="foot">
+      <div id="cVote"></div>
+      <p class="guide" id="guide"></p>
+      <div class="actions">
+        <button type="button" class="primary" id="jump"></button>
+        <button type="button" class="iconbtn" id="share" aria-label="Share this rhyme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></button>
+      </div>
     </div>
-  </section>
+  </main>
 </div>
 
 <div class="deep-wrap" id="deepWrap" hidden>
@@ -607,7 +634,7 @@ h1.tap { cursor: pointer; }
   </div>
 </div>
 
-<div class="intro" id="intro" hidden role="dialog" aria-modal="true" aria-label="What PastForward is">
+<div class="intro night" id="intro" hidden role="dialog" aria-modal="true" aria-label="What PastForward is">
   <div class="in-top"><span class="in-logo" aria-hidden="true"><span class="p">Past</span><span class="f">Forward</span></span><button type="button" class="in-skip" id="inSkip">Skip</button></div>
   <div class="in-prog" id="inProg" aria-hidden="true"></div>
   <div class="in-stage" id="inStage"><canvas id="inCv" aria-hidden="true"></canvas></div>
@@ -643,13 +670,25 @@ const KS = ["then", "now", "next"];
 const RGB = { then: "226,179,94", now: "114,211,197", next: "205,185,255" };
 const INK = "239,232,214", MUTED = "171,166,201", BG = "12,10,29";
 const STEP = { then: "Then", now: "Today", next: "Next" };
-const UIF = `"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif`;
+// The live theme, read from the CSS tokens. The river and the maps draw with it; the trailer and share images keep the night colours above.
+let TC = { then: RGB.then, now: RGB.now, next: RGB.next, ink: INK, muted: MUTED, bg: BG, dark: true }, themeGen = 0;
+function readTheme() {
+  const cs = getComputedStyle(document.documentElement), v = n => cs.getPropertyValue(n).replace(/\s+/g, "");
+  const t = { then: v("--then-rgb"), now: v("--now-rgb"), next: v("--next-rgb"), ink: v("--ink-rgb"), muted: v("--muted-rgb"), bg: v("--bg-rgb") };
+  if (!t.bg) return;
+  t.dark = +t.bg.split(",")[0] < 128;
+  TC = t; themeGen++;
+  document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.setAttribute("content", `rgb(${t.bg})`));
+}
+readTheme();
+try { matchMedia("(prefers-color-scheme: light)").addEventListener("change", readTheme); } catch (_) {}
+const UIF = `"Hanken Grotesk", "Segoe UI", system-ui, sans-serif`;
 const FONT = {
   then: s => `500 ${s}px "Newsreader", Georgia, serif`,
   now: s => `500 ${s}px "Newsreader", Georgia, serif`,
   next: s => `500 ${s}px "Newsreader", Georgia, serif`,
   mono: s => `${s}px ${UIF}`,
-  monoB: s => `700 ${s}px ${UIF}`
+  monoB: s => `600 ${s}px ${UIF}`
 };
 /* ---------- the lexicon: every PastForward term, defined once (rename a word here and it changes everywhere) ---------- */
 const LEX = {
@@ -728,7 +767,7 @@ let fly = null, inertia = null, trail = null, userTouched = false;
 
 /* ---------- timeline geometry ---------- */
 const cv = $("tl"), ctx = cv.getContext("2d");
-const TOPB = 22, LENS_Y = 28, LENS_H = 26;
+const TOPB = 22, LENS_Y = 24, LENS_H = 26;
 let BASE = 130, OV = 170;
 const X = y => W / 2 + (y - cam.c) * cam.s;
 const yearAt = x => cam.c + (x - W / 2) / cam.s;
@@ -826,7 +865,6 @@ const nextStep = { then: "now", now: "next" };
 const prevStep = { next: "now", now: "then" };
 function forward() {
   if (!focus) return;
-  if (focus.k === "next") store.set(COACH_KEY, 1);
   const n = nextStep[focus.k];
   if (n) travel(focus.pi, n); else travel((focus.pi + 1) % N, "then");
 }
@@ -846,67 +884,44 @@ function draw(t) {
   c.setTransform(DPR, 0, 0, DPR, 0, 0);
   c.clearRect(0, 0, W, H);
   hits = [];
-  const xt = X(TODAY), xl = X(2000);
-  // eras: lived and ahead
-  if (xt > 0 && xl < W) {
-    const a = Math.max(0, xl), b = Math.min(W, xt);
-    const g = c.createLinearGradient(a, 0, b, 0);
-    g.addColorStop(0, "rgba(114,211,197,0)"); g.addColorStop(1, "rgba(114,211,197,.09)");
-    c.fillStyle = g; c.fillRect(a, TOPB, b - a, BASE + 6 - TOPB);
+  const xt = X(TODAY);
+  if (xt < W) {   // the years ahead, faintly tinted
+    const a = Math.max(0, xt), g = c.createLinearGradient(0, 0, 0, BASE + 6);
+    g.addColorStop(0, `rgba(${TC.next},0)`); g.addColorStop(1, `rgba(${TC.next},${TC.dark ? .08 : .07})`);
+    c.fillStyle = g; c.fillRect(a, 0, W - a, BASE + 6);
   }
-  if (xt < W) {
-    const a = Math.max(0, xt);
-    c.fillStyle = "rgba(205,185,255,.06)"; c.fillRect(a, TOPB, W - a, BASE + 6 - TOPB);
-  }
-  drawRelative(c);
-  // axis
-  c.strokeStyle = `rgba(${MUTED},.35)`; c.lineWidth = 1; line(c, 0, BASE + 6.5, W, BASE + 6.5);
+  c.strokeStyle = `rgba(${TC.muted},.32)`; c.lineWidth = 1; line(c, 0, BASE + 6.5, W, BASE + 6.5);
   drawYears(c);
   drawToday(c, xt);
   drawTrail(c, t);
   drawDots(c, t);
-  drawChainDots(c);
-  drawPartners(c);
   drawNeedle(c, t);
   drawOverview(c);
 }
 
-function drawRelative(c) {
-  const opts = [25, 50, 100];
-  const step = opts.find(s => s * cam.s >= 150) || 100;
-  const y0 = yearAt(-60), y1 = yearAt(W + 60);
-  c.font = FONT.monoB(11); c.textAlign = "center";
-  for (let r = Math.ceil((y0 - NOWY) / step) * step; NOWY + r <= y1; r += step) {
-    if (r === 0) continue;
-    const x = Math.round(X(NOWY + r)) + .5;
-    c.strokeStyle = `rgba(${MUTED},.12)`; c.setLineDash([2, 4]); line(c, x, TOPB, x, BASE + 6); c.setLineDash([]);
-    const label = r < 0 ? `${-r} YEARS AGO` : `IN ${r} YEARS`;
-    c.fillStyle = r < 0 ? `rgba(${RGB.then},.75)` : `rgba(${RGB.next},.8)`;
-    c.fillText(label, x, 15);
-  }
-}
 function drawYears(c) {
-  const steps = [5, 10, 20, 25, 50, 100];
-  const step = steps.find(s => s * cam.s >= 46) || 100;
+  const steps = [5, 10, 20, 25, 50, 100, 250, 500];
+  const step = steps.find(s => s * cam.s >= 52) || 500;
   const y0 = yearAt(0), y1 = yearAt(W);
-  c.font = FONT.mono(11.5); c.textAlign = "center";
+  c.font = FONT.mono(12); c.textAlign = "center";
   for (let y = Math.ceil(y0 / step) * step; y <= y1; y += step) {
     const x = Math.round(X(y)) + .5;
-    c.strokeStyle = `rgba(${MUTED},.45)`; line(c, x, BASE + 6, x, BASE + 11);
-    if (Math.abs(x - W / 2) < 46) continue;
-    c.fillStyle = `rgba(${MUTED},.75)`; c.fillText(String(y), x, BASE + 23);
+    c.strokeStyle = `rgba(${TC.muted},.4)`; line(c, x, BASE + 6, x, BASE + 10);
+    if (trail && Math.abs(x - W / 2) < 52) continue;   // room for the travel counter
+    c.fillStyle = `rgba(${TC.muted},.95)`; c.fillText(fmtY(y), x, BASE + 24);
   }
 }
+let lensX0 = 0, lensX1 = 0;
 function drawToday(c, xt) {
-  if (xt < -60 || xt > W + 60) return;
+  if (xt < -40 || xt > W + 40) return;
+  const x = Math.round(xt) + .5, underLens = x > lensX0 - 8 && x < lensX1 + 8;
   c.save();
-  c.strokeStyle = `rgba(${RGB.now},.75)`; c.lineWidth = 1; c.setLineDash([3, 3]);
-  line(c, Math.round(xt) + .5, TOPB, Math.round(xt) + .5, BASE + 6);
+  c.strokeStyle = `rgba(${TC.now},.55)`; c.lineWidth = 1; c.setLineDash([3, 4]);
+  line(c, x, underLens ? LENS_Y + LENS_H + 4 : 18, x, BASE + 6);
   c.setLineDash([]);
-  const f = FONT.monoB(10.5), tw = mw(f, "YOU ARE HERE") + 14, px = clamp(xt - tw / 2, 2, W - tw - 2);
-  rrect(c, px, 4, tw, 16, 8); c.fillStyle = `rgba(${BG},.95)`; c.fill();
-  c.strokeStyle = `rgba(${RGB.now},.85)`; c.stroke();
-  c.font = f; c.textAlign = "center"; c.fillStyle = `rgb(${RGB.now})`; c.fillText("YOU ARE HERE", px + tw / 2, 15.5);
+  const f = FONT.monoB(12), tw = mw(f, "Now");
+  c.font = f; c.textAlign = "center"; c.fillStyle = `rgb(${TC.now})`;
+  c.fillText("Now", clamp(xt, tw / 2 + 4, W - tw / 2 - 4), 13);
   c.restore();
 }
 
@@ -916,12 +931,12 @@ function layoutDots() {
   const stacks = [];
   for (const v of vis) {
     const s = stacks[stacks.length - 1];
-    if (s && v.x - s.xl < 9 && v.x - s.x0 < 14) { s.items.push(v); s.xl = v.x; }
+    if (s && v.x - s.xl < 8 && v.x - s.x0 < 12) { s.items.push(v); s.xl = v.x; }
     else stacks.push({ items: [v], x0: v.x, xl: v.x });
   }
-  const top = LENS_Y + LENS_H + 10, room = BASE - top;
+  const room = Math.max(10, Math.min(32, BASE - (LENS_Y + LENS_H + 16)));
   for (const s of stacks) {
-    const n = s.items.length, sp = Math.min(12, room / Math.max(1, n));
+    const n = s.items.length, sp = n > 1 ? Math.min(8, room / (n - 1)) : 0;
     s.items.sort((a, b) => KS.indexOf(a.e.k) - KS.indexOf(b.e.k) || a.e.yx - b.e.yx);
     s.items.forEach((v, j) => { v.y = BASE - 2 - j * sp; v.stack = n; });
   }
@@ -931,104 +946,76 @@ function drawDots(c, t) {
   const vis = layoutDots();
   const f = focus ? EVI[focus.pi][focus.k] : null;
   const partners = focus ? KS.filter(k => k !== focus.k).map(k => EVI[focus.pi][k]) : [];
-  // labels for lone events, one tier above the dot
-  const used = [[W / 2 - 110, W / 2 + 110]];
-  const labels = [];
-  for (const v of vis) {
-    if (v.stack > 1 || v.e === f) continue;
-    const fo = FONT[v.e.k](13.5);
-    const w = mw(fo, v.e.label), x0 = v.x - w / 2;
-    if (x0 < 2 || x0 + w > W - 2) continue;
-    if (used.some(([a, b]) => !(x0 + w + 8 < a || x0 - 8 > b))) continue;
-    used.push([x0, x0 + w]); labels.push({ v, fo, x0 });
-  }
+  const echoes = [];
+  if (focus) for (const e of PAIRS[focus.pi].echoes || []) { const x = X(e.year + .5); if (x > -20 && x < W + 20) echoes.push({ x, e }); }
+  // names: the rest of this rhyme first, then lone events; the middle stays clear for the focused name
+  const used = [[W / 2 - 120, W / 2 + 120]];
+  const name = (txt, x, y, font, col) => {
+    const w = mw(font, txt), x0 = x - w / 2;
+    if (x0 < 4 || x0 + w > W - 4 || used.some(([a, b]) => !(x0 + w + 10 < a || x0 - 10 > b))) return;
+    used.push([x0, x0 + w]); c.font = font; c.fillStyle = col; c.fillText(txt, x0, y);
+  };
   c.textAlign = "left";
-  for (const L of labels) {
-    c.font = L.fo; c.fillStyle = `rgba(${INK},.62)`;
-    c.fillText(L.v.e.label, L.x0, L.v.y - 10);
-  }
+  for (const v of vis) if (partners.includes(v.e)) name(`${v.e.k === "next" ? "c. " : ""}${fmtY(v.e.y)} ${v.e.label}`, v.x, v.y - 13, FONT.monoB(12.5), `rgb(${TC[v.e.k]})`);
+  for (const q of echoes) name(`${fmtY(q.e.year)} ${q.e.short}`, q.x, BASE - 15, FONT.mono(12.5), `rgba(${TC.ink},.75)`);
+  for (const v of vis) if (v.stack === 1 && v.e !== f && !partners.includes(v.e)) name(v.e.label, v.x, v.y - 11, FONT.then(13.5), `rgba(${TC.ink},.5)`);
   for (const v of vis) {
-    const isF = v.e === f, isP = partners.includes(v.e), rgb = RGB[v.e.k];
-    if (isF) continue;
-    c.fillStyle = `rgba(${rgb},${isP ? 1 : .8})`;
-    c.beginPath(); c.arc(v.x, v.y, isP ? 5 : 4, 0, 6.2832); c.fill();
-    if (isP) { c.strokeStyle = `rgba(${rgb},.7)`; c.lineWidth = 1.2; c.beginPath(); c.arc(v.x, v.y, 8.5, 0, 6.2832); c.stroke(); }
+    if (v.e === f) continue;
+    const isP = partners.includes(v.e), rgb = TC[v.e.k];
+    c.fillStyle = `rgba(${rgb},${isP ? 1 : v.stack > 3 ? .42 : .6})`;
+    c.beginPath(); c.arc(v.x, v.y, isP ? 5 : v.stack > 3 ? 2.8 : 3.5, 0, 6.2832); c.fill();
+    if (isP) { c.strokeStyle = `rgba(${rgb},.55)`; c.lineWidth = 1.2; c.beginPath(); c.arc(v.x, v.y, 8.5, 0, 6.2832); c.stroke(); }
     hits.push({ x: v.x, y: v.y, e: v.e });
   }
-  if (f) {
-    const v = vis.find(q => q.e === f);
-    if (v) {
-      const rgb = RGB[f.k], br = 2.5 * Math.sin(t / 600);
-      const halo = c.createRadialGradient(v.x, v.y, 0, v.x, v.y, 24 + br);
-      halo.addColorStop(0, `rgba(${rgb},.55)`); halo.addColorStop(1, `rgba(${rgb},0)`);
-      c.fillStyle = halo; c.beginPath(); c.arc(v.x, v.y, 24 + br, 0, 6.2832); c.fill();
-      c.save(); c.shadowColor = `rgb(${rgb})`; c.shadowBlur = 12;
-      c.fillStyle = `rgb(${rgb})`; c.beginPath(); c.arc(v.x, v.y, 7, 0, 6.2832); c.fill(); c.restore();
-      c.strokeStyle = `rgba(${rgb},.8)`; c.lineWidth = 1.3; c.beginPath(); c.arc(v.x, v.y, 11.5 + br * .4, 0, 6.2832); c.stroke();
-      focusDot = v;
-      hits.push({ x: v.x, y: v.y, e: f, focus: true });
-    } else focusDot = null;
+  for (const q of echoes) {   // this rhyme's other echoes: open rings on the line
+    const y = BASE - 2;
+    c.fillStyle = `rgb(${TC.bg})`; c.strokeStyle = `rgba(${TC.ink},.85)`; c.lineWidth = 1.8;
+    c.beginPath(); c.arc(q.x, y, 4.5, 0, 6.2832); c.fill(); c.stroke();
+    hits.push({ x: q.x, y, e: { pi: focus.pi, k: "chain", yx: q.e.year + .5 }, chain: true });
   }
+  focusDot = null;
+  if (!f) return;
+  const v = vis.find(q => q.e === f);
+  if (!v) return;
+  const rgb = TC[f.k], br = reduce ? 0 : 2 * Math.sin(t / 700);
+  const halo = c.createRadialGradient(v.x, v.y, 0, v.x, v.y, 22 + br);
+  halo.addColorStop(0, `rgba(${rgb},${TC.dark ? .45 : .3})`); halo.addColorStop(1, `rgba(${rgb},0)`);
+  c.fillStyle = halo; c.beginPath(); c.arc(v.x, v.y, 22 + br, 0, 6.2832); c.fill();
+  c.fillStyle = `rgb(${rgb})`; c.beginPath(); c.arc(v.x, v.y, 7, 0, 6.2832); c.fill();
+  c.strokeStyle = `rgba(${rgb},.7)`; c.lineWidth = 1.3; c.beginPath(); c.arc(v.x, v.y, 11 + br * .4, 0, 6.2832); c.stroke();
+  focusDot = v;
+  hits.push({ x: v.x, y: v.y, e: f, focus: true });
 }
 let focusDot = null;
-function drawChainDots(c) {
-  if (!focus) return;
-  const p = PAIRS[focus.pi];
-  if (!(p.echoes || []).length) return;
-  c.font = FONT.monoB(12); c.textAlign = "center";
-  for (const e of p.echoes) {
-    const x = X(e.year + .5);
-    if (x < -20 || x > W + 20) continue;
-    const y = BASE - 2;
-    c.save(); c.shadowColor = `rgba(${INK},.7)`; c.shadowBlur = 8;
-    c.fillStyle = `rgb(${BG})`; c.strokeStyle = `rgba(${INK},.9)`; c.lineWidth = 2;
-    c.beginPath(); c.arc(x, y, 6, 0, 6.2832); c.fill(); c.stroke(); c.restore();
-    const lab = `${fmtY(e.year)} ${e.short}`, w = mw(FONT.monoB(12), lab) + 12;
-    const bx = clamp(x - w / 2, 2, W - w - 2), by = y - 32;
-    rrect(c, bx, by, w, 19, 9.5); c.fillStyle = `rgba(${BG},.9)`; c.fill();
-    c.strokeStyle = `rgba(${INK},.45)`; c.lineWidth = 1; c.stroke();
-    c.fillStyle = `rgb(${INK})`; c.fillText(lab, bx + w / 2, by + 14);
-    hits.push({ x, y, e: { pi: focus.pi, k: "chain", yx: e.year + .5 }, chain: true });
-  }
-}
 
 function drawNeedle(c, t) {
   if (!focus) return;
-  const p = PAIRS[focus.pi], k = focus.k, rgb = RGB[k];
-  const cx = W / 2;
-  // needle
-  const g = c.createLinearGradient(0, LENS_Y + LENS_H, 0, BASE + 6);
-  g.addColorStop(0, `rgba(${rgb},.9)`); g.addColorStop(1, `rgba(${rgb},.15)`);
-  c.strokeStyle = g; c.lineWidth = 1.5; line(c, cx, LENS_Y + LENS_H, cx, BASE + 6);
-  // lens with year and name
+  const p = PAIRS[focus.pi], k = focus.k, rgb = TC[k], cx = W / 2;
+  const top = LENS_Y + LENS_H + 2;
+  const g = c.createLinearGradient(0, top, 0, BASE);
+  g.addColorStop(0, `rgba(${rgb},.8)`); g.addColorStop(1, `rgba(${rgb},.08)`);
+  c.strokeStyle = g; c.lineWidth = 1.5; line(c, cx, top, cx, BASE - 6);
+  // the focused year and name, above the needle
   const travelling = !!fly;
-  const yNow = Math.floor(cam.c);
-  const yr = travelling ? String(yNow) : (k === "next" ? "c. " + nextYear(p) : String(p[k].year));
-  const name = travelling ? "" : (k === "next" ? p.next.short : p[k].short);
-  const fy = FONT.monoB(14), fn = FONT[k](16.5);
-  const wy = mw(fy, yr), nmax = Math.min(W - 40, 300) - wy - 30;
-  const nm = name ? fit(fn, name, nmax) : "";
-  const wn = nm ? mw(fn, nm) : 0, w = wy + (nm ? 8 + wn : 0) + 24;
-  const x0 = cx - w / 2;
-  c.save();
-  rrect(c, x0, LENS_Y, w, LENS_H, 13); c.fillStyle = `rgba(${BG},.94)`; c.fill();
-  c.strokeStyle = `rgba(${rgb},.8)`; c.lineWidth = 1.2; c.shadowColor = `rgba(${rgb},.6)`; c.shadowBlur = 10; c.stroke();
-  c.restore();
+  const yr = travelling ? fmtY(Math.floor(cam.c)) : (k === "next" ? "c. " + nextYear(p) : fmtY(p[k].year));
+  const nm0 = travelling ? "" : (k === "next" ? p.next.short : p[k].short);
+  const fy = FONT.monoB(15), fn = FONT[k](18.5);
+  const wy = mw(fy, yr), nm = nm0 ? fit(fn, nm0, Math.min(W - 40, 320) - wy - 26) : "";
+  const wn = nm ? mw(fn, nm) : 0, w = wy + (nm ? 9 + wn : 0), x0 = cx - w / 2;
+  lensX0 = x0; lensX1 = x0 + w;
   c.textAlign = "left";
-  c.font = fy; c.fillStyle = `rgb(${rgb})`; c.fillText(yr, x0 + 12, LENS_Y + 17.5);
-  if (nm) { c.font = fn; c.fillStyle = `rgb(${INK})`; c.fillText(nm, x0 + 12 + wy + 8, LENS_Y + 18); }
-  // travel counter below the axis
+  c.font = fy; c.fillStyle = `rgb(${rgb})`; c.fillText(yr, x0, LENS_Y + 18);
+  if (nm) { c.font = fn; c.fillStyle = `rgb(${TC.ink})`; c.fillText(nm, x0 + wy + 9, LENS_Y + 18.5); }
+  // how far this jump travelled, under the line
   if (trail && !reduce) {
-    const age = trail.done ? t - trail.done : 0;
-    const a = trail.done ? clamp(1 - age / 1400, 0, 1) : 1;
+    const a = trail.done ? clamp(1 - (t - trail.done) / 1400, 0, 1) : 1;
     if (a > 0) {
       const passed = Math.round(Math.abs(cam.c - trail.a));
       const txt = (cam.c >= trail.a ? "+" : "−") + passed + " years";
-      const fz = FONT.monoB(13), tw = mw(fz, txt) + 18;
+      const fz = FONT.monoB(13.5), tw = mw(fz, txt) + 16;
       c.globalAlpha = a;
-      rrect(c, cx - tw / 2, BASE + 12, tw, 20, 10); c.fillStyle = `rgba(${BG},.95)`; c.fill();
-      c.strokeStyle = `rgba(${rgb},.7)`; c.stroke();
-      c.font = fz; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`; c.fillText(txt, cx, BASE + 26);
+      c.fillStyle = `rgb(${TC.bg})`; rrect(c, cx - tw / 2, BASE + 11, tw, 19, 9.5); c.fill();
+      c.font = fz; c.textAlign = "center"; c.fillStyle = `rgb(${rgb})`; c.fillText(txt, cx, BASE + 24.5);
       c.globalAlpha = 1;
     }
   }
@@ -1041,10 +1028,10 @@ function drawTrail(c, t) {
   if (a <= 0) { if (trail.done) trail = null; return; }
   const xa = X(trail.a), xb = X(trail.b);
   const prog = trail.done ? 1 : clamp(Math.abs(cam.c - trail.a) / Math.max(.001, Math.abs(trail.b - trail.a)), 0, 1);
-  const xe = xa + (xb - xa) * prog, top = LENS_Y + LENS_H + 6, yb = BASE - 2;
+  const xe = xa + (xb - xa) * prog, top = LENS_Y + LENS_H + 10, yb = BASE - 2;
   const k1 = trail.k1, g = c.createLinearGradient(xa, 0, xb, 0);
-  g.addColorStop(0, `rgba(${INK},.2)`); g.addColorStop(1, `rgba(${RGB[k1]},.9)`);
-  c.save(); c.globalAlpha = a; c.strokeStyle = g; c.lineWidth = 2; c.shadowColor = `rgba(${RGB[k1]},.6)`; c.shadowBlur = 8;
+  g.addColorStop(0, `rgba(${TC.ink},.15)`); g.addColorStop(1, `rgba(${TC[k1]},.9)`);
+  c.save(); c.globalAlpha = a; c.strokeStyle = g; c.lineWidth = 2;
   c.beginPath();
   const n = 40;
   for (let j = 0; j <= n; j++) {
@@ -1056,41 +1043,17 @@ function drawTrail(c, t) {
   c.stroke(); c.restore();
 }
 
-function drawPartners(c) {
-  partnerHits = [];
-  if (!focus || fly) return;
-  const p = PAIRS[focus.pi];
-  const sides = { L: [], R: [] };
-  KS.forEach(k => {
-    if (k === focus.k) return;
-    const e = EVI[focus.pi][k], x = X(e.yx);
-    if (x < 14) sides.L.push(e); else if (x > W - 14) sides.R.push(e);
-  });
-  const draw1 = (e, side, j) => {
-    const yr = e.k === "next" ? "c. " + e.y : String(e.y);
-    const txt = side === "R" ? `${yr} ${STEP[e.k].toUpperCase()} →` : `← ${STEP[e.k].toUpperCase()} ${yr}`;
-    const f = FONT.monoB(11.5), w = mw(f, txt) + 16, h = 22;
-    const x = side === "R" ? W - w - 8 : 8, y = BASE - 30 - j * 28;
-    rrect(c, x, y, w, h, 11); c.fillStyle = `rgba(${BG},.92)`; c.fill();
-    c.strokeStyle = `rgba(${RGB[e.k]},.85)`; c.lineWidth = 1.2; c.stroke();
-    c.font = f; c.textAlign = "center"; c.fillStyle = `rgb(${RGB[e.k]})`; c.fillText(txt, x + w / 2, y + 15);
-    partnerHits.push({ x0: x - 6, y0: y - 6, x1: x + w + 6, y1: y + h + 6, e });
-  };
-  sides.L.forEach((e, j) => draw1(e, "L", j));
-  sides.R.forEach((e, j) => draw1(e, "R", j));
-}
-let partnerHits = [];
-
 const OVX = y => 12 + (y - YMIN) / (YMAX - YMIN) * (W - 24);
 const yearAtOV = x => YMIN + (x - 12) / (W - 24) * (YMAX - YMIN);
 function drawOverview(c) {
   const y = OV;
-  c.fillStyle = `rgba(${MUTED},.12)`; rrect(c, 8, y - 5, W - 16, 10, 5); c.fill();
-  for (const e of EV) { c.fillStyle = `rgba(${RGB[e.k]},.6)`; c.fillRect(OVX(e.yx) - .6, y - 2.5, 1.2, 5); }
+  c.fillStyle = `rgba(${TC.muted},.16)`; rrect(c, 12, y - 1.5, W - 24, 3, 1.5); c.fill();
+  for (const e of EV) { c.fillStyle = `rgba(${TC[e.k]},.45)`; c.fillRect(OVX(e.yx) - .5, y - 3, 1, 6); }
   const xt = OVX(TODAY);
-  c.strokeStyle = `rgba(${RGB.now},.9)`; c.lineWidth = 1; line(c, xt, y - 6, xt, y + 6);
-  const a = OVX(yearAt(0)), b = OVX(yearAt(W));
-  c.strokeStyle = `rgba(${INK},.7)`; c.lineWidth = 1.2; rrect(c, a, y - 7, Math.max(6, b - a), 14, 5); c.stroke();
+  c.strokeStyle = `rgba(${TC.now},.9)`; c.lineWidth = 1.2; line(c, xt, y - 5, xt, y + 5);
+  const a = OVX(yearAt(0)), b = OVX(yearAt(W)), w = Math.max(8, b - a);
+  c.fillStyle = `rgba(${TC.ink},.07)`; rrect(c, a, y - 6, w, 12, 6); c.fill();
+  c.strokeStyle = `rgba(${TC.ink},.45)`; c.lineWidth = 1.2; rrect(c, a, y - 6, w, 12, 6); c.stroke();
 }
 
 /* ---------- input on the river ---------- */
@@ -1167,7 +1130,6 @@ cv.addEventListener("keydown", e => {
   flyTo(n.yx, cam.s, 300);
 });
 function onTap(px, py) {
-  for (const h of partnerHits) if (px >= h.x0 && px <= h.x1 && py >= h.y0 && py <= h.y1) return travel(h.e.pi, h.e.k);
   let best = null, bd = Infinity;
   for (const h of hits) { const d = Math.hypot(px - h.x, py - h.y); if (d < bd) { bd = d; best = h; } }
   if (best && bd < 22) {
@@ -1181,142 +1143,66 @@ function onTap(px, py) {
 /* ---------- rhyme strip and card ---------- */
 const card = $("card"), cardIn = $("cardIn");
 function renderRhyme() {
-  const p = PAIRS[focus.pi], g = gapOf(p);
-  $("theme").innerHTML = `<span><span class="mk">The pattern</span><b class="motif">${esc(p.theme)}</b></span><span class="rchips">${rateHTML(p.rhyme)}<button type="button" class="chainchip" id="chainChip" title="Seen ${echoCount(p)} times: ${sigWord(echoCount(p))}">${sigHTML(echoCount(p))}Seen ${echoCount(p)} times ›</button>${communityLine(focus.pi)}</span>`;
-  const cc = $("chainChip"); if (cc) cc.addEventListener("click", () => openDeep("chain"));
-  $("syThen").textContent = p.then.year;
+  const p = PAIRS[focus.pi], g = gapOf(p), n = echoCount(p), sc = scoreOf(focus.pi);
+  const rate = RHYME[p.rhyme] || RHYME[1], heard = apiOn() && sc.tot >= 10 ? `, ${sc.pct}% hear it` : "";
+  $("motif").textContent = p.theme;
+  $("pmeta").innerHTML = `${sigHTML(n)}<span>${rate}, seen ${n} times${heard}</span><span class="chev" aria-hidden="true">›</span>`;
+  $("pmeta").setAttribute("aria-label", `${rate}, seen ${n} times${heard}. Show every echo.`);
+  $("syThen").textContent = fmtY(p.then.year);
   $("syNow").textContent = p.now.year;
   $("syNext").textContent = "c. " + nextYear(p);
-  $("sg1").innerHTML = `<b>+${g}</b>years`;
-  $("sg2").innerHTML = `<b>+${g}</b>years`;
-  document.querySelectorAll(".st-b").forEach(b => b.classList.toggle("on", b.dataset.k === focus.k));
+  const gap = `+${g}<span class="yrs"> years</span>`;
+  $("sg1").innerHTML = gap; $("sg2").innerHTML = gap;
+  const steps = $("steps");
+  steps.classList.toggle("at-now", focus.k === "now");
+  steps.classList.toggle("at-next", focus.k === "next");
+  document.querySelectorAll(".st").forEach(b => { const on = b.dataset.k === focus.k; b.classList.toggle("on", on); b.setAttribute("aria-current", on ? "step" : "false"); });
+}
+$("pmeta").addEventListener("click", () => openDeep("chain"));
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const sentence1 = s => String(s).split(/(?<=[.!?])\s/)[0];
+// one sentence under the story that says what this step means and what the button will do
+function guideText(p, k, g, ny) {
+  if (k === "then") return `${cap(ago(p.then.year))}. The same pattern came back ${g} years later.`;
+  if (k === "now") return `${p.now.year} is ${g} years after ${fmtY(p.then.year)}. Add the same ${g} years again to see where it may land.`;
+  return `If the ${g}-year rhythm holds, it returns around ${ny}.<span class="gx"> A way to imagine, not a forecast.</span>`;
 }
 function fillCard() {
-  const p = PAIRS[focus.pi], k = focus.k, g = gapOf(p);
+  const p = PAIRS[focus.pi], k = focus.k, g = gapOf(p), ny = nextYear(p);
   card.classList.remove("then", "now", "next"); card.classList.add(k);
-  const y = k === "next" ? nextYear(p) : p[k].year;
-  $("cKick").innerHTML = `<span class="lb">${STEP[k]}</span>${k === "then" ? y + " · " + ago(y) : k === "now" ? `${y} · ${g} years later` : `c. ${y} · ${g} years on`}`;
   $("cTitle").textContent = k === "next" ? p.next.title : p[k].title;
-  $("cHook").textContent = k === "next" ? p.next.text.split(/(?<=[.!?])\s/)[0] : p[k].hook;
-  $("jump").innerHTML = k === "then" ? `See its echo <span aria-hidden="true">→</span>` : k === "now" ? `Count forward <span aria-hidden="true">→</span>` : `Next rhyme <span aria-hidden="true">→</span>`;
-  $("jump").setAttribute("aria-label", k === "then" ? `See its echo in ${p.now.year}` : k === "now" ? `Count ${g} years forward to about ${nextYear(p)}` : "Next rhyme");
-  fillCoach(p, k, g);
-  fillGlimpse();
-  $("cVote").innerHTML = k === "next" ? voteHTML(focus.pi) : "";
+  $("cHook").textContent = k === "next" ? sentence1(p.next.text) : p[k].hook;
+  $("guide").innerHTML = guideText(p, k, g, ny);
+  const jump = $("jump"), pulsing = jump.classList.contains("pulse");
+  jump.className = "primary to-" + (nextStep[k] || "then") + (pulsing ? " pulse" : "");
+  jump.textContent = k === "then" ? `See the echo in ${p.now.year}` : k === "now" ? `Count forward to ${ny}` : "Next rhyme";
+  jump.setAttribute("aria-label", k === "then" ? `See its echo in ${p.now.year}` : k === "now" ? `Count ${g} years forward to about ${ny}` : `Next rhyme: ${PAIRS[(focus.pi + 1) % N].theme}`);
+  $("cVote").innerHTML = k === "next" ? voteHTML(focus.pi, true) : "";
+  fitText();
 }
-
-/* the guide line: says what this step means and what to do, until someone has followed one rhyme all the way */
-const COACH_KEY = "pastforward.coached";
-function fillCoach(p, k, g) {
-  const el = $("coach");
-  if (store.get(COACH_KEY, 0)) { el.hidden = true; card.classList.remove("coaching"); document.documentElement.classList.remove("coaching"); return; }
-  const ny = nextYear(p);
-  el.innerHTML = `<p>${k === "then"
-      ? `This happened ${NOWY - p.then.year} years ago. Tap <b>See its echo</b> to find the same pattern in your lifetime.`
-      : k === "now"
-      ? `Same pattern, <b>${g} years</b> later. Tap <b>Count forward</b> to add the same ${g} years again.`
-      : `That is the method<span class="cl">: find the pattern, measure its rhythm, count forward</span>. ${N - 1} more rhymes to explore.`}
-    ${k === "then" ? `<br><button type="button" class="linkbtn" data-coach="intro">Watch the intro</button>` : ""}</p>
-    <button type="button" class="cx" data-coach="close" aria-label="Hide these tips">×</button>`;
-  el.hidden = false; card.classList.add("coaching"); document.documentElement.classList.add("coaching");
-}
-$("coach").addEventListener("click", e => {
-  const b = e.target.closest("[data-coach]"); if (!b) return;
-  if (b.dataset.coach === "intro") { openIntro(); return; }
-  store.set(COACH_KEY, 1); $("coach").hidden = true; card.classList.remove("coaching"); document.documentElement.classList.remove("coaching");
-});
-
-/* the glimpse: a small map that cycles through what happened elsewhere that year */
-const gmap = $("gmap");
-let glim = null, gview = null;
-function fillGlimpse() {
+// The event's own story fills the room that is left, in whole lines, and disappears when there is none.
+// When room is short, the vote gives way first, then the hook shortens.
+function fitText() {
+  const el = $("cText");
+  if (!el || !focus) return;
   const p = PAIRS[focus.pi], k = focus.k;
-  if (k === "next") {
-    glim = null;
-    gmap.hidden = true; $("eqm").hidden = false;
-    const g = gapOf(p), ny = nextYear(p);
-    $("eqm").innerHTML = `<svg viewBox="0 0 300 90" role="img" aria-label="${p.then.year} plus ${g} years is ${p.now.year}; plus ${g} again is about ${ny}">
-      <line x1="30" y1="48" x2="270" y2="48" stroke="rgba(${MUTED},.35)" stroke-width="1.5"/>
-      <path d="M30 44 Q90 6 150 44" fill="none" stroke="rgb(${RGB.then})" stroke-width="1.5" stroke-dasharray="3 3"/>
-      <path d="M150 44 Q210 6 270 44" fill="none" stroke="rgb(${RGB.next})" stroke-width="1.5"/>
-      <text x="90" y="20" fill="rgb(${INK})" font-family="Atkinson Hyperlegible, sans-serif" font-size="11" text-anchor="middle">+${g} years</text>
-      <text x="210" y="20" fill="rgb(${INK})" font-family="Atkinson Hyperlegible, sans-serif" font-size="11" text-anchor="middle">+${g} years</text>
-      <circle cx="30" cy="48" r="5" fill="rgb(${RGB.then})"/><circle cx="150" cy="48" r="5" fill="rgb(${RGB.now})"/><circle cx="270" cy="48" r="7" fill="rgb(${RGB.next})"/>
-      <text x="30" y="72" fill="rgb(${RGB.then})" font-family="Atkinson Hyperlegible, sans-serif" font-size="12" text-anchor="middle">${p.then.year}</text>
-      <text x="150" y="72" fill="rgb(${RGB.now})" font-family="Atkinson Hyperlegible, sans-serif" font-size="12" text-anchor="middle">${p.now.year}</text>
-      <text x="270" y="72" fill="rgb(${RGB.next})" font-family="Atkinson Hyperlegible, sans-serif" font-size="12" text-anchor="middle">c. ${ny}</text>
-      <text x="30" y="86" fill="rgba(${INK},.7)" font-family="Newsreader, Georgia, serif" font-size="11" text-anchor="middle">${esc(p.then.short)}</text>
-      <text x="150" y="86" fill="rgba(${INK},.7)" font-family="Newsreader, Georgia, serif" font-size="11" text-anchor="middle">${esc(p.now.short)}</text>
-      <text x="270" y="86" fill="rgba(${INK},.7)" font-family="Newsreader, Georgia, serif" font-size="11" text-anchor="middle">${esc(p.next.short)}</text>
-    </svg>`;
-    const ideas = (p.opp && p.opp.ideas) || [];
-    if (ideas.length) {
-      oppGl = { ideas, i: -1, t0: performance.now() };
-      $("glK").textContent = L("openings");
-      $("glimpse").setAttribute("aria-label", `${L("openings")}: what this rhyme could mean now`);
-      showOppIdea(0);
-    } else {
-      oppGl = null;
-      $("glK").textContent = `Why c. ${ny}`;
-      $("glT").textContent = `the same ${g}-year gap, once more`;
-      $("glimpse").setAttribute("aria-label", `Why around ${ny}`);
-    }
-    return;
+  const txt = k === "next" ? p.next.text.split(/(?<=[.!?])\s/).slice(1).join(" ") : p[k].text;
+  const hook = $("cHook"), vote = $("cVote"), fits = () => card.scrollHeight <= card.clientHeight + 1;
+  el.textContent = txt;
+  el.hidden = true; vote.hidden = false; hook.style.webkitLineClamp = "3";
+  if (!fits()) vote.hidden = true;   // the vote gives way first: it is also in the full story
+  for (let n = 3; n >= 1; n--) { hook.style.webkitLineClamp = String(n); if (fits()) break; }
+  if (!txt || hook.scrollHeight > hook.clientHeight + 1 || !fits()) return;
+  el.hidden = false;
+  for (let n = 7; n >= 2; n--) {
+    el.style.webkitLineClamp = String(n);
+    if (fits()) return;
   }
-  gmap.hidden = false; $("eqm").hidden = true;
-  const e = p[k], yr = e.year, w = WORLD[yr] || {};
-  const home = e.region !== "world" && w[e.region] ? e.region : null;
-  const order = (home ? [home, ...RORDER.filter(r => r !== home)] : RORDER.slice()).filter(r => w[r]);
-  gview = gview || new MapView(gmap, { small: true });
-  gview.set({ home, focus: order[0], k, yr, order });
-  gview.restart();
-  glim = { yr, k, home, order, i: 0, t0: performance.now(), shown: -1 };
-  $("glK").textContent = `${L("counterpoint")} · ${yr}`;
-  $("glimpse").setAttribute("aria-label", `The world in ${yr}. Tap a region to explore.`);
-  showGlimpseRegion(0);
+  el.hidden = true;
 }
-let oppGl = null;
+addEventListener("resize", () => { clearTimeout(fitText.t); fitText.t = setTimeout(fitText, 120); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitText);
 const KIND = { build: "Build", work: "Work", learn: "Learn" };
-function showOppIdea(i) {
-  if (!oppGl || oppGl.i === i) return;
-  oppGl.i = i;
-  const it = oppGl.ideas[i], t = $("glT");
-  if (!it) return;
-  const set = () => { t.innerHTML = `<b class="k-${it.kind}">${KIND[it.kind] || ""}</b>${esc(it.title)}`; t.classList.remove("fade"); };
-  if (reduce || t.textContent === "") { set(); return; }
-  t.classList.add("fade"); setTimeout(set, 260);
-}
-function showGlimpseRegion(i) {
-  if (!glim) return;
-  glim.i = i; glim.shown = i;
-  const g = glim, r = g.order[i], t = $("glT");
-  if (!r) return;
-  gview.set({ focus: r });
-  const set = () => { t.innerHTML = `<b>${regionName(r, g.yr)}</b>${esc(headline(g.yr, r))}`; t.classList.remove("fade"); };
-  if (reduce || t.textContent === "") { set(); return; }
-  t.classList.add("fade"); setTimeout(set, 260);
-}
-function drawGlimpse(t) {
-  if (focus && focus.k === "next") {   // only show the little equation when there is room to read it
-    const box = document.querySelector(".gl-map"), eq = $("eqm");
-    if (box && eq) eq.style.visibility = box.getBoundingClientRect().height >= 72 ? "visible" : "hidden";
-    if (oppGl && !reduce && dwrap.hidden) showOppIdea(Math.max(0, Math.floor((t - oppGl.t0) / 3200)) % oppGl.ideas.length);
-    return;
-  }
-  if (!glim || !gview || gmap.hidden || !dwrap.hidden) return;
-  if (!reduce) {
-    const idx = Math.max(0, Math.floor((t - glim.t0) / 3200)) % glim.order.length;
-    if (idx !== glim.shown) showGlimpseRegion(idx);
-  }
-  gview.draw(t);
-}
-$("glimpse").addEventListener("click", e => {
-  if (!focus) return;
-  if (focus.k === "next") return openDeep(PAIRS[focus.pi].opp ? "opp" : "why");
-  let r = glim ? glim.order[glim.i] : null;
-  if (e.target === gmap && gview) { const hit = gview.regionAt(e.clientX, e.clientY); if (hit) r = hit; }
-  openDeep("world", r);
-});
 let cardT = null;
 function renderCard(dir) {
   clearTimeout(cardT);
@@ -1330,7 +1216,7 @@ function renderCard(dir) {
     cardIn.classList.remove("out");
   }, 170);
 }
-document.querySelectorAll(".st-b").forEach(b => b.addEventListener("click", () => { if (focus && b.dataset.k !== focus.k) travel(focus.pi, b.dataset.k); }));
+document.querySelectorAll(".st").forEach(b => b.addEventListener("click", () => { if (focus && b.dataset.k !== focus.k) travel(focus.pi, b.dataset.k); }));
 $("jump").addEventListener("click", () => { $("jump").classList.remove("pulse"); forward(); });
 $("dive").addEventListener("click", () => openDeep());
 {
@@ -1348,7 +1234,7 @@ $("futureBtn").addEventListener("click", () => openFuture());
 $("dailyBtn").addEventListener("click", () => openDaily());
 $("share").addEventListener("click", () => { if (focus) shareRhyme(focus.pi); });
 
-/* ---------- dive deeper ---------- */
+/* ---------- the full story ---------- */
 const dwrap = $("deepWrap"), deepEl = $("deep"), dBody = $("dBody"), tabs = $("tabs");
 let lastFocusEl = null, deepTab = "story", closeT = null;
 function showDeep() {
@@ -1488,6 +1374,8 @@ function renderTab() {
   }
 }
 dBody.addEventListener("click", e => {
+  const ts = e.target.closest("[data-theme-set]");
+  if (ts) { setThemeMode(ts.dataset.themeSet); return; }
   const tr = e.target.closest("[data-travel]");
   if (tr) { const [pi, k] = tr.dataset.travel.split(":"); closeDeep(); setTimeout(() => travel(+pi, k), 120); return; }
   const sel = e.target.closest("[data-pick]");
@@ -1498,6 +1386,15 @@ dBody.addEventListener("click", e => {
   if (e.target.closest("[data-share-rhyme]") && focus) shareRhyme(focus.pi);
 });
 let ixSort = "old", ixQuery = "", ixHits = N, HAY = null;
+const THEME_KEY = "pastforward.theme";
+function themeMode() { const m = store.get(THEME_KEY, "auto"); return m === "light" || m === "dark" ? m : "auto"; }
+function setThemeMode(m) {
+  if (m === "light" || m === "dark") { document.documentElement.dataset.theme = m; store.set(THEME_KEY, m); }
+  else { delete document.documentElement.dataset.theme; try { localStorage.removeItem(THEME_KEY); } catch (_) {} }
+  readTheme();
+  document.querySelectorAll("[data-theme-set]").forEach(b => b.setAttribute("aria-pressed", b.dataset.themeSet === m ? "true" : "false"));
+}
+const prefsHTML = () => `<div class="prefs"><span>Appearance</span><span class="seg" role="group" aria-label="Appearance">${[["auto", "Auto"], ["light", "Light"], ["dark", "Dark"]].map(([m, l]) => `<button type="button" data-theme-set="${m}" aria-pressed="${themeMode() === m}">${l}</button>`).join("")}</span></div>`;
 const fold = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 const STOPW = new Set("a an and are as at be been before did do does ever for from has have how in into is it its like of on or our the this that to was we were what when where which who why will with".split(" "));
 const SEARCH_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>`;
@@ -1543,7 +1440,7 @@ function renderIndex() {
   row.innerHTML = `<span class="sp">${SPARK_SVG}</span><span class="at">${long ? `Ask: “${esc(q)}”` : "Ask PastForward"}</span>` +
     `<span class="as">${long ? "Research its echoes across history" : "Ask how any event or trend rhymes"}${askKey() ? "" : " · subscribers"}</span><span class="ga" aria-hidden="true">›</span>`;
   if (!shown.length) { list.innerHTML = `<p class="ixnone">No rhyme in the list matches “${esc(q)}”. Ask PastForward to research it.</p>`; return; }
-  list.innerHTML = `${ixSort === "old" && !toks.length ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details><button type="button" class="go" data-lex=""><span><span class="gk">Lexicon</span><span class="gt">The words PastForward uses</span></span><span class="ga" aria-hidden="true">→</span></button>` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
+  list.innerHTML = `${ixSort === "old" && !toks.length ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details><button type="button" class="go" data-lex=""><span><span class="gk">Lexicon</span><span class="gt">The words PastForward uses</span></span><span class="ga" aria-hidden="true">→</span></button>${prefsHTML()}` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
     shown.map(i => { const p = PAIRS[i], sc = scoreOf(i); return `<li><button type="button" data-pick="${i}" class="${focus && i === focus.pi ? "on" : ""}">` +
       `<span class="it then"><b>${p.then.year}</b>${esc(p.then.short)}</span>` +
       `<span class="it now"><b>${p.now.year}</b>${esc(p.now.short)}</span>` +
@@ -1553,7 +1450,7 @@ function howHTML() {
   return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the intro</button>
     <p class="hook">Every rhyme has a ${T("match", "match")}: an event from history (Then) and one you lived through (Today). The years between them are its ${T("cadence", "cadence")}. Count them forward once more and you reach the Next: where the rhyme may sound again.</p>
     <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic</span></div>
-    ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. Use Jump to follow a rhyme from Then to Today to Next. Dive deeper for the story, the counterpoint (the rest of the world that year), the score of every echo, and openings.")}
+    ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. The button at the bottom follows a rhyme from Then to Today to Next. Open the full story for the counterpoint (the rest of the world that year), the score of every echo, and openings.")}
     ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, medium or weak by how readily historians accept the comparison, and shows how many times it has echoed: the more echoes, the stronger the signal.")}
     <button type="button" class="secondary" data-lex="" style="width:100%">The lexicon: words PastForward uses</button>`;
 }
@@ -1610,7 +1507,7 @@ function cardBase(W2, H2) {
 }
 function cardFooter(c, W2, H2, line1, line2) {
   c.textAlign = "center";
-  c.font = `500 34px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${INK})`;
+  c.font = `500 34px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgb(${INK})`;
   c.fillText(line1, W2 / 2, H2 - 150);
   c.font = `30px "Newsreader", Georgia, serif`; c.fillStyle = `rgba(${MUTED},1)`;
   c.fillText(line2, W2 / 2, H2 - 100);
@@ -1619,21 +1516,21 @@ function drawRhymeCard(pi) {
   const p = PAIRS[pi], g = gapOf(p), ny = nextYear(p);
   const W2 = 1080, H2 = 1920, { cv2, c } = cardBase(W2, H2);
   c.textAlign = "center";
-  c.font = `500 26px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
+  c.font = `500 26px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
   c.fillText("HISTORY RHYMES. WHAT COMES NEXT?", W2 / 2, 228);
   c.font = `500 58px "Newsreader", Georgia, serif`; c.fillStyle = `rgb(${INK})`;
   const th = wrapLines(c, p.theme, 860, 2);
   th.forEach((l, i) => c.fillText(l, W2 / 2, 360 + i * 70));
   let top = 360 + th.length * 70 + 60;
   if ((p.echoes || []).length) {
-    c.font = `30px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgba(${INK},.75)`; c.textAlign = "center";
+    c.font = `30px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgba(${INK},.75)`; c.textAlign = "center";
     c.fillText(`Echoes: ${p.echoes.slice(0, 4).map(e => fmtY(e.year)).join(" · ")}`, W2 / 2, top - 10);
     top += 40;
   }
   const lx = 150, step = 400;
   const nodes = [
     { k: "then", y: top + 40, label: `THEN · ${p.then.year}`, gap: "", title: p.then.title, hook: p.then.hook, font: s => `500 ${s}px "Newsreader", Georgia, serif`, size: 64 },
-    { k: "now", y: top + 40 + step, label: `TODAY · ${p.now.year}`, gap: `+${g} YEARS`, title: p.now.title, hook: p.now.hook, font: s => `500 ${s}px "Atkinson Hyperlegible", sans-serif`, size: 48 },
+    { k: "now", y: top + 40 + step, label: `TODAY · ${p.now.year}`, gap: `+${g} YEARS`, title: p.now.title, hook: p.now.hook, font: s => `500 ${s}px "Hanken Grotesk", sans-serif`, size: 48 },
     { k: "next", y: top + 40 + step * 2, label: `NEXT · AROUND ${ny}`, gap: `+${g} YEARS`, title: p.next.title, hook: p.next.text.split(/(?<=[.!?])\s/)[0], font: s => `600 ${s}px "Newsreader", Georgia, serif`, size: 64 }
   ];
   const lg = c.createLinearGradient(0, nodes[0].y, 0, nodes[2].y);
@@ -1646,7 +1543,7 @@ function drawRhymeCard(pi) {
     c.fillStyle = `rgb(${rgb})`; c.beginPath(); c.arc(lx, n.y, r, 0, 6.2832); c.fill(); c.restore();
     c.strokeStyle = `rgba(${rgb},.6)`; c.lineWidth = 3; c.beginPath(); c.arc(lx, n.y, r + 14, 0, 6.2832); c.stroke();
     c.textAlign = "left";
-    c.font = `500 30px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${rgb})`;
+    c.font = `500 30px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgb(${rgb})`;
     c.fillText(n.label, tx, n.y - 26);
     if (n.gap) {
       const lw = c.measureText(n.label).width, gw = c.measureText(n.gap).width + 32;
@@ -1677,7 +1574,7 @@ function drawLifeCard(by) {
   const list = lifeEchoes(by);
   const W2 = 1080, H2 = 1920, { cv2, c } = cardBase(W2, H2);
   c.textAlign = "center";
-  c.font = `500 26px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
+  c.font = `500 26px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
   c.fillText("MY LIFELINE", W2 / 2, 228);
   c.font = `500 92px "Newsreader", Georgia, serif`; c.fillStyle = `rgb(${INK})`;
   c.fillText(`Born ${by}.`, W2 / 2, 390);
@@ -1692,10 +1589,10 @@ function drawLifeCard(by) {
     c.save(); c.shadowColor = `rgb(${RGB.next})`; c.shadowBlur = 24; c.fillStyle = `rgb(${RGB.next})`;
     c.beginPath(); c.arc(lx, y, 14, 0, 6.2832); c.fill(); c.restore();
     c.textAlign = "left";
-    c.font = `500 40px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${RGB.next})`;
+    c.font = `500 40px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgb(${RGB.next})`;
     c.fillText(String(e.y), lx + 50, y + 14);
     const ywid = c.measureText(String(e.y)).width;
-    c.font = `500 26px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
+    c.font = `500 26px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgba(${MUTED},1)`;
     c.fillText(`AGE ${e.y - by}`, lx + 70 + ywid, y + 12);
     c.font = `600 44px "Newsreader", Georgia, serif`; c.fillStyle = `rgb(${INK})`;
     wrapLines(c, p.next.title, W2 - lx - 110, 1).forEach(l => c.fillText(l, lx + 50, y + 70));
@@ -1773,7 +1670,7 @@ function ogRow(c, y, cols, gapTxt) {
     const mx = (xs[a] + xs[b]) / 2;
     c.strokeStyle = `rgba(${INK},.5)`; c.lineWidth = 2; c.setLineDash(a ? [] : [6, 6]);
     c.beginPath(); c.moveTo(xs[a], y - 8); c.quadraticCurveTo(mx, y - 92, xs[b], y - 8); c.stroke(); c.setLineDash([]);
-    c.font = `700 24px "Atkinson Hyperlegible", sans-serif`; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`;
+    c.font = `600 24px "Hanken Grotesk", sans-serif`; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`;
     c.fillText(gapTxt, mx, y - 62);
   });
   cols.forEach((col, i) => {
@@ -1781,9 +1678,9 @@ function ogRow(c, y, cols, gapTxt) {
     c.save(); c.shadowColor = `rgb(${rgb})`; c.shadowBlur = col.k === "next" ? 40 : 24; c.fillStyle = `rgb(${rgb})`;
     c.beginPath(); c.arc(xs[i], y, r, 0, 6.2832); c.fill(); c.restore();
     c.textAlign = "center";
-    c.font = `700 25px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${rgb})`;
+    c.font = `700 25px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgb(${rgb})`;
     c.fillText(col.label, xs[i], y + 58);
-    c.font = `700 50px "Atkinson Hyperlegible", sans-serif`;
+    c.font = `700 50px "Hanken Grotesk", sans-serif`;
     c.fillText(col.year, xs[i], y + 112);
     c.font = `500 30px "Newsreader", Georgia, serif`; c.fillStyle = `rgb(${INK})`;
     wrapLines(c, col.name, 330, 2).forEach((l, j) => c.fillText(l, xs[i], y + 156 + j * 36));
@@ -1793,7 +1690,7 @@ function drawOGRhyme(pi) {
   const p = PAIRS[pi], g = gapOf(p), ny = nextYear(p);
   const { cv2, c, W2 } = ogBase();
   ogWordmark(c, 64, 84, 40);
-  c.font = `700 19px "Atkinson Hyperlegible", sans-serif`; c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
+  c.font = `700 19px "Hanken Grotesk", sans-serif`; c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
   c.fillText("HISTORY RHYMES · WHAT COMES NEXT?", W2 - 64, 80);
   c.font = `500 46px "Newsreader", Georgia, serif`; c.textAlign = "center"; c.fillStyle = `rgb(${INK})`;
   const th = wrapLines(c, p.theme, 1040, 2);
@@ -1803,7 +1700,7 @@ function drawOGRhyme(pi) {
     { k: "now", label: "TODAY", year: String(p.now.year), name: p.now.short },
     { k: "next", label: "NEXT", year: `c. ${ny}`, name: p.next.short }
   ], `+${g} years`);
-  c.font = `700 22px "Atkinson Hyperlegible", sans-serif`; c.textAlign = "left"; c.fillStyle = `rgba(${INK},.8)`;
+  c.font = `700 22px "Hanken Grotesk", sans-serif`; c.textAlign = "left"; c.fillStyle = `rgba(${INK},.8)`;
   c.fillText(`pastforward.app/r/${p.id}`, 64, 592);
   if ((p.echoes || []).length) {
     c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
@@ -1821,7 +1718,7 @@ function drawOGHome() {
     { k: "now", label: "TODAY", year: "2020", name: "COVID-19" },
     { k: "next", label: "NEXT", year: "c. 2122", name: "Next pandemic" }
   ], "+102 years");
-  c.font = `700 22px "Atkinson Hyperlegible", sans-serif`; c.fillStyle = `rgb(${MUTED})`;
+  c.font = `700 22px "Hanken Grotesk", sans-serif`; c.fillStyle = `rgb(${MUTED})`;
   c.fillText("48 PATTERNS · 550 YEARS · THE ECHOES DUE IN YOUR LIFETIME", W2 / 2, 600);
   return cv2;
 }
@@ -1926,8 +1823,8 @@ class MapView {
     const r = this.cv.getBoundingClientRect();
     const bw = Math.round(r.width), bh = Math.round(r.height);
     if (bw < 20 || bh < 20) return false;
-    if (bw === this.bw && bh === this.bh && this.dpr === DPR) return true;
-    this.bw = bw; this.bh = bh; this.dpr = DPR;
+    if (bw === this.bw && bh === this.bh && this.dpr === DPR && this.tg === themeGen) return true;
+    this.bw = bw; this.bh = bh; this.dpr = DPR; this.tg = themeGen;
     this.cv.width = Math.round(bw * DPR); this.cv.height = Math.round(bh * DPR);
     const cs = Math.min(bw / MAP.cols, bh / MAP.rows);
     this.cs = cs; this.ox = (bw - cs * MAP.cols) / 2; this.oy = (bh - cs * MAP.rows) / 2;
@@ -1943,19 +1840,19 @@ class MapView {
     st.width = this.cv.width; st.height = this.cv.height;
     const s = st.getContext("2d"); s.setTransform(DPR, 0, 0, DPR, 0, 0);
     const sr = Math.max(.45, cs * .13);
-    s.fillStyle = `rgba(${MUTED},.08)`; s.beginPath();
+    s.fillStyle = `rgba(${TC.muted},.08)`; s.beginPath();
     for (const [gx, gy] of SEA) { const [x, y] = P(gx, gy); s.moveTo(x + sr, y); s.arc(x, y, sr, 0, 6.2832); }
     s.fill();
     for (const L of MAP.lines || []) {
       s.beginPath();
       L.pts.forEach(([gx, gy], j) => { const [x, y] = P(gx, gy); j ? s.lineTo(x, y) : s.moveTo(x, y); });
-      s.strokeStyle = L.k === "eq" ? `rgba(${MUTED},.24)` : `rgba(${MUTED},.11)`;
+      s.strokeStyle = L.k === "eq" ? `rgba(${TC.muted},.24)` : `rgba(${TC.muted},.11)`;
       s.lineWidth = L.k === "eq" ? .9 : .7;
       s.setLineDash(L.k === "tropic" ? [2, 4] : []);
       s.stroke();
     }
     s.setLineDash([]);
-    s.fillStyle = `rgba(${MUTED},.2)`; s.fill(this.paths.other);
+    s.fillStyle = `rgba(${TC.muted},.2)`; s.fill(this.paths.other);
     this.static = st;
     return true;
   }
@@ -1970,7 +1867,7 @@ class MapView {
   }
   draw(t) {
     if (!this.layout()) return;
-    const c = this.c, bw = this.bw, bh = this.bh, cs = this.cs, homeRGB = RGB[this.k];
+    const c = this.c, bw = this.bw, bh = this.bh, cs = this.cs, homeRGB = TC[this.k];
     c.setTransform(DPR, 0, 0, DPR, 0, 0);
     c.clearRect(0, 0, bw, bh);
     const intro = reduce ? 1 : clamp((t - this.t0) / 1100, 0, 1);
@@ -1980,14 +1877,14 @@ class MapView {
     for (const r of RORDER) {
       const target = r === this.home || r === this.focus ? 1 : 0;
       this.lev[r] += (target - this.lev[r]) * (reduce ? 1 : .12);
-      const u = this.lev[r], to = r === this.home ? homeRGB : INK;
-      c.fillStyle = `rgba(${mixRGB(MUTED, to, u)},${(.36 + .62 * u).toFixed(3)})`;
+      const u = this.lev[r], to = r === this.home ? homeRGB : TC.ink;
+      c.fillStyle = `rgba(${mixRGB(TC.muted, to, u)},${(.36 + .62 * u).toFixed(3)})`;
       c.fill(this.paths[r]);
     }
     const hp = this.home ? this.pinXY(this.home) : null;
     if (hp && !reduce) {   // a ripple from where it happened, lighting the land it crosses
       const maxR = Math.hypot(bw, bh) * .8, per = 3800;
-      c.save(); c.clip(this.land); c.globalCompositeOperation = "lighter";
+      c.save(); c.clip(this.land); if (TC.dark) c.globalCompositeOperation = "lighter";
       for (let j = 0; j < 2; j++) {
         const ph = (((t - this.t0) / per) + j * .5) % 1, R = 4 + ph * maxR, w = cs * 8;
         const g = c.createRadialGradient(hp[0], hp[1], Math.max(0, R - w), hp[0], hp[1], R + w * .25);
@@ -2008,7 +1905,7 @@ class MapView {
       const mx = (hp[0] + fp[0]) / 2, my = (hp[1] + fp[1]) / 2 - d * .34;
       const Q = u => { const v = 1 - u; return [v * v * hp[0] + 2 * v * u * mx + u * u * fp[0], v * v * hp[1] + 2 * v * u * my + u * u * fp[1]]; };
       const g = c.createLinearGradient(hp[0], hp[1], fp[0], fp[1]);
-      g.addColorStop(0, `rgba(${homeRGB},.95)`); g.addColorStop(1, `rgba(${INK},.95)`);
+      g.addColorStop(0, `rgba(${homeRGB},.95)`); g.addColorStop(1, `rgba(${TC.ink},.95)`);
       c.save(); c.strokeStyle = g; c.lineWidth = this.small ? 1.3 : 1.7; c.lineCap = "round";
       c.shadowColor = `rgba(${homeRGB},.7)`; c.shadowBlur = 8;
       c.beginPath();
@@ -2018,7 +1915,7 @@ class MapView {
       if (!reduce) {
         const u = prog < 1 ? prog : ((t - this.arcT - 650) / 1500) % 1, [x, y] = Q(u);
         const sg = c.createRadialGradient(x, y, 0, x, y, 8);
-        sg.addColorStop(0, "rgba(255,255,255,.95)"); sg.addColorStop(1, "rgba(255,255,255,0)");
+        const sp = TC.dark ? "255,255,255" : TC.ink; sg.addColorStop(0, `rgba(${sp},.95)`); sg.addColorStop(1, `rgba(${sp},0)`);
         c.shadowBlur = 0; c.fillStyle = sg; c.beginPath(); c.arc(x, y, 8, 0, 6.2832); c.fill();
       }
       c.restore();
@@ -2026,14 +1923,14 @@ class MapView {
     for (const r of this.order) {
       const p = this.pinXY(r); if (!p) continue;
       const isH = r === this.home, isF = r === this.focus;
-      if (!isH && !isF) { c.fillStyle = `rgba(${INK},${this.small ? .35 : .55})`; c.beginPath(); c.arc(p[0], p[1], this.small ? 1.6 : 2.2, 0, 6.2832); c.fill(); continue; }
-      const rgb = isH ? homeRGB : INK;
+      if (!isH && !isF) { c.fillStyle = `rgba(${TC.ink},${this.small ? .35 : .55})`; c.beginPath(); c.arc(p[0], p[1], this.small ? 1.6 : 2.2, 0, 6.2832); c.fill(); continue; }
+      const rgb = isH ? homeRGB : TC.ink;
       if (isH && !reduce) for (let j = 0; j < 2; j++) {
         const ph = ((t / 2200) + j * .5) % 1;
         c.strokeStyle = `rgba(${rgb},${(.75 * (1 - ph)).toFixed(3)})`; c.lineWidth = 1.3;
         c.beginPath(); c.arc(p[0], p[1], 3 + ph * cs * 6, 0, 6.2832); c.stroke();
       }
-      if (isF && !isH) { c.strokeStyle = `rgba(${INK},.85)`; c.lineWidth = 1.2; c.beginPath(); c.arc(p[0], p[1], Math.max(6, cs * 2.2), 0, 6.2832); c.stroke(); }
+      if (isF && !isH) { c.strokeStyle = `rgba(${TC.ink},.85)`; c.lineWidth = 1.2; c.beginPath(); c.arc(p[0], p[1], Math.max(6, cs * 2.2), 0, 6.2832); c.stroke(); }
       c.save(); c.fillStyle = `rgb(${rgb})`; c.shadowColor = `rgb(${rgb})`; c.shadowBlur = 12;
       c.beginPath(); c.arc(p[0], p[1], this.small ? 2.8 : 4, 0, 6.2832); c.fill(); c.restore();
     }
@@ -2044,7 +1941,7 @@ class MapView {
         if (r === this.focus) continue;
         const p = this.pinXY(r); if (!p) continue;
         const o = OFF[r] || [0, 15];
-        c.fillStyle = r === this.home ? `rgba(${homeRGB},.95)` : `rgba(${INK},.5)`;
+        c.fillStyle = r === this.home ? `rgba(${homeRGB},.95)` : `rgba(${TC.ink},.5)`;
         c.fillText(shortName(r, this.yr), p[0] + o[0], p[1] + o[1]);
       }
     }
@@ -2057,13 +1954,13 @@ class MapView {
       let by = fp[1] - th - 12;
       const covers = y => hp && hp[0] > bx - 6 && hp[0] < bx + tw + 6 && hp[1] > y - 6 && hp[1] < y + th + 6;
       if (by < 2 || (covers(by) && fp[1] + 14 + th < bh)) by = fp[1] + 14;
-      const rgb = this.focus === this.home ? homeRGB : INK;
+      const rgb = this.focus === this.home ? homeRGB : TC.ink;
       c.save(); c.shadowColor = `rgba(${rgb},.45)`; c.shadowBlur = 14;
-      rrect(c, bx, by, tw, th, 12); c.fillStyle = `rgba(${BG},.95)`; c.fill(); c.restore();
+      rrect(c, bx, by, tw, th, 12); c.fillStyle = `rgba(${TC.bg},.95)`; c.fill(); c.restore();
       rrect(c, bx, by, tw, th, 12); c.strokeStyle = `rgba(${rgb},.9)`; c.lineWidth = 1.2; c.stroke();
       c.textAlign = "center";
-      c.font = kf; c.fillStyle = `rgb(${this.focus === this.home ? homeRGB : MUTED})`; c.fillText(kt, bx + tw / 2, by + 13);
-      c.font = f; c.fillStyle = `rgb(${INK})`; c.fillText(fit(f, txt, tw - 16), bx + tw / 2, by + 29);
+      c.font = kf; c.fillStyle = `rgb(${this.focus === this.home ? homeRGB : TC.muted})`; c.fillText(kt, bx + tw / 2, by + 13);
+      c.font = f; c.fillStyle = `rgb(${TC.ink})`; c.fillText(fit(f, txt, tw - 16), bx + tw / 2, by + 29);
     }
     c.globalAlpha = 1;
   }
@@ -2160,9 +2057,16 @@ async function castVote(pi, v) {
   refreshVotes();
   try { await api("/api/vote", { rhyme: id, device: DEVICE, vote: v }); } catch (_) {}
 }
-function voteHTML(pi) {
+function voteHTML(pi, compact) {
   const id = PAIRS[pi].id, mine = myVotes[id], sc = scoreOf(pi);
   let res = "";
+  if (compact) {   // the home screen keeps it to one line: the question, then the result in its place
+    const q = mine && apiOn() && sc.tot >= 3 ? `${sc.pct}% hear it · ${sc.tot} votes` : mine ? "Thanks for voting" : "Do you hear it?";
+    return `<div class="vote" data-votebox="${pi}" data-compact="1">
+    <div class="vote-q"><span>${q}</span><span class="vote-b">
+      <button type="button" data-vote="${pi}:1" aria-pressed="${mine === 1}">I hear it</button>
+      <button type="button" data-vote="${pi}:-1" aria-pressed="${mine === -1}">Not really</button></span></div></div>`;
+  }
   if (mine) {
     res = apiOn() && sc.tot >= 3
       ? `<div class="vbar" aria-hidden="true"><i style="width:${sc.pct}%"></i></div><div class="vres"><span>${sc.pct}% hear it</span><span>${sc.tot} votes</span></div>`
@@ -2174,8 +2078,8 @@ function voteHTML(pi) {
       <button type="button" data-vote="${pi}:-1" aria-pressed="${mine === -1}">Not really</button></span></div>${res}</div>`;
 }
 function refreshVotes() {
-  document.querySelectorAll("[data-votebox]").forEach(el => { el.outerHTML = voteHTML(+el.dataset.votebox); });
-  if (focus) renderRhyme();
+  document.querySelectorAll("[data-votebox]").forEach(el => { el.outerHTML = voteHTML(+el.dataset.votebox, !!el.dataset.compact); });
+  if (focus) { renderRhyme(); fitText(); }
 }
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-vote]");
@@ -2736,7 +2640,7 @@ const CAP = {
   next: { k: "Step 3 · Count forward", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `The same ${I_GAP} years, once more. That is where the pattern points.` },
   more: { k: `${N} rhymes`, t: "Crashes, machines, disasters", l: "The same three steps, across 2,500 years of history." },
   you: { k: "Your lifeline", kc: "next", t: `${I_LIFE} rhymes come due in one lifetime`, l: "Enter your birth year to see yours, and how old you will be." },
-  how: { k: "How it works", t: "Swipe through time. Tap a rhyme.", l: "Follow it from Then to Today to Next. Dive deeper for the story, the world that year, and every echo." },
+  how: { k: "How it works", t: "Swipe through time. Tap a rhyme.", l: "Follow it from Then to Today to Next. Open the full story for the world that year and every echo." },
   end: { k: "", t: `<span class="in-brand"><span class="p">Past</span><span class="f">Forward</span></span>`, l: "History rhymes. See what comes next." }
 };
 for (const id in CARDS) CAP[id] = { k: "", t: "", l: "" };
@@ -3151,15 +3055,16 @@ const sky = $("sky"), sctx = sky.getContext("2d");
 let stars = [];
 function sizeSky() {
   sky.width = Math.round(innerWidth * DPR); sky.height = Math.round(innerHeight * DPR);
-  const n = Math.min(200, Math.round(innerWidth * innerHeight / 9000));
-  stars = Array.from({ length: n }, () => ({ x: Math.random(), y: Math.random(), r: Math.random() * 1.1 + .25, p: Math.random() * 6.28, s: .4 + Math.random() * 1.4 }));
+  const n = Math.min(140, Math.round(innerWidth * innerHeight / 12000));
+  stars = Array.from({ length: n }, () => ({ x: Math.random(), y: Math.random(), r: Math.random() * .9 + .25, p: Math.random() * 6.28, s: .4 + Math.random() * 1.4 }));
 }
 function drawSky(t) {
   const c = sctx;
   c.setTransform(DPR, 0, 0, DPR, 0, 0);
   c.clearRect(0, 0, innerWidth, innerHeight);
+  if (!TC.dark) return;
   for (const s of stars) {
-    const a = reduce ? .5 : .25 + .55 * (.5 + .5 * Math.sin(t / 1000 * s.s + s.p));
+    const a = reduce ? .35 : .15 + .4 * (.5 + .5 * Math.sin(t / 1000 * s.s + s.p));
     c.fillStyle = `rgba(232,226,255,${a.toFixed(3)})`;
     c.beginPath(); c.arc(s.x * innerWidth, s.y * innerHeight, s.r, 0, 6.2832); c.fill();
   }
@@ -3176,7 +3081,7 @@ function loop(t) {
   const dt = Math.min(48, t - lastT); lastT = t;
   if (!document.hidden && !intro.open) {
     stepFly(t); stepInertia(dt);
-    draw(t); drawWorld(t); drawGlimpse(t);
+    draw(t); drawWorld(t);
     if (frame++ % 2 === 0) drawSky(t);
   }
   requestAnimationFrame(loop);
