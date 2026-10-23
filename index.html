@@ -2715,11 +2715,10 @@ const CARDS = {
 const CARD_LEAD = { cycles: 1, read: 1, method: 1 };
 const cardDur = id => .9 + CARDS[id].length * CARD_GAP + 1.9;
 const I_SEERS = [
-  { a: "Winter", b: "Harvest", early: "A season early", who: "Thales of Miletus, c. 600 BC", did: "Rents every olive press in town before a record harvest." },
-  { a: "2005", b: "2008", early: "3 years early", who: "Michael Burry", did: "Bets against the housing bubble before the crash." },
-  { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warns the world is not ready for the next pandemic." }
+  { a: "Winter", b: "Harvest", early: "A season early", who: "Thales, 600 BC", did: "Rented every olive press before the harvest." },
+  { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warned we were not ready for a pandemic." }
 ];
-const SEER = 5;   // each person stays long enough to read
+const SEER = 6.5, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
@@ -2732,7 +2731,7 @@ const SCENES = [
   { id: "method", view: "method", card: "method", cardAt: 1.7, join: true, dur: 1 + cardDur("method") },
   { id: "more", view: "more", join: true, dur: .4 + 2 * BEAT * I_ROWS.length + 2.4 },
   { id: "you", view: "you", dur: 2.8 + I_LIFE * .35 * BEAT + 3 },
-  { id: "prepare", view: "prepare", dur: .6 + I_SEERS.length * SEER + 3.2 },
+  { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + 3.2 },
   { id: "demo", view: "demo", dur: 7.4 },
   { id: "end", view: "end", dur: Infinity }
 ];
@@ -2746,7 +2745,7 @@ const CAP = {
   now: { k: "Step 2 · Measure the rhythm", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. ${I_GAP} years later, the pattern returns.` },
   next: { k: "Step 3 · Count forward", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `The same ${I_GAP} years, once more. That is where the pattern points.` },
   more: { k: `${N} rhymes`, t: "Crashes, machines, disasters", l: "The same three steps, across 2,500 years of history." },
-  you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: `Born in ${I_BY}? ${I_LIFE} rhymes come due before you turn 90. Enter your year to see yours.` },
+  you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: "Enter your own year to see yours." },
   prepare: { k: "On record", t: "Some people sensed the cycle, and prepared.", l: "" },
   demo: { k: "", t: "", l: "" },
   end: { k: "", t: `<span class="in-brand" data-at="2.1"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="2.8">History rhymes. See what comes next.</span>` }
@@ -2956,26 +2955,59 @@ function inRows(c, W, H, lt) {
    across the film, and a dawn grows on the horizon until the logo. Kept low so the story stays in front. */
 const BG_STARS = (() => { const r = mulberry(2026); return Array.from({ length: 110 }, () => ({ x: r(), y: r() * .86, s: .3 + r() * 1.1, p: r() * 6.28, v: .3 + r() * 1.2 })); })();
 // the moon: lit on the side that faces the sun, a little textured, its dark side faintly lit by the earth
-const MOON_SEAS = [[-.26, -.22, .34, .25, .17], [.2, -.34, .22, .15, .13], [.08, .14, .3, .21, .15], [-.36, .3, .19, .14, .12], [.36, .06, .15, .12, .1], [-.02, .52, .16, .1, .08]];
+// the moon, lit like a sphere: the sun's direction sets a soft terminator (Lommel-Seeliger, so the full moon looks
+// evenly bright like the real one), the near-side seas give it its face, and the earth faintly lights the dark side.
+// It is drawn pixel by pixel into a small canvas, then placed at sub-pixel positions so it glides.
+const MOON = { n: 0 };
+function moonAlbedo(n) {
+  // the near side's seas, roughly where they really are (x right, y down): Procellarum, Imbrium, Serenitatis,
+  // Tranquillitatis, Crisium, Fecunditatis, Nubium, Humorum. Merged softly, with ragged shores.
+  const seas = [[-.56, -.02, .26, .5], [-.3, -.42, .3, .22], [.15, -.4, .16, .14], [.3, -.1, .2, .17], [.66, -.3, .1, .09], [.5, .14, .12, .18], [-.14, .34, .19, .13], [-.46, .38, .09, .09]];
+  const h = (x, y) => { const v = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return v - Math.floor(v); };
+  const vn = (x, y) => {
+    const xi = Math.floor(x), yi = Math.floor(y), u = (x - xi) ** 2 * (3 - 2 * (x - xi)), v = (y - yi) ** 2 * (3 - 2 * (y - yi));
+    return lerp(lerp(h(xi, yi), h(xi + 1, yi), u), lerp(h(xi, yi + 1), h(xi + 1, yi + 1), u), v);
+  };
+  const fbm = (x, y) => vn(x, y) * .5 + vn(x * 2.1 + 5, y * 2.1 + 1) * .3 + vn(x * 4.3 + 9, y * 4.3 + 3) * .2;
+  const a = new Float32Array(n * n), c0 = n / 2, rp = (n - 2) / 2;
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    const x = (i + .5 - c0) / rp, y = (j + .5 - c0) / rp;
+    let m = 0; for (const [sx, sy, rx, ry] of seas) m += Math.exp(-(((x - sx) / rx) ** 2 + ((y - sy) / ry) ** 2));
+    const sea = c01((m + (fbm(x * 4 + 2, y * 4 + 4) - .5) * .5 - .22) / .62), sea2 = sea * sea * (3 - 2 * sea);
+    const grain = fbm(x * 9 + 1, y * 9 + 7) - .5, tycho = Math.exp(-((x + .1) ** 2 + (y - .66) ** 2) / .0025);
+    a[j * n + i] = Math.min(1, .97 - .21 * sea2 + grain * .06 + tycho * .14);
+  }
+  return a;
+}
 function inMoon(c, x, y, r, ph, rot) {
-  const lit = (1 - Math.cos(ph)) / 2;
-  const gl = c.createRadialGradient(x, y, r * .9, x, y, r * 5);
-  gl.addColorStop(0, `rgba(230,225,255,${(.02 + .09 * lit).toFixed(3)})`); gl.addColorStop(1, "rgba(230,225,255,0)");
-  c.fillStyle = gl; c.beginPath(); c.arc(x, y, r * 5, 0, 6.2832); c.fill();
-  c.save(); c.translate(x, y);
-  c.fillStyle = "rgba(190,196,230,.09)"; c.beginPath(); c.arc(0, 0, r, 0, 6.2832); c.fill();
-  c.save();
-  c.rotate(rot);   // the lit half is drawn on the right, then turned to face the sun
-  const rx = r * Math.abs(Math.cos(ph));
-  c.beginPath(); c.arc(0, 0, r, -Math.PI / 2, Math.PI / 2, false);
-  if (ph < Math.PI / 2) c.ellipse(0, 0, rx, r, 0, Math.PI / 2, -Math.PI / 2, true);
-  else c.ellipse(0, 0, rx, r, 0, Math.PI / 2, Math.PI * 1.5, false);
-  c.rotate(-rot); c.clip();
-  const sg = c.createRadialGradient(-r * .3, -r * .3, r * .1, 0, 0, r);
-  sg.addColorStop(0, "rgba(244,240,232,.8)"); sg.addColorStop(1, "rgba(200,196,192,.7)");
-  c.fillStyle = sg; c.fillRect(-r, -r, 2 * r, 2 * r);
-  for (const [dx, dy, a, b, al] of MOON_SEAS) { c.fillStyle = `rgba(118,116,134,${al})`; c.beginPath(); c.ellipse(dx * r, dy * r, a * r, b * r, .4, 0, 6.2832); c.fill(); }
-  c.restore(); c.restore();
+  const k = c.getTransform().a || 1, n = Math.max(10, Math.ceil(2 * r * k) + 2);
+  if (MOON.n !== n) {
+    MOON.n = n; MOON.cv = document.createElement("canvas"); MOON.cv.width = MOON.cv.height = n;
+    MOON.cx = MOON.cv.getContext("2d"); MOON.img = MOON.cx.createImageData(n, n); MOON.alb = moonAlbedo(n);
+  }
+  const lit = (1 - Math.cos(ph)) / 2, al = Math.PI - ph;   // phase angle: 0 when full, pi when new
+  const Lx = Math.sin(al) * Math.cos(rot), Ly = Math.sin(al) * Math.sin(rot), Lz = Math.cos(al);
+  const d = MOON.img.data, A = MOON.alb, c0 = n / 2, rp = (n - 2) / 2;
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    const nx = (i + .5 - c0) / rp, ny = (j + .5 - c0) / rp, q = nx * nx + ny * ny, o = (j * n + i) * 4;
+    const edge = c01((1 - Math.sqrt(q)) * rp + .5);
+    if (edge <= 0) { d[o + 3] = 0; continue; }
+    const nz = Math.sqrt(Math.max(0, 1 - q)), mu0 = nx * Lx + ny * Ly + nz * Lz;
+    const sun = Math.max(0, mu0), shade = (2 * sun / (sun + nz + .02)) * (.35 + .65 * c01((mu0 + .03) / .16));
+    const b = Math.min(1, A[j * n + i] * Math.min(1, shade));
+    const alpha = .022 + .92 * b, ea = .022 * (1 - b);   // the dark side: the faintest disc of earthshine
+    d[o] = (246 * .92 * b + 120 * ea) / alpha; d[o + 1] = (242 * .92 * b + 132 * ea) / alpha; d[o + 2] = (234 * .92 * b + 180 * ea) / alpha;
+    d[o + 3] = 255 * alpha * edge;
+  }
+  MOON.cx.putImageData(MOON.img, 0, 0);
+  // a soft glow centred on the lit part, with no ring around the dark side
+  const gx = x + Math.cos(rot) * r * .55 * (1 - lit), gy = y + Math.sin(rot) * r * .55 * (1 - lit), ga = (.012 + .07 * lit).toFixed(3);
+  const gl = c.createRadialGradient(gx, gy, 0, gx, gy, r * 4.2);
+  gl.addColorStop(0, `rgba(232,228,255,${ga})`); gl.addColorStop(.25, `rgba(232,228,255,${(ga * .7).toFixed(3)})`); gl.addColorStop(1, "rgba(232,228,255,0)");
+  c.fillStyle = gl; c.beginPath(); c.arc(gx, gy, r * 4.2, 0, 6.2832); c.fill();
+  c.save(); c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
+  c.drawImage(MOON.cv, x - n / (2 * k), y - n / (2 * k), n / k, n / k);
+  c.restore();
 }
 // the land, from the app's own dot map, placed on a globe (the map is a Robinson-style projection: equator at row 38.3)
 const GLOBE = (() => {
@@ -3010,23 +3042,12 @@ function moonPath(W, H, limbY, yb, r) {
   pts.push(P[P.length - 1]);
   const len = [0];
   for (let i = 1; i < pts.length; i++) len.push(len[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
-  return MOON_PATH = { W, H, yb, pts, len, L: len[len.length - 1], a: len[3 * N], b: len[5 * N] };
+  return MOON_PATH = { W, H, yb, pts, len, L: len[len.length - 1], s0: len[2 * N], s1: len[6 * N] };
 }
 function moonAt(mp, d) {
   let i = 1; while (i < mp.len.length - 1 && mp.len[i] < d) i++;
   const f = c01((d - mp.len[i - 1]) / ((mp.len[i] - mp.len[i - 1]) || 1));
   return [lerp(mp.pts[i - 1][0], mp.pts[i][0], f), lerp(mp.pts[i - 1][1], mp.pts[i][1], f)];
-}
-// a smooth, never-reversing curve through [time, value] keys (monotone cubic), so speeds blend between legs
-function monoKeys(K, t) {
-  const n = K.length;
-  if (t <= K[0][0]) return K[0][1];
-  if (t >= K[n - 1][0]) return K[n - 1][1];
-  const sl = K.slice(1).map((k, i) => (k[1] - K[i][1]) / (k[0] - K[i][0]));
-  const m = K.map((_, i) => i === 0 ? sl[0] : i === n - 1 ? sl[n - 2] : sl[i - 1] * sl[i] <= 0 ? 0 : 2 / (1 / sl[i - 1] + 1 / sl[i]));
-  let i = 0; while (t > K[i + 1][0]) i++;
-  const h = K[i + 1][0] - K[i][0], q = (t - K[i][0]) / h, q2 = q * q, q3 = q2 * q;
-  return (2 * q3 - 3 * q2 + 1) * K[i][1] + (q3 - 2 * q2 + q) * h * m[i] + (3 * q2 - 2 * q3) * K[i + 1][1] + (q3 - q2) * h * m[i + 1];
 }
 function inBackdrop(c, W, H, t) {
   const u = c01(t / INTRO_END);
@@ -3047,7 +3068,7 @@ function inBackdrop(c, W, H, t) {
   // its strip of sky: halfway between the progress line and the first line of the story, on any screen
   const sky = intro.sky || [H * .095, H * .135], mr = Math.max(7, Math.min(16, Math.min(W, H) * .025));
   const mp = moonPath(W, H, limbY, Math.round((sky[0] + sky[1]) / 2), mr);
-  const [mx, my] = moonAt(mp, monoKeys([[0, 0], [13, mp.a], [INTRO_END - 12, mp.b], [INTRO_END + 2, mp.L]], t));
+  const [mx, my] = moonAt(mp, Math.min(mp.L, mp.s0 + (mp.s1 - mp.s0) * t / (INTRO_END + 4.6)));
   inMoon(c, mx, my, mr, Math.PI * c01(Math.hypot(sx - mx, sy - my) / (W * 1.05)), Math.atan2(sy - my, sx - mx));
   const sun = (() => { const v = [.92, .3, lerp(-.55, .3, u)], n = Math.hypot(...v); return v.map(a => a / n); })();
   const halo = c.createRadialGradient(cx, cy, R - 2, cx, cy, R + H * .06);
@@ -3126,16 +3147,18 @@ function inMethod(c, W, H, lt) {
 
 /* your lifeline: a birth year typed in, a life drawn out to 90, and every rhyme that comes due along it */
 function inYou(c, W, H, lt) {
-  const bw = Math.min(W * .64, 250), bh = 46, bx = W / 2 - bw / 2, by = Math.round(H * .14);
+  // the box fits the year, and the year sits in its middle: digits type in from where the full year starts
+  c.font = `600 26px "Hanken Grotesk", sans-serif`;
+  const yw = c.measureText(String(I_BY)).width, bw = Math.round(yw + 64), bh = 50, bx = Math.round(W / 2 - bw / 2), by = Math.round(H * .14), tx0 = W / 2 - yw / 2;
   const box = c01(lt / .4);
   c.save(); c.globalAlpha *= box;
-  inText(c, "The year you were born", W / 2, by - 10, FONT.mono(13), `rgb(${MUTED})`);
+  inText(c, "The year you were born", W / 2, by - 12, FONT.mono(13), `rgb(${MUTED})`);
   c.fillStyle = "rgba(27,24,58,.9)"; c.strokeStyle = `rgba(${RGB.next},.6)`; c.lineWidth = 1.5;
-  c.beginPath(); c.roundRect ? c.roundRect(bx, by, bw, bh, 12) : c.rect(bx, by, bw, bh); c.fill(); c.stroke();
+  c.beginPath(); c.roundRect ? c.roundRect(bx, by, bw, bh, 14) : c.rect(bx, by, bw, bh); c.fill(); c.stroke();
   const typed = String(I_BY).slice(0, Math.max(0, Math.min(4, Math.floor((lt - .45) / .2) + 1)));
-  c.font = `600 24px "Hanken Grotesk", sans-serif`; c.textAlign = "left"; c.fillStyle = `rgb(${INK})`;
-  c.fillText(typed, bx + 16, by + 31);
-  if (lt < 1.5 && Math.floor(lt * 2.2) % 2 === 0) { const cw = c.measureText(typed).width; c.fillRect(bx + 18 + cw, by + 12, 2, 22); }
+  c.font = `600 26px "Hanken Grotesk", sans-serif`; c.textAlign = "left"; c.textBaseline = "alphabetic"; c.fillStyle = `rgb(${INK})`;
+  c.fillText(typed, tx0, by + 34);
+  if (lt < 1.5 && Math.floor(lt * 2.2) % 2 === 0) { const cw = c.measureText(typed).width; c.fillRect(tx0 + cw + 2, by + 13, 2, 24); }
   c.restore();
   const y = Math.round(H * .58), x0 = W * .09, x1 = W * .91, X = yr => x0 + (yr - I_BY) / 90 * (x1 - x0);
   const T0 = 1.5, grow = iOut(c01((lt - T0) / 1.2));
@@ -3170,25 +3193,25 @@ function inYou(c, W, H, lt) {
 /* on record: people who sensed the cycle and acted early, one at a time, then the turn to you */
 function inPrepare(c, W, H, lt) {
   I_SEERS.forEach((e, j) => {
-    const l = lt - .6 - j * SEER; if (l < 0 || l > SEER) return;
-    c.save(); c.globalAlpha *= c01(l / .5) * c01((SEER - l) / .55);
+    const l = lt - SEER_LEAD - j * SEER; if (l < 0 || l > SEER) return;
+    c.save(); c.globalAlpha *= c01(l / .6) * c01((SEER - l) / .7);
     const cy = Math.round(H * .3), x1 = W * .2, x2 = W * .8, h = Math.min(44, H * .12);
-    inArc(c, x1, x2, cy, h, iEase(c01((l - .5) / 1.7)), RGB.next, INK, true, 2.4);
-    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 1.5) / .5).toFixed(3)})`);
-    inDot(c, x1, cy, RGB.next, 7, c01(l / .45), true);
-    inDot(c, x2, cy, INK, 7, c01((l - 2) / .45));
+    inArc(c, x1, x2, cy, h, iEase(c01((l - .6) / 1.8)), RGB.next, INK, true, 2.4);
+    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 2.4) / .6).toFixed(3)})`);
+    inDot(c, x1, cy, RGB.next, 7, c01(l / .5), true);
+    inDot(c, x2, cy, INK, 7, c01((l - 2.2) / .5));
     inText(c, e.a, x1, cy + 28, FONT.monoB(14), `rgb(${RGB.next})`, W);
-    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 2) / .45).toFixed(3)})`, W);
-    c.save(); c.globalAlpha *= c01((l - .2) / .5);
+    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 2.2) / .5).toFixed(3)})`, W);
+    c.save(); c.globalAlpha *= c01((l - .3) / .6);
     inText(c, e.who, W / 2, cy + 78, `500 ${W < 400 ? 22 : 26}px "Newsreader", Georgia, serif`, `rgb(${INK})`);
     c.restore();
-    c.save(); c.globalAlpha *= c01((l - .75) / .5);
+    c.save(); c.globalAlpha *= c01((l - 1.1) / .6);
     c.font = FONT.mono(15);
     wrapLines(c, e.did, W * .8, 2).forEach((ln, k) => inText(c, ln, W / 2, cy + 106 + k * 21, FONT.mono(15), `rgba(${INK},.75)`));
     c.restore();
     c.restore();
   });
-  const fl = lt - .6 - I_SEERS.length * SEER;
+  const fl = lt - SEER_LEAD - I_SEERS.length * SEER;
   if (fl > 0) {
     const r = iOut(c01(fl / 1.1));
     c.save(); c.globalAlpha *= r; c.filter = r < 1 ? `blur(${((1 - r) * 6).toFixed(1)}px)` : "none";
@@ -3321,7 +3344,7 @@ function inSize() {
   const fw = Math.max(1, introEl.clientWidth), fh = Math.max(1, introEl.clientHeight);
   if (fw !== intro.fw || fh !== intro.fh || d !== intro.bd) { intro.fw = fw; intro.fh = fh; intro.bd = d; inBg.width = Math.round(fw * d); inBg.height = Math.round(fh * d); }
   const ir = introEl.getBoundingClientRect(), pr = $("inProg").getBoundingClientRect();
-  intro.sky = [pr.bottom - ir.top, r.top - ir.top + r.height * .03];
+  intro.sky = [pr.bottom - ir.top, r.top - ir.top + fh * .025];
 }
 function inCaption(i) {
   const s = SCENES[i], cp = CAP[s.id], card = $("inCard");
