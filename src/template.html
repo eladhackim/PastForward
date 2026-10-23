@@ -663,6 +663,8 @@ function readTheme() {
   t.dark = +t.bg.split(",")[0] < 128;
   TC = t; themeGen++;
   document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.setAttribute("content", `rgb(${t.bg})`));
+  const fav = document.querySelector('link[rel="icon"][type="image/svg+xml"]');   // the tab icon follows the theme, set by hand or by the device
+  if (fav && /(^|\.)pastforward\.app$|\.pages\.dev$/.test(location.hostname)) fav.href = `/favicon-${t.dark ? "dark" : "light"}.svg`;
 }
 readTheme();
 try { matchMedia("(prefers-color-scheme: light)").addEventListener("change", readTheme); } catch (_) {}

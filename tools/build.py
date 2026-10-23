@@ -124,21 +124,14 @@ for token in ["/*__HEAD__*/", "/*__PAIRS__*/", "/*__WORLD__*/", "/*__MAP__*/"]:
     if token in body: problems.append(f"placeholder {token} was not filled")
 
 SITE = "https://pastforward.app"
-ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<defs><linearGradient id="a" x1="12" x2="32" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#E6B866"/><stop offset="1" stop-color="#74D6C8"/></linearGradient><linearGradient id="b" x1="32" x2="52" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#74D6C8"/><stop offset="1" stop-color="#C9B6FF"/></linearGradient></defs>
-<rect width="64" height="64" rx="14" fill="#0F0D22"/>
-<path d="M12 35 Q22 13 32 35" fill="none" stroke="url(#a)" stroke-width="3.6" stroke-linecap="round"/>
-<path d="M32 35 Q42 13 52 35" fill="none" stroke="url(#b)" stroke-width="3.6" stroke-linecap="round"/>
-<circle cx="12" cy="37" r="6.2" fill="#E6B866"/><circle cx="32" cy="37" r="6.2" fill="#74D6C8"/>
-<circle cx="52" cy="37" r="5.8" fill="#0F0D22" stroke="#C9B6FF" stroke-width="3.2"/>
-</svg>
-"""
+import icon   # tools/icon.py: the one source for every icon
 COMMON_HEAD = """<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0F0D22" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F5F3F9" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:site_name" content="PastForward">
@@ -185,7 +178,8 @@ for p in pairs:
     with open(os.path.join(ROOT, "r", f"{pid}.html"), "w", encoding="utf-8") as f:
         f.write(page)
 
-with open(os.path.join(ROOT, "favicon.svg"), "w") as f: f.write(ICON_SVG)
+for name, theme in (("favicon.svg", "auto"), ("favicon-dark.svg", "dark"), ("favicon-light.svg", "light")):
+    with open(os.path.join(ROOT, name), "w") as f: f.write(icon.svg(theme))
 with open(os.path.join(ROOT, "site.webmanifest"), "w") as f:
     json.dump({"name": "PastForward", "short_name": "PastForward", "description": "History rhymes. What comes next?",
                "start_url": "/", "display": "standalone", "background_color": "#0F0D22", "theme_color": "#0F0D22",

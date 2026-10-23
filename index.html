@@ -6,7 +6,8 @@
 <meta name="theme-color" content="#0F0D22" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#F5F3F9" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:site_name" content="PastForward">
@@ -690,6 +691,8 @@ function readTheme() {
   t.dark = +t.bg.split(",")[0] < 128;
   TC = t; themeGen++;
   document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.setAttribute("content", `rgb(${t.bg})`));
+  const fav = document.querySelector('link[rel="icon"][type="image/svg+xml"]');   // the tab icon follows the theme, set by hand or by the device
+  if (fav && /(^|\.)pastforward\.app$|\.pages\.dev$/.test(location.hostname)) fav.href = `/favicon-${t.dark ? "dark" : "light"}.svg`;
 }
 readTheme();
 try { matchMedia("(prefers-color-scheme: light)").addEventListener("change", readTheme); } catch (_) {}
