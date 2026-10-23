@@ -1,0 +1,910 @@
+{
+ "crash": {
+  "Reporting tools for lightly regulated finance": {
+   "what": "Software that gathers and checks data on loans, crypto holdings or automated trades, then turns it into the reports that investors, auditors and regulators ask for.",
+   "why": "After 1929 and 2008, new laws demanded audited accounts and fuller risk reporting. Private credit has grown to about $2 trillion with light oversight, the IMF said in 2024, so a crash there may bring similar rules.",
+   "how": [
+    "Ask three compliance staff at funds or crypto firms which reports take them longest.",
+    "Read the EU's MiCA crypto rules and list the reports firms must file.",
+    "Build a spreadsheet prototype that turns sample loan data into a simple risk report."
+   ],
+   "read": [
+    {
+     "title": "IMF Global Financial Stability Report, April 2024 (private credit chapter)",
+     "url": "https://www.imf.org/en/Publications/GFSR/Issues/2024/04/16/global-financial-stability-report-april-2024"
+    },
+    {
+     "title": "ESMA: MiCA interactive single rulebook",
+     "url": "https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica"
+    }
+   ]
+  },
+  "Budgeting and debt repair services": {
+   "what": "Low-cost help for households to plan spending, pay down debt and fix things instead of replacing them, through apps, nonprofit counseling or local repair shops.",
+   "why": "In the 1930s and after 2008, households cut back hard and many fell behind on debts. If a new crash hits jobs and savings, demand for cheap budgeting help, debt advice and repairs may rise again.",
+   "how": [
+    "Shadow or volunteer at a nonprofit credit counseling agency to learn common client problems.",
+    "Run a free budgeting session for five neighbors and note what they found useful.",
+    "Check whether giving debt advice needs a license where you live; in some places it does."
+   ],
+   "read": [
+    {
+     "title": "National Foundation for Credit Counseling (NFCC)",
+     "url": "https://www.nfcc.org/"
+    },
+    {
+     "title": "CFPB: Your Money, Your Goals toolkit",
+     "url": "https://www.consumerfinance.gov/consumer-tools/educator-tool/your-money-your-goals/"
+    }
+   ]
+  },
+  "Risk, audit and compliance roles": {
+   "what": "Jobs that check whether a firm's numbers are true, its risks are measured and it follows the rules. Titles include internal auditor, compliance officer and risk analyst.",
+   "why": "The 1930s securities laws made audited accounts standard, lifting demand for accountants, and Dodd-Frank set off compliance hiring after 2008. New rules for private credit, crypto or AI trading may bring a similar wave.",
+   "how": [
+    "Ask a risk or compliance worker about their first year in the job.",
+    "Compare entry certifications such as the IIA's CIA and GARP's FRM, including cost and study time.",
+    "Read the risk section of one bank's annual report and summarise it in a page."
+   ],
+   "read": [
+    {
+     "title": "The IIA: Certified Internal Auditor (CIA)",
+     "url": "https://www.theiia.org/en/certifications/cia/"
+    },
+    {
+     "title": "GARP: Financial Risk Manager (FRM) certification",
+     "url": "https://www.garp.org/frm"
+    }
+   ]
+  },
+  "Reading leverage and liquidity": {
+   "what": "The skill of reading company and bank filings to see how much money is borrowed, how soon debts come due and whether there is enough cash to cover them.",
+   "why": "In 1929, shares bought with margin loans were dumped in a rush. In 2008, short-term funding for mortgage debt vanished. Spotting these signs in filings may help you judge where the next strain could appear.",
+   "how": [
+    "Work through the SEC's free beginners' guide to financial statements.",
+    "Pick one listed company and calculate its debt-to-equity and current ratios from its filings.",
+    "Read the summary of the Federal Reserve's latest Financial Stability Report on leverage and funding."
+   ],
+   "read": [
+    {
+     "title": "SEC: Beginners' Guide to Financial Statements",
+     "url": "https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements"
+    },
+    {
+     "title": "Federal Reserve: Financial Stability Report",
+     "url": "https://www.federalreserve.gov/publications/financial-stability-report.htm"
+    }
+   ]
+  }
+ },
+ "tariffs": {
+  "Tariff and origin tracking tools": {
+   "what": "Software that helps importers find the right tariff code for each product, track duty rates as they change, check rules of origin and claim refunds they may be owed.",
+   "why": "After 1930, partners hit back and trade shifted to deals like Ottawa in 1932. US rates changed often in 2025, and in February 2026 the Supreme Court ruled the emergency tariffs unlawful. Small importers may struggle to keep up.",
+   "how": [
+    "Interview five small importers about how they look up codes and track rate changes.",
+    "Practise classifying ten products using the US HTS search or the EU TARIC database.",
+    "Prototype an alert that flags when the duty on a saved product code changes."
+   ],
+   "read": [
+    {
+     "title": "USITC Harmonized Tariff Schedule search",
+     "url": "https://hts.usitc.gov/"
+    },
+    {
+     "title": "EU Customs Tariff (TARIC)",
+     "url": "https://taxation-customs.ec.europa.eu/online-services/online-services-and-databases-customs/eu-customs-tariff-taric_en"
+    }
+   ]
+  },
+  "Supplier vetting in new hubs": {
+   "what": "A service that finds, visits and checks factories in countries such as Mexico, Vietnam or India, so buyers moving away from tariffed suppliers know who is reliable.",
+   "why": "After the 2018 trade war, China shifted soybean buying to Brazil, and in 2023 Mexico overtook China as the top source of US imports. If trade blocs harden, more buyers may need trusted suppliers in new places.",
+   "how": [
+    "Use ITC Trade Map to see which countries are growing exports of one product you know.",
+    "Talk to two buyers who moved sourcing recently about what went wrong at first.",
+    "Draft a factory checklist covering quality, labor practices, ownership and origin paperwork."
+   ],
+   "read": [
+    {
+     "title": "ITC Trade Map",
+     "url": "https://www.trademap.org/"
+    },
+    {
+     "title": "WTO Tariff and Trade Data",
+     "url": "https://ttd.wto.org/en"
+    }
+   ]
+  },
+  "Customs brokers and trade compliance": {
+   "what": "Customs brokers file import paperwork and pay duties for clients. Trade compliance analysts check that goods are classified, valued and marked for origin correctly, so firms avoid fines and delays.",
+   "why": "In 1930, duties rose on over 20,000 goods and partners answered with their own. When rates and rules shift often, as in 2025, importers may lean harder on licensed brokers and compliance staff.",
+   "how": [
+    "Ask a local customs broker or freight forwarder what an entry-level role involves.",
+    "Find out how your country licenses customs brokers; in the US it requires passing a CBP exam.",
+    "Study Harmonized System classification basics using the WCO's free overview."
+   ],
+   "read": [
+    {
+     "title": "National Customs Brokers and Forwarders Association of America",
+     "url": "https://www.ncbfaa.org/"
+    },
+    {
+     "title": "WCO: What is the Harmonized System (HS)?",
+     "url": "https://www.wcoomd.org/en/topics/nomenclature/overview/what-is-the-harmonized-system.aspx"
+    }
+   ]
+  },
+  "Rules of origin and HS codes": {
+   "what": "The Harmonized System is a six-digit product code used by over 200 countries. Rules of origin decide which country a product legally comes from, and so which tariff it pays.",
+   "why": "As tariffs rose, firms moved production to places like Mexico and Vietnam, partly to change origin. The EU's carbon border levy, CBAM, entered its definitive phase in January 2026. Origin rules may matter more as blocs harden.",
+   "how": [
+    "Read the WCO's short overview of the Harmonized System.",
+    "Classify five household items to six digits, then check your answers in HTS or TARIC.",
+    "Read one trade agreement's origin chapter, such as the USMCA rules for cars."
+   ],
+   "read": [
+    {
+     "title": "WCO: What is the Harmonized System (HS)?",
+     "url": "https://www.wcoomd.org/en/topics/nomenclature/overview/what-is-the-harmonized-system.aspx"
+    },
+    {
+     "title": "European Commission: Carbon Border Adjustment Mechanism",
+     "url": "https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en"
+    }
+   ]
+  }
+ },
+ "bankrun": {
+  "Brakes for automated money agents": {
+   "what": "Safety features that slow or pause large money moves made by apps or AI assistants, such as waiting periods, transfer limits and asking a human to confirm.",
+   "why": "In 2023, SVB customers pulled $42 billion in one day as warnings spread online. If AI agents manage savings and react to one rumor, runs could be faster still. Regulators such as the FSB have flagged this herd risk.",
+   "how": [
+    "Read the Financial Stability Board's 2024 report on AI and financial stability.",
+    "Ask a fintech product manager how their app limits or delays large transfers today.",
+    "Sketch rules for when an agent must pause and ask a person before moving savings."
+   ],
+   "read": [
+    {
+     "title": "FSB: The Financial Stability Implications of Artificial Intelligence (2024)",
+     "url": "https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/"
+    },
+    {
+     "title": "NIST AI Risk Management Framework",
+     "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    }
+   ]
+  },
+  "Bank liquidity and treasury risk": {
+   "what": "Teams inside banks that make sure there is enough cash and easy-to-sell assets to pay depositors, even on a bad day. Roles include liquidity risk analyst and treasury analyst.",
+   "why": "SVB failed within two days in 2023, and the Federal Reserve's review blamed basic failures to manage interest rate and liquidity risk. Regulators have since pushed banks to prepare for faster runs, which may keep these skills in demand.",
+   "how": [
+    "Read the Federal Reserve's April 2023 review of what went wrong at SVB.",
+    "Learn how the Basel liquidity coverage ratio works and calculate a simple example.",
+    "Ask a bank treasury analyst which tools and data they use each day."
+   ],
+   "read": [
+    {
+     "title": "Federal Reserve: Review of the Supervision and Regulation of Silicon Valley Bank (2023)",
+     "url": "https://www.federalreserve.gov/publications/files/svb-review-20230428.pdf"
+    },
+    {
+     "title": "Basel Committee: The Liquidity Coverage Ratio and liquidity risk monitoring tools",
+     "url": "https://www.bis.org/publications/201301-standards-basel-iii-liquidity-coverage-ratio-and-liquidity-risk-monitoring-tools"
+    }
+   ]
+  },
+  "Financial crisis communications": {
+   "what": "People who watch what customers and media are saying during a scare and explain the facts quickly and plainly, through statements, FAQs, calls and social media.",
+   "why": "In March 1933, Roosevelt's first Fireside Chat helped calm savers before banks reopened. In 2023, fear about SVB spread through group chats within hours. Banks and regulators may need staff who can respond at that speed.",
+   "how": [
+    "Read Roosevelt's March 1933 Fireside Chat on banking and note how simply he explains it.",
+    "Study how SVB's 8 March 2023 announcement of a loss and share sale sparked panic.",
+    "Practise writing a calm 100-word customer message for an imagined bank scare."
+   ],
+   "read": [
+    {
+     "title": "WHO: Risk communication and community engagement",
+     "url": "https://www.who.int/emergencies/risk-communications"
+    }
+   ]
+  },
+  "How deposit protection works": {
+   "what": "Deposit insurance repays savers up to a limit if a bank fails, such as $250,000 per depositor per bank in the US and €100,000 in the EU.",
+   "why": "After the 1933 runs, the FDIC began insuring deposits in 1934 and mass runs faded. In 2023, most SVB deposits were above the limit. Debates over higher limits and new digital accounts may change what is covered.",
+   "how": [
+    "Look up your country's deposit guarantee limit and who runs the scheme.",
+    "Check whether your money sits at one bank or several, and whether fintech apps are covered.",
+    "Read how central bank emergency lending works on your central bank's website."
+   ],
+   "read": [
+    {
+     "title": "FDIC: Deposit Insurance",
+     "url": "https://www.fdic.gov/resources/deposit-insurance"
+    },
+    {
+     "title": "European Commission: Deposit guarantee schemes",
+     "url": "https://finance.ec.europa.eu/banking/banking-regulation/deposit-guarantee-schemes_en"
+    }
+   ]
+  }
+ },
+ "dust": {
+  "Clean-air rooms for public buildings": {
+   "what": "Rooms in schools, clinics or care homes where filtered air keeps smoke out, using sealed windows, better HVAC filters or portable air cleaners, so people can shelter safely.",
+   "why": "When smoke turned New York's sky orange in June 2023, air purifier searches jumped over 450% and some stores sold out. As smoke seasons lengthen, schools and care homes may plan clean air ahead instead of scrambling.",
+   "how": [
+    "Read the EPA guide to creating a clean room during wildfire smoke.",
+    "Visit a local school or care home and ask how they handled the last smoke day.",
+    "Price a pilot: portable HEPA cleaners for one room, sized to the room's volume."
+   ],
+   "read": [
+    {
+     "title": "EPA: Create a Clean Room to Protect Indoor Air Quality During a Wildfire",
+     "url": "https://www.epa.gov/emergencies-iaq/create-clean-room-protect-indoor-air-quality-during-wildfire"
+    },
+    {
+     "title": "EPA: Wildfires and Indoor Air Quality in Schools and Commercial Buildings",
+     "url": "https://www.epa.gov/emergencies-iaq/wildfires-and-indoor-air-quality-schools-and-commercial-buildings"
+    }
+   ]
+  },
+  "Soil, fire and air quality jobs": {
+   "what": "Jobs that protect land and air: soil conservationists who help farmers stop erosion, prescribed-burn crews who reduce wildfire fuel, and forecasters who warn the public about smoke.",
+   "why": "In 1935, Congress created the Soil Conservation Service, and the Shelterbelt project planted about 220 million trees, creating work across the Plains. Longer fire seasons, like Canada's record 2023, may grow similar demand today.",
+   "how": [
+    "Look at the NWCG's training courses for entry-level wildland fire roles.",
+    "Ask a local farm advisory office or soil agency what a soil conservationist does.",
+    "Check your area's air quality forecast daily for a month and learn how it is made."
+   ],
+   "read": [
+    {
+     "title": "National Wildfire Coordinating Group (NWCG)",
+     "url": "https://www.nwcg.gov/"
+    },
+    {
+     "title": "AirNow: air quality forecasts and maps",
+     "url": "https://www.airnow.gov/"
+    }
+   ]
+  },
+  "Ventilation and filtration technicians": {
+   "what": "Technicians and building engineers who install, maintain and upgrade heating, ventilation and air conditioning (HVAC) systems, including higher-grade filters that catch fine smoke particles.",
+   "why": "Smoke days turn indoor air into a health issue, as New York saw in 2023. Many older schools and offices may need filter and ventilation upgrades, and trained HVAC workers to carry them out.",
+   "how": [
+    "Ask a local HVAC contractor about apprenticeships or trainee roles.",
+    "Learn what MERV 13 filters are and why the EPA suggests them during smoke events.",
+    "Read the EPA guide on wildfire smoke in schools and commercial buildings."
+   ],
+   "read": [
+    {
+     "title": "EPA: Wildfires and Indoor Air Quality in Schools and Commercial Buildings",
+     "url": "https://www.epa.gov/emergencies-iaq/wildfires-and-indoor-air-quality-schools-and-commercial-buildings"
+    },
+    {
+     "title": "ASHRAE: Filtration and disinfection guidance",
+     "url": "https://ashrae.org/technical-resources/filtration-disinfection"
+    }
+   ]
+  },
+  "Soil and groundwater care": {
+   "what": "Farming and water practices that keep soil in place and aquifers from running dry, such as cover crops, no-till planting and measuring how much groundwater is pumped.",
+   "why": "Dust Bowl plowing stripped the topsoil, and contour plowing and shelterbelts helped heal it. Groundwater is falling under farm regions such as the High Plains today, and the next long drought may test soils again.",
+   "how": [
+    "Read the free SARE book Managing Cover Crops Profitably.",
+    "Visit a farm using no-till or cover crops and ask what changed in their soil.",
+    "Look up your region's groundwater trend from your national geological or water agency."
+   ],
+   "read": [
+    {
+     "title": "SARE: Managing Cover Crops Profitably, 3rd edition (free book)",
+     "url": "https://www.sare.org/resources/managing-cover-crops-profitably-3rd-edition/"
+    },
+    {
+     "title": "FAO Soils Portal",
+     "url": "https://www.fao.org/soils-portal/en/"
+    }
+   ]
+  }
+ },
+ "munich": {
+  "Backup supply for towns and firms": {
+   "what": "Services that help a town or company avoid depending on one risky supplier, for example with battery storage, backup fuels, spare stock or second sources for key parts.",
+   "why": "After Munich, Britain rushed civil defense. After 2022, Germany built its first LNG import terminal in under 200 days to replace Russian gas. Towns and firms may again pay for backup before a crisis, not during it.",
+   "how": [
+    "Map one local firm's critical suppliers and mark any that depend on a single country.",
+    "Ask a town energy officer about backup power for water, health and emergency sites.",
+    "Learn the basics of business continuity planning from the Business Continuity Institute."
+   ],
+   "read": [
+    {
+     "title": "The Business Continuity Institute",
+     "url": "https://www.thebci.org/"
+    }
+   ]
+  },
+  "Civil protection and emergency planning": {
+   "what": "Planning how a region keeps people safe in war, floods or blackouts: shelters, warnings, evacuation, stockpiles and exercises. Employers include governments, utilities, hospitals and aid groups.",
+   "why": "After Munich, Britain put up about 1.5 million Anderson shelters by September 1939. Since 2022, European states have revived shelter, stockpile and preparedness programs, which may raise demand for trained planners.",
+   "how": [
+    "Take a free FEMA Independent Study course, such as the introduction to incident command.",
+    "Volunteer with a local civil protection, fire brigade or Red Cross team.",
+    "Read how the EU Civil Protection Mechanism shares help between countries."
+   ],
+   "read": [
+    {
+     "title": "FEMA Independent Study Program (free online courses)",
+     "url": "https://training.fema.gov/programs/independent-study/"
+    },
+    {
+     "title": "EU Civil Protection Mechanism",
+     "url": "https://civil-protection-humanitarian-aid.ec.europa.eu/what/civil-protection/eu-civil-protection-mechanism_en"
+    }
+   ]
+  },
+  "Demining and reconstruction": {
+   "what": "Deminers find and destroy landmines and unexploded shells. Structural engineers and recovery planners then assess damage and rebuild homes, power lines, bridges and schools.",
+   "why": "A February 2026 assessment by Ukraine, the World Bank, the EU and the UN put recovery needs at almost $588 billion over a decade, including about $28 billion for explosives and debris. A lasting ceasefire may speed rebuilding.",
+   "how": [
+    "Read the World Bank's February 2026 summary of Ukraine's recovery needs.",
+    "Learn how demining work is organised through the International Mine Action Standards.",
+    "Contact a mine action group or engineering firm working in Ukraine about entry roles."
+   ],
+   "read": [
+    {
+     "title": "World Bank: Updated Ukraine Recovery and Reconstruction Needs Assessment (2026)",
+     "url": "https://www.worldbank.org/en/news/press-release/2026/02/23/updated-ukraine-recovery-and-reconstruction-needs-assessment-released"
+    },
+    {
+     "title": "International Mine Action Standards (IMAS)",
+     "url": "https://www.mineactionstandards.org/"
+    }
+   ]
+  },
+  "Open-source investigation skills": {
+   "what": "Using public material such as satellite images, videos, maps and social posts to check what really happened, for example where troops are moving or whether an official claim holds up.",
+   "why": "In 1938, Hitler claimed to protect ethnic Germans, and in 2014 Russia made similar claims over Crimea. Before the 2022 invasion, analysts tracked Russia's troop build-up from public images. These skills may help test the next pretext.",
+   "how": [
+    "Work through one Bellingcat beginner guide, such as geolocating a photo.",
+    "Read the Berkeley Protocol on how to collect and preserve online evidence.",
+    "Practise by checking the place and date of one viral news video this week."
+   ],
+   "read": [
+    {
+     "title": "Bellingcat: guides and how-tos",
+     "url": "https://www.bellingcat.com/category/resources/how-tos/"
+    },
+    {
+     "title": "Berkeley Protocol on Digital Open Source Investigations",
+     "url": "https://humanrights.berkeley.edu/publications/berkeley-protocol-on-digital-open-source-investigations/"
+    }
+   ]
+  }
+ },
+ "martians": {
+  "Provenance checks before money moves": {
+   "what": "Tools that check where an image or video came from and whether it was edited, before a newsroom publishes it or a trader, insurer or bank acts on it.",
+   "why": "In May 2023, a fake image of a Pentagon explosion briefly knocked US stocks. Since 2023, Content Credentials have spread to some cameras and phones. Firms that act on news within seconds may pay for fast checks.",
+   "how": [
+    "Try the free Content Credentials Verify tool on images from news sites.",
+    "Ask a newsroom editor or trading desk how they check a breaking image today.",
+    "Read the C2PA overview to learn how provenance data is attached and signed."
+   ],
+   "read": [
+    {
+     "title": "Content Credentials: Verify tool",
+     "url": "https://verify.contentauthenticity.org/"
+    },
+    {
+     "title": "C2PA: Coalition for Content Provenance and Authenticity",
+     "url": "https://c2pa.org/"
+    }
+   ]
+  },
+  "AI content labeling compliance": {
+   "what": "Services that help companies mark AI-made images, audio, video and text, and tell people when content is synthetic, to meet laws such as the EU AI Act.",
+   "why": "Welles' 1938 broadcast was announced as fiction, while today's AI fakes often carry no label. EU AI Act duties to mark and disclose AI-generated content were set to apply from August 2026, so many firms may need help.",
+   "how": [
+    "Read Article 50 of the EU AI Act on transparency for AI-generated content.",
+    "Ask three marketing or media teams how they label AI images today.",
+    "Test whether content credentials survive when a file is cropped, compressed or reposted."
+   ],
+   "read": [
+    {
+     "title": "Content Authenticity Initiative",
+     "url": "https://contentauthenticity.org/"
+    }
+   ]
+  },
+  "Verification and digital forensics roles": {
+   "what": "Jobs that test whether photos, videos, documents or accounts are genuine. Titles include verification editor at a newsroom, trust and safety analyst at a platform, and digital forensics examiner.",
+   "why": "The Hitler Diaries fooled experts in 1983 until lab tests of paper and ink exposed them. AI fakes now fool many viewers, so newsrooms, platforms and courts may need more people trained to check.",
+   "how": [
+    "Read the free Verification Handbook and try one of its case studies yourself.",
+    "Volunteer with a fact-checking project or online verification community.",
+    "Ask a trust and safety worker which skills and tools they use most."
+   ],
+   "read": [
+    {
+     "title": "Verification Handbook (free)",
+     "url": "https://verificationhandbook.com/"
+    },
+    {
+     "title": "Bellingcat: guides and how-tos",
+     "url": "https://www.bellingcat.com/category/resources/how-tos/"
+    }
+   ]
+  },
+  "Media forensics and provenance": {
+   "what": "How to tell where a digital file came from and whether it was changed, using metadata, content credentials, watermarks and visual clues such as lighting, shadows and compression.",
+   "why": "Cantril's 1940 study made the Welles scare a classic of media research, and document examiners exposed the Hitler Diaries. As fakes improve, knowing how provenance and forensics work may help you judge what to trust.",
+   "how": [
+    "Inspect the metadata of your own phone photos with a free EXIF viewer.",
+    "Read the C2PA explainer on how content credentials are signed and checked.",
+    "Run reverse image searches on five viral images and note where each first appeared."
+   ],
+   "read": [
+    {
+     "title": "C2PA: Coalition for Content Provenance and Authenticity",
+     "url": "https://c2pa.org/"
+    },
+    {
+     "title": "Verification Handbook (free)",
+     "url": "https://verificationhandbook.com/"
+    }
+   ]
+  }
+ },
+ "einstein": {
+  "Independent AI testing services": {
+   "what": "Outside labs that test AI models before release for dangerous abilities, such as helping with cyberattacks or weapons, and report results to developers or governments.",
+   "why": "After Asilomar, 1976 NIH rules made biosafety review routine. Britain set up an AI safety institute in 2023, and the EU AI Act now asks makers of the most powerful models to test them. Demand for outside testers may grow.",
+   "how": [
+    "Try the UK AI Security Institute's open-source Inspect tool on a small model.",
+    "Read two published model evaluation reports and list the tests they ran.",
+    "Ask an AI developer what outside testing they would pay for, and why."
+   ],
+   "read": [
+    {
+     "title": "Inspect: open-source AI evaluation framework from the UK AI Security Institute",
+     "url": "https://inspect.aisi.org.uk/"
+    },
+    {
+     "title": "UK AI Security Institute",
+     "url": "https://www.aisi.gov.uk/"
+    }
+   ]
+  },
+  "DNA order screening tools": {
+   "what": "Software that checks orders for synthetic DNA against lists of dangerous sequences and suspect customers, so providers can flag or refuse risky requests before anything is made.",
+   "why": "Asilomar in 1975 led to rules for risky gene research. AI may make biology easier to misuse. In 2024 the US told federally funded labs to buy DNA from providers that screen orders, and rules keep evolving.",
+   "how": [
+    "Read the International Gene Synthesis Consortium's harmonized screening protocol.",
+    "Ask a DNA synthesis company or university core facility how they screen orders now.",
+    "Learn sequence search tools such as BLAST, which screening methods often build on."
+   ],
+   "read": [
+    {
+     "title": "International Gene Synthesis Consortium",
+     "url": "https://genesynthesisconsortium.org/"
+    },
+    {
+     "title": "IBBIS: International Biosecurity and Biosafety Initiative for Science",
+     "url": "https://ibbis.bio/"
+    }
+   ]
+  },
+  "AI evaluation and governance roles": {
+   "what": "Jobs that measure what AI systems can do and set rules for their safe use. Roles include evaluation researcher, red-teamer who tries to make models misbehave, and AI policy officer.",
+   "why": "The 1939 warning led to the Manhattan Project and lasting national labs. After the 2023 extinction warning, Britain and the US created AI safety institutes, and new testing rules may keep this field growing.",
+   "how": [
+    "Take a free BlueDot Impact course on AI safety or AI governance.",
+    "Read job ads at AI labs and government AI institutes and list the skills they repeat.",
+    "Join a public red-teaming challenge or evaluation project to build a sample of your work."
+   ],
+   "read": [
+    {
+     "title": "BlueDot Impact: free AI safety and governance courses",
+     "url": "https://bluedot.org/"
+    },
+    {
+     "title": "80,000 Hours: AI risk problem profile",
+     "url": "https://80000hours.org/problem-profiles/artificial-intelligence/"
+    }
+   ]
+  },
+  "Dual-use risk assessment": {
+   "what": "Judging when useful research or tools could also be misused to cause harm, and weighing that risk against the benefits before deciding what to publish or release.",
+   "why": "Nuclear arms control and the 1975 Asilomar meeting shaped how scientists weigh dangerous knowledge. AI now raises similar questions about models that could aid attacks, so these skills may matter in labs and governments.",
+   "how": [
+    "Read the WHO framework on responsible use of the life sciences.",
+    "Read NIST's draft guide on managing misuse risk for powerful AI models.",
+    "Pick one recent paper and list its possible misuses, benefits and safeguards."
+   ],
+   "read": [
+    {
+     "title": "WHO: Global guidance framework for the responsible use of the life sciences",
+     "url": "https://www.who.int/publications/i/item/9789240056107"
+    },
+    {
+     "title": "NIST AI 800-1 (draft): Managing Misuse Risk for Dual-Use Foundation Models",
+     "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-1.ipd.pdf"
+    }
+   ]
+  }
+ },
+ "transistor": {
+  "Small AI devices that run locally": {
+   "what": "Gadgets that run an AI model on their own chip, without sending data to the cloud, such as hearing aids that filter speech, offline translators or farm sensors.",
+   "why": "Transistors first reached the public in hearing aids and the 1954 Regency pocket radio. AI models are shrinking and getting cheaper to run, so small offline devices may be where many people meet AI day to day.",
+   "how": [
+    "Audit the first part of the HarvardX TinyML course on edX.",
+    "Buy a low-cost microcontroller board and run a sample keyword-spotting model on it.",
+    "Ask hearing aid users or farmers which task they would want done offline."
+   ],
+   "read": [
+    {
+     "title": "HarvardX: Tiny Machine Learning (TinyML) on edX",
+     "url": "https://www.edx.org/certificates/professional-certificate/harvardx-tiny-machine-learning"
+    },
+    {
+     "title": "Edge Impulse documentation",
+     "url": "https://docs.edgeimpulse.com/"
+    }
+   ]
+  },
+  "Chip plant and data center technicians": {
+   "what": "Hands-on jobs that keep chip factories and data centers running: fab technicians, electricians, and cooling and power specialists who install and maintain the equipment.",
+   "why": "After 1957, Fairchild helped grow Silicon Valley's skilled workforce. New chip plants and AI data centers are rising now, and the IEA has projected that data center electricity use could more than double by 2030.",
+   "how": [
+    "Look up technician apprenticeships at chip plants or data centers near you.",
+    "Take a short course in electrical basics, cleanroom practice or HVAC at a local college.",
+    "Ask a data center technician what a typical shift and on-call week involve."
+   ],
+   "read": [
+    {
+     "title": "CHIPS for America: Workforce Development",
+     "url": "https://www.nist.gov/chips/implementation-strategies/workforce-development"
+    },
+    {
+     "title": "European Chips Skills Academy",
+     "url": "https://chipsacademy.eu/"
+    }
+   ]
+  },
+  "AI integration for small businesses": {
+   "what": "Helping small firms such as clinics, workshops and shops choose AI tools, fit them into daily work, train staff and check that results stay accurate and private.",
+   "why": "When transistors and later the Web arrived, new trades grew around them, from radio and TV repair to web design. As AI tools spread, many small firms may need someone local to set them up well.",
+   "how": [
+    "Take the free Elements of AI course to learn the basics without coding.",
+    "Offer to automate one routine task for a local business and measure the time saved.",
+    "Learn data privacy basics, such as GDPR, before handling any client data."
+   ],
+   "read": [
+    {
+     "title": "Elements of AI (free course)",
+     "url": "https://www.elementsofai.com/"
+    },
+    {
+     "title": "AI For Everyone (Coursera)",
+     "url": "https://www.coursera.org/learn/ai-for-everyone"
+    }
+   ]
+  },
+  "Adapting small open models": {
+   "what": "Taking a small, freely available AI model and training it further on examples from one field, such as legal forms or farm records, then testing how well it works.",
+   "why": "In the 1950s, engineers learned to design circuits around the new transistor. Since 2017 the Transformer has become AI's core building block, and small open models now run on a laptop, so adapting them may be a useful skill.",
+   "how": [
+    "Work through the free Hugging Face LLM course chapters on fine-tuning.",
+    "Fine-tune a small open model on 200 examples from a field you know.",
+    "Write 50 test questions and compare the model's answers before and after."
+   ],
+   "read": [
+    {
+     "title": "Hugging Face LLM Course",
+     "url": "https://huggingface.co/learn/llm-course/chapter1/1"
+    },
+    {
+     "title": "fast.ai: Practical Deep Learning for Coders",
+     "url": "https://course.fast.ai/"
+    }
+   ]
+  }
+ },
+ "mccarthy": {
+  "Fair process before discipline": {
+   "what": "HR and legal services that give an employee a documented, fair review before any discipline over something they said, with a chance to respond and a decision based on facts.",
+   "why": "In the 1950s, blacklists cost people work with little chance to answer the charges. Around 2020, online pile-ons led to fast firings. Firms may value clear processes that hold up legally and treat staff fairly.",
+   "how": [
+    "Read the Acas Code of Practice on disciplinary and grievance procedures.",
+    "Ask HR managers how they handled a viral complaint about an employee.",
+    "Draft a one-page review process with timelines, evidence rules and a right of reply."
+   ],
+   "read": [
+    {
+     "title": "Acas Code of Practice on disciplinary and grievance procedures",
+     "url": "https://www.acas.org.uk/acas-code-of-practice-on-disciplinary-and-grievance-procedures"
+    }
+   ]
+  },
+  "Context for resurfaced posts": {
+   "what": "Tools that show when an old post was written, what it replied to and what the person has said since, so employers and audiences can judge it in context.",
+   "why": "Around 2020, old tweets resurfaced and cost people jobs, often stripped of their date and thread. If automated systems scan online histories more widely, tools that restore context may help people get a fair hearing.",
+   "how": [
+    "Collect ten resurfaced-post controversies and note what context was missing in each.",
+    "Test how web archives and platform tools show a post's date and full thread.",
+    "Ask an HR manager or journalist what context they need to judge an old post."
+   ],
+   "read": [
+    {
+     "title": "Verification Handbook (free)",
+     "url": "https://verificationhandbook.com/"
+    }
+   ]
+  },
+  "Employment and free-speech law": {
+   "what": "Lawyers, ombudspeople and workplace investigators who handle disputes when people are disciplined or fired over what they said, at work or online.",
+   "why": "The 1919 Palmer Raids led to the ACLU's founding in 1920, and in 2022 the campus group FIRE widened its free-speech work nationwide. Firings over opinions often end in disputes, which may keep these roles in demand.",
+   "how": [
+    "Ask an employment lawyer or ombudsperson how they got into the field.",
+    "Read your country's main laws on employee speech and unfair dismissal.",
+    "Look into training from the International Ombuds Association or a law school clinic."
+   ],
+   "read": [
+    {
+     "title": "International Ombuds Association",
+     "url": "https://www.ombudsassociation.org/"
+    },
+    {
+     "title": "FIRE: Foundation for Individual Rights and Expression",
+     "url": "https://www.fire.org/"
+    }
+   ]
+  },
+  "Speech rights and digital footprints": {
+   "what": "Knowing which laws protect what you say off duty, how employers and visa officers may review your online history, and how to manage what you leave public.",
+   "why": "Since 2019 the US has asked most visa applicants for their social media handles, and in 2025 it told student applicants to make profiles public. Some US states protect off-duty political activity. Such checks may spread.",
+   "how": [
+    "Search your own name and review what an employer or visa officer could see.",
+    "Read EFF's Surveillance Self-Defense guides on privacy and social media.",
+    "Look up whether your state or country protects off-duty speech or political activity."
+   ],
+   "read": [
+    {
+     "title": "EFF: Surveillance Self-Defense",
+     "url": "https://ssd.eff.org/"
+    },
+    {
+     "title": "ACLU: Free Speech",
+     "url": "https://www.aclu.org/issues/free-speech"
+    }
+   ]
+  }
+ },
+ "suez": {
+  "Detour and delay planning tools": {
+   "what": "Software that shows importers how a blocked sea route changes their delivery times, freight costs and insurance, so they can reorder early or switch routes.",
+   "why": "In 1956, tankers sailed around Africa while the canal was blocked. In 2024, Red Sea attacks sent ships the same way, Asia-Europe container rates more than tripled and war-risk premiums rose about tenfold. Small importers may need simple planning tools.",
+   "how": [
+    "Explore the IMF's free PortWatch site to see how chokepoint traffic changed in 2024.",
+    "Ask three small importers how the Red Sea detour affected their stock and cash.",
+    "Build a spreadsheet that recalculates landed cost when a voyage takes two weeks longer."
+   ],
+   "read": [
+    {
+     "title": "IMF PortWatch",
+     "url": "https://portwatch.imf.org/"
+    },
+    {
+     "title": "UNCTAD: Review of Maritime Transport 2024",
+     "url": "https://unctad.org/publication/review-maritime-transport-2024"
+    }
+   ]
+  },
+  "Overland routes around chokepoints": {
+   "what": "Rail, road and pipeline links that let goods or oil avoid narrow sea lanes, such as Egypt's SUMED pipeline, which carries oil from the Red Sea to the Mediterranean.",
+   "why": "After the canal closed again in 1967, Egypt planned SUMED, which opened in 1977. Red Sea attacks since 2023 and risks at other straits may renew interest in overland links, though they are costly and slow to build.",
+   "how": [
+    "Read the EIA's guide to world oil chokepoints and the pipelines that bypass them.",
+    "Compare cost and time for one shipment by sea, rail and road using freight quotes.",
+    "Ask a logistics firm about demand for rail freight between Asia and Europe."
+   ],
+   "read": [
+    {
+     "title": "EIA: World Oil Transit Chokepoints",
+     "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints"
+    }
+   ]
+  },
+  "Supply chain risk and maritime security": {
+   "what": "Analysts who map where a firm's goods travel and plan for disruption, plus maritime security staff who assess threats to ships and advise on routes and protection.",
+   "why": "In 1956 and again in 2024, a blocked route sent ships around Africa. Cheap drones and missiles now let small armed groups threaten shipping, so firms and insurers may need more people who can read these risks.",
+   "how": [
+    "Read the IMO's pages on maritime security and threats to shipping.",
+    "Ask a freight forwarder or insurer how they decided whether to avoid the Red Sea.",
+    "Map one product's route from factory to shelf and mark every chokepoint it passes."
+   ],
+   "read": [
+    {
+     "title": "IMO: Maritime Security",
+     "url": "https://www.imo.org/en/OurWork/Security/Pages/Default.aspx"
+    },
+    {
+     "title": "UNCTAD: Review of Maritime Transport 2024",
+     "url": "https://unctad.org/publication/review-maritime-transport-2024"
+    }
+   ]
+  },
+  "Chokepoints and shipping economics": {
+   "what": "How narrow sea lanes, freight rates, sailing times and marine insurance fit together, and why a closure in one strait can raise prices far away.",
+   "why": "After the 1956 closure, owners ordered tankers too big for the canal, making the Cape route pay. In 2024 freight rates and insurance spiked again. Knowing how these parts connect may help you read the next shock early.",
+   "how": [
+    "Read the EIA's overview of world oil transit chokepoints.",
+    "Follow a weekly container freight rate index for a month and note what moves it.",
+    "Read the opening chapters of Martin Stopford's textbook Maritime Economics."
+   ],
+   "read": [
+    {
+     "title": "Martin Stopford, Maritime Economics (Routledge)",
+     "url": "https://www.routledge.com/Maritime-Economics/Stopford/p/book/9780415275583"
+    },
+    {
+     "title": "EIA: World Oil Transit Chokepoints",
+     "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints"
+    }
+   ]
+  }
+ },
+ "sputnik": {
+  "Math, science and AI teaching tools": {
+   "what": "Courses, apps and classroom kits that help students and teachers learn math, science and the basics of how AI works.",
+   "why": "After Sputnik, the 1958 National Defense Education Act funded math, science and language teaching, and US college enrollment roughly doubled in the 1960s. A new technology scare may bring similar funding for AI and science teaching.",
+   "how": [
+    "Ask three teachers which math or AI topic their students struggle with most.",
+    "Review free AI curricula, such as Code.org's, to see what already exists.",
+    "Build one short lesson or tool and test it with a real class."
+   ],
+   "read": [
+    {
+     "title": "Code.org: AI curriculum for teachers and students",
+     "url": "https://code.org/en-US/artificial-intelligence"
+    }
+   ]
+  },
+  "Researchers in national tech programs": {
+   "what": "Engineers, scientists and technicians who work on government-funded research in AI, chips, energy or space, at national labs, agencies, universities or contractors.",
+   "why": "Sputnik led the US to create NASA and ARPA in 1958, and Apollo employed about 400,000 people. After DeepSeek in 2025, the US and EU announced new AI plans, which may open more research roles.",
+   "how": [
+    "Browse open calls from DARPA, the EU's Marie Skłodowska-Curie Actions or your national research agency.",
+    "Ask a researcher at a national lab how they were hired.",
+    "Build one in-demand skill, such as chip design or machine learning, through a project."
+   ],
+   "read": [
+    {
+     "title": "DARPA",
+     "url": "https://www.darpa.mil/"
+    },
+    {
+     "title": "Marie Skłodowska-Curie Actions (EU research fellowships)",
+     "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/"
+    }
+   ]
+  },
+  "Math and science teachers": {
+   "what": "Teachers of math, science and computing in schools and colleges, who help young people build the skills that national technology races depend on.",
+   "why": "After Sputnik, the 1958 education act funded student loans and better science teaching. UNESCO estimated in 2024 that the world needs 44 million more teachers by 2030, and a new tech shock may bring more training funds.",
+   "how": [
+    "Shadow a math or science teacher for a day at a local school.",
+    "Check which teaching qualification your country requires and how long it takes.",
+    "Look for teacher scholarships, such as the US Noyce program for STEM teachers."
+   ],
+   "read": [
+    {
+     "title": "NSF: Robert Noyce Teacher Scholarship Program",
+     "url": "https://www.nsf.gov/funding/opportunities/robert-noyce-teacher-scholarship-program"
+    },
+    {
+     "title": "National Council of Teachers of Mathematics",
+     "url": "https://www.nctm.org/"
+    }
+   ]
+  },
+  "Doing more with less compute": {
+   "what": "Methods to train and run AI models with less computing power and memory, such as smaller models, mixture-of-experts designs, quantization and distillation.",
+   "why": "DeepSeek reported training its models at far lower cost than rivals, and on 27 January 2025 Nvidia lost about $590 billion in value. With chips scarce and power costly, efficiency skills may stay valuable.",
+   "how": [
+    "Read the DeepSeek-V3 technical report sections on training cost and efficiency.",
+    "Follow MIT's free course on efficient deep learning, starting with the quantization lectures.",
+    "Quantize a small open model and compare its speed and accuracy before and after."
+   ],
+   "read": [
+    {
+     "title": "DeepSeek-V3 Technical Report (arXiv)",
+     "url": "https://arxiv.org/abs/2412.19437"
+    },
+    {
+     "title": "MIT 6.5940: TinyML and Efficient Deep Learning Computing",
+     "url": "https://hanlab.mit.edu/courses/2024-fall-65940"
+    }
+   ]
+  }
+ },
+ "springs": {
+  "Testing for microplastics and PFAS": {
+   "what": "Affordable lab tests, home kits and filters that measure or remove microplastics and PFAS, the long-lasting forever chemicals found in water, food and homes.",
+   "why": "After Silent Spring, 1970s laws built whole testing and cleanup industries. EU limits on PFAS in drinking water took effect in January 2026, and the US has kept limits for two PFAS, so demand for testing may grow.",
+   "how": [
+    "Read your water supplier's latest quality report and check whether it tests for PFAS.",
+    "Ask a certified water lab what PFAS tests cost and how long results take.",
+    "Ask schools or landlords whether they would pay for regular water testing."
+   ],
+   "read": [
+    {
+     "title": "EPA: PFAS National Primary Drinking Water Regulation",
+     "url": "https://www.epa.gov/sdwa/and-polyfluoroalkyl-substances-pfas"
+    },
+    {
+     "title": "ATSDR: PFAS and Your Health",
+     "url": "https://www.atsdr.cdc.gov/pfas/"
+    }
+   ]
+  },
+  "Product passports and supply data": {
+   "what": "Software that records what a product is made of, where it came from and its environmental impact, and shares that data with buyers, recyclers and regulators through a digital passport.",
+   "why": "After 1970, NEPA's impact statements created a consulting industry. EU Digital Product Passports are due to become mandatory for some batteries from February 2027, with textiles, steel and more to follow, so firms may need help.",
+   "how": [
+    "Read the European Commission's Digital Product Passport page and its timeline.",
+    "Interview a manufacturer about what data they hold on materials and suppliers.",
+    "Prototype a passport for one simple product, such as a T-shirt or a battery."
+   ],
+   "read": [
+    {
+     "title": "European Commission: Digital Product Passport",
+     "url": "https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_en"
+    },
+    {
+     "title": "European Commission: The Digital Product Passport Registry is now live (2026)",
+     "url": "https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en"
+    }
+   ]
+  },
+  "Environmental compliance and cleanup": {
+   "what": "Engineers, scientists and compliance staff who test soil and water, design cleanups for pollutants such as PFAS, and help firms meet environmental rules.",
+   "why": "After NEPA in 1970, environmental consultants multiplied, and Clean Air Act rules put catalytic converters on most new US cars from 1975. Tighter PFAS limits in Europe and the US may create similar demand.",
+   "how": [
+    "Ask an environmental consultant which entry roles and degrees their firm hires for.",
+    "Read the EPA's PFAS pages to learn the main sources and cleanup methods.",
+    "Look into credentials from the National Environmental Health Association."
+   ],
+   "read": [
+    {
+     "title": "EPA: Per- and Polyfluoroalkyl Substances (PFAS)",
+     "url": "https://www.epa.gov/pfas"
+    },
+    {
+     "title": "National Environmental Health Association",
+     "url": "https://www.neha.org/"
+    }
+   ]
+  },
+  "Toxicology and chemical regulation": {
+   "what": "How chemicals move through bodies and ecosystems, what doses cause harm, and how regulators measure, test and limit them.",
+   "why": "Carson's 1962 book showed how DDT built up in food chains, and the US banned it for farm use in 1972. Similar questions now surround PFAS and microplastics, and the EU is weighing a broad PFAS restriction.",
+   "how": [
+    "Read ATSDR's plain-language pages on PFAS and health.",
+    "Read Silent Spring and note how Carson explains dose and buildup.",
+    "Take an introductory toxicology or environmental health course online."
+   ],
+   "read": [
+    {
+     "title": "ATSDR: PFAS and Your Health",
+     "url": "https://www.atsdr.cdc.gov/pfas/"
+    },
+    {
+     "title": "ATSDR: Toxicological Profiles",
+     "url": "https://www.atsdr.cdc.gov/toxicological-profiles/about/index.html"
+    }
+   ]
+  }
+ }
+}
