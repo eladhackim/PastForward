@@ -4,8 +4,8 @@
  "description": "History rhymes. What comes next?",
  "start_url": "/",
  "display": "standalone",
- "background_color": "#0C0A1D",
- "theme_color": "#0C0A1D",
+ "background_color": "#0F0D22",
+ "theme_color": "#0F0D22",
  "icons": [
   {
    "src": "/icon-192.png",

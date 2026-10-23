@@ -125,9 +125,12 @@ for token in ["/*__HEAD__*/", "/*__PAIRS__*/", "/*__WORLD__*/", "/*__MAP__*/"]:
 
 SITE = "https://pastforward.app"
 ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<rect width="64" height="64" rx="14" fill="#0C0A1D"/>
-<path d="M10 44 Q21 18 32 40 Q43 62 54 22" fill="none" stroke="#CDB9FF" stroke-width="4" stroke-linecap="round"/>
-<circle cx="10" cy="44" r="5" fill="#E2B35E"/><circle cx="32" cy="40" r="5" fill="#72D3C5"/><circle cx="54" cy="22" r="6" fill="#CDB9FF"/>
+<defs><linearGradient id="a" x1="12" x2="32" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#E6B866"/><stop offset="1" stop-color="#74D6C8"/></linearGradient><linearGradient id="b" x1="32" x2="52" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#74D6C8"/><stop offset="1" stop-color="#C9B6FF"/></linearGradient></defs>
+<rect width="64" height="64" rx="14" fill="#0F0D22"/>
+<path d="M12 35 Q22 13 32 35" fill="none" stroke="url(#a)" stroke-width="3.6" stroke-linecap="round"/>
+<path d="M32 35 Q42 13 52 35" fill="none" stroke="url(#b)" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="12" cy="37" r="6.2" fill="#E6B866"/><circle cx="32" cy="37" r="6.2" fill="#74D6C8"/>
+<circle cx="52" cy="37" r="5.8" fill="#0F0D22" stroke="#C9B6FF" stroke-width="3.2"/>
 </svg>
 """
 COMMON_HEAD = """<meta charset="utf-8">
@@ -177,15 +180,15 @@ for p in pairs:
     page = ("<!doctype html>\n<html lang=\"en\">\n<head>\n" + COMMON_HEAD +
             meta(title + " · PastForward", desc, url, f"{SITE}/og/{pid}.jpg", f"{p['then']['year']} → {p['now']['year']} → c. {ny}: {p['theme']}") +
             f'<script>location.replace("/#{pid}")</script>\n</head>\n'
-            f'<body style="margin:0;background:#0C0A1D;color:#EFE8D6;font:18px/1.5 system-ui,sans-serif;padding:32px">'
-            f'<p><a style="color:#CDB9FF" href="/#{pid}">Open {esc(title)} on PastForward</a></p></body>\n</html>\n')
+            f'<body style="margin:0;background:#0F0D22;color:#F1ECDF;font:18px/1.5 system-ui,sans-serif;padding:32px">'
+            f'<p><a style="color:#C9B6FF" href="/#{pid}">Open {esc(title)} on PastForward</a></p></body>\n</html>\n')
     with open(os.path.join(ROOT, "r", f"{pid}.html"), "w", encoding="utf-8") as f:
         f.write(page)
 
 with open(os.path.join(ROOT, "favicon.svg"), "w") as f: f.write(ICON_SVG)
 with open(os.path.join(ROOT, "site.webmanifest"), "w") as f:
     json.dump({"name": "PastForward", "short_name": "PastForward", "description": "History rhymes. What comes next?",
-               "start_url": "/", "display": "standalone", "background_color": "#0C0A1D", "theme_color": "#0C0A1D",
+               "start_url": "/", "display": "standalone", "background_color": "#0F0D22", "theme_color": "#0F0D22",
                "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
                          {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
                          {"src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}]}, f, indent=1)

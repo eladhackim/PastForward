@@ -12,10 +12,13 @@ from playwright.async_api import async_playwright
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<rect width="64" height="64" rx="{rx}" fill="#0C0A1D"/>
+<defs><linearGradient id="a" x1="12" x2="32" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#E6B866"/><stop offset="1" stop-color="#74D6C8"/></linearGradient><linearGradient id="b" x1="32" x2="52" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#74D6C8"/><stop offset="1" stop-color="#C9B6FF"/></linearGradient></defs>
+<rect width="64" height="64" rx="{rx}" fill="#0F0D22"/>
 <g transform="translate(32 32) scale({k}) translate(-32 -32)">
-<path d="M10 44 Q21 18 32 40 Q43 62 54 22" fill="none" stroke="#CDB9FF" stroke-width="4" stroke-linecap="round"/>
-<circle cx="10" cy="44" r="5" fill="#E2B35E"/><circle cx="32" cy="40" r="5" fill="#72D3C5"/><circle cx="54" cy="22" r="6" fill="#CDB9FF"/>
+<path d="M12 35 Q22 13 32 35" fill="none" stroke="url(#a)" stroke-width="3.6" stroke-linecap="round"/>
+<path d="M32 35 Q42 13 52 35" fill="none" stroke="url(#b)" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="12" cy="37" r="6.2" fill="#E6B866"/><circle cx="32" cy="37" r="6.2" fill="#74D6C8"/>
+<circle cx="52" cy="37" r="5.8" fill="#0F0D22" stroke="#C9B6FF" stroke-width="3.2"/>
 </g></svg>"""
 ICONS = [("favicon-32.png", 32, 7, 1.0), ("apple-touch-icon.png", 180, 0, .86), ("icon-192.png", 192, 14, 1.0),
          ("icon-512.png", 512, 14, 1.0), ("icon-maskable-512.png", 512, 0, .72)]
