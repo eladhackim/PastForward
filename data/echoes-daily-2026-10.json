@@ -1,4 +1,16 @@
 {
+  "commune": [
+    {
+      "year": 2026,
+      "short": "France 2026",
+      "title": "Student-led unrest sweeps France",
+      "region": "europe",
+      "line": "Protests begun by students over failing public services drew 550,000 people across France on 17 October, echoing the 2018 yellow vests.",
+      "date": "2026-10-17",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/10/17/france-wave-of-nationwide-protests"
+    }
+  ],
   "modelt": [
     {
       "year": 1662,

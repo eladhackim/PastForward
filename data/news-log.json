@@ -1,0 +1,19 @@
+[
+ {
+  "date": "2026-10-21",
+  "story": "PHP2Shell flaws expose most of the web",
+  "url": "https://www.wiz.io/blog/php2shell-php-rce",
+  "outcome": "watch",
+  "seed": "1851: Alfred Hobbs picks the ‘unpickable’ Bramah lock in public",
+  "note": "Pattern: a lock everyone trusts is shown to be open. Then candidates: Heartbleed 2014 or Hobbs 1851. Echoes: Log4Shell 2021. Wiz compares PHP2Shell to Heartbleed and Log4Shell, found with AI.",
+  "reviewed": "2026-10-23"
+ },
+ {
+  "date": "2026-10-17",
+  "story": "Student-led unrest sweeps France",
+  "url": "https://www.aljazeera.com/news/2026/10/17/france-wave-of-nationwide-protests",
+  "outcome": "echo",
+  "rhyme": "commune",
+  "reviewed": "2026-10-23"
+ }
+]

@@ -123,6 +123,16 @@ h1.tap { cursor: pointer; }
 .beads i.then { background: var(--then); }
 .beads i.now { background: var(--now); }
 .beads i.next { width: 7px; height: 7px; margin-left: 3px; background: none; box-shadow: inset 0 0 0 1.5px var(--next); }
+.beads i.news { background: var(--now); box-shadow: 0 0 0 2px rgba(var(--now-rgb), .28); }
+/* in the news: this week's event, already researched into this rhyme as its newest echo */
+.newsln { display: inline-flex; align-items: center; gap: 9px; max-width: 100%; min-height: 32px; margin: 0 0 10px; padding: 0 12px 0 11px; border: 0; border-radius: 999px; background: rgba(var(--now-rgb), .13); font: 500 14px var(--f-ui); color: var(--ink); cursor: pointer; white-space: nowrap; transition: background-color .2s; }
+.newsln:hover { background: rgba(var(--now-rgb), .2); }
+.newsln .live { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--now); animation: live 2.4s ease-out infinite; }
+.newsln .nt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.newsln .nt b { font-weight: 600; color: var(--now); }
+.newsln .chev { flex: none; color: var(--muted); }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgba(var(--now-rgb), .5); } 70%, 100% { box-shadow: 0 0 0 7px rgba(var(--now-rgb), 0); } }
+@media (prefers-reduced-motion: reduce) { .newsln .live { animation: none; } }
 .beads.pop i { animation: beadIn .5s cubic-bezier(.3, .7, .3, 1.5) both; animation-delay: var(--d, 0s); }
 @keyframes beadIn { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
 .sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 13px; }
@@ -203,7 +213,7 @@ h1.tap { cursor: pointer; }
 @media (max-height: 680px) { #tl { height: 140px; } .steps { margin-top: 12px; } .story { margin-top: 12px; } .ct { font-size: 27px; } }
 @media (max-height: 650px) { .motif { font-size: 17.5px; } .guide { font-size: 14.5px; } .more { min-height: 30px; } .foot { gap: 10px; } }
 @media (max-height: 600px) { .bar { min-height: 46px; } #tl { height: 128px; } .guide .gx { display: none; } .steps { margin-top: 10px; } .story { margin-top: 10px; } .foot { padding-top: 10px; } }
-@media (max-height: 590px) { .echoes { margin-top: 4px; min-height: 30px; font-size: 14px; } .motif { font-size: 16.5px; } .story { margin-top: 12px; } .ct { font-size: 26px; } }
+@media (max-height: 590px) { .newsln { min-height: 28px; margin-bottom: 6px; font-size: 13px; } .echoes { margin-top: 4px; min-height: 30px; font-size: 14px; } .motif { font-size: 16.5px; } .story { margin-top: 12px; } .ct { font-size: 26px; } }
 @media (max-width: 359px) { .primary { padding: 0 12px; font-size: 15px; } .actions { gap: 6px; } .iconbtn { width: 48px; } }
 
 /* shared pieces used across the sheets */
@@ -393,6 +403,10 @@ button.op:hover { border-color: rgba(var(--ink-rgb), .35); }
 .cv-i.now .cv-y, .cv-i.now .cv-k { color: var(--now); }
 .cv-i.now .cv-d { background: var(--now); border-color: var(--now); box-shadow: 0 0 10px var(--now); }
 .cv-i.now .cv-b { background: rgba(var(--now-rgb), .09); }
+.cv-i.news .cv-k { color: var(--now); }
+.cv-i.news .cv-d { border-color: var(--now); }
+.cv-i.news.flash .cv-b { animation: flash 2.2s ease-out; }
+@keyframes flash { 0%, 35% { background: rgba(var(--now-rgb), .2); } 100% { background: transparent; } }
 .cv-i.next .cv-y, .cv-i.next .cv-k { color: var(--next); }
 .cv-i.next .cv-d { width: 16px; height: 16px; margin-top: 11px; background: var(--next); border-color: var(--next); box-shadow: 0 0 14px var(--next); }
 .cv-i.next .cv-b { background: rgba(var(--next-rgb), .1); }
@@ -609,6 +623,7 @@ h1.tap { cursor: pointer; }
 
   <main class="stage then" id="card" aria-live="polite">
     <div class="pattern">
+      <button type="button" class="newsln" id="newsRow" hidden></button>
       <p class="motif" id="motif"></p>
       <button type="button" class="echoes" id="echoRow"></button>
     </div>
@@ -1165,7 +1180,13 @@ const card = $("card"), cardIn = $("cardIn");
 function renderRhyme(changed) {
   const p = PAIRS[focus.pi], g = gapOf(p), items = chainOf(focus.pi), n = items.length, seed = fmtY(items[0].year);
   $("motif").textContent = p.theme;
-  const beads = items.map((e, j) => `<i class="${e.kind}" style="--d:${(j * .045).toFixed(3)}s"></i>`).join("") + `<i class="next" style="--d:${(n * .045 + .1).toFixed(3)}s"></i>`;
+  const nw = newsOf(focus.pi), nr = $("newsRow");
+  nr.hidden = !nw;
+  if (nw) {
+    nr.innerHTML = `<span class="live" aria-hidden="true"></span><span class="nt"><b>In the news</b> · ${esc(nw.title)}</span><span class="chev" aria-hidden="true">›</span>`;
+    nr.setAttribute("aria-label", `In the news, ${newsDay(nw.date)}: ${nw.title}. It rhymes with this pattern. Show every echo.`);
+  }
+  const beads = items.map((e, j) => `<i class="${e.kind}${isFresh(e) ? " news" : ""}" style="--d:${(j * .045).toFixed(3)}s"></i>`).join("") + `<i class="next" style="--d:${(n * .045 + .1).toFixed(3)}s"></i>`;
   const row = $("echoRow");
   row.innerHTML = `<span class="beads${changed && !reduce ? " pop" : ""}" aria-hidden="true">${beads}</span><span><span class="w">Happened </span><b>${n} times</b><span class="s"> since ${seed}</span></span><span class="chev" aria-hidden="true">›</span>`;
   row.setAttribute("aria-label", `This pattern happened ${n} times since ${seed}. Show every echo.`);
@@ -1180,6 +1201,14 @@ function renderRhyme(changed) {
   document.querySelectorAll(".st").forEach(b => { const on = b.dataset.k === focus.k; b.classList.toggle("on", on); b.setAttribute("aria-current", on ? "step" : "false"); });
 }
 $("echoRow").addEventListener("click", () => openDeep("chain"));
+$("newsRow").addEventListener("click", () => {
+  openDeep("chain");
+  requestAnimationFrame(() => {
+    const cv = dBody.querySelector(".cv.reveal"); if (cv) cv.classList.remove("reveal");   // arriving at one row: show the whole chain at once
+    const all = dBody.querySelectorAll(".cv-i.news"), r = all[all.length - 1];   // the newest
+    if (r) { r.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); r.classList.add("flash"); }
+  });
+});
 $("motif").addEventListener("click", () => openDeep("chain"));
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 const sentence1 = s => String(s).split(/(?<=[.!?])\s/)[0];
@@ -1211,8 +1240,10 @@ function fitText() {
   const txt = k === "next" ? p.next.text.split(/(?<=[.!?])\s/).slice(1).join(" ") : p[k].text;
   const hook = $("cHook"), vote = $("cVote"), fits = () => card.scrollHeight <= card.clientHeight + 1;
   el.textContent = txt;
-  el.hidden = true; vote.hidden = false; hook.style.webkitLineClamp = "3";
+  const motif = $("motif"), news = !$("newsRow").hidden;
+  el.hidden = true; vote.hidden = false; motif.hidden = false; hook.style.webkitLineClamp = "3";
   if (!fits()) vote.hidden = true;   // the vote gives way first: it is also in the full story
+  if (!fits() && news) motif.hidden = true;   // with a news line, the motif gives way next: the news says what this rhyme is about
   hook.hidden = false;
   for (let n = 3; n >= 1; n--) { hook.style.webkitLineClamp = String(n); if (fits()) break; }
   if (!fits()) hook.hidden = true;   // the smallest screens keep the title, the way on, and the button
@@ -1347,6 +1378,12 @@ function oppHTML(pi) {
     ${box("Signal to watch", o.watch, "next")}
     <p class="fnote">Patterns from history, not financial or career advice.</p>`;
 }
+// in the news: an echo researched from a recent report carries its date, source and link.
+// Within NEWS_DAYS of that date it is shown on the home screen, and the home opens on it.
+const NEWS_DAYS = 10;
+const isFresh = e => !!(e && e.date && e.url) && (Date.now() - Date.parse(e.date + "T12:00:00Z")) / 864e5 <= NEWS_DAYS;
+const newsOf = pi => (PAIRS[pi].echoes || []).filter(isFresh).sort((a, b) => b.date.localeCompare(a.date))[0] || null;
+const newsDay = d => new Date(d + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 function chainOf(pi) {
   const p = PAIRS[pi];
   return [...(p.echoes || []).map(e => ({ ...e, kind: "echo" })),
@@ -1362,12 +1399,13 @@ function chainHTML(pi) {
   const dl = () => ` style="--d:${(d++ * .16).toFixed(2)}s"`;
   items.forEach((e, j) => {
     if (j) h += `<li class="cv-gap"${dl()}>${e.year - items[j - 1].year} years later</li>`;
-    const lead = e.kind === "then" ? "Then" : e.kind === "now" ? "Today" : j === 0 ? L("seed") : "";
+    const lead = e.kind === "then" ? "Then" : e.kind === "now" ? "Today" : e.date && e.url ? `In the news · ${newsDay(e.date)}` : j === 0 ? L("seed") : "";
     const go = e.kind === "echo" ? "" : `<button type="button" class="cv-go" data-travel="${pi}:${e.kind}" aria-label="Go to ${esc(e.title)}">→</button>`;
-    const more = e.kind === "echo" ? `<a class="cv-more" href="https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(e.title)}" target="_blank" rel="noopener">Read more ↗</a>` : "";
-    h += `<li class="cv-i ${e.kind}"${e.kind === "echo" ? "" : ` data-travel="${pi}:${e.kind}"`}${dl()}><span class="cv-y">${fmtY(e.year)}</span><span class="cv-d"></span><span class="cv-b">${lead ? `<span class="cv-k">${lead}</span>` : ""}<span class="cv-t">${esc(e.title)}</span>${e.line ? `<span class="cv-l">${esc(e.line)}</span>` : ""}${more}</span>${go}</li>`;
+    const more = e.kind !== "echo" ? "" : e.url ? `<a class="cv-more" href="${esc(e.url)}" target="_blank" rel="noopener">Read the report${e.source ? " (" + esc(e.source) + ")" : ""} ↗</a>`
+      : `<a class="cv-more" href="https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(e.title)}" target="_blank" rel="noopener">Read more ↗</a>`;
+    h += `<li class="cv-i ${e.kind}${e.date && e.url ? " news" : ""}"${e.kind === "echo" ? "" : ` data-travel="${pi}:${e.kind}"`}${dl()}><span class="cv-y">${fmtY(e.year)}</span><span class="cv-d"></span><span class="cv-b">${lead ? `<span class="cv-k">${lead}</span>` : ""}<span class="cv-t">${esc(e.title)}</span>${e.line ? `<span class="cv-l">${esc(e.line)}</span>` : ""}${more}</span>${go}</li>`;
   });
-  h += `<li class="cv-gap"${dl()}>+ ${g} years, the same cadence</li>
+  h += `<li class="cv-gap"${dl()}>+ ${g} years${items[items.length - 1].kind === "now" ? "" : ` from ${p.now.year}`}, the same cadence</li>
     <li class="cv-i next" data-travel="${pi}:next"${dl()}><span class="cv-y">c. ${ny}</span><span class="cv-d"></span><span class="cv-b"><span class="cv-k">Next</span><span class="cv-t">${esc(p.next.title)}</span></span><button type="button" class="cv-go" data-travel="${pi}:next" aria-label="Go to the next echo">→</button></li></ol>`;
   h += box(`${T("due")} · c. ${ny}`, `${p.then.title} (${p.then.year}) and ${p.now.title} (${p.now.year}) are ${g} years apart. Counted forward once more from ${p.now.year}, the same cadence lands around ${ny}. A way to imagine, not a forecast.`);
   return h;
@@ -3480,7 +3518,10 @@ const pathId = location.pathname.match(/^\/r\/([a-z0-9_-]+)\/?$/);
 const h = pathId ? pathId[1] : decodeURIComponent(location.hash.slice(1));
 let start = PAIRS.findIndex(p => p.id === h);
 const linked = start >= 0;
-if (start < 0) start = PAIRS.findIndex(p => p.id === "flu");
+if (start < 0) {   // this week's news if a rhyme has a fresh echo from it, else a past everyone knows
+  const fresh = PAIRS.map((p, i) => ({ i, n: newsOf(i) })).filter(x => x.n).sort((a, b) => b.n.date.localeCompare(a.n.date))[0];
+  start = fresh ? fresh.i : PAIRS.findIndex(p => p.id === "flu");
+}
 if (start < 0) start = 0;
 cam.c = EVI[start].then.yx; cam.s = defaultScale(); clampCam();
 setFocus(start, "then", 1, true);
