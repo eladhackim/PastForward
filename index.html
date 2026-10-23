@@ -2784,9 +2784,10 @@ function readTimes(words, t0) {   // when each word lights; a part with data-at 
 const CARDS = {
   cycles: ["For thousands of years, humanity has moved in cycles.", "Plagues. Crashes. Revolutions. Inventions.", "Each one fades, then returns in a new form."],
   read: ["Read the pattern.", "Find where we stand in the cycle.", `And you can see <span class="x">what may come next.</span>`],
-  method: ["One method.", "Find the pattern. Measure the rhythm. Count forward."]
+  method: ["One method.", "Find the pattern. Measure the rhythm. Count forward."],
+  onrecord: ["Some people sensed the cycle, and prepared."]
 };
-const CARD_LEAD = { cycles: 1, read: 1, method: 1 };
+const CARD_LEAD = { cycles: 1, read: 1, method: 1, onrecord: 1 };
 const CARD_T = {};   // per card: when each line arrives, and when each of its words lights
 for (const id in CARDS) {
   let at = id === "method" ? 1.7 : .7;
@@ -2807,7 +2808,7 @@ const I_SEERS = [
   { a: "1968", b: "2011", early: "43 years early", who: "Yanosuke Hirai", did: "Had a power plant built high, recalling the tsunami of 869." },
   { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warned we were not ready for a pandemic." }
 ];
-const SEER = 6, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
+const SEER = 6, SEER_LEAD = .7;   // the people start just after the line before them has faded   // the caption lands first, then one person at a time, held long enough to take in
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: I_REVEAL + 3, cam: [1860, 760] },
@@ -2820,6 +2821,7 @@ const SCENES = [
   { id: "method", view: "method", card: "method", join: true, dur: cardDur("method") },
   { id: "more", view: "more", join: true, dur: .4 + 2 * BEAT * I_ROWS.length + 2.4 },
   { id: "you", view: "you", dur: 2.8 + I_LIFE * .35 * BEAT + 3 },
+  { id: "onrecord", view: "card", card: "onrecord", dur: cardDur("onrecord") },   // the line first, on its own, then it fades
   { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + 3.2 },
   { id: "demo", view: "demo", dur: 7.4 },
   { id: "end", view: "end", dur: Infinity }
@@ -2833,7 +2835,7 @@ const CAP = {
   next: { k: "Step 3 · Count forward", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `The same ${I_GAP} years, once more. That is where the pattern points.` },
   more: { k: `${N} rhymes`, t: "Crashes, inventions, disasters", l: "The same three steps, across 2,500 years of history." },
   you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: "Enter your own year to see yours." },
-  prepare: { k: "On record", t: "Some people sensed the cycle, and prepared.", l: "" },
+  prepare: { k: "", t: "", l: "" },
   demo: { k: "", t: "", l: "" },
   end: { k: "", t: `<span class="in-brand" data-at="2.1"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="2.8">History rhymes. See what comes next.</span>` }
 };
@@ -2863,6 +2865,13 @@ const STEP2 = (() => {
   const then = onBeat(SCENES.find(x => x.id === "then").at + .5), now = onBeat(SCENES.find(x => x.id === "now").at + 1);
   return { then, now, land: onBeat(now + 2 * BEAT - .01, then) };
 })();
+// "One method." lands on the beat's last kick: its card moves by under half a beat to the nearest beat
+{
+  const m = SCENES.find(x => x.id === "method"), t1 = m.at + CARD_T.method.lines[0], d = onBeat(t1 - BEAT / 2) - t1;
+  CARD_T.method.lines = CARD_T.method.lines.map(x => x + d);
+  CARD_T.method.words = CARD_T.method.words.map(a => a.map(x => x + d));
+  CARD_T.method.hit = t1 + d;
+}
 const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
 const c01 = v => Math.max(0, Math.min(1, v));
 const iEase = x => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -3601,9 +3610,9 @@ const CHORD = {
   "Bm": { b: 35, p: [50, 54, 59, 62, 66, 73] }, "G": { b: 31, p: [50, 55, 59, 62, 66, 69] },
   "D/F#": { b: 42, p: [50, 57, 62, 66, 69, 76] }, "Em": { b: 40, p: [52, 55, 59, 62, 66, 71] }
 };
-const SND_PART = { title: "open", cycles: "open", read: "open", echoes: "rise", then: "rise", now: "rise", next: "rise", method: "turn", more: "turn", you: "you", prepare: "prep", demo: "drive", end: "drive" };
+const SND_PART = { onrecord: "prep", title: "open", cycles: "open", read: "open", echoes: "rise", then: "rise", now: "rise", next: "rise", method: "turn", more: "turn", you: "you", prepare: "prep", demo: "drive", end: "drive" };
 const SND_PROG = { open: ["D", "G/D"], rise: ["D", "A/C#", "Bm", "G"], turn: ["G", "D/F#", "Em", "A"], you: ["Bm", "G", "D", "A"], prep: ["Bm", "G", "Em", "Asus", "Bm", "G", "D", "A"], drive: ["D", "A/C#", "Bm", "G"] };
-const SND_LIFT = { title: .62, cycles: .64, read: .68, echoes: .76, then: .8, now: .85, next: .95, method: .86, more: .9, you: .88, prepare: .74, demo: 1.08, end: 1.3 };
+const SND_LIFT = { onrecord: .74, title: .62, cycles: .64, read: .68, echoes: .76, then: .8, now: .85, next: .95, method: .86, more: .9, you: .88, prepare: .74, demo: 1.08, end: 1.3 };
 const PENT = [69, 71, 74, 76, 78, 81, 83, 86, 88, 90, 93];   // D major pentatonic, A4 up: every effect is in key
 const MOTIF = [74, 81, 86];                                  // D5, A5, D6: Then, Today, Next
 
@@ -3624,7 +3633,7 @@ const SCORE = (() => {
   add(.1, "swell", { d: 4, v: .35, f1: 1200 });
   add(I_REVEAL + .05, "bell", { m: MOTIF[0], v: .8 }); add(I_REVEAL + .47, "bell", { m: MOTIF[1], v: .7 });
   // title cards: a soft bell as each line arrives
-  for (const id of ["cycles", "read", "method"]) {
+  for (const id of ["cycles", "read", "method", "onrecord"]) {
     const s = SCENES.find(x => x.id === id);
     CARDS[id].forEach((_, j) => add(s.at + CARD_T[id].lines[j] + .1, "bell", { m: [81, 78, 76][j % 3], v: j ? .38 : .5, r: 2.01 }));
   }
@@ -3636,13 +3645,11 @@ const SCORE = (() => {
   add(STEP2.now + .2, "whoosh", { d: STEP2.land - STEP2.now - .2, f0: 260, f1: 1900, v: .55, p0: -.6, p1: .5 });
   add(STEP2.land, "bell", { m: MOTIF[1], v: .72, pan: .3 });
   // measure the rhythm: a slow beat from the moment 1918 lands, through Step 3, to one last kick as "One method." arrives
-  const beatEnd = S("method") + CARD_T.method.lines[0] - .3;
-  for (let t = STEP2.then, k = 0; t < beatEnd + 2 * BEAT; t += BEAT, k++) {
-    const kick = k % 2 === 0, last = t >= beatEnd;
-    if (last && !kick) break;
-    if (kick) add(t, "kick", { v: Math.min(1, .85 + k * .03) });
+  const beatEnd = CARD_T.method.hit;
+  for (let t = STEP2.then, k = 0; t < beatEnd + .01; t += BEAT, k++) {
+    const last = t > beatEnd - .01;
+    if (k % 2 === 0 || last) add(t, "kick", { v: Math.min(1, .85 + k * .03) });   // the last hit is always a kick
     else add(t, "snare", { v: Math.min(1, .8 + k * .04) });
-    if (last) break;
   }
   add(S("next") + 1.5, "whoosh", { d: 2.3, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
   add(S("next") + 3.8, "bell", { m: MOTIF[2], v: .78, pan: .45 }); add(S("next") + 3.86, "bell", { m: 93, v: .28, pan: .6 }); add(S("next") + 3.93, "bell", { m: 98, v: .16, pan: .7 });
@@ -3942,7 +3949,7 @@ Object.assign(window.__pastforward, {
     window.__pfWav = wavOf(await ctx.startRendering());
     return window.__pfWav.length;
   },
-  beat: () => ({ step2: STEP2, scenes: { then: SCENES.find(x => x.id === "then").at, now: SCENES.find(x => x.id === "now").at, next: SCENES.find(x => x.id === "next").at }, hits: SCORE.filter(e => e.k === "kick" || e.k === "snare").map(e => `${e.k} ${e.t.toFixed(2)}`).join(", "), reveal: I_REVEAL }),
+  beat: () => ({ step2: STEP2, scenes: { then: SCENES.find(x => x.id === "then").at, now: SCENES.find(x => x.id === "now").at, next: SCENES.find(x => x.id === "next").at }, hits: SCORE.filter(e => e.k === "kick" || e.k === "snare").map(e => `${e.k} ${e.t.toFixed(2)}`).join(", "), reveal: I_REVEAL, oneMethod: CARD_T.method.hit }),
   scenes: () => SCENES.map(x => `${x.id} ${x.dur === Infinity ? "end" : x.dur.toFixed(1)}`).join(", "),
   soundState: () => ({ on: snd.on, state: snd.G ? snd.G.ctx.state : "none", voices: snd.live.length, button: $("inSnd").textContent.trim() || ($("inSnd").getAttribute("aria-pressed") === "true" ? "on" : "off") }),
   introAudioChunk: (i, size) => { let s = ""; const a = window.__pfWav.subarray(i * size, (i + 1) * size); for (let k = 0; k < a.length; k += 32768) s += String.fromCharCode.apply(null, a.subarray(k, k + 32768)); return btoa(s); }
