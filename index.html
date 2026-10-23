@@ -498,6 +498,14 @@ button.op:hover { border-color: rgba(var(--ink-rgb), .35); }
 .in-logo .f { color: var(--next); }
 .in-skip { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 0; background: rgba(var(--ink-rgb), .08); color: var(--ink); font: 600 14px var(--f-ui); cursor: pointer; }
 .in-skip:hover { border-color: var(--ink); }
+.in-btns { display: flex; align-items: center; gap: 8px; }
+.in-snd { display: inline-flex; align-items: center; gap: 8px; min-width: 38px; min-height: 38px; padding: 0 9px; border-radius: 999px; border: 0; background: rgba(var(--ink-rgb), .08); color: var(--ink); font: 600 13.5px var(--f-ui); cursor: pointer; }
+.in-snd svg { width: 20px; height: 20px; flex: none; }
+.in-snd .sl { padding-right: 4px; white-space: nowrap; }
+.in-snd.wait { animation: sndWait 2.4s ease-in-out infinite; }
+@media (max-width: 374px) { .in-snd .sl { display: none; } }   /* small phones: the pulsing speaker alone, so Skip stays on screen */
+@keyframes sndWait { 0%, 100% { background: rgba(var(--ink-rgb), .08); } 50% { background: rgba(var(--ink-rgb), .2); } }
+@media (prefers-reduced-motion: reduce) { .in-snd.wait { animation: none; } }
 .in-prog { flex: none; display: flex; gap: 4px; width: 100%; max-width: 640px; margin: 0 auto; }
 .in-prog i { flex: 1; height: 3px; border-radius: 2px; background: rgba(var(--ink-rgb), .18); overflow: hidden; }
 .in-prog b { display: block; height: 100%; width: 0; background: var(--ink); }
@@ -694,7 +702,7 @@ h1.tap { cursor: pointer; }
 
 <div class="intro night" id="intro" hidden role="dialog" aria-modal="true" aria-label="What PastForward is">
   <canvas class="in-bg" id="inBg" aria-hidden="true"></canvas>
-  <div class="in-top"><span class="in-logo" aria-hidden="true"><span class="p">Past</span><span class="f">Forward</span></span><button type="button" class="in-skip" id="inSkip">Skip</button></div>
+  <div class="in-top"><span class="in-logo" aria-hidden="true"><span class="p">Past</span><span class="f">Forward</span></span><span class="in-btns"><button type="button" class="in-snd" id="inSnd" aria-pressed="true" aria-label="Sound"></button><button type="button" class="in-skip" id="inSkip">Skip</button></span></div>
   <div class="in-prog" id="inProg" aria-hidden="true"></div>
   <div class="in-stage" id="inStage"><canvas id="inCv" aria-hidden="true"></canvas></div>
   <div class="in-card" id="inCard" aria-live="polite"></div>
@@ -3451,6 +3459,7 @@ function introLoop(now) {
   const dt = Math.min(.05, (now - intro.last) / 1000); intro.last = now;
   if (!document.hidden && !intro.rec) intro.t += dt;
   renderIntro(intro.t);
+  sndTick(intro.t);
   intro.raf = requestAnimationFrame(introLoop);
 }
 function openIntro(rec) {
@@ -3459,11 +3468,11 @@ function openIntro(rec) {
   introEl.style.transition = rec ? "none" : "";
   introEl.hidden = false; void introEl.offsetWidth; introEl.classList.add("open");
   document.documentElement.classList.add("lock");
-  if (!rec) { intro.last = performance.now(); intro.raf = requestAnimationFrame(introLoop); $("inSkip").focus({ preventScroll: true }); }
+  if (!rec) { intro.last = performance.now(); intro.raf = requestAnimationFrame(introLoop); $("inSkip").focus({ preventScroll: true }); snd.last = -1; sndUnlock(); sndUI(); }
 }
 function closeIntro(after) {
   if (!intro.open) return;
-  intro.open = false; cancelAnimationFrame(intro.raf);
+  intro.open = false; cancelAnimationFrame(intro.raf); sndStop();
   store.set(INTRO_KEY, 1);
   introEl.classList.remove("open");
   setTimeout(() => { introEl.hidden = true; }, reduce ? 0 : 450);
@@ -3490,6 +3499,7 @@ introEl.addEventListener("click", e => {
 });
 document.addEventListener("keydown", e => {
   if (!intro.open) return;
+  sndUnlock();
   if (e.key === "Escape") { e.stopImmediatePropagation(); closeIntro(); }
   else if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); introStep(1); }
   else if (e.key === "ArrowLeft") { e.preventDefault(); introStep(-1); }
@@ -3498,6 +3508,331 @@ $("logo").addEventListener("click", () => openIntro());
 window.__pastforward = Object.assign(window.__pastforward || {}, {
   introLength: INTRO_END + 4.6,
   introFrame: t => { if (!intro.open) openIntro(true); renderIntro(t); }
+});
+
+/* ---------- intro sound: a score written in code ----------
+   The music and the effects are synthesized in the browser (no audio files, nothing to license), from one list of
+   timed events (SCORE) built from the scene timings, so every sound lands on its frame. The app plays it live with
+   the film, behind a mute button; the video export renders the same list offline (window.__pastforward.introAudio).
+   The idea: a slow, warm progression in D major on the film's one-second beat, resolving on the sunrise. A three-note
+   motif (D, A, high D) answers Then, Today and Next, so the sound rhymes too. */
+const SND_KEY = "pastforward.sound", SND_GAIN = 1.5;
+const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+// pad voicings (MIDI notes) and bass root, warm and open, with an added ninth for light
+const CHORD = {
+  "D": { b: 38, p: [50, 57, 62, 66, 69, 76] }, "G/D": { b: 38, p: [50, 55, 62, 66, 71, 74] },
+  "A/C#": { b: 37, p: [52, 57, 61, 64, 69, 71] }, "A": { b: 33, p: [52, 57, 61, 64, 69, 71] }, "Asus": { b: 33, p: [52, 57, 62, 64, 69, 71] },
+  "Bm": { b: 35, p: [50, 54, 59, 62, 66, 73] }, "G": { b: 31, p: [50, 55, 59, 62, 66, 69] },
+  "D/F#": { b: 42, p: [50, 57, 62, 66, 69, 76] }, "Em": { b: 40, p: [52, 55, 59, 62, 66, 71] }
+};
+const SND_PART = { title: "open", cycles: "open", read: "open", echoes: "rise", then: "rise", now: "rise", next: "rise", method: "turn", more: "turn", you: "you", prepare: "prep", demo: "drive", end: "drive" };
+const SND_PROG = { open: ["D", "G/D"], rise: ["D", "A/C#", "Bm", "G"], turn: ["G", "D/F#", "Em", "A"], you: ["Bm", "G", "D", "A"], prep: ["Bm", "G", "Em", "Asus", "Bm", "G", "D", "A"], drive: ["D", "A/C#", "Bm", "G"] };
+const SND_LIFT = { title: .62, cycles: .64, read: .68, echoes: .76, then: .8, now: .85, next: .95, method: .86, more: .9, you: .88, prepare: .74, demo: 1.08, end: 1.3 };
+const PENT = [69, 71, 74, 76, 78, 81, 83, 86, 88, 90, 93];   // D major pentatonic, A4 up: every effect is in key
+const MOTIF = [74, 81, 86];                                  // D5, A5, D6: Then, Today, Next
+
+const SCORE = (() => {
+  const S = id => SCENES.find(s => s.id === id).at, ev = [], add = (t, k, o) => ev.push({ t, k, ...o });
+  // music: one chord a bar (4 beats), counted back from the sunrise so the last chord resolves on it
+  const BAR = 4 * BEAT;
+  let part = null, n = 0;
+  for (let b = INTRO_END - Math.ceil(INTRO_END / BAR) * BAR; b < INTRO_END - .01; b += BAR) {
+    const id = SCENES[sceneAt(Math.max(0, b + .01))].id, pt = SND_PART[id];
+    if (pt !== part) { part = pt; n = 0; }
+    let name = SND_PROG[pt][n++ % SND_PROG[pt].length];
+    if (b >= INTRO_END - 2 * BAR - .01) name = b >= INTRO_END - BAR - .01 ? "A" : "G";   // IV, V ...
+    add(b, "chord", { name, dur: BAR, e: SND_LIFT[id], bass: true });
+  }
+  add(INTRO_END, "chord", { name: "D", dur: 12, e: 1.3, bass: true, last: true });   // ... and home, on the sunrise
+  // title: the two-note "rhyme" on "It rhymes."
+  add(.1, "swell", { d: 4, v: .35, f1: 1200 });
+  add(I_REVEAL + .05, "bell", { m: MOTIF[0], v: .8 }); add(I_REVEAL + .47, "bell", { m: MOTIF[1], v: .7 });
+  // title cards: a soft bell as each line arrives
+  for (const id of ["cycles", "read", "method"]) {
+    const s = SCENES.find(x => x.id === id);
+    CARDS[id].forEach((_, j) => add(s.at + (s.cardAt || .7) + j * CARD_GAP + .1, "bell", { m: [81, 78, 76][j % 3], v: j ? .38 : .5, r: 2.01 }));
+  }
+  // echoes: each one rings a step higher; Then is warm, Today is bright
+  I_ECHO.forEach((e, i) => add(S("echoes") + .8 + i * BEAT, "bell", { m: PENT[Math.min(i, PENT.length - 1)], v: e.kind === "echo" ? .42 : .62, r: e.kind === "then" ? 2.01 : 3.01, pan: (i / (I_ECHO.length - 1) - .5) * .4 }));
+  // Then, Today, Next on the timeline: the motif, carried by the arcs
+  add(S("then") + .7, "bell", { m: MOTIF[0], v: .7, r: 2.01, pan: -.35 }); add(S("then") + .7, "thump", { v: .5 });
+  add(S("now") + 1.5, "bell", { m: 78, v: .3, pan: .1 });
+  add(S("now") + 1.7, "whoosh", { d: 2.2, f0: 260, f1: 1900, v: .55, p0: -.6, p1: .5 });
+  add(S("now") + 3.9, "bell", { m: MOTIF[1], v: .72, pan: .3 });
+  add(S("next") + 1.5, "whoosh", { d: 2.3, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
+  add(S("next") + 3.8, "bell", { m: MOTIF[2], v: .78, pan: .45 }); add(S("next") + 3.86, "bell", { m: 93, v: .28, pan: .6 }); add(S("next") + 3.93, "bell", { m: 98, v: .16, pan: .7 });
+  add(S("next") + 3.8, "shimmer", { d: 9 });
+  // the method: the three steps gather into the mark
+  add(S("method") + .1, "swell", { d: 1.5, v: .3, f1: 2400 });
+  MOTIF.forEach((m, j) => add(S("method") + 1.55 + j * .06, "bell", { m, v: .4 }));
+  // more rhymes: each row plays the motif again, a little lower each time
+  I_ROWS.forEach((_, i) => {
+    const st = S("more") + .4 + i * 2 * BEAT, row = [[74, 81, 86], [71, 78, 83], [69, 76, 81]][i % 3];
+    [0, .9, 1.7].forEach((d, j) => add(st + d * BEAT, "bell", { m: row[j], v: j === 2 ? .38 : .48, pan: (j - 1) * .5, d: 2 }));
+    add(st + .3, "whoosh", { d: .7, f0: 500, f1: 2400, v: .22, p0: -.5, p1: 0 }); add(st + 1.1, "whoosh", { d: .7, f0: 700, f1: 3400, v: .2, p0: 0, p1: .5, q: 1.6 });
+  });
+  // your lifeline: a birth year typed in, a life drawn out, and a run of notes for what comes due
+  [.45, .65, .85, 1.05].forEach(d => add(S("you") + d, "tick", {}));
+  add(S("you") + 1.5, "whoosh", { d: 1.2, f0: 220, f1: 1400, v: .3, p0: -.8, p1: .8 });
+  add(S("you") + 2.2, "bell", { m: 78, v: .35, r: 2.01 });
+  lifeEchoes(I_BY).forEach((e, i) => add(S("you") + 2.8 + i * .35 * BEAT, "pluck", { m: PENT[(i + 2) % PENT.length], v: .5, pan: c01((e.y - I_BY) / 90) * 1.4 - .7 }));
+  // on record: each person is a quiet bell where they sensed it, an arc, and the arrival
+  I_SEERS.forEach((_, j) => {
+    const b = S("prepare") + SEER_LEAD + j * SEER;
+    add(b + .05, "bell", { m: 74, v: .38, r: 2.01, pan: -.4 });
+    add(b + .5, "whoosh", { d: 1.6, f0: 400, f1: 2600, v: .25, p0: -.45, p1: .45, q: 1.5 });
+    add(b + 1.95, "bell", { m: 81, v: .48, pan: .4 });
+  });
+  const close = S("prepare") + SEER_LEAD + I_SEERS.length * SEER;
+  [74, 78, 81, 86].forEach((m, j) => add(close + .1 + j * .14, "bell", { m, v: .4 - j * .05 }));
+  // the app in a hand: two taps, two flights, two arrivals
+  DEMO_TAPS.forEach((tp, i) => {
+    const t = S("demo") + tp;
+    add(t, "tap", {}); add(t + .08, "whoosh", { d: DEMO_FLY, f0: 300, f1: 3000, v: .35, p0: -.3, p1: .3 });
+    add(t + DEMO_FLY + .12, "bell", { m: MOTIF[i + 1], v: .62, pan: .2 });
+  });
+  for (let t = S("demo") + .5, i = 0; t < INTRO_END - .2; t += .5 * BEAT, i++) add(t, "pluck", { m: [62, 69, 74, 78, 74, 69][i % 6] + (i >= 6 ? 0 : 0), v: .24, pan: i % 2 ? .25 : -.25, lo: true });
+  // the sunrise: a swell into the last chord, the motif drawn as the mark, and a bloom on the name
+  add(INTRO_END - 2.6, "swell", { d: 2.9, v: .8, f1: 7000 });
+  add(INTRO_END + .2, "bell", { m: MOTIF[0], v: .7 }); add(INTRO_END + 1, "bell", { m: MOTIF[1], v: .7 }); add(INTRO_END + 1.75, "bell", { m: MOTIF[2], v: .7 });
+  add(INTRO_END + 2.1, "thump", { v: .55 });
+  [62, 69, 74, 78, 81, 86, 90].forEach((m, j) => add(INTRO_END + 2.1 + j * .055, "bell", { m, v: .42 - j * .03, pan: (j / 6 - .5) * .8, d: 4.5 }));
+  add(INTRO_END + 2.1, "shimmer", { d: 10 });
+  return ev.sort((a, b) => a.t - b.t);
+})();
+
+// the instruments
+function sndGraph(ctx) {
+  const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -18; comp.knee.value = 12; comp.ratio.value = 3; comp.attack.value = .01; comp.release.value = .3;
+  const lim = ctx.createDynamicsCompressor(); lim.threshold.value = -2; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = .002; lim.release.value = .12;
+  const master = ctx.createGain(), dry = ctx.createGain(), wet = ctx.createGain(), rev = ctx.createConvolver(), ret = ctx.createGain();
+  master.gain.value = SND_GAIN; ret.gain.value = .6;
+  const sr = ctx.sampleRate, n = Math.floor(sr * 3.6), ir = ctx.createBuffer(2, n, sr), r = mulberry(7);
+  for (let ch = 0; ch < 2; ch++) {   // a dark hall: decaying noise, softened
+    const d = ir.getChannelData(ch); let y = 0;
+    for (let i = 0; i < n; i++) { y += .3 * ((r() * 2 - 1) - y); d[i] = y * Math.pow(1 - i / n, 2.8) * Math.min(1, i / (sr * .015)); }
+  }
+  rev.buffer = ir;
+  const rhp = ctx.createBiquadFilter(), sub = ctx.createBiquadFilter();   // a clean hall (no rumble in the tail), and nothing below 40 Hz
+  rhp.type = "highpass"; rhp.frequency.value = 220; rhp.Q.value = .5; sub.type = "highpass"; sub.frequency.value = 40; sub.Q.value = .6;
+  dry.connect(comp); wet.connect(rev); rev.connect(rhp); rhp.connect(ret); ret.connect(comp);
+  comp.connect(sub); sub.connect(master); master.connect(lim); lim.connect(ctx.destination);   // the limiter is last: nothing clips
+  const nb = ctx.createBuffer(1, sr * 2, sr), nd = nb.getChannelData(0), r2 = mulberry(11);
+  for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+  const H = 16, re = new Float32Array(H + 1), im = new Float32Array(H + 1);
+  for (let k = 1; k <= H; k++) im[k] = Math.pow(k, -1.2) * (k % 2 ? 1 : .6);   // warm: soft upper partials, quieter evens
+  return { ctx, master, dry, wet, noise: nb, wave: ctx.createPeriodicWave(re, im) };
+}
+const sndOut = (G, node, pan, send) => {
+  const p = G.ctx.createStereoPanner ? G.ctx.createStereoPanner() : null;
+  if (p) { p.pan.value = pan || 0; node.connect(p); node = p; }
+  node.connect(G.dry);
+  if (send) { const s = G.ctx.createGain(); s.gain.value = send; node.connect(s); s.connect(G.wet); }
+};
+const SYN = {
+  chord(G, e, when, off) {
+    const { ctx } = G, c = CHORD[e.name], left = e.dur - off, rel = e.last ? 8 : 2.2, att = off > 0 ? .9 : 1.5, lvl = .16 * e.e;
+    const f = ctx.createBiquadFilter(); f.type = "lowpass"; f.Q.value = .4;
+    const fc = 900 + 3200 * e.e; f.frequency.setValueAtTime(fc * .8, when); f.frequency.linearRampToValueAtTime(fc, when + left);
+    const g = ctx.createGain(); g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(lvl, when + att);
+    g.gain.setValueAtTime(lvl, when + Math.max(att, left)); g.gain.linearRampToValueAtTime(0, when + left + rel);
+    f.connect(g); sndOut(G, g, 0, .5);
+    const end = when + left + rel + .05;
+    c.p.forEach((m, i) => [-7, 7].forEach(dt => {
+      const o = ctx.createOscillator(), vg = ctx.createGain();
+      o.setPeriodicWave(G.wave); o.frequency.value = hz(m); o.detune.value = dt + (i % 2 ? 2 : -2);
+      vg.gain.value = (m > 72 ? .55 : 1) / (c.p.length * 2); o.connect(vg); vg.connect(f); o.start(when); o.stop(end);
+    }));
+    if (e.bass) {
+      const bg = ctx.createGain(), bl = .042 * e.e, root = c.b < 38 ? c.b + 12 : c.b;   // kept above 70 Hz, where phones can still carry it
+      bg.gain.setValueAtTime(0, when); bg.gain.linearRampToValueAtTime(bl, when + .6);
+      bg.gain.setValueAtTime(bl, when + Math.max(.6, left)); bg.gain.linearRampToValueAtTime(0, when + left + rel * .7);
+      [[hz(root), "sine", 1], [hz(root + 12), "triangle", .55]].forEach(([fr, type, v]) => {
+        const o = ctx.createOscillator(), vg = ctx.createGain(); o.type = type; o.frequency.value = fr; vg.gain.value = v;
+        o.connect(vg); vg.connect(bg); o.start(when); o.stop(end);
+      });
+      sndOut(G, bg, 0, 0);
+      return { g, g2: bg, end };
+    }
+    return { g, end };
+  },
+  bell(G, e, when) {   // FM: a bright strike that settles into a pure tone
+    const { ctx } = G, f0 = hz(e.m), v = .13 * (e.v == null ? 1 : e.v), d = e.d || 2.8, r = e.r || 3.01;
+    const car = ctx.createOscillator(), mod = ctx.createOscillator(), mg = ctx.createGain(), oct = ctx.createOscillator(), og = ctx.createGain(), g = ctx.createGain();
+    car.frequency.value = f0; mod.frequency.value = f0 * r; oct.frequency.value = f0 * 2; og.gain.value = .14;
+    mg.gain.setValueAtTime(f0 * 1.2, when); mg.gain.exponentialRampToValueAtTime(f0 * .015, when + .4);
+    mod.connect(mg); mg.connect(car.frequency); car.connect(g); oct.connect(og); og.connect(g);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .005);
+    g.gain.exponentialRampToValueAtTime(v * .3, when + .35); g.gain.exponentialRampToValueAtTime(.0001, when + d);
+    sndOut(G, g, e.pan, .6);
+    [car, mod, oct].forEach(o => { o.start(when); o.stop(when + d + .05); });
+    return { g, end: when + d };
+  },
+  pluck(G, e, when) {
+    const { ctx } = G, f0 = hz(e.m + (e.lo ? 12 : 0)), v = .1 * (e.v == null ? 1 : e.v), d = .9;
+    const o = ctx.createOscillator(), o2 = ctx.createOscillator(), g2 = ctx.createGain(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    o.type = "triangle"; o.frequency.value = f0; o2.frequency.value = f0 * 2; g2.gain.value = .25;
+    f.type = "lowpass"; f.frequency.setValueAtTime(3200, when); f.frequency.exponentialRampToValueAtTime(700, when + .4);
+    o.connect(f); o2.connect(g2); g2.connect(f); f.connect(g);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .004); g.gain.exponentialRampToValueAtTime(.0001, when + d);
+    sndOut(G, g, e.pan, .35);
+    [o, o2].forEach(x => { x.start(when); x.stop(when + d + .05); });
+    return { g, end: when + d };
+  },
+  whoosh(G, e, when) {   // air moving along an arc, left to right
+    const { ctx } = G, s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), g = ctx.createGain(), v = .09 * (e.v == null ? 1 : e.v);
+    s.buffer = G.noise; s.loop = true;
+    bp.type = "bandpass"; bp.Q.value = e.q || 1.1;
+    bp.frequency.setValueAtTime(e.f0 || 300, when); bp.frequency.exponentialRampToValueAtTime(e.f1 || 2600, when + e.d);
+    g.gain.setValueAtTime(.0001, when); g.gain.exponentialRampToValueAtTime(v, when + e.d * .62); g.gain.exponentialRampToValueAtTime(.0001, when + e.d * 1.08);
+    s.connect(bp); bp.connect(g);
+    let node = g;
+    if (ctx.createStereoPanner) { const p = ctx.createStereoPanner(); p.pan.setValueAtTime(e.p0 || 0, when); p.pan.linearRampToValueAtTime(e.p1 || 0, when + e.d); g.connect(p); node = p; }
+    node.connect(G.dry); const ws = ctx.createGain(); ws.gain.value = .45; node.connect(ws); ws.connect(G.wet);
+    s.start(when, (e.t * 7.3) % 1.5); s.stop(when + e.d * 1.1);
+    return { g, end: when + e.d * 1.1 };
+  },
+  swell(G, e, when) {   // a breath that opens up: noise through a rising filter
+    const { ctx } = G, s = ctx.createBufferSource(), lp = ctx.createBiquadFilter(), g = ctx.createGain(), v = .07 * (e.v == null ? 1 : e.v);
+    s.buffer = G.noise; s.loop = true; lp.type = "lowpass"; lp.Q.value = .7;
+    lp.frequency.setValueAtTime(180, when); lp.frequency.exponentialRampToValueAtTime(e.f1 || 5000, when + e.d);
+    g.gain.setValueAtTime(.0001, when); g.gain.exponentialRampToValueAtTime(v, when + e.d); g.gain.exponentialRampToValueAtTime(.0001, when + e.d + .6);
+    s.connect(lp); lp.connect(g); sndOut(G, g, 0, .6);
+    s.start(when, (e.t * 3.1) % 1.5); s.stop(when + e.d + .7);
+    return { g, end: when + e.d + .7 };
+  },
+  shimmer(G, e, when) {   // high, slow and quiet: the glow of the Next
+    const { ctx } = G, g = ctx.createGain(), lv = .02;
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(lv, when + 2); g.gain.setValueAtTime(lv, when + e.d - 3); g.gain.linearRampToValueAtTime(0, when + e.d);
+    [86, 90, 93].forEach((m, i) => {
+      const o = ctx.createOscillator(), lfo = ctx.createOscillator(), lg = ctx.createGain(), vg = ctx.createGain();
+      o.frequency.value = hz(m); vg.gain.value = .5; lfo.frequency.value = .21 + i * .07; lg.gain.value = .45;
+      lfo.connect(lg); lg.connect(vg.gain); o.connect(vg); vg.connect(g);
+      [o, lfo].forEach(x => { x.start(when); x.stop(when + e.d + .1); });
+    });
+    sndOut(G, g, 0, 1.2);
+    return { g, end: when + e.d };
+  },
+  thump(G, e, when) {   // a soft low landing
+    const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain(), v = .32 * (e.v == null ? 1 : e.v);
+    o.frequency.setValueAtTime(120, when); o.frequency.exponentialRampToValueAtTime(46, when + .35);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .012); g.gain.exponentialRampToValueAtTime(.0001, when + 1.3);
+    o.connect(g); sndOut(G, g, 0, .2); o.start(when); o.stop(when + 1.35);
+    return { g, end: when + 1.35 };
+  },
+  tick(G, e, when) {   // a key pressed
+    const { ctx } = G, s = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = G.noise; hp.type = "highpass"; hp.frequency.value = 2400;
+    g.gain.setValueAtTime(.06, when); g.gain.exponentialRampToValueAtTime(.0001, when + .03);
+    s.connect(hp); hp.connect(g); sndOut(G, g, .1, .15); s.start(when, (e.t * 5.7) % 1.5); s.stop(when + .04);
+    return { g, end: when + .04 };
+  },
+  tap(G, e, when) {   // a finger on glass
+    const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.setValueAtTime(540, when); o.frequency.exponentialRampToValueAtTime(240, when + .07);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(.16, when + .004); g.gain.exponentialRampToValueAtTime(.0001, when + .16);
+    o.connect(g); sndOut(G, g, 0, .1); o.start(when); o.stop(when + .18);
+    return { g, end: when + .18 };
+  }
+};
+
+// live: scheduled a little ahead of the film's clock; a tap to the next scene or a replay cuts and catches up
+const snd = { on: store.get(SND_KEY, 1) !== 0, G: null, sched: 0, last: -1, live: [] };
+function sndEnsure() {
+  if (snd.G) return snd.G;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return null;
+  try { snd.G = sndGraph(new AC({ latencyHint: "playback" })); } catch (e) { return null; }
+  return snd.G;
+}
+function sndUnlock() {   // browsers allow sound only after a tap, a click or a key
+  if (!snd.on || !intro.open || intro.rec) return;
+  const G = sndEnsure(); if (!G) return;
+  snd.last = -1;
+  if (G.ctx.state !== "running") G.ctx.resume().then(sndUI, () => {});
+  sndUI();
+}
+function sndCut(at, fade) {
+  for (const v of snd.live) for (const g of [v.g, v.g2]) {
+    if (!g) continue;
+    try { g.gain.cancelScheduledValues(at); g.gain.setValueAtTime(g.gain.value, at); g.gain.linearRampToValueAtTime(0, at + (fade || .3)); } catch (e) {}
+  }
+  snd.live = [];
+}
+function sndTick(t) {
+  const G = snd.G;
+  if (!snd.on || !G || G.ctx.state !== "running" || intro.rec) return;
+  const now = G.ctx.currentTime;
+  if (snd.last < 0 || t < snd.last - .05 || t - snd.last > .3) {   // a start, a tap ahead, or a replay
+    sndCut(now); snd.sched = t;
+    G.master.gain.cancelScheduledValues(now); G.master.gain.setValueAtTime(G.master.gain.value, now); G.master.gain.linearRampToValueAtTime(SND_GAIN, now + .25);
+    for (const e of SCORE) if (e.k === "chord" && e.t <= t && t < e.t + e.dur) snd.live.push(SYN.chord(G, e, now + .03, t - e.t));
+  }
+  snd.last = t;
+  const ahead = t + .35;
+  for (const e of SCORE) {
+    if (e.t < snd.sched) continue;
+    if (e.t >= ahead) break;
+    const v = SYN[e.k](G, e, Math.max(now + .01, now + (e.t - t)), 0);
+    if (v) snd.live.push(v);
+  }
+  snd.sched = Math.max(snd.sched, ahead);
+  snd.live = snd.live.filter(v => v.end > now);
+}
+function sndStop() {
+  const G = snd.G; if (!G) return;
+  const now = G.ctx.currentTime;
+  G.master.gain.cancelScheduledValues(now); G.master.gain.setValueAtTime(G.master.gain.value, now); G.master.gain.linearRampToValueAtTime(0, now + .6);
+  sndCut(now, .6); snd.last = -1;
+  setTimeout(() => { if ((!intro.open || !snd.on) && G.ctx.state === "running") G.ctx.suspend().catch(() => {}); }, 700);
+}
+const SND_ON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>`;
+const SND_OFF = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>`;
+function sndUI() {
+  const b = $("inSnd"); if (!b) return;
+  const waiting = snd.on && (!snd.G || snd.G.ctx.state !== "running"), key = `${snd.on}|${waiting}`;
+  if (b.dataset.k === key) return;   // redraw only on a change: a redraw between press and release would lose the click
+  b.dataset.k = key;
+  b.innerHTML = (snd.on ? SND_ON : SND_OFF) + (waiting ? `<span class="sl">Tap for sound</span>` : "");
+  b.setAttribute("aria-pressed", snd.on ? "true" : "false");
+  b.setAttribute("aria-label", snd.on ? "Sound on. Turn sound off" : "Sound off. Turn sound on");
+  b.classList.toggle("wait", waiting);
+}
+$("inSnd").addEventListener("click", () => {
+  snd.on = !snd.on; store.set(SND_KEY, snd.on ? 1 : 0);
+  if (snd.on) sndUnlock(); else sndStop();
+  sndUI();
+});
+introEl.addEventListener("pointerdown", sndUnlock);
+document.addEventListener("visibilitychange", () => {
+  const G = snd.G; if (!G || !intro.open) return;
+  if (document.hidden) G.ctx.suspend().catch(() => {});
+  else if (snd.on) { snd.last = -1; G.ctx.resume().catch(() => {}); }
+});
+// the video export: the same score, rendered offline to a WAV, read back in chunks
+function wavOf(buf) {
+  const ch = buf.numberOfChannels, n = buf.length, sr = buf.sampleRate, out = new DataView(new ArrayBuffer(44 + n * ch * 2));
+  const str = (o, s) => { for (let i = 0; i < s.length; i++) out.setUint8(o + i, s.charCodeAt(i)); };
+  str(0, "RIFF"); out.setUint32(4, 36 + n * ch * 2, true); str(8, "WAVEfmt "); out.setUint32(16, 16, true); out.setUint16(20, 1, true);
+  out.setUint16(22, ch, true); out.setUint32(24, sr, true); out.setUint32(28, sr * ch * 2, true); out.setUint16(32, ch * 2, true); out.setUint16(34, 16, true);
+  str(36, "data"); out.setUint32(40, n * ch * 2, true);
+  const data = Array.from({ length: ch }, (_, c) => buf.getChannelData(c));
+  for (let i = 0, o = 44; i < n; i++) for (let c = 0; c < ch; c++, o += 2) out.setInt16(o, Math.max(-1, Math.min(1, data[c][i])) * 32767, true);
+  return new Uint8Array(out.buffer);
+}
+Object.assign(window.__pastforward, {
+  introAudio: async (sr = 48000) => {
+    const len = INTRO_END + 4.6, AC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    const ctx = new AC(2, Math.ceil(len * sr), sr), G = sndGraph(ctx);
+    for (const e of SCORE) {
+      if (e.k === "chord" && e.t < 0) SYN.chord(G, e, 0, -e.t);
+      else if (e.t >= 0 && e.t < len) SYN[e.k](G, e, e.t, 0);
+    }
+    window.__pfWav = wavOf(await ctx.startRendering());
+    return window.__pfWav.length;
+  },
+  soundState: () => ({ on: snd.on, state: snd.G ? snd.G.ctx.state : "none", voices: snd.live.length, button: $("inSnd").textContent.trim() || ($("inSnd").getAttribute("aria-pressed") === "true" ? "on" : "off") }),
+  introAudioChunk: (i, size) => { let s = ""; const a = window.__pfWav.subarray(i * size, (i + 1) * size); for (let k = 0; k < a.length; k += 32768) s += String.fromCharCode.apply(null, a.subarray(k, k + 32768)); return btoa(s); }
 });
 
 /* ---------- night sky ---------- */
