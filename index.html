@@ -2923,7 +2923,7 @@ function inEchoes(c, W, H, lt) {
 
 /* 48 rhymes: three more, drawn quickly */
 function inRows(c, W, H, lt) {
-  const top = H * .03, rowH = (H * .98 - top) / I_ROWS.length, xs = [W * .16, W * .5, W * .84];
+  const top = H * .075, rowH = (H * .98 - top) / I_ROWS.length, xs = [W * .16, W * .5, W * .84];   // clear of the moon's strip of sky
   const mp = iEase(c01(lt / .7));
   if (mp < 1) {   // the mark from the bridge shrinks into the first row
     const m0 = METHOD_MARK(W, H), y1 = Math.round(top + Math.min(40, rowH * .4)), m1 = markGeo(W, y1, xs[2] - xs[0]);
