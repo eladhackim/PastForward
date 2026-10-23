@@ -2691,7 +2691,7 @@ const I_SEERS = [
   { a: "2005", b: "2008", early: "3 years early", who: "Michael Burry", did: "Bets against the housing bubble before the crash." },
   { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warns the world is not ready for the next pandemic." }
 ];
-const SEER = 2.7;
+const SEER = 5;   // each person stays long enough to read
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
@@ -2927,18 +2927,27 @@ function inRows(c, W, H, lt) {
 /* the backdrop: our world from orbit. Stars drift as if we were circling, a moon fills from crescent to full
    across the film, and a dawn grows on the horizon until the logo. Kept low so the story stays in front. */
 const BG_STARS = (() => { const r = mulberry(2026); return Array.from({ length: 110 }, () => ({ x: r(), y: r() * .86, s: .3 + r() * 1.1, p: r() * 6.28, v: .3 + r() * 1.2 })); })();
-function inMoon(c, x, y, r, ph) {
+// the moon: lit on the side that faces the sun, a little textured, its dark side faintly lit by the earth
+const MOON_SEAS = [[-.26, -.22, .34, .25, .17], [.2, -.34, .22, .15, .13], [.08, .14, .3, .21, .15], [-.36, .3, .19, .14, .12], [.36, .06, .15, .12, .1], [-.02, .52, .16, .1, .08]];
+function inMoon(c, x, y, r, ph, rot) {
   const lit = (1 - Math.cos(ph)) / 2;
-  const gl = c.createRadialGradient(x, y, r * .8, x, y, r * 4.5);
-  gl.addColorStop(0, `rgba(230,225,255,${(.03 + .1 * lit).toFixed(3)})`); gl.addColorStop(1, "rgba(230,225,255,0)");
-  c.fillStyle = gl; c.beginPath(); c.arc(x, y, r * 4.5, 0, 6.2832); c.fill();
-  c.fillStyle = "rgba(230,225,255,.07)"; c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fill();   // the dark part, just visible
+  const gl = c.createRadialGradient(x, y, r * .9, x, y, r * 5);
+  gl.addColorStop(0, `rgba(230,225,255,${(.02 + .09 * lit).toFixed(3)})`); gl.addColorStop(1, "rgba(230,225,255,0)");
+  c.fillStyle = gl; c.beginPath(); c.arc(x, y, r * 5, 0, 6.2832); c.fill();
+  c.save(); c.translate(x, y);
+  c.fillStyle = "rgba(190,196,230,.09)"; c.beginPath(); c.arc(0, 0, r, 0, 6.2832); c.fill();
+  c.save();
+  c.rotate(rot);   // the lit half is drawn on the right, then turned to face the sun
   const rx = r * Math.abs(Math.cos(ph));
-  c.fillStyle = "rgba(244,240,228,.78)";
-  c.beginPath(); c.arc(x, y, r, -Math.PI / 2, Math.PI / 2, false);
-  if (ph < Math.PI / 2) c.ellipse(x, y, rx, r, 0, Math.PI / 2, -Math.PI / 2, true);
-  else c.ellipse(x, y, rx, r, 0, Math.PI / 2, Math.PI * 1.5, false);
-  c.fill();
+  c.beginPath(); c.arc(0, 0, r, -Math.PI / 2, Math.PI / 2, false);
+  if (ph < Math.PI / 2) c.ellipse(0, 0, rx, r, 0, Math.PI / 2, -Math.PI / 2, true);
+  else c.ellipse(0, 0, rx, r, 0, Math.PI / 2, Math.PI * 1.5, false);
+  c.rotate(-rot); c.clip();
+  const sg = c.createRadialGradient(-r * .3, -r * .3, r * .1, 0, 0, r);
+  sg.addColorStop(0, "rgba(244,240,232,.8)"); sg.addColorStop(1, "rgba(200,196,192,.7)");
+  c.fillStyle = sg; c.fillRect(-r, -r, 2 * r, 2 * r);
+  for (const [dx, dy, a, b, al] of MOON_SEAS) { c.fillStyle = `rgba(118,116,134,${al})`; c.beginPath(); c.ellipse(dx * r, dy * r, a * r, b * r, .4, 0, 6.2832); c.fill(); }
+  c.restore(); c.restore();
 }
 // the land, from the app's own dot map, placed on a globe (the map is a Robinson-style projection: equator at row 38.3)
 const GLOBE = (() => {
@@ -2954,6 +2963,43 @@ const GLOBE = (() => {
   });
   return pts;
 })();
+// the moon's road: it rises from behind the earth at the left edge, drifts along the strip of sky above the words,
+// and sets at the right edge beside the sunrise. Sampled once per size, walked by distance so its speed stays even.
+let MOON_PATH = null;
+function moonPath(W, H, limbY, yb, r) {
+  if (MOON_PATH && MOON_PATH.W === W && MOON_PATH.H === H && MOON_PATH.yb === yb) return MOON_PATH;
+  const low = x => limbY(x * W) + H * .05, mid = x => (yb + limbY(x * W)) / 2;
+  const P = [[.055, low(.055)], [.06, mid(.06)], [.08, yb + 1.6 * r], [.16, yb + .4 * r], [.5, yb], [.84, yb + .4 * r], [.92, yb + 1.6 * r], [.94, mid(.94)], [.945, low(.945)]]
+    .map(([x, y]) => [x * W, y]);
+  const N = 24, pts = [];
+  for (let i = 0; i < P.length - 1; i++) {
+    const p0 = P[Math.max(0, i - 1)], p1 = P[i], p2 = P[i + 1], p3 = P[Math.min(P.length - 1, i + 2)];
+    for (let k = 0; k < N; k++) {
+      const q = k / N, q2 = q * q, q3 = q2 * q;
+      pts.push([0, 1].map(d => .5 * (2 * p1[d] + (p2[d] - p0[d]) * q + (2 * p0[d] - 5 * p1[d] + 4 * p2[d] - p3[d]) * q2 + (3 * p1[d] - p0[d] - 3 * p2[d] + p3[d]) * q3)));
+    }
+  }
+  pts.push(P[P.length - 1]);
+  const len = [0];
+  for (let i = 1; i < pts.length; i++) len.push(len[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  return MOON_PATH = { W, H, yb, pts, len, L: len[len.length - 1], a: len[3 * N], b: len[5 * N] };
+}
+function moonAt(mp, d) {
+  let i = 1; while (i < mp.len.length - 1 && mp.len[i] < d) i++;
+  const f = c01((d - mp.len[i - 1]) / ((mp.len[i] - mp.len[i - 1]) || 1));
+  return [lerp(mp.pts[i - 1][0], mp.pts[i][0], f), lerp(mp.pts[i - 1][1], mp.pts[i][1], f)];
+}
+// a smooth, never-reversing curve through [time, value] keys (monotone cubic), so speeds blend between legs
+function monoKeys(K, t) {
+  const n = K.length;
+  if (t <= K[0][0]) return K[0][1];
+  if (t >= K[n - 1][0]) return K[n - 1][1];
+  const sl = K.slice(1).map((k, i) => (k[1] - K[i][1]) / (k[0] - K[i][0]));
+  const m = K.map((_, i) => i === 0 ? sl[0] : i === n - 1 ? sl[n - 2] : sl[i - 1] * sl[i] <= 0 ? 0 : 2 / (1 / sl[i - 1] + 1 / sl[i]));
+  let i = 0; while (t > K[i + 1][0]) i++;
+  const h = K[i + 1][0] - K[i][0], q = (t - K[i][0]) / h, q2 = q * q, q3 = q2 * q;
+  return (2 * q3 - 3 * q2 + 1) * K[i][1] + (q3 - 2 * q2 + q) * h * m[i] + (3 * q2 - 2 * q3) * K[i + 1][1] + (q3 - q2) * h * m[i + 1];
+}
 function inBackdrop(c, W, H, t) {
   const u = c01(t / INTRO_END);
   const g = c.createLinearGradient(0, 0, 0, H);
@@ -2965,14 +3011,21 @@ function inBackdrop(c, W, H, t) {
     c.fillStyle = `rgba(232,226,255,${(.12 + .3 * (.5 + .5 * Math.sin(t * st.v + st.p))).toFixed(3)})`;
     c.beginPath(); c.arc(x, st.y * H * .5, st.s, 0, 6.2832); c.fill();
   }
-  inMoon(c, W * .84, H * .078, Math.min(W, H) * .03, Math.PI * (.2 + .8 * u));
-  // the earth, large and quiet behind everything. It turns once over the film, and the sun rises on it at the end.
+  // the earth, large and quiet behind everything. It turns once over the film; the sun climbs to its horizon,
+  // and the moon rises from behind it, crosses the sky and sets into the dawn: the three move together.
   const R = Math.min(W * 1.35, H * 1.1), cx = W / 2, cy = H * .3 + R;
+  const limbY = x => cy - Math.sqrt(Math.max(0, R * R - (x - cx) ** 2));
+  const sx = lerp(W * 1.16, W * .86, u), sy = limbY(sx) + H * .07 * (1 - iOut(u));
+  // its strip of sky: halfway between the progress line and the first line of the story, on any screen
+  const sky = intro.sky || [H * .095, H * .135], mr = Math.max(7, Math.min(16, Math.min(W, H) * .025));
+  const mp = moonPath(W, H, limbY, Math.round((sky[0] + sky[1]) / 2), mr);
+  const [mx, my] = moonAt(mp, monoKeys([[0, 0], [13, mp.a], [INTRO_END - 12, mp.b], [INTRO_END + 2, mp.L]], t));
+  inMoon(c, mx, my, mr, Math.PI * c01(Math.hypot(sx - mx, sy - my) / (W * 1.05)), Math.atan2(sy - my, sx - mx));
   const sun = (() => { const v = [.92, .3, lerp(-.55, .3, u)], n = Math.hypot(...v); return v.map(a => a / n); })();
   const halo = c.createRadialGradient(cx, cy, R - 2, cx, cy, R + H * .06);
   halo.addColorStop(0, "rgba(120,180,255,.22)"); halo.addColorStop(.3, "rgba(110,150,255,.08)"); halo.addColorStop(1, "rgba(100,120,255,0)");
   c.fillStyle = halo; c.fillRect(0, 0, W, H);
-  const dx = W * .88, dy = cy - Math.sqrt(R * R - (dx - cx) ** 2), glow = .06 + .42 * u * u;
+  const dx = sx, dy = sy, glow = .06 + .42 * u * u;
   const dg = c.createRadialGradient(dx, dy, 0, dx, dy, R * .9);
   dg.addColorStop(0, `rgba(255,198,142,${glow.toFixed(3)})`); dg.addColorStop(.4, `rgba(255,170,150,${(glow * .25).toFixed(3)})`); dg.addColorStop(1, "rgba(255,170,150,0)");
   c.fillStyle = dg; c.fillRect(0, 0, W, H);
@@ -3090,17 +3143,21 @@ function inYou(c, W, H, lt) {
 function inPrepare(c, W, H, lt) {
   I_SEERS.forEach((e, j) => {
     const l = lt - .6 - j * SEER; if (l < 0 || l > SEER) return;
-    c.save(); c.globalAlpha *= c01(l / .45) * c01((SEER - l) / .4);
+    c.save(); c.globalAlpha *= c01(l / .5) * c01((SEER - l) / .55);
     const cy = Math.round(H * .3), x1 = W * .2, x2 = W * .8, h = Math.min(44, H * .12);
-    inArc(c, x1, x2, cy, h, iEase(c01((l - .35) / 1.1)), RGB.next, INK, true, 2.4);
-    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - .9) / .4).toFixed(3)})`);
-    inDot(c, x1, cy, RGB.next, 7, c01(l / .4), true);
-    inDot(c, x2, cy, INK, 7, c01((l - 1.35) / .4));
+    inArc(c, x1, x2, cy, h, iEase(c01((l - .5) / 1.7)), RGB.next, INK, true, 2.4);
+    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 1.5) / .5).toFixed(3)})`);
+    inDot(c, x1, cy, RGB.next, 7, c01(l / .45), true);
+    inDot(c, x2, cy, INK, 7, c01((l - 2) / .45));
     inText(c, e.a, x1, cy + 28, FONT.monoB(14), `rgb(${RGB.next})`, W);
-    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 1.35) / .4).toFixed(3)})`, W);
+    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 2) / .45).toFixed(3)})`, W);
+    c.save(); c.globalAlpha *= c01((l - .2) / .5);
     inText(c, e.who, W / 2, cy + 78, `500 ${W < 400 ? 22 : 26}px "Newsreader", Georgia, serif`, `rgb(${INK})`);
+    c.restore();
+    c.save(); c.globalAlpha *= c01((l - .75) / .5);
     c.font = FONT.mono(15);
     wrapLines(c, e.did, W * .8, 2).forEach((ln, k) => inText(c, ln, W / 2, cy + 106 + k * 21, FONT.mono(15), `rgba(${INK},.75)`));
+    c.restore();
     c.restore();
   });
   const fl = lt - .6 - I_SEERS.length * SEER;
@@ -3235,6 +3292,8 @@ function inSize() {
   if (w !== intro.w || h !== intro.h || d !== intro.dpr) { intro.w = w; intro.h = h; intro.dpr = d; inCv.width = Math.round(w * d); inCv.height = Math.round(h * d); }
   const fw = Math.max(1, introEl.clientWidth), fh = Math.max(1, introEl.clientHeight);
   if (fw !== intro.fw || fh !== intro.fh || d !== intro.bd) { intro.fw = fw; intro.fh = fh; intro.bd = d; inBg.width = Math.round(fw * d); inBg.height = Math.round(fh * d); }
+  const ir = introEl.getBoundingClientRect(), pr = $("inProg").getBoundingClientRect();
+  intro.sky = [pr.bottom - ir.top, r.top - ir.top + r.height * .03];
 }
 function inCaption(i) {
   const s = SCENES[i], cp = CAP[s.id], card = $("inCard");
