@@ -680,7 +680,7 @@ const LEX = {
   medium: ["Medium rhyme", "Alike in important ways, different in others.", "1845 Railway Mania → 2024 AI build-out"],
   weak: ["Weak rhyme", "Alike on the surface; the differences run deep.", "1871 Paris Commune → 2018 Yellow Vests"],
   coda: ["Aftermath", "What came after Then: the consequences, and the next turn of events.", "After 1918: new ministries of health, then the Roaring Twenties"],
-  counterpoint: ["Counterpoint", "What the rest of the world was doing that year, region by region. From music: separate melodies played at once.", "Europe, 1918: the Armistice ends the fighting"],
+  world: ["The world that year", "What was happening in other parts of the world in the same year, region by region, on a map.", "1918 in Europe: the Armistice ends the fighting"],
   murmurs: ["Murmurs", "Early signs that a rhyme may be sounding again.", "Bird flu spreading between mammals"],
   brk: ["The Break", "Where the comparison stops working. Every rhyme has one.", "In 1918 doctors did not know a virus caused flu"],
   openings: ["Openings", "Who gained last time, and what may be in demand if the rhyme returns: ideas to build, work on and learn.", "Build: air and wastewater monitoring for new pathogens"],
@@ -689,7 +689,7 @@ const LEX = {
   hear: ["I hear it", "The community vote on a rhyme. Results read “82% hear it”.", "The pandemic rhyme: 82% hear it"],
   trace: ["Trace", "An Ask PastForward answer: a rhyme researched on request by AI, for subscribers.", "“Is the AI boom like the dot-com bubble?”"]
 };
-const LEX_GROUPS = [["The shape of a rhyme", ["rhyme", "motif", "echo", "seed", "match", "then", "today", "cadence", "next", "due", "score"]], ["How strongly it rhymes", ["strong", "medium", "weak"]], ["Reading a rhyme", ["coda", "counterpoint", "murmurs", "brk", "openings"]], ["You and PastForward", ["lifeline", "dailymatch", "hear", "trace"]]];
+const LEX_GROUPS = [["The shape of a rhyme", ["rhyme", "motif", "echo", "seed", "match", "then", "today", "cadence", "next", "due", "score"]], ["How strongly it rhymes", ["strong", "medium", "weak"]], ["Reading a rhyme", ["coda", "world", "murmurs", "brk", "openings"]], ["You and PastForward", ["lifeline", "dailymatch", "hear", "trace"]]];
 const RKEY = { 3: "strong", 2: "medium", 1: "weak" };
 const RHYME = { 3: LEX.strong[0], 2: LEX.medium[0], 1: LEX.weak[0] };
 const L = k => LEX[k][0];
@@ -1242,7 +1242,7 @@ function openDeep(tab, region) {
   const hasOpp = !!p.opp;
   const tlist = k === "next"
     ? [["story", "Story"], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])]
-    : [["story", "Story"], ["world", L("counterpoint")], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])];
+    : [["story", "Story"], ["world", `World in ${fmtY(p[k].year)}`], ["chain", L("score")], ...(hasOpp ? [["opp", L("openings")]] : [])];
   if (tab === "why") tab = "chain";
   deepTab = tab && tlist.some(t => t[0] === tab) ? tab : "story";
   tabs.innerHTML = tlist.map(([id, lab]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${id === deepTab}">${esc(lab)}</button>`).join("");
@@ -1423,7 +1423,7 @@ function howHTML() {
   return `<button type="button" class="secondary" data-intro="1" style="width:100%">▶&#xFE0E; Watch the intro</button>
     <p class="hook">Every rhyme has a ${T("match", "match")}: an event from history (Then) and one you lived through (Today). The years between them are its ${T("cadence", "cadence")}. Count them forward once more and you reach the Next: where the rhyme may sound again.</p>
     <div class="eq"><span class="ey t">1918</span><span class="en">The Spanish flu</span><span class="gap">+ 102 years</span><span class="ey n">2020</span><span class="en">COVID-19</span><span class="gap">+ 102 years again</span><span class="ey x">c. 2122</span><span class="en">The next pandemic</span></div>
-    ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. The button at the bottom follows a rhyme from Then to Today to Next. Open the full story for the counterpoint (the rest of the world that year), the score of every echo, and openings.")}
+    ${box("Moving around", "Swipe the timeline to travel through time; the event in the middle comes into focus. The button at the bottom follows a rhyme from Then to Today to Next. Open the full story for what was happening around the world that year, every echo of the rhyme, and openings.")}
     ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, medium or weak by how readily historians accept the comparison, and shows how many times it has echoed: the more echoes, the stronger the signal.")}
     <button type="button" class="secondary" data-lex="" style="width:100%">The lexicon: words PastForward uses</button>`;
 }
@@ -1945,7 +1945,7 @@ function worldHTML(yr, home, k) {
   const w = WORLD[yr]; if (!w) return "<p class='txt'>No snapshot for this year.</p>";
   const hasHome = home && home !== "world" && w[home];
   const order = (hasHome ? [home, ...RORDER.filter(r => r !== home)] : RORDER.slice()).filter(r => w[r]);
-  return `<p class="wnote">${T("counterpoint")}: the rest of the world in ${yr}. Tap a region for more.</p><div class="wmapbox"><canvas id="wmap" role="img" aria-label="World map of ${yr}. Tap a region."></canvas></div>
+  return `<p class="wnote">What else was happening around the world in ${fmtY(yr)}, region by region. Tap a region to read more.</p><div class="wmapbox"><canvas id="wmap" role="img" aria-label="World map of ${yr}. Tap a region."></canvas></div>
     <ul class="wl world-${k}">${order.map(r => `<li data-li="${r}" class="${r === home ? "home" : ""}"><button type="button" data-r="${r}" aria-expanded="false">
       <span class="wd0"></span><span class="wr">${regionName(r, yr)}</span><span class="wh">${esc(headline(yr, r))}</span>${r === home ? '<span class="tag">Here</span>' : "<span></span>"}
       <span class="wdet" hidden>${esc(w[r])}</span></button></li>`).join("")}</ul>`;
