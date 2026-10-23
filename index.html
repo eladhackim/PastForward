@@ -493,6 +493,7 @@ button.op:hover { border-color: rgba(var(--ink-rgb), .35); }
 .ic-l .x { color: var(--next); }
 .in-brand { display: inline-block; margin-bottom: 6px; font: 400 clamp(40px, 12vw, 72px)/1 var(--f-then); }
 .in-brand .p { color: var(--then); } .in-brand .f { color: var(--next); }
+.ic-brand { margin: 0; font-size: clamp(36px, 10vw, 60px); }   /* the method's name, above its three steps */
 .intro.rec .in-top, .intro.rec .in-prog { visibility: hidden; }
 .intro.nocap .in-cap { display: none; }
 .in-top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; max-width: 640px; min-height: 40px; margin: 0 auto; }
@@ -2807,7 +2808,7 @@ function readTimes(words, t0) {   // when each word lights, on the beat: a sixte
 const CARDS = {
   cycles: ["For thousands of years, humanity has moved in cycles.", "Plagues. Crashes. Revolutions. Inventions.", "Each one fades, then returns in a new form."],
   read: ["Read the pattern.", "Find where we stand in the cycle.", `And you can see <span class="x">what may come next.</span>`],
-  method: ["One method.", "Find the pattern. Measure the rhythm. Count forward."],
+  method: [`<span class="in-brand ic-brand"><span class="p">Past</span><span class="f">Forward</span></span>`, "Find the pattern. Measure the rhythm. Count forward."],
   onrecord: ["Some people sensed the cycle, and prepared."],
   s1: [`<span class="ic-k now">Step 1</span>Find the pattern.`],
   s2: [`<span class="ic-k then">Step 2</span>Measure the rhythm.`],
@@ -2851,7 +2852,7 @@ const SCENES = [
   { id: "then", view: "tl", dur: 6 * BEAT, cam: [(I_PRE_Y + I_THEN) / 2, (I_THEN - I_PRE_Y) * 1.9] },   // 1817, then 1918
   { id: "now", view: "tl", dur: 5.6, cam: [(I_PRE_Y + I_NOW) / 2, (I_NOW - I_PRE_Y) * 1.35] },          // the same gap again: 2020
   { id: "s3", view: "card", card: "s3", dur: cardDur("s3") },
-  { id: "next", view: "tl", dur: 6.4, cam: [(I_PRE_Y + I_NEXT) / 2, (I_NEXT - I_PRE_Y) * 1.22] },      // and once more: c. 2122
+  { id: "next", view: "tl", dur: 9 * BEAT, cam: [(I_PRE_Y + I_NEXT) / 2, (I_NEXT - I_PRE_Y) * 1.22] },      // and once more: c. 2122
   { id: "method", view: "method", card: "method", join: true, dur: cardDur("method") },
   { id: "more", view: "more", join: true, dur: (2 + 2 * I_ROWS.length) * BEAT },
   { id: "you", view: "you", dur: YOU_T0 + BEAT + I_LIFE * QB + 3 * BEAT },
@@ -2881,8 +2882,11 @@ function capWords(id) {   // the caption's title then its line, as word spans, i
 }
 for (const s of SCENES) {   // a scene lasts at least until its caption has been read, and rested on
   if (s.dur === Infinity || s.view === "card" || s.id === "title" || s.id === "demo") continue;
-  const ts = readTimes(capWords(s.id), CAP_AT);
-  if (ts.length) s.dur = Math.max(s.dur, ts[ts.length - 1] + LIT + HOLD + .2);
+  const wait = s.id === "then" ? 4 * BEAT : 0;   // the 1918 caption waits for 1918 to land (at most four beats in)
+  const linger = s.id === "then" || s.id === "now" ? 2 * BEAT : 0;   // Then and Today: two more beats to let it sink in
+  const ts = readTimes(capWords(s.id), CAP_AT + wait);
+  if (ts.length) s.dur = Math.max(s.dur, ts[ts.length - 1] + LIT + HOLD + linger + .2);
+  if (s.id === "now") s.dur = Math.max(s.dur, 5 * BEAT + linger);   // the arc lands on 2020 (at most five beats in), then rests
 }
 // every scene starts and ends on a beat, and the film is a whole number of bars (the title takes up the rest),
 // so it opens on a downbeat and the last chord resolves on one
@@ -2984,11 +2988,28 @@ function inTimeline(c, W, H, t, bare) {
   const h = Math.min(H * .34, (xs[1] - xs[0]) * .42);
   if (!bare) {
   const a0 = inArc(c, xp, xs[0], y0, h, pArc0, INK, RGB.then, false);
-  if (a0) inText(c, `+${Math.round((I_THEN - I_PRE_Y) * pArc0)} years`, a0.x, a0.y - 12, FONT.monoB(15), `rgba(${INK},${c01(pArc0 * 3).toFixed(3)})`);
+  const eq0 = T("next") + 4 * BEAT, shortL = t >= T("next") && W < 520, lab = n => shortL ? `${n} yrs` : `+${n} years`;   // step 3: the gaps read as an equation
+  if (a0) inText(c, lab(Math.round((I_THEN - I_PRE_Y) * pArc0)), a0.x, a0.y - 12, FONT.monoB(15), `rgba(${INK},${c01(pArc0 * 3).toFixed(3)})`);
   const a1 = inArc(c, xs[0], xs[1], y0, h, pArc1, RGB.then, RGB.now, false);
   const a2 = inArc(c, xs[1], xs[2], y0, h, pArc2, RGB.now, RGB.next, true, 0, .94);
-  if (a1) inText(c, `+${Math.round(I_GAP * pArc1)} years`, a1.x, a1.y - 12, FONT.monoB(15), `rgba(${INK},${c01(pArc1 * 3).toFixed(3)})`);
-  if (a2) inText(c, `+${Math.round(I_GAP * pArc2)} years`, a2.x, a2.y - 12, FONT.monoB(15), `rgba(${RGB.next},${c01(pArc2 * 3).toFixed(3)})`);
+  if (a1) inText(c, lab(Math.round(I_GAP * pArc1)), a1.x, a1.y - 12, FONT.monoB(15), `rgba(${INK},${c01(pArc1 * 3).toFixed(3)})`);
+  if (a2) inText(c, lab(Math.round(I_GAP * pArc2)), a2.x, a2.y - 12, FONT.monoB(15), `rgba(${RGB.next},${c01(pArc2 * 3).toFixed(3)})`);
+  // this equals this equals this: once 2122 has landed, each gap lights on its beat, a sign arrives between them,
+  // and then all three glow together
+  if (a0 && a1 && a2 && t > eq0 - .1 && t < T("method")) {
+    const on = i => c01((t - (eq0 + i * BEAT) + .05) / .3), all = c01((t - (eq0 + 3 * BEAT)) / .6);
+    [[xp, xs[0], INK, RGB.then], [xs[0], xs[1], RGB.then, RGB.now], [xs[1], xs[2], RGB.now, RGB.next]].forEach(([x1, x2, r1, r2], i) => {
+      const g = on(i) * (1 - .55 * c01((t - (eq0 + i * BEAT)) / 1.2)) + .4 * all;
+      if (g <= 0) return;
+      c.save(); c.globalAlpha *= Math.min(1, g); c.shadowColor = `rgba(${r2},.9)`; c.shadowBlur = 14;
+      inArc(c, x1, x2, y0, h, 1, r1, r2, i === 2, 4.2, i === 2 ? .94 : 1); c.restore();
+    });
+    const ly = a1.y - 12;
+    [["≈", xs[0], 1], ["=", xs[1], 2]].forEach(([sg, x, i]) => {
+      const p = on(i); if (p <= 0) return;
+      inText(c, sg, x, ly + 1, `700 ${W < 520 ? 20 : 24}px "Hanken Grotesk", sans-serif`, `rgba(${INK},${p.toFixed(3)})`);
+    });
+  }
   if (pNext > 0) {
     const pp = c01((t - tPop) / 1.3);
     const halo = 18 + 5 * Math.sin(t * 2.6);
@@ -3699,6 +3720,7 @@ const SCORE = (() => {
   add(S("next") + BEAT, "whoosh", { d: 2 * BEAT, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
   add(S("next") + 3 * BEAT, "bell", { m: MOTIF[2], v: .78, pan: .45 }); add(S("next") + 3 * BEAT + .06, "bell", { m: 93, v: .28, pan: .6 }); add(S("next") + 3 * BEAT + .13, "bell", { m: 98, v: .16, pan: .7 });
   add(S("next") + 3 * BEAT, "shimmer", { d: 9 });
+  [74, 81, 86].forEach((m, i) => add(S("next") + (4 + i) * BEAT, "bell", { m, v: .5, pan: (i - 1) * .45 }));   // this = this = this
   // the method: the three steps gather into the mark
   add(S("method"), "swell", { d: 1.5 * BEAT, v: .3, f1: 2400 });
   MOTIF.forEach((m, j) => add(S("method") + 1.5 * BEAT + j * .06, "bell", { m, v: .4 }));
