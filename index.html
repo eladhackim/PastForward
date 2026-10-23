@@ -2714,11 +2714,15 @@ const CARDS = {
 };
 const CARD_LEAD = { cycles: 1, read: 1, method: 1 };
 const cardDur = id => .9 + CARDS[id].length * CARD_GAP + 1.9;
+// one per kind of cycle: a harvest, a crash, a tsunami, a pandemic. All on record:
+// Thales in Aristotle's Politics; Babson's speech of 5 Sep 1929; Hirai on Onagawa's 1968 planning committee; Gates's 2015 TED talk.
 const I_SEERS = [
   { a: "Winter", b: "Harvest", early: "A season early", who: "Thales, 600 BC", did: "Rented every olive press before the harvest." },
+  { a: "Sep 1929", b: "Oct 1929", early: "Weeks early", who: "Roger Babson", did: "Told investors to get out of debt before the crash." },
+  { a: "1968", b: "2011", early: "43 years early", who: "Yanosuke Hirai", did: "Had a power plant built high, recalling the tsunami of 869." },
   { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warned we were not ready for a pandemic." }
 ];
-const SEER = 6.5, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
+const SEER = 5.6, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
@@ -2744,7 +2748,7 @@ const CAP = {
   then: { k: "Step 2 · Measure the rhythm", kc: "then", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: "A new virus spreads around the world." },
   now: { k: "Step 2 · Measure the rhythm", kc: "now", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `You lived through this one. ${I_GAP} years later, the pattern returns.` },
   next: { k: "Step 3 · Count forward", kc: "next", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: `The same ${I_GAP} years, once more. That is where the pattern points.` },
-  more: { k: `${N} rhymes`, t: "Crashes, machines, disasters", l: "The same three steps, across 2,500 years of history." },
+  more: { k: `${N} rhymes`, t: "Crashes, inventions, disasters", l: "The same three steps, across 2,500 years of history." },
   you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: "Enter your own year to see yours." },
   prepare: { k: "On record", t: "Some people sensed the cycle, and prepared.", l: "" },
   demo: { k: "", t: "", l: "" },
@@ -3194,18 +3198,18 @@ function inYou(c, W, H, lt) {
 function inPrepare(c, W, H, lt) {
   I_SEERS.forEach((e, j) => {
     const l = lt - SEER_LEAD - j * SEER; if (l < 0 || l > SEER) return;
-    c.save(); c.globalAlpha *= c01(l / .6) * c01((SEER - l) / .7);
+    c.save(); c.globalAlpha *= c01(l / .55) * c01((SEER - l) / .6);
     const cy = Math.round(H * .3), x1 = W * .2, x2 = W * .8, h = Math.min(44, H * .12);
-    inArc(c, x1, x2, cy, h, iEase(c01((l - .6) / 1.8)), RGB.next, INK, true, 2.4);
-    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 2.4) / .6).toFixed(3)})`);
-    inDot(c, x1, cy, RGB.next, 7, c01(l / .5), true);
-    inDot(c, x2, cy, INK, 7, c01((l - 2.2) / .5));
+    inArc(c, x1, x2, cy, h, iEase(c01((l - .5) / 1.6)), RGB.next, INK, true, 2.4);
+    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 2.1) / .5).toFixed(3)})`);
+    inDot(c, x1, cy, RGB.next, 7, c01(l / .45), true);
+    inDot(c, x2, cy, INK, 7, c01((l - 1.95) / .45));
     inText(c, e.a, x1, cy + 28, FONT.monoB(14), `rgb(${RGB.next})`, W);
-    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 2.2) / .5).toFixed(3)})`, W);
-    c.save(); c.globalAlpha *= c01((l - .3) / .6);
+    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 1.95) / .45).toFixed(3)})`, W);
+    c.save(); c.globalAlpha *= c01((l - .25) / .55);
     inText(c, e.who, W / 2, cy + 78, `500 ${W < 400 ? 22 : 26}px "Newsreader", Georgia, serif`, `rgb(${INK})`);
     c.restore();
-    c.save(); c.globalAlpha *= c01((l - 1.1) / .6);
+    c.save(); c.globalAlpha *= c01((l - .95) / .55);
     c.font = FONT.mono(15);
     wrapLines(c, e.did, W * .8, 2).forEach((ln, k) => inText(c, ln, W / 2, cy + 106 + k * 21, FONT.mono(15), `rgba(${INK},.75)`));
     c.restore();
