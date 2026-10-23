@@ -2720,7 +2720,7 @@ const I_ECHO = (() => {
 })();
 const BEAT = 1.2;   // the intro's metronome (50 a minute): lists reveal one item per beat, so each lands and can be read before the next
 const I_LIFE = lifeEchoes(I_BY).length;
-const I_REVEAL = .45 + BEAT + .3;   // "It rhymes." arrives one beat after the first line has settled
+const I_REVEAL = 3.6;   // "It rhymes." arrives about 1.5 seconds after the first line has been read, so it can sink in
 const I_SPAN = I_NOW - I_ECHO_ALL[0].year;
 const fmtN = n => n.toLocaleString("en-US");
 // Reading: every caption and title line starts dim and its words light up at a calm reading pace,
@@ -2782,7 +2782,7 @@ const I_SEERS = [
 const SEER = 6, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
-  { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
+  { id: "title", view: "tl", dur: I_REVEAL + 3, cam: [1860, 760] },
   { id: "cycles", view: "card", card: "cycles", dur: cardDur("cycles") },
   { id: "read", view: "card", card: "read", dur: cardDur("read") },
   { id: "echoes", view: "echoes", dur: .8 + (I_ECHO.length + 1) * BEAT + 2.8 },
@@ -2822,6 +2822,19 @@ for (const s of SCENES) {   // a scene lasts at least until its caption has been
 }
 { let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
 const INTRO_END = SCENES[SCENES.length - 1].at;
+// the music's beat grid: bars of four beats, counted back from the sunrise, where the last chord lands.
+// onBeat(t) is the first beat at or after t; with ref, the first one on the same footing as ref (kick with kick).
+function onBeat(t, ref) {
+  let n = Math.floor((INTRO_END - t) / BEAT + 1e-9);
+  if (ref != null && Math.round((INTRO_END - ref) / BEAT - n) % 2) n -= 1;
+  return INTRO_END - n * BEAT;
+}
+// Step 2, measure the rhythm: 1918 lands on a kick, 2020 on the next beat after its scene settles, and the arc
+// between them lands on the kick that follows at least two beats later
+const STEP2 = (() => {
+  const then = onBeat(SCENES.find(x => x.id === "then").at + .5), now = onBeat(SCENES.find(x => x.id === "now").at + 1);
+  return { then, now, land: onBeat(now + 2 * BEAT - .01, then) };
+})();
 const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
 const c01 = v => Math.max(0, Math.min(1, v));
 const iEase = x => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -2875,8 +2888,8 @@ function inArc(c, x1, x2, y0, h, p, rgb1, rgb2, dashed, lw, cut) {   // cut: whe
 function inTimeline(c, W, H, t, bare) {
   const cam = inCam(t), k = W / cam.span, X = y => W / 2 + (y - cam.c) * k, y0 = Math.round(H * .58);
   const T = id => SCENES.find(s => s.id === id).at;
-  const pThen = c01((t - T("then") - .7) / .7), pNow = c01((t - T("now") - 1.5) / .7);
-  const pArc1 = iEase(c01((t - T("now") - 1.7) / 2.2)), pArc2 = iEase(c01((t - T("next") - 1.5) / 2.3));
+  const pThen = c01((t - STEP2.then + .06) / .35), pNow = c01((t - STEP2.now + .06) / .35);   // each dot lands on its kick
+  const pArc1 = iEase(c01((t - STEP2.now - .2) / (STEP2.land - STEP2.now - .2))), pArc2 = iEase(c01((t - T("next") - 1.5) / 2.3));
   const tPop = T("next") + 3.8, pNext = c01((t - tPop) / .7);
   const bg = (1 - c01((t - T("then")) / 1.5)) * c01((t - I_REVEAL) / .8);
   const xs = [X(I_THEN), X(I_NOW), X(I_NEXT)];
@@ -3590,10 +3603,18 @@ const SCORE = (() => {
   // echoes: each one rings a step higher; Then is warm, Today is bright
   I_ECHO.forEach((e, i) => add(S("echoes") + .8 + i * BEAT, "bell", { m: PENT[Math.min(i, PENT.length - 1)], v: e.kind === "echo" ? .42 : .62, r: e.kind === "then" ? 2.01 : 3.01, pan: (i / (I_ECHO.length - 1) - .5) * .4 }));
   // Then, Today, Next on the timeline: the motif, carried by the arcs
-  add(S("then") + .7, "bell", { m: MOTIF[0], v: .7, r: 2.01, pan: -.35 }); add(S("then") + .7, "thump", { v: .5 });
-  add(S("now") + 1.5, "bell", { m: 78, v: .3, pan: .1 });
-  add(S("now") + 1.7, "whoosh", { d: 2.2, f0: 260, f1: 1900, v: .55, p0: -.6, p1: .5 });
-  add(S("now") + 3.9, "bell", { m: MOTIF[1], v: .72, pan: .3 });
+  add(STEP2.then, "bell", { m: MOTIF[0], v: .7, r: 2.01, pan: -.35 });
+  add(STEP2.now, "bell", { m: 78, v: .3, pan: .1 });
+  add(STEP2.now + .2, "whoosh", { d: STEP2.land - STEP2.now - .2, f0: 260, f1: 1900, v: .55, p0: -.6, p1: .5 });
+  add(STEP2.land, "bell", { m: MOTIF[1], v: .72, pan: .3 });
+  // measure the rhythm: a slow beat from the moment 1918 lands, until Step 3 begins (one last kick lands on it)
+  for (let t = STEP2.then, k = 0; t < S("next") + 2 * BEAT; t += BEAT, k++) {
+    const kick = k % 2 === 0, last = t >= S("next");
+    if (last && !kick) break;
+    if (kick) add(t, "kick", { v: Math.min(1, .72 + k * .04) });
+    else if (k >= 3) add(t, "snare", { v: Math.min(1, .6 + k * .05) });   // the backbeat joins after the first bar
+    if (last) break;
+  }
   add(S("next") + 1.5, "whoosh", { d: 2.3, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
   add(S("next") + 3.8, "bell", { m: MOTIF[2], v: .78, pan: .45 }); add(S("next") + 3.86, "bell", { m: 93, v: .28, pan: .6 }); add(S("next") + 3.93, "bell", { m: 98, v: .16, pan: .7 });
   add(S("next") + 3.8, "shimmer", { d: 9 });
@@ -3748,6 +3769,29 @@ const SYN = {
     sndOut(G, g, 0, 1.2);
     return { g, end: when + e.d };
   },
+  kick(G, e, when) {   // the low landing, as a beat: shorter, with a soft click so small speakers hear where it falls
+    const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain(), v = .36 * (e.v == null ? 1 : e.v);
+    o.frequency.setValueAtTime(140, when); o.frequency.exponentialRampToValueAtTime(47, when + .28);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .006); g.gain.exponentialRampToValueAtTime(.0001, when + .8);
+    o.connect(g); sndOut(G, g, 0, .12); o.start(when); o.stop(when + .85);
+    const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), cg = ctx.createGain();
+    s.buffer = G.noise; bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = .8;
+    cg.gain.setValueAtTime(.05 * (e.v == null ? 1 : e.v), when); cg.gain.exponentialRampToValueAtTime(.0001, when + .025);
+    s.connect(bp); bp.connect(cg); sndOut(G, cg, 0, 0); s.start(when, (e.t * 2.9) % 1.5); s.stop(when + .03);
+    return { g, end: when + .85 };
+  },
+  snare(G, e, when) {   // a soft snare: a breath of bright noise over a short tone, in a big room
+    const { ctx } = G, v = .21 * (e.v == null ? 1 : e.v);
+    const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = G.noise; bp.type = "bandpass"; bp.frequency.value = 2300; bp.Q.value = .6;
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .003); g.gain.exponentialRampToValueAtTime(.0001, when + .28);
+    s.connect(bp); bp.connect(g); sndOut(G, g, .08, .75); s.start(when, (e.t * 4.3) % 1.5); s.stop(when + .3);
+    const o = ctx.createOscillator(), og = ctx.createGain(); o.type = "triangle";
+    o.frequency.setValueAtTime(220, when); o.frequency.exponentialRampToValueAtTime(165, when + .08);
+    og.gain.setValueAtTime(v * .55, when); og.gain.exponentialRampToValueAtTime(.0001, when + .13);
+    o.connect(og); sndOut(G, og, .08, .3); o.start(when); o.stop(when + .15);
+    return { g, end: when + .3 };
+  },
   thump(G, e, when) {   // a soft low landing
     const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain(), v = .32 * (e.v == null ? 1 : e.v);
     o.frequency.setValueAtTime(120, when); o.frequency.exponentialRampToValueAtTime(46, when + .35);
@@ -3866,6 +3910,7 @@ Object.assign(window.__pastforward, {
     window.__pfWav = wavOf(await ctx.startRendering());
     return window.__pfWav.length;
   },
+  beat: () => ({ step2: STEP2, scenes: { then: SCENES.find(x => x.id === "then").at, now: SCENES.find(x => x.id === "now").at, next: SCENES.find(x => x.id === "next").at }, hits: SCORE.filter(e => e.k === "kick" || e.k === "snare").map(e => `${e.k} ${e.t.toFixed(2)}`).join(", "), reveal: I_REVEAL }),
   scenes: () => SCENES.map(x => `${x.id} ${x.dur === Infinity ? "end" : x.dur.toFixed(1)}`).join(", "),
   soundState: () => ({ on: snd.on, state: snd.G ? snd.G.ctx.state : "none", voices: snd.live.length, button: $("inSnd").textContent.trim() || ($("inSnd").getAttribute("aria-pressed") === "true" ? "on" : "off") }),
   introAudioChunk: (i, size) => { let s = ""; const a = window.__pfWav.subarray(i * size, (i + 1) * size); for (let k = 0; k < a.length; k += 32768) s += String.fromCharCode.apply(null, a.subarray(k, k + 32768)); return btoa(s); }
