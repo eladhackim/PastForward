@@ -1,0 +1,854 @@
+{
+ "lisbon": {
+  "Seismic checks for older housing": {
+   "what": "A service that inspects older apartment blocks in quake zones, rates how they might behave in a strong quake, and plans repairs that make them sturdier.",
+   "why": "Lisbon’s 1755 rebuild and Mexico City’s 1987 code both raised demand for quake-safe design. Turkey’s 2023 quakes showed how older blocks can fail, and cities like Istanbul and Lisbon still hold much ageing housing.",
+   "how": [
+    "Ask a structural engineer how they quickly screen a building for quake weakness.",
+    "Read FEMA P-154 to learn the basics of rapid visual screening.",
+    "Ask local condo boards or housing associations whether their buildings have ever had a seismic survey."
+   ],
+   "read": [
+    {
+     "title": "Eurocode 8: Design of structures for earthquake resistance (EU JRC)",
+     "url": "https://eurocodes.jrc.ec.europa.eu/EN-Eurocodes/eurocode-8-design-structures-earthquake-resistance"
+    }
+   ]
+  },
+  "Open records of building approvals": {
+   "what": "A public online register showing, for each building, who designed it, who approved the plans and who inspected the work, so residents and buyers can check.",
+   "why": "After Turkey’s 2023 quakes, anger turned on contractors, construction amnesties and weak inspection, and prosecutors investigated over 600 people. Open records could help show who signed off on what if a future quake raises the same questions.",
+   "how": [
+    "Check what building permit data your city already publishes online, and what is missing.",
+    "Ask a local journalist or architect which building records are hardest to find.",
+    "Read how CoST helps governments publish data on public construction projects."
+   ],
+   "read": [
+    {
+     "title": "CoST, the Infrastructure Transparency Initiative",
+     "url": "https://infrastructuretransparency.org/"
+    }
+   ]
+  },
+  "Independent building inspectors": {
+   "what": "Engineers and inspectors who check that buildings are designed and built to code, working apart from the builders they check, plus crews who strengthen weak buildings.",
+   "why": "Military engineers led Lisbon’s rebuild, and Mexico’s stricter 1987 code raised demand for seismic designers. Turkey’s 2023 probes into contractors suggest independent checking could again be in demand after a deadly quake.",
+   "how": [
+    "Ask a local engineering association what qualifications building inspectors need where you live.",
+    "Follow the Earthquake Engineering Research Institute for field reports from recent quakes.",
+    "Ask to shadow a site inspection or home survey to see what inspectors check."
+   ],
+   "read": [
+    {
+     "title": "Earthquake Engineering Research Institute (EERI)",
+     "url": "https://www.eeri.org/"
+    }
+   ]
+  },
+  "Retrofitting weak older buildings": {
+   "what": "The engineering of making old buildings safer in quakes: finding weak points like unreinforced brick walls or open ground floors, then adding steel, concrete or ties.",
+   "why": "Lisbon was rebuilt with quake-resistant gaiola timber frames, and Mexico’s 1987 code pushed seismic design forward. Much city housing today predates modern codes, so retrofit skills could matter wherever the next big quake strikes.",
+   "how": [
+    "Read FEMA P-774 on why unreinforced masonry fails and how cities reduce the risk.",
+    "Learn the ideas behind Eurocode 8 Part 3, which covers assessing and retrofitting buildings.",
+    "Walk your neighbourhood and note buildings with open ground floors, such as shops or parking."
+   ],
+   "read": [
+    {
+     "title": "Eurocode 8: Design of structures for earthquake resistance (EU JRC)",
+     "url": "https://eurocodes.jrc.ec.europa.eu/EN-Eurocodes/eurocode-8-design-structures-earthquake-resistance"
+    }
+   ]
+  }
+ },
+ "revolution": {
+  "Food price early-warning tools": {
+   "what": "Dashboards that track local prices of staples like bread, rice and fuel, compare them with wages, and warn aid groups or city officials when food is becoming unaffordable.",
+   "why": "Bread near record prices helped spark 1789, and food prices fed the 2011 Arab Spring. Climate shocks and currency falls could cause new spikes, and earlier warnings may help target support before shortages bite.",
+   "how": [
+    "Explore FAO’s free food price tool to see which markets and staples it tracks.",
+    "Ask a local aid group or food bank how they spot rising prices today.",
+    "Build a simple prototype comparing one city’s bread price with its minimum wage."
+   ],
+   "read": [
+    {
+     "title": "FAO Food Price Monitoring and Analysis (FPMA) Tool",
+     "url": "https://www.fao.org/giews/food-prices/price-tool/en/"
+    },
+    {
+     "title": "WFP HungerMap LIVE",
+     "url": "https://hungermap.wfp.org/"
+    }
+   ]
+  },
+  "Independent local news": {
+   "what": "Small newsrooms that report on one town or region, often online, and check claims by officials and on social media, funded by readers, grants or local ads.",
+   "why": "After 1789, over 1,300 new newspapers appeared in France within a decade, and Tunisia’s civil society grew after 2011. If a closed regime opens up again, demand for trusted local news and fact-checking could rise quickly.",
+   "how": [
+    "Read the IFCN Code of Principles to see what standards fact-checkers commit to.",
+    "Ask a local reporter which stories go uncovered in your area.",
+    "Start a free newsletter on one local topic, such as council budgets or food prices."
+   ],
+   "read": [
+    {
+     "title": "IFCN Code of Principles (International Fact-Checking Network)",
+     "url": "https://ifcncodeofprinciples.poynter.org/"
+    },
+    {
+     "title": "Reuters Institute Digital News Report 2025",
+     "url": "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2025"
+    }
+   ]
+  },
+  "Food security analysts": {
+   "what": "Analysts who track harvests, grain stocks, import costs and food prices to judge who may go hungry, working for governments, UN agencies, charities or food importers.",
+   "why": "Dear bread helped spark revolt in 1789 and again in 2011. Climate shocks to harvests and costly wheat imports may make careful tracking of food supplies more valuable to governments and aid agencies.",
+   "how": [
+    "Take a free FAO elearning course on food security analysis or market monitoring.",
+    "Learn how the IPC scale classifies hunger, from stress to famine.",
+    "Ask an analyst at a UN agency or charity which data they check every week."
+   ],
+   "read": [
+    {
+     "title": "FAO elearning Academy (free courses)",
+     "url": "https://elearning.fao.org/"
+    }
+   ]
+  },
+  "How subsidies and currencies interact": {
+   "what": "How a country’s currency, its food import bills and its bread or fuel subsidies affect each other, and why a weaker currency can quickly raise food prices and subsidy costs.",
+   "why": "A nearly bankrupt crown and dear bread set the stage in 1789. In Egypt and Lebanon, currency falls and subsidy cuts have recently pushed up food prices, so these links may show where the next shock could bite.",
+   "how": [
+    "Follow the FAO Food Price Index each month and note which foods drive changes.",
+    "Read how Egypt’s bread subsidy works and why its price rose in 2024.",
+    "Compare one importer’s exchange rate with its local bread price over five years."
+   ],
+   "read": [
+    {
+     "title": "FAO Food Price Index",
+     "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/"
+    },
+    {
+     "title": "Food Security Portal (IFPRI)",
+     "url": "https://www.foodsecurityportal.org/"
+    }
+   ]
+  }
+ },
+ "hamilton": {
+  "Tools to track joint-fund milestones": {
+   "what": "Software that helps towns, regions and firms find EU funding, apply for it, and track and report the milestones and targets that must be met before money is paid.",
+   "why": "Hamilton’s 1790 deal spawned new trades, from bond dealing to the roots of the New York Stock Exchange. NextGenerationEU ties payments to milestones, and if joint EU borrowing continues, managing such funds may stay a steady need.",
+   "how": [
+    "Explore the EU Recovery and Resilience Scoreboard to see how milestones are tracked.",
+    "Ask a town or regional grants officer which reporting tasks take the most time.",
+    "List the reporting steps that repeat across funds and could be automated."
+   ],
+   "read": [
+    {
+     "title": "EU Recovery and Resilience Scoreboard: milestones and targets",
+     "url": "https://ec.europa.eu/economy_finance/recovery-and-resilience-scoreboard/milestones_and_targets.html?lang=en"
+    },
+    {
+     "title": "EU Funding & Tenders Portal",
+     "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home"
+    }
+   ]
+  },
+  "Cross-border project partnerships": {
+   "what": "A service that matches companies, universities or towns in different EU countries so they can team up and bid together for jointly funded EU projects, such as defence or power links.",
+   "why": "Hamilton’s plan tied the states together through shared finance. The EU now funds joint projects through NextGenerationEU and the 2025 SAFE defence loans, and many EU funds favour partners from several countries.",
+   "how": [
+    "Browse the Enterprise Europe Network’s partnering database to see how matches are made today.",
+    "Read the European Defence Fund rules, which require partners from several countries.",
+    "Ask small firms in your sector whether finding foreign partners stops them applying."
+   ],
+   "read": [
+    {
+     "title": "Enterprise Europe Network",
+     "url": "https://een.ec.europa.eu/"
+    },
+    {
+     "title": "European Defence Fund (European Commission)",
+     "url": "https://defence-industry-space.ec.europa.eu/eu-defence-industry/european-defence-fund-edf-official-webpage-european-commission_en"
+    }
+   ]
+  },
+  "EU funds and public debt roles": {
+   "what": "Jobs that manage, audit or finance shared EU spending: grant managers, auditors who check money is well spent, and debt specialists who plan borrowing and repayment.",
+   "why": "Hamilton’s plan made federal bonds tradable and a market grew around them. The EU borrowed for NextGenerationEU and must repay through 2058, so skills in running and checking pooled money may stay in demand.",
+   "how": [
+    "Read the Commission’s page on the EU as a borrower to see how its bonds work.",
+    "Check EU Careers for current openings and how EPSO selection works.",
+    "Ask someone in a national ministry who manages EU recovery funds about their work."
+   ],
+   "read": [
+    {
+     "title": "The EU as a borrower: investor relations (European Commission)",
+     "url": "https://commission.europa.eu/strategy-and-policy/eu-budget/eu-borrower-investor-relations_en"
+    },
+    {
+     "title": "EU Careers (EPSO)",
+     "url": "https://eu-careers.europa.eu/index_en"
+    }
+   ]
+  },
+  "Shared bonds and fiscal rules": {
+   "what": "How groups of countries borrow together, how credit ratings judge that debt, and how EU rules limit national deficits and debts.",
+   "why": "Hamilton’s takeover of state debts gave the young US strong credit but angered states that had already paid. EU joint borrowing sparked similar fights between “frugal” states and southern members, and a new union could face them again.",
+   "how": [
+    "Read the Commission’s guide to the EU economic governance rules reformed in 2024.",
+    "Compare an EU bond’s yield with German and Italian bonds of similar length.",
+    "Read a short history of Hamilton’s 1790 debt plan and the dinner deal."
+   ],
+   "read": [
+    {
+     "title": "New EU economic governance framework (European Commission)",
+     "url": "https://economy-finance.ec.europa.eu/economic-governance-framework/what-economic-governance-framework/evolution-eu-economic-governance/new-economic-governance-framework_en"
+    },
+    {
+     "title": "The EU as a borrower: investor relations (European Commission)",
+     "url": "https://commission.europa.eu/strategy-and-policy/eu-budget/eu-borrower-investor-relations_en"
+    }
+   ]
+  }
+ },
+ "vaccine": {
+  "Regional vaccine manufacturing": {
+   "what": "Factories and labs that make vaccines near the people who use them, rather than importing them, including mRNA vaccines that can be adapted quickly to new diseases.",
+   "why": "Jenner’s vaccine spread through efforts like Spain’s Balmis Expedition from 1803. During COVID-19, poorer regions waited longest for doses, and in 2021 the WHO set up an mRNA hub in Cape Town to help them make their own.",
+   "how": [
+    "Read about the WHO mRNA technology transfer programme and its partner countries.",
+    "Learn what good manufacturing practice (GMP) requires for making medicines safely.",
+    "Ask a pharmacist or biotech worker how vaccines reach your country today."
+   ],
+   "read": [
+    {
+     "title": "WHO mRNA Technology Transfer Programme",
+     "url": "https://www.who.int/initiatives/mrna-technology-transfer-(mrna-tt)-programme"
+    }
+   ]
+  },
+  "Plain-language vaccine answers": {
+   "what": "A service that answers common vaccine questions in simple local languages, through chat, phone lines or printed guides, for clinics, schools and pharmacies.",
+   "why": "Jenner’s vaccine met mocking cartoons and anti-vaccination leagues. COVID-19 vaccines met false claims about microchips and altered DNA. Clear local answers may help if a new kind of vaccine stirs similar fears.",
+   "how": [
+    "Read the free Debunking Handbook 2020 on how to correct false claims well.",
+    "Ask a nurse or pharmacist which vaccine questions they hear most often.",
+    "Draft clear answers to five common questions and test them with parents."
+   ],
+   "read": [
+    {
+     "title": "The Debunking Handbook 2020 (free download)",
+     "url": "https://skepticalscience.com/debunking-handbook-2020-downloads-translations.html"
+    },
+    {
+     "title": "Vaccine Safety Net (WHO-backed network of reliable vaccine sites)",
+     "url": "https://www.vaccinesafetynet.org/"
+    }
+   ]
+  },
+  "Vaccine safety monitoring": {
+   "what": "Pharmacovigilance: collecting and studying reports of possible side effects after medicines or vaccines are given, to spot real safety problems early and keep the public informed.",
+   "why": "In 1955, faulty batches of Cutter polio vaccine caused cases of polio, which led to stronger oversight. Each new kind of vaccine, from mRNA to future gene-based shots, may need more people watching for rare side effects.",
+   "how": [
+    "Read the EMA’s overview of how pharmacovigilance works in the EU.",
+    "Explore how WHO’s Uppsala Monitoring Centre gathers side-effect reports worldwide.",
+    "Look for entry roles such as drug safety associate at drug firms or research contractors."
+   ],
+   "read": [
+    {
+     "title": "Pharmacovigilance: Overview (European Medicines Agency)",
+     "url": "https://www.ema.europa.eu/en/human-regulatory-overview/pharmacovigilance-overview"
+    },
+    {
+     "title": "Uppsala Monitoring Centre: What we do",
+     "url": "https://who-umc.org/about-uppsala-monitoring-centre/what-we-do/"
+    }
+   ]
+  },
+  "Explaining risk with real numbers": {
+   "what": "The skill of explaining health risks clearly: absolute versus relative risk, how common a condition is to begin with, and what side-effect reports can and cannot show.",
+   "why": "Smallpox killed about three in ten people it infected, yet vaccination still met fear. With COVID-19, raw side-effect reports were often misread online. Clear numbers may help people weigh the next new vaccine.",
+   "how": [
+    "Read The Art of Statistics by David Spiegelhalter for plain explanations of risk.",
+    "Browse the UK Yellow Card site to see how suspected side effects are reported.",
+    "Practise turning “doubles the risk” into numbers per 10,000 people."
+   ],
+   "read": [
+    {
+     "title": "Winton Centre for Risk and Evidence Communication (Cambridge)",
+     "url": "https://wintoncentre.maths.cam.ac.uk/"
+    },
+    {
+     "title": "The Art of Statistics by David Spiegelhalter (Penguin)",
+     "url": "https://www.penguin.co.uk/books/294857/the-art-of-statistics-by-spiegelhalter-david/9780241258750"
+    }
+   ]
+  }
+ },
+ "luddites": {
+  "Labels for human-made work": {
+   "what": "Tools that record and show where a piece of writing, art, photo or voice recording came from, and whether a person or an AI made it, using shared standards like C2PA.",
+   "why": "The Luddites lost, and machine-made cloth replaced much hand work. As AI content spreads, writers, artists and voice actors may want proof of human work, and laws like the EU AI Act add labelling duties for some AI content.",
+   "how": [
+    "Read the C2PA overview to learn how content credentials attach a history to a file.",
+    "Inspect an image with a free Content Credentials checker to see what it records.",
+    "Ask illustrators or voice actors what proof of human work would help them sell."
+   ],
+   "read": [
+    {
+     "title": "C2PA: Coalition for Content Provenance and Authenticity",
+     "url": "https://c2pa.org/"
+    },
+    {
+     "title": "Content Authenticity Initiative",
+     "url": "https://contentauthenticity.org/"
+    }
+   ]
+  },
+  "People who check AI output": {
+   "what": "People who review, correct and sign off on work drafted by AI tools, such as legal briefs, medical notes or news copy, catching errors before they cause harm.",
+   "why": "As mills spread after the Luddites, mechanics who kept machines running were in demand. AI tools now draft text in law, medicine and media but still make confident mistakes, so skilled human review may grow in value.",
+   "how": [
+    "Read NIST’s AI Risk Management Framework, which covers human oversight of AI systems.",
+    "Use an AI tool on a task you know well and log every error.",
+    "Ask a manager in your field how AI drafts are checked before they go out."
+   ],
+   "read": [
+    {
+     "title": "NIST AI Risk Management Framework",
+     "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    }
+   ]
+  },
+  "Negotiators of automation clauses": {
+   "what": "Union officials, labour lawyers and HR staff who write and bargain over contract rules on how employers may use AI and automation, and what workers get in return.",
+   "why": "The Luddites had no legal way to bargain and were crushed by troops and courts. In 2023, Hollywood writers won AI limits in their contract after a 148-day strike, and similar clauses may spread to other industries.",
+   "how": [
+    "Read the WGA’s summary of the AI terms in its 2023 contract.",
+    "Ask a union representative in your sector how AI may feature in upcoming negotiations.",
+    "Take a short course on collective bargaining or labour law."
+   ],
+   "read": [
+    {
+     "title": "WGA: Artificial Intelligence terms in the 2023 contract",
+     "url": "https://www.wga.org/contracts/know-your-rights/artificial-intelligence"
+    },
+    {
+     "title": "ILO: Generative AI and Jobs, a refined global index of occupational exposure",
+     "url": "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure"
+    }
+   ]
+  },
+  "Spotting AI errors in your field": {
+   "what": "Combining deep knowledge of one trade with a clear sense of where AI tools tend to fail in it, such as made-up facts, outdated rules or missed context.",
+   "why": "When mechanised mills spread, hand weavers’ earnings collapsed while skilled mechanics found work. As AI automates routine tasks, people who can judge its output in their own field may keep more of their value.",
+   "how": [
+    "Take the free Elements of AI course to understand how AI tools work.",
+    "Test an AI tool on ten real tasks from your job and record its failures.",
+    "Share your error log with colleagues and agree checks for common mistakes."
+   ],
+   "read": [
+    {
+     "title": "Elements of AI (free online course)",
+     "url": "https://www.elementsofai.com/"
+    }
+   ]
+  }
+ },
+ "railway": {
+  "Depots for driverless fleets": {
+   "what": "Sites where robotaxi fleets are charged, cleaned, inspected and repaired between trips, often run by service firms for the companies that own the cars.",
+   "why": "Railways created trades around the line itself, from station bookstalls to timetables. As driverless rides spread from San Francisco and Wuhan to more cities, fleets may need local partners for charging, cleaning and repair.",
+   "how": [
+    "Check which companies hold driverless permits in California, the busiest robotaxi market so far.",
+    "Ask a car-rental or taxi depot manager what turning a car around between trips involves.",
+    "Find out whether any city near you is testing or licensing driverless rides."
+   ],
+   "read": [
+    {
+     "title": "California DMV: Autonomous Vehicles permits",
+     "url": "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/"
+    }
+   ]
+  },
+  "Independent safety checks for robot cars": {
+   "what": "Independent testing and crash investigation for driverless vehicles, judging how safely they drive, for insurers, city governments and regulators rather than for the carmakers.",
+   "why": "William Huskisson’s death on the opening day in 1830 did not stop the trains. Robotaxi trust has also swung on crashes, as when Cruise lost its California permit in 2023. Independent checks could help insurers and cities decide.",
+   "how": [
+    "Explore NHTSA’s public crash reports for automated driving systems.",
+    "Read UL 4600, a free-to-read standard for judging the safety of autonomous products.",
+    "Ask an insurer or claims adjuster how they assess self-driving risk today."
+   ],
+   "read": [
+    {
+     "title": "NHTSA Standing General Order on Crash Reporting",
+     "url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting"
+    },
+    {
+     "title": "UL 4600 Edition 3 (UL Solutions; free digital version linked)",
+     "url": "https://www.ul.com/news/ul-4600-edition-3-updates-incorporate-autonomous-trucking"
+    }
+   ]
+  },
+  "Remote assistants and fleet technicians": {
+   "what": "Remote operators who guide driverless cars that get stuck, technicians who calibrate cameras and sensors, and mechanics who keep robotaxi fleets on the road.",
+   "why": "Railways brought thousands of jobs for porters, signalmen and clerks. Robotaxis remove the driver, but they still need people to help stuck cars remotely and keep sensors working, which could offer paths for some drivers.",
+   "how": [
+    "Search job ads for remote assistance or fleet technician roles at robotaxi firms.",
+    "Take a basic course in electric vehicle maintenance and high-voltage safety.",
+    "Learn how lidar, radar and cameras work, and how they are calibrated."
+   ]
+  },
+  "Safety cases for autonomous systems": {
+   "what": "A safety case is a structured, evidence-backed argument that a system such as a self-driving car is safe enough to use. Standards like ISO 21448 and UL 4600 guide how to build one.",
+   "why": "Early railways learned safety the hard way, starting with Huskisson’s death in 1830. As robotaxis and other autonomous machines spread, regulators and insurers may ask for clear safety cases before allowing them on public roads.",
+   "how": [
+    "Read the free digital version of UL 4600 to see what a safety case must cover.",
+    "Learn how functional safety (ISO 26262) differs from SOTIF (ISO 21448).",
+    "Practise writing a short safety argument for a simple machine, like a robot lawnmower."
+   ],
+   "read": [
+    {
+     "title": "UL 4600 Edition 3 (UL Solutions; free digital version linked)",
+     "url": "https://www.ul.com/news/ul-4600-edition-3-updates-incorporate-autonomous-trucking"
+    },
+    {
+     "title": "ISO 21448:2022 Road vehicles: Safety of the intended functionality",
+     "url": "https://www.iso.org/standard/77490.html"
+    }
+   ]
+  }
+ },
+ "mania": {
+  "Reusing data-centre waste heat": {
+   "what": "Systems that capture the heat servers give off and pipe it into nearby homes, offices, greenhouses or district heating networks instead of releasing it into the air.",
+   "why": "Railway Mania left track that served Britain long after the crash. Data centres now draw more power each year, and EU rules push large sites to reuse waste heat where feasible, which may ease local pushback.",
+   "how": [
+    "Read how Stockholm Data Parks sells data-centre heat into the city’s heating network.",
+    "Find out whether your town has a district heating network and who runs it.",
+    "Ask a heating engineer how heat pumps can raise low-grade server heat for homes."
+   ],
+   "read": [
+    {
+     "title": "Stockholm Data Parks",
+     "url": "https://stockholmdataparks.com/"
+    },
+    {
+     "title": "EU Energy Efficiency Directive (European Commission)",
+     "url": "https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive_en"
+    }
+   ]
+  },
+  "Second-hand computing capacity": {
+   "what": "A service that buys or rents spare chips and server space, often older or idle hardware, and offers it cheaply to universities, researchers and small firms.",
+   "why": "After the 2001 telecom bust, unused dark fibre sold cheaply and later carried the online video boom. If AI data-centre building overshoots demand, surplus computing could likewise become a cheap resource for new users.",
+   "how": [
+    "Read Sequoia’s essay AI’s $600B Question on the gap between spending and revenue.",
+    "Ask university researchers what computing they need and what they pay now.",
+    "Price a few used AI chips and servers on resale marketplaces to gauge supply."
+   ],
+   "read": [
+    {
+     "title": "AI’s $600B Question (Sequoia Capital)",
+     "url": "https://sequoiacap.com/article/ais-600b-question/"
+    },
+    {
+     "title": "NAIRR Pilot (US National AI Research Resource)",
+     "url": "https://nairrpilot.org/"
+    }
+   ]
+  },
+  "Electricians and grid engineers": {
+   "what": "Electricians, high-voltage engineers and cooling technicians who connect, power and cool large buildings such as data centres, and who build the grid links that feed them.",
+   "why": "Railway Mania needed contractors and up to 250,000 navvies, and the lines outlived the crash. The IEA projects data-centre electricity use could roughly double by 2030, and grid skills stay useful even if the boom cools.",
+   "how": [
+    "Ask a local electrical contractor or technical college about apprenticeships and entry routes.",
+    "Read the IEA’s Energy and AI summary to see where power demand is growing.",
+    "Visit an open day or trade fair for electrical and cooling trades."
+   ],
+   "read": [
+    {
+     "title": "IEA Energy and AI: Executive summary",
+     "url": "https://www.iea.org/reports/energy-and-ai/executive-summary"
+    },
+    {
+     "title": "Electricians: Occupational Outlook Handbook (US BLS)",
+     "url": "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm"
+    }
+   ]
+  },
+  "Reading a boom’s numbers": {
+   "what": "Judging whether an investment boom is sound by comparing what is spent on building with the revenue it brings in, and checking how much is paid for with borrowed money.",
+   "why": "Railway shares lost nearly two-thirds of their value by 1849. In 2024, tech giants spent over $200 billion on capital projects while AI revenue lagged, so these numbers may show whether today’s boom is overreaching.",
+   "how": [
+    "Read Boom and Bust by Quinn and Turner, which covers railway mania and later bubbles.",
+    "Pull capital spending and revenue figures from a tech giant’s annual report.",
+    "Track how much new data-centre building is paid for with bonds or loans."
+   ],
+   "read": [
+    {
+     "title": "Boom and Bust: A Global History of Financial Bubbles (Cambridge)",
+     "url": "https://www.cambridge.org/core/books/boom-and-bust/D09C2E3BEA798F6EDC9D3880FC0300ED"
+    },
+    {
+     "title": "AI’s $600B Question (Sequoia Capital)",
+     "url": "https://sequoiacap.com/article/ais-600b-question/"
+    }
+   ]
+  }
+ },
+ "springtime": {
+  "Tools for citizens’ assemblies": {
+   "what": "Software and services that help governments run citizens’ assemblies, consultations and participatory budgets, where ordinary people, often picked by lottery, discuss and propose policies.",
+   "why": "After 1848, several states gained new constitutions, and Chile’s 2019 protests led to a constitutional process. When protest waves push governments to rewrite rules, tools for structured public input may be in demand.",
+   "how": [
+    "Try Decidim, the free open-source platform Barcelona built for public participation.",
+    "Read the OECD’s good practice principles for deliberative processes.",
+    "Ask your city council how residents can propose or vote on budget items."
+   ],
+   "read": [
+    {
+     "title": "Decidim, open-source participatory democracy platform",
+     "url": "https://decidim.org/"
+    },
+    {
+     "title": "OECD Good Practice Principles for Deliberative Processes (PDF)",
+     "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/innovative-citizen-participation/good-practice-principles-for-deliberative-processes-for-public-decision-making.pdf"
+    }
+   ]
+  },
+  "Verifying viral protest footage": {
+   "what": "Services that check whether viral protest videos and photos are real, recent and filmed where claimed, using maps, shadows, weather records and file data.",
+   "why": "In 1848, news of revolt spread through newspapers over weeks; in 2019, images from Santiago to Beirut spread within hours. If protests again leap between countries, newsrooms and rights groups may need fast, reliable checks.",
+   "how": [
+    "Read the free Verification Handbook for Disinformation and Media Manipulation.",
+    "Practise locating a news photo using satellite maps and street-level imagery.",
+    "Explore Bellingcat’s online toolkit of open-source investigation tools."
+   ],
+   "read": [
+    {
+     "title": "Verification Handbook for Disinformation and Media Manipulation",
+     "url": "https://datajournalism.com/read/handbook/verification-3"
+    },
+    {
+     "title": "Bellingcat’s Online Investigation Toolkit",
+     "url": "https://bellingcat.gitbook.io/toolkit"
+    }
+   ]
+  },
+  "Mediators and dialogue facilitators": {
+   "what": "Professionals who bring opposing sides, such as governments, unions and protest groups, to the table and guide talks toward agreements both can accept.",
+   "why": "Most 1848 revolts were crushed within a year. After 2011, Tunisia’s National Dialogue Quartet steered talks between rival camps and won the 2015 Nobel Peace Prize. Skilled mediators may be needed after future protest waves.",
+   "how": [
+    "Read the Nobel Prize page on how Tunisia’s Quartet brokered its national dialogue.",
+    "Look for an accredited mediation course, often run by courts, universities or bar associations.",
+    "Volunteer as a community or workplace mediator to build practice."
+   ],
+   "read": [
+    {
+     "title": "National Dialogue Quartet: Facts (NobelPrize.org)",
+     "url": "https://www.nobelprize.org/prizes/peace/2015/tndq/facts/"
+    }
+   ]
+  },
+  "Constitutional design basics": {
+   "what": "How constitutions are written and what choices they contain: how leaders are elected, how power is split, which rights are protected, and how the rules can change.",
+   "why": "The 1848 revolts brought new constitutions in Piedmont, Switzerland and the Netherlands. Chile’s 2019 protests led to two drafts, rejected in 2022 and 2023. Knowing the design choices may help if another wave demands new rules.",
+   "how": [
+    "Use Constitute to compare how different countries set presidential term limits.",
+    "Read International IDEA’s free primer What is a Constitution?",
+    "Pick one rejected Chilean draft and list the changes that proved most divisive."
+   ],
+   "read": [
+    {
+     "title": "Constitute: the world’s constitutions to read and compare",
+     "url": "https://www.constituteproject.org/"
+    },
+    {
+     "title": "What is a Constitution? (International IDEA primer)",
+     "url": "https://www.idea.int/publications/catalogue/what-is-a-constitution"
+    }
+   ]
+  }
+ },
+ "cable": {
+  "Services for newly connected places": {
+   "what": "Services such as remote doctor visits, online schooling and farm sensors, built for villages, ships and islands that only recently gained reliable internet, often by satellite.",
+   "why": "Undersea cables let markets and news agencies like Reuters react within hours. Satellite internet now reaches places cables never did, and the ITU counted about 2.2 billion people still offline in 2025, so new services may follow.",
+   "how": [
+    "Read ITU’s Facts and Figures to see which regions and groups remain offline.",
+    "Ask a rural clinic, school or fishing co-op what better internet would let them do.",
+    "Build a low-bandwidth version of a service that still works on patchy connections."
+   ],
+   "read": [
+    {
+     "title": "ITU Facts and Figures 2025",
+     "url": "https://www.itu.int/itu-d/reports/statistics/facts-figures-2025/"
+    },
+    {
+     "title": "GSMA: The State of Mobile Internet Connectivity 2025",
+     "url": "https://www.gsmaintelligence.com/research/the-state-of-mobile-internet-connectivity-2025-overview-report"
+    }
+   ]
+  },
+  "Tracking crowded orbits": {
+   "what": "Services that track satellites and space debris, predict close approaches, and warn operators in time to move a satellite out of the way.",
+   "why": "The 1858 cable linked just two points; today thousands of Starlink satellites fill low orbit, with rival networks planned. ESA reports that debris keeps growing, so collision warnings may become an essential service.",
+   "how": [
+    "Read ESA’s latest Space Environment Report on debris and crowded orbits.",
+    "Learn basic orbital mechanics through a free online course or textbook.",
+    "Ask a satellite operator or space startup how they handle collision alerts."
+   ],
+   "read": [
+    {
+     "title": "ESA Space Environment Report 2025",
+     "url": "https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025"
+    }
+   ]
+  },
+  "Cable and satellite network technicians": {
+   "what": "Crews who lay and repair undersea cables, engineers who run satellite ground stations, and operators who control satellites, keeping global internet traffic flowing.",
+   "why": "The first Atlantic cable failed after about three weeks, and skilled crews made later cables last. Recent Baltic and Red Sea cable cuts showed how slow repairs can be, and new satellite networks also need operators.",
+   "how": [
+    "Read the International Cable Protection Committee’s pages on how cables are protected and repaired.",
+    "Look for courses in fibre splicing, marine engineering or radio-frequency systems.",
+    "Ask a telecom or satellite firm about technician apprenticeships or graduate schemes."
+   ],
+   "read": [
+    {
+     "title": "International Cable Protection Committee: About",
+     "url": "https://iscpc.org/about-the-icpc/"
+    }
+   ]
+  },
+  "How spectrum and orbits are shared": {
+   "what": "How countries share radio frequencies and orbital positions through the International Telecommunication Union (ITU), and how national regulators license satellite internet services.",
+   "why": "Cable makers and patent holders like William Thomson gained from the first global network. As Starlink, the EU’s IRIS² and Chinese constellations compete for orbits and spectrum, people who understand the rules may be needed.",
+   "how": [
+    "Read the ITU’s overview of its Radio Regulations, the treaty for sharing spectrum.",
+    "Follow the agenda of the next World Radiocommunication Conference on satellite issues.",
+    "Look up how your country’s telecom regulator licenses satellite internet."
+   ],
+   "read": [
+    {
+     "title": "ITU Radio Regulations",
+     "url": "https://www.itu.int/pub/R-REG-RR"
+    },
+    {
+     "title": "ITU-R Space Services Department",
+     "url": "https://www.itu.int/en/ITU-R/space/Pages/default.aspx"
+    }
+   ]
+  }
+ },
+ "carrington": {
+  "Backup positioning and timing": {
+   "what": "Systems that provide location and precise time when GPS and other satellite signals fail or are jammed, using ground radio beacons, time sent over fibre, or onboard sensors.",
+   "why": "The 1859 storm disrupted the telegraph, then the most advanced network. In May 2024, storm-driven GPS errors stalled some self-steering tractors at planting time. Phone networks, ships and banks also rely on satellite timing.",
+   "how": [
+    "Read NIST’s Foundational PNT Profile on making positioning and timing more resilient.",
+    "Ask farmers, port operators or telecom engineers what happens when GPS drops out.",
+    "Compare backups like eLoran radio, fibre timing and inertial sensors on cost and accuracy."
+   ],
+   "read": [
+    {
+     "title": "NIST IR 8323r1: Foundational PNT Profile",
+     "url": "https://csrc.nist.gov/pubs/ir/8323/r1/final"
+    }
+   ]
+  },
+  "Storm-current protection for grids": {
+   "what": "Sensors that measure currents induced in power lines by solar storms, and devices that stop these currents from flowing into and overheating large transformers.",
+   "why": "In 1989 a solar storm blacked out Quebec’s grid for about nine hours, and Hydro-Québec then spent heavily on protection. As more of daily life runs on electricity, grid operators may want more monitoring and blocking devices.",
+   "how": [
+    "Read NERC’s TPL-007 standard on planning for geomagnetic disturbances.",
+    "Ask a utility engineer how they watch transformer currents during solar storms.",
+    "Study how neutral current blocking devices work and what they cost to install."
+   ],
+   "read": [
+    {
+     "title": "NERC TPL-007-4: Planning for geomagnetic disturbance events (PDF)",
+     "url": "https://www.nerc.com/globalassets/standards/reliability-standards/tpl/tpl-007-4.pdf"
+    }
+   ]
+  },
+  "Space weather forecasters": {
+   "what": "Scientists and forecasters who watch the Sun and the space around Earth, predict solar storms, and warn power grids, airlines and satellite operators.",
+   "why": "Victorian telegraph operators had no warning in 1859; in May 2024, forecasters gave a day or more of notice. The UK Met Office has run a space weather centre since 2014, and new solar monitors may need trained staff.",
+   "how": [
+    "Follow the NOAA Space Weather Prediction Center’s daily forecasts for a month.",
+    "Read how the Met Office’s space weather centre works with government and industry.",
+    "Ask a space weather forecaster which degrees and skills led them into the job."
+   ],
+   "read": [
+    {
+     "title": "NOAA Space Weather Prediction Center",
+     "url": "https://www.spaceweather.gov/"
+    },
+    {
+     "title": "The Met Office and space weather",
+     "url": "https://weather.metoffice.gov.uk/learn-about/space-weather/met-office-role"
+    }
+   ]
+  },
+  "How solar storms hit technology": {
+   "what": "How eruptions from the Sun disturb Earth’s magnetic field, and how that can overload transformers, scramble GPS, disrupt radio and drag satellites down from orbit.",
+   "why": "Carrington’s 1859 storm made telegraphs spark. In February 2022 a minor storm doomed about 40 new Starlink satellites, and in 2024 GPS errors stalled tractors. As technology spreads, these weak points may matter more.",
+   "how": [
+    "Learn NOAA’s G, S and R scales for geomagnetic storms, radiation and radio blackouts.",
+    "Read ESA’s space weather pages on effects on satellites and power grids.",
+    "Set up aurora or storm alerts and compare forecasts with what actually happens."
+   ],
+   "read": [
+    {
+     "title": "NOAA Space Weather Scales",
+     "url": "https://www.spaceweather.gov/noaa-scales-explanation"
+    },
+    {
+     "title": "ESA: Space weather",
+     "url": "https://www.esa.int/Space_Safety/Space_weather"
+    }
+   ]
+  }
+ },
+ "commune": {
+  "Household climate-cost calculators": {
+   "what": "Simple online tools that show a household how fuel taxes, carbon prices and climate rules may change its bills, and which grants or aid it could claim.",
+   "why": "The Yellow Vests rose in 2018 over a fuel tax rise that hit rural drivers hardest, and it was dropped. An EU carbon price on road fuel and heating is due in 2028, so households may want clear cost estimates.",
+   "how": [
+    "Read the EU’s page on ETS2, the carbon price for buildings and road transport.",
+    "Ask rural drivers and renters what energy aid they know they can claim.",
+    "Build a prototype that estimates yearly fuel costs under different carbon prices."
+   ],
+   "read": [
+    {
+     "title": "ETS2: buildings, road transport and additional sectors (European Commission)",
+     "url": "https://climate.ec.europa.eu/areas-action/carbon-markets/ets2-buildings-road-transport-and-additional-sectors_en"
+    },
+    {
+     "title": "Social Climate Fund (European Commission)",
+     "url": "https://employment-social-affairs.ec.europa.eu/policies-and-activities/funding/social-climate-fund_en"
+    }
+   ]
+  },
+  "Rural transport options": {
+   "what": "Affordable ways to get around without owning a costly car: shared rides, on-demand minibuses booked by app or phone, and low-cost electric car leasing.",
+   "why": "The Yellow Vests drew heavily from small towns where people depend on cars. France’s 2024 social leasing offered electric cars for around €100 a month and filled up within weeks. Cheaper rural mobility may ease future fuel-cost anger.",
+   "how": [
+    "Study France’s social leasing scheme: who qualified, what it cost and why demand was high.",
+    "Ask a rural council how people without cars reach doctors and jobs.",
+    "Pilot a shared-ride or minibus service for one village and record demand."
+   ]
+  },
+  "Citizens’ assembly facilitators": {
+   "what": "People who design and run citizens’ assemblies and public debates, where randomly chosen residents hear evidence, discuss trade-offs and make recommendations to government.",
+   "why": "After the Yellow Vests, France held a Great National Debate and a Citizens’ Convention for Climate of 150 randomly drawn people. Governments seeking consent for costly climate rules may turn to such processes again.",
+   "how": [
+    "Read the OECD’s good practice principles for deliberative processes.",
+    "Explore KNOCA’s guides and case studies on climate assemblies across Europe.",
+    "Train in group facilitation and volunteer at local consultations or community meetings."
+   ],
+   "read": [
+    {
+     "title": "KNOCA: Knowledge Network on Climate Assemblies",
+     "url": "https://www.knoca.eu/"
+    },
+    {
+     "title": "OECD Good Practice Principles for Deliberative Processes (PDF)",
+     "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/innovative-citizen-participation/good-practice-principles-for-deliberative-processes-for-public-decision-making.pdf"
+    }
+   ]
+  },
+  "Who pays for a policy": {
+   "what": "Distributional analysis: working out how a tax, subsidy or rule affects different households by income, region and lifestyle, so its costs and benefits can be seen clearly.",
+   "why": "France’s 2018 fuel tax rise fell hardest on rural, car-dependent households and sparked the Yellow Vests. As carbon pricing spreads to fuel and heating, checking who pays first may help design rules that hold up.",
+   "how": [
+    "Explore EUROMOD, the EU’s tax-benefit model, to see how policies change household incomes.",
+    "Learn what income deciles are and how to split household survey data by them.",
+    "Pick one tax change in the news and estimate its cost for three household types."
+   ],
+   "read": [
+    {
+     "title": "What is EUROMOD? (EU tax-benefit model, JRC)",
+     "url": "https://euromod-web.jrc.ec.europa.eu/overview/what-is-euromod"
+    }
+   ]
+  }
+ },
+ "phone": {
+  "Neural data privacy tools": {
+   "what": "Software that helps companies collect brain and nerve signals, from headbands, earbuds or implants, only with clear consent, and lets users see, limit or delete that data.",
+   "why": "The phone and the smartphone each created new trades, from operators to app builders. As brain-sensing devices spread, Colorado in 2024 and then California began treating neural data as sensitive, so firms may need consent tools.",
+   "how": [
+    "Read Colorado’s 2024 law that added neural data to its privacy act.",
+    "Read UNESCO’s 2025 recommendation on the ethics of neurotechnology.",
+    "Ask a neurotech or wearable startup how they handle consent for brain data today."
+   ],
+   "read": [
+    {
+     "title": "Colorado HB24-1058: Protect Privacy of Biological Data",
+     "url": "https://leg.colorado.gov/bills/HB24-1058"
+    },
+    {
+     "title": "UNESCO: Ethics of neurotechnology",
+     "url": "https://www.unesco.org/en/ethics-neurotech"
+    }
+   ]
+  },
+  "Hands-free services on smart glasses": {
+   "what": "Apps and services designed for smart glasses, such as live captions of speech for deaf users, translation, or step-by-step guidance shown to a technician during a repair.",
+   "why": "The iPhone was followed by the App Store in 2008, and building apps became a new trade. If smart glasses catch on, early services built for them could grow in a similar way.",
+   "how": [
+    "Read W3C’s XR Accessibility User Requirements for ideas on serving disabled users.",
+    "Try a pair of smart glasses and list the tasks they handle badly today.",
+    "Ask a field technician which repair steps would be easier with hands-free guidance."
+   ],
+   "read": [
+    {
+     "title": "W3C XR Accessibility User Requirements",
+     "url": "https://www.w3.org/TR/xaur/"
+    }
+   ]
+  },
+  "Neurotech clinical and support roles": {
+   "what": "Jobs that help people use brain-computer interfaces: trial coordinators who run studies, neurosurgical nurses, and therapists who train patients to control devices with their thoughts.",
+   "why": "The telephone created a big new job for women, with about 342,000 operators at US phone companies by 1950. Brain implant trials are growing, and each patient may need a team to learn the device.",
+   "how": [
+    "Search ClinicalTrials.gov for brain-computer interface trials to see which centres run them.",
+    "Follow the BCI Society for research news and its international meetings.",
+    "Ask a rehabilitation therapist or neurology nurse about training routes into this field."
+   ],
+   "read": [
+    {
+     "title": "ClinicalTrials.gov",
+     "url": "https://clinicaltrials.gov/"
+    },
+    {
+     "title": "BCI Society",
+     "url": "https://bcisociety.org/"
+    }
+   ]
+  },
+  "Designing beyond the touchscreen": {
+   "what": "Designing ways to use devices by voice, eye gaze and hand gestures instead of tapping a screen, while keeping them private, accessible and easy to learn.",
+   "why": "The iPhone’s touchscreen reshaped how billions use technology within about a decade. If glasses or implants become the next main device, people who can design for voice, gaze and gesture may be in demand.",
+   "how": [
+    "Read Apple’s Human Interface Guidelines for visionOS on eye and hand input.",
+    "Read W3C’s XR Accessibility User Requirements for inclusive design needs.",
+    "Prototype a voice-only version of an app you use daily and test it with friends."
+   ],
+   "read": [
+    {
+     "title": "Apple Human Interface Guidelines: Designing for visionOS",
+     "url": "https://developer.apple.com/design/human-interface-guidelines/designing-for-visionos"
+    },
+    {
+     "title": "W3C XR Accessibility User Requirements",
+     "url": "https://www.w3.org/TR/xaur/"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,868 @@
+{
+ "protests": {
+  "Verifying viral protest footage": {
+   "what": "Tools and services that check whether a protest photo or video is real, and when and where it was taken, using metadata, maps, shadows and content credentials attached at capture.",
+   "why": "In 2020, one bystander’s video set off protests in dozens of countries. With cheap AI fakes, newsrooms, courts and platforms may pay for fast checks, and C2PA content credentials could become a common base to build on.",
+   "how": [
+    "Practise checking a viral clip with reverse image search, satellite maps and metadata viewers.",
+    "Read the C2PA overview and test a Content Credentials inspection tool on sample images.",
+    "Ask a newsroom verification editor which checks take longest and which they would pay to speed up."
+   ],
+   "read": [
+    {
+     "title": "C2PA: Coalition for Content Provenance and Authenticity",
+     "url": "https://c2pa.org/"
+    },
+    {
+     "title": "Content Authenticity Initiative",
+     "url": "https://contentauthenticity.org/"
+    }
+   ]
+  },
+  "Civic trackers for local reform": {
+   "what": "Websites or apps that turn public records, such as budgets, council votes and promises made by officials, into simple trackers residents can follow and share.",
+   "why": "After 1968, protest turned into new laws and budgets, from police funding to ethnic studies. In 2020, several US cities pledged police budget cuts and many later restored funding, so tools showing what really changed could find users.",
+   "how": [
+    "Pick one city and list where its budget, council votes and meeting minutes are published.",
+    "Build a simple tracker for one public pledge using a spreadsheet and open data.",
+    "Show it to a local journalist or council member and ask what they would actually use."
+   ],
+   "read": [
+    {
+     "title": "Open Data Handbook (Open Knowledge Foundation)",
+     "url": "https://opendatahandbook.org/"
+    },
+    {
+     "title": "Code for America",
+     "url": "https://codeforamerica.org/"
+    }
+   ]
+  },
+  "Crisis responders and mediators": {
+   "what": "Civilian crisis responders answer some mental health and welfare calls instead of armed police. Oversight investigators review police conduct, and mediators help neighbors, protesters and officials settle disputes.",
+   "why": "After 1968, the Safe Streets Act poured federal money into policing. In 2020, cities such as Denver began sending health workers to some calls instead. Whether such teams grow may depend on funding and published results.",
+   "how": [
+    "Read how civilian crisis teams work, and why Eugene’s long-running CAHOOTS ran into funding trouble.",
+    "Volunteer on a crisis line or take a basic mediation course to test your fit.",
+    "Talk to a civilian oversight investigator through NACOLE about their daily work and training."
+   ],
+   "read": [
+    {
+     "title": "NACOLE: National Association for Civilian Oversight of Law Enforcement",
+     "url": "https://www.nacole.org/"
+    },
+    {
+     "title": "Vera Institute: Behavioral health crisis alternatives",
+     "url": "https://www.vera.org/behavioral-health-crisis-alternatives"
+    }
+   ]
+  },
+  "Open-source investigation": {
+   "what": "Using public material, such as social media posts, satellite images and maps, to find where and when a photo or video was made and to check claims about events.",
+   "why": "The 2020 protests began with a bystander’s video. Since then, AI fakes and mass sharing have made checking footage harder. Newsrooms, rights groups and courts now use open-source methods, and the Berkeley Protocol sets standards for them.",
+   "how": [
+    "Work through Bellingcat’s free guides and try one of its online geolocation challenges.",
+    "Geolocate one protest photo using street view, shadows and landmarks, then write up your steps.",
+    "Read the Berkeley Protocol sections on verifying content and preserving evidence."
+   ],
+   "read": [
+    {
+     "title": "Bellingcat’s Online Investigation Toolkit",
+     "url": "https://bellingcat.gitbook.io/toolkit"
+    },
+    {
+     "title": "Berkeley Protocol on Digital Open Source Investigations",
+     "url": "https://humanrights.berkeley.edu/publications/berkeley-protocol-on-digital-open-source-investigations/"
+    }
+   ]
+  }
+ },
+ "oil": {
+  "Battery and magnet metal recycling": {
+   "what": "Collecting old batteries, motors and electronics and recovering lithium, nickel, cobalt and rare earth metals from them, so the metals can go into new products.",
+   "why": "After 1973, importers built emergency stocks and found new oil sources. Today China refines most of several key battery and magnet metals and has restricted some exports, while EU rules require recycled content in car and industrial batteries from 2031.",
+   "how": [
+    "Map who collects used batteries in your area and where they currently send them.",
+    "Talk to an e-waste recycler or scrapyard about volumes, prices and safety rules.",
+    "Read the European Commission’s batteries page on recycling targets and battery passports."
+   ],
+   "read": [
+    {
+     "title": "European Commission: Batteries",
+     "url": "https://environment.ec.europa.eu/topics/waste-and-recycling/batteries_en"
+    },
+    {
+     "title": "IEA: Global Critical Minerals Outlook 2025",
+     "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2025"
+    }
+   ]
+  },
+  "Home efficiency and heat pumps": {
+   "what": "Services that cut household energy use: insulation, draught sealing, heat pumps that move heat instead of burning fuel, and smart controls that run heating at cheaper times.",
+   "why": "After 1973, saving fuel became national policy, and US car fuel economy rules followed in 1975. In 2022, European heat pump sales jumped as gas prices spiked, then fell as prices eased. Demand may track price swings and subsidies.",
+   "how": [
+    "Get an energy audit of your own home and note which fixes pay back fastest.",
+    "Shadow a heat pump installer for a day to learn about sizing, noise and permits.",
+    "Check which local subsidies exist for insulation and heat pumps, and how long approvals take."
+   ],
+   "read": [
+    {
+     "title": "IEA: The Future of Heat Pumps",
+     "url": "https://www.iea.org/reports/the-future-of-heat-pumps"
+    }
+   ]
+  },
+  "Efficiency and critical-mineral specialists": {
+   "what": "Jobs that reduce dependence on one supplier: energy auditors and heat pump installers who cut fuel use, and engineers who mine, refine and recycle critical minerals outside today’s main producers.",
+   "why": "After 1973, countries built new supply, from North Sea oil to French reactors, and that needed new skills. The EU’s Critical Raw Materials Act now targets more refining and recycling in Europe by 2030, which may need trained engineers.",
+   "how": [
+    "Look at energy auditor certifications, such as BPI in the US or national schemes in Europe.",
+    "Talk to a mining or materials engineering department about short courses for career changers.",
+    "Follow new refining and recycling projects and note which skills their job ads request."
+   ],
+   "read": [
+    {
+     "title": "Building Performance Institute (BPI)",
+     "url": "https://www.bpi.org/"
+    },
+    {
+     "title": "EIT RawMaterials",
+     "url": "https://eitrawmaterials.eu/"
+    }
+   ]
+  },
+  "Supply chain chokepoint mapping": {
+   "what": "Tracing a product’s materials back through mining, refining and manufacturing to see where one country or company controls a step, and what happens if that step stops.",
+   "why": "In 1973 a few producers could squeeze the West because so much oil came from one region. Today the IEA reports that refining of many critical minerals is concentrated in one country, and export controls have already been used.",
+   "how": [
+    "Pick one product, like an electric car battery, and list every mineral it needs.",
+    "Use the USGS Mineral Commodity Summaries to find the top producers of each mineral.",
+    "Note which steps rely on one country, and read how recent export controls worked."
+   ],
+   "read": [
+    {
+     "title": "USGS: Mineral Commodity Summaries",
+     "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries"
+    },
+    {
+     "title": "IEA: Global Critical Minerals Outlook 2025",
+     "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2025"
+    }
+   ]
+  }
+ },
+ "saigon": {
+  "Credential recognition for refugees": {
+   "what": "Services that check, translate and vouch for a refugee’s diplomas, licenses and work history, even when papers were lost, so employers and licensing bodies can trust them.",
+   "why": "About 130,000 Vietnamese reached the US in 1975, and many skilled people restarted in lower-paid jobs. Afghans arriving in 2021 faced similar hurdles. The Council of Europe’s refugee qualifications passport shows assessment is possible without full paperwork.",
+   "how": [
+    "Interview two refugees about which papers they lost and what employers asked for.",
+    "Study how the European Qualifications Passport for Refugees assesses people without full documents.",
+    "Ask a licensing body, such as a nursing board, about its rules when records are missing."
+   ],
+   "read": [
+    {
+     "title": "Council of Europe: European Qualifications Passport for Refugees",
+     "url": "https://www.coe.int/en/web/education/recognition-of-refugees-qualifications"
+    }
+   ]
+  },
+  "Verified records for local staff": {
+   "what": "Secure digital records that prove a local person worked for a foreign army, embassy or aid group, signed by the employer and kept safe even if offices close.",
+   "why": "Visa programs for local staff need proof of past work. In 2021, many Afghans struggled to show it as contractors closed and records were lost, slowing their cases. Digital credential standards could make such proof easier to keep.",
+   "how": [
+    "Read the W3C Verifiable Credentials overview to see how signed digital records work.",
+    "Ask an immigration lawyer or IRAP volunteer which documents most often stall visa cases.",
+    "Plan for safety: such records could endanger people if seized, so store as little as possible."
+   ],
+   "read": [
+    {
+     "title": "W3C: Verifiable Credentials Data Model v2.0",
+     "url": "https://www.w3.org/TR/vc-data-model-2.0/"
+    },
+    {
+     "title": "International Refugee Assistance Project (IRAP)",
+     "url": "https://refugeerights.org/"
+    }
+   ]
+  },
+  "Resettlement caseworkers and interpreters": {
+   "what": "Caseworkers help new refugees find housing, jobs, schools and health care. Immigration lawyers handle visa and asylum cases, and community interpreters help people speak with doctors, courts and officials.",
+   "why": "After 1975, US agencies suddenly needed caseworkers and sponsors, and the 1980 Refugee Act made that system permanent. Demand swings with politics: in 2025 the US paused most refugee admissions and agencies cut staff.",
+   "how": [
+    "Volunteer with a resettlement agency, for example helping a family with school enrollment or appointments.",
+    "If you speak a needed language, look into community or medical interpreter training.",
+    "Ask a caseworker which skills and certifications their agency looks for when hiring."
+   ],
+   "read": [
+    {
+     "title": "International Rescue Committee: Volunteer",
+     "url": "https://www.rescue.org/volunteer"
+    },
+    {
+     "title": "US Office of Refugee Resettlement",
+     "url": "https://acf.gov/orr"
+    }
+   ]
+  },
+  "Evacuation and duty-of-care planning": {
+   "what": "Planning how an organization keeps staff safe abroad and gets them out in a crisis: risk assessments, contact trees, safe routes, transport deals and clear rules on who decides when to leave.",
+   "why": "In 1975 and 2021, evacuations were rushed and many local staff were left behind. Aid groups, firms and agencies in fragile states may need people who can plan exits early, for both international and national employees.",
+   "how": [
+    "Read GISF guides on security risk management and summaries of the ISO 31030 standard.",
+    "Take a hostile environment awareness training course, often called HEAT, offered to aid workers.",
+    "Draft a sample evacuation plan for one city, including who decides and options for local staff."
+   ],
+   "read": [
+    {
+     "title": "ISO 31030:2021 Travel risk management",
+     "url": "https://www.iso.org/standard/54204.html"
+    },
+    {
+     "title": "Global Interagency Security Forum (GISF)",
+     "url": "https://gisf.ngo/"
+    }
+   ]
+  }
+ },
+ "volcker": {
+  "Refinancing help for cheap-era debt": {
+   "what": "Services that help households and small firms review loans taken when rates were very low, compare refinancing or restructuring options, and talk to lenders before payments jump.",
+   "why": "As rates rose toward 20% around 1980, new services grew fast, such as money market funds. Many loans taken in 2020 and 2021 at very low rates may reset or mature at much higher rates.",
+   "how": [
+    "Talk to a nonprofit credit counselor about the most common refinancing problems they see.",
+    "Interview five small business owners about loans maturing in the next three years.",
+    "Learn the basics of loan restructuring and consumer credit rules where you live before advising anyone."
+   ],
+   "read": [
+    {
+     "title": "National Foundation for Credit Counseling (NFCC)",
+     "url": "https://www.nfcc.org/"
+    }
+   ]
+  },
+  "Cash management for small firms": {
+   "what": "Tools that help small businesses forecast cash, chase late invoices, time payments and compare borrowing costs, so a rate rise or slow payer does not leave them short.",
+   "why": "Around 1980, high rates made carrying stock and unpaid invoices expensive, and business failures rose in the recessions that followed. After the 2022 hikes, borrowing is no longer nearly free, so small firms may value tighter cash control.",
+   "how": [
+    "Ask three small business owners how they forecast cash today and what goes wrong.",
+    "Build a 13-week cash flow forecast template and test it with one real business.",
+    "Study how invoice finance and payment terms work, and what late payment laws allow."
+   ],
+   "read": [
+    {
+     "title": "SCORE: free small business mentoring",
+     "url": "https://www.score.org/"
+    }
+   ]
+  },
+  "Credit risk and insolvency roles": {
+   "what": "Credit analysts judge whether borrowers can repay. Insolvency practitioners take charge of companies that cannot pay their debts, and debt counselors help households make repayment plans.",
+   "why": "After 1980, high rates pushed many borrowers and lenders into trouble, including hundreds of US savings and loans. In 2023, company insolvencies in England and Wales reached their highest level since 1993, partly as borrowing costs rose.",
+   "how": [
+    "Talk to an insolvency practitioner or credit analyst about entry routes and qualifications.",
+    "Practise reading a company’s accounts to judge whether it can cover its interest payments.",
+    "Look at INSOL or local professional body courses for newcomers to restructuring."
+   ],
+   "read": [
+    {
+     "title": "INSOL International",
+     "url": "https://www.insol.org/"
+    },
+    {
+     "title": "Turnaround Management Association",
+     "url": "https://turnaround.org/"
+    }
+   ]
+  },
+  "Interest rate risk basics": {
+   "what": "How bond prices fall when interest rates rise, and how duration measures that sensitivity. It explains why lenders who borrow short and lend long can lose money fast when rates jump.",
+   "why": "In the 1980s, many savings and loans held long fixed-rate mortgages funded by short-term deposits and were crippled when rates soared. In 2023, Silicon Valley Bank failed after rising rates cut the value of its bonds and depositors fled.",
+   "how": [
+    "Read the SEC investor bulletin on interest rate risk and work through its examples.",
+    "Calculate how a 10-year bond’s price changes if rates rise by one percentage point.",
+    "Read the summary of the Federal Reserve’s review of Silicon Valley Bank’s failure."
+   ],
+   "read": [
+    {
+     "title": "Investor.gov: Interest rate risk and fixed-rate bonds",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-86"
+    },
+    {
+     "title": "Federal Reserve: Review of the supervision of Silicon Valley Bank",
+     "url": "https://www.federalreserve.gov/publications/review-of-the-federal-reserves-supervision-and-regulation-of-silicon-valley-bank.htm"
+    }
+   ]
+  }
+ },
+ "chernobyl": {
+  "Public radiation monitoring networks": {
+   "what": "Networks of low-cost radiation sensors run by volunteers, schools or cities, publishing readings online so anyone can check local levels instead of relying only on official reports.",
+   "why": "In 1986, Sweden detected Chernobyl’s fallout before Moscow admitted the accident. After Fukushima, volunteers built Safecast to fill gaps in official data. Aging reactors and plants on front lines, like Zaporizhzhia, may sustain demand for independent readings.",
+   "how": [
+    "Look at Safecast’s open data and hardware designs to see how volunteer networks work.",
+    "Compare official networks, such as Europe’s EURDEP map, with gaps near your region.",
+    "Ask a physics teacher or makerspace about building and calibrating a simple sensor."
+   ],
+   "read": [
+    {
+     "title": "Safecast",
+     "url": "https://safecast.org/"
+    },
+    {
+     "title": "EURDEP: European Radiological Data Exchange Platform",
+     "url": "https://remon.jrc.ec.europa.eu/About/Rad-Data-Exchange"
+    }
+   ]
+  },
+  "Reactor decommissioning and waste robotics": {
+   "what": "Robots, tools and services for safely taking apart closed nuclear plants and handling their radioactive waste, so fewer people have to work in high-radiation areas.",
+   "why": "After Chernobyl, Italy voted to quit nuclear power, and after Fukushima, Germany closed its last reactors in 2023. Many reactors built in the 1970s and 1980s are nearing retirement, and dismantling them can take decades.",
+   "how": [
+    "Read the UK Nuclear Decommissioning Authority’s plans to see which tasks it contracts out.",
+    "Talk to a robotics lab about radiation-hardened sensors and remote handling challenges.",
+    "Look for supplier days run by decommissioning agencies or large nuclear contractors."
+   ],
+   "read": [
+    {
+     "title": "UK Nuclear Decommissioning Authority",
+     "url": "https://www.gov.uk/government/organisations/nuclear-decommissioning-authority"
+    }
+   ]
+  },
+  "Nuclear safety and licensing staff": {
+   "what": "People who run reactors, inspect them and review designs before approval: reactor operators, safety inspectors at regulators, and licensing specialists who prepare and check safety cases.",
+   "why": "After Chernobyl, operators founded WANO in 1989 to run peer reviews of each other’s plants. Now small reactor projects are multiplying, and the US has pushed its regulator to decide faster, which may strain the supply of trained inspectors.",
+   "how": [
+    "Browse regulator job pages, such as the US NRC or UK ONR, for entry roles.",
+    "Talk to a nuclear engineering department about conversion courses for engineers from other fields.",
+    "Learn what a safety case is by reading a published summary of a reactor design assessment."
+   ],
+   "read": [
+    {
+     "title": "US Nuclear Regulatory Commission: Careers",
+     "url": "https://www.nrc.gov/about-nrc/employment"
+    },
+    {
+     "title": "UK Office for Nuclear Regulation",
+     "url": "https://www.onr.org.uk/"
+    }
+   ]
+  },
+  "Safety culture and risk analysis": {
+   "what": "Probabilistic risk assessment estimates how likely chains of failures are and which matter most. Safety culture and human-factors work study how people, rules and pressure cause or prevent mistakes.",
+   "why": "After Chernobyl, IAEA advisers coined the term “safety culture”, and a commission of Japan’s parliament later called Fukushima a man-made disaster. As small reactors and other complex systems spread quickly, these methods may be needed widely.",
+   "how": [
+    "Read INSAG-4, the IAEA’s short 1991 report that defined safety culture.",
+    "Learn the basics of fault trees and event trees, then draw one for a simple system.",
+    "Read one accident report, such as Fukushima’s, and list its human and organizational causes."
+   ],
+   "read": [
+    {
+     "title": "IAEA INSAG-4: Safety Culture (1991)",
+     "url": "https://www-pub.iaea.org/MTCD/Publications/PDF/Pub882_web.pdf"
+    },
+    {
+     "title": "US NRC: Probabilistic Risk Assessment",
+     "url": "https://www.nrc.gov/regulations-legislation/how-we-regulate/risk-assessment/probabilistic-risk-assessment-pra"
+    }
+   ]
+  }
+ },
+ "tiananmen": {
+  "Relocation help for professionals": {
+   "what": "Services that help families move abroad with their working lives intact: transferring pensions and savings, getting qualifications recognized, finding schools and moving or restarting a small business.",
+   "why": "From 1988 to 1994, about 55,000 people a year left Hong Kong. Since 2021, the UK’s BN(O) visa route has drawn well over 100,000. Each wave has needed help moving money, careers and families.",
+   "how": [
+    "Talk to recent emigrants about what was hardest: pensions, school places, licenses or banking.",
+    "Read the UK BN(O) visa rules to see which documents and costs families face.",
+    "Pick one profession, such as nursing or accounting, and map how it is recognized abroad."
+   ],
+   "read": [
+    {
+     "title": "GOV.UK: British National (Overseas) visa",
+     "url": "https://www.gov.uk/british-national-overseas-bno-visa"
+    }
+   ]
+  },
+  "Preserving records and community archives": {
+   "what": "Tools and services that save copies of news sites, social posts, documents and community histories in several places, so they survive if the original is deleted or blocked.",
+   "why": "Tiananmen remains censored in mainland China. In Hong Kong, Apple Daily’s website went offline when the paper closed in 2021, and a June 4th museum shut. Copies held in many places may help such records survive.",
+   "how": [
+    "Try Webrecorder’s free tools to capture a website, then replay the saved copy offline.",
+    "Save important public pages to the Wayback Machine and learn its limits.",
+    "Talk to a librarian or archivist about storing copies safely in more than one country."
+   ],
+   "read": [
+    {
+     "title": "Webrecorder",
+     "url": "https://webrecorder.net/"
+    },
+    {
+     "title": "Internet Archive: Save pages in the Wayback Machine",
+     "url": "https://help.archive.org/help/save-pages-in-the-wayback-machine/"
+    }
+   ]
+  },
+  "Digital safety trainers": {
+   "what": "Trainers who teach journalists, researchers, activists and diaspora groups to protect their phones, accounts and contacts from hacking, tracking and leaks.",
+   "why": "After 1989, a secret network smuggled hundreds of activists out via Hong Kong. Since 2023, Hong Kong police have offered bounties for activists living abroad, so people at risk may need security training they can trust.",
+   "how": [
+    "Work through EFF’s Surveillance Self-Defense guides and practise threat modeling on yourself.",
+    "Take a training-of-trainers course from a digital security or press freedom group.",
+    "Volunteer to run a short phone security session for a local journalist or community group."
+   ],
+   "read": [
+    {
+     "title": "EFF: Surveillance Self-Defense",
+     "url": "https://ssd.eff.org/"
+    },
+    {
+     "title": "CPJ: Digital Safety Kit",
+     "url": "https://cpj.org/2019/07/digital-safety-kit-journalists/"
+    }
+   ]
+  },
+  "China and Hong Kong legal literacy": {
+   "what": "Knowing the main laws that shape work with China and Hong Kong, such as national security, counter-espionage, data and exit-ban rules, and how courts and police have applied them.",
+   "why": "After 1989, Deng’s 1992 reforms drew a wave of foreign investment. Since 2020, national security laws, a wider counter-espionage law and exit bans have raised legal risks for firms, journalists and researchers working with China.",
+   "how": [
+    "Read English translations of key laws on China Law Translate, starting with data rules.",
+    "Follow NPC Observer to see how new Chinese laws are drafted and passed.",
+    "Ask a lawyer who advises firms in Hong Kong which rules clients misunderstand most."
+   ],
+   "read": [
+    {
+     "title": "China Law Translate",
+     "url": "https://www.chinalawtranslate.com/"
+    },
+    {
+     "title": "NPC Observer",
+     "url": "https://npcobserver.com/"
+    }
+   ]
+  }
+ },
+ "netscape": {
+  "Making small firms AI-ready": {
+   "what": "Services that organize a small firm’s documents, data and routines so AI tools can use them safely, such as cleaning files, setting permissions and picking tasks worth automating.",
+   "why": "After Netscape, web designers built first websites for many small firms. ChatGPT reached an estimated 100 million users in about two months, but many small firms lack tidy data or know-how, which may create local service work.",
+   "how": [
+    "Ask three local businesses which repetitive tasks eat their time and where their files live.",
+    "Take the free Elements of AI course to learn what AI can and cannot do.",
+    "Pilot one small project, like a searchable document library, and measure the time saved."
+   ],
+   "read": [
+    {
+     "title": "Elements of AI (free course)",
+     "url": "https://www.elementsofai.com/"
+    },
+    {
+     "title": "NIST AI Risk Management Framework",
+     "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    }
+   ]
+  },
+  "Visibility in AI answers": {
+   "what": "Helping organizations show up accurately when people ask AI assistants or AI search, by keeping facts clear, consistent and machine-readable on their own sites and trusted sources.",
+   "why": "Search engine optimization grew out of the late-1990s web as search became the front door. Google now shows AI summaries above many results, and some sites report fewer clicks, so accurate presence in AI answers may matter.",
+   "how": [
+    "Ask several AI assistants about one local business and record errors and missing facts.",
+    "Read Google’s guidance on AI features and learn basic Schema.org markup.",
+    "Offer one organization a before-and-after audit, and be honest that results are hard to guarantee."
+   ],
+   "read": [
+    {
+     "title": "Google Search Central: AI features and your website",
+     "url": "https://developers.google.com/search/docs/appearance/ai-features"
+    },
+    {
+     "title": "Schema.org",
+     "url": "https://schema.org/"
+    }
+   ]
+  },
+  "AI integration and evaluation roles": {
+   "what": "Integration engineers connect AI models to a company’s data and software. Evaluation specialists design tests that show whether a model is accurate, safe and useful for a specific task.",
+   "why": "After Netscape, webmaster became a common job, and in 1998 the US raised the H-1B visa cap as firms sought programmers. As companies move AI from demos to daily work, testing and integration skills may be in demand.",
+   "how": [
+    "Take the free Hugging Face LLM course to learn how models are built and used.",
+    "Write a small evaluation with the open-source Inspect framework for a task you know well.",
+    "Talk to someone who deploys AI at work about which skills they struggle to hire."
+   ],
+   "read": [
+    {
+     "title": "Hugging Face LLM Course",
+     "url": "https://huggingface.co/learn/llm-course/chapter1/1"
+    },
+    {
+     "title": "Inspect: open-source framework for AI evaluations",
+     "url": "https://inspect.aisi.org.uk/"
+    }
+   ]
+  },
+  "Competition rules for AI platforms": {
+   "what": "The antitrust and interoperability rules that decide whether big firms may bundle AI assistants into phones, browsers and office software, set defaults, or block smaller rivals from access.",
+   "why": "Microsoft bundled Internet Explorer with Windows, won the browser war and faced a US antitrust case. Today the EU’s Digital Markets Act limits gatekeeper platforms, and a 2024 US ruling found Google illegally kept its search monopoly.",
+   "how": [
+    "Read the European Commission’s Digital Markets Act pages on gatekeeper obligations.",
+    "Skim the UK CMA’s report on AI foundation models and its proposed principles.",
+    "Study the US v. Microsoft browser case and note which questions repeat for AI."
+   ],
+   "read": [
+    {
+     "title": "European Commission: About the Digital Markets Act",
+     "url": "https://digital-markets-act.ec.europa.eu/about-dma_en"
+    },
+    {
+     "title": "UK CMA: AI Foundation Models initial report",
+     "url": "https://www.gov.uk/government/publications/ai-foundation-models-initial-report"
+    }
+   ]
+  }
+ },
+ "dolly": {
+  "Clear genetic counseling services": {
+   "what": "Services that explain genetic test results, including embryo screening and gene therapy options, in plain language, helping patients understand risks, uncertainty and choices before they decide.",
+   "why": "After 1978, IVF grew into a global industry, and Dolly prompted national bioethics reviews. Some firms now sell embryo screening for complex traits, which many geneticists call unproven, so clear, independent explanation may be valuable.",
+   "how": [
+    "Talk to a certified genetic counselor about what patients most often misunderstand.",
+    "Read MedlinePlus Genetics pages on testing to learn plain explanations of key terms.",
+    "Check local rules, since in many countries only licensed professionals may give genetic advice."
+   ],
+   "read": [
+    {
+     "title": "National Society of Genetic Counselors",
+     "url": "https://www.nsgc.org/"
+    },
+    {
+     "title": "MedlinePlus Genetics",
+     "url": "https://medlineplus.gov/genetics/"
+    }
+   ]
+  },
+  "Compliance tools for fertility clinics": {
+   "what": "Software that helps fertility and gene therapy clinics manage consent forms, patient and embryo records, lab audits and reports to regulators, as rules differ from country to country.",
+   "why": "After 1978, IVF grew into a global industry, and the UK set up a dedicated regulator, the HFEA, in 1991. Rules on embryo testing and editing differ widely and keep changing, which may raise demand for auditable records.",
+   "how": [
+    "Ask a clinic manager which reports and audits take the most staff time.",
+    "Compare how two countries regulate embryo testing, for example the UK and Portugal.",
+    "Learn health data protection basics, such as GDPR rules on genetic data, before building."
+   ],
+   "read": [
+    {
+     "title": "ESHRE: European Society of Human Reproduction and Embryology",
+     "url": "https://www.eshre.eu/"
+    }
+   ]
+  },
+  "Genetic counselors and embryologists": {
+   "what": "Genetic counselors explain inherited risks and test results to patients. Clinical embryologists handle eggs, sperm and embryos in IVF labs, and bioethics staff help hospitals and regulators weigh new methods.",
+   "why": "Genentech’s insulin and the IVF boom each created new kinds of jobs, and Dolly brought national ethics reviews. As embryo screening and gene therapies reach clinics and lab-made eggs are studied, trained staff and oversight may be needed.",
+   "how": [
+    "Check accredited routes: ABGC certification in the US, or ESHRE embryologist certification in Europe.",
+    "Interview a genetic counselor or embryologist about their daily work and how long training took.",
+    "Try a clinic or lab support role to test your interest before a long degree."
+   ],
+   "read": [
+    {
+     "title": "American Board of Genetic Counseling",
+     "url": "https://www.abgc.net/"
+    },
+    {
+     "title": "ESHRE: Certification for clinical embryologists",
+     "url": "https://www.eshre.eu/Accreditation-and-Certification/Certification-for-embryologists"
+    }
+   ]
+  },
+  "Reproductive technology law and ethics": {
+   "what": "How countries regulate IVF, embryo screening, embryo editing and future lab-grown eggs and sperm, and the ethical arguments behind those rules, from consent to fairness and safety.",
+   "why": "After Dolly, dozens of countries banned reproductive cloning. After He Jiankui’s 2018 gene-edited babies, the WHO issued a governance framework in 2021. Lab-grown eggs and sperm may raise the same questions again, and rules differ widely.",
+   "how": [
+    "Read the Nuffield Council’s report on genome editing and human reproduction, starting with its summary.",
+    "Compare the UK’s licensing model with the rules in your own country.",
+    "Read the WHO governance framework and note which recommendations your country has adopted."
+   ],
+   "read": [
+    {
+     "title": "Nuffield Council on Bioethics: Genome editing and human reproduction",
+     "url": "https://www.nuffieldbioethics.org/publication/genome-editing-and-human-reproduction-social-and-ethical-issues/"
+    },
+    {
+     "title": "WHO: Human genome editing, a framework for governance",
+     "url": "https://www.who.int/publications/i/item/9789240030060"
+    }
+   ]
+  }
+ },
+ "deepblue": {
+  "Practice tools against AI": {
+   "what": "Training tools where professionals rehearse against an AI opponent or simulated case, such as a difficult patient, a hostile negotiator or a courtroom question, then get feedback.",
+   "why": "After Deep Blue, engines became every chess player’s coach, and the youngest-grandmaster record fell from 14 to 12. As AI handles more expert tasks, similar practice partners could spread to medicine, law and negotiation.",
+   "how": [
+    "Interview trainers in one field about which skills learners rarely get to practise.",
+    "Build a simple role-play prototype with an AI model and test it with five learners.",
+    "Decide how you could measure real improvement, not just engagement, before charging anyone."
+   ],
+   "read": []
+  },
+  "Proving work was done unaided": {
+   "what": "Ways to confirm that an exam, contest entry or job test was done by a person without AI help, such as supervised settings, oral follow-ups, writing-process records and statistical checks.",
+   "why": "Chess needed engine-cheating detection after computers outplayed humans, and high-profile cheating disputes still arise. Schools, contests and employers now face the same problem with AI, and some are returning to supervised or oral tests.",
+   "how": [
+    "Read how chess sites and FIDE detect engine use, and what mistakes they make.",
+    "Ask teachers or recruiters which checks they trust, and why AI text detectors often fail.",
+    "Prototype a light check, like a short recorded oral follow-up, and pilot it fairly."
+   ],
+   "read": []
+  },
+  "Human-AI team leads": {
+   "what": "Roles that combine deep knowledge of a field, such as chemistry or mathematics, with skill at directing AI tools, checking their output and deciding which results are worth pursuing.",
+   "why": "In 1998, Kasparov launched Advanced Chess, pairing humans with computers. AlphaFold’s protein structure predictions, honored with a 2024 Nobel Prize, now support labs worldwide, and people able to steer and check such tools may be valued.",
+   "how": [
+    "Watch Kasparov’s TED talk on working with intelligent machines and note lessons for your field.",
+    "Use a free scientific AI resource, like the AlphaFold database, on a question you understand.",
+    "Volunteer to test AI tools in your current job and document where they fail."
+   ],
+   "read": [
+    {
+     "title": "TED: Garry Kasparov, Don’t fear intelligent machines. Work with them",
+     "url": "https://www.ted.com/talks/garry_kasparov_don_t_fear_intelligent_machines_work_with_them"
+    },
+    {
+     "title": "AlphaFold Protein Structure Database",
+     "url": "https://alphafold.ebi.ac.uk/"
+    }
+   ]
+  },
+  "Proof assistants and formal verification": {
+   "what": "Software such as Lean that checks every step of a mathematical proof or a program’s logic, so errors are caught by a machine instead of relying on a human reader or tests.",
+   "why": "After Deep Blue, Kasparov questioned how the machine had played. As AI produces proofs and code, machine checking may matter: DeepMind’s AlphaProof wrote its 2024 Math Olympiad solutions as Lean proofs.",
+   "how": [
+    "Play the Natural Number Game, a free browser game that teaches Lean basics.",
+    "Work through the first chapters of Mathematics in Lean.",
+    "Join the Lean community chat and try formalizing one short proof you already know."
+   ],
+   "read": [
+    {
+     "title": "Lean programming language and theorem prover",
+     "url": "https://lean-lang.org/"
+    },
+    {
+     "title": "Mathematics in Lean",
+     "url": "https://leanprover-community.github.io/mathematics_in_lean/"
+    }
+   ]
+  }
+ },
+ "y2k": {
+  "Year 2038 audits": {
+   "what": "Checking devices, software and databases for the 2038 problem: many older systems count time as seconds since 1970 in a 32-bit number, which overflows on 19 January 2038.",
+   "why": "Y2K fixes created heavy demand for COBOL programmers and helped India’s IT firms win Western clients. The 2038 deadline is similar, but often hides in embedded controllers and devices that may stay in service for decades.",
+   "how": [
+    "Read the GNU Gnulib note on avoiding the 2038 problem to understand the technical causes.",
+    "On a test machine only, set the clock past January 2038 and see what breaks.",
+    "Ask a factory or utility engineer how long their controllers stay in service."
+   ],
+   "read": [
+    {
+     "title": "GNU Gnulib: Avoiding the year 2038 problem",
+     "url": "https://www.gnu.org/software/gnulib/manual/html_node/Avoiding-the-year-2038-problem.html"
+    }
+   ]
+  },
+  "Safer software update rollouts": {
+   "what": "Tools and practices that release updates to a small group first, watch for problems and roll back automatically, so one bad change cannot crash every machine at once.",
+   "why": "Y2K pushed many firms to write IT contingency plans for the first time. In 2024, one faulty CrowdStrike update crashed about 8.5 million Windows computers, and the company then promised staged rollouts for such updates.",
+   "how": [
+    "Read Google’s SRE chapter on canary releases to learn staged rollout basics.",
+    "Read CrowdStrike’s root cause analysis and list which safeguards could have stopped the crash.",
+    "Interview an IT operations lead about how they test and stage vendor updates today."
+   ],
+   "read": [
+    {
+     "title": "Google SRE Workbook: Canarying releases",
+     "url": "https://sre.google/workbook/canarying-releases/"
+    },
+    {
+     "title": "CrowdStrike: Channel File 291 remediation hub and root cause analysis",
+     "url": "https://www.crowdstrike.com/falcon-content-update-remediation-and-guidance-hub/"
+    }
+   ]
+  },
+  "Resilience and third-party risk roles": {
+   "what": "Site reliability engineers keep online services running. Resilience officers plan for outages, and vendor risk analysts check how much a firm depends on outside suppliers and what happens if one fails.",
+   "why": "Y2K made contingency planning normal in many firms. Since January 2025, the EU’s DORA rules require banks and insurers to manage risks from technology suppliers, and the 2024 CrowdStrike outage showed how one vendor can spread failures.",
+   "how": [
+    "Read the EIOPA summary of DORA to see what financial firms must now do.",
+    "Study the free Google SRE book chapters on incident response and postmortems.",
+    "Ask a risk or IT audit team how they map their critical suppliers today."
+   ],
+   "read": [
+    {
+     "title": "EIOPA: Digital Operational Resilience Act (DORA)",
+     "url": "https://www.eiopa.europa.eu/digital-operational-resilience-act-dora_en"
+    },
+    {
+     "title": "Google: Site Reliability Engineering book",
+     "url": "https://sre.google/sre-book/table-of-contents/"
+    }
+   ]
+  },
+  "Legacy code and recovery drills": {
+   "what": "Keeping old but critical software, often written in COBOL on mainframes, working and safe to change, and practising manual fallbacks so services continue when computers fail.",
+   "why": "Y2K fixes created heavy demand for COBOL programmers. In 2020, US states such as New Jersey asked for COBOL volunteers to keep unemployment systems running. Many who know these systems are retiring, while banks and governments still rely on them.",
+   "how": [
+    "Take the free Open Mainframe Project COBOL Programming Course.",
+    "Read NIST’s contingency planning guide and run a tabletop drill for one critical service.",
+    "Ask a bank or public agency IT team how they train new staff on legacy systems."
+   ],
+   "read": [
+    {
+     "title": "Open Mainframe Project: COBOL Programming Course",
+     "url": "https://openmainframeproject.org/projects/cobol-programming-course/"
+    },
+    {
+     "title": "NIST SP 800-34 Rev. 1: Contingency Planning Guide",
+     "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final"
+    }
+   ]
+  }
+ },
+ "dotcom": {
+  "Reusing overbuilt infrastructure": {
+   "what": "Businesses that buy or rent surplus capacity cheaply after a crash, such as unused data centers, chips or network links, and build new services on top of it.",
+   "why": "The dot-com crash left cheap, unused fiber that later carried broadband and online video. Tech firms now spend hundreds of billions of dollars a year on AI data centers; if revenue lags, surplus capacity could become cheap.",
+   "how": [
+    "Read Carlota Perez on how bubbles leave infrastructure that later booms reuse.",
+    "Track prices for renting AI chips and data center space to spot a lasting fall.",
+    "List services that only work if computing gets much cheaper, and test demand for one now."
+   ],
+   "read": [
+    {
+     "title": "Carlota Perez: research on technological revolutions and financial bubbles",
+     "url": "https://carlotaperez.org/"
+    }
+   ]
+  },
+  "Flagging misleading investment promotions": {
+   "what": "Tools that scan ads, social posts and videos about investments for signs of paid promotion, missing risk warnings or unrealistic promises, and alert users, platforms or regulators.",
+   "why": "Manias from Railway Mania to crypto drew in first-time investors through hype. In 2022, Kim Kardashian paid $1.26 million to settle SEC charges over an undisclosed paid crypto promotion, and the UK’s FCA issued finfluencer guidance in 2024.",
+   "how": [
+    "Collect 50 investment posts and label which disclose payment and risks.",
+    "Read the FCA’s finfluencer guidance to see which claims break the rules.",
+    "Ask a consumer protection group or platform trust team what a useful alert would include."
+   ],
+   "read": [
+    {
+     "title": "UK FCA: FG24/1 Financial promotions on social media",
+     "url": "https://www.fca.org.uk/publications/finalised-guidance/fg24-1-finalised-guidance-financial-promotions-social-media"
+    }
+   ]
+  },
+  "Forensic accounting and insolvency": {
+   "what": "Forensic accountants trace where money went and spot fraud. Blockchain tracers follow crypto payments, and insolvency administrators run failed firms and recover assets for creditors.",
+   "why": "After the dot-com crash, accounting frauds surfaced at firms like WorldCom. After FTX collapsed in 2022, its bankruptcy team recovered billions, enough to repay most customers’ claims at 2022 values. Burst bubbles often keep investigators busy for years.",
+   "how": [
+    "Look at what the ACFE’s Certified Fraud Examiner credential requires.",
+    "Talk to an insolvency or forensic team at an accounting firm about entry roles.",
+    "Practise tracing a public crypto transaction on a block explorer."
+   ],
+   "read": [
+    {
+     "title": "Association of Certified Fraud Examiners (ACFE)",
+     "url": "https://www.acfe.com/"
+    }
+   ]
+  },
+  "Reading unit economics": {
+   "what": "Working out whether a business makes or loses money on each sale or customer, after costs like delivery, discounts and marketing, and how long its cash can last.",
+   "why": "Pets.com often sold goods for less than they cost to buy and ship, and shut nine months after listing. When money is cheap, such losses can hide; in the next frenzy, this skill may help separate survivors from failures.",
+   "how": [
+    "Pick one listed company and calculate revenue, gross margin and cash burn from its annual report.",
+    "Use Damodaran’s free valuation lectures to learn how analysts test growth stories.",
+    "Compare a dot-com failure and a survivor, such as Pets.com and Amazon, using old filings."
+   ],
+   "read": [
+    {
+     "title": "Damodaran Online (NYU Stern): free valuation courses",
+     "url": "https://pages.stern.nyu.edu/~adamodar/"
+    }
+   ]
+  }
+ },
+ "blackout": {
+  "Backup power for homes and shops": {
+   "what": "Batteries, small solar kits and simple backup setups that keep essentials running in an outage: phones, lights, fridges, medical devices, routers and card payment terminals.",
+   "why": "After the 2003 blackout, North America made grid rules mandatory, yet outages still happen. On 28 April 2025, Spain and Portugal lost power for hours, and the EU now advises households to be ready to cope for 72 hours.",
+   "how": [
+    "Ask local shops what failed during the last outage, such as payments, fridges or alarms.",
+    "Compare the cost of a small battery kit with the losses from a day without power.",
+    "Read power outage safety advice, including safe generator use, before selling any kit."
+   ],
+   "read": [
+    {
+     "title": "American Red Cross: Power outage safety",
+     "url": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/power-outage.html"
+    }
+   ]
+  },
+  "Voltage control for renewable-heavy grids": {
+   "what": "Equipment and services that keep grid voltage steady as solar and wind replace big spinning generators, such as grid-forming inverters, synchronous condensers and reactive power control.",
+   "why": "After 2003, utilities installed sensors that track the grid in real time. ENTSO-E’s 2026 report on the Iberian blackout cited gaps in voltage and reactive power control, which may push grid operators to buy more of this equipment.",
+   "how": [
+    "Read the summary of ENTSO-E’s final report on the 28 April 2025 blackout.",
+    "Learn what grid-forming inverters do through ESIG’s webinars and reports.",
+    "Talk to a grid operator or utility engineer about which services they plan to buy."
+   ],
+   "read": [
+    {
+     "title": "ENTSO-E: 28 April 2025 Iberian blackout",
+     "url": "https://www.entsoe.eu/publications/blackout/28-april-2025-iberian-blackout/"
+    },
+    {
+     "title": "Energy Systems Integration Group (ESIG)",
+     "url": "https://www.esig.energy/"
+    }
+   ]
+  },
+  "Grid protection and control engineers": {
+   "what": "Power system engineers design and model grids. Protection specialists set relays that isolate faults, and control room operators balance supply and demand minute by minute.",
+   "why": "After 2003, a US-Canada task force blamed failed alarms and operator errors, and NERC’s reliability rules became mandatory. As grids add solar, wind and big new loads like data centers, skilled operators and engineers may be in short supply.",
+   "how": [
+    "Join IEEE Power and Energy Society events or a student chapter to meet working engineers.",
+    "Learn power flow basics with free open-source tools such as pandapower or PyPSA.",
+    "Ask a utility or grid operator about trainee and operator certification routes."
+   ],
+   "read": [
+    {
+     "title": "IEEE Power and Energy Society",
+     "url": "https://ieee-pes.org/"
+    },
+    {
+     "title": "NERC: North American Electric Reliability Corporation",
+     "url": "https://www.nerc.com/"
+    }
+   ]
+  },
+  "Power system stability basics": {
+   "what": "How grids keep voltage and frequency within safe limits, why spinning generators add inertia, and how solar, wind and batteries connected through inverters change that balance.",
+   "why": "In 2003, failures built up over hours; in 2025, Spain and Portugal collapsed within seconds. Investigators cited oscillations and voltage control gaps, so understanding stability may help engineers, analysts and policymakers judge future grid rules.",
+   "how": [
+    "Read the summary of the 2003 US-Canada task force report to see how a cascade unfolds.",
+    "Read ENTSO-E’s Iberian blackout summary and list each factor it names.",
+    "Take an introductory power systems course online, focusing on frequency, voltage and inertia."
+   ],
+   "read": [
+    {
+     "title": "US-Canada Task Force: Final report on the 14 August 2003 blackout",
+     "url": "https://www.energy.gov/oe/articles/blackout-2003-final-report-august-14-2003-blackout-united-states-and-canada-causes-and"
+    },
+    {
+     "title": "ENTSO-E: 28 April 2025 Iberian blackout",
+     "url": "https://www.entsoe.eu/publications/blackout/28-april-2025-iberian-blackout/"
+    }
+   ]
+  }
+ }
+}

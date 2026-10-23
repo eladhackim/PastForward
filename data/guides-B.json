@@ -1,0 +1,882 @@
+{
+ "krakatoa": {
+  "Backup links for island nations": {
+   "what": "Backup internet for small islands: satellite links, spare capacity on other cables and repair plans, so banks, hospitals and governments stay online if the main undersea cable is cut.",
+   "why": "In 2022 the Hunga Tonga eruption cut Tonga’s only international cable, leaving the country largely offline for about five weeks. Many islands still rely on one cable, while low-orbit satellite services now make backups cheaper.",
+   "how": [
+    "Use the free Submarine Cable Map to list island states that rely on a single cable.",
+    "Ask an island telecom regulator or bank IT team what their outage plan is.",
+    "Price a small satellite backup kit for one clinic or bank branch and test switching over."
+   ],
+   "read": [
+    {
+     "title": "International Cable Protection Committee",
+     "url": "https://www.iscpc.org/"
+    },
+    {
+     "title": "TeleGeography Submarine Cable Map",
+     "url": "https://www.submarinecablemap.com/"
+    }
+   ]
+  },
+  "Cold-year harvest risk tools": {
+   "what": "Models and software that estimate how a year of weaker sunlight and cooler weather could cut crop yields in each region, and what that means for food stocks and prices.",
+   "why": "After Tambora erupted in 1815, 1816 became a “year without a summer,” with crop failures in Europe and North America. Pinatubo cooled the globe by roughly 0.5°C in 1992. Today’s food trade is far more tightly linked.",
+   "how": [
+    "Explore FAO GIEWS and AMIS reports to see how crop and stock outlooks are built.",
+    "Run a simple crop model for one region with lower temperature and sunlight inputs.",
+    "Ask a crop insurer or food agency which shock scenarios they already test."
+   ],
+   "read": [
+    {
+     "title": "FAO Global Information and Early Warning System (GIEWS)",
+     "url": "https://www.fao.org/giews/en/"
+    },
+    {
+     "title": "AMIS Agricultural Market Information System",
+     "url": "https://www.amis-outlook.org/"
+    }
+   ]
+  },
+  "Volcano and tsunami warning staff": {
+   "what": "People who watch volcanoes and oceans for danger: observatory technicians who keep sensors running, analysts who read quake and gas data, and tsunami forecasters who issue alerts.",
+   "why": "In 1991 Pinatubo forecasts saved more than 5,000 lives. In 2022 Hunga Tonga’s air pressure wave raised tsunamis that standard quake-based models did not expect, so warning centers may need staff who understand both air and sea.",
+   "how": [
+    "Learn how USGS volcano alert levels work and follow one observatory’s weekly updates.",
+    "Take a free online course in seismology or geophysical data analysis.",
+    "Contact a national geological survey or tsunami center about internships or technician roles."
+   ],
+   "read": [
+    {
+     "title": "USGS Volcano Hazards Program",
+     "url": "https://www.usgs.gov/programs/VHP"
+    },
+    {
+     "title": "U.S. Tsunami Warning Centers",
+     "url": "https://www.tsunami.gov/"
+    }
+   ]
+  },
+  "Reading satellite sulfur and aerosol data": {
+   "what": "Learning to read satellite maps of sulfur dioxide and fine particles in the air. They show how much gas an eruption sent high into the sky, which is what drives any cooling.",
+   "why": "Krakatoa’s sulfur cooled Northern summers by up to 0.4°C the next year, while Hunga Tonga released little sulfur and barely changed temperatures. Satellites like Sentinel-5P now measure an eruption’s sulfur within days, an early sign of possible cooling.",
+   "how": [
+    "Browse NASA’s sulfur dioxide monitoring pages and compare Pinatubo with Hunga Tonga.",
+    "Take a free NASA ARSET training on air quality or aerosol data.",
+    "Download one Sentinel-5P sulfur dioxide file and plot it with Panoply or Python."
+   ],
+   "read": [
+    {
+     "title": "NASA Global Sulfur Dioxide Monitoring",
+     "url": "https://so2.gsfc.nasa.gov/"
+    },
+    {
+     "title": "NASA Applied Remote Sensing Training (ARSET)",
+     "url": "https://www.earthdata.nasa.gov/data/projects/arset"
+    }
+   ]
+  }
+ },
+ "scramble": {
+  "Refining minerals where they are mined": {
+   "what": "Plants that turn raw ore into higher-value products, like battery-grade lithium or refined copper and cobalt, in the country where it is mined, plus the local services those plants need.",
+   "why": "In the last scramble, Africa shipped raw rubber and ore while profits stayed abroad. Now Zimbabwe and Namibia restrict raw lithium exports, and Indonesia’s 2020 ban on nickel ore exports drew large processing investment, a model others watch.",
+   "how": [
+    "Study which minerals your target country restricts and what processing it wants built.",
+    "Ask a mining engineer or chamber of mines about power, water and skills gaps.",
+    "List services a new plant could buy locally, like lab testing, maintenance or logistics."
+   ],
+   "read": [
+    {
+     "title": "Intergovernmental Forum on Mining (IGF)",
+     "url": "https://www.igfmining.org/"
+    }
+   ]
+  },
+  "Cross-border trade under AfCFTA": {
+   "what": "Services that help small African firms sell to neighboring countries: customs paperwork, cross-border payments, shipping and finding buyers, using lower tariffs under the African Continental Free Trade Area.",
+   "why": "Colonial railways ran from mines to ports, not between neighbors, and trade among African countries is still only about 15% of their total. AfCFTA trading began in 2021, and tariffs are falling in stages.",
+   "how": [
+    "Read your country’s AfCFTA tariff schedule and rules of origin for one product.",
+    "Interview three small exporters about their worst border delays and payment problems.",
+    "Pilot a service on one busy corridor, such as Kenya to Tanzania."
+   ],
+   "read": [
+    {
+     "title": "AfCFTA Secretariat",
+     "url": "https://au-afcfta.org/"
+    },
+    {
+     "title": "Pan-African Payment and Settlement System (PAPSS)",
+     "url": "https://papss.com/"
+    }
+   ]
+  },
+  "Resource deal negotiators and auditors": {
+   "what": "Professionals on a government’s side of the table: lawyers, geologists, economists and auditors who shape and check mining contracts, loans and infrastructure deals with foreign partners.",
+   "why": "In 1888 the Ndebele king Lobengula signed a mining concession whose terms Rhodes’s agents misrepresented, and chartered firms took mines and land. Today African states bargain with many partners at once, and skilled negotiators could shift who gains.",
+   "how": [
+    "Read real mining contracts on ResourceContracts.org and note their royalty and tax terms.",
+    "Read the latest EITI report for one African country and see what it reveals.",
+    "Contact NGOs, law firms or ministries that advise governments on extractive deals."
+   ],
+   "read": [
+    {
+     "title": "Extractive Industries Transparency Initiative (EITI)",
+     "url": "https://eiti.org/"
+    },
+    {
+     "title": "ResourceContracts.org",
+     "url": "https://www.resourcecontracts.org/"
+    }
+   ]
+  },
+  "Mining contracts and sovereign debt": {
+   "what": "The basics of how mining deals and government loans are written: royalties, taxes, offtake deals that pre-sell future output, and loans repaid with minerals or oil.",
+   "why": "Last time, contract terms decided who got rich from Congo rubber and southern African mines. Recent debt crises in Zambia and Ghana, and minerals-for-infrastructure deals, show that the fine print still shapes who gains.",
+   "how": [
+    "Read the free CCSI guide on how to read mining contracts.",
+    "Compare two real contracts for the same mineral and list where their terms differ.",
+    "Read the IMF debt sustainability factsheet, then follow Zambia’s debt restructuring story."
+   ],
+   "read": [
+    {
+     "title": "Mining Contracts: How to Read and Understand Them (CCSI)",
+     "url": "https://ccsi.columbia.edu/mining-contracts-how-read-and-understand-them"
+    },
+    {
+     "title": "IMF-World Bank Debt Sustainability Framework for Low-Income Countries",
+     "url": "https://www.imf.org/en/About/Factsheets/Sheets/2023/imf-world-bank-debt-sustainability-framework-for-low-income-countries"
+    }
+   ]
+  }
+ },
+ "trusts": {
+  "Search and AI rivals": {
+   "what": "New search engines and AI assistants, often focused on one field like law, shopping or science, that compete with Google by doing one job better.",
+   "why": "After AT&T’s 1984 breakup, rivals like MCI and Sprint won customers and call prices fell. In 2025 a US judge barred Google’s exclusive default deals and ordered it to share some search data with qualified rivals, though Google is appealing.",
+   "how": [
+    "Pick a niche where general search answers poorly and interview ten people who search it.",
+    "Read the remedies ruling on the Justice Department’s Google case page.",
+    "Build a small prototype using a search API or open web data, and test it with them."
+   ],
+   "read": [
+    {
+     "title": "U.S. and Plaintiff States v. Google LLC (Justice Department)",
+     "url": "https://www.justice.gov/atr/case/us-and-plaintiff-states-v-google-llc"
+    }
+   ]
+  },
+  "Data portability and interoperability tools": {
+   "what": "Tools that let people move their photos, contacts, playlists and other data from one platform to another, or let rival services work together, so switching is easier.",
+   "why": "Standard Oil’s power came partly from controlling pipelines and rail deals rivals needed. Today’s gatekeepers control data and connections, and the EU Digital Markets Act now requires the biggest platforms to allow data portability and some interoperability.",
+   "how": [
+    "Read the Digital Markets Act rules on data portability and interoperability.",
+    "Move your own data between two services and note every point of friction.",
+    "Study the Data Transfer Initiative’s open-source tools and which services they support."
+   ],
+   "read": [
+    {
+     "title": "EU Digital Markets Act",
+     "url": "https://digital-markets-act.ec.europa.eu/index_en"
+    },
+    {
+     "title": "Data Transfer Initiative",
+     "url": "https://dtinit.org/"
+    }
+   ]
+  },
+  "Compliance engineers and antitrust economists": {
+   "what": "People who check that big platforms follow the rules: economists who measure market power, engineers who build and audit compliance systems, and monitors who report to courts or regulators.",
+   "why": "In 1914 the US created the Federal Trade Commission to police competition permanently. Now court orders against Google and the EU Digital Markets Act need technical experts to test whether platforms actually comply.",
+   "how": [
+    "Read the FTC Guide to Antitrust Laws to learn the core ideas and terms.",
+    "Follow the European Commission’s DMA compliance reports and its public compliance workshops.",
+    "Ask someone at a competition authority, law firm or economic consultancy about entry roles."
+   ],
+   "read": [
+    {
+     "title": "FTC Guide to Antitrust Laws",
+     "url": "https://ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws"
+    },
+    {
+     "title": "EU Digital Markets Act",
+     "url": "https://digital-markets-act.ec.europa.eu/index_en"
+    }
+   ]
+  },
+  "How digital antitrust remedies work": {
+   "what": "How courts and regulators fix a monopoly: breaking a company up, banning certain contracts, forcing it to share data, or stopping it from favoring its own products.",
+   "why": "The 1911 Standard Oil breakup and the 1984 AT&T split reshaped their markets. In 2025 a judge chose data sharing and limits on default deals for Google instead of a breakup, a test of which remedies work.",
+   "how": [
+    "Read the Stigler Committee’s free report on digital platforms.",
+    "Compare the 1911 Standard Oil decision with the 2025 Google remedies ruling.",
+    "Follow one DMA case, such as the 2025 fines on Apple and Meta, from start to decision."
+   ],
+   "read": [
+    {
+     "title": "Stigler Committee on Digital Platforms: Final Report",
+     "url": "https://www.chicagobooth.edu/research/stigler/news-and-media/committee-on-digital-platforms-final-report"
+    },
+    {
+     "title": "The Curse of Bigness by Tim Wu",
+     "url": "https://globalreports.columbia.edu/books/the-curse-of-bigness"
+    }
+   ]
+  }
+ },
+ "yellow": {
+  "Content provenance and verification tools": {
+   "what": "Tools that attach a tamper-evident record to photos, video and audio, showing who made them, when and how they were edited, plus tools that read and check those records.",
+   "why": "In 1898 papers blamed Spain for the Maine without evidence; a 1976 study pointed to an accidental fire. Now AI can fake video in seconds, and the C2PA standard lets cameras and apps attach Content Credentials.",
+   "how": [
+    "Read the C2PA overview and try the free Content Credentials verify tool on sample images.",
+    "Ask a newsroom photo desk or court clerk how they check whether images are authentic.",
+    "Build a simple plugin that shows provenance data inside one common photo workflow."
+   ],
+   "read": [
+    {
+     "title": "Coalition for Content Provenance and Authenticity (C2PA)",
+     "url": "https://c2pa.org/"
+    },
+    {
+     "title": "Content Authenticity Initiative",
+     "url": "https://contentauthenticity.org/"
+    }
+   ]
+  },
+  "Trusted local and specialist news": {
+   "what": "Small news services, often paid by subscription or membership, that cover one town or one topic carefully, with clear sourcing and visible corrections.",
+   "why": "After the yellow press era, Adolph Ochs grew the New York Times by selling sober, reliable news. Thousands of US local papers have closed since 2005, leaving gaps that fakes can fill and careful reporters could serve.",
+   "how": [
+    "Pick a town or topic you know and list questions no outlet answers well.",
+    "Read the Reuters Institute Digital News Report to see what people pay for.",
+    "Run a free weekly newsletter for three months and track sign-ups and replies."
+   ],
+   "read": [
+    {
+     "title": "Reuters Institute Digital News Report",
+     "url": "https://reutersinstitute.politics.ox.ac.uk/digital-news-report"
+    },
+    {
+     "title": "LION Publishers",
+     "url": "https://lionpublishers.com/"
+    }
+   ]
+  },
+  "Verification and open-source investigators": {
+   "what": "People who check whether viral images, videos and claims are real, using maps, satellite images, metadata and public records. They work in newsrooms, research groups and platform safety teams.",
+   "why": "After 2016, fact-checking groups multiplied and Facebook began paying outside fact-checkers. With AI fakes now cheap, people who can confirm or debunk a claim fast may be needed by newsrooms, courts and governments.",
+   "how": [
+    "Work through the free Verification Handbook, one chapter per week.",
+    "Practise geolocating a viral photo with Bellingcat’s guides and free satellite maps.",
+    "Publish one short, careful verification and ask an experienced investigator for feedback."
+   ],
+   "read": [
+    {
+     "title": "Verification Handbook",
+     "url": "https://verificationhandbook.com/"
+    },
+    {
+     "title": "Bellingcat guides",
+     "url": "https://www.bellingcat.com/category/resources/how-tos/"
+    }
+   ]
+  },
+  "Digital forensics for synthetic media": {
+   "what": "Skills for checking whether an image, video or voice is real: reverse image search, reading file metadata, matching places on maps and spotting signs of AI-made content.",
+   "why": "The false Maine story spread for weeks with little way to check it. Today a fake can spread in hours, as an AI clone of Joe Biden’s voice did in a 2024 robocall, so fast checking matters more.",
+   "how": [
+    "Use Bellingcat’s Online Investigation Toolkit to try three reverse image and metadata tools.",
+    "Read WITNESS’s guidance on deepfakes and how to prepare without panic.",
+    "Test yourself on known fake and real images, noting what gave each one away."
+   ],
+   "read": [
+    {
+     "title": "Bellingcat’s Online Investigation Toolkit",
+     "url": "https://bellingcat.gitbook.io/toolkit"
+    },
+    {
+     "title": "WITNESS: Prepare, Don’t Panic on synthetic media",
+     "url": "https://lab.witness.org/projects/synthetic-media-and-deep-fakes/"
+    }
+   ]
+  }
+ },
+ "dreadnought": {
+  "Shipyard capacity and repair": {
+   "what": "Businesses that help build and fix ships faster: repair yards, makers of ready-made hull sections, and robots and software that speed up welding, cutting and planning.",
+   "why": "In the Dreadnought race, Vickers and Armstrong Whitworth filled their order books. Today China builds far more ships than the US and its allies, and in 2024 South Korea’s Hanwha bought a Philadelphia shipyard.",
+   "how": [
+    "Read the CSIS Ship Wars report to understand the gap in shipyard capacity.",
+    "Call a local ship repair yard and ask where their work gets delayed.",
+    "Pick one bottleneck, like weld inspection or parts tracking, and sketch a fix."
+   ],
+   "read": [
+    {
+     "title": "CSIS: Ship Wars, Confronting China’s Dual-Use Shipbuilding Empire",
+     "url": "https://www.csis.org/analysis/ship-wars-confronting-chinas-dual-use-shipbuilding-empire"
+    }
+   ]
+  },
+  "Tracking dark ships and cables": {
+   "what": "Services that use satellite images, radar and radio signals to find ships that switch off their location beacons, and to watch over undersea cables and pipelines.",
+   "why": "In August 1914 Britain cut Germany’s undersea telegraph cables within days of war. Since 2023 several Baltic Sea cables have been damaged, with ships suspected of dragging anchors, and sanctions-dodging tankers often hide their positions.",
+   "how": [
+    "Explore Global Fishing Watch maps to see how gaps in ship signals are spotted.",
+    "Learn the basics of AIS ship tracking and satellite radar imagery.",
+    "Ask a coast guard, port or cable operator what monitoring gaps they face."
+   ],
+   "read": [
+    {
+     "title": "Global Fishing Watch",
+     "url": "https://globalfishingwatch.org/"
+    },
+    {
+     "title": "Skylight maritime monitoring",
+     "url": "https://www.skylight.global/"
+    }
+   ]
+  },
+  "Shipyard trades and naval architects": {
+   "what": "The people who design and build ships: welders, pipefitters and marine electricians on the yard floor, and naval architects and marine engineers who design hulls and systems.",
+   "why": "In the Dreadnought era shipyards boomed, then many lost orders after the 1922 naval treaty. Today the US and Europe are trying to expand shipbuilding again, and yards report trouble hiring skilled trades.",
+   "how": [
+    "Visit a shipyard or apprenticeship program and ask which trades are hardest to fill.",
+    "Try a short welding or marine electrical course at a technical college.",
+    "For design roles, join SNAME or RINA as a student and attend a local meeting."
+   ],
+   "read": [
+    {
+     "title": "Society of Naval Architects and Marine Engineers (SNAME)",
+     "url": "https://sname.org/"
+    },
+    {
+     "title": "Royal Institution of Naval Architects (RINA)",
+     "url": "https://www.rina.org.uk/"
+    }
+   ]
+  },
+  "Uncrewed vessel design and operation": {
+   "what": "How boats and submarines without crews are built, steered remotely or by software, and kept safe and legal at sea.",
+   "why": "HMS Dreadnought made older battleships obsolete almost overnight. In the Black Sea, Ukrainian sea drones have damaged Russian warships, and in 2026 the IMO adopted a first, non-mandatory safety code for autonomous ships.",
+   "how": [
+    "Read the IMO’s autonomous shipping page to learn the levels of autonomy and the code.",
+    "Build or program a small model boat with an open autopilot such as ArduPilot.",
+    "Ask a marine robotics firm or university lab how they test their vessels."
+   ],
+   "read": [
+    {
+     "title": "IMO: Autonomous shipping",
+     "url": "https://www.imo.org/en/MediaCentre/HotTopics/Pages/Autonomous-shipping.aspx"
+    }
+   ]
+  }
+ },
+ "ellis": {
+  "Credential recognition and job matching": {
+   "what": "Services that help newcomers prove their skills: translating diplomas, guiding them through professional licensing, and matching them with employers short of workers in care, building and transport.",
+   "why": "Ellis Island arrivals quickly filled steel mills and mines. Today many trained migrants in Europe work below their skill level while aging countries lack nurses and builders, so faster recognition could help both sides.",
+   "how": [
+    "Learn how your country’s ENIC-NARIC center assesses foreign diplomas.",
+    "Interview a few migrant nurses or engineers about the steps that slowed them down.",
+    "Partner with one care or construction employer to pilot faster matching."
+   ],
+   "read": [
+    {
+     "title": "ENIC-NARIC recognition network",
+     "url": "https://www.enic-naric.net/"
+    },
+    {
+     "title": "European Qualifications Passport for Refugees (Council of Europe)",
+     "url": "https://www.coe.int/en/web/education/recognition-of-refugees-qualifications"
+    }
+   ]
+  },
+  "Banking and remittances for newcomers": {
+   "what": "Simple bank accounts, cheap money transfers home and ways to build a credit history for migrants who arrive without local financial records.",
+   "why": "In 1904 A.P. Giannini founded the Bank of Italy to serve immigrants other banks ignored; it became Bank of America. Sending money home still often costs well above the UN goal of under 3%.",
+   "how": [
+    "Check World Bank Remittance Prices Worldwide data for one corridor you know.",
+    "Ask newcomers where they bank, how they send money and what it costs.",
+    "Learn your country’s licensing rules for payment or e-money services before building anything."
+   ],
+   "read": [
+    {
+     "title": "World Bank Remittance Prices Worldwide",
+     "url": "https://remittanceprices.worldbank.org/about-remittance-prices-worldwide"
+    }
+   ]
+  },
+  "Interpreters, teachers and caseworkers": {
+   "what": "People who help newcomers settle: language teachers, interpreters in clinics and courts, caseworkers who handle housing and paperwork, and coordinators who link people to jobs.",
+   "why": "In the Ellis Island era, settlement houses and night schools taught many newcomers English. Today aging countries recruit abroad for care and skilled trades, and new arrivals may need similar help to settle and work.",
+   "how": [
+    "Volunteer a few hours a week with a local refugee or migrant support group.",
+    "Explore the Council of Europe toolkit on language support for adult refugees.",
+    "Look into a recognized interpreting or language teaching certificate in your country."
+   ],
+   "read": [
+    {
+     "title": "Council of Europe toolkit: Language support for adult refugees",
+     "url": "https://www.coe.int/en/web/language-support-for-adult-refugees"
+    }
+   ]
+  },
+  "Migration law and integration practice": {
+   "what": "How asylum, work visa and residence rules work, and what actually helps newcomers settle, such as early language classes, quick job placement and recognition of skills.",
+   "why": "After the 1907 peak, the US passed a literacy test in 1917 and quotas in 1924. The EU’s Pact on Migration and Asylum began applying in June 2026, changing how arrivals are screened and shared.",
+   "how": [
+    "Read the European Commission’s overview of the Pact on Migration and Asylum.",
+    "Attend a public talk or webinar run by a migrant legal aid group.",
+    "Compare integration programs in two countries and note what helps people find work faster."
+   ],
+   "read": [
+    {
+     "title": "European Commission: Pact on Migration and Asylum",
+     "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/pact-migration-and-asylum_en"
+    }
+   ]
+  }
+ },
+ "modelt": {
+  "Charging for drivers without garages": {
+   "what": "Chargers on streets, at workplaces and in apartment buildings for people who cannot plug in at home, plus the apps and billing that make them easy to use.",
+   "why": "The Model T era spread drive-in filling stations from 1913. In 2024 over 17 million electric cars were sold, more than one in five new cars, and many city drivers have no driveway to charge in.",
+   "how": [
+    "Map public chargers near apartment blocks in your area with a charging map app.",
+    "Ask a building manager what stops them from installing chargers for residents.",
+    "Learn local permit and grid connection rules for curbside or shared charging."
+   ],
+   "read": [
+    {
+     "title": "IEA Global EV Outlook 2025",
+     "url": "https://www.iea.org/reports/global-ev-outlook-2025"
+    },
+    {
+     "title": "Alternative Fuels Data Center: EV charging stations",
+     "url": "https://afdc.energy.gov/fuels/electricity-stations"
+    }
+   ]
+  },
+  "Battery recycling and second life": {
+   "what": "Collecting used electric car batteries, testing their health, then reusing them, for example as storage for solar power, or recycling them to recover lithium, nickel and cobalt.",
+   "why": "The car boom built whole industries around tires, oil and repair. Packs from the first big wave of EVs are starting to age out, and new EU rules set recycling targets and require digital battery passports from 2027.",
+   "how": [
+    "Read the EU summary of the batteries rules and their recycling targets.",
+    "Ask a car dismantler or EV repair shop what they do with old packs.",
+    "Get high-voltage safety training, then test a small storage setup built from used modules."
+   ],
+   "read": [
+    {
+     "title": "EUR-Lex summary: sustainability rules for batteries and waste batteries",
+     "url": "https://eur-lex.europa.eu/EN/legal-content/summary/sustainability-rules-for-batteries-and-waste-batteries.html"
+    }
+   ]
+  },
+  "EV technicians and charger electricians": {
+   "what": "Mechanics trained to repair high-voltage battery cars safely, electricians who install and maintain chargers, and grid workers who connect them to the power network.",
+   "why": "The Model T created a new trade of garage mechanics, and Ford’s $5 day drew workers to Detroit. Electric cars run on hundreds of volts, and many mechanics trained on engines are not yet qualified to work on them.",
+   "how": [
+    "Find an accredited EV safety course, such as IMI electric vehicle qualifications.",
+    "Ask a local dealer or independent garage whether they need EV-trained staff.",
+    "If you are an electrician, look into charger installer training such as EVITP."
+   ],
+   "read": [
+    {
+     "title": "Institute of the Motor Industry (IMI)",
+     "url": "https://www.theimi.org.uk/"
+    },
+    {
+     "title": "Electric Vehicle Infrastructure Training Program (EVITP)",
+     "url": "https://evitp.org/"
+    }
+   ]
+  },
+  "High-voltage battery diagnostics": {
+   "what": "Learning to test the health of an electric car battery, work safely with high voltage, and understand the power electronics that charge and drive the car.",
+   "why": "When cars replaced horses, engine repair became a steady trade. Battery health is now a major factor in a used EV’s value, and buyers, dealers and insurers may want trusted tests as more used EVs reach the market.",
+   "how": [
+    "Read Battery University’s free lessons on how lithium-ion cells age.",
+    "Take a certified high-voltage safety course before touching any EV system.",
+    "Practise reading battery health data with an OBD scanner and app on a friend’s EV."
+   ],
+   "read": [
+    {
+     "title": "Battery University",
+     "url": "https://batteryuniversity.com/"
+    },
+    {
+     "title": "Institute of the Motor Industry (IMI)",
+     "url": "https://www.theimi.org.uk/"
+    }
+   ]
+  }
+ },
+ "titanic": {
+  "Independent certification for extreme travel": {
+   "what": "Outside experts who test, inspect and certify craft and tours for extreme places, like deep-sea submersibles, private spacecraft and high-risk adventure trips, before paying passengers go.",
+   "why": "Titanic led to the 1914 SOLAS safety treaty. Titan was never certified, and the US Coast Guard’s 2025 report found its loss preventable. Private trips to space and the deep sea are growing faster than their rules.",
+   "how": [
+    "Read the Coast Guard’s Titan report summary and list what an inspector would have checked.",
+    "Learn how classification societies and standards like ASME PVHO certify passenger craft.",
+    "Ask an adventure travel operator what proof of safety their insurers require."
+   ],
+   "read": [
+    {
+     "title": "U.S. Coast Guard: Marine Board of Investigation report on Titan",
+     "url": "https://www.news.uscg.mil/Press-Releases/Article/4265651/coast-guard-marine-board-of-investigation-releases-report-on-titan-submersible/"
+    },
+    {
+     "title": "ASME PVHO-1: Safety Standard for Pressure Vessels for Human Occupancy",
+     "url": "https://www.asme.org/codes-standards/find-codes-standards/safety-standard-for-pressure-vessels-for-human-occupancy"
+    }
+   ]
+  },
+  "Fatigue monitoring for composite hulls": {
+   "what": "Sensors and software that track tiny cracks, strain and wear in carbon-fiber hulls and pressure tanks, with alerts checked by independent engineers, not only by the operator.",
+   "why": "After Titanic, wireless watches and early sonar made ships safer. The Coast Guard found Titan’s own sensors recorded a major warning event in 2022 that was never properly acted on, so independent review could matter.",
+   "how": [
+    "Read the Coast Guard’s Titan findings on the hull and its monitoring data.",
+    "Learn the basics of acoustic emission testing and strain gauges for composites.",
+    "Ask a pressure vessel or hydrogen tank maker how they monitor wear today."
+   ],
+   "read": [
+    {
+     "title": "U.S. Coast Guard: Marine Board of Investigation report on Titan",
+     "url": "https://www.news.uscg.mil/Press-Releases/Article/4265651/coast-guard-marine-board-of-investigation-releases-report-on-titan-submersible/"
+    },
+    {
+     "title": "ASME PVHO-1: Safety Standard for Pressure Vessels for Human Occupancy",
+     "url": "https://www.asme.org/codes-standards/find-codes-standards/safety-standard-for-pressure-vessels-for-human-occupancy"
+    }
+   ]
+  },
+  "Safety inspectors and certification engineers": {
+   "what": "People who check that ships, submersibles and spacecraft are safe: marine surveyors, engineers at classification societies, and spaceflight safety specialists at regulators and companies.",
+   "why": "After Titanic, inquiries led to lifeboats for all, round-the-clock radio watches and the International Ice Patrol. Titan’s loss and growing space tourism could push regulators to demand more outside review.",
+   "how": [
+    "Browse entry roles at IACS member societies such as DNV or Lloyd’s Register.",
+    "Read the FAA’s commercial space pages on licensing and safety.",
+    "Ask a marine surveyor how they trained and got certified."
+   ],
+   "read": [
+    {
+     "title": "International Association of Classification Societies (IACS)",
+     "url": "https://iacs.org.uk/"
+    },
+    {
+     "title": "FAA Commercial Space Transportation",
+     "url": "https://www.faa.gov/space"
+    }
+   ]
+  },
+  "Composite materials and failure analysis": {
+   "what": "How carbon fiber and other layered materials are made, how they weaken under repeated loads, and how engineers test them and work out why a part failed.",
+   "why": "Titanic’s steel and rivets were studied for decades after the wreck was found. Investigators traced Titan’s loss to its carbon-fiber hull, and composites are spreading in aircraft, hydrogen tanks and spacecraft.",
+   "how": [
+    "Take a free online course in materials science or mechanics of materials.",
+    "Read the Coast Guard’s Titan findings on the hull and its glued joints.",
+    "Visit a composites workshop or makerspace and lay up a simple carbon-fiber part."
+   ],
+   "read": [
+    {
+     "title": "U.S. Coast Guard: Marine Board of Investigation report on Titan",
+     "url": "https://www.news.uscg.mil/Press-Releases/Article/4265651/coast-guard-marine-board-of-investigation-releases-report-on-titan-submersible/"
+    },
+    {
+     "title": "ASME PVHO-1: Safety Standard for Pressure Vessels for Human Occupancy",
+     "url": "https://www.asme.org/codes-standards/find-codes-standards/safety-standard-for-pressure-vessels-for-human-occupancy"
+    }
+   ]
+  }
+ },
+ "somme": {
+  "Demining survey and clearance tools": {
+   "what": "Drones, sensors, mapping software and machines that find and safely remove landmines and unexploded shells, so farmland, roads and towns can be used again.",
+   "why": "A century after the Somme, French farmers still turn up shells in each year’s “iron harvest.” Ukraine is now among the most mined countries in the world, and clearing it may take decades.",
+   "how": [
+    "Read the International Mine Action Standards to see how clearance work is regulated.",
+    "Learn how drone imagery and machine learning are used to spot surface mines.",
+    "Ask a demining organization what testing and approval a new tool needs."
+   ],
+   "read": [
+    {
+     "title": "International Mine Action Standards (GICHD)",
+     "url": "https://www.gichd.org/our-response/mine-action-standards/international-mine-action-standards/"
+    }
+   ]
+  },
+  "Prosthetics and remote rehabilitation": {
+   "what": "Affordable artificial limbs, 3D-printed sockets that fit better, and video-based physiotherapy that lets patients keep improving after they leave the hospital.",
+   "why": "After the Somme, limb-fitting centers like Roehampton expanded prosthetics for disabled veterans. The war in Ukraine has left many thousands of amputees, and there are too few prosthetists and clinics to serve them quickly.",
+   "how": [
+    "Read the WHO standards for prosthetics and orthotics.",
+    "Ask a prosthetist or physiotherapist what slows fittings and follow-up care.",
+    "Explore open-source 3D-printed prosthetic projects and learn their clinical limits."
+   ],
+   "read": [
+    {
+     "title": "WHO standards for prosthetics and orthotics",
+     "url": "https://www.who.int/publications/i/item/9789241512480"
+    },
+    {
+     "title": "International Society for Prosthetics and Orthotics (ISPO)",
+     "url": "https://www.ispoint.org/"
+    }
+   ]
+  },
+  "Deminers, prosthetists and trauma therapists": {
+   "what": "People who repair the damage of war: deminers who clear land, prosthetists who fit limbs, physical therapists who restore movement and psychologists who treat trauma.",
+   "why": "After the Somme, facial surgery, stored blood and limb centers grew to treat the wounded. Ukraine now needs many deminers, rehabilitation staff and trauma therapists, and demand could grow further if reconstruction funding arrives.",
+   "how": [
+    "Read the International Mine Action Standards to see what training deminers need.",
+    "Look into prosthetics and orthotics programs recognized by ISPO.",
+    "Ask a trauma therapist which certified training they recommend for newcomers."
+   ],
+   "read": [
+    {
+     "title": "International Mine Action Standards (GICHD)",
+     "url": "https://www.gichd.org/our-response/mine-action-standards/international-mine-action-standards/"
+    },
+    {
+     "title": "International Society for Prosthetics and Orthotics (ISPO)",
+     "url": "https://www.ispoint.org/"
+    }
+   ]
+  },
+  "Drone defense for civilian sites": {
+   "what": "How to spot, track and respond to small drones near places like airports, power plants and prisons, using radar, radio sensors and cameras, within the law.",
+   "why": "Tanks first appeared at the Somme and helped break the trench deadlock by 1918. Cheap drones have changed the war in Ukraine, and in 2025 drone sightings briefly closed airports in Copenhagen and Munich.",
+   "how": [
+    "Read EASA’s guidance on managing drone incidents at airports.",
+    "Learn the basics of radio frequency detection and how drones are controlled.",
+    "Check your country’s laws, since jamming or downing drones is often limited to authorities."
+   ],
+   "read": [
+    {
+     "title": "EASA: Managing airport drone incidents",
+     "url": "https://www.easa.europa.eu/community/topics/managing-airport-drone-incidents"
+    }
+   ]
+  }
+ },
+ "sykes": {
+  "Shared river data and monitoring": {
+   "what": "Services that measure river flows, dam releases and groundwater using satellites and sensors, and share the numbers with every country along the river.",
+   "why": "Sykes and Picot drew zones with little regard for who lived there. Today Iraq depends on the Tigris and Euphrates, which rise in Turkey, and dams and drought have cut flows, so trusted shared data could ease disputes.",
+   "how": [
+    "Explore NASA SWOT data, which measures river and lake heights from space.",
+    "Read river dispute case studies from Oregon State’s transboundary water program.",
+    "Ask a water ministry or aid agency which flow data they lack or distrust."
+   ],
+   "read": [
+    {
+     "title": "NASA SWOT mission",
+     "url": "https://swot.jpl.nasa.gov/"
+    },
+    {
+     "title": "Oregon State Program in Water Conflict Management and Transformation",
+     "url": "https://transboundarywaters.ceoas.oregonstate.edu/"
+    }
+   ]
+  },
+  "Rebuilding war-damaged historic cities": {
+   "what": "Work that documents and restores war-damaged old cities: 3D scanning of ruins, training local craftspeople, and rebuilding homes, markets and monuments with care.",
+   "why": "In 2014 ISIS claimed to erase the Sykes-Picot border, and in 2017 it blew up Mosul’s al-Nuri Mosque. UNESCO-led teams rebuilt the mosque and nearby churches, which reopened in 2025.",
+   "how": [
+    "Read about UNESCO’s Revive the Spirit of Mosul project and how it trained local workers.",
+    "Learn photogrammetry by scanning an old building in your town with a free app.",
+    "Look at ICCROM courses on protecting cultural heritage during crises."
+   ],
+   "read": [
+    {
+     "title": "UNESCO: Revive the Spirit of Mosul",
+     "url": "https://www.unesco.org/en/articles/revive-spirit-mosul"
+    },
+    {
+     "title": "ICCROM",
+     "url": "https://www.iccrom.org/"
+    }
+   ]
+  },
+  "Mediators and local service engineers": {
+   "what": "People who keep fragile regions working: mediators and water diplomats who settle disputes, and engineers and advisers who help local governments supply water, power and schools.",
+   "why": "After 1916, borders were imposed from outside and many Arab leaders felt betrayed. ISIS grew where Iraq and Syria had lost control of border areas, so working services and local deals may help keep armed groups out.",
+   "how": [
+    "Read the ICRC report on keeping urban services running during long wars.",
+    "Take a free online course in negotiation, mediation or water governance.",
+    "Contact an NGO working in Iraq or Syria about engineering or field roles."
+   ],
+   "read": [
+    {
+     "title": "ICRC: Urban Services during Protracted Armed Conflict",
+     "url": "https://www.icrc.org/en/publication/4249-urban-services-during-protracted-armed-conflict"
+    }
+   ]
+  },
+  "Border history and transboundary water law": {
+   "what": "The story of how the Middle East’s borders were drawn after the Ottoman Empire fell, and the international rules for sharing rivers that cross borders.",
+   "why": "The secret 1916 deal and the 1920 San Remo mandates still fuel grievances, and the Tigris and Euphrates face drought and upstream dams. People who know both the history and the law may be useful to diplomats and reporters.",
+   "how": [
+    "Read James Barr’s A Line in the Sand on the Anglo-French rivalry behind the borders.",
+    "Read the 1997 UN Watercourses Convention, focusing on fair use and avoiding significant harm.",
+    "Follow one current river dispute and map which countries control each dam."
+   ],
+   "read": [
+    {
+     "title": "UN Watercourses Convention (1997)",
+     "url": "https://legal.un.org/ilc/texts/instruments/english/conventions/8_3_1997.pdf"
+    },
+    {
+     "title": "A Line in the Sand by James Barr",
+     "url": "https://www.simonandschuster.co.uk/books/A-Line-in-the-Sand/James-Barr/9781847394576"
+    }
+   ]
+  }
+ },
+ "flu": {
+  "Wastewater and air pathogen monitoring": {
+   "what": "Testing sewage, air in airports and samples from farms for traces of viruses and bacteria, to spot outbreaks before many people get sick or see a doctor.",
+   "why": "In 1918 no one knew a virus caused flu. During COVID, sewage tests often showed rising infections days before clinics did, and bird flu has since spread in mammals, including US dairy cows.",
+   "how": [
+    "Read how the CDC wastewater program and the EU wastewater observatory share data.",
+    "Ask your local water utility what testing it does now.",
+    "Learn basic PCR and sequencing workflows through a short lab course."
+   ],
+   "read": [
+    {
+     "title": "CDC National Wastewater Surveillance System",
+     "url": "https://www.cdc.gov/nwss/about.html"
+    },
+    {
+     "title": "EU Wastewater Observatory for Public Health (EU4S)",
+     "url": "https://wastewater-observatory.jrc.ec.europa.eu/"
+    }
+   ]
+  },
+  "Cleaner indoor air for buildings": {
+   "what": "Services that improve air in schools, offices and clinics: better ventilation, filters and portable air cleaners, plus sensors that show air quality in real time.",
+   "why": "After 1918, many countries invested in public health. COVID showed how viruses spread through shared indoor air, and ASHRAE Standard 241, published in 2023, sets targets for clean airflow in buildings.",
+   "how": [
+    "Read the WHO ventilation roadmap and a summary of ASHRAE Standard 241.",
+    "Use a low-cost CO2 monitor to check the air in a classroom or office.",
+    "Offer a free air check to one school and propose simple fixes."
+   ],
+   "read": [
+    {
+     "title": "ASHRAE Standard 241, Control of Infectious Aerosols",
+     "url": "https://www.ashrae.org/technical-resources/bookstore/ashrae-standard-241-control-of-infectious-aerosols"
+    },
+    {
+     "title": "WHO roadmap to improve and ensure good indoor ventilation",
+     "url": "https://www.who.int/publications/i/item/9789240021280"
+    }
+   ]
+  },
+  "Epidemiologists and veterinary disease specialists": {
+   "what": "Disease detectives who track outbreaks in people and animals: field epidemiologists, veterinarians who watch farm and wild animals, and lab staff who test samples.",
+   "why": "After 1918, Britain created a Ministry of Health in 1919. Bird flu has spread to many mammals, including US dairy cattle since 2024, and early detection where farms, wildlife and people meet could matter.",
+   "how": [
+    "Read WOAH’s avian influenza pages to learn how animal outbreaks are reported.",
+    "Look at field epidemiology programs such as ECDC’s EPIET fellowship.",
+    "Take a free online epidemiology course to test your interest first."
+   ],
+   "read": [
+    {
+     "title": "ECDC Fellowship Programme (EPIET/EUPHEM)",
+     "url": "https://www.ecdc.europa.eu/en/epiet-euphem"
+    },
+    {
+     "title": "WOAH: Avian influenza",
+     "url": "https://www.woah.org/en/disease/avian-influenza/"
+    }
+   ]
+  },
+  "Health risk communication and trust": {
+   "what": "How to explain uncertain health risks in plain words, admit what is unknown, and build trust with communities before and during an outbreak.",
+   "why": "In 1918 wartime censors played down the flu, so it was named after Spain, whose press reported it openly. During COVID, mixed messages and distrust slowed vaccine uptake in places, and trust may again shape the next response.",
+   "how": [
+    "Read the WHO guideline on communicating risk in public health emergencies.",
+    "Take the CDC’s free CERC training on crisis and emergency risk communication.",
+    "Explain one health risk to a friend in a minute, then ask what confused them."
+   ],
+   "read": [
+    {
+     "title": "WHO guideline: Communicating risk in public health emergencies",
+     "url": "https://www.who.int/publications/i/item/9789241550208"
+    },
+    {
+     "title": "CDC Crisis and Emergency Risk Communication (CERC)",
+     "url": "https://www.cdc.gov/cerc/"
+    }
+   ]
+  }
+ },
+ "weimar": {
+  "Independent price tracking": {
+   "what": "Apps and indexes that collect real prices from shops and websites to measure inflation independently, especially where official figures are late, distrusted or missing.",
+   "why": "By autumn 1923 German prices doubled every few days. Venezuela’s central bank stopped publishing inflation data for years, and MIT’s Billion Prices Project showed Argentina’s official inflation figures were too low.",
+   "how": [
+    "Study the Billion Prices Project’s method for collecting online prices.",
+    "Track 20 everyday items at three shops for a month and compare with official inflation.",
+    "Ask an economist or journalist in a high-inflation country which price data they trust."
+   ],
+   "read": [
+    {
+     "title": "The Billion Prices Project",
+     "url": "https://thebillionpricesproject.com/"
+    }
+   ]
+  },
+  "Safe remittance and savings channels": {
+   "what": "Low-cost, licensed ways for families in high-inflation countries to receive money from relatives abroad and keep savings in a stable currency, with protection against fraud.",
+   "why": "In 1923 German savers lost nearly everything while debtors holding real assets gained. In Venezuela people turned to US dollars, remittances and dollar stablecoins, often through informal channels with high fees and fraud risk.",
+   "how": [
+    "Compare fees on one sending corridor using World Bank remittance price data.",
+    "Learn your target market’s rules on foreign currency accounts and money transfer licenses.",
+    "Interview families who receive remittances about costs, delays and scams they have faced."
+   ],
+   "read": [
+    {
+     "title": "World Bank Remittance Prices Worldwide",
+     "url": "https://remittanceprices.worldbank.org/about-remittance-prices-worldwide"
+    }
+   ]
+  },
+  "Inflation-aware finance and payroll staff": {
+   "what": "Accountants, payroll and treasury staff who keep company books accurate when prices rise fast, using indexed contracts, several currencies and special accounting rules.",
+   "why": "In 1923 German firms struggled to set prices and wages as money lost value by the day. Argentina, Turkey and Venezuela have recently been treated as hyperinflationary under IAS 29, so these skills are used today.",
+   "how": [
+    "Read the IFRS summary of IAS 29 and work through one example.",
+    "Ask a multinational’s finance team how they keep books in Argentina or Turkey.",
+    "Build a simple multi-currency payroll sheet with indexed wages in a spreadsheet."
+   ],
+   "read": [
+    {
+     "title": "IFRS: IAS 29 Financial Reporting in Hyperinflationary Economies",
+     "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-29-financial-reporting-in-hyperinflationary-economies/"
+    }
+   ]
+  },
+  "Monetary history and inflation accounting": {
+   "what": "How hyperinflations start and end, from Germany’s 1923 Rentenmark to Zimbabwe and Venezuela, plus IAS 29, the accounting rule companies use in hyperinflationary economies.",
+   "why": "Weimar savers lost nearly everything, a wound many historians link to later support for extremists. Governments buried in debt, with central banks funding them directly, could face this again, and knowing the warning signs may help.",
+   "how": [
+    "Read Thomas Sargent’s classic essay The Ends of Four Big Inflations.",
+    "Read the IFRS summary of IAS 29 to learn how accounts are restated.",
+    "Track one high-inflation country’s official and street exchange rates weekly for a month."
+   ],
+   "read": [
+    {
+     "title": "Thomas Sargent, The Ends of Four Big Inflations (NBER)",
+     "url": "https://www.nber.org/books-and-chapters/inflation-causes-and-effects/ends-four-big-inflations"
+    },
+    {
+     "title": "IFRS: IAS 29 Financial Reporting in Hyperinflationary Economies",
+     "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-29-financial-reporting-in-hyperinflationary-economies/"
+    }
+   ]
+  }
+ }
+}
