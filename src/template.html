@@ -2725,7 +2725,7 @@ const INTRO_KEY = "pastforward.intro";
 const introEl = $("intro"), inCv = $("inCv"), inStage = $("inStage"), ic = inCv.getContext("2d"), inBg = $("inBg"), ibg = inBg.getContext("2d");
 const IP = PAIRS.find(p => p.id === "flu") || PAIRS[0];
 const I_THEN = IP.then.year, I_NOW = IP.now.year, I_GAP = I_NOW - I_THEN, I_NEXT = I_NOW + I_GAP;
-const I_ROWS = ["crash", "luddites", "titanic"].map(id => PAIRS.find(p => p.id === id)).filter(Boolean);
+const I_ROWS = ["cable", "vaccine", "springs", "revolution"].map(id => PAIRS.find(p => p.id === id)).filter(Boolean);   // inventions, a breakthrough, a movement, a revolution
 const I_BY = 1990;
 const I_PRE = (IP.echoes || []).find(e => e.year > I_THEN - I_GAP - 6 && e.year < I_THEN - I_GAP + 6) || { year: 1817, short: "First Cholera" };   // the beat before Then, about one gap earlier
 const I_PRE_Y = I_PRE.year, I_PRE_NAME = "Cholera";
@@ -2743,6 +2743,10 @@ const QB = BEAT / 4;   // a sixteenth: the finest step anything in the film move
 const onGrid = (t, step = QB) => Math.ceil(t / step - 1e-6) * step;   // the first step at or after t
 const YOU_T0 = 6 * QB;   // your lifeline: when the line of a life starts to draw
 const I_LIFE = lifeEchoes(I_BY).length;
+// then a second, younger visitor types their year, and the line redraws for them: you can enter yours
+const I_BY2 = 2008, I_LIFE2 = lifeEchoes(I_BY2).length;
+const YOU_SWAP = Math.ceil((YOU_T0 + BEAT + I_LIFE * QB + BEAT) / BEAT - 1e-6) * BEAT;   // on a beat: delete 1990, type 2008
+const YOU_MORPH = YOU_SWAP + 8 * QB;   // the line redraws for 2008
 const I_REVEAL = 3 * BEAT;   // "It rhymes." arrives on the fourth beat, after the first line has been read and has sunk in
 const I_SPAN = I_NOW - I_ECHO_ALL[0].year;
 const fmtN = n => n.toLocaleString("en-US");
@@ -2764,12 +2768,12 @@ function splitWords(el) {   // wrap each word of el's text in <span class="rw">,
   walk(el);
   return [...el.querySelectorAll(".rw")];
 }
-function readTimes(words, t0) {   // when each word lights, on the beat: a sixteenth a word, two after a long one, a rest at commas and full stops
+function readTimes(words, t0, slow = 1) {   // when each word lights, on the beat: a sixteenth a word, two after a long one, a rest at commas and full stops
   let t = onGrid(t0), prev = "";
   return words.map(w => {
     const tx = w.textContent, mark = !/[\p{L}\p{N}]/u.test(tx);   // a lone "·" lights with the word before it
     if (w.closest && w.closest(".ic-k")) return t;   // a label (Step 1) shows at once; reading starts after it
-    if (prev && !mark) t += QB * ((prev.replace(/[^\p{L}\p{N}]/gu, "").length >= 8 ? 2 : 1) + (/[.!?]$/.test(prev) ? 2 : /[,;:]$/.test(prev) ? 1 : 0));
+    if (prev && !mark) t += slow * QB * ((prev.replace(/[^\p{L}\p{N}]/gu, "").length >= 8 ? 2 : 1) + (/[.!?]$/.test(prev) ? 2 : /[,;:]$/.test(prev) ? 1 : 0));
     const da = w.closest && w.closest("[data-at]");
     if (da) t = Math.max(t, onGrid(+da.dataset.at));   // a part with data-at waits for its moment
     if (!mark) prev = tx;
@@ -2787,6 +2791,7 @@ const CARDS = {
   s3: [`<span class="ic-k next">Step 3</span>Count forward.`]
 };
 const CARD_LEAD = { cycles: 1, read: 1, method: 1, onrecord: 1, s1: 1, s2: 1, s3: 1 };
+const CARD_SLOW = { onrecord: 2 };   // a line read at half pace, and rested on longer
 const CARD_PAGE = { cycles: [0, 1, 2], read: [0, 1, 1], method: [0, 0], onrecord: [0], s1: [0], s2: [0], s3: [0] };   // one paragraph at a time, unless lines complete each other
 const CARD_T = {};   // per card: when each line arrives, and when each of its words lights
 for (const id in CARDS) {
@@ -2794,14 +2799,14 @@ for (const id in CARDS) {
   const lines = [], words = [], out = [], pg = CARD_PAGE[id];
   CARDS[id].forEach((h, j) => {
     const p = document.createElement("p"); p.innerHTML = h;
-    const ts = readTimes(splitWords(p), at + 2 * QB), read = ts[ts.length - 1] + LIT;
+    const slow = CARD_SLOW[id] || 1, ts = readTimes(splitWords(p), at + 2 * QB, slow), read = ts[ts.length - 1] + LIT;
     lines.push(at); words.push(ts);
     if (j + 1 < CARDS[id].length && pg[j + 1] !== pg[j]) {   // this page is read: rest on it, let it fade, and the next arrives on a beat
       for (let k = 0; k <= j; k++) if (pg[k] === pg[j]) out[k] = read + HOLD;
       at = onGrid(read + HOLD + .45, BEAT);
     } else at = onGrid(read + .15, BEAT);   // the next line of the same page: the next beat after a breath
   });
-  CARD_T[id] = { lines, words, out, end: words[words.length - 1][words[words.length - 1].length - 1] + LIT + HOLD };
+  CARD_T[id] = { lines, words, out, end: words[words.length - 1][words[words.length - 1].length - 1] + LIT + HOLD * (CARD_SLOW[id] ? 1.5 * CARD_SLOW[id] : 1) };
 }
 const cardDur = id => onGrid(CARD_T[id].end + .3, BEAT);
 // one per kind of cycle: a harvest, a crash, a tsunami, a pandemic. All on record:
@@ -2812,7 +2817,7 @@ const I_SEERS = [
   { a: "1968", b: "2011", early: "43 years early", who: "Yanosuke Hirai", did: "Had a power plant built high, recalling the tsunami of 869." },
   { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warned we were not ready for a pandemic." }
 ];
-const SEER = 5 * BEAT, SEER_LEAD = BEAT;   // one person every five beats, starting a beat after the line before them has faded
+const SEER = 7 * BEAT, SEER_LEAD = BEAT;   // one person every five beats, starting a beat after the line before them has faded
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: I_REVEAL + 3, cam: [1860, 760] },
@@ -2827,9 +2832,9 @@ const SCENES = [
   { id: "next", view: "tl", dur: 9 * BEAT, cam: [(I_PRE_Y + I_NEXT) / 2, (I_NEXT - I_PRE_Y) * 1.22] },      // and once more: c. 2122
   { id: "method", view: "method", card: "method", join: true, dur: cardDur("method") },
   { id: "more", view: "more", join: true, dur: (2 + 2 * I_ROWS.length) * BEAT },
-  { id: "you", view: "you", dur: YOU_T0 + BEAT + I_LIFE * QB + 3 * BEAT },
+  { id: "you", view: "you", dur: YOU_MORPH + 2 * QB + I_LIFE2 * QB / 2 + 3 * BEAT },
   { id: "onrecord", view: "card", card: "onrecord", dur: cardDur("onrecord") },   // the line first, on its own, then it fades
-  { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + 2 * BEAT },
+  { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + BEAT },
   { id: "demo", view: "demo", dur: 6 * BEAT },
   { id: "end", view: "end", dur: Infinity }
 ];
@@ -2840,11 +2845,11 @@ const CAP = {
   then: { k: "", t: `<span class="t">${I_THEN}</span> · The Spanish flu`, l: `${I_THEN - I_PRE_Y} years after the first cholera pandemic, in ${I_PRE_Y}.` },
   now: { k: "", t: `<span class="n">${I_NOW}</span> · COVID-19`, l: `${I_GAP} years later, the pattern returns.` },
   next: { k: "", t: `<span class="x">c. ${I_NEXT}</span> · The next pandemic`, l: "That is where the pattern points." },
-  more: { k: `${N} rhymes`, t: "Crashes, inventions, disasters", l: "The same three steps, across 2,500 years of history." },
-  you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: "Enter your own year to see yours." },
+  more: { k: "", t: "Inventions. Movements. Revolutions.", l: "" },
+  you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: "" },
   prepare: { k: "", t: "", l: "" },
   demo: { k: "", t: "", l: "" },
-  end: { k: "", t: `<span class="in-brand" data-at="${6 * QB}"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="${8 * QB}">History rhymes. See what comes next.</span>` }
+  end: { k: "", t: `<span class="in-brand" data-at="${6 * QB}"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="${8 * QB}">History rhymes.</span>` }
 };
 for (const id in CARDS) if (!CAP[id]) CAP[id] = { k: "", t: "", l: "" };
 const CAP_AT = 2 * QB;   // captions start to be read once they have faded in, on the half beat
@@ -3308,39 +3313,54 @@ function inYou(c, W, H, lt) {
   inText(c, "The year you were born", W / 2, by - 12, FONT.mono(13), `rgb(${MUTED})`);
   c.fillStyle = "rgba(27,24,58,.9)"; c.strokeStyle = `rgba(${RGB.next},.6)`; c.lineWidth = 1.5;
   c.beginPath(); c.roundRect ? c.roundRect(bx, by, bw, bh, 14) : c.rect(bx, by, bw, bh); c.fill(); c.stroke();
-  const typed = String(I_BY).slice(0, Math.max(0, Math.min(4, Math.floor((lt - 2 * QB) / QB) + 1)));   // a key on each sixteenth
+  // the keys: 1990 typed on sixteenths; later deleted and 2008 typed, a key a sixteenth
+  const kq = (a, b) => Math.max(0, Math.min(4, Math.floor((lt - a) / QB) + 1));
+  const typed = lt < YOU_SWAP ? String(I_BY).slice(0, kq(2 * QB)) : lt < YOU_SWAP + 4 * QB ? String(I_BY).slice(0, 4 - kq(YOU_SWAP)) : String(I_BY2).slice(0, kq(YOU_SWAP + 4 * QB));
   c.font = `600 26px "Hanken Grotesk", sans-serif`; c.textAlign = "left"; c.textBaseline = "alphabetic"; c.fillStyle = `rgb(${INK})`;
   c.fillText(typed, tx0, by + 34);
-  if (lt < YOU_T0 && Math.floor(lt * 2.2) % 2 === 0) { const cw = c.measureText(typed).width; c.fillRect(tx0 + cw + 2, by + 13, 2, 24); }
+  const typing = lt < YOU_T0 || (lt > YOU_SWAP - .4 && lt < YOU_MORPH + .2);
+  if (typing && Math.floor(lt * 2.2) % 2 === 0) { const cw = c.measureText(typed).width; c.fillRect(tx0 + cw + 2, by + 13, 2, 24); }
   c.restore();
-  const y = Math.round(H * .58), x0 = W * .09, x1 = W * .91, X = yr => x0 + (yr - I_BY) / 90 * (x1 - x0);
+  const y = Math.round(H * .58), x0 = W * .09, x1 = W * .91;
   const T0 = YOU_T0, grow = iOut(c01((lt - T0) / BEAT));
   if (grow <= 0) return;
   const g = c.createLinearGradient(x0, 0, x1, 0);
   g.addColorStop(0, `rgba(${MUTED},.5)`); g.addColorStop(1, `rgba(${RGB.next},.9)`);
   c.strokeStyle = g; c.lineWidth = 3; c.lineCap = "round"; c.beginPath(); c.moveTo(x0, y); c.lineTo(x0 + (x1 - x0) * grow, y); c.stroke();
   inDot(c, x0, y, MUTED, 5, c01((lt - T0) / .3));
-  inText(c, `Born ${I_BY}`, x0, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - T0) / .4).toFixed(3)})`, W);
   if (grow >= 1) inText(c, "Age 90", x1, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - T0 - 1.3) / .4).toFixed(3)})`, W);
-  const tx = X(NOWY), ta = c01((lt - T0 - 2 * QB + .05) / .3);
-  if (ta > 0) {
-    c.strokeStyle = `rgba(${RGB.now},${ta.toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.moveTo(tx, y - 9); c.lineTo(tx, y + 9); c.stroke();
-    inText(c, "Today", tx, y + 26, FONT.monoB(13), `rgba(${RGB.now},${ta.toFixed(3)})`, W);
-  }
-  const all = lifeEchoes(I_BY).map(e => ({ ...e, x: X(e.y) })), labels = [];
-  all.forEach(e => { if (!labels.length || e.x - labels[labels.length - 1].x >= Math.max(70, W * .2)) labels.push(e); });
-  const at = i => T0 + BEAT + i * QB;   // a sixteenth each
-  let shown = 0;
-  all.forEach((e, i) => { const p = c01((lt - at(i)) / .4); if (p <= 0) return; shown++; inDot(c, e.x, y, RGB.next, 5.5, p, true); });
-  labels.slice(0, 2).forEach((e, i) => {
-    const p = c01((lt - at(all.indexOf(e)) - .15) / .45); if (p <= 0) return;
-    const up = i % 2 === 0, a = c01(p * 1.5).toFixed(3), p2 = PAIRS[e.pi];
-    c.strokeStyle = `rgba(${RGB.next},${(.35 * p).toFixed(3)})`; c.lineWidth = 1;
-    c.beginPath(); c.moveTo(e.x, up ? y - 9 : y + 9); c.lineTo(e.x, up ? y - 20 : y + 38); c.stroke();
-    inText(c, p2.next.short, e.x, up ? y - 44 : y + 56, FONT.then(15), `rgba(${INK},${a})`, W);
-    inText(c, `c. ${e.y} · age ${e.y - I_BY}`, e.x, up ? y - 26 : y + 74, FONT.mono(12), `rgba(${RGB.next},${a})`, W);
-  });
-  if (shown) inText(c, `${shown} rhyme${shown === 1 ? "" : "s"} come due before age 90`, W / 2, Math.round(H * .93), FONT.monoB(16), `rgba(${RGB.next},${c01((lt - at(0)) / .4).toFixed(3)})`);
+  const out1 = 1 - c01((lt - YOU_MORPH + .05) / .3), in2 = c01((lt - YOU_MORPH - .05) / .3);   // 1990 gives way to 2008 on the beat
+  // one life on the line: its birth year, today, the rhymes that come due, the first two named, and the count
+  const life = (born, n, t0, a, step = QB) => {
+    if (a <= 0) return;
+    c.save(); c.globalAlpha *= a;
+    const X = yr => x0 + (yr - born) / 90 * (x1 - x0);
+    inText(c, `Born ${born}`, x0, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - T0) / .4).toFixed(3)})`, W);
+    const tx = X(NOWY), ta = c01((lt - t0 + BEAT - 2 * QB + .05) / .3);
+    if (ta > 0) {
+      c.strokeStyle = `rgba(${RGB.now},${ta.toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.moveTo(tx, y - 9); c.lineTo(tx, y + 9); c.stroke();
+      c.font = FONT.mono(13); const bw2 = c.measureText(`Born ${born}`).width; c.font = FONT.monoB(13); const tw = c.measureText("Today").width;
+      const lx = Math.max(tx, Math.max(x0, bw2 / 2 + 6) + bw2 / 2 + tw / 2 + 10);   // clear of the birth year when they sit close
+      inText(c, "Today", lx, y + 26, FONT.monoB(13), `rgba(${RGB.now},${ta.toFixed(3)})`, W);
+    }
+    const all = lifeEchoes(born).map(e => ({ ...e, x: X(e.y) })), labels = [];
+    all.forEach(e => { if (!labels.length || e.x - labels[labels.length - 1].x >= Math.max(70, W * .2)) labels.push(e); });
+    const at = i => t0 + i * step;   // a sixteenth each (the second life, a thirty-second)
+    let shown = 0;
+    all.forEach((e, i) => { const p = c01((lt - at(i)) / .4); if (p <= 0) return; shown++; inDot(c, e.x, y, RGB.next, 5.5, p, true); });
+    labels.slice(0, 2).forEach((e, i) => {
+      const p = c01((lt - at(all.indexOf(e)) - .15) / .45); if (p <= 0) return;
+      const up = i % 2 === 0, al = c01(p * 1.5).toFixed(3), p2 = PAIRS[e.pi];
+      c.strokeStyle = `rgba(${RGB.next},${(.35 * p).toFixed(3)})`; c.lineWidth = 1;
+      c.beginPath(); c.moveTo(e.x, up ? y - 9 : y + 9); c.lineTo(e.x, up ? y - 20 : y + 38); c.stroke();
+      inText(c, p2.next.short, e.x, up ? y - 44 : y + 56, FONT.then(15), `rgba(${INK},${al})`, W);
+      inText(c, `c. ${e.y} · age ${e.y - born}`, e.x, up ? y - 26 : y + 74, FONT.mono(12), `rgba(${RGB.next},${al})`, W);
+    });
+    if (shown) inText(c, `${shown} rhyme${shown === 1 ? "" : "s"} come due before age 90`, W / 2, Math.round(H * .93), FONT.monoB(16), `rgba(${RGB.next},${c01((lt - at(0)) / .4).toFixed(3)})`);
+    c.restore();
+  };
+  life(I_BY, I_LIFE, T0 + BEAT, out1);
+  life(I_BY2, I_LIFE2, YOU_MORPH + 2 * QB, in2, QB / 2);
 }
 
 /* on record: people who sensed the cycle and acted early, one at a time, then the turn to you */
@@ -3349,18 +3369,18 @@ function inPrepare(c, W, H, lt) {
     const l = lt - SEER_LEAD - j * SEER; if (l < 0 || l > SEER) return;
     c.save(); c.globalAlpha *= c01(l / .55) * c01((SEER - l) / .6);
     const cy = Math.round(H * .3), x1 = W * .2, x2 = W * .8, h = Math.min(44, H * .12);
-    inArc(c, x1, x2, cy, h, iEase(c01((l - BEAT / 2) / (1.5 * BEAT))), RGB.next, INK, true, 2.4);
-    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 2 * BEAT) / .5).toFixed(3)})`);
+    inArc(c, x1, x2, cy, h, iEase(c01((l - BEAT) / (2 * BEAT))), RGB.next, INK, true, 2.4);
+    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 3 * BEAT) / .6).toFixed(3)})`);
     inDot(c, x1, cy, RGB.next, 7, c01((l + .05) / .3), true);
-    inDot(c, x2, cy, INK, 7, c01((l - 2 * BEAT + .05) / .3));
+    inDot(c, x2, cy, INK, 7, c01((l - 3 * BEAT + .05) / .3));
     inText(c, e.a, x1, cy + 28, FONT.monoB(14), `rgb(${RGB.next})`, W);
-    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 2 * BEAT + .05) / .3).toFixed(3)})`, W);
-    c.save(); c.globalAlpha *= c01((l - QB) / .5);
+    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 3 * BEAT + .05) / .3).toFixed(3)})`, W);
+    c.save(); c.globalAlpha *= c01((l - 2 * QB) / .6);
     inText(c, e.who, W / 2, cy + 78, `500 ${W < 400 ? 22 : 26}px "Newsreader", Georgia, serif`, `rgb(${INK})`);
     c.restore();
-    c.save(); c.globalAlpha *= c01((l - 3 * QB) / .5);
+    c.save(); c.globalAlpha *= c01((l - BEAT - QB) / .6);
     c.font = FONT.mono(15); c.textAlign = "left";   // the same baseline as inText, so the line sits where it did
-    const lines = wrapLines(c, e.did, W * .8, 2), ts = readTimes(e.did.split(/\s+/).map(tx => ({ textContent: tx })), BEAT);
+    const lines = wrapLines(c, e.did, W * .8, 2), ts = readTimes(e.did.split(/\s+/).map(tx => ({ textContent: tx })), 1.5 * BEAT, 1.5);
     let wi = 0;
     lines.forEach((ln, k) => {
       const sp = c.measureText(" ").width;
@@ -3374,13 +3394,7 @@ function inPrepare(c, W, H, lt) {
     c.restore();
     c.restore();
   });
-  const fl = lt - SEER_LEAD - I_SEERS.length * SEER;
-  if (fl > 0) {
-    const r = iOut(c01(fl / 1.1));
-    c.save(); c.globalAlpha *= r; c.filter = r < 1 ? `blur(${((1 - r) * 6).toFixed(1)}px)` : "none";
-    inText(c, "This time, it could be you.", W / 2, Math.round(H * .6), `500 ${Math.round(Math.min(34, W * .085))}px "Newsreader", Georgia, serif`, `rgb(${RGB.next})`);
-    c.restore();
-  }
+  // (the closing line was removed: the people on record lead straight into the app)
 }
 
 /* the app in a hand: one button, pressed twice, flies from 1918 to 2020 to 2122 */
@@ -3706,16 +3720,18 @@ const SCORE = (() => {
   [2, 3, 4, 5].forEach(k => add(S("you") + k * QB, "tick", {}));
   add(S("you") + YOU_T0, "whoosh", { d: BEAT, f0: 220, f1: 1400, v: .3, p0: -.8, p1: .8 });
   add(S("you") + YOU_T0 + 2 * QB, "bell", { m: 78, v: .35, r: 2.01 });
+  for (let k = 0; k < 8; k++) add(S("you") + YOU_SWAP + k * QB, "tick", {});
+  add(S("you") + YOU_MORPH, "whoosh", { d: BEAT, f0: 300, f1: 1800, v: .3, p0: .6, p1: -.6 });
+  lifeEchoes(I_BY2).forEach((e, i) => add(S("you") + YOU_MORPH + 2 * QB + i * QB / 2, "pluck", { m: PENT[(i + 4) % PENT.length], v: .45, pan: c01((e.y - I_BY2) / 90) * 1.4 - .7 }));
   lifeEchoes(I_BY).forEach((e, i) => add(S("you") + YOU_T0 + BEAT + i * QB, "pluck", { m: PENT[(i + 2) % PENT.length], v: .5, pan: c01((e.y - I_BY) / 90) * 1.4 - .7 }));
   // on record: each person is a quiet bell where they sensed it, an arc, and the arrival
   I_SEERS.forEach((_, j) => {
     const b = S("prepare") + SEER_LEAD + j * SEER;
     add(b, "bell", { m: 74, v: .38, r: 2.01, pan: -.4 });
-    add(b + BEAT / 2, "whoosh", { d: 1.5 * BEAT, f0: 400, f1: 2600, v: .25, p0: -.45, p1: .45, q: 1.5 });
-    add(b + 2 * BEAT, "bell", { m: 81, v: .48, pan: .4 });
+    add(b + BEAT, "whoosh", { d: 2 * BEAT, f0: 400, f1: 2600, v: .25, p0: -.45, p1: .45, q: 1.5 });
+    add(b + 3 * BEAT, "bell", { m: 81, v: .48, pan: .4 });
   });
-  const close = S("prepare") + SEER_LEAD + I_SEERS.length * SEER;
-  [74, 78, 81, 86].forEach((m, j) => add(close + j * QB, "bell", { m, v: .3 - j * .04 }));
+
   // the app in a hand: two taps, two flights, two arrivals
   DEMO_TAPS.forEach((tp, i) => {
     const t = S("demo") + tp;
