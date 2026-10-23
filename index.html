@@ -3596,7 +3596,7 @@ window.__pastforward = Object.assign(window.__pastforward || {}, {
    the film, behind a mute button; the video export renders the same list offline (window.__pastforward.introAudio).
    The idea: a slow, warm progression in D major on the film's one-second beat, resolving on the sunrise. A three-note
    motif (D, A, high D) answers Then, Today and Next, so the sound rhymes too. */
-const SND_KEY = "pastforward.sound", SND_GAIN = 1.3;
+const SND_KEY = "pastforward.sound", SND_GAIN = 1.45;
 const hz = m => 440 * Math.pow(2, (m - 69) / 12);
 // pad voicings (MIDI notes) and bass root, warm and open, with an added ninth for light
 const CHORD = {
@@ -3623,7 +3623,7 @@ const SCORE = (() => {
     if (b >= INTRO_END - 2 * BAR - .01) name = b >= INTRO_END - BAR - .01 ? "A" : "G";   // IV, V ...
     add(b, "chord", { name, dur: BAR, e: SND_LIFT[id], bass: true });
   }
-  add(INTRO_END, "chord", { name: "D", dur: 12, e: 1.3, bass: true, last: true });   // ... and home, on the sunrise
+  add(INTRO_END, "chord", { name: "D", dur: 12, e: 1, bass: true, last: true });   // ... and home, on the sunrise
   // title: the two-note "rhyme" on "It rhymes."
   add(.1, "swell", { d: 4, v: .35, f1: 1200 });
   add(I_REVEAL, "bell", { m: MOTIF[0], v: .8 }); add(I_REVEAL + 2 * QB, "bell", { m: MOTIF[1], v: .7 });
@@ -3664,19 +3664,19 @@ const SCORE = (() => {
     add(b + 2 * BEAT, "bell", { m: 81, v: .48, pan: .4 });
   });
   const close = S("prepare") + SEER_LEAD + I_SEERS.length * SEER;
-  [74, 78, 81, 86].forEach((m, j) => add(close + j * QB, "bell", { m, v: .4 - j * .05 }));
+  [74, 78, 81, 86].forEach((m, j) => add(close + j * QB, "bell", { m, v: .3 - j * .04 }));
   // the app in a hand: two taps, two flights, two arrivals
   DEMO_TAPS.forEach((tp, i) => {
     const t = S("demo") + tp;
     add(t, "tap", {}); add(t + .1, "whoosh", { d: DEMO_FLY, f0: 300, f1: 3000, v: .35, p0: -.3, p1: .3 });
     add(t + BEAT, "bell", { m: MOTIF[i + 1], v: .62, pan: .2 });   // the flight lands on the beat
   });
-  for (let t = S("demo") + BEAT / 2, i = 0; t < INTRO_END - .2; t += .5 * BEAT, i++) add(t, "pluck", { m: [62, 69, 74, 78, 74, 69][i % 6] + (i >= 6 ? 0 : 0), v: .24, pan: i % 2 ? .25 : -.25, lo: true });
+  for (let t = S("demo") + BEAT / 2, i = 0; t < INTRO_END - .2; t += .5 * BEAT, i++) add(t, "pluck", { m: [62, 69, 74, 78, 74, 69][i % 6], v: .17, pan: i % 2 ? .25 : -.25, lo: true });
   // the sunrise: a swell into the last chord, the motif drawn as the mark, and a bloom on the name
   add(INTRO_END - 2 * BEAT, "swell", { d: 2 * BEAT + .15, v: .8, f1: 7000 });
-  add(INTRO_END, "bell", { m: MOTIF[0], v: .7 }); add(INTRO_END + 2 * QB, "bell", { m: MOTIF[1], v: .7 }); add(INTRO_END + 4 * QB, "bell", { m: MOTIF[2], v: .7 });
+  add(INTRO_END, "bell", { m: MOTIF[0], v: .42 }); add(INTRO_END + 2 * QB, "bell", { m: MOTIF[1], v: .4 }); add(INTRO_END + 4 * QB, "bell", { m: MOTIF[2], v: .38 });
   add(INTRO_END + 6 * QB, "thump", { v: .55 });
-  [62, 69, 74, 78, 81, 86, 90].forEach((m, j) => add(INTRO_END + 6 * QB + j * .055, "bell", { m, v: .42 - j * .03, pan: (j / 6 - .5) * .8, d: 4.5 }));
+  [62, 69, 74, 78, 81, 86, 90].forEach((m, j) => add(INTRO_END + 6 * QB + j * .055, "bell", { m, v: .24 - j * .02, pan: (j / 6 - .5) * .8, d: 3.6 }));
   add(INTRO_END + 6 * QB, "shimmer", { d: 10 });
   // the drums, arranged like a song: a heartbeat to open, a pulse for the echoes, the full beat from Step 2 to your
   // lifeline, a breath for the people on record that builds into the app, and one last hit as the sun rises
@@ -3721,7 +3721,7 @@ function sndGraph(ctx) {
   const nb = ctx.createBuffer(1, sr * 2, sr), nd = nb.getChannelData(0), r2 = mulberry(11);
   for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
   const H = 16, re = new Float32Array(H + 1), im = new Float32Array(H + 1);
-  for (let k = 1; k <= H; k++) im[k] = Math.pow(k, -1.2) * (k % 2 ? 1 : .6);   // warm: soft upper partials, quieter evens
+  for (let k = 1; k <= H; k++) im[k] = Math.pow(k, -1.75) * (k % 2 ? 1 : .7);   // round: little of the upper partials that read as keys   // warm: soft upper partials, quieter evens
   return { ctx, master, dry, wet, duck, beat, noise: nb, wave: ctx.createPeriodicWave(re, im) };
 }
 const sndOut = (G, node, pan, send, bus) => {
@@ -3732,9 +3732,9 @@ const sndOut = (G, node, pan, send, bus) => {
 };
 const SYN = {
   chord(G, e, when, off) {
-    const { ctx } = G, c = CHORD[e.name], left = e.dur - off, rel = e.last ? 8 : 2.2, att = off > 0 ? .9 : 1.5, lvl = .16 * e.e;
+    const { ctx } = G, c = CHORD[e.name], left = e.dur - off, rel = e.last ? 8 : 2.2, att = off > 0 ? .9 : 1.5, lvl = .11 * Math.min(1, e.e);   // a bed, not a lead
     const f = ctx.createBiquadFilter(); f.type = "lowpass"; f.Q.value = .4;
-    const fc = 900 + 3200 * e.e; f.frequency.setValueAtTime(fc * .8, when); f.frequency.linearRampToValueAtTime(fc, when + left);
+    const fc = 600 + 1700 * Math.min(1, e.e);   // dark and warm, never bright f.frequency.setValueAtTime(fc * .8, when); f.frequency.linearRampToValueAtTime(fc, when + left);
     const g = ctx.createGain(); g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(lvl, when + att);
     g.gain.setValueAtTime(lvl, when + Math.max(att, left)); g.gain.linearRampToValueAtTime(0, when + left + rel);
     f.connect(g); sndOut(G, g, 0, .5);
@@ -3758,19 +3758,19 @@ const SYN = {
     return { g, end };
   },
   bell(G, e, when) {   // FM: a bright strike that settles into a pure tone
-    const { ctx } = G, f0 = hz(e.m), v = .13 * (e.v == null ? 1 : e.v), d = e.d || 2.8, r = e.r || 3.01;
+    const { ctx } = G, f0 = hz(e.m), v = .085 * (e.v == null ? 1 : e.v), d = e.d || 2.8, r = e.r || 3.01;   // kept under the music: a glint, not a piano
     const car = ctx.createOscillator(), mod = ctx.createOscillator(), mg = ctx.createGain(), oct = ctx.createOscillator(), og = ctx.createGain(), g = ctx.createGain();
     car.frequency.value = f0; mod.frequency.value = f0 * r; oct.frequency.value = f0 * 2; og.gain.value = .14;
-    mg.gain.setValueAtTime(f0 * 1.2, when); mg.gain.exponentialRampToValueAtTime(f0 * .015, when + .4);
+    mg.gain.setValueAtTime(f0 * .75, when); mg.gain.exponentialRampToValueAtTime(f0 * .015, when + .35);   // a softer strike
     mod.connect(mg); mg.connect(car.frequency); car.connect(g); oct.connect(og); og.connect(g);
-    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .005);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .012);
     g.gain.exponentialRampToValueAtTime(v * .3, when + .35); g.gain.exponentialRampToValueAtTime(.0001, when + d);
     sndOut(G, g, e.pan, .6);
     [car, mod, oct].forEach(o => { o.start(when); o.stop(when + d + .05); });
     return { g, end: when + d };
   },
   pluck(G, e, when) {
-    const { ctx } = G, f0 = hz(e.m + (e.lo ? 12 : 0)), v = .1 * (e.v == null ? 1 : e.v), d = .9;
+    const { ctx } = G, f0 = hz(e.m + (e.lo ? 12 : 0)), v = .075 * (e.v == null ? 1 : e.v), d = .9;
     const o = ctx.createOscillator(), o2 = ctx.createOscillator(), g2 = ctx.createGain(), f = ctx.createBiquadFilter(), g = ctx.createGain();
     o.type = "triangle"; o.frequency.value = f0; o2.frequency.value = f0 * 2; g2.gain.value = .25;
     f.type = "lowpass"; f.frequency.setValueAtTime(3200, when); f.frequency.exponentialRampToValueAtTime(700, when + .4);
@@ -3819,7 +3819,7 @@ const SYN = {
     o.frequency.setValueAtTime(150, when); o.frequency.exponentialRampToValueAtTime(48, when + .26);
     g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .005); g.gain.exponentialRampToValueAtTime(.0001, when + .85);
     o.connect(g); sndOut(G, g, 0, .1, G.beat); o.start(when); o.stop(when + .9);
-    const d = G.duck.gain, depth = 1 - .42 * (e.v == null ? 1 : e.v);   // make room: the music dips (up to about 5 dB) and comes back
+    const d = G.duck.gain, depth = 1 - .22 * (e.v == null ? 1 : e.v);   // make room: the music dips a little (up to about 2 dB) and comes back
     d.setValueAtTime(1, when); d.linearRampToValueAtTime(depth, when + .02); d.linearRampToValueAtTime(1, when + .42);
     const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), cg = ctx.createGain();
     s.buffer = G.noise; bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = .8;
@@ -3961,10 +3961,11 @@ function wavOf(buf) {
   return new Uint8Array(out.buffer);
 }
 Object.assign(window.__pastforward, {
-  introAudio: async (sr = 48000) => {
+  introAudio: async (sr = 48000, skip = []) => {   // skip: instruments to leave out, for checking the mix
     const len = INTRO_END + 4 * BEAT, AC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
     const ctx = new AC(2, Math.ceil(len * sr), sr), G = sndGraph(ctx);
     for (const e of SCORE) {
+      if (skip.includes(e.k)) continue;
       if (e.k === "chord" && e.t < 0) SYN.chord(G, e, 0, -e.t);
       else if (e.t >= 0 && e.t < len) SYN[e.k](G, e, e.t, 0);
     }
