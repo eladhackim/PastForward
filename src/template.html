@@ -3611,8 +3611,8 @@ const SCORE = (() => {
   for (let t = STEP2.then, k = 0; t < S("next") + 2 * BEAT; t += BEAT, k++) {
     const kick = k % 2 === 0, last = t >= S("next");
     if (last && !kick) break;
-    if (kick) add(t, "kick", { v: Math.min(1, .72 + k * .04) });
-    else if (k >= 3) add(t, "snare", { v: Math.min(1, .6 + k * .05) });   // the backbeat joins after the first bar
+    if (kick) add(t, "kick", { v: Math.min(1, .85 + k * .03) });
+    else add(t, "snare", { v: Math.min(1, .8 + k * .04) });
     if (last) break;
   }
   add(S("next") + 1.5, "whoosh", { d: 2.3, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
@@ -3671,18 +3671,19 @@ function sndGraph(ctx) {
   rev.buffer = ir;
   const rhp = ctx.createBiquadFilter(), sub = ctx.createBiquadFilter();   // a clean hall (no rumble in the tail), and nothing below 40 Hz
   rhp.type = "highpass"; rhp.frequency.value = 220; rhp.Q.value = .5; sub.type = "highpass"; sub.frequency.value = 40; sub.Q.value = .6;
-  dry.connect(comp); wet.connect(rev); rev.connect(rhp); rhp.connect(ret); ret.connect(comp);
+  const duck = ctx.createGain(), beat = ctx.createGain();   // the music dips under each kick; the beat itself goes around the dip
+  dry.connect(duck); wet.connect(rev); rev.connect(rhp); rhp.connect(ret); ret.connect(duck); duck.connect(comp); beat.connect(comp);
   comp.connect(sub); sub.connect(master); master.connect(lim); lim.connect(ctx.destination);   // the limiter is last: nothing clips
   const nb = ctx.createBuffer(1, sr * 2, sr), nd = nb.getChannelData(0), r2 = mulberry(11);
   for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
   const H = 16, re = new Float32Array(H + 1), im = new Float32Array(H + 1);
   for (let k = 1; k <= H; k++) im[k] = Math.pow(k, -1.2) * (k % 2 ? 1 : .6);   // warm: soft upper partials, quieter evens
-  return { ctx, master, dry, wet, noise: nb, wave: ctx.createPeriodicWave(re, im) };
+  return { ctx, master, dry, wet, duck, beat, noise: nb, wave: ctx.createPeriodicWave(re, im) };
 }
-const sndOut = (G, node, pan, send) => {
+const sndOut = (G, node, pan, send, bus) => {
   const p = G.ctx.createStereoPanner ? G.ctx.createStereoPanner() : null;
   if (p) { p.pan.value = pan || 0; node.connect(p); node = p; }
-  node.connect(G.dry);
+  node.connect(bus || G.dry);
   if (send) { const s = G.ctx.createGain(); s.gain.value = send; node.connect(s); s.connect(G.wet); }
 };
 const SYN = {
@@ -3770,26 +3771,28 @@ const SYN = {
     return { g, end: when + e.d };
   },
   kick(G, e, when) {   // the low landing, as a beat: shorter, with a soft click so small speakers hear where it falls
-    const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain(), v = .36 * (e.v == null ? 1 : e.v);
-    o.frequency.setValueAtTime(140, when); o.frequency.exponentialRampToValueAtTime(47, when + .28);
-    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .006); g.gain.exponentialRampToValueAtTime(.0001, when + .8);
-    o.connect(g); sndOut(G, g, 0, .12); o.start(when); o.stop(when + .85);
+    const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain(), v = .56 * (e.v == null ? 1 : e.v);
+    o.frequency.setValueAtTime(150, when); o.frequency.exponentialRampToValueAtTime(48, when + .26);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .005); g.gain.exponentialRampToValueAtTime(.0001, when + .85);
+    o.connect(g); sndOut(G, g, 0, .1, G.beat); o.start(when); o.stop(when + .9);
+    const d = G.duck.gain;   // make room: the music dips by about 5 dB and comes back
+    d.setValueAtTime(1, when); d.linearRampToValueAtTime(.56, when + .02); d.linearRampToValueAtTime(1, when + .42);
     const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), cg = ctx.createGain();
     s.buffer = G.noise; bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = .8;
-    cg.gain.setValueAtTime(.05 * (e.v == null ? 1 : e.v), when); cg.gain.exponentialRampToValueAtTime(.0001, when + .025);
-    s.connect(bp); bp.connect(cg); sndOut(G, cg, 0, 0); s.start(when, (e.t * 2.9) % 1.5); s.stop(when + .03);
-    return { g, end: when + .85 };
+    cg.gain.setValueAtTime(.09 * (e.v == null ? 1 : e.v), when); cg.gain.exponentialRampToValueAtTime(.0001, when + .025);
+    s.connect(bp); bp.connect(cg); sndOut(G, cg, 0, 0, G.beat); s.start(when, (e.t * 2.9) % 1.5); s.stop(when + .03);
+    return { g, end: when + .9 };
   },
   snare(G, e, when) {   // a soft snare: a breath of bright noise over a short tone, in a big room
-    const { ctx } = G, v = .21 * (e.v == null ? 1 : e.v);
+    const { ctx } = G, v = .32 * (e.v == null ? 1 : e.v);
     const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), g = ctx.createGain();
     s.buffer = G.noise; bp.type = "bandpass"; bp.frequency.value = 2300; bp.Q.value = .6;
     g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .003); g.gain.exponentialRampToValueAtTime(.0001, when + .28);
-    s.connect(bp); bp.connect(g); sndOut(G, g, .08, .75); s.start(when, (e.t * 4.3) % 1.5); s.stop(when + .3);
+    s.connect(bp); bp.connect(g); sndOut(G, g, .08, .7, G.beat); s.start(when, (e.t * 4.3) % 1.5); s.stop(when + .3);
     const o = ctx.createOscillator(), og = ctx.createGain(); o.type = "triangle";
     o.frequency.setValueAtTime(220, when); o.frequency.exponentialRampToValueAtTime(165, when + .08);
     og.gain.setValueAtTime(v * .55, when); og.gain.exponentialRampToValueAtTime(.0001, when + .13);
-    o.connect(og); sndOut(G, og, .08, .3); o.start(when); o.stop(when + .15);
+    o.connect(og); sndOut(G, og, .08, .3, G.beat); o.start(when); o.stop(when + .15);
     return { g, end: when + .3 };
   },
   thump(G, e, when) {   // a soft low landing
