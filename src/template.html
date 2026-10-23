@@ -2718,14 +2718,17 @@ const I_ECHO = (() => {
   const pick = Array.from({ length: want }, (_, i) => rest[Math.round(i * (rest.length - 1) / Math.max(1, want - 1))]);
   return [...new Set([...fixed, ...pick])].sort((a, b) => a.year - b.year);
 })();
-const BEAT = 1.2;   // the intro's metronome (50 a minute): lists reveal one item per beat, so each lands and can be read before the next
+const BEAT = 1.2;   // the intro's metronome: 50 beats a minute, hi-hats between them, so it moves like a calm song at 100
+const QB = BEAT / 4;   // a sixteenth: the finest step anything in the film moves on
+const onGrid = (t, step = QB) => Math.ceil(t / step - 1e-6) * step;   // the first step at or after t
+const YOU_T0 = 6 * QB;   // your lifeline: when the line of a life starts to draw
 const I_LIFE = lifeEchoes(I_BY).length;
-const I_REVEAL = 3.6;   // "It rhymes." arrives about 1.5 seconds after the first line has been read, so it can sink in
+const I_REVEAL = 3 * BEAT;   // "It rhymes." arrives on the fourth beat, after the first line has been read and has sunk in
 const I_SPAN = I_NOW - I_ECHO_ALL[0].year;
 const fmtN = n => n.toLocaleString("en-US");
 // Reading: every caption and title line starts dim and its words light up at a calm reading pace,
 // pausing a little at commas and full stops. Lines and scenes wait until their words have been read.
-const WPS = 2.9, HOLD = 1.1, LIT = .35;   // words a second; time to rest on a read line; how long a word takes to light
+const HOLD = .7, LIT = .35;   // time to rest on a read line; how long a word takes to light (words step on sixteenths: readTimes)
 function splitWords(el) {   // wrap each word of el's text in <span class="rw">, keeping the markup around it
   const walk = n => [...n.childNodes].forEach(ch => {
     if (ch.nodeType === 1) return walk(ch);
@@ -2741,13 +2744,13 @@ function splitWords(el) {   // wrap each word of el's text in <span class="rw">,
   walk(el);
   return [...el.querySelectorAll(".rw")];
 }
-function readTimes(words, t0) {   // when each word lights; a part with data-at waits for its moment
-  let t = t0, prev = "";
+function readTimes(words, t0) {   // when each word lights, on the beat: a sixteenth a word, two after a long one, a rest at commas and full stops
+  let t = onGrid(t0), prev = "";
   return words.map(w => {
     const tx = w.textContent, mark = !/[\p{L}\p{N}]/u.test(tx);   // a lone "·" lights with the word before it
-    if (prev && !mark) t += 1 / WPS + (/[.!?]$/.test(prev) ? .32 : /[,;:]$/.test(prev) ? .12 : 0);
+    if (prev && !mark) t += QB * ((prev.replace(/[^\p{L}\p{N}]/gu, "").length >= 8 ? 2 : 1) + (/[.!?]$/.test(prev) ? 2 : /[,;:]$/.test(prev) ? 1 : 0));
     const da = w.closest && w.closest("[data-at]");
-    if (da) t = Math.max(t, +da.dataset.at + .15);
+    if (da) t = Math.max(t, onGrid(+da.dataset.at));   // a part with data-at waits for its moment
     if (!mark) prev = tx;
     return t;
   });
@@ -2762,16 +2765,16 @@ const CARDS = {
 const CARD_LEAD = { cycles: 1, read: 1, method: 1, onrecord: 1 };
 const CARD_T = {};   // per card: when each line arrives, and when each of its words lights
 for (const id in CARDS) {
-  let at = id === "method" ? 1.7 : .7;
+  let at = (id === "method" ? 2 : 1) * BEAT;   // each line arrives on a beat
   const lines = [], words = [];
   CARDS[id].forEach(h => {
     const p = document.createElement("p"); p.innerHTML = h;
-    const ts = readTimes(splitWords(p), at + .55);
-    lines.push(at); words.push(ts); at = ts[ts.length - 1] + LIT + .45;
+    const ts = readTimes(splitWords(p), at + 2 * QB);
+    lines.push(at); words.push(ts); at = onGrid(ts[ts.length - 1] + LIT + .15, BEAT);   // the next beat after a breath
   });
   CARD_T[id] = { lines, words, end: words[words.length - 1][words[words.length - 1].length - 1] + LIT + HOLD };
 }
-const cardDur = id => CARD_T[id].end + .55;
+const cardDur = id => onGrid(CARD_T[id].end + .3, BEAT);
 // one per kind of cycle: a harvest, a crash, a tsunami, a pandemic. All on record:
 // Thales in Aristotle's Politics; Babson's speech of 5 Sep 1929; Hirai on Onagawa's 1968 planning committee; Gates's 2015 TED talk.
 const I_SEERS = [
@@ -2780,22 +2783,22 @@ const I_SEERS = [
   { a: "1968", b: "2011", early: "43 years early", who: "Yanosuke Hirai", did: "Had a power plant built high, recalling the tsunami of 869." },
   { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warned we were not ready for a pandemic." }
 ];
-const SEER = 6, SEER_LEAD = .7;   // the people start just after the line before them has faded   // the caption lands first, then one person at a time, held long enough to take in
+const SEER = 5 * BEAT, SEER_LEAD = BEAT;   // one person every five beats, starting a beat after the line before them has faded
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: I_REVEAL + 3, cam: [1860, 760] },
   { id: "cycles", view: "card", card: "cycles", dur: cardDur("cycles") },
   { id: "read", view: "card", card: "read", dur: cardDur("read") },
-  { id: "echoes", view: "echoes", dur: .8 + (I_ECHO.length + 1) * BEAT + 2.8 },
+  { id: "echoes", view: "echoes", dur: (I_ECHO.length + 3) * BEAT },
   { id: "then", view: "tl", dur: 4.6, cam: [I_THEN + 12, 150] },
   { id: "now", view: "tl", dur: 5.6, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
   { id: "next", view: "tl", dur: 6.4, cam: [I_NOW, I_GAP * 2.78] },
   { id: "method", view: "method", card: "method", join: true, dur: cardDur("method") },
-  { id: "more", view: "more", join: true, dur: .4 + 2 * BEAT * I_ROWS.length + 2.4 },
-  { id: "you", view: "you", dur: 2.8 + I_LIFE * .35 * BEAT + 3 },
+  { id: "more", view: "more", join: true, dur: (2 + 2 * I_ROWS.length) * BEAT },
+  { id: "you", view: "you", dur: YOU_T0 + BEAT + I_LIFE * QB + 3 * BEAT },
   { id: "onrecord", view: "card", card: "onrecord", dur: cardDur("onrecord") },   // the line first, on its own, then it fades
-  { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + 3.2 },
-  { id: "demo", view: "demo", dur: 7.4 },
+  { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + 2 * BEAT },
+  { id: "demo", view: "demo", dur: 6 * BEAT },
   { id: "end", view: "end", dur: Infinity }
 ];
 // captions; parts with data-at appear that many seconds into the scene
@@ -2809,10 +2812,10 @@ const CAP = {
   you: { k: "Your lifeline", kc: "next", t: "Some will come due in your lifetime.", l: "Enter your own year to see yours." },
   prepare: { k: "", t: "", l: "" },
   demo: { k: "", t: "", l: "" },
-  end: { k: "", t: `<span class="in-brand" data-at="2.1"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="2.8">History rhymes. See what comes next.</span>` }
+  end: { k: "", t: `<span class="in-brand" data-at="${6 * QB}"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="${8 * QB}">History rhymes. See what comes next.</span>` }
 };
 for (const id in CARDS) if (!CAP[id]) CAP[id] = { k: "", t: "", l: "" };
-const CAP_AT = .4;   // captions start to be read once they have faded in
+const CAP_AT = 2 * QB;   // captions start to be read once they have faded in, on the half beat
 function capWords(id) {   // the caption's title then its line, as word spans, in reading order
   const box = document.createElement("div"); box.innerHTML = `<h2>${CAP[id].t}</h2><p>${CAP[id].l}</p>`;
   return splitWords(box);
@@ -2820,30 +2823,22 @@ function capWords(id) {   // the caption's title then its line, as word spans, i
 for (const s of SCENES) {   // a scene lasts at least until its caption has been read, and rested on
   if (s.dur === Infinity || s.view === "card" || s.id === "title" || s.id === "demo") continue;
   const ts = readTimes(capWords(s.id), CAP_AT);
-  if (ts.length) s.dur = Math.max(s.dur, ts[ts.length - 1] + LIT + HOLD + .3);
+  if (ts.length) s.dur = Math.max(s.dur, ts[ts.length - 1] + LIT + HOLD + .2);
 }
-{ let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
+// every scene starts and ends on a beat, and the film is a whole number of bars (the title takes up the rest),
+// so it opens on a downbeat and the last chord resolves on one
+for (const s of SCENES) if (s.dur !== Infinity) s.dur = onGrid(s.dur, BEAT);
+{ const beats = Math.round(SCENES.reduce((a, s) => a + (s.dur === Infinity ? 0 : s.dur), 0) / BEAT); SCENES[0].dur += ((4 - beats % 4) % 4) * BEAT; }
+{ let q = 0; for (const s of SCENES) { s.at = q * QB; if (s.dur !== Infinity) q += Math.round(s.dur / QB); } }
 const INTRO_END = SCENES[SCENES.length - 1].at;
-// the music's beat grid: bars of four beats, counted back from the sunrise, where the last chord lands.
-// onBeat(t) is the first beat at or after t; with ref, the first one on the same footing as ref (kick with kick).
-function onBeat(t, ref) {
-  let n = Math.floor((INTRO_END - t) / BEAT + 1e-9);
-  if (ref != null && Math.round((INTRO_END - ref) / BEAT - n) % 2) n -= 1;
-  return INTRO_END - n * BEAT;
-}
-// Step 2, measure the rhythm: 1918 lands on a kick, 2020 on the next beat after its scene settles, and the arc
-// between them lands on the kick that follows at least two beats later
+// the beat grid starts at 0 in bars of four beats; the kick falls on beats 1 and 3
+const kickAt = t => onGrid(t, 2 * BEAT);
+// Step 2, measure the rhythm: 1918 lands on a kick, 2020 on the next beat after its scene settles,
+// and the arc between them lands on the kick that follows at least two beats later
 const STEP2 = (() => {
-  const then = onBeat(SCENES.find(x => x.id === "then").at + .5), now = onBeat(SCENES.find(x => x.id === "now").at + 1);
-  return { then, now, land: onBeat(now + 2 * BEAT - .01, then) };
+  const then = kickAt(SCENES.find(x => x.id === "then").at + .5), now = onGrid(SCENES.find(x => x.id === "now").at + 1, BEAT);
+  return { then, now, land: kickAt(now + 2 * BEAT - .01) };
 })();
-// "One method." lands on the beat's last kick: its card moves by under half a beat to the nearest beat
-{
-  const m = SCENES.find(x => x.id === "method"), t1 = m.at + CARD_T.method.lines[0], d = onBeat(t1 - BEAT / 2) - t1;
-  CARD_T.method.lines = CARD_T.method.lines.map(x => x + d);
-  CARD_T.method.words = CARD_T.method.words.map(a => a.map(x => x + d));
-  CARD_T.method.hit = t1 + d;
-}
 const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
 const c01 = v => Math.max(0, Math.min(1, v));
 const iEase = x => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -2898,8 +2893,8 @@ function inTimeline(c, W, H, t, bare) {
   const cam = inCam(t), k = W / cam.span, X = y => W / 2 + (y - cam.c) * k, y0 = Math.round(H * .58);
   const T = id => SCENES.find(s => s.id === id).at;
   const pThen = c01((t - STEP2.then + .06) / .35), pNow = c01((t - STEP2.now + .06) / .35);   // each dot lands on its kick
-  const pArc1 = iEase(c01((t - STEP2.now - .2) / (STEP2.land - STEP2.now - .2))), pArc2 = iEase(c01((t - T("next") - 1.5) / 2.3));
-  const tPop = T("next") + 3.8, pNext = c01((t - tPop) / .7);
+  const pArc1 = iEase(c01((t - STEP2.now - .2) / (STEP2.land - STEP2.now - .2))), pArc2 = iEase(c01((t - T("next") - BEAT) / (2 * BEAT)));
+  const tPop = T("next") + 3 * BEAT, pNext = c01((t - tPop) / .7);
   const bg = (1 - c01((t - T("then")) / 1.5)) * c01((t - I_REVEAL) / .8);
   const xs = [X(I_THEN), X(I_NOW), X(I_NEXT)];
   // axis and ticks
@@ -2953,7 +2948,7 @@ function inTimeline(c, W, H, t, bare) {
 function inEchoes(c, W, H, lt) {
   const n = I_ECHO.length, rows = n + 1, rh = Math.min(46, (H * .76) / rows), y0 = Math.round(H * .54 - (rows - 1) * rh / 2), cx = Math.round(W / 2 - 34);
   const fy = rh < 30 ? 13.5 : 15, fn = rh < 30 ? 14.5 : 16.5, FADE = .9;
-  const at = i => .8 + i * BEAT;
+  const at = i => BEAT + i * BEAT;   // one echo a beat
   const rowsShown = I_ECHO.filter((e, i) => lt >= at(i)).length;
   const shown = Math.round(rowsShown * I_ECHO_ALL.length / n);   // counts every echo, not just the rows on screen
   // the line walks down to each new echo as it arrives, never jumping
@@ -3025,9 +3020,9 @@ function inRows(c, W, H, lt) {
     c.save(); c.globalAlpha *= 1 - mp; inMark(c, m, [1, 1, 1, 1, 1]); c.restore();
   }
   I_ROWS.forEach((p, i) => {
-    const y = Math.round(top + rowH * i + Math.min(40, rowH * .4)), st = .4 + i * 2 * BEAT;
-    const pd = [0, .9, 1.7].map(d => c01((lt - st - d * BEAT) / .45));
-    const pa = [.3, 1.1].map(d => iEase(c01((lt - st - d * BEAT) / .7)));
+    const y = Math.round(top + rowH * i + Math.min(40, rowH * .4)), st = BEAT + i * 2 * BEAT;   // a row every two beats
+    const pd = [0, 1, 1.5].map(d => c01((lt - st - d * BEAT + .05) / .3));                       // Then, Today, Next: one, two, and
+    const pa = [[.1, .9], [1.05, .45]].map(([d, len]) => iEase(c01((lt - st - d * BEAT) / (len * BEAT))));
     c.strokeStyle = `rgba(${INK},${(.14 * c01((lt - st) * 3)).toFixed(3)})`; c.lineWidth = 1;
     c.beginPath(); c.moveTo(xs[0] - 30, y); c.lineTo(xs[2] + 30, y); c.stroke();
     const g = p.now.year - p.then.year, h = Math.min(rowH * .22, 24);
@@ -3161,7 +3156,7 @@ function inBackdrop(c, W, H, t) {
   // its strip of sky: halfway between the progress line and the first line of the story, on any screen
   const sky = intro.sky || [H * .095, H * .135], mr = Math.max(7, Math.min(16, Math.min(W, H) * .025));
   const mp = moonPath(W, H, limbY, Math.round((sky[0] + sky[1]) / 2), mr);
-  const [mx, my] = moonAt(mp, Math.min(mp.L, mp.s0 + (mp.s1 - mp.s0) * t / (INTRO_END + 4.6)));
+  const [mx, my] = moonAt(mp, Math.min(mp.L, mp.s0 + (mp.s1 - mp.s0) * t / (INTRO_END + 4 * BEAT)));
   inMoon(c, mx, my, mr, Math.PI * c01(Math.hypot(sx - mx, sy - my) / (W * 1.05)), Math.atan2(sy - my, sx - mx));
   const sun = (() => { const v = [.92, .3, lerp(-.55, .3, u)], n = Math.hypot(...v); return v.map(a => a / n); })();
   const halo = c.createRadialGradient(cx, cy, R - 2, cx, cy, R + H * .06);
@@ -3234,7 +3229,7 @@ function inMethod(c, W, H, lt) {
   const xs0 = [X(I_THEN), X(I_NOW), X(I_NEXT)], h0 = Math.min(H * .34, (xs0[1] - xs0[0]) * .42);
   const fade = 1 - c01(lt / .55);
   if (fade > 0) { c.save(); c.globalAlpha *= fade; inTimeline(c, W, H, ns.at + ns.dur - .001, true); c.restore(); }
-  const m = METHOD_MARK(W, H), p = iEase(c01((lt - .15) / 1.45));
+  const m = METHOD_MARK(W, H), p = iEase(c01(lt / (1.5 * BEAT)));
   inMark(c, { xs: xs0.map((x, i) => lerp(x, m.xs[i], p)), yb: lerp(y0, m.yb, p), yd: lerp(y0, m.yd, p), h: lerp(h0, m.h, p), r: lerp(7, m.r, p), rr: lerp(9, m.rr, p), lw: lerp(2.6, m.lw, p), rlw: lerp(3.4, m.rlw, p), dash: 1 - p }, [1, 1, 1, 1, 1]);
 }
 
@@ -3248,13 +3243,13 @@ function inYou(c, W, H, lt) {
   inText(c, "The year you were born", W / 2, by - 12, FONT.mono(13), `rgb(${MUTED})`);
   c.fillStyle = "rgba(27,24,58,.9)"; c.strokeStyle = `rgba(${RGB.next},.6)`; c.lineWidth = 1.5;
   c.beginPath(); c.roundRect ? c.roundRect(bx, by, bw, bh, 14) : c.rect(bx, by, bw, bh); c.fill(); c.stroke();
-  const typed = String(I_BY).slice(0, Math.max(0, Math.min(4, Math.floor((lt - .45) / .2) + 1)));
+  const typed = String(I_BY).slice(0, Math.max(0, Math.min(4, Math.floor((lt - 2 * QB) / QB) + 1)));   // a key on each sixteenth
   c.font = `600 26px "Hanken Grotesk", sans-serif`; c.textAlign = "left"; c.textBaseline = "alphabetic"; c.fillStyle = `rgb(${INK})`;
   c.fillText(typed, tx0, by + 34);
-  if (lt < 1.5 && Math.floor(lt * 2.2) % 2 === 0) { const cw = c.measureText(typed).width; c.fillRect(tx0 + cw + 2, by + 13, 2, 24); }
+  if (lt < YOU_T0 && Math.floor(lt * 2.2) % 2 === 0) { const cw = c.measureText(typed).width; c.fillRect(tx0 + cw + 2, by + 13, 2, 24); }
   c.restore();
   const y = Math.round(H * .58), x0 = W * .09, x1 = W * .91, X = yr => x0 + (yr - I_BY) / 90 * (x1 - x0);
-  const T0 = 1.5, grow = iOut(c01((lt - T0) / 1.2));
+  const T0 = YOU_T0, grow = iOut(c01((lt - T0) / BEAT));
   if (grow <= 0) return;
   const g = c.createLinearGradient(x0, 0, x1, 0);
   g.addColorStop(0, `rgba(${MUTED},.5)`); g.addColorStop(1, `rgba(${RGB.next},.9)`);
@@ -3262,14 +3257,14 @@ function inYou(c, W, H, lt) {
   inDot(c, x0, y, MUTED, 5, c01((lt - T0) / .3));
   inText(c, `Born ${I_BY}`, x0, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - T0) / .4).toFixed(3)})`, W);
   if (grow >= 1) inText(c, "Age 90", x1, y + 26, FONT.mono(13), `rgba(${MUTED},${c01((lt - T0 - 1.3) / .4).toFixed(3)})`, W);
-  const tx = X(NOWY), ta = c01((lt - T0 - .7) / .4);
+  const tx = X(NOWY), ta = c01((lt - T0 - 2 * QB + .05) / .3);
   if (ta > 0) {
     c.strokeStyle = `rgba(${RGB.now},${ta.toFixed(3)})`; c.lineWidth = 2; c.beginPath(); c.moveTo(tx, y - 9); c.lineTo(tx, y + 9); c.stroke();
     inText(c, "Today", tx, y + 26, FONT.monoB(13), `rgba(${RGB.now},${ta.toFixed(3)})`, W);
   }
   const all = lifeEchoes(I_BY).map(e => ({ ...e, x: X(e.y) })), labels = [];
   all.forEach(e => { if (!labels.length || e.x - labels[labels.length - 1].x >= Math.max(70, W * .2)) labels.push(e); });
-  const at = i => T0 + 1.3 + i * .35 * BEAT;
+  const at = i => T0 + BEAT + i * QB;   // a sixteenth each
   let shown = 0;
   all.forEach((e, i) => { const p = c01((lt - at(i)) / .4); if (p <= 0) return; shown++; inDot(c, e.x, y, RGB.next, 5.5, p, true); });
   labels.slice(0, 2).forEach((e, i) => {
@@ -3289,18 +3284,18 @@ function inPrepare(c, W, H, lt) {
     const l = lt - SEER_LEAD - j * SEER; if (l < 0 || l > SEER) return;
     c.save(); c.globalAlpha *= c01(l / .55) * c01((SEER - l) / .6);
     const cy = Math.round(H * .3), x1 = W * .2, x2 = W * .8, h = Math.min(44, H * .12);
-    inArc(c, x1, x2, cy, h, iEase(c01((l - .5) / 1.6)), RGB.next, INK, true, 2.4);
-    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 2.1) / .5).toFixed(3)})`);
-    inDot(c, x1, cy, RGB.next, 7, c01(l / .45), true);
-    inDot(c, x2, cy, INK, 7, c01((l - 1.95) / .45));
+    inArc(c, x1, x2, cy, h, iEase(c01((l - BEAT / 2) / (1.5 * BEAT))), RGB.next, INK, true, 2.4);
+    inText(c, e.early, W / 2, cy - h - 12, FONT.monoB(14), `rgba(${RGB.next},${c01((l - 2 * BEAT) / .5).toFixed(3)})`);
+    inDot(c, x1, cy, RGB.next, 7, c01((l + .05) / .3), true);
+    inDot(c, x2, cy, INK, 7, c01((l - 2 * BEAT + .05) / .3));
     inText(c, e.a, x1, cy + 28, FONT.monoB(14), `rgb(${RGB.next})`, W);
-    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 1.95) / .45).toFixed(3)})`, W);
-    c.save(); c.globalAlpha *= c01((l - .25) / .55);
+    inText(c, e.b, x2, cy + 28, FONT.monoB(14), `rgba(${INK},${c01((l - 2 * BEAT + .05) / .3).toFixed(3)})`, W);
+    c.save(); c.globalAlpha *= c01((l - QB) / .5);
     inText(c, e.who, W / 2, cy + 78, `500 ${W < 400 ? 22 : 26}px "Newsreader", Georgia, serif`, `rgb(${INK})`);
     c.restore();
-    c.save(); c.globalAlpha *= c01((l - .95) / .55);
+    c.save(); c.globalAlpha *= c01((l - 3 * QB) / .5);
     c.font = FONT.mono(15); c.textAlign = "left";   // the same baseline as inText, so the line sits where it did
-    const lines = wrapLines(c, e.did, W * .8, 2), ts = readTimes(e.did.split(/\s+/).map(tx => ({ textContent: tx })), 1.15);
+    const lines = wrapLines(c, e.did, W * .8, 2), ts = readTimes(e.did.split(/\s+/).map(tx => ({ textContent: tx })), BEAT);
     let wi = 0;
     lines.forEach((ln, k) => {
       const sp = c.measureText(" ").width;
@@ -3329,7 +3324,7 @@ const DEMO = [
   { k: "now", y: I_NOW, yr: String(I_NOW), name: IP.now.short, title: IP.now.title, btn: `Count forward to ${I_NEXT}`, to: "next" },
   { k: "next", y: I_NEXT, yr: "c. " + I_NEXT, name: IP.next.short, title: IP.next.title, btn: "Next rhyme", to: "then" }
 ];
-const DEMO_TAPS = [1.7, 4.3], DEMO_FLY = 1.5;
+const DEMO_TAPS = [1.5 * BEAT, 3.5 * BEAT], DEMO_FLY = BEAT - .1;   // taps on the and of 2 and 4; each flight lands on the next beat
 function inDemo(c, W, H, lt) {
   const f = Math.min(W * .62, 236, H * .47) / 236, pw = 236 * f, ph = Math.min(H * .97, pw * 2.04), px = W / 2 - pw / 2, py = (H - ph) / 2;
   const appear = iOut(c01(lt / .7));
@@ -3438,7 +3433,7 @@ function inDemo(c, W, H, lt) {
 function inEnd(c, W, H, lt) {
   const m = markGeo(W, Math.round(H * .66), Math.min(W * .42, 190));
   const r = reduce && !intro.rec ? 99 : lt;
-  inMark(c, m, [c01((r - .2) / .35), iEase(c01((r - .45) / .6)), c01((r - 1) / .35), iEase(c01((r - 1.2) / .6)), c01((r - 1.75) / .4)]);
+  inMark(c, m, [c01(r / .25), iEase(c01((r - .1) / .5)), c01((r - 2 * QB) / .25), iEase(c01((r - 2 * QB - .1) / .5)), c01((r - 4 * QB) / .3)]);   // dot, dot, ring on eighths
 }
 function inSize() {
   const r = inStage.getBoundingClientRect(), d = Math.min(3, window.devicePixelRatio || 1);
@@ -3458,8 +3453,8 @@ function inCaption(i) {
   const k = $("inK"); k.className = "in-k " + (cp.kc || ""); k.textContent = cp.k;
   $("inT").innerHTML = cp.t; $("inL").innerHTML = cp.l;
   if (!s.card) { const ws = [...splitWords($("inT")), ...splitWords($("inL"))], ts = readTimes(ws, CAP_AT); ws.forEach((w, k) => intro.words.push({ w, t: ts[k] })); }
-  $("inAct").innerHTML = s.id !== "end" ? "" : intro.rec ? `<p class="in-url" data-at="3.4">pastforward.app</p>`
-    : `<div class="in-act-in" data-at="3.4"><button type="button" class="primary to-then" data-in="start">Start with ${I_THEN}</button>
+  $("inAct").innerHTML = s.id !== "end" ? "" : intro.rec ? `<p class="in-url" data-at="${10 * QB}">pastforward.app</p>`
+    : `<div class="in-act-in" data-at="${10 * QB}"><button type="button" class="primary to-then" data-in="start">Start with ${I_THEN}</button>
        <div class="in-row"><button type="button" class="secondary" data-in="future">See my future</button><button type="button" class="secondary" data-in="again">Watch again</button></div></div>`;
   $("inProg").innerHTML = SCENES.filter(x => x.id !== "end").map(() => "<i><b></b></i>").join("");
 }
@@ -3563,7 +3558,7 @@ document.addEventListener("keydown", e => {
 }, true);
 $("logo").addEventListener("click", () => openIntro());
 window.__pastforward = Object.assign(window.__pastforward || {}, {
-  introLength: INTRO_END + 4.6,
+  introLength: INTRO_END + 4 * BEAT,
   introFrame: t => { if (!intro.open) openIntro(true); renderIntro(t); }
 });
 
@@ -3573,7 +3568,7 @@ window.__pastforward = Object.assign(window.__pastforward || {}, {
    the film, behind a mute button; the video export renders the same list offline (window.__pastforward.introAudio).
    The idea: a slow, warm progression in D major on the film's one-second beat, resolving on the sunrise. A three-note
    motif (D, A, high D) answers Then, Today and Next, so the sound rhymes too. */
-const SND_KEY = "pastforward.sound", SND_GAIN = 1.5;
+const SND_KEY = "pastforward.sound", SND_GAIN = 1.3;
 const hz = m => 440 * Math.pow(2, (m - 69) / 12);
 // pad voicings (MIDI notes) and bass root, warm and open, with an added ninth for light
 const CHORD = {
@@ -3603,65 +3598,78 @@ const SCORE = (() => {
   add(INTRO_END, "chord", { name: "D", dur: 12, e: 1.3, bass: true, last: true });   // ... and home, on the sunrise
   // title: the two-note "rhyme" on "It rhymes."
   add(.1, "swell", { d: 4, v: .35, f1: 1200 });
-  add(I_REVEAL + .05, "bell", { m: MOTIF[0], v: .8 }); add(I_REVEAL + .47, "bell", { m: MOTIF[1], v: .7 });
+  add(I_REVEAL, "bell", { m: MOTIF[0], v: .8 }); add(I_REVEAL + 2 * QB, "bell", { m: MOTIF[1], v: .7 });
   // title cards: a soft bell as each line arrives
   for (const id of ["cycles", "read", "method", "onrecord"]) {
     const s = SCENES.find(x => x.id === id);
-    CARDS[id].forEach((_, j) => add(s.at + CARD_T[id].lines[j] + .1, "bell", { m: [81, 78, 76][j % 3], v: j ? .38 : .5, r: 2.01 }));
+    CARDS[id].forEach((_, j) => add(s.at + CARD_T[id].lines[j], "bell", { m: [81, 78, 76][j % 3], v: j ? .38 : .5, r: 2.01 }));
   }
   // echoes: each one rings a step higher; Then is warm, Today is bright
-  I_ECHO.forEach((e, i) => add(S("echoes") + .8 + i * BEAT, "bell", { m: PENT[Math.min(i, PENT.length - 1)], v: e.kind === "echo" ? .42 : .62, r: e.kind === "then" ? 2.01 : 3.01, pan: (i / (I_ECHO.length - 1) - .5) * .4 }));
+  I_ECHO.forEach((e, i) => add(S("echoes") + BEAT + i * BEAT, "bell", { m: PENT[Math.min(i, PENT.length - 1)], v: e.kind === "echo" ? .42 : .62, r: e.kind === "then" ? 2.01 : 3.01, pan: (i / (I_ECHO.length - 1) - .5) * .4 }));
   // Then, Today, Next on the timeline: the motif, carried by the arcs
   add(STEP2.then, "bell", { m: MOTIF[0], v: .7, r: 2.01, pan: -.35 });
   add(STEP2.now, "bell", { m: 78, v: .3, pan: .1 });
   add(STEP2.now + .2, "whoosh", { d: STEP2.land - STEP2.now - .2, f0: 260, f1: 1900, v: .55, p0: -.6, p1: .5 });
   add(STEP2.land, "bell", { m: MOTIF[1], v: .72, pan: .3 });
-  // measure the rhythm: a slow beat from the moment 1918 lands, through Step 3, to one last kick as "One method." arrives
-  const beatEnd = CARD_T.method.hit;
-  for (let t = STEP2.then, k = 0; t < beatEnd + .01; t += BEAT, k++) {
-    const last = t > beatEnd - .01;
-    if (k % 2 === 0 || last) add(t, "kick", { v: Math.min(1, .85 + k * .03) });   // the last hit is always a kick
-    else add(t, "snare", { v: Math.min(1, .8 + k * .04) });
-  }
-  add(S("next") + 1.5, "whoosh", { d: 2.3, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
-  add(S("next") + 3.8, "bell", { m: MOTIF[2], v: .78, pan: .45 }); add(S("next") + 3.86, "bell", { m: 93, v: .28, pan: .6 }); add(S("next") + 3.93, "bell", { m: 98, v: .16, pan: .7 });
-  add(S("next") + 3.8, "shimmer", { d: 9 });
+  add(S("next") + BEAT, "whoosh", { d: 2 * BEAT, f0: 600, f1: 4200, v: .45, p0: -.2, p1: .7, q: 1.6 });
+  add(S("next") + 3 * BEAT, "bell", { m: MOTIF[2], v: .78, pan: .45 }); add(S("next") + 3 * BEAT + .06, "bell", { m: 93, v: .28, pan: .6 }); add(S("next") + 3 * BEAT + .13, "bell", { m: 98, v: .16, pan: .7 });
+  add(S("next") + 3 * BEAT, "shimmer", { d: 9 });
   // the method: the three steps gather into the mark
-  add(S("method") + .1, "swell", { d: 1.5, v: .3, f1: 2400 });
-  MOTIF.forEach((m, j) => add(S("method") + 1.55 + j * .06, "bell", { m, v: .4 }));
+  add(S("method"), "swell", { d: 1.5 * BEAT, v: .3, f1: 2400 });
+  MOTIF.forEach((m, j) => add(S("method") + 1.5 * BEAT + j * .06, "bell", { m, v: .4 }));
   // more rhymes: each row plays the motif again, a little lower each time
   I_ROWS.forEach((_, i) => {
-    const st = S("more") + .4 + i * 2 * BEAT, row = [[74, 81, 86], [71, 78, 83], [69, 76, 81]][i % 3];
-    [0, .9, 1.7].forEach((d, j) => add(st + d * BEAT, "bell", { m: row[j], v: j === 2 ? .38 : .48, pan: (j - 1) * .5, d: 2 }));
-    add(st + .3, "whoosh", { d: .7, f0: 500, f1: 2400, v: .22, p0: -.5, p1: 0 }); add(st + 1.1, "whoosh", { d: .7, f0: 700, f1: 3400, v: .2, p0: 0, p1: .5, q: 1.6 });
+    const st = S("more") + BEAT + i * 2 * BEAT, row = [[74, 81, 86], [71, 78, 83], [69, 76, 81]][i % 3];
+    [0, 1, 1.5].forEach((d, j) => add(st + d * BEAT, "bell", { m: row[j], v: j === 2 ? .38 : .48, pan: (j - 1) * .5, d: 2 }));
+    add(st + .1 * BEAT, "whoosh", { d: .9 * BEAT, f0: 500, f1: 2400, v: .22, p0: -.5, p1: 0 }); add(st + 1.05 * BEAT, "whoosh", { d: .45 * BEAT, f0: 700, f1: 3400, v: .2, p0: 0, p1: .5, q: 1.6 });
   });
   // your lifeline: a birth year typed in, a life drawn out, and a run of notes for what comes due
-  [.45, .65, .85, 1.05].forEach(d => add(S("you") + d, "tick", {}));
-  add(S("you") + 1.5, "whoosh", { d: 1.2, f0: 220, f1: 1400, v: .3, p0: -.8, p1: .8 });
-  add(S("you") + 2.2, "bell", { m: 78, v: .35, r: 2.01 });
-  lifeEchoes(I_BY).forEach((e, i) => add(S("you") + 2.8 + i * .35 * BEAT, "pluck", { m: PENT[(i + 2) % PENT.length], v: .5, pan: c01((e.y - I_BY) / 90) * 1.4 - .7 }));
+  [2, 3, 4, 5].forEach(k => add(S("you") + k * QB, "tick", {}));
+  add(S("you") + YOU_T0, "whoosh", { d: BEAT, f0: 220, f1: 1400, v: .3, p0: -.8, p1: .8 });
+  add(S("you") + YOU_T0 + 2 * QB, "bell", { m: 78, v: .35, r: 2.01 });
+  lifeEchoes(I_BY).forEach((e, i) => add(S("you") + YOU_T0 + BEAT + i * QB, "pluck", { m: PENT[(i + 2) % PENT.length], v: .5, pan: c01((e.y - I_BY) / 90) * 1.4 - .7 }));
   // on record: each person is a quiet bell where they sensed it, an arc, and the arrival
   I_SEERS.forEach((_, j) => {
     const b = S("prepare") + SEER_LEAD + j * SEER;
-    add(b + .05, "bell", { m: 74, v: .38, r: 2.01, pan: -.4 });
-    add(b + .5, "whoosh", { d: 1.6, f0: 400, f1: 2600, v: .25, p0: -.45, p1: .45, q: 1.5 });
-    add(b + 1.95, "bell", { m: 81, v: .48, pan: .4 });
+    add(b, "bell", { m: 74, v: .38, r: 2.01, pan: -.4 });
+    add(b + BEAT / 2, "whoosh", { d: 1.5 * BEAT, f0: 400, f1: 2600, v: .25, p0: -.45, p1: .45, q: 1.5 });
+    add(b + 2 * BEAT, "bell", { m: 81, v: .48, pan: .4 });
   });
   const close = S("prepare") + SEER_LEAD + I_SEERS.length * SEER;
-  [74, 78, 81, 86].forEach((m, j) => add(close + .1 + j * .14, "bell", { m, v: .4 - j * .05 }));
+  [74, 78, 81, 86].forEach((m, j) => add(close + j * QB, "bell", { m, v: .4 - j * .05 }));
   // the app in a hand: two taps, two flights, two arrivals
   DEMO_TAPS.forEach((tp, i) => {
     const t = S("demo") + tp;
-    add(t, "tap", {}); add(t + .08, "whoosh", { d: DEMO_FLY, f0: 300, f1: 3000, v: .35, p0: -.3, p1: .3 });
-    add(t + DEMO_FLY + .12, "bell", { m: MOTIF[i + 1], v: .62, pan: .2 });
+    add(t, "tap", {}); add(t + .1, "whoosh", { d: DEMO_FLY, f0: 300, f1: 3000, v: .35, p0: -.3, p1: .3 });
+    add(t + BEAT, "bell", { m: MOTIF[i + 1], v: .62, pan: .2 });   // the flight lands on the beat
   });
-  for (let t = S("demo") + .5, i = 0; t < INTRO_END - .2; t += .5 * BEAT, i++) add(t, "pluck", { m: [62, 69, 74, 78, 74, 69][i % 6] + (i >= 6 ? 0 : 0), v: .24, pan: i % 2 ? .25 : -.25, lo: true });
+  for (let t = S("demo") + BEAT / 2, i = 0; t < INTRO_END - .2; t += .5 * BEAT, i++) add(t, "pluck", { m: [62, 69, 74, 78, 74, 69][i % 6] + (i >= 6 ? 0 : 0), v: .24, pan: i % 2 ? .25 : -.25, lo: true });
   // the sunrise: a swell into the last chord, the motif drawn as the mark, and a bloom on the name
-  add(INTRO_END - 2.6, "swell", { d: 2.9, v: .8, f1: 7000 });
-  add(INTRO_END + .2, "bell", { m: MOTIF[0], v: .7 }); add(INTRO_END + 1, "bell", { m: MOTIF[1], v: .7 }); add(INTRO_END + 1.75, "bell", { m: MOTIF[2], v: .7 });
-  add(INTRO_END + 2.1, "thump", { v: .55 });
-  [62, 69, 74, 78, 81, 86, 90].forEach((m, j) => add(INTRO_END + 2.1 + j * .055, "bell", { m, v: .42 - j * .03, pan: (j / 6 - .5) * .8, d: 4.5 }));
-  add(INTRO_END + 2.1, "shimmer", { d: 10 });
+  add(INTRO_END - 2 * BEAT, "swell", { d: 2 * BEAT + .15, v: .8, f1: 7000 });
+  add(INTRO_END, "bell", { m: MOTIF[0], v: .7 }); add(INTRO_END + 2 * QB, "bell", { m: MOTIF[1], v: .7 }); add(INTRO_END + 4 * QB, "bell", { m: MOTIF[2], v: .7 });
+  add(INTRO_END + 6 * QB, "thump", { v: .55 });
+  [62, 69, 74, 78, 81, 86, 90].forEach((m, j) => add(INTRO_END + 6 * QB + j * .055, "bell", { m, v: .42 - j * .03, pan: (j / 6 - .5) * .8, d: 4.5 }));
+  add(INTRO_END + 6 * QB, "shimmer", { d: 10 });
+  // the drums, arranged like a song: a heartbeat to open, a pulse for the echoes, the full beat from Step 2 to your
+  // lifeline, a breath for the people on record that builds into the app, and one last hit as the sun rises
+  const DRUM = { cycles: "heart", read: "heart", echoes: "pulse", then: "full", now: "full", next: "full", method: "full", more: "full", you: "groove", onrecord: "heart", prepare: "heart", demo: "full" };
+  const build = S("demo") - 4 * BEAT;
+  for (let n = 0; n * BEAT < INTRO_END - 1e-6; n++) {
+    const b = n * BEAT, pos = n % 4;
+    if (b > build - 1e-6 && b < S("demo") - 1e-6) {   // the last bar before the app: a snare build, eighths then sixteenths
+      const steps = b > build + 2 * BEAT - 1e-6 ? 4 : 2;
+      for (let k = 0; k < steps; k++) add(b + k * BEAT / steps, "snare", { v: .3 + .55 * (b + k * BEAT / steps - build) / (4 * BEAT) });
+      if (pos % 2 === 0) add(b, "kick", { v: .75 });
+      continue;
+    }
+    const kind = DRUM[SCENES[sceneAt(b + 1e-6)].id];
+    if (!kind) continue;
+    const lv = { heart: .55, pulse: .72, groove: .82, full: .95 }[kind];
+    if (pos === 0 || (pos === 2 && kind !== "heart")) add(b, "kick", { v: lv });
+    if ((pos === 1 || pos === 3) && (kind === "full" || kind === "groove")) add(b, "snare", { v: kind === "full" ? .9 : .7 });
+    if (kind !== "heart") add(b + BEAT / 2, "hat", { v: kind === "full" ? .9 : .65, pan: pos % 2 ? .2 : -.2 });   // the off-beat eighth
+  }
+  add(INTRO_END, "kick", { v: 1 }); add(INTRO_END, "crash", { v: .8 });   // the sunrise
   return ev.sort((a, b) => a.t - b.t);
 })();
 
@@ -3783,8 +3791,8 @@ const SYN = {
     o.frequency.setValueAtTime(150, when); o.frequency.exponentialRampToValueAtTime(48, when + .26);
     g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .005); g.gain.exponentialRampToValueAtTime(.0001, when + .85);
     o.connect(g); sndOut(G, g, 0, .1, G.beat); o.start(when); o.stop(when + .9);
-    const d = G.duck.gain;   // make room: the music dips by about 5 dB and comes back
-    d.setValueAtTime(1, when); d.linearRampToValueAtTime(.56, when + .02); d.linearRampToValueAtTime(1, when + .42);
+    const d = G.duck.gain, depth = 1 - .42 * (e.v == null ? 1 : e.v);   // make room: the music dips (up to about 5 dB) and comes back
+    d.setValueAtTime(1, when); d.linearRampToValueAtTime(depth, when + .02); d.linearRampToValueAtTime(1, when + .42);
     const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), cg = ctx.createGain();
     s.buffer = G.noise; bp.type = "bandpass"; bp.frequency.value = 1800; bp.Q.value = .8;
     cg.gain.setValueAtTime(.09 * (e.v == null ? 1 : e.v), when); cg.gain.exponentialRampToValueAtTime(.0001, when + .025);
@@ -3802,6 +3810,20 @@ const SYN = {
     og.gain.setValueAtTime(v * .55, when); og.gain.exponentialRampToValueAtTime(.0001, when + .13);
     o.connect(og); sndOut(G, og, .08, .3, G.beat); o.start(when); o.stop(when + .15);
     return { g, end: when + .3 };
+  },
+  hat(G, e, when) {   // a closed hi-hat: a short tick of bright air on the off-beat
+    const { ctx } = G, s = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), g = ctx.createGain(), v = .045 * (e.v == null ? 1 : e.v);
+    s.buffer = G.noise; hp.type = "highpass"; hp.frequency.value = 6500;
+    g.gain.setValueAtTime(v, when); g.gain.exponentialRampToValueAtTime(.0001, when + .055);
+    s.connect(hp); hp.connect(g); sndOut(G, g, e.pan || 0, .12, G.beat); s.start(when, (e.t * 6.1) % 1.5); s.stop(when + .07);
+    return { g, end: when + .07 };
+  },
+  crash(G, e, when) {   // a soft cymbal for the sunrise: bright air that rings out
+    const { ctx } = G, s = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), g = ctx.createGain(), v = .07 * (e.v == null ? 1 : e.v);
+    s.buffer = G.noise; s.loop = true; hp.type = "highpass"; hp.frequency.value = 3800;
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v, when + .01); g.gain.exponentialRampToValueAtTime(.0001, when + 3.2);
+    s.connect(hp); hp.connect(g); sndOut(G, g, 0, .5, G.beat); s.start(when, (e.t * 1.7) % 1.5); s.stop(when + 3.3);
+    return { g, end: when + 3.3 };
   },
   thump(G, e, when) {   // a soft low landing
     const { ctx } = G, o = ctx.createOscillator(), g = ctx.createGain(), v = .32 * (e.v == null ? 1 : e.v);
@@ -3912,7 +3934,7 @@ function wavOf(buf) {
 }
 Object.assign(window.__pastforward, {
   introAudio: async (sr = 48000) => {
-    const len = INTRO_END + 4.6, AC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    const len = INTRO_END + 4 * BEAT, AC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
     const ctx = new AC(2, Math.ceil(len * sr), sr), G = sndGraph(ctx);
     for (const e of SCORE) {
       if (e.k === "chord" && e.t < 0) SYN.chord(G, e, 0, -e.t);
@@ -3921,7 +3943,7 @@ Object.assign(window.__pastforward, {
     window.__pfWav = wavOf(await ctx.startRendering());
     return window.__pfWav.length;
   },
-  beat: () => ({ step2: STEP2, scenes: { then: SCENES.find(x => x.id === "then").at, now: SCENES.find(x => x.id === "now").at, next: SCENES.find(x => x.id === "next").at }, hits: SCORE.filter(e => e.k === "kick" || e.k === "snare").map(e => `${e.k} ${e.t.toFixed(2)}`).join(", "), reveal: I_REVEAL, oneMethod: CARD_T.method.hit }),
+  beat: () => ({ step2: STEP2, scenes: { then: SCENES.find(x => x.id === "then").at, now: SCENES.find(x => x.id === "now").at, next: SCENES.find(x => x.id === "next").at }, hits: SCORE.filter(e => e.k === "kick" || e.k === "snare").map(e => `${e.k} ${e.t.toFixed(2)}`).join(", "), reveal: I_REVEAL, end: INTRO_END, bars: INTRO_END / (4 * BEAT), offGrid: SCORE.filter(e => e.t >= 0 && !["swell"].includes(e.k) && Math.abs(e.t / QB - Math.round(e.t / QB)) > .01 && !(e.k === "bell" && Math.abs(e.t / QB - Math.round(e.t / QB)) < .5 && e.m > 90)).map(e => `${e.k} ${e.t.toFixed(2)}`) }),
   scenes: () => SCENES.map(x => `${x.id} ${x.dur === Infinity ? "end" : x.dur.toFixed(1)}`).join(", "),
   soundState: () => ({ on: snd.on, state: snd.G ? snd.G.ctx.state : "none", voices: snd.live.length, button: $("inSnd").textContent.trim() || ($("inSnd").getAttribute("aria-pressed") === "true" ? "on" : "off") }),
   introAudioChunk: (i, size) => { let s = ""; const a = window.__pfWav.subarray(i * size, (i + 1) * size); for (let k = 0; k < a.length; k += 32768) s += String.fromCharCode.apply(null, a.subarray(k, k + 32768)); return btoa(s); }
