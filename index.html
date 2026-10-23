@@ -2746,20 +2746,59 @@ const I_ECHO = (() => {
   const pick = Array.from({ length: want }, (_, i) => rest[Math.round(i * (rest.length - 1) / Math.max(1, want - 1))]);
   return [...new Set([...fixed, ...pick])].sort((a, b) => a.year - b.year);
 })();
-const BEAT = 1;   // the intro's metronome: lists reveal one item per beat, so each lands before the next
+const BEAT = 1.2;   // the intro's metronome (50 a minute): lists reveal one item per beat, so each lands and can be read before the next
 const I_LIFE = lifeEchoes(I_BY).length;
 const I_REVEAL = .45 + BEAT + .3;   // "It rhymes." arrives one beat after the first line has settled
 const I_SPAN = I_NOW - I_ECHO_ALL[0].year;
 const fmtN = n => n.toLocaleString("en-US");
-// Title cards: the trailer's spoken lines. Each line lands on its own beat.
-const CARD_GAP = 1.6;
+// Reading: every caption and title line starts dim and its words light up at a calm reading pace,
+// pausing a little at commas and full stops. Lines and scenes wait until their words have been read.
+const WPS = 2.9, HOLD = 1.1, LIT = .35;   // words a second; time to rest on a read line; how long a word takes to light
+function splitWords(el) {   // wrap each word of el's text in <span class="rw">, keeping the markup around it
+  const walk = n => [...n.childNodes].forEach(ch => {
+    if (ch.nodeType === 1) return walk(ch);
+    if (ch.nodeType !== 3 || !ch.textContent.trim()) return;
+    const f = document.createDocumentFragment();
+    ch.textContent.split(/(\s+)/).forEach(p => {
+      if (!p) return;
+      if (/^\s+$/.test(p)) { f.appendChild(document.createTextNode(p)); return; }
+      const w = document.createElement("span"); w.className = "rw"; w.textContent = p; f.appendChild(w);
+    });
+    ch.replaceWith(f);
+  });
+  walk(el);
+  return [...el.querySelectorAll(".rw")];
+}
+function readTimes(words, t0) {   // when each word lights; a part with data-at waits for its moment
+  let t = t0, prev = "";
+  return words.map(w => {
+    const tx = w.textContent, mark = !/[\p{L}\p{N}]/u.test(tx);   // a lone "·" lights with the word before it
+    if (prev && !mark) t += 1 / WPS + (/[.!?]$/.test(prev) ? .32 : /[,;:]$/.test(prev) ? .12 : 0);
+    const da = w.closest && w.closest("[data-at]");
+    if (da) t = Math.max(t, +da.dataset.at + .15);
+    if (!mark) prev = tx;
+    return t;
+  });
+}
+// Title cards: the trailer's spoken lines. Each line arrives once the one before it has been read.
 const CARDS = {
   cycles: ["For thousands of years, humanity has moved in cycles.", "Plagues. Crashes. Revolutions. Inventions.", "Each one fades, then returns in a new form."],
   read: ["Read the pattern.", "Find where we stand in the cycle.", `And you can see <span class="x">what may come next.</span>`],
   method: ["One method.", "Find the pattern. Measure the rhythm. Count forward."]
 };
 const CARD_LEAD = { cycles: 1, read: 1, method: 1 };
-const cardDur = id => .9 + CARDS[id].length * CARD_GAP + 1.9;
+const CARD_T = {};   // per card: when each line arrives, and when each of its words lights
+for (const id in CARDS) {
+  let at = id === "method" ? 1.7 : .7;
+  const lines = [], words = [];
+  CARDS[id].forEach(h => {
+    const p = document.createElement("p"); p.innerHTML = h;
+    const ts = readTimes(splitWords(p), at + .55);
+    lines.push(at); words.push(ts); at = ts[ts.length - 1] + LIT + .45;
+  });
+  CARD_T[id] = { lines, words, end: words[words.length - 1][words[words.length - 1].length - 1] + LIT + HOLD };
+}
+const cardDur = id => CARD_T[id].end + .55;
 // one per kind of cycle: a harvest, a crash, a tsunami, a pandemic. All on record:
 // Thales in Aristotle's Politics; Babson's speech of 5 Sep 1929; Hirai on Onagawa's 1968 planning committee; Gates's 2015 TED talk.
 const I_SEERS = [
@@ -2768,7 +2807,7 @@ const I_SEERS = [
   { a: "1968", b: "2011", early: "43 years early", who: "Yanosuke Hirai", did: "Had a power plant built high, recalling the tsunami of 869." },
   { a: "2015", b: "2020", early: "5 years early", who: "Bill Gates", did: "Warned we were not ready for a pandemic." }
 ];
-const SEER = 5.6, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
+const SEER = 6, SEER_LEAD = 1.6;   // the caption lands first, then one person at a time, held long enough to take in
 // join: the scene continues the previous one's picture, so neither fades at the cut
 const SCENES = [
   { id: "title", view: "tl", dur: 5.2, cam: [1860, 760] },
@@ -2778,15 +2817,13 @@ const SCENES = [
   { id: "then", view: "tl", dur: 4.6, cam: [I_THEN + 12, 150] },
   { id: "now", view: "tl", dur: 5.6, cam: [(I_THEN + I_NOW) / 2, I_GAP * 1.68] },
   { id: "next", view: "tl", dur: 6.4, cam: [I_NOW, I_GAP * 2.78] },
-  { id: "method", view: "method", card: "method", cardAt: 1.7, join: true, dur: 1 + cardDur("method") },
+  { id: "method", view: "method", card: "method", join: true, dur: cardDur("method") },
   { id: "more", view: "more", join: true, dur: .4 + 2 * BEAT * I_ROWS.length + 2.4 },
   { id: "you", view: "you", dur: 2.8 + I_LIFE * .35 * BEAT + 3 },
   { id: "prepare", view: "prepare", dur: SEER_LEAD + I_SEERS.length * SEER + 3.2 },
   { id: "demo", view: "demo", dur: 7.4 },
   { id: "end", view: "end", dur: Infinity }
 ];
-{ let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
-const INTRO_END = SCENES[SCENES.length - 1].at;
 // captions; parts with data-at appear that many seconds into the scene
 const CAP = {
   title: { k: "", t: `History does not repeat itself.<br><span class="x" data-at="${I_REVEAL}">It rhymes.</span>`, l: "" },
@@ -2801,6 +2838,18 @@ const CAP = {
   end: { k: "", t: `<span class="in-brand" data-at="2.1"><span class="p">Past</span><span class="f">Forward</span></span>`, l: `<span data-at="2.8">History rhymes. See what comes next.</span>` }
 };
 for (const id in CARDS) if (!CAP[id]) CAP[id] = { k: "", t: "", l: "" };
+const CAP_AT = .4;   // captions start to be read once they have faded in
+function capWords(id) {   // the caption's title then its line, as word spans, in reading order
+  const box = document.createElement("div"); box.innerHTML = `<h2>${CAP[id].t}</h2><p>${CAP[id].l}</p>`;
+  return splitWords(box);
+}
+for (const s of SCENES) {   // a scene lasts at least until its caption has been read, and rested on
+  if (s.dur === Infinity || s.view === "card" || s.id === "title" || s.id === "demo") continue;
+  const ts = readTimes(capWords(s.id), CAP_AT);
+  if (ts.length) s.dur = Math.max(s.dur, ts[ts.length - 1] + LIT + HOLD + .3);
+}
+{ let a = 0; for (const s of SCENES) { s.at = a; if (s.dur !== Infinity) a += s.dur; } }
+const INTRO_END = SCENES[SCENES.length - 1].at;
 const intro = { open: false, t: 0, last: 0, raf: 0, rec: false, cur: -1, w: 0, h: 0, dpr: 1 };
 const c01 = v => Math.max(0, Math.min(1, v));
 const iEase = x => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -3256,8 +3305,18 @@ function inPrepare(c, W, H, lt) {
     inText(c, e.who, W / 2, cy + 78, `500 ${W < 400 ? 22 : 26}px "Newsreader", Georgia, serif`, `rgb(${INK})`);
     c.restore();
     c.save(); c.globalAlpha *= c01((l - .95) / .55);
-    c.font = FONT.mono(15);
-    wrapLines(c, e.did, W * .8, 2).forEach((ln, k) => inText(c, ln, W / 2, cy + 106 + k * 21, FONT.mono(15), `rgba(${INK},.75)`));
+    c.font = FONT.mono(15); c.textAlign = "left";   // the same baseline as inText, so the line sits where it did
+    const lines = wrapLines(c, e.did, W * .8, 2), ts = readTimes(e.did.split(/\s+/).map(tx => ({ textContent: tx })), 1.15);
+    let wi = 0;
+    lines.forEach((ln, k) => {
+      const sp = c.measureText(" ").width;
+      let x = W / 2 - c.measureText(ln).width / 2;
+      ln.split(" ").forEach(word => {
+        const lit = iOut(c01((l - ts[wi++]) / LIT));
+        c.fillStyle = `rgba(${INK},${(.26 + .6 * lit).toFixed(3)})`; c.fillText(word, x, cy + 106 + k * 21);
+        x += c.measureText(word).width + sp;
+      });
+    });
     c.restore();
     c.restore();
   });
@@ -3400,8 +3459,11 @@ function inCaption(i) {
   const s = SCENES[i], cp = CAP[s.id], card = $("inCard");
   card.className = "in-card" + (s.id === "method" ? " low" : "");
   card.innerHTML = s.card ? CARDS[s.card].map((l, j) => `<p class="ic-l${!j && CARD_LEAD[s.card] ? " lead" : ""}">${l}</p>`).join("") : "";
+  intro.words = [];
+  if (s.card) card.querySelectorAll(".ic-l").forEach((el, j) => splitWords(el).forEach((w, k) => intro.words.push({ w, t: CARD_T[s.card].words[j][k] })));
   const k = $("inK"); k.className = "in-k " + (cp.kc || ""); k.textContent = cp.k;
   $("inT").innerHTML = cp.t; $("inL").innerHTML = cp.l;
+  if (!s.card) { const ws = [...splitWords($("inT")), ...splitWords($("inL"))], ts = readTimes(ws, CAP_AT); ws.forEach((w, k) => intro.words.push({ w, t: ts[k] })); }
   $("inAct").innerHTML = s.id !== "end" ? "" : intro.rec ? `<p class="in-url" data-at="3.4">pastforward.app</p>`
     : `<div class="in-act-in" data-at="3.4"><button type="button" class="primary to-then" data-in="start">Start with ${I_THEN}</button>
        <div class="in-row"><button type="button" class="secondary" data-in="future">See my future</button><button type="button" class="secondary" data-in="again">Watch again</button></div></div>`;
@@ -3437,7 +3499,7 @@ function renderIntro(t) {
   cap.style.opacity = s.view === "card" ? "0" : ca.toFixed(3);
   cardEl.style.opacity = s.card ? (still ? 1 : c01((s.dur - lt) / .55)).toFixed(3) : "0";
   if (s.card) cardEl.querySelectorAll(".ic-l").forEach((el, j) => {
-    const r = still ? 1 : iOut(c01((lt - (s.cardAt || .7) - j * CARD_GAP) / 1.1));
+    const r = still ? 1 : iOut(c01((lt - CARD_T[s.card].lines[j]) / 1.1));
     el.style.opacity = r.toFixed(3);
     el.style.transform = `translateY(${((1 - r) * 16).toFixed(1)}px) scale(${(1.03 - .03 * r).toFixed(4)})`;
     el.style.filter = r < 1 ? `blur(${((1 - r) * 7).toFixed(2)}px)` : "none";
@@ -3450,6 +3512,7 @@ function renderIntro(t) {
     el.style.transform = `translateY(${((1 - iOut(r)) * 10).toFixed(1)}px)`;
     el.style.filter = r < 1 ? `blur(${((1 - r) * 6).toFixed(2)}px)` : "none";
   });
+  for (const { w, t } of intro.words || []) w.style.opacity = still ? "1" : (.32 + .68 * iOut(c01((lt - t) / LIT))).toFixed(3);   // read words light up
   $("inProg").querySelectorAll("b").forEach((b, j) => { b.style.width = (j < i ? 100 : j === i ? 100 * c01(lt / s.dur) : 0) + "%"; });
   $("inTap").style.visibility = end || intro.rec ? "hidden" : "visible";
   $("inSkip").style.visibility = end || intro.rec ? "hidden" : "visible";
@@ -3550,7 +3613,7 @@ const SCORE = (() => {
   // title cards: a soft bell as each line arrives
   for (const id of ["cycles", "read", "method"]) {
     const s = SCENES.find(x => x.id === id);
-    CARDS[id].forEach((_, j) => add(s.at + (s.cardAt || .7) + j * CARD_GAP + .1, "bell", { m: [81, 78, 76][j % 3], v: j ? .38 : .5, r: 2.01 }));
+    CARDS[id].forEach((_, j) => add(s.at + CARD_T[id].lines[j] + .1, "bell", { m: [81, 78, 76][j % 3], v: j ? .38 : .5, r: 2.01 }));
   }
   // echoes: each one rings a step higher; Then is warm, Today is bright
   I_ECHO.forEach((e, i) => add(S("echoes") + .8 + i * BEAT, "bell", { m: PENT[Math.min(i, PENT.length - 1)], v: e.kind === "echo" ? .42 : .62, r: e.kind === "then" ? 2.01 : 3.01, pan: (i / (I_ECHO.length - 1) - .5) * .4 }));
@@ -3831,6 +3894,7 @@ Object.assign(window.__pastforward, {
     window.__pfWav = wavOf(await ctx.startRendering());
     return window.__pfWav.length;
   },
+  scenes: () => SCENES.map(x => `${x.id} ${x.dur === Infinity ? "end" : x.dur.toFixed(1)}`).join(", "),
   soundState: () => ({ on: snd.on, state: snd.G ? snd.G.ctx.state : "none", voices: snd.live.length, button: $("inSnd").textContent.trim() || ($("inSnd").getAttribute("aria-pressed") === "true" ? "on" : "off") }),
   introAudioChunk: (i, size) => { let s = ""; const a = window.__pfWav.subarray(i * size, (i + 1) * size); for (let k = 0; k < a.length; k += 32768) s += String.fromCharCode.apply(null, a.subarray(k, k + 32768)); return btoa(s); }
 });
