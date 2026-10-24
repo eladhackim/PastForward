@@ -1,5 +1,19 @@
 [
  {
+  "date": "2026-10-16",
+  "story": "October wave of tech layoffs at Netflix, HubSpot and Amazon",
+  "url": "https://www.fastcompany.com/91625107/tech-layoffs-2026-update-mass-job-cuts-october-netflix-hubspot-flock-more",
+  "outcome": "none",
+  "reviewed": "2026-10-24"
+ },
+ {
+  "date": "2026-10-22",
+  "story": "Tech stocks slide on AI spending worries as Meta falls 7%",
+  "url": "https://finance.yahoo.com/markets/article/stock-market-today-thursday-october-22-dow-sp-500-nasdaq-tesla-meta-112217857.html",
+  "outcome": "none",
+  "reviewed": "2026-10-24"
+ },
+ {
   "date": "2026-10-21",
   "story": "PHP2Shell flaws expose most of the web",
   "url": "https://www.wiz.io/blog/php2shell-php-rce",

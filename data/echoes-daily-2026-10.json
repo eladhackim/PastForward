@@ -20,6 +20,22 @@
       "line": "Cholera spreads from Bengal across Asia, East Africa and the Mediterranean, the first of seven cholera pandemics."
     }
   ],
+  "luddites": [
+    {
+      "year": 70,
+      "short": "Vespasian’s Rome",
+      "title": "Vespasian rejects a labour-saving hoist",
+      "region": "europe",
+      "line": "According to Suetonius, Vespasian paid an engineer for a cheap way to haul columns but refused it, saying he must feed the poor."
+    },
+    {
+      "year": 1768,
+      "short": "Limehouse 1768",
+      "title": "Sawyers wreck a wind-powered sawmill",
+      "region": "europe",
+      "line": "About 500 London sawyers smashed Charles Dingley’s new wind sawmill at Limehouse, saying it robbed them of their work."
+    }
+  ],
   "modelt": [
     {
       "year": 1662,
@@ -29,6 +45,22 @@
       "line": "Blaise Pascal’s shared coaches ran fixed routes at a five-sol fare, opening carriage travel to paying Parisians, until rules barred commoners."
     }
   ],
+  "oil": [
+    {
+      "year": 1951,
+      "short": "Abadan 1951",
+      "title": "Britain chokes off Iran’s oil exports",
+      "region": "mideast",
+      "line": "After Iran nationalised its oil, Britain imposed sanctions and its navy intercepted tankers, effectively shutting down Iran’s oil exports."
+    },
+    {
+      "year": 1990,
+      "short": "Lithuania 1990",
+      "title": "Moscow cuts Lithuania’s oil and gas",
+      "region": "russia",
+      "line": "After Lithuania declared independence, Moscow cut off its oil and gas in April 1990 to force it to back down."
+    }
+  ],
   "phone": [
     {
       "year": 1840,
@@ -36,6 +68,22 @@
       "title": "Britain’s Uniform Penny Post begins",
       "region": "europe",
       "line": "A flat one-penny rate for any letter in Britain made writing cheap, and letter volume more than doubled in the first year."
+    }
+  ],
+  "volcker": [
+    {
+      "year": 1957,
+      "short": "Britain 1957",
+      "title": "Britain jumps Bank Rate to 7%",
+      "region": "europe",
+      "line": "Chancellor Thorneycroft backed raising Bank Rate from 5% to 7%, arguing inflation had to be squeezed out to save the pound."
+    },
+    {
+      "year": 2015,
+      "short": "Brazil 2015",
+      "title": "Brazil lifts its key rate to 14.25%",
+      "region": "latam",
+      "line": "With inflation above 9%, Brazil’s central bank raised its Selic rate a sixth straight time, to 14.25%, despite a deepening recession."
     }
   ]
 }
