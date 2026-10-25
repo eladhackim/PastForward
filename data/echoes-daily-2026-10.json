@@ -11,6 +11,43 @@
       "url": "https://www.aljazeera.com/news/2026/10/17/france-wave-of-nationwide-protests"
     }
   ],
+  "deepblue": [
+    {
+      "year": 1997,
+      "short": "Logistello",
+      "title": "A program sweeps the Othello champion",
+      "region": "world",
+      "line": "Michael Buro’s program Logistello beat reigning Othello world champion Takeshi Murakami 6 to 0, three months after Deep Blue’s chess win."
+    }
+  ],
+  "dust": [
+    {
+      "year": 2026,
+      "short": "Asian Haze 2026",
+      "title": "Indonesian haze triggers top regional alert",
+      "region": "world",
+      "line": "Indonesian fires put Singapore, Malaysia and East Timor on the highest of four haze alerts, turning Borneo skies yellow and orange.",
+      "date": "2026-10-18",
+      "source": "The Star (AFP)",
+      "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/18/haze-triggers-highest-level-alert-in-parts-of-south-east-asia"
+    }
+  ],
+  "einstein": [
+    {
+      "year": 1945,
+      "short": "Franck Report",
+      "title": "Bomb scientists urge a demonstration first",
+      "region": "us",
+      "line": "Seven Manhattan Project scientists, including Szilárd, urged against a surprise atomic attack on Japan and predicted a nuclear arms race."
+    },
+    {
+      "year": 1976,
+      "short": "Weizenbaum",
+      "title": "ELIZA’s creator warns about computers",
+      "region": "us",
+      "line": "Joseph Weizenbaum, shaken that people confided in his chatbot ELIZA, argued in a 1976 book that computers must not replace human judgment."
+    }
+  ],
   "flu": [
     {
       "year": 1817,
@@ -68,6 +105,22 @@
       "title": "Britain’s Uniform Penny Post begins",
       "region": "europe",
       "line": "A flat one-penny rate for any letter in Britain made writing cheap, and letter volume more than doubled in the first year."
+    }
+  ],
+  "railway": [
+    {
+      "year": 1807,
+      "short": "Mumbles Railway",
+      "title": "Fare-paying passengers ride the rails",
+      "region": "europe",
+      "line": "On the Swansea and Mumbles line in Wales, horse-drawn carriages began the world’s first regular fare-paying passenger service on rails."
+    },
+    {
+      "year": 1881,
+      "short": "Electric Tram",
+      "title": "The first electric tram carries passengers",
+      "region": "europe",
+      "line": "Siemens & Halske opened a 2.4 km electric tramway at Lichterfelde near Berlin, the first public electric tram in regular service."
     }
   ],
   "volcker": [

@@ -1,5 +1,20 @@
 [
  {
+  "date": "2026-10-21",
+  "story": "Cost-of-living unrest spreads to Italy, troops sent to Milan",
+  "url": "https://www.aljazeera.com/news/2026/10/21/italy-approves-sweeping-security-measures-in-response-to-protests",
+  "outcome": "none",
+  "reviewed": "2026-10-25"
+ },
+ {
+  "date": "2026-10-18",
+  "story": "Indonesian haze triggers highest regional alert",
+  "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/18/haze-triggers-highest-level-alert-in-parts-of-south-east-asia",
+  "outcome": "echo",
+  "rhyme": "dust",
+  "reviewed": "2026-10-25"
+ },
+ {
   "date": "2026-10-16",
   "story": "October wave of tech layoffs at Netflix, HubSpot and Amazon",
   "url": "https://www.fastcompany.com/91625107/tech-layoffs-2026-update-mass-job-cuts-october-netflix-hubspot-flock-more",
