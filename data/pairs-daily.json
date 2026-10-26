@@ -1,0 +1,35 @@
+[
+  {
+    "id": "blight",
+    "theme": "A blight sweeps a one-variety crop",
+    "rhyme": 2,
+    "topic": "disaster",
+    "then": {
+      "year": 1845,
+      "short": "Potato Famine",
+      "title": "Ireland’s Great Famine begins",
+      "where": "Ireland",
+      "region": "europe",
+      "hook": "A fungus rots Ireland’s potatoes, and a country living on one crop starves.",
+      "text": "In 1845 a blight caused by Phytophthora infestans began rotting Ireland’s potatoes, the main food of the rural poor, who relied heavily on a single variety, the Lumper. About one million people died and over a million emigrated."
+    },
+    "now": {
+      "year": 2019,
+      "short": "Banana TR4",
+      "title": "A banana fungus reaches Latin America",
+      "where": "Caribbean coast, Colombia",
+      "region": "latam",
+      "hook": "In August 2019 Colombia declared a national emergency after a soil fungus reached its banana farms.",
+      "text": "Tropical Race 4, a strain of Panama disease, was confirmed on Colombian banana farms in 2019. About 99% of exported bananas are a single clone, the Cavendish, which has no resistance to it."
+    },
+    "followed": "Ireland’s population fell by about a fifth within a decade. In 1861 Anton de Bary showed that a microbe caused the blight, helping found the science of plant disease.",
+    "next": {
+      "short": "Next Blight",
+      "title": "A pathogen hits a global staple",
+      "text": "Around 2193, a new pathogen could sweep through a staple grown worldwide from a handful of genetic lines, forcing a rushed switch to new varieties.",
+      "watch": "A few varieties covering most of a crop, fungal strains spreading in soil and seed, and warmer weather helping pathogens reach new regions."
+    },
+    "breaks": "In Ireland, poverty, land tenure and government policy turned a crop failure into mass death; losing the Cavendish would raise prices and hurt growers, not starve nations.",
+    "added": "2026-10-26"
+  }
+]

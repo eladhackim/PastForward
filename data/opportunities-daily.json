@@ -1,0 +1,23 @@
+{
+  "blight": {
+    "lastTime": "After the famine, Anton de Bary’s work on the blight helped found plant pathology, and in 1885 Pierre-Marie-Alexis Millardet introduced Bordeaux mixture, the first widely used fungicide.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Fast field tests for crop disease",
+        "line": "Cheap tests that spot a fungus in soil or plants early could help growers quarantine farms before a strain spreads across a region."
+      },
+      {
+        "kind": "work",
+        "title": "Plant pathologists and crop breeders",
+        "line": "Breeders and plant disease specialists may be in demand as growers look for resistant varieties of bananas, wheat and other staples."
+      },
+      {
+        "kind": "learn",
+        "title": "Crop genetics and seed banks",
+        "line": "Understanding genetic diversity, wild relatives and seed banks explains why one-variety crops fail and how new resistant lines are found."
+      }
+    ],
+    "watch": "Funding for resistant varieties, new quarantine rules at ports and farms, or a pathogen reaching a major exporter would show the opening."
+  }
+}

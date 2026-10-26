@@ -1,4 +1,20 @@
 {
+  "blackout": [
+    {
+      "year": 1978,
+      "short": "France 1978",
+      "title": "A cold-snap overload blacks out France",
+      "region": "europe",
+      "line": "On 19 December 1978 an overloaded line near Nancy tripped a cascade that cut power to about three quarters of France."
+    },
+    {
+      "year": 2015,
+      "short": "Turkey 2015",
+      "title": "Turkey’s grid splits in two",
+      "region": "mideast",
+      "line": "On 31 March 2015 a single line failure split Turkey’s strained grid, darkening all 81 provinces and about 76 million people."
+    }
+  ],
   "commune": [
     {
       "year": 2026,
@@ -18,6 +34,22 @@
       "title": "A program sweeps the Othello champion",
       "region": "world",
       "line": "Michael Buro’s program Logistello beat reigning Othello world champion Takeshi Murakami 6 to 0, three months after Deep Blue’s chess win."
+    }
+  ],
+  "dolly": [
+    {
+      "year": 1780,
+      "short": "Spallanzani dog",
+      "title": "Spallanzani breeds puppies by syringe",
+      "region": "europe",
+      "line": "Italian priest-scientist Lazzaro Spallanzani artificially inseminated a spaniel, which bore puppies: the first recorded mammal conceived without mating."
+    },
+    {
+      "year": 1884,
+      "short": "Pancoast 1884",
+      "title": "A secret donor insemination in Philadelphia",
+      "region": "us",
+      "line": "Doctor William Pancoast inseminated a sedated woman with a student’s sperm without telling her; the case stayed secret until 1909."
     }
   ],
   "dust": [
@@ -137,6 +169,29 @@
       "title": "Brazil lifts its key rate to 14.25%",
       "region": "latam",
       "line": "With inflation above 9%, Brazil’s central bank raised its Selic rate a sixth straight time, to 14.25%, despite a deepening recession."
+    }
+  ],
+  "blight": [
+    {
+      "year": 1869,
+      "short": "Ceylon coffee",
+      "title": "Coffee rust ruins Ceylon’s plantations",
+      "region": "india",
+      "line": "Coffee rust reached Ceylon’s single-crop estates around 1869; coffee land shrank from about 111,000 hectares in 1870 to under 5,000 by 1900."
+    },
+    {
+      "year": 1955,
+      "short": "Gros Michel",
+      "title": "Panama disease kills the Gros Michel",
+      "region": "latam",
+      "line": "Panama disease wiped out vast Central American plantings of the Gros Michel banana in the 1950s, forcing exporters to switch to the Cavendish."
+    },
+    {
+      "year": 1970,
+      "short": "US corn blight",
+      "title": "Southern corn leaf blight strikes",
+      "region": "us",
+      "line": "A fungus hit hybrids sharing one Texas cytoplasm, found in about 90% of seed sold, cutting the US corn harvest by about 15%."
     }
   ]
 }

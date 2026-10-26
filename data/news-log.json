@@ -1,5 +1,19 @@
 [
  {
+  "date": "2026-10-20",
+  "story": "Oil parked above $110 as IEA warns of lasting Hormuz shock",
+  "url": "https://www.cnn.com/2026/10/20/business/oil-prices-next-year-intl",
+  "outcome": "none",
+  "reviewed": "2026-10-26"
+ },
+ {
+  "date": "2026-10-20",
+  "story": "Ebola spreads to Nigeria as Kenya reports ninth case",
+  "url": "https://www.npr.org/2026/10/20/g-s1-148975/nigeria-confirms-ebola-case",
+  "outcome": "none",
+  "reviewed": "2026-10-26"
+ },
+ {
   "date": "2026-10-21",
   "story": "Cost-of-living unrest spreads to Italy, troops sent to Milan",
   "url": "https://www.aljazeera.com/news/2026/10/21/italy-approves-sweeping-security-measures-in-response-to-protests",
@@ -35,7 +49,9 @@
   "outcome": "watch",
   "seed": "1851: Alfred Hobbs picks the ‘unpickable’ Bramah lock in public",
   "note": "Pattern: a lock everyone trusts is shown to be open. Then candidates: Heartbleed 2014 or Hobbs 1851. Echoes: Log4Shell 2021. Wiz compares PHP2Shell to Heartbleed and Log4Shell, found with AI.",
-  "reviewed": "2026-10-23"
+  "reviewed": "2026-10-23",
+  "closed": "2026-10-26",
+  "result": "not strong enough: Hobbs 1851 is not famous on its own, Heartbleed as Then is too recent, and it sits close to the y2k rhyme"
  },
  {
   "date": "2026-10-17",

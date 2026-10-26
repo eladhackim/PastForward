@@ -8,6 +8,7 @@ export const RHYMES = [
   ["luddites", "Workers fear machines will take their jobs", 1811, "Luddites", 2023, "AI Anxiety"],
   ["railway", "A new machine starts carrying the public", 1830, "Liverpool Line", 2024, "Robotaxis"],
   ["mania", "A building boom races ahead of profits", 1845, "Railway Mania", 2024, "AI Build-Out"],
+  ["blight", "A blight sweeps a one-variety crop", 1845, "Potato Famine", 2019, "Banana TR4"],
   ["springtime", "Uprisings leap across many countries at once", 1848, "1848 Revolts", 2019, "2019 Protests"],
   ["cable", "Wiring the planet for instant contact", 1858, "Atlantic Cable", 2019, "Starlink"],
   ["carrington", "A solar storm tests a wired world", 1859, "Carrington", 2024, "Gannon Storm"],
