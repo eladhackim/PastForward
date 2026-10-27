@@ -15,6 +15,29 @@
       "line": "On 31 March 2015 a single line failure split Turkey’s strained grid, darkening all 81 provinces and about 76 million people."
     }
   ],
+  "blight": [
+    {
+      "year": 1869,
+      "short": "Ceylon coffee",
+      "title": "Coffee rust ruins Ceylon’s plantations",
+      "region": "india",
+      "line": "Coffee rust reached Ceylon’s single-crop estates around 1869; coffee land shrank from about 111,000 hectares in 1870 to under 5,000 by 1900."
+    },
+    {
+      "year": 1955,
+      "short": "Gros Michel",
+      "title": "Panama disease kills the Gros Michel",
+      "region": "latam",
+      "line": "Panama disease wiped out vast Central American plantings of the Gros Michel banana in the 1950s, forcing exporters to switch to the Cavendish."
+    },
+    {
+      "year": 1970,
+      "short": "US corn blight",
+      "title": "Southern corn leaf blight strikes",
+      "region": "us",
+      "line": "A fungus hit hybrids sharing one Texas cytoplasm, found in about 90% of seed sold, cutting the US corn harvest by about 15%."
+    }
+  ],
   "commune": [
     {
       "year": 2026,
@@ -89,6 +112,15 @@
       "line": "Cholera spreads from Bengal across Asia, East Africa and the Mediterranean, the first of seven cholera pandemics."
     }
   ],
+  "hamilton": [
+    {
+      "year": 1817,
+      "short": "UK-Ireland 1817",
+      "title": "Britain absorbs Ireland’s war debts",
+      "region": "europe",
+      "line": "When Britain and Ireland merged their exchequers in 1817, one UK fund took on Ireland’s debt, which had nearly quadrupled since 1801."
+    }
+  ],
   "luddites": [
     {
       "year": 70,
@@ -105,6 +137,22 @@
       "line": "About 500 London sawyers smashed Charles Dingley’s new wind sawmill at Limehouse, saying it robbed them of their work."
     }
   ],
+  "mania": [
+    {
+      "year": 1891,
+      "short": "Melbourne 1891",
+      "title": "Melbourne’s land boom collapses",
+      "region": "world",
+      "line": "Melbourne’s 1880s suburban building boom collapsed from 1891, leaving lenders with thousands of unsaleable houses before banks failed in 1893."
+    },
+    {
+      "year": 2009,
+      "short": "Dubai 2009",
+      "title": "Dubai World asks for a debt standstill",
+      "region": "mideast",
+      "line": "After building palm-shaped islands and towers on borrowed money, Dubai World sought a standstill on about $59 billion of debt in 2009."
+    }
+  ],
   "modelt": [
     {
       "year": 1662,
@@ -112,6 +160,15 @@
       "title": "Pascal’s five-sol coaches open in Paris",
       "region": "europe",
       "line": "Blaise Pascal’s shared coaches ran fixed routes at a five-sol fare, opening carriage travel to paying Parisians, until rules barred commoners."
+    }
+  ],
+  "munich": [
+    {
+      "year": 1923,
+      "short": "Klaipėda 1923",
+      "title": "Lithuania seizes Klaipėda in staged revolt",
+      "region": "europe",
+      "line": "Lithuanian volunteers in civilian clothes seized Klaipėda in 1923, posing as locals rising to protect persecuted Lithuanians, and the Allies accepted it."
     }
   ],
   "oil": [
@@ -169,29 +226,6 @@
       "title": "Brazil lifts its key rate to 14.25%",
       "region": "latam",
       "line": "With inflation above 9%, Brazil’s central bank raised its Selic rate a sixth straight time, to 14.25%, despite a deepening recession."
-    }
-  ],
-  "blight": [
-    {
-      "year": 1869,
-      "short": "Ceylon coffee",
-      "title": "Coffee rust ruins Ceylon’s plantations",
-      "region": "india",
-      "line": "Coffee rust reached Ceylon’s single-crop estates around 1869; coffee land shrank from about 111,000 hectares in 1870 to under 5,000 by 1900."
-    },
-    {
-      "year": 1955,
-      "short": "Gros Michel",
-      "title": "Panama disease kills the Gros Michel",
-      "region": "latam",
-      "line": "Panama disease wiped out vast Central American plantings of the Gros Michel banana in the 1950s, forcing exporters to switch to the Cavendish."
-    },
-    {
-      "year": 1970,
-      "short": "US corn blight",
-      "title": "Southern corn leaf blight strikes",
-      "region": "us",
-      "line": "A fungus hit hybrids sharing one Texas cytoplasm, found in about 90% of seed sold, cutting the US corn harvest by about 15%."
     }
   ]
 }
