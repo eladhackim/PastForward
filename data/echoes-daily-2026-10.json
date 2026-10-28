@@ -212,6 +212,24 @@
       "line": "Siemens & Halske opened a 2.4 km electric tramway at Lichterfelde near Berlin, the first public electric tram in regular service."
     }
   ],
+  "suez": [
+    {
+      "year": 1595,
+      "short": "Dutch to Indies",
+      "title": "Dutch ships sail around Africa",
+      "region": "europe",
+      "line": "Shut out of Lisbon’s spice market by war with Spain, which ruled Portugal, the Dutch sent their own ships around Africa."
+    }
+  ],
+  "vaccine": [
+    {
+      "year": 1975,
+      "short": "Japan pertussis",
+      "title": "Japan halts its whooping cough vaccine",
+      "region": "china",
+      "line": "After two infants died following DTP shots, Japan suspended infant pertussis vaccination; coverage fell and cases climbed to a 1979 peak."
+    }
+  ],
   "volcker": [
     {
       "year": 1957,
@@ -226,6 +244,22 @@
       "title": "Brazil lifts its key rate to 14.25%",
       "region": "latam",
       "line": "With inflation above 9%, Brazil’s central bank raised its Selic rate a sixth straight time, to 14.25%, despite a deepening recession."
+    }
+  ],
+  "y2k": [
+    {
+      "year": 1985,
+      "short": "Bank of New York",
+      "title": "A software bug freezes a big bank",
+      "region": "us",
+      "line": "New software failed past 32,000 transactions, leaving the bank stuck with bonds it could not deliver and a record $22.6 billion Fed loan."
+    },
+    {
+      "year": 2003,
+      "short": "Slammer worm",
+      "title": "The Slammer worm jams the internet",
+      "region": "world",
+      "line": "A tiny worm spread worldwide in hours, knocking most of Bank of America’s 13,000 ATMs offline and cutting South Korea’s internet."
     }
   ]
 }

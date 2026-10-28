@@ -80,9 +80,24 @@
     "added": 2,
     "last": "2026-10-25"
   },
+  "suez": {
+    "runs": 1,
+    "added": 1,
+    "last": "2026-10-28"
+  },
+  "vaccine": {
+    "runs": 1,
+    "added": 1,
+    "last": "2026-10-28"
+  },
   "volcker": {
     "runs": 1,
     "added": 2,
     "last": "2026-10-24"
+  },
+  "y2k": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-10-28"
   }
 }
