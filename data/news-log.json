@@ -1,6 +1,20 @@
 [
  {
   "date": "2026-10-27",
+  "story": "Nvidia invests $3 billion in Meta’s AI fundraising",
+  "url": "https://finance.yahoo.com/markets/article/nvidia-to-invest-3-billion-in-meta-expand-partnership-on-muse-125249944.html",
+  "outcome": "none",
+  "reviewed": "2026-10-29"
+ },
+ {
+  "date": "2026-10-26",
+  "story": "Microsoft offers voluntary buyouts to 60,000 employees",
+  "url": "https://techcrunch.com/2026/10/26/microsoft-offers-buyouts-to-around-60000-employees-reports-say/",
+  "outcome": "none",
+  "reviewed": "2026-10-29"
+ },
+ {
+  "date": "2026-10-27",
   "story": "Hackers leak data after breaching Japan’s GMO cloud service",
   "url": "https://techcrunch.com/2026/10/27/japan-internet-giant-gmo-says-hackers-posted-stolen-customer-data/",
   "outcome": "none",

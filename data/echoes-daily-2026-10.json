@@ -212,6 +212,22 @@
       "line": "Siemens & Halske opened a 2.4 km electric tramway at Lichterfelde near Berlin, the first public electric tram in regular service."
     }
   ],
+  "scramble": [
+    {
+      "year": 1589,
+      "short": "Mir Ali Beg",
+      "title": "Ottomans and Portugal fight for Mombasa",
+      "region": "africa",
+      "line": "Ottoman corsair Mir Ali Beg won Swahili towns from Portugal, until a Portuguese fleet drove him from Mombasa in 1589."
+    },
+    {
+      "year": 1698,
+      "short": "Fort Jesus falls",
+      "title": "Oman captures Fort Jesus from Portugal",
+      "region": "africa",
+      "line": "After a siege of almost three years, Oman seized Portugal’s Fort Jesus, taking over the Swahili coast from a rival foreign power."
+    }
+  ],
   "suez": [
     {
       "year": 1595,
@@ -219,6 +235,38 @@
       "title": "Dutch ships sail around Africa",
       "region": "europe",
       "line": "Shut out of Lisbon’s spice market by war with Spain, which ruled Portugal, the Dutch sent their own ships around Africa."
+    }
+  ],
+  "sykes": [
+    {
+      "year": 1830,
+      "short": "Belgian revolt",
+      "title": "Belgians revolt against a Vienna-made kingdom",
+      "region": "europe",
+      "line": "The great powers at Vienna had joined Belgium to the Netherlands as a buffer state; in 1830 Belgian rebels broke away."
+    },
+    {
+      "year": 1905,
+      "short": "Bengal partition",
+      "title": "Britain partitions Bengal",
+      "region": "india",
+      "line": "Curzon’s government split Bengal in 1905; boycotts and revolutionary bombings followed until Britain reversed the partition in 1911."
+    }
+  ],
+  "titanic": [
+    {
+      "year": 1854,
+      "short": "SS Arctic",
+      "title": "The luxury liner Arctic sinks",
+      "region": "world",
+      "line": "The celebrated, luxurious Collins liner sank after a collision in fog; boats held under half aboard and no woman or child survived."
+    },
+    {
+      "year": 1930,
+      "short": "Airship R101",
+      "title": "The R101 airship crashes in France",
+      "region": "europe",
+      "line": "Britain’s showpiece airship, with a lounge and dining room, left half-tested for India and crashed in France, killing 48 including the Air Minister."
     }
   ],
   "vaccine": [
@@ -260,6 +308,29 @@
       "title": "The Slammer worm jams the internet",
       "region": "world",
       "line": "A tiny worm spread worldwide in hours, knocking most of Bank of America’s 13,000 ATMs offline and cutting South Korea’s internet."
+    }
+  ],
+  "games": [
+    {
+      "year": 67,
+      "short": "Nero at Olympia",
+      "title": "Nero wins the Olympic Games",
+      "region": "europe",
+      "line": "Emperor Nero had the Games rescheduled and new contests added for his tour of Greece, then was crowned winner despite falling from his chariot."
+    },
+    {
+      "year": 1978,
+      "short": "Argentina 1978",
+      "title": "Argentina’s junta hosts the World Cup",
+      "region": "latam",
+      "line": "The military junta hired a public relations firm to sell “stability” while thousands disappeared, some held less than a mile from the final’s stadium."
+    },
+    {
+      "year": 2008,
+      "short": "Beijing 2008",
+      "title": "China stages the Beijing Olympics",
+      "region": "china",
+      "line": "China spent an estimated $40 billion on a lavish Olympics, as protests over Tibet followed its torch relay around the world."
     }
   ]
 }

@@ -31,5 +31,38 @@
     },
     "breaks": "In Ireland, poverty, land tenure and government policy turned a crop failure into mass death; losing the Cavendish would raise prices and hurt growers, not starve nations.",
     "added": "2026-10-26"
+  },
+  {
+    "id": "games",
+    "theme": "A regime polishes its image with games",
+    "rhyme": 2,
+    "topic": "power",
+    "then": {
+      "year": 1936,
+      "short": "Berlin 1936",
+      "title": "Nazi Germany hosts the Olympics",
+      "where": "Berlin, Germany",
+      "region": "europe",
+      "hook": "Hitler opens the Olympics, and “Jews not welcome” signs vanish for the Games.",
+      "text": "Nazi Germany staged the 1936 Games to look peaceful and tolerant. A record 49 nations came, the first Olympic torch relay ran from Greece, and boycott campaigns in several countries failed. Germany topped the medal table; Jesse Owens won four golds."
+    },
+    "now": {
+      "year": 2022,
+      "short": "Qatar 2022",
+      "title": "Qatar hosts the World Cup",
+      "where": "Doha, Qatar",
+      "region": "mideast",
+      "hook": "The first World Cup in the Arab world ends with Messi lifting the trophy in Doha.",
+      "text": "Qatar spent an estimated $220 billion on the most expensive World Cup ever. Rights groups criticised the treatment of the migrant workers who built it, and critics called it sportswashing. Argentina beat France in the final."
+    },
+    "followed": "Leni Riefenstahl’s film Olympia carried the Games’ image abroad in 1938. Within three years Germany had invaded Poland, and the next two Olympics were cancelled.",
+    "next": {
+      "short": "Next Showcase",
+      "title": "A new power stages a global games",
+      "text": "Around 2108, a state seeking respect might spend record sums on a world sporting event, while debate over its record follows the broadcast everywhere.",
+      "watch": "Record bids from states facing criticism, state funds buying clubs and leagues, and governing bodies dropping rights conditions from hosting rules."
+    },
+    "breaks": "Nazi Germany was preparing a war and a genocide; Qatar is a small state seeking influence and security, and its tournament drew scrutiny that 1936 never faced.",
+    "added": "2026-10-29"
   }
 ]

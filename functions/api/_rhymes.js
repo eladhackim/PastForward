@@ -30,6 +30,7 @@ export const RHYMES = [
   ["tariffs", "Tariff walls rise and trading partners hit back", 1930, "Smoot–Hawley", 2025, "Liberation Day"],
   ["bankrun", "Panicked depositors rush to pull their money", 1933, "Bank Holiday", 2023, "SVB Collapse"],
   ["dust", "The sky goes dark over a strained land", 1935, "Black Sunday", 2023, "Orange Sky"],
+  ["games", "A regime polishes its image with games", 1936, "Berlin 1936", 2022, "Qatar 2022"],
   ["munich", "Land seized in the name of ethnic kin", 1938, "Munich Deal", 2014, "Crimea Annexed"],
   ["martians", "A fake that fools the public", 1938, "War of Worlds", 2023, "Puffer Pope"],
   ["einstein", "Scientists warn about their own creation", 1939, "Atomic Warning", 2023, "AI Warning"],
