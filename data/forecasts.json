@@ -1,0 +1,136 @@
+{
+  "asOf": "2026-11-01",
+  "reviewAfter": "2027-01-01",
+  "sources": {
+    "imf-oct26": {
+      "name": "IMF · World Economic Outlook, October 2026",
+      "published": "2026-10-13",
+      "url": "https://www.imf.org/en/Publications/WEO/Issues/2026/10/13/world-economic-outlook-october-2026"
+    },
+    "iea-mid26": {
+      "name": "IEA · Electricity Mid-Year Update 2026",
+      "published": "2026-07-23",
+      "url": "https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary"
+    },
+    "iea-2030": {
+      "name": "IEA · Electricity 2026",
+      "published": "2026-02-06",
+      "url": "https://www.iea.org/reports/electricity-2026/executive-summary"
+    },
+    "wmo-2030": {
+      "name": "WMO · Global climate outlook, 2026–2030",
+      "published": "2026-05-28",
+      "url": "https://wmo.int/news/media-centre/new-report-suggests-more-global-temperature-records-ahead"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "prices-2026",
+      "from": 2026,
+      "to": 2026,
+      "topic": "money",
+      "title": "Price pressure may outlast the year",
+      "projection": "The IMF projects global inflation of 4.7% and growth of 3.1% for the whole of 2026.",
+      "reading": "A difficult final stretch for purchasing power is plausible; a global average cannot predict your household bills.",
+      "watch": [
+        "Monthly inflation releases",
+        "Energy prices and supply disruptions"
+      ],
+      "stronger": "Energy costs stay elevated and inflation broadens.",
+      "weaker": "Supply improves and inflation falls faster than projected.",
+      "limit": "Full-year projection, not a separate forecast for November and December.",
+      "source": "imf-oct26",
+      "rhyme": "oil"
+    },
+    {
+      "id": "growth-2027",
+      "from": 2027,
+      "to": 2027,
+      "topic": "money",
+      "title": "A modest recovery, with little room for shocks",
+      "projection": "The IMF projects 3.4% global growth and 4.1% inflation in 2027, with risks tilted downwards.",
+      "reading": "Gradual relief is a plausible baseline, rather than a return to cheap money everywhere.",
+      "watch": [
+        "IMF forecast revisions",
+        "Inflation, trade and investment data"
+      ],
+      "stronger": "Inflation eases while investment holds up.",
+      "weaker": "Conflict, trade barriers or weaker AI investment disrupt the baseline.",
+      "limit": "Countries can diverge sharply from the global forecast.",
+      "source": "imf-oct26",
+      "rhyme": "volcker"
+    },
+    {
+      "id": "power-2027",
+      "from": 2026,
+      "to": 2027,
+      "topic": "tech",
+      "title": "The electricity race gathers speed",
+      "projection": "The IEA forecasts electricity demand growth of 3.6% in 2026 and 3.8% in 2027, and renewables overtaking coal generation in 2026.",
+      "reading": "More demand and cleaner supply can arrive together. Connecting that supply becomes a practical bottleneck.",
+      "watch": [
+        "Power demand and generation reports",
+        "Grid connection queues"
+      ],
+      "stronger": "Demand rises while connection delays persist.",
+      "weaker": "Demand slows or grid capacity catches up.",
+      "limit": "Global generation shares do not predict local prices or outages.",
+      "source": "iea-mid26",
+      "rhyme": "blackout"
+    },
+    {
+      "id": "heat-2030",
+      "from": 2026,
+      "to": 2030,
+      "topic": "disaster",
+      "title": "Near-record heat remains the backdrop",
+      "projection": "WMO expects global temperatures near record levels in 2026–2030, with an 86% chance that at least one year exceeds the 2024 record.",
+      "reading": "Planning for recurring heat stress is more grounded than naming the exact year or place of a disaster.",
+      "watch": [
+        "WMO annual temperature updates",
+        "El Niño and La Niña conditions"
+      ],
+      "stronger": "Observed temperatures track the upper part of the outlook.",
+      "weaker": "Natural variability temporarily moderates annual temperatures.",
+      "limit": "86% applies to the five-year window, not each year. A single warm year is not the Paris Agreement's long-term threshold.",
+      "source": "wmo-2030",
+      "rhyme": "dust"
+    },
+    {
+      "id": "grid-2030",
+      "from": 2028,
+      "to": 2030,
+      "topic": "tech",
+      "title": "The grid could set the pace of the transition",
+      "projection": "The IEA's 2026–2030 outlook projects average annual electricity demand growth of 3.6% and calls for faster grid expansion.",
+      "reading": "By the late 2020s, connection capacity could matter as much as adding generation.",
+      "watch": [
+        "Completed transmission projects",
+        "Connection queues and curtailment"
+      ],
+      "stronger": "Demand grows faster than usable network capacity.",
+      "weaker": "Grid upgrades and flexibility relieve congestion.",
+      "limit": "A multi-year direction, not an exact forecast for the selected year.",
+      "source": "iea-2030",
+      "rhyme": "cable"
+    },
+    {
+      "id": "clean-power-2030",
+      "from": 2030,
+      "to": 2030,
+      "topic": "tech",
+      "title": "Half of electricity could come from renewables and nuclear",
+      "projection": "The IEA projects renewables and nuclear together supplying around half of global electricity in 2030.",
+      "reading": "A changing power mix looks plausible; electricity is only part of the energy system.",
+      "watch": [
+        "Annual generation by source",
+        "New capacity reaching operation"
+      ],
+      "stronger": "Clean generation and grid connections grow together.",
+      "weaker": "Construction delays or weaker output slow the shift.",
+      "limit": "This is an electricity projection, not a claim that half of all energy is clean.",
+      "source": "iea-2030",
+      "rhyme": "springs"
+    }
+  ]
+}
