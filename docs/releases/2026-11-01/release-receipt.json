@@ -1,0 +1,36 @@
+{
+  "url": "https://pastforward.app/",
+  "status": 200,
+  "live_sha256": "72111a7d80e2ad45228f6c5913d9082a57ed953d5a9096324cfbde4845b7d71b",
+  "candidate_sha256": "72111a7d80e2ad45228f6c5913d9082a57ed953d5a9096324cfbde4845b7d71b",
+  "matches_candidate": true,
+  "api": [
+    {
+      "path": "/api/scores",
+      "status": 200,
+      "keys": []
+    },
+    {
+      "path": "/api/puzzle?day=1",
+      "status": 200,
+      "keys": [
+        "day",
+        "players",
+        "perfect"
+      ]
+    },
+    {
+      "path": "/api/ask/config",
+      "status": 200,
+      "enabled": true,
+      "limit": 30,
+      "hasMonthlyCheckout": true,
+      "hasYearlyCheckout": true
+    }
+  ],
+  "releaseCommit": "46fe5979d06927a0ca768ad3e77e581b3700b938",
+  "deploymentId": "9abbafd6-1938-4431-a9b6-a4734e952d4f",
+  "rollbackDeploymentId": "15686b43-bc9a-4389-be2e-1ad31215f795",
+  "rollbackSource": "f531301797d60bf6a384123dcaf1ce463c091266",
+  "liveAiPaymentTests": "held by owner; no inference or checkout invoked"
+}
