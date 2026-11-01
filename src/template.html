@@ -1827,19 +1827,18 @@ function drawOGRhyme(pi) {
 }
 function drawOGHome() {
   const { cv2, c, W2 } = ogBase(), L = 72, R = W2 - 72;
-  const fi = Math.max(0, PAIRS.findIndex(p => p.id === "flu")), p = PAIRS[fi], g = gapOf(p);
   ogWordmark(c, L, 150, 88);
-  c.font = `italic 400 46px "Newsreader", Georgia, serif`; c.textAlign = "left"; c.fillStyle = `rgb(${INK})`;
-  c.fillText(OG_TAG, L, 222);
+  c.font = `500 60px "Newsreader", Georgia, serif`; c.textAlign = "left"; c.fillStyle = `rgb(${INK})`;
+  c.fillText("What comes next?", L, 238);
+  const first = outlookYears[0], second = outlookYears[1], last = outlookYears[outlookYears.length - 1];
   ogTrack(c, L, R, 356, [
-    { k: "then", label: "Then", year: fmtY(p.then.year), name: p.then.short },
-    { k: "now", label: "Today", year: String(p.now.year), name: p.now.short },
-    { k: "next", label: "Next", year: `c. ${nextYear(p)}`, name: p.next.short }
-  ], `+${g} years`);
+    { k: "then", label: "The near term", year: String(first), name: "Published evidence" },
+    { k: "now", label: "The following year", year: String(second), name: "Signals to watch" },
+    { k: "next", label: "Further ahead", year: `${second + 1}–${last}`, name: "Scenarios, not certainties" }
+  ], "");
   ogFooter(c, W2, "pastforward.app");
-  const oldest = Math.min(...PAIRS.map((_, i) => chainOf(i)[0].year)), span = Math.floor((NOWY - oldest) / 100) * 100;
   c.font = `500 22px "Hanken Grotesk", sans-serif`; c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
-  c.fillText(`${N} rhymes across ${span.toLocaleString("en-US")} years`, R, 590);
+  c.fillText(`Evidence reviewed ${OUTLOOK.asOf}`, R, 590);
   return cv2;
 }
 

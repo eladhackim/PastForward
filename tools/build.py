@@ -168,7 +168,7 @@ def meta(title, desc, url, image, alt):
 HOME_DESC = "What comes next? Explore evidence-based scenarios for this year, next year and beyond, with sources, historical context and signals to watch."
 HEAD_HTML = ("<!doctype html>\n<html lang=\"en\">\n<head>\n" + COMMON_HEAD +
              meta("PastForward: history rhymes. What comes next?", HOME_DESC, SITE + "/", SITE + "/og/home.jpg",
-                  "1918 Spanish flu, 2020 COVID-19, around 2122 the next pandemic") +
+                  "What comes next? Evidence-based scenarios for 2026, 2027 and 2028–2030") +
              "<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;height:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n")
 site = body.replace("<title>PastForward</title>\n", "").replace('<meta name="claude:viewport-fit-sides" content="cover">\n', "")
 with open(OUT, "w", encoding="utf-8") as f:
