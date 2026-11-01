@@ -1,6 +1,6 @@
 # PastForward — 1 November 2026
 
-Owner explicitly chose **Hold live AI/payment tests; keep current deployment**. No provider migration, live AI request, payment, or deployment is authorized by that choice. Continue non-paid validation; do not claim the blocked release gates passed.
+Earlier owner choice: **Hold live AI/payment tests; keep current deployment**. The later explicit instruction to review, merge and deploy PR #1 authorizes the web release below. The live AI/payment test hold remains in force; no provider migration, live AI request or payment is authorized.
 
 - Worktree baseline: `f531301797d60bf6a384123dcaf1ce463c091266`. Previous source commit: `b9e7e89`; Cloudflare deployment rollback identifier still needs read-only verification before any future deployment.
 - No seventh new artifact supplied; use the repository's current approved design as the baseline.
@@ -24,3 +24,9 @@ Owner requested predictions front and center and chose **Evidence-based scenario
 - Local preview: `http://127.0.0.1:4183/`. Publication and live paid-flow testing have not occurred.
 
 Reproduce: `PYTHONDONTWRITEBYTECODE=1 python3 tools/build.py`; `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools -p 'test_*.py'`. Serve the root locally, then run `node tools/smoke_outlook.cjs` with Playwright available (or set `PLAYWRIGHT_MODULE` to an installed module path). Set `PASTFORWARD_TEST_URL` for another local port. The browser harness stubs API responses and is not live backend acceptance.
+
+## Approved release review and rollback
+
+November 1, 23:42 UTC: final source review and catalog build/tests passed (8 tests); generated HTML matches the committed output. The existing multi-width/theme smoke evidence applies to unchanged application source. No Functions, database schema, AI provider, billing or price changes are part of PR #1.
+
+Before deployment, GitHub's successful Cloudflare Pages check at production source `f531301797d60bf6a384123dcaf1ce463c091266` identified deployment **`15686b43-bc9a-4389-be2e-1ad31215f795`**, project `pastforward`, account `758ea389f3b7be91b7d161a3ecb5d35b`. Roll back to that deployment in the Pages dashboard. Source fallback: revert the PR #1 merge on main, which triggers the normal Pages deployment; do not reset or force-push main. The local Wrangler login is expired (read-only API returned 401), so dashboard rollback requires owner sign-in. Automatic GitHub deployment remains available and its receipt will be checked after merging.
