@@ -7,6 +7,7 @@
 The site is one static file with everything embedded. Do not edit index.html by hand.
 """
 import json, os, re, sys
+from check_forecasts import validate as validate_forecasts
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -72,6 +73,11 @@ for y, w in world.items():
         if not w.get(r): problems.append(f"world {y}: missing {r}")
         if not heads.get(y, {}).get(r): problems.append(f"headline {y}: missing {r}")
 
+outlook = load("forecasts.json")
+forecast_problems = validate_forecasts(outlook, ids)
+if forecast_problems:
+    raise SystemExit("\n".join(forecast_problems))
+
 # ---- echoes: researched chains plus each rhyme's "older" rhyme ----
 for p in pairs:
     lst = [dict(e) for e in echoes.get(p["id"], []) if isinstance(e.get("year"), int)]
@@ -127,9 +133,10 @@ with open(SRC, encoding="utf-8") as f:
     body = f.read()
 body = (body.replace("/*__HEAD__*/{}", js(heads))
             .replace("/*__PAIRS__*/[]", js(pairs))
+            .replace("/*__OUTLOOK__*/{}", js(outlook))
             .replace("/*__WORLD__*/{}", js(world))
             .replace('/*__MAP__*/{ cols: 1, rows: 1, grid: ".", pins: {} }', js(MAP)))
-for token in ["/*__HEAD__*/", "/*__PAIRS__*/", "/*__WORLD__*/", "/*__MAP__*/"]:
+for token in ["/*__OUTLOOK__*/", "/*__HEAD__*/", "/*__PAIRS__*/", "/*__WORLD__*/", "/*__MAP__*/"]:
     if token in body: problems.append(f"placeholder {token} was not filled")
 
 SITE = "https://pastforward.app"
@@ -158,10 +165,10 @@ def meta(title, desc, url, image, alt):
             f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{image}">\n<meta property="og:image:alt" content="{esc(alt)}">\n'
             f'<meta name="twitter:title" content="{esc(title)}">\n<meta name="twitter:description" content="{esc(desc)}">\n<meta name="twitter:image" content="{image}">\n')
 
-HOME_DESC = "History rhymes. Swipe through 550 years, follow each event to its echo today, and see where the pattern may return. Find the echoes due in your own lifetime."
+HOME_DESC = "What comes next? Explore evidence-based scenarios for this year, next year and beyond, with sources, historical context and signals to watch."
 HEAD_HTML = ("<!doctype html>\n<html lang=\"en\">\n<head>\n" + COMMON_HEAD +
              meta("PastForward: history rhymes. What comes next?", HOME_DESC, SITE + "/", SITE + "/og/home.jpg",
-                  "1918 Spanish flu, 2020 COVID-19, around 2122 the next pandemic") +
+                  "What comes next? Evidence-based scenarios for 2026, 2027 and 2028–2030") +
              "<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;height:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n")
 site = body.replace("<title>PastForward</title>\n", "").replace('<meta name="claude:viewport-fit-sides" content="cover">\n', "")
 with open(OUT, "w", encoding="utf-8") as f:

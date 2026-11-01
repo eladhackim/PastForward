@@ -629,6 +629,36 @@ h1.tap { cursor: pointer; }
   .ic-l { filter: none !important; }
   .cv.reveal > li, .cv.reveal::before { animation: none; }
 }
+/* Sourced outlook leads the home page; the historical river remains below it. */
+.app { height: auto; min-height: 100%; }
+.stage { flex: none; min-height: 440px; padding-bottom: 24px; }
+.outlook-home { padding: 26px 0 24px; border-bottom: 1px solid var(--line); }
+.outlook-home h2 { font: 500 clamp(36px, 8vw, 48px)/1.06 var(--f-body); margin: 8px 0 12px; letter-spacing: -.025em; }
+.outlook-home > p { margin: 8px 0; max-width: 46ch; }
+.outlook-kicker, .outlook-label { font: 600 12px/1.4 var(--f-ui); letter-spacing: .05em; text-transform: uppercase; color: var(--next); }
+.outlook-home ul { padding-left: 20px; color: var(--muted); font: 15px/1.65 var(--f-ui); }
+.outlook-years { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 10px; }
+.outlook-years button { min-height: 44px; flex: 1 0 auto; padding: 10px 14px; }
+.outlook-years button[aria-pressed="true"] { background: var(--next); color: var(--on-accent); border-color: var(--next); }
+.outlook-date, .outlook-published { color: var(--muted); font: 12px/1.5 var(--f-ui); }
+.outlook-date.overdue { color: var(--bad); }
+.outlook-intro { font-size: 20px; line-height: 1.4; }
+.outlook-card { border-top: 1px solid var(--line); padding: 24px 0; }
+.outlook-card h3 { margin: 8px 0 18px; font: 500 27px/1.15 var(--f-body); }
+.outlook-card p { margin: 10px 0; }
+.outlook-card .outlook-label { margin-top: 20px; margin-bottom: 4px; }
+.outlook-card .outlook-kicker { color: rgb(var(--tc)); }
+.outlook-source { display: inline-block; color: var(--next); font: 500 14px/1.5 var(--f-ui); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.outlook-published { display: block; margin-top: 4px; }
+.outlook-card details, .outlook-method { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-top: 16px; }
+.outlook-card summary, .outlook-method summary { cursor: pointer; font: 600 14px/1.6 var(--f-ui); }
+.outlook-card ul { padding-left: 20px; }
+.outlook-limit { color: var(--muted); font: 14px/1.5 var(--f-ui); }
+.outlook-card .linkbtn { text-align: left; min-height: 44px; white-space: normal; }
+.outlook-method { margin-bottom: 18px; }
+.outlook-empty { padding: 20px 0; }
+@media (max-width: 380px) { .outlook-years button { font-size: 14px; padding-inline: 10px; } }
+
 </style>
 
 <canvas id="sky" aria-hidden="true"></canvas>
@@ -637,10 +667,19 @@ h1.tap { cursor: pointer; }
     <h1 class="tap" id="logo" title="What is PastForward?"><span class="p">Past</span><span class="f">Forward</span></h1>
     <nav class="bar-r" aria-label="Main">
       <button type="button" class="navb" id="dailyBtn">Daily</button>
-      <button type="button" class="navb" id="futureBtn">Your future</button>
+      <button type="button" class="navb" id="futureBtn">Outlook</button>
       <button type="button" class="navb icon" id="allBtn" aria-label="Search, ask, and all rhymes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
     </nav>
   </header>
+
+  <section class="outlook-home" aria-labelledby="outlookTitle">
+    <p class="outlook-kicker">The years ahead</p>
+    <h2 id="outlookTitle">What comes next?</h2>
+    <p id="outlookIntro">Explore what this year, next year and the years beyond could bring. Published evidence. Historical context. Signals to watch.</p>
+    <div class="outlook-years" id="outlookYears" aria-label="Explore forecasts by year"></div>
+    <ul id="outlookPreview"></ul>
+    <p class="outlook-date" id="outlookReview"></p>
+  </section>
 
   <section class="tl" aria-label="Timeline">
     <canvas id="tl" tabindex="0" aria-label="Timeline of events. Swipe or use the arrow keys to move through time; the event in the middle is shown below."></canvas>
@@ -712,6 +751,7 @@ h1.tap { cursor: pointer; }
 (() => {
 const PAIRS = /*__PAIRS__*/[];
 const WORLD = /*__WORLD__*/{};
+const OUTLOOK = /*__OUTLOOK__*/{};
 const HEAD = /*__HEAD__*/{};
 const MAP = /*__MAP__*/{ cols: 1, rows: 1, grid: ".", pins: {} };
 
@@ -1312,7 +1352,7 @@ cardIn.addEventListener("click", e => { if (!e.target.closest("button") && focus
   card.addEventListener("pointercancel", () => { sx = null; });
 }
 $("allBtn").addEventListener("click", () => openIndex());
-$("futureBtn").addEventListener("click", () => openFuture());
+$("futureBtn").addEventListener("click", () => openOutlook());
 $("dailyBtn").addEventListener("click", () => openDaily());
 $("share").addEventListener("click", () => { if (focus) shareRhyme(focus.pi); });
 
@@ -1578,6 +1618,94 @@ function howHTML() {
     ${box("A word of caution", "History rarely repeats exactly. The future dates are a way to imagine what could come, not forecasts. Each rhyme is rated strong, medium or weak by how readily historians accept the comparison, and shows how many times it has echoed: the more echoes, the stronger the signal.")}
     <button type="button" class="secondary" data-lex="" style="width:100%">The lexicon: words PastForward uses</button>`;
 }
+/* ---------- What comes next: dated, sourced editorial scenarios ---------- */
+const outlookYears = [...new Set(OUTLOOK.scenarios.flatMap(s => Array.from({length: s.to - s.from + 1}, (_, i) => s.from + i)))].sort((a, b) => a - b);
+const outlookYear = () => outlookYears.includes(NOWY) ? NOWY : outlookYears[outlookYears.length - 1];
+const yearLabel = y => y === NOWY ? `This year · ${y}` : y === NOWY + 1 ? `Next year · ${y}` : String(y);
+const forecastWindow = s => s.from === s.to ? String(s.from) : `${s.from}–${s.to}`;
+const outlookStale = () => new Date().toISOString().slice(0, 10) >= OUTLOOK.reviewAfter;
+const reviewedLabel = () => `${outlookStale() ? "Update due · last reviewed" : "Evidence reviewed"} ${OUTLOOK.asOf}`;
+
+function renderOutlookHome() {
+  $("outlookReview").textContent = reviewedLabel();
+  if (!outlookYears.includes(NOWY)) {
+    $("outlookTitle").textContent = "Explore past outlooks";
+    $("outlookIntro").textContent = "Our published scenarios remain here with their original dates and sources. A new outlook is awaiting editorial review.";
+  }
+  const years = outlookYears.filter(y => y >= NOWY).slice(0, 3);
+  const shortcuts = years.length ? years : outlookYears.slice(-3);
+  $("outlookYears").innerHTML = shortcuts.map((y, i) => `<button type="button" class="${i === 0 ? "primary" : "secondary"}" data-outlook-year="${y}">${yearLabel(y)} <span aria-hidden="true">↗</span></button>`).join("");
+  $("outlookYears").addEventListener("click", e => {
+    const button = e.target.closest("[data-outlook-year]");
+    if (button) openOutlook(Number(button.dataset.outlookYear));
+  });
+  $("outlookPreview").innerHTML = OUTLOOK.scenarios.filter(s => s.from <= outlookYear() && s.to >= outlookYear()).slice(0, 3)
+    .map(s => `<li>${esc(s.title)}</li>`).join("");
+}
+
+function openOutlook(year = outlookYear()) {
+  let selectedYear = outlookYears.includes(year) ? year : outlookYear();
+  let selectedTopic = "";
+  const restore = () => openOutlook(selectedYear);
+  deepView = restore;
+  setHead("The outlook", "next", "What comes next?", "next");
+  tabs.innerHTML = ""; world = null;
+  dBody.innerHTML = `<section class="outlook">
+    <p class="outlook-intro">Plausible futures, grounded in published projections. Follow the evidence, then watch what changes.</p>
+    <p class="outlook-date${outlookStale() ? " overdue" : ""}">${esc(reviewedLabel())}. ${outlookStale() ? "These are archived outlooks awaiting a fresh editorial review." : "This is an editorial snapshot, not a live feed."}</p>
+    <div class="outlook-years" role="group" aria-label="Forecast year">${outlookYears.map(y => `<button type="button" class="secondary" data-forecast-year="${y}" aria-pressed="${y === selectedYear}">${yearLabel(y)}</button>`).join("")}</div>
+    <div class="tfilter" role="group" aria-label="Forecast topic"><button type="button" data-forecast-topic="" aria-pressed="true">All topics</button>${[...new Set(OUTLOOK.scenarios.map(s => s.topic))].map(t => `<button type="button" data-forecast-topic="${esc(t)}" aria-pressed="false">${esc(TOPIC[t])}</button>`).join("")}</div>
+    <p id="outlookCount" class="fnote" role="status"></p>
+    <div id="outlookCards"></div>
+    <details class="outlook-method"><summary>How to read these forecasts</summary><p>Source projections are attributed below each scenario. “Our reading”, signals and alternative paths are PastForward's editorial interpretation. Historical rhymes provide context; we do not turn the gaps between past events into forecast dates. A multi-year outlook retains its full time window when you choose a year. We do not assign invented probabilities.</p><p>Scope: global economy, electricity and climate. More topics need researched evidence before inclusion.</p></details>
+    <button type="button" class="secondary" id="outlookLifeline">Explore your historical lifeline</button>
+  </section>`;
+  const render = () => {
+    const rows = OUTLOOK.scenarios.filter(s => s.from <= selectedYear && s.to >= selectedYear && (!selectedTopic || s.topic === selectedTopic));
+    $("outlookCount").textContent = `${rows.length} scenario${rows.length === 1 ? "" : "s"} relevant to ${selectedYear}. Multi-year projections keep their original window.`;
+    $("outlookCards").innerHTML = rows.length ? rows.map(s => {
+      const source = OUTLOOK.sources[s.source];
+      const pi = PAIRS.findIndex(p => p.id === s.rhyme);
+      return `<article class="outlook-card tp-${esc(s.topic)}">
+        <p class="outlook-kicker">${esc(TOPIC[s.topic])} · ${forecastWindow(s)}${s.from !== s.to ? " · multi-year outlook" : ""}</p>
+        <h3>${esc(s.title)}</h3>
+        <p class="outlook-label">Source projection</p><p>${esc(s.projection)}</p>
+        <a class="outlook-source" href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(source.name)} <span aria-hidden="true">↗</span></a>
+        <span class="outlook-published">Published ${esc(source.published)}</span>
+        <p class="outlook-label">Our reading</p><p>${esc(s.reading)}</p>
+        <details><summary>Signals to watch &amp; what could change</summary>
+          <ul>${s.watch.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
+          <p><b>Supports this scenario:</b> ${esc(s.stronger)}</p>
+          <p><b>Weakens this scenario:</b> ${esc(s.weaker)}</p>
+        </details>
+        <p class="outlook-limit">${esc(s.limit)}</p>
+        <button type="button" class="linkbtn" data-travel="${pi}:then">Historical context: ${esc(PAIRS[pi].theme)} →</button>
+      </article>`;
+    }).join("") : `<div class="outlook-empty"><h3>No published scenario for this selection</h3><p>Try another topic or year. We leave gaps visible rather than invent a forecast.</p><button type="button" class="secondary" id="outlookReset">Show all topics</button></div>`;
+    const reset = $("outlookReset");
+    if (reset) reset.addEventListener("click", () => {
+      selectedTopic = "";
+      dBody.querySelectorAll("[data-forecast-topic]").forEach(b => b.setAttribute("aria-pressed", String(!b.dataset.forecastTopic)));
+      render();
+      dBody.querySelector('[data-forecast-topic=""]').focus();
+    });
+  };
+  dBody.querySelector(".outlook-years").addEventListener("click", e => {
+    const button = e.target.closest("[data-forecast-year]"); if (!button) return;
+    selectedYear = Number(button.dataset.forecastYear);
+    dBody.querySelectorAll("[data-forecast-year]").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+    render();
+  });
+  dBody.querySelector(".tfilter").addEventListener("click", e => {
+    const button = e.target.closest("[data-forecast-topic]"); if (!button) return;
+    selectedTopic = button.dataset.forecastTopic;
+    dBody.querySelectorAll("[data-forecast-topic]").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+    render();
+  });
+  $("outlookLifeline").addEventListener("click", () => { deepBack.push(restore); openFuture(); });
+  render(); dBody.scrollTop = 0; showDeep();
+}
+
 /* ---------- sharing and "your future" ---------- */
 const SITE = "pastforward.app";
 const siteBase = () => (location.hostname.endsWith(SITE) ? location.origin + "/" : `https://${SITE}/`);
@@ -1699,19 +1827,18 @@ function drawOGRhyme(pi) {
 }
 function drawOGHome() {
   const { cv2, c, W2 } = ogBase(), L = 72, R = W2 - 72;
-  const fi = Math.max(0, PAIRS.findIndex(p => p.id === "flu")), p = PAIRS[fi], g = gapOf(p);
   ogWordmark(c, L, 150, 88);
-  c.font = `italic 400 46px "Newsreader", Georgia, serif`; c.textAlign = "left"; c.fillStyle = `rgb(${INK})`;
-  c.fillText(OG_TAG, L, 222);
+  c.font = `500 60px "Newsreader", Georgia, serif`; c.textAlign = "left"; c.fillStyle = `rgb(${INK})`;
+  c.fillText("What comes next?", L, 238);
+  const first = outlookYears[0], second = outlookYears[1], last = outlookYears[outlookYears.length - 1];
   ogTrack(c, L, R, 356, [
-    { k: "then", label: "Then", year: fmtY(p.then.year), name: p.then.short },
-    { k: "now", label: "Today", year: String(p.now.year), name: p.now.short },
-    { k: "next", label: "Next", year: `c. ${nextYear(p)}`, name: p.next.short }
-  ], `+${g} years`);
+    { k: "then", label: "The near term", year: String(first), name: "Published evidence" },
+    { k: "now", label: "The following year", year: String(second), name: "Signals to watch" },
+    { k: "next", label: "Further ahead", year: `${second + 1}–${last}`, name: "Scenarios, not certainties" }
+  ], "");
   ogFooter(c, W2, "pastforward.app");
-  const oldest = Math.min(...PAIRS.map((_, i) => chainOf(i)[0].year)), span = Math.floor((NOWY - oldest) / 100) * 100;
   c.font = `500 22px "Hanken Grotesk", sans-serif`; c.textAlign = "right"; c.fillStyle = `rgb(${MUTED})`;
-  c.fillText(`${N} rhymes across ${span.toLocaleString("en-US")} years`, R, 590);
+  c.fillText(`Evidence reviewed ${OUTLOOK.asOf}`, R, 590);
   return cv2;
 }
 
@@ -3539,7 +3666,7 @@ function inCaption(i) {
   if (!s.card) { const ws = [...splitWords($("inT")), ...splitWords($("inL"))], ts = readTimes(ws, CAP_AT); ws.forEach((w, k) => intro.words.push({ w, t: ts[k] })); }
   $("inAct").innerHTML = s.id !== "end" ? "" : intro.rec ? `<p class="in-url" data-at="${10 * QB}">pastforward.app</p>`
     : `<div class="in-act-in" data-at="${10 * QB}"><button type="button" class="primary to-then" data-in="start">Start with ${I_THEN}</button>
-       <div class="in-row"><button type="button" class="secondary" data-in="future">See my future</button><button type="button" class="secondary" data-in="again">Watch again</button></div></div>`;
+       <div class="in-row"><button type="button" class="secondary" data-in="future">Explore what comes next</button><button type="button" class="secondary" data-in="again">Watch again</button></div></div>`;
   $("inProg").innerHTML = SCENES.filter(x => x.id !== "end").map(() => "<i><b></b></i>").join("");
 }
 function renderIntro(t) {
@@ -3631,7 +3758,7 @@ introEl.addEventListener("click", e => {
   if (b.id === "inSkip") return closeIntro(() => $("jump").focus({ preventScroll: true }));
   const a = b.dataset.in;
   if (a === "again") { intro.t = 0; intro.cur = -1; }
-  else if (a === "future") closeIntro(() => setTimeout(openFuture, 250));
+  else if (a === "future") closeIntro(() => setTimeout(openOutlook, 250));
   else if (a === "start") closeIntro(() => {
     const fi = PAIRS.indexOf(IP);
     if (!focus || focus.pi !== fi || focus.k !== "then") travel(fi, "then");
@@ -4086,6 +4213,7 @@ if (window.ResizeObserver) new ResizeObserver(resize).observe(cv);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => mcache.clear());
 
 /* ---------- start ---------- */
+renderOutlookHome();
 resize();
 const pathId = location.pathname.match(/^\/r\/([a-z0-9_-]+)\/?$/);
 const h = pathId ? pathId[1] : decodeURIComponent(location.hash.slice(1));
@@ -4103,6 +4231,7 @@ else if (OWN_HOST && location.hash) { try { history.replaceState(null, "", "/");
 if (!reduce) $("jump").classList.add("pulse");
 updateDailyDot();
 loadScores();
+if (h === "outlook") setTimeout(openOutlook, 400);
 if (h === "daily") setTimeout(openDaily, 400);
 if (h === "ask") setTimeout(() => openAsk(), 400);
 // first visit to the home page: show what PastForward is (shared links go straight to their rhyme)
