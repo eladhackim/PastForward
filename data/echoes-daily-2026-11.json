@@ -1,0 +1,36 @@
+{
+  "netscape": [
+    {
+      "year": 1840,
+      "short": "Penny Post",
+      "title": "Britain’s Uniform Penny Post begins",
+      "region": "europe",
+      "line": "A flat one-penny stamp made letters affordable to almost everyone, and the number sent in Britain more than doubled in the first year."
+    }
+  ],
+  "springs": [
+    {
+      "year": 1730,
+      "short": "Khejarli",
+      "title": "Amrita Devi dies defending trees",
+      "region": "india",
+      "line": "Amrita Devi refused to let Marwar’s men fell khejri trees; 363 Bishnois died with her and the maharaja banned felling there."
+    },
+    {
+      "year": 1864,
+      "short": "Man and Nature",
+      "title": "Marsh publishes Man and Nature",
+      "region": "us",
+      "line": "George Perkins Marsh’s book warned that people were ruining the land, and it helped launch the conservation movement and national forests."
+    }
+  ],
+  "sputnik": [
+    {
+      "year": 1859,
+      "short": "Ironclad shock",
+      "title": "France launches the ironclad Gloire",
+      "region": "europe",
+      "line": "France launched Gloire, the first ocean-going ironclad, and alarmed Britain answered with the bigger iron-hulled HMS Warrior, starting a naval race."
+    }
+  ]
+}
