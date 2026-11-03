@@ -8,6 +8,22 @@
       "line": "A flat one-penny stamp made letters affordable to almost everyone, and the number sent in Britain more than doubled in the first year."
     }
   ],
+  "protests": [
+    {
+      "year": 1647,
+      "short": "Crisis of 1640s",
+      "title": "Revolts erupt across Europe in the 1640s",
+      "region": "europe",
+      "line": "Catalonia and Portugal rose in 1640, Palermo and Naples in 1647, Paris in the 1648 Fronde, a wave historians call the General Crisis."
+    },
+    {
+      "year": 1830,
+      "short": "Revolutions 1830",
+      "title": "The Revolutions of 1830",
+      "region": "europe",
+      "line": "France’s July Revolution was followed within months by revolts in Belgium, Poland, Switzerland and the Italian states."
+    }
+  ],
   "springs": [
     {
       "year": 1730,
@@ -31,6 +47,15 @@
       "title": "France launches the ironclad Gloire",
       "region": "europe",
       "line": "France launched Gloire, the first ocean-going ironclad, and alarmed Britain answered with the bigger iron-hulled HMS Warrior, starting a naval race."
+    }
+  ],
+  "trusts": [
+    {
+      "year": 1523,
+      "short": "Nuremberg 1523",
+      "title": "Imperial diets curb the great trading houses",
+      "region": "europe",
+      "line": "Diets at Nuremberg in 1522–24 passed laws capping trading companies’ capital and branches and banning one firm from controlling a commodity."
     }
   ]
 }
