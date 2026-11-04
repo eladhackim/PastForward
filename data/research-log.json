@@ -10,6 +10,11 @@
     "last": "2026-10-26",
     "created": "2026-10-26"
   },
+  "cable": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-04"
+  },
   "chernobyl": {
     "runs": 1,
     "added": 0,
@@ -96,6 +101,11 @@
     "added": 2,
     "last": "2026-10-25"
   },
+  "saigon": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-04"
+  },
   "scramble": {
     "runs": 1,
     "added": 2,
@@ -105,6 +115,11 @@
     "runs": 1,
     "added": 2,
     "last": "2026-11-02"
+  },
+  "springtime": {
+    "runs": 1,
+    "added": 1,
+    "last": "2026-11-04"
   },
   "sputnik": {
     "runs": 1,
