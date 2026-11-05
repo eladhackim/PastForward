@@ -21,6 +21,7 @@ export const RHYMES = [
   ["dreadnought", "A rising sea power alarms the ruling one", 1906, "Dreadnought", 2020, "China’s Navy"],
   ["ellis", "A great migration wave, then backlash", 1907, "Ellis Island", 2015, "Migrant Crisis"],
   ["modelt", "A new vehicle goes mass market", 1908, "Model T", 2023, "Electric Cars"],
+  ["triangle", "A deadly factory disaster forces safety reforms", 1911, "Triangle Fire", 2013, "Rana Plaza"],
   ["titanic", "Confidence in a machine built for the wealthy", 1912, "Titanic", 2023, "Titan Sub"],
   ["somme", "Trench attrition meets new war machines", 1916, "The Somme", 2023, "Bakhmut"],
   ["sykes", "Borders drawn by outsiders, defied by insurgents", 1916, "Sykes–Picot", 2014, "ISIS Caliphate"],

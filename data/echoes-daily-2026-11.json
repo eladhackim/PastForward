@@ -15,6 +15,47 @@
       "line": "Ögedei Khan set up staffed relay stations about every 25 miles, letting riders carry orders across Eurasia at up to 200 km a day."
     }
   ],
+  "crash": [
+    {
+      "year": 1763,
+      "short": "Amsterdam 1763",
+      "title": "Amsterdam’s banking crisis of 1763",
+      "region": "europe",
+      "line": "A wartime credit boom breaks when the de Neufville bank fails, spreading bankruptcies to Hamburg and Prussia in an early cross-border crisis."
+    },
+    {
+      "year": 1825,
+      "short": "Panic of 1825",
+      "title": "The Panic of 1825",
+      "region": "europe",
+      "line": "A London boom in Latin American bonds and mines, even fictional Poyais, collapses; about 70 banks fail and borrowers across Latin America default."
+    }
+  ],
+  "dreadnought": [
+    {
+      "year": 655,
+      "short": "Battle of Masts",
+      "title": "The Arab fleet defeats Byzantium at sea",
+      "region": "mideast",
+      "line": "A caliphate fleet built in Syrian and Egyptian yards routs Emperor Constans II off Lycia, ending Byzantium’s unchallenged rule of the sea."
+    }
+  ],
+  "krakatoa": [
+    {
+      "year": 431,
+      "short": "Ilopango",
+      "title": "El Salvador’s Ilopango volcano erupts",
+      "region": "latam",
+      "line": "A giant eruption buries Maya lands for 80 km and sends more sulfur aloft than Pinatubo, likely cooling the globe for years."
+    },
+    {
+      "year": 939,
+      "short": "Eldgjá",
+      "title": "Iceland’s Eldgjá fissure eruption",
+      "region": "europe",
+      "line": "Iceland’s largest lava flood veils Europe’s sun; 940 brings one of the coolest summers in 1,500 years, with hunger from Germany to China."
+    }
+  ],
   "netscape": [
     {
       "year": 1840,
@@ -97,6 +138,34 @@
       "title": "Imperial diets curb the great trading houses",
       "region": "europe",
       "line": "Diets at Nuremberg in 1522–24 passed laws capping trading companies’ capital and branches and banning one firm from controlling a commodity."
+    }
+  ],
+  "vaccine": [
+    {
+      "year": 2026,
+      "short": "NY measles 2026",
+      "title": "Measles kills a child in New York",
+      "region": "us",
+      "line": "An unvaccinated child dies of measles in Lewis County, New York’s first measles death in over 30 years, amid a 178-case outbreak.",
+      "date": "2026-11-03",
+      "source": "Newsweek",
+      "url": "https://www.newsweek.com/new-york-hit-by-first-measles-death-in-30-years-as-child-dies-12653368"
+    }
+  ],
+  "triangle": [
+    {
+      "year": 1860,
+      "short": "Pemberton Mill",
+      "title": "The Pemberton Mill collapses",
+      "region": "us",
+      "line": "A Lawrence textile mill built on brittle cast-iron pillars collapses on its workers, killing between 88 and 145, many young immigrant women."
+    },
+    {
+      "year": 1993,
+      "short": "Kader fire",
+      "title": "Thailand’s Kader toy factory fire",
+      "region": "china",
+      "line": "Fire at a Thai factory making toys for export kills 188 workers, mostly young women, more than died at Triangle."
     }
   ]
 }

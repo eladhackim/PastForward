@@ -8,5 +8,25 @@
     "africa": "Italy takes Addis Ababa",
     "india": "Kisan Sabha founded",
     "china": "Chiang seized at Xi’an"
+  },
+  "1911": {
+    "us": "Court breaks up Standard Oil",
+    "latam": "Díaz quits, Madero rises",
+    "europe": "Agadir crisis alarms Europe",
+    "russia": "Stolypin shot in Kiev",
+    "mideast": "Italy invades Ottoman Libya",
+    "africa": "South Africa sets colour bar",
+    "india": "Capital to move to Delhi",
+    "china": "Revolt against Qing spreads"
+  },
+  "2013": {
+    "us": "Snowden exposes NSA spying",
+    "latam": "Argentine elected pope",
+    "europe": "Croatia joins the EU",
+    "russia": "Meteor blast over Chelyabinsk",
+    "mideast": "Army ousts Egypt’s Morsi",
+    "africa": "Nelson Mandela dies at 95",
+    "india": "India launches Mars mission",
+    "china": "Xi proposes new Silk Road"
   }
 }

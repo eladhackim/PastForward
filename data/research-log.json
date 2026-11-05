@@ -20,6 +20,11 @@
     "added": 0,
     "last": "2026-10-23"
   },
+  "crash": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-05"
+  },
   "deepblue": {
     "runs": 1,
     "added": 1,
@@ -34,6 +39,11 @@
     "runs": 1,
     "added": 0,
     "last": "2026-10-26"
+  },
+  "dreadnought": {
+    "runs": 1,
+    "added": 1,
+    "last": "2026-11-05"
   },
   "einstein": {
     "runs": 1,
@@ -55,6 +65,11 @@
     "runs": 1,
     "added": 1,
     "last": "2026-10-27"
+  },
+  "krakatoa": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-05"
   },
   "luddites": {
     "runs": 1,
@@ -140,6 +155,12 @@
     "runs": 1,
     "added": 2,
     "last": "2026-10-29"
+  },
+  "triangle": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-05",
+    "created": "2026-11-05"
   },
   "trusts": {
     "runs": 1,

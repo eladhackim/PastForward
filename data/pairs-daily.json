@@ -64,5 +64,38 @@
     },
     "breaks": "Nazi Germany was preparing a war and a genocide; Qatar is a small state seeking influence and security, and its tournament drew scrutiny that 1936 never faced.",
     "added": "2026-10-29"
+  },
+  {
+    "id": "triangle",
+    "theme": "A deadly factory disaster forces safety reforms",
+    "rhyme": 3,
+    "topic": "society",
+    "then": {
+      "year": 1911,
+      "short": "Triangle Fire",
+      "title": "The Triangle Shirtwaist Factory Fire",
+      "where": "New York City, US",
+      "region": "us",
+      "hook": "Garment workers leap from a burning New York factory whose stairwell door was locked.",
+      "text": "On 25 March 1911 fire swept the top floors of the Asch Building, home of the Triangle Waist Company. A stairwell door was locked, and 146 workers died, most of them young Jewish and Italian immigrant women. Sixty-two jumped or fell."
+    },
+    "now": {
+      "year": 2013,
+      "short": "Rana Plaza",
+      "title": "The Rana Plaza Collapse",
+      "where": "Savar, near Dhaka, Bangladesh",
+      "region": "india",
+      "hook": "In April 2013 an eight-storey garment factory building near Dhaka collapsed, killing 1,134 people.",
+      "text": "Cracks appeared in Rana Plaza on 23 April 2013, but garment workers were ordered back the next morning. The building collapsed, killing 1,134 and injuring about 2,500. Its factories sewed clothes for brands such as Primark, Benetton and Mango."
+    },
+    "followed": "New York set up a Factory Investigating Commission in 1911, which led to 36 new laws on fire safety, hours and child labour. Frances Perkins, who saw the fire, later became US Labor Secretary.",
+    "next": {
+      "short": "Next Disaster",
+      "title": "A factory disaster in a new hub",
+      "text": "Around 2115, a fire or collapse in a fast-growing manufacturing region might kill hundreds and push buyers and governments into binding safety rules.",
+      "watch": "Floors added without permits, locked or blocked exits, cracks ignored, and cheap production moving fast into new countries."
+    },
+    "breaks": "The Triangle fire led to state laws; Rana Plaza’s reforms relied largely on a private accord between global brands and unions rather than national law.",
+    "added": "2026-11-05"
   }
 ]

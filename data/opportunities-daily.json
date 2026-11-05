@@ -40,5 +40,26 @@
       }
     ],
     "watch": "Sponsors adding rights clauses, hosts publishing worker data, or bids judged on human rights would show the opening."
+  },
+  "triangle": {
+    "lastTime": "After the fire, New York required sprinklers in factories of seven or more storeys with over 200 workers. Frances Perkins turned her investigations into a career that made her the first woman in a US cabinet.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Tools that map factory supply chains",
+        "line": "Software that traces every factory behind a garment, with inspection results and worker reports, could help buyers spot danger before disaster."
+      },
+      {
+        "kind": "work",
+        "title": "Structural and fire safety inspectors",
+        "line": "Engineers who check buildings, wiring and exits may be needed wherever clothing and electronics production moves next."
+      },
+      {
+        "kind": "learn",
+        "title": "Supply chain labour standards",
+        "line": "Laws making companies answer for their suppliers’ conditions are spreading, so audit and labour-standards skills are gaining value."
+      }
+    ],
+    "watch": "Orders shifting to new low-wage countries, factories adding floors fast, and brands resisting binding safety agreements would signal the opening."
   }
 }

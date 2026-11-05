@@ -1,5 +1,24 @@
 [
  {
+  "date": "2026-11-02",
+  "story": "Wage protests disrupt 529 Bangladesh garment factories",
+  "url": "https://asianews.network/bangladesh-exporters-group-reports-disruptions-at-529-garment-factories-amid-wage-protests/",
+  "outcome": "watch",
+  "seed": "1860, the Pemberton Mill collapses on its workers in Lawrence, Massachusetts",
+  "note": "Pattern: a deadly factory disaster exposes the cost of cheap clothing and forces safety laws. Then: Triangle Shirtwaist fire 1911. Today: Rana Plaza 2013, the disaster behind Bangladesh’s wage and safety fights. Echoes: Pemberton Mill 1860, Kader toy factory 1993. MPR News (2013) and NYU Stern (2016) compare Rana Plaza with the Triangle fire.",
+  "reviewed": "2026-11-05",
+  "closed": "2026-11-05",
+  "result": "added as rhyme triangle"
+ },
+ {
+  "date": "2026-11-03",
+  "story": "Unvaccinated child dies in New York’s worst measles outbreak in decades",
+  "url": "https://www.newsweek.com/new-york-hit-by-first-measles-death-in-30-years-as-child-dies-12653368",
+  "outcome": "echo",
+  "rhyme": "vaccine",
+  "reviewed": "2026-11-05"
+ },
+ {
   "date": "2026-10-30",
   "story": "AI stock sell-off deepens, Wall Street’s worst day since June",
   "url": "https://cdapress.com/news/2026/oct/30/the-sell-off-for-tech-stocks-deepens-and-drags-wall-street-toward-its-worst-day-since-june/",
