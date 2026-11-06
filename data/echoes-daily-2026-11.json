@@ -15,6 +15,22 @@
       "line": "Ögedei Khan set up staffed relay stations about every 25 miles, letting riders carry orders across Eurasia at up to 200 km a day."
     }
   ],
+  "chernobyl": [
+    {
+      "year": 1952,
+      "short": "Chalk River",
+      "title": "Canada’s NRX reactor partly melts down",
+      "region": "us",
+      "line": "An operator error and failed shutdown rods wrecked Canada’s NRX research reactor, the first major reactor accident and a costly cleanup."
+    },
+    {
+      "year": 1961,
+      "short": "SL-1 explosion",
+      "title": "The SL-1 reactor explodes in Idaho",
+      "region": "us",
+      "line": "A US Army test reactor blew apart and killed its three operators, forcing new rules so no single rod could start a runaway."
+    }
+  ],
   "crash": [
     {
       "year": 1763,
@@ -56,6 +72,15 @@
       "line": "Iceland’s largest lava flood veils Europe’s sun; 940 brings one of the coolest summers in 1,500 years, with hunger from Germany to China."
     }
   ],
+  "modelt": [
+    {
+      "year": 1869,
+      "short": "Rickshaw boom",
+      "title": "The rickshaw takes over Japanese streets",
+      "region": "china",
+      "line": "Invented in Japan around 1869, the cheap two-wheeled rickshaw spread so fast that Tokyo had about 40,000 by 1872."
+    }
+  ],
   "netscape": [
     {
       "year": 1840,
@@ -63,6 +88,15 @@
       "title": "Britain’s Uniform Penny Post begins",
       "region": "europe",
       "line": "A flat one-penny stamp made letters affordable to almost everyone, and the number sent in Britain more than doubled in the first year."
+    }
+  ],
+  "phone": [
+    {
+      "year": 2002,
+      "short": "BlackBerry 5810",
+      "title": "BlackBerry adds a phone to email",
+      "region": "us",
+      "line": "RIM’s BlackBerry 5810 put calls and always-on email in one handset, and office workers became so hooked they called it the CrackBerry."
     }
   ],
   "protests": [
@@ -131,6 +165,22 @@
       "line": "France launched Gloire, the first ocean-going ironclad, and alarmed Britain answered with the bigger iron-hulled HMS Warrior, starting a naval race."
     }
   ],
+  "triangle": [
+    {
+      "year": 1860,
+      "short": "Pemberton Mill",
+      "title": "The Pemberton Mill collapses",
+      "region": "us",
+      "line": "A Lawrence textile mill built on brittle cast-iron pillars collapses on its workers, killing between 88 and 145, many young immigrant women."
+    },
+    {
+      "year": 1993,
+      "short": "Kader fire",
+      "title": "Thailand’s Kader toy factory fire",
+      "region": "china",
+      "line": "Fire at a Thai factory making toys for export kills 188 workers, mostly young women, more than died at Triangle."
+    }
+  ],
   "trusts": [
     {
       "year": 1523,
@@ -150,22 +200,6 @@
       "date": "2026-11-03",
       "source": "Newsweek",
       "url": "https://www.newsweek.com/new-york-hit-by-first-measles-death-in-30-years-as-child-dies-12653368"
-    }
-  ],
-  "triangle": [
-    {
-      "year": 1860,
-      "short": "Pemberton Mill",
-      "title": "The Pemberton Mill collapses",
-      "region": "us",
-      "line": "A Lawrence textile mill built on brittle cast-iron pillars collapses on its workers, killing between 88 and 145, many young immigrant women."
-    },
-    {
-      "year": 1993,
-      "short": "Kader fire",
-      "title": "Thailand’s Kader toy factory fire",
-      "region": "china",
-      "line": "Fire at a Thai factory making toys for export kills 188 workers, mostly young women, more than died at Triangle."
     }
   ]
 }

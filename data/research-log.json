@@ -16,9 +16,9 @@
     "last": "2026-11-04"
   },
   "chernobyl": {
-    "runs": 1,
-    "added": 0,
-    "last": "2026-10-23"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-06"
   },
   "crash": {
     "runs": 1,
@@ -82,9 +82,9 @@
     "last": "2026-10-27"
   },
   "modelt": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-10-23"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-06"
   },
   "munich": {
     "runs": 1,
@@ -102,9 +102,9 @@
     "last": "2026-10-24"
   },
   "phone": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-10-23"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-06"
   },
   "protests": {
     "runs": 1,
