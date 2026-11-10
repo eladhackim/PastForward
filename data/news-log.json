@@ -1,5 +1,14 @@
 [
  {
+  "date": "2026-11-09",
+  "story": "Ueno Bank collapse freezes millions of accounts and topples Paraguay’s president",
+  "url": "https://www.npr.org/2026/11/09/nx-s1-6034066/paraguay-president-pena-ueno",
+  "outcome": "watch",
+  "seed": "1720, John Law’s Banque Royale collapses and France’s finance chief flees",
+  "note": "Pattern: a bank collapse freezes ordinary savings and brings down the leader tied to it. Then candidate: Argentina’s corralito, De la Rúa resigns 2001. Echoes: Ecuador’s 1999 deposit freeze and Mahuad’s fall 2000, Iceland’s Haarde government falls 2009. La Capital (Rosario) headlines it “Corralito en Paraguay”. Not a bankrun echo: accounts froze with no reported rush. Seed and echoes still need verification.",
+  "reviewed": "2026-11-10"
+ },
+ {
   "date": "2026-11-01",
   "story": "Historic flash floods force evacuations across the US Southwest",
   "url": "https://www.ksl.com/article/51642944/flash-floods-trigger-evacuations-in-arizona-and-colorado-amid-heavy-rains-in-southwest",

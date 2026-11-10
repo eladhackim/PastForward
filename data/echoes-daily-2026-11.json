@@ -1,4 +1,13 @@
 {
+  "blight": [
+    {
+      "year": 1946,
+      "short": "Victoria oats",
+      "title": "Victoria blight hits America’s oats",
+      "region": "us",
+      "line": "Farmers had widely planted rust-resistant Victoria oats; the same gene left them open to a new fungus, and growers abandoned them."
+    }
+  ],
   "cable": [
     {
       "year": -480,
@@ -45,6 +54,22 @@
       "title": "The Panic of 1825",
       "region": "europe",
       "line": "A London boom in Latin American bonds and mines, even fictional Poyais, collapses; about 70 banks fail and borrowers across Latin America default."
+    }
+  ],
+  "deepblue": [
+    {
+      "year": 1994,
+      "short": "Chinook",
+      "title": "Chinook takes the checkers world title",
+      "region": "world",
+      "line": "After six drawn games, champion Marion Tinsley withdrew ill, and Chinook became the first program to win a human world title."
+    },
+    {
+      "year": 2017,
+      "short": "Ponanza",
+      "title": "A program beats Japan’s shogi Meijin",
+      "region": "china",
+      "line": "Reigning Meijin Amahiko Satō, holder of shogi’s oldest title, lost both games of a two-game match to the program Ponanza."
     }
   ],
   "dreadnought": [
@@ -200,6 +225,15 @@
       "date": "2026-11-03",
       "source": "Newsweek",
       "url": "https://www.newsweek.com/new-york-hit-by-first-measles-death-in-30-years-as-child-dies-12653368"
+    }
+  ],
+  "volcker": [
+    {
+      "year": 1973,
+      "short": "Japan 1973",
+      "title": "Japan raises its discount rate to 9%",
+      "region": "china",
+      "line": "Facing galloping inflation after the oil shock, the Bank of Japan lifted its rate from 0.75% to 9% within 1973."
     }
   ]
 }
