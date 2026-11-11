@@ -72,6 +72,15 @@
       "line": "Reigning Meijin Amahiko Satō, holder of shogi’s oldest title, lost both games of a two-game match to the program Ponanza."
     }
   ],
+  "dotcom": [
+    {
+      "year": 1793,
+      "short": "Canal Mania",
+      "title": "Britain’s Canal Mania peaks and fades",
+      "region": "europe",
+      "line": "Parliament authorised about twenty new canals in 1793 as shares soared, then Grand Junction stock fell from £472 back to about £100 by 1795."
+    }
+  ],
   "dreadnought": [
     {
       "year": 655,
@@ -138,6 +147,22 @@
       "title": "The Revolutions of 1830",
       "region": "europe",
       "line": "France’s July Revolution was followed within months by revolts in Belgium, Poland, Switzerland and the Italian states."
+    }
+  ],
+  "railway": [
+    {
+      "year": 1662,
+      "short": "Paris buses 1662",
+      "title": "Pascal’s carriages start Paris public transport",
+      "region": "europe",
+      "line": "From March 1662 Blaise Pascal’s “carrosses à cinq sols” ran fixed routes across Paris, letting anyone ride a shared coach for five sols."
+    },
+    {
+      "year": 1962,
+      "short": "Hovercraft 1962",
+      "title": "The first passenger hovercraft service opens",
+      "region": "europe",
+      "line": "In July 1962 a Vickers VA-3 hovercraft began carrying up to 24 paying passengers between Rhyl and Wallasey, almost 4,000 that summer."
     }
   ],
   "saigon": [
