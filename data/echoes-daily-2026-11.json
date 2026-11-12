@@ -1,4 +1,20 @@
 {
+  "blackout": [
+    {
+      "year": 1996,
+      "short": "Western US 1996",
+      "title": "Overgrown lines black out the West",
+      "region": "us",
+      "line": "On August 10, 1996, Oregon lines arcing into trees cascaded into an outage for about 7.5 million customers across western North America."
+    },
+    {
+      "year": 2009,
+      "short": "Itaipu 2009",
+      "title": "Itaipu’s shutdown darkens Brazil and Paraguay",
+      "region": "latam",
+      "line": "A short circuit shut the Itaipu dam for the first time in 25 years, darkening 60 million Brazilians and briefly all of Paraguay."
+    }
+  ],
   "blight": [
     {
       "year": 1946,
@@ -72,6 +88,22 @@
       "line": "Reigning Meijin Amahiko Satō, holder of shogi’s oldest title, lost both games of a two-game match to the program Ponanza."
     }
   ],
+  "dolly": [
+    {
+      "year": 1934,
+      "short": "Pincus rabbits",
+      "title": "Pincus fertilizes rabbit eggs in glass",
+      "region": "us",
+      "line": "Gregory Pincus’s in-vitro rabbit fertilization made headlines casting him as a Dr. Frankenstein; Harvard denied him tenure in 1936."
+    },
+    {
+      "year": 1952,
+      "short": "Cloned frogs",
+      "title": "Briggs and King clone frog embryos",
+      "region": "us",
+      "line": "Robert Briggs and Thomas King moved nuclei into emptied frog eggs, creating what was later recognized as the first animal clone."
+    }
+  ],
   "dotcom": [
     {
       "year": 1793,
@@ -88,6 +120,22 @@
       "title": "The Arab fleet defeats Byzantium at sea",
       "region": "mideast",
       "line": "A caliphate fleet built in Syrian and Egyptian yards routs Emperor Constans II off Lycia, ending Byzantium’s unchallenged rule of the sea."
+    }
+  ],
+  "einstein": [
+    {
+      "year": 850,
+      "short": "Gunpowder alert",
+      "title": "Taoist alchemists warn of gunpowder",
+      "region": "china",
+      "line": "A 9th-century Taoist alchemy text warns that heating saltpetre, sulphur and realgar burned adepts’ hands, faces and even whole houses."
+    },
+    {
+      "year": 1949,
+      "short": "H-bomb advisers",
+      "title": "Bomb builders advise against the H-bomb",
+      "region": "us",
+      "line": "Oppenheimer’s advisory committee urged against a crash H-bomb effort; Fermi and Rabi called it “necessarily an evil thing.”"
     }
   ],
   "krakatoa": [
