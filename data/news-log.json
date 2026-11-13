@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-11-08",
+  "story": "Nvidia CEO Jensen Huang resigns amid alleged Chinese spy affair",
+  "url": "https://aljazeera.com/news/2026/11/8/us-chipmaker-nvidia-investigates-ceo-jensen-huang-over-affair",
+  "outcome": "none",
+  "reviewed": "2026-11-13"
+ },
+ {
+  "date": "2026-11-09",
+  "story": "Novaya Gazeta closes its Moscow office, citing state pressure",
+  "url": "https://www.cp24.com/news/world/2026/11/09/russias-top-independent-newspaper-closes-its-office-after-3-decades-citing-official-pressure/",
+  "outcome": "watch",
+  "seed": "AD 25, Rome’s senate orders the histories of Cremutius Cordus burned (Tacitus, Annals 4.34-35)",
+  "note": "Pattern: a state squeezes out its last independent newspaper. Then candidates: Rheinische Zeitung banned by Prussia 1843, or Frankfurter Zeitung shut by the Nazis 1943. Echoes: Hungary’s Népszabadság 2016, Hong Kong’s Apple Daily 2021. CPJ calls it a state ‘killing’; no source yet draws the historical comparison. Seed, Then and echoes still need verification.",
+  "reviewed": "2026-11-13"
+ },
+ {
   "date": "2026-11-11",
   "story": "Millions join Spain’s first general strike in 14 years over housing costs",
   "url": "https://www.ksl.com/article/51645293/millions-of-spaniards-stage-first-general-strike-in-14-years-as-anger-rages-over-housing",

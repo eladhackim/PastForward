@@ -138,6 +138,15 @@
       "line": "Oppenheimer’s advisory committee urged against a crash H-bomb effort; Fermi and Rabi called it “necessarily an evil thing.”"
     }
   ],
+  "hamilton": [
+    {
+      "year": 1910,
+      "short": "South Africa",
+      "title": "South Africa’s Union assumes colonial debts",
+      "region": "africa",
+      "line": "When four colonies formed the Union of South Africa on May 31, 1910, its founding Act made the Union assume all their debts."
+    }
+  ],
   "krakatoa": [
     {
       "year": 431,
@@ -154,6 +163,22 @@
       "line": "Iceland’s largest lava flood veils Europe’s sun; 940 brings one of the coolest summers in 1,500 years, with hunger from Germany to China."
     }
   ],
+  "mania": [
+    {
+      "year": 1926,
+      "short": "Florida 1926",
+      "title": "Florida’s land boom goes bust",
+      "region": "us",
+      "line": "From 1924 Florida developers platted whole new towns for buyers who never came; prices stalled in 1926 and a hurricane ended the boom."
+    },
+    {
+      "year": 1997,
+      "short": "Bangkok 1997",
+      "title": "Bangkok’s building boom collapses",
+      "region": "china",
+      "line": "Runaway construction left Bangkok with an estimated $20 billion of empty units; in 1997 lenders failed and over 300 towers stood unfinished."
+    }
+  ],
   "modelt": [
     {
       "year": 1869,
@@ -161,6 +186,15 @@
       "title": "The rickshaw takes over Japanese streets",
       "region": "china",
       "line": "Invented in Japan around 1869, the cheap two-wheeled rickshaw spread so fast that Tokyo had about 40,000 by 1872."
+    }
+  ],
+  "munich": [
+    {
+      "year": 1939,
+      "short": "Soviet Poland",
+      "title": "The Red Army enters eastern Poland",
+      "region": "russia",
+      "line": "On September 17, 1939, Molotov said Soviet troops entered Poland to protect “blood brothers”, its Ukrainians and Belarusians; Moscow then annexed the region."
     }
   ],
   "netscape": [
