@@ -696,7 +696,7 @@ h1.tap { cursor: pointer; }
     <nav class="bar-r" aria-label="Main">
       <button type="button" class="navb" id="dailyBtn">Daily</button>
       <button type="button" class="navb" id="futureBtn">Outlook</button>
-      <button type="button" class="navb icon" id="allBtn" aria-label="Search, ask, and all rhymes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
+      <button type="button" class="navb icon" id="allBtn" aria-label="Search and all rhymes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
     </nav>
   </header>
 
@@ -1441,6 +1441,7 @@ tabs.addEventListener("click", e => {
 const deepBack = [];
 function backDeep() { const fn = deepBack.pop(); if (fn) fn(); else closeDeep(); }
 let deepView = null;   // reopens whatever the sheet shows now, for Back
+const ideaAskBtn = q => `<button type="button" class="secondary" data-askidea="${esc(q)}" style="width:100%">Ask PastForward about this</button>`;
 function openIdea(pi, k) {
   const p = PAIRS[pi], o = p.opp, it = o && o.ideas[k]; if (!it) return;
   if (deepView && !dwrap.hidden) { const re = deepView, st = dBody.scrollTop; deepBack.push(() => { re(); dBody.scrollTop = st; }); }
@@ -1457,7 +1458,7 @@ function openIdea(pi, k) {
     ${box("Signal to watch", o.watch)}
     ${(g.read || []).length ? `<div class="box"><h4>Go deeper</h4><ul class="reads">${g.read.map(r => `<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)} ↗</a></li>`).join("")}</ul></div>` : ""}
     ${goBtn(pi, "next", "The rhyme behind it")}
-    <button type="button" class="secondary" data-askidea="${esc(q)}" style="width:100%">Ask PastForward about this</button>
+    ${askOn() ? ideaAskBtn(q) : `<span id="ideaAskAt" data-q="${esc(q)}" hidden></span>`}
     ${o.ideas.length > 1 ? `<p class="fl">More ideas from this rhyme</p><ol class="opps">${o.ideas.map((_, j) => j === k ? "" : `<li>${ideaBtn(pi, j)}</li>`).join("")}</ol>` : ""}
     <p class="fnote">Patterns from history, not financial or career advice.</p>`;
   dBody.scrollTop = 0;
@@ -1565,7 +1566,7 @@ dBody.addEventListener("click", e => {
   const ib = e.target.closest("[data-idea]");
   if (ib) { const [pi, k] = ib.dataset.idea.split(":").map(Number); openIdea(pi, k); return; }
   const aq = e.target.closest("[data-askidea]");
-  if (aq) { const re = deepView, st = dBody.scrollTop; if (re) deepBack.push(() => { re(); dBody.scrollTop = st; }); openAsk(aq.dataset.askidea, false); return; }
+  if (aq && askOn()) { const re = deepView, st = dBody.scrollTop; if (re) deepBack.push(() => { re(); dBody.scrollTop = st; }); openAsk(aq.dataset.askidea, false); return; }
   const ts = e.target.closest("[data-theme-set]");
   if (ts) { setThemeMode(ts.dataset.themeSet); return; }
   const tr = e.target.closest("[data-travel]");
@@ -1596,11 +1597,12 @@ function ixMatch(i, toks) {
   return toks.every(t => HAY[i].includes(t));
 }
 function openIndex() {
-  setHead("Search · Ask · All rhymes", "", `${N} rhymes`, "plain");
+  const ask = askOn();
+  setHead(ask ? "Search · Ask · All rhymes" : "Search · All rhymes", "", `${N} rhymes`, "plain");
   tabs.innerHTML = [["old", "Oldest first"], ["agree", "Most agreed"], ["debate", "Most debated"]].map(([id, lab]) => `<button type="button" role="tab" data-sort="${id}" aria-selected="${id === ixSort}">${lab}</button>`).join("");
   world = null;
-  dBody.innerHTML = `<div class="srch">${SEARCH_SVG}<input id="ixQ" type="search" maxlength="${ASK_MAX}" placeholder="Search, or ask anything" autocomplete="off" enterkeyhint="search" aria-label="Search the rhymes, or ask a question"></div>
-    <button type="button" class="askrow" id="askRow"></button>
+  dBody.innerHTML = `<div class="srch">${SEARCH_SVG}<input id="ixQ" type="search" maxlength="${ASK_MAX}" placeholder="${ask ? "Search, or ask anything" : "Search the rhymes"}" autocomplete="off" enterkeyhint="search" aria-label="${ask ? "Search the rhymes, or ask a question" : "Search the rhymes"}"></div>
+    ${ask ? `<button type="button" class="askrow" id="askRow"></button>` : ""}
     <div class="ixlist" id="ixList"></div>`;
   const qi = $("ixQ");
   qi.value = ixQuery;
@@ -1609,9 +1611,9 @@ function openIndex() {
     if (e.key !== "Enter") return;
     e.preventDefault();
     const q = qi.value.trim();
-    if (!ixHits && q.length >= 3) openAsk(q, false); else qi.blur();
+    if (!ixHits && q.length >= 3 && askOn()) openAsk(q, false); else qi.blur();
   });
-  $("askRow").addEventListener("click", () => { const q = ixQuery.trim(); openAsk(q, q.length >= 3); });
+  if (ask) $("askRow").addEventListener("click", () => { const q = ixQuery.trim(); openAsk(q, q.length >= 3); });
   renderIndex();
   showDeep();
   dBody.scrollTop = 0;
@@ -1629,9 +1631,9 @@ function renderIndex() {
   const shown = toks.length ? idx.filter(i => ixMatch(i, toks)) : idx;
   ixHits = shown.length;
   const long = q.length >= 3;
-  row.innerHTML = `<span class="sp">${SPARK_SVG}</span><span class="at">${long ? `Ask: “${esc(q)}”` : "Ask PastForward"}</span>` +
+  if (row) row.innerHTML = `<span class="sp">${SPARK_SVG}</span><span class="at">${long ? `Ask: “${esc(q)}”` : "Ask PastForward"}</span>` +
     `<span class="as">${long ? "Research its echoes across history" : "Ask how any event or trend rhymes"}${askKey() ? "" : " · subscribers"}</span><span class="ga" aria-hidden="true">›</span>`;
-  if (!shown.length) { list.innerHTML = `<p class="ixnone">No rhyme in the list matches “${esc(q)}”. Ask PastForward to research it.</p>`; return; }
+  if (!shown.length) { list.innerHTML = `<p class="ixnone">No rhyme in the list matches “${esc(q)}”.${row ? " Ask PastForward to research it." : ""}</p>`; return; }
   list.innerHTML = `${ixSort === "old" && !toks.length ? `<details class="how"><summary>How it works</summary><div class="hb">${howHTML()}</div></details><button type="button" class="go" data-lex=""><span><span class="gk">Lexicon</span><span class="gt">The words PastForward uses</span></span><span class="ga" aria-hidden="true">→</span></button>${prefsHTML()}` : ""}${note}<div class="ixh"><span class="then">Then</span><span class="now">Today</span><span class="next">Next</span></div><ol class="ix">` +
     shown.map(i => { const p = PAIRS[i], sc = scoreOf(i); return `<li class="tp-${p.topic}"><button type="button" data-pick="${i}" class="${focus && i === focus.pi ? "on" : ""}">` +
       `<span class="it then"><b>${p.then.year}</b>${esc(p.then.short)}</span>` +
@@ -2541,6 +2543,17 @@ function saveHist(q, a) {
 }
 const askState = { left: null, limit: 30, plan: null, busy: false };
 let askCfg = null, askPending = null, lastAns = null;
+// Ask and everything that sells it stay hidden until the config says enabled (unknown or failed = off)
+const askOn = () => !!(askCfg && askCfg.enabled);
+function askShow() {   // the config arrived with Ask on: add its entry points, also to a sheet that is already open
+  if (!askOn()) return;
+  $("allBtn").setAttribute("aria-label", "Search, ask, and all rhymes");
+  if (dwrap.hidden) return;
+  const st = dBody.scrollTop, at = $("ideaAskAt");
+  if (at) at.outerHTML = ideaAskBtn(at.dataset.q);
+  else if ($("ixQ") && !$("askRow")) { const had = document.activeElement === $("ixQ"); openIndex(); dBody.scrollTop = st; if (had) $("ixQ").focus({ preventScroll: true }); }
+  else if ($("lx-hear") && !$("lx-trace")) { openLexicon(); dBody.scrollTop = st; }
+}
 async function askConfigLoad() {
   if (askCfg) return askCfg;
   if (!apiOn()) return (askCfg = { enabled: false, preview: true, limit: 30 });
@@ -2661,7 +2674,7 @@ function payHTML(msg, openKey) {
       <p class="fnote" id="keyMsg">It is in your receipt email. It stays on this device.</p></details>`;
 }
 async function openPay(msg, openKey) {
-  await askConfigLoad();
+  if (!(await askConfigLoad()).enabled) return;   // Ask is off: no paywall, no licence-key entry
   clearTimeout(pwT);
   if (pwWrap.hidden) pwPrev = document.activeElement;
   pwEl.innerHTML = payHTML(msg, openKey);
@@ -2705,6 +2718,7 @@ async function unlockKey() {
 
 /* the Ask screen */
 function openAsk(q, run) {
+  if (!askOn()) return;
   setHead("Ask PastForward", "next", "How does it rhyme?", "next");
   tabs.innerHTML = ""; world = null;
   dBody.scrollTop = 0;
@@ -2762,11 +2776,11 @@ async function refreshAskMeta() {
 function askIdle() {
   const k = askKey(), hist = askHist();
   let h = `<div class="chips" role="group" aria-label="Try a question">${ASK_EXAMPLES.map(x => `<button type="button" data-askq="${esc(x)}">${esc(x)}</button>`).join("")}</div>`;
-  if (!k) h += `<p class="fl">What you get</p>${demoHTML()}<button type="button" class="primary" data-ask="pay">Get Ask PastForward</button>`;
+  if (!k && askOn()) h += `<p class="fl">What you get</p>${demoHTML()}<button type="button" class="primary" data-ask="pay">Get Ask PastForward</button>`;
   if (hist.length) h += `<p class="fl">Your questions</p><ol class="hist">${hist.map((x, i) => `<li><button type="button" data-hist="${i}"><span>${esc(x.q)}</span><span class="hy">${x.a.on_topic ? `${fmtY(x.a.then.year)} → ${fmtY(x.a.now.year)}` : ""}</span></button></li>`).join("")}</ol>`;
   else if (k) h += `<p class="fl">Example answer</p>${answerHTML(DEMOS[1].q, DEMOS[1].a, true)}`;
   const o = askOut(h);
-  if (o && !k) runDemo(o.querySelector(".demo"));
+  if (o && !k && askOn()) runDemo(o.querySelector(".demo"));
 }
 const THINK = ["Reading your question…", "Searching history for the pattern…", "Checking the earlier cases…", "Counting the years forward…"];
 function setGo(busy) { const b = $("askGo"); if (b) { b.disabled = busy; b.textContent = busy ? "Asking…" : "Ask"; } }
@@ -2784,7 +2798,7 @@ async function submitAsk() {
   const prev = askHist().find(x => normQ(x.q) === normQ(q));
   if (prev) { showAnswer(prev.q, prev.a); return; }          // asked before on this device: free, instant
   const c = await askConfigLoad();
-  if (!c.enabled) { openPay(c.preview ? "This is a preview. Asking works on pastforward.app." : "Ask PastForward opens soon. Here is what it does."); return; }
+  if (!c.enabled) { askOut(`<p class="askerr">Ask PastForward is paused right now.</p>`); return; }
   const k = askKey();
   if (!k) { askPending = q; openPay(); return; }
   askState.busy = true; setGo(true);
@@ -2864,7 +2878,7 @@ function openLexicon(k) {
   setHead("Lexicon", "", "The words PastForward uses", "plain");
   tabs.innerHTML = ""; world = null;
   dBody.innerHTML = `<p class="txt">History rhymes, so PastForward borrows its words from poetry and music. Each names one part of how a rhyme works. Tap any dotted word in the app to see its meaning.</p>` +
-    LEX_GROUPS.map(([g, keys]) => `<p class="lx-g">${g}</p><ul class="lx">${keys.map(x => `<li id="lx-${x}"><span class="lt">${esc(LEX[x][0])}</span><p class="ld">${esc(LEX[x][1])}</p><p class="le"><span>Example</span>${esc(LEX[x][2])}</p></li>`).join("")}</ul>`).join("");
+    LEX_GROUPS.map(([g, keys]) => `<p class="lx-g">${g}</p><ul class="lx">${keys.filter(x => x !== "trace" || askOn()).map(x => `<li id="lx-${x}"><span class="lt">${esc(LEX[x][0])}</span><p class="ld">${esc(LEX[x][1])}</p><p class="le"><span>Example</span>${esc(LEX[x][2])}</p></li>`).join("")}</ul>`).join("");
   dBody.scrollTop = 0;
   showDeep();
   const li = k && $("lx-" + k);
@@ -4261,7 +4275,8 @@ updateDailyDot();
 loadScores();
 if (h === "outlook") setTimeout(openOutlook, 400);
 if (h === "daily") setTimeout(openDaily, 400);
-if (h === "ask") setTimeout(() => openAsk(), 400);
+const askBoot = askConfigLoad().then(askShow, () => {});   // prefetch, so Ask shows only once it is known to be on
+if (h === "ask") setTimeout(() => askBoot.then(() => openAsk()), 400);   // Ask off: stay on home
 // first visit to the home page: show what PastForward is (shared links go straight to their rhyme)
 if (!linked && !h && !store.get(INTRO_KEY, 0)) setTimeout(() => openIntro(), 450);
 requestAnimationFrame(loop);

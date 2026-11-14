@@ -1,4 +1,5 @@
 // GET /api/ask/config → { enabled, limit, monthly, yearly, portal, priceMonthly, priceYearly }   (public; cached 5 minutes)
+// While Ask is off it is only { enabled: false, limit }: no checkout links, portal or prices.
 import { json } from "../_shared.js";
 import { askConfig } from "../_ask.js";
 
@@ -6,6 +7,7 @@ const txt = (v, d) => (typeof v === "string" && /^[^<>"]{1,12}$/.test(v.trim()) 
 const url = v => (typeof v === "string" && /^https:\/\/[^\s"<>]+$/.test(v) ? v : null);
 export async function onRequestGet({ env }) {
   const cfg = askConfig(env);
+  if (!cfg.enabled) return json({ enabled: false, limit: cfg.limit }, 200, 300);
   return json({
     enabled: cfg.enabled, limit: cfg.limit,
     monthly: url(env.LS_CHECKOUT_MONTHLY), yearly: url(env.LS_CHECKOUT_YEARLY), portal: url(env.LS_PORTAL),
