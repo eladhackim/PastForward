@@ -138,6 +138,22 @@
       "line": "Oppenheimer’s advisory committee urged against a crash H-bomb effort; Fermi and Rabi called it “necessarily an evil thing.”"
     }
   ],
+  "games": [
+    {
+      "year": 80,
+      "short": "Colosseum games",
+      "title": "Titus opens the Colosseum with games",
+      "region": "europe",
+      "line": "Titus opened the Colosseum, built on Nero’s palace grounds, with 100 days of games; Cassius Dio counts 9,000 animals killed."
+    },
+    {
+      "year": 1934,
+      "short": "Italy 1934",
+      "title": "Mussolini’s Italy hosts the World Cup",
+      "region": "europe",
+      "line": "Fascist Italy hosted and won the 1934 World Cup, with Mussolini using the tournament to showcase his regime at home and abroad."
+    }
+  ],
   "hamilton": [
     {
       "year": 1910,
@@ -324,6 +340,20 @@
   ],
   "vaccine": [
     {
+      "year": 1885,
+      "short": "Montreal riot",
+      "title": "Montreal riots over compulsory vaccination",
+      "region": "world",
+      "line": "In September a crowd attacked Montreal’s health office over compulsory smallpox vaccination, during an epidemic that killed over 3,000 people."
+    },
+    {
+      "year": 1976,
+      "short": "Swine flu jab",
+      "title": "America halts its swine flu vaccine drive",
+      "region": "us",
+      "line": "After about 45 million shots, the US stopped its rushed swine flu campaign in December over Guillain-Barré cases, feeding lasting distrust."
+    },
+    {
       "year": 2026,
       "short": "NY measles 2026",
       "title": "Measles kills a child in New York",
@@ -341,6 +371,22 @@
       "title": "Japan raises its discount rate to 9%",
       "region": "china",
       "line": "Facing galloping inflation after the oil shock, the Bank of Japan lifted its rate from 0.75% to 9% within 1973."
+    }
+  ],
+  "y2k": [
+    {
+      "year": 1998,
+      "short": "Galaxy IV",
+      "title": "A dead satellite silences America’s pagers",
+      "region": "us",
+      "line": "On May 19 the Galaxy IV satellite lost control, cutting off about 90% of US pagers and many radio feeds at once."
+    },
+    {
+      "year": 2015,
+      "short": "NYSE halt",
+      "title": "NYSE, United and WSJ fail together",
+      "region": "us",
+      "line": "On July 8 glitches halted the New York Stock Exchange for over three hours, grounded United flights and downed the Wall Street Journal site."
     }
   ]
 }

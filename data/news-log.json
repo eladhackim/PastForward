@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-11-12",
+  "story": "Hot inflation lifts 10-year Treasury yield above 5%, December hike priced",
+  "url": "https://www.cnbc.com/2026/11/12/us-treasurys-bonds-yields.html",
+  "outcome": "none",
+  "reviewed": "2026-11-14"
+ },
+ {
+  "date": "2026-11-11",
+  "story": "Hawley backs a nationwide data center moratorium as local bans spread",
+  "url": "https://gizmodo.com/high-ranking-republican-joins-dems-to-back-nationwide-data-center-moratorium-2000838539",
+  "outcome": "watch",
+  "seed": "1306, Edward I bans burning sea coal in London over its smoke",
+  "note": "Pattern: a new power-hungry industry spreads fast and towns vote to ban or pause it. Not the mania rhyme (that is boom vs profits). Then candidates: opposition to early railways or gasworks in 1830s-40s Britain, or 1880s-90s US fights over electric lines. IAPP piece ‘What can history teach us about data center resistance’ draws historical parallels. Boise and Oakland passed moratoriums the same week. Seed, Then and echoes still need verification.",
+  "reviewed": "2026-11-14"
+ },
+ {
   "date": "2026-11-08",
   "story": "Nvidia CEO Jensen Huang resigns amid alleged Chinese spy affair",
   "url": "https://aljazeera.com/news/2026/11/8/us-chipmaker-nvidia-investigates-ceo-jensen-huang-over-affair",

@@ -56,9 +56,9 @@
     "last": "2026-10-23"
   },
   "games": {
-    "runs": 1,
-    "added": 3,
-    "last": "2026-10-29",
+    "runs": 2,
+    "added": 5,
+    "last": "2026-11-14",
     "created": "2026-10-29"
   },
   "hamilton": {
@@ -168,9 +168,9 @@
     "last": "2026-11-03"
   },
   "vaccine": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-10-28"
+    "runs": 2,
+    "added": 3,
+    "last": "2026-11-14"
   },
   "volcker": {
     "runs": 2,
@@ -178,9 +178,9 @@
     "last": "2026-11-10"
   },
   "y2k": {
-    "runs": 1,
-    "added": 2,
-    "last": "2026-10-28"
+    "runs": 2,
+    "added": 4,
+    "last": "2026-11-14"
   },
   "yellow": {
     "runs": 1,
