@@ -179,6 +179,15 @@
       "line": "Iceland’s largest lava flood veils Europe’s sun; 940 brings one of the coolest summers in 1,500 years, with hunger from Germany to China."
     }
   ],
+  "luddites": [
+    {
+      "year": 1551,
+      "short": "Gig Mills Act",
+      "title": "England bans the gig mill",
+      "region": "europe",
+      "line": "Parliament ordered gig mills, which finished cloth by machine, “put down”; the ban stood until 1809, two years before the Luddites rose."
+    }
+  ],
   "mania": [
     {
       "year": 1926,
@@ -277,6 +286,22 @@
       "title": "Napoleon’s retreat from Moscow",
       "region": "russia",
       "line": "Napoleon abandoned Moscow on 19 October 1812; cold, hunger and Cossack raids destroyed most of his Grande Armée on the way out."
+    }
+  ],
+  "scramble": [
+    {
+      "year": 698,
+      "short": "Carthage 698",
+      "title": "Byzantium and the Caliphate fight for Carthage",
+      "region": "africa",
+      "line": "A Byzantine fleet retook Carthage from the Umayyads, who won it back and razed it, ending Constantinople’s hold on North Africa."
+    },
+    {
+      "year": 1535,
+      "short": "Tunis 1535",
+      "title": "Charles V seizes Tunis from the Ottomans",
+      "region": "africa",
+      "line": "About 25,000 Habsburg troops took Tunis from Barbarossa’s Ottomans, as Spain and Istanbul fought for control of North Africa’s coast."
     }
   ],
   "springs": [
@@ -387,6 +412,16 @@
       "title": "NYSE, United and WSJ fail together",
       "region": "us",
       "line": "On July 8 glitches halted the New York Stock Exchange for over three hours, grounded United flights and downed the Wall Street Journal site."
+    },
+    {
+      "year": 2026,
+      "short": "FAA stop 2026",
+      "title": "Old air traffic links fail, grounding America",
+      "region": "us",
+      "line": "Overloaded switches and routers in ageing air traffic systems forced a four-hour nationwide ground stop, cancelling over 4,700 US flights.",
+      "date": "2026-11-14",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/11/14/faa-ground-stop-lifted-why-were-us-flights-grounded-and-whats-next"
     }
   ]
 }
