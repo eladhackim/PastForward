@@ -688,7 +688,8 @@ h1.tap { cursor: pointer; }
 @media (max-width: 380px) { .outlook-years button { font-size: 14px; padding-inline: 10px; } }
 
 </style>
-
+</head>
+<body>
 <canvas id="sky" aria-hidden="true"></canvas>
 <div class="app">
   <header class="bar">
@@ -2315,9 +2316,18 @@ const DEVICE = (() => {
   }
   return d;
 })();
+// Fail fast: no page fetch to our API may wait longer than this (the page works without scores or Ask).
+const API_TIMEOUT = 3000;
+function timeoutSignal(ms) {   // AbortSignal.timeout where it exists, else the same by hand; undefined = no timeout
+  try {
+    if (AbortSignal.timeout) return AbortSignal.timeout(ms);
+    const c = new AbortController(); setTimeout(() => c.abort(), ms); return c.signal;
+  } catch (_) { return undefined; }
+}
 async function api(path, body) {
   if (!apiOn()) return null;
   const r = await fetch(path, {
+    signal: timeoutSignal(API_TIMEOUT),
     method: body ? "POST" : "GET",
     headers: body ? { "Content-Type": "application/json" } : {},
     body: body ? JSON.stringify(body) : undefined
@@ -2557,7 +2567,8 @@ function askShow() {   // the config arrived with Ask on: add its entry points, 
 async function askConfigLoad() {
   if (askCfg) return askCfg;
   if (!apiOn()) return (askCfg = { enabled: false, preview: true, limit: 30 });
-  try { const r = await fetch("/api/ask/config"); askCfg = r.ok ? await r.json() : { enabled: false, limit: 30 }; }
+  // a slow or failed fetch counts as off for now (not remembered, so a later call can try again)
+  try { const r = await fetch("/api/ask/config", { signal: timeoutSignal(API_TIMEOUT) }); askCfg = r.ok ? await r.json() : { enabled: false, limit: 30 }; }
   catch (_) { return { enabled: false, limit: 30 }; }
   return askCfg;
 }
@@ -4283,4 +4294,6 @@ requestAnimationFrame(loop);
 })();
 </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a64bafed925341a0ab72fc4c47b0fcbb"}'></script>
+</body>
 </html>

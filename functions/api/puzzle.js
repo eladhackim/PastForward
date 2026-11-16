@@ -24,5 +24,5 @@ export async function onRequestGet(context) {
       .bind(day)
       .first();
     return json({ day, players: row.players, perfect: row.perfect }, 200, 60);
-  });
+  }, () => json({ day, players: 0, perfect: 0 }));   // database slow or down: uncached zeros, the page then shows no stats line
 }
