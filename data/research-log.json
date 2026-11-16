@@ -92,9 +92,9 @@
     "last": "2026-11-13"
   },
   "netscape": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-11-02"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-16"
   },
   "oil": {
     "runs": 2,
@@ -137,9 +137,9 @@
     "last": "2026-11-04"
   },
   "sputnik": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-11-02"
+    "runs": 2,
+    "added": 3,
+    "last": "2026-11-16"
   },
   "suez": {
     "runs": 2,
@@ -150,6 +150,11 @@
     "runs": 1,
     "added": 2,
     "last": "2026-10-29"
+  },
+  "tariffs": {
+    "runs": 1,
+    "added": 1,
+    "last": "2026-11-16"
   },
   "titanic": {
     "runs": 1,

@@ -229,6 +229,13 @@
       "title": "Britain’s Uniform Penny Post begins",
       "region": "europe",
       "line": "A flat one-penny stamp made letters affordable to almost everyone, and the number sent in Britain more than doubled in the first year."
+    },
+    {
+      "year": 1896,
+      "short": "Bicycle craze",
+      "title": "The great American bicycle craze peaks",
+      "region": "us",
+      "line": "The safety bicycle and air-filled tyre put over a million Americans on wheels by the mid-1890s, with 300 makers racing to supply them."
     }
   ],
   "phone": [
@@ -331,11 +338,34 @@
   ],
   "sputnik": [
     {
+      "year": -307,
+      "short": "Zhao’s horsemen",
+      "title": "Zhao copies the nomads’ mounted archers",
+      "region": "china",
+      "line": "Battered by mounted nomad raiders, King Wuling of Zhao made his army wear nomad trousers and learn horse archery, over his court’s protests."
+    },
+    {
+      "year": 1494,
+      "short": "French cannon",
+      "title": "French siege guns stun Italy",
+      "region": "europe",
+      "line": "Charles VIII brought forty siege guns into Italy, and its states raced to rebuild walls lower and thicker, leading to the angled bastion."
+    },
+    {
       "year": 1859,
       "short": "Ironclad shock",
       "title": "France launches the ironclad Gloire",
       "region": "europe",
       "line": "France launched Gloire, the first ocean-going ironclad, and alarmed Britain answered with the bigger iron-hulled HMS Warrior, starting a naval race."
+    }
+  ],
+  "tariffs": [
+    {
+      "year": -432,
+      "short": "Megarian Decree",
+      "title": "Athens bars Megara from its markets",
+      "region": "europe",
+      "line": "Athens shut Megarian traders out of its empire’s harbours and markets; Sparta demanded repeal, and war followed, though Thucydides called it a pretext."
     }
   ],
   "triangle": [
