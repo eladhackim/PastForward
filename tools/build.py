@@ -170,10 +170,8 @@ HEAD_HTML = ("<!doctype html>\n<html lang=\"en\">\n<head>\n" + COMMON_HEAD +
              meta("PastForward: history rhymes. What comes next?", HOME_DESC, SITE + "/", SITE + "/og/home.jpg",
                   "What comes next? Evidence-based scenarios for 2026, 2027 and 2028–2030") +
              "<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;height:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n")
-# Cloudflare Web Analytics. The site token is public. The snippet is written here, in the wrapper, because
-# Cloudflare's automatic injection is off, and it only ever inserts before a literal </body> anyway.
-BEACON = ("<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" "
-          "data-cf-beacon='{\"token\": \"a64bafed925341a0ab72fc4c47b0fcbb\"}'></script>")
+# Cloudflare Web Analytics: no snippet is written here. Cloudflare Pages injects the beacon automatically
+# before the literal </body> below, so that injection is the single source; adding one here loads it twice.
 # The template is head tags, then the page markup, split by the <!--__BODY__--> marker. index.html gets a
 # real </head><body> ... </body> around them (the same structure browsers used to infer; no visual change).
 BODY_MARK = "<!--__BODY__-->\n"
@@ -182,7 +180,7 @@ site = body.replace("<title>PastForward</title>\n", "").replace('<meta name="cla
 site = site.replace(BODY_MARK, "</head>\n<body>\n")
 body = body.replace(BODY_MARK, "")   # the --body preview copy stays a bare fragment
 with open(OUT, "w", encoding="utf-8") as f:
-    f.write(HEAD_HTML + site + "\n" + BEACON + "\n</body>\n</html>\n")
+    f.write(HEAD_HTML + site + "\n</body>\n</html>\n")
 
 # ---- share pages: one small page per rhyme with its own preview card ----
 def next_year(p): return 2 * p["now"]["year"] - p["then"]["year"]
