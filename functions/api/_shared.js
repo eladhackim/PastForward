@@ -26,13 +26,38 @@ export async function readJSON(request) {
   try { return await request.json(); } catch (_) { return null; }
 }
 
+// Reject if `promise` has not settled within `ms`. A stalled Cache API or D1 call otherwise holds the
+// request open until Cloudflare's gateway gives up and answers 504.
+export function withTimeout(promise, ms, label) {
+  let timer;
+  const late = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms} ms`)), ms); });
+  return Promise.race([promise, late]).finally(() => clearTimeout(timer));
+}
+const CACHE_MS = 1000, BUILD_MS = 3000;
+
 // Serve a GET from Cloudflare's edge cache for `seconds`, so a traffic spike does not hit the database.
-export async function cached(context, seconds, build) {
+// Fail-fast: a slow or failing cache lookup is skipped, and if `build` (the D1 query) is slow or throws,
+// `fallback()` is returned instead (never stored in the edge cache). Without a fallback the error is
+// rethrown, and _middleware.js turns it into a 500 JSON.
+export async function cached(context, seconds, build, fallback) {
   const cache = caches.default;
   const key = new Request(new URL(context.request.url).toString(), { method: "GET" });
-  const hit = await cache.match(key);
-  if (hit) return hit;
-  const res = await build();
-  if (res.status === 200) context.waitUntil(cache.put(key, res.clone()));
+  try {
+    const hit = await withTimeout(cache.match(key), CACHE_MS, "cache lookup");
+    if (hit) return hit;
+  } catch (err) {
+    console.error("cached: lookup skipped:", String((err && err.message) || err).slice(0, 200));
+  }
+  let res;
+  try {
+    res = await withTimeout(build(), BUILD_MS, "database query");
+  } catch (err) {
+    if (!fallback) throw err;
+    console.error("cached: serving fallback:", new URL(context.request.url).pathname, String((err && err.message) || err).slice(0, 200));
+    const fb = fallback();
+    fb.headers.set("X-PastForward-Fallback", "1");   // tells a fallback apart from real, empty data
+    return fb;
+  }
+  if (res.status === 200) context.waitUntil(cache.put(key, res.clone()).catch(() => {}));
   return res;
 }
