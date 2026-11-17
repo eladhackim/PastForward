@@ -1,4 +1,13 @@
 {
+  "bankrun": [
+    {
+      "year": 1343,
+      "short": "Florence 1343",
+      "title": "Florence’s great banks fail",
+      "region": "europe",
+      "line": "As royal and city loans sour, depositors pull their money from Florence’s super-companies; the Peruzzi fail in 1343 and the Bardi soon after."
+    }
+  ],
   "blackout": [
     {
       "year": 1996,
@@ -368,6 +377,22 @@
       "line": "Athens shut Megarian traders out of its empire’s harbours and markets; Sparta demanded repeal, and war followed, though Thucydides called it a pretext."
     }
   ],
+  "tiananmen": [
+    {
+      "year": 1626,
+      "short": "Suzhou 1626",
+      "title": "Suzhou crowds defy the eunuch’s police",
+      "region": "china",
+      "line": "Thousands in Suzhou riot when Wei Zhongxian’s agents arrest the official Zhou Shunchang; five commoners are executed and honored as martyrs."
+    },
+    {
+      "year": 1895,
+      "short": "Beijing 1895",
+      "title": "Exam candidates petition the throne",
+      "region": "china",
+      "line": "Hundreds of exam candidates in Beijing back Kang Youwei’s petition against the Shimonoseki treaty, demanding reform from the Qing throne."
+    }
+  ],
   "triangle": [
     {
       "year": 1860,
@@ -452,6 +477,15 @@
       "date": "2026-11-14",
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/news/2026/11/14/faa-ground-stop-lifted-why-were-us-flights-grounded-and-whats-next"
+    }
+  ],
+  "yellow": [
+    {
+      "year": 1678,
+      "short": "Popish Plot",
+      "title": "Titus Oates invents the Popish Plot",
+      "region": "europe",
+      "line": "Oates’s invented Catholic plot to kill Charles II races through London’s pamphlets and broadsides, and at least 22 innocent men are executed."
     }
   ]
 }
