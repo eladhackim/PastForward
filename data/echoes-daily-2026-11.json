@@ -334,6 +334,20 @@
       "title": "Marsh publishes Man and Nature",
       "region": "us",
       "line": "George Perkins Marsh’s book warned that people were ruining the land, and it helped launch the conservation movement and national forests."
+    },
+    {
+      "year": 1969,
+      "short": "Minamata voice",
+      "title": "Ishimure’s Kugai Jōdo voices Minamata’s victims",
+      "region": "china",
+      "line": "Poet Michiko Ishimure’s book on mercury-poisoned Minamata fishing families stirred a national response and gave Japan’s anti-pollution movement its voice."
+    },
+    {
+      "year": 1990,
+      "short": "Ogoni Bill",
+      "title": "Ken Saro-Wiwa rallies the Ogoni against oil",
+      "region": "africa",
+      "line": "Writer Ken Saro-Wiwa led MOSOP’s Ogoni Bill of Rights against oil pollution in the Niger Delta; 300,000 Ogoni marched in 1993."
     }
   ],
   "springtime": [
@@ -368,6 +382,15 @@
       "line": "France launched Gloire, the first ocean-going ironclad, and alarmed Britain answered with the bigger iron-hulled HMS Warrior, starting a naval race."
     }
   ],
+  "sykes": [
+    {
+      "year": 1963,
+      "short": "Shifta War",
+      "title": "Somali insurgents defy Kenya’s northern border",
+      "region": "africa",
+      "line": "Britain handed the Northern Frontier District to Kenya though most residents wanted to join Somalia; Somali-led insurgents fought it until 1967."
+    }
+  ],
   "tariffs": [
     {
       "year": -432,
@@ -391,6 +414,15 @@
       "title": "Exam candidates petition the throne",
       "region": "china",
       "line": "Hundreds of exam candidates in Beijing back Kang Youwei’s petition against the Shimonoseki treaty, demanding reform from the Qing throne."
+    }
+  ],
+  "titanic": [
+    {
+      "year": 2012,
+      "short": "Costa Concordia",
+      "title": "The Costa Concordia capsizes off Giglio",
+      "region": "europe",
+      "line": "A seven-year-old luxury cruise liner left its course for a showy “sail-by salute”, struck a rock and capsized, killing 32 of over 4,200 aboard."
     }
   ],
   "triangle": [
