@@ -1,5 +1,23 @@
 [
  {
+  "date": "2026-11-15",
+  "story": "Hundreds of thousands rally in Prague against plan to overhaul public media funding",
+  "url": "https://www.euronews.com/2026/11/15/hundreds-of-thousands-in-prague-protest-czech-governments-public-media-funding-plans",
+  "outcome": "watch",
+  "seed": "2000, the Czech TV crisis brings mass rallies in Prague over control of public television",
+  "note": "Pattern: crowds rally to defend a public broadcaster from government control. Related to the Novaya Gazeta press watch (2026-11-09); consider merging into one press-freedom rhyme. Echoes: Czech TV crisis 2000-01, Poland’s public media law protests 2016, Slovakia RTVS protests 2024. Domestically contested; no source yet draws a long historical comparison. Needs an older seed.",
+  "reviewed": "2026-11-19"
+ },
+ {
+  "date": "2026-11-14",
+  "story": "Trump, Xi and Putin to hold first three-way summit in Shenzhen",
+  "url": "https://www.aljazeera.com/news/2026/11/14/trump-xi-and-putin-to-hold-first-three-way-summit-in-china",
+  "outcome": "watch",
+  "seed": "1494, Spain and Portugal split the newly found world at Tordesillas",
+  "note": "Pattern: great powers meet to divide the world into spheres over the heads of smaller states. Then candidate: Yalta 1945 (Next 2107). Echoes: Tilsit 1807, Molotov–Ribbentrop pact 1939. Al-Monitor/Reuters analysis ‘A new Yalta?’ and SCMP ‘no Yalta 2.0’ draw the comparison. Summit outcome unknown and tied to the Ukraine war; wait. Seed and echoes still need verification.",
+  "reviewed": "2026-11-19"
+ },
+ {
   "date": "2026-11-16",
   "story": "Vulcan rocket failure destroys 40 Amazon Leo internet satellites",
   "url": "https://scmp.com/news/world/united-states-canada/article/3374525/rocket-launch-us-fails-destroying-payload-40-amazon-satellites",

@@ -121,6 +121,11 @@
     "added": 4,
     "last": "2026-11-11"
   },
+  "revolution": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-19"
+  },
   "saigon": {
     "runs": 1,
     "added": 2,
@@ -172,15 +177,15 @@
     "last": "2026-11-18"
   },
   "triangle": {
-    "runs": 1,
-    "added": 2,
-    "last": "2026-11-05",
+    "runs": 2,
+    "added": 4,
+    "last": "2026-11-19",
     "created": "2026-11-05"
   },
   "trusts": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-11-03"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-19"
   },
   "vaccine": {
     "runs": 2,
