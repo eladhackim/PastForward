@@ -63,6 +63,20 @@
       "title": "The SL-1 reactor explodes in Idaho",
       "region": "us",
       "line": "A US Army test reactor blew apart and killed its three operators, forcing new rules so no single rod could start a runaway."
+    },
+    {
+      "year": 1966,
+      "short": "Fermi 1",
+      "title": "Fermi 1 reactor partly melts near Detroit",
+      "region": "us",
+      "line": "A blocked coolant flow melted fuel in Michigan’s Fermi 1 breeder; the book “We Almost Lost Detroit” later fed anti-nuclear protest."
+    },
+    {
+      "year": 1969,
+      "short": "Lucens",
+      "title": "Switzerland’s Lucens reactor partly melts down",
+      "region": "europe",
+      "line": "A fuel channel failure wrecked the Lucens test reactor in its rock cavern, and Switzerland abandoned its homegrown reactor design."
     }
   ],
   "crash": [
@@ -220,6 +234,20 @@
       "title": "The rickshaw takes over Japanese streets",
       "region": "china",
       "line": "Invented in Japan around 1869, the cheap two-wheeled rickshaw spread so fast that Tokyo had about 40,000 by 1872."
+    },
+    {
+      "year": 1922,
+      "short": "Austin Seven",
+      "title": "The Austin Seven brings cars to Britain",
+      "region": "europe",
+      "line": "Herbert Austin’s small, cheap Seven was called Britain’s Model T, putting families into cars and spawning copies abroad."
+    },
+    {
+      "year": 1966,
+      "short": "Corolla",
+      "title": "Toyota launches the Corolla",
+      "region": "china",
+      "line": "Toyota’s affordable Corolla reached Japan’s new middle class in 1966 and became the world’s best-selling car, passing 50 million sold."
     }
   ],
   "munich": [
@@ -248,6 +276,20 @@
     }
   ],
   "phone": [
+    {
+      "year": 1946,
+      "short": "Car phone 1946",
+      "title": "The first mobile telephone service opens",
+      "region": "us",
+      "line": "Bell launched Mobile Telephone Service in St. Louis, letting drivers call from cars, the first step toward phones that travel with people."
+    },
+    {
+      "year": 1994,
+      "short": "IBM Simon",
+      "title": "IBM Simon, the first smartphone",
+      "region": "us",
+      "line": "BellSouth sold IBM’s Simon, a touchscreen phone with email, calendar and apps; about 50,000 sold, but it previewed the iPhone."
+    },
     {
       "year": 2002,
       "short": "BlackBerry 5810",
@@ -546,6 +588,16 @@
       "date": "2026-11-14",
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/news/2026/11/14/faa-ground-stop-lifted-why-were-us-flights-grounded-and-whats-next"
+    },
+    {
+      "year": 2026,
+      "short": "Microsoft 2026",
+      "title": "Global Microsoft 365 outage cuts off offices",
+      "region": "world",
+      "line": "Microsoft’s Outlook and Teams fail in over 70 countries for more than 12 hours; an Australian minister likens it to CrowdStrike.",
+      "date": "2026-11-13",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/11/13/microsoft-hit-by-global-outages-what-happened-and-why"
     }
   ],
   "yellow": [
