@@ -49,6 +49,22 @@
       "line": "Ögedei Khan set up staffed relay stations about every 25 miles, letting riders carry orders across Eurasia at up to 200 km a day."
     }
   ],
+  "carrington": [
+    {
+      "year": 993,
+      "short": "Storm of 993",
+      "title": "Tree rings record a storm in 993",
+      "region": "world",
+      "line": "Tree rings worldwide hold a carbon-14 spike from 993–994, a smaller sequel to the 774 storm that struck an unwired world."
+    },
+    {
+      "year": 1909,
+      "short": "Superstorm 1909",
+      "title": "The September 1909 magnetic superstorm",
+      "region": "world",
+      "line": "On 25 September 1909 one of the strongest magnetic storms on record scrambled telegraph lines across Europe, America and Australasia."
+    }
+  ],
   "chernobyl": [
     {
       "year": 1952,
@@ -77,6 +93,22 @@
       "title": "Switzerland’s Lucens reactor partly melts down",
       "region": "europe",
       "line": "A fuel channel failure wrecked the Lucens test reactor in its rock cavern, and Switzerland abandoned its homegrown reactor design."
+    }
+  ],
+  "commune": [
+    {
+      "year": 1413,
+      "short": "Cabochiens 1413",
+      "title": "Paris butchers rise in the Cabochien revolt",
+      "region": "europe",
+      "line": "Led by the skinner Simon Caboche, Paris crowds stormed royal residences in 1413 and forced a reform of the crown’s administration and taxes."
+    },
+    {
+      "year": 1548,
+      "short": "Pitauds 1548",
+      "title": "The Pitauds revolt against the salt tax",
+      "region": "europe",
+      "line": "In 1548 peasants of southwest France rose against the royal salt tax, and Bordeaux crowds killed the king’s lieutenant before brutal repression."
     }
   ],
   "crash": [
@@ -159,6 +191,22 @@
       "title": "Bomb builders advise against the H-bomb",
       "region": "us",
       "line": "Oppenheimer’s advisory committee urged against a crash H-bomb effort; Fermi and Rabi called it “necessarily an evil thing.”"
+    }
+  ],
+  "ellis": [
+    {
+      "year": 1517,
+      "short": "Evil May Day",
+      "title": "London apprentices riot against foreigners",
+      "region": "europe",
+      "line": "On Evil May Day 1517, after a sermon blaming foreign artisans for lost work, London apprentices sacked the homes of immigrant craftsmen."
+    },
+    {
+      "year": 1861,
+      "short": "Lambing Flat",
+      "title": "Gold rush miners attack Chinese diggers",
+      "region": "world",
+      "line": "As thousands of Chinese reached Australia’s goldfields, white miners drove them from Lambing Flat in 1861, and New South Wales restricted Chinese entry."
     }
   ],
   "games": [

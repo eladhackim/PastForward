@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-11-18",
+  "story": "Anthropic IPO raises a record $81.3 billion",
+  "url": "https://www.npr.org/2026/11/18/nx-s1-6046212/anthropic-record-ipo-price",
+  "outcome": "none",
+  "reviewed": "2026-11-21"
+ },
+ {
+  "date": "2026-11-19",
+  "story": "World Court finds Myanmar committed genocide against the Rohingya",
+  "url": "https://www.hrw.org/news/2026/11/19/world-court-finds-myanmar-committed-rohingya-genocide",
+  "outcome": "watch",
+  "seed": "1474, a court of the Holy Roman Empire’s allies tries and executes Peter von Hagenbach at Breisach",
+  "note": "Pattern: an international court holds those in power to account for mass atrocity. Then candidate: the Nuremberg trials 1945-46. Echoes: ICTR Akayesu genocide conviction 1998, ICTY Krstić Srebrenica verdict 2001, ICJ Bosnia v Serbia 2007 (failure to prevent). Harvard Law and History Today call Hagenbach’s trial the first international war crimes trial; no source yet ties the Myanmar ruling to it. Sensitive subject; enforcement unclear. Seed and echoes still need verification.",
+  "reviewed": "2026-11-21"
+ },
+ {
   "date": "2026-11-13",
   "story": "Global Microsoft 365 outage cuts Outlook and Teams for over 12 hours",
   "url": "https://www.aljazeera.com/news/2026/11/13/microsoft-hit-by-global-outages-what-happened-and-why",

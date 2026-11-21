@@ -20,10 +20,20 @@
     "added": 2,
     "last": "2026-11-04"
   },
+  "carrington": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-21"
+  },
   "chernobyl": {
     "runs": 3,
     "added": 4,
     "last": "2026-11-20"
+  },
+  "commune": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-21"
   },
   "crash": {
     "runs": 1,
@@ -54,6 +64,11 @@
     "runs": 2,
     "added": 4,
     "last": "2026-11-12"
+  },
+  "ellis": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-21"
   },
   "flu": {
     "runs": 1,
