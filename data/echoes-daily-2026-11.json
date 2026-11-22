@@ -177,6 +177,15 @@
       "line": "A caliphate fleet built in Syrian and Egyptian yards routs Emperor Constans II off Lycia, ending Byzantium’s unchallenged rule of the sea."
     }
   ],
+  "dust": [
+    {
+      "year": 1950,
+      "short": "Smoke Pall 1950",
+      "title": "The Great Smoke Pall darkens Ontario",
+      "region": "world",
+      "line": "Smoke from Alberta’s Chinchaga fire brought three-hour midday darkness to Sarnia and Guelph in September and turned the sun blue in Europe."
+    }
+  ],
   "einstein": [
     {
       "year": 850,
@@ -355,11 +364,25 @@
       "line": "Catalonia and Portugal rose in 1640, Palermo and Naples in 1647, Paris in the 1648 Fronde, a wave historians call the General Crisis."
     },
     {
+      "year": 1820,
+      "short": "Revolts of 1820",
+      "title": "Revolts spread around the Mediterranean",
+      "region": "europe",
+      "line": "Army revolts in Spain, Naples, Portugal and Piedmont forced constitutions in 1820–21, and Greece rose in 1821, each inspired by the last."
+    },
+    {
       "year": 1830,
       "short": "Revolutions 1830",
       "title": "The Revolutions of 1830",
       "region": "europe",
       "line": "France’s July Revolution was followed within months by revolts in Belgium, Poland, Switzerland and the Italian states."
+    },
+    {
+      "year": 1905,
+      "short": "Wave of 1905",
+      "title": "A global wave of constitutional revolutions",
+      "region": "world",
+      "line": "Russia in 1905, Iran in 1906, the Ottoman Empire in 1908, then Portugal, Mexico and China rose for constitutions within six years."
     }
   ],
   "railway": [
@@ -424,6 +447,22 @@
       "title": "Charles V seizes Tunis from the Ottomans",
       "region": "africa",
       "line": "About 25,000 Habsburg troops took Tunis from Barbarossa’s Ottomans, as Spain and Istanbul fought for control of North Africa’s coast."
+    }
+  ],
+  "somme": [
+    {
+      "year": -305,
+      "short": "Siege of Rhodes",
+      "title": "Demetrius besieges Rhodes for a year",
+      "region": "europe",
+      "line": "Demetrius brought a 40-metre armoured siege tower bristling with artillery, yet Rhodes held for a year and the siege ended in compromise."
+    },
+    {
+      "year": 1232,
+      "short": "Kaifeng 1232",
+      "title": "The Mongol siege of Kaifeng",
+      "region": "china",
+      "line": "Jin defenders hurled gunpowder ‘thunder bombs’ at the Mongols for about a year before famine and disease forced Kaifeng to surrender."
     }
   ],
   "springs": [

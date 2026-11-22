@@ -1,5 +1,19 @@
 [
  {
+  "date": "2026-11-17",
+  "story": "US loses measles elimination status after 26 years",
+  "url": "https://www.aljazeera.com/news/2026/11/17/us-officially-loses-measles-free-status-after-26-years-amid-outbreak",
+  "outcome": "none",
+  "reviewed": "2026-11-22"
+ },
+ {
+  "date": "2026-11-20",
+  "story": "AI stock rout sends S&P 500 into correction, Nasdaq down 5.3%",
+  "url": "https://www.foxbusiness.com/markets/wall-street-suffers-historic-losses-dow-sp-500-plunge-correction-territory",
+  "outcome": "none",
+  "reviewed": "2026-11-22"
+ },
+ {
   "date": "2026-11-18",
   "story": "Anthropic IPO raises a record $81.3 billion",
   "url": "https://www.npr.org/2026/11/18/nx-s1-6046212/anthropic-record-ipo-price",

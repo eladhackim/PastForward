@@ -60,6 +60,11 @@
     "added": 1,
     "last": "2026-11-05"
   },
+  "dust": {
+    "runs": 1,
+    "added": 1,
+    "last": "2026-11-22"
+  },
   "einstein": {
     "runs": 2,
     "added": 4,
@@ -127,9 +132,9 @@
     "last": "2026-11-20"
   },
   "protests": {
-    "runs": 1,
-    "added": 2,
-    "last": "2026-11-03"
+    "runs": 2,
+    "added": 4,
+    "last": "2026-11-22"
   },
   "railway": {
     "runs": 2,
@@ -150,6 +155,11 @@
     "runs": 2,
     "added": 4,
     "last": "2026-11-15"
+  },
+  "somme": {
+    "runs": 1,
+    "added": 2,
+    "last": "2026-11-22"
   },
   "springs": {
     "runs": 2,
