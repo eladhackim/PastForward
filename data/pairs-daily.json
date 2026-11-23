@@ -97,5 +97,38 @@
     },
     "breaks": "The Triangle fire led to state laws; Rana Plaza’s reforms relied largely on a private accord between global brands and unions rather than national law.",
     "added": "2026-11-05"
+  },
+  {
+    "id": "blacksox",
+    "theme": "Cheating taints a sport’s biggest prize",
+    "rhyme": 2,
+    "topic": "society",
+    "then": {
+      "year": 1919,
+      "short": "Black Sox",
+      "title": "The Black Sox World Series",
+      "where": "Chicago and Cincinnati, US",
+      "region": "us",
+      "hook": "Eight Chicago White Sox players were accused of throwing the 1919 World Series for gamblers.",
+      "text": "The heavily favoured White Sox lost the 1919 World Series to the Cincinnati Reds, five games to three. Eight players were accused of conspiring with gamblers; one pitcher admitted taking $10,000. A jury acquitted them in 1921, but baseball banned all eight for life."
+    },
+    "now": {
+      "year": 2017,
+      "short": "Astros scandal",
+      "title": "The Houston Astros Sign-Stealing Scandal",
+      "where": "Houston, US",
+      "region": "us",
+      "hook": "The 2017 champion Astros stole signs with a camera and a banged trash can.",
+      "text": "In 2017 the Houston Astros used a centre-field camera to read opponents’ signs and banged a trash can to tip off batters. They won the World Series. After a 2019 exposé, baseball suspended their manager and general manager in January 2020, but kept the title on the books."
+    },
+    "followed": "Owners created the office of baseball commissioner, and Kenesaw Mountain Landis used it to ban the eight for life. Babe Ruth’s home runs soon drew the crowds back.",
+    "next": {
+      "short": "Data cheating",
+      "title": "A title won with hidden data",
+      "text": "Around 2115, a championship might be tainted by secret real-time data, AI coaching or players fixing small moments for bettors, and a league could be forced to rewrite its record books.",
+      "watch": "Legal betting on single plays, wearable sensors in competition, and leagues investigating suspicious bets on individual players."
+    },
+    "breaks": "The Black Sox players took money to lose; the Astros cheated to win, and no criminal charges followed.",
+    "added": "2026-11-23"
   }
 ]

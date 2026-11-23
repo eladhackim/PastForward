@@ -61,5 +61,26 @@
       }
     ],
     "watch": "Orders shifting to new low-wage countries, factories adding floors fast, and brands resisting binding safety agreements would signal the opening."
+  },
+  "blacksox": {
+    "lastTime": "After 1919, baseball’s owners handed sweeping power to a commissioner, Kenesaw Mountain Landis. Babe Ruth’s home-run era and new radio broadcasts rebuilt public trust and crowds.",
+    "ideas": [
+      {
+        "kind": "build",
+        "title": "Betting integrity monitoring tools",
+        "line": "Systems that flag unusual betting on single plays or players could help leagues and regulators catch fixing early."
+      },
+      {
+        "kind": "work",
+        "title": "Sports integrity investigators",
+        "line": "Leagues, betting regulators and governing bodies may need more investigators who understand data, betting markets and athlete welfare."
+      },
+      {
+        "kind": "learn",
+        "title": "Sports data and governance",
+        "line": "Rules on what data teams may use during games are still forming, so sports law and analytics skills are gaining value."
+      }
+    ],
+    "watch": "New leagues allowing in-game data devices, legal prop betting spreading, and leagues creating independent integrity units would signal the opening."
   }
 }

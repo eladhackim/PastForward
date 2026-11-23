@@ -26,6 +26,7 @@ export const RHYMES = [
   ["somme", "Trench attrition meets new war machines", 1916, "The Somme", 2023, "Bakhmut"],
   ["sykes", "Borders drawn by outsiders, defied by insurgents", 1916, "Sykes–Picot", 2014, "ISIS Caliphate"],
   ["flu", "A pandemic in a hyper-connected world", 1918, "Spanish Flu", 2020, "COVID-19"],
+  ["blacksox", "Cheating taints a sport’s biggest prize", 1919, "Black Sox", 2017, "Astros scandal"],
   ["weimar", "Printing money until it is worthless", 1923, "Hyperinflation", 2018, "Venezuela"],
   ["crash", "A speculative boom ends in a global crash", 1929, "Wall St Crash", 2008, "Lehman Crash"],
   ["tariffs", "Tariff walls rise and trading partners hit back", 1930, "Smoot–Hawley", 2025, "Liberation Day"],

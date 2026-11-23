@@ -175,6 +175,13 @@
       "title": "The Arab fleet defeats Byzantium at sea",
       "region": "mideast",
       "line": "A caliphate fleet built in Syrian and Egyptian yards routs Emperor Constans II off Lycia, ending Byzantium’s unchallenged rule of the sea."
+    },
+    {
+      "year": 1859,
+      "short": "Gloire panic",
+      "title": "France’s ironclad Gloire alarms Britain",
+      "region": "europe",
+      "line": "France launched Gloire, the first ocean-going ironclad, in 1859; a British naval panic followed, and the Royal Navy answered with HMS Warrior."
     }
   ],
   "dust": [
@@ -497,6 +504,13 @@
   ],
   "springtime": [
     {
+      "year": 1648,
+      "short": "1640s revolts",
+      "title": "Europe and Asia’s revolts of 1648",
+      "region": "world",
+      "line": "From Catalonia and Naples to the Fronde, Ukraine and Moscow, revolts erupted together; historians call it the seventeenth century’s General Crisis."
+    },
+    {
       "year": 1810,
       "short": "Juntas of 1810",
       "title": "Spanish America’s juntas of 1810",
@@ -694,6 +708,29 @@
       "title": "Titus Oates invents the Popish Plot",
       "region": "europe",
       "line": "Oates’s invented Catholic plot to kill Charles II races through London’s pamphlets and broadsides, and at least 22 innocent men are executed."
+    }
+  ],
+  "blacksox": [
+    {
+      "year": -388,
+      "short": "Olympic bribes",
+      "title": "The first recorded Olympic bribery",
+      "region": "europe",
+      "line": "According to Pausanias, Eupolus of Thessaly bribed three boxers at Olympia; the fines paid for bronze Zeus statues shaming cheats, whose bases survive."
+    },
+    {
+      "year": 2000,
+      "short": "Cricket fixing",
+      "title": "South Africa’s cricket captain fixing scandal",
+      "region": "africa",
+      "line": "South Africa’s captain admitted taking money from bookmakers in 2000 and was banned for life, exposing match-fixing across international cricket."
+    },
+    {
+      "year": 2006,
+      "short": "Calciopoli",
+      "title": "Italy’s Calciopoli referee scandal",
+      "region": "europe",
+      "line": "Intercepted calls showed club officials influencing referee choices; Juventus was stripped of two league titles and relegated to Serie B."
     }
   ]
 }

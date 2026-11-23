@@ -9,6 +9,12 @@
     "added": 4,
     "last": "2026-11-12"
   },
+  "blacksox": {
+    "runs": 1,
+    "added": 3,
+    "last": "2026-11-23",
+    "created": "2026-11-23"
+  },
   "blight": {
     "runs": 2,
     "added": 4,
@@ -56,9 +62,9 @@
     "last": "2026-11-11"
   },
   "dreadnought": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-11-05"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-23"
   },
   "dust": {
     "runs": 1,
@@ -147,9 +153,9 @@
     "last": "2026-11-19"
   },
   "saigon": {
-    "runs": 1,
+    "runs": 2,
     "added": 2,
-    "last": "2026-11-04"
+    "last": "2026-11-23"
   },
   "scramble": {
     "runs": 2,
@@ -167,9 +173,9 @@
     "last": "2026-11-18"
   },
   "springtime": {
-    "runs": 1,
-    "added": 1,
-    "last": "2026-11-04"
+    "runs": 2,
+    "added": 2,
+    "last": "2026-11-23"
   },
   "sputnik": {
     "runs": 2,
