@@ -24,7 +24,44 @@
       "line": "A short circuit shut the Itaipu dam for the first time in 25 years, darkening 60 million Brazilians and briefly all of Paraguay."
     }
   ],
+  "blacksox": [
+    {
+      "year": -388,
+      "short": "Olympic bribes",
+      "title": "The first recorded Olympic bribery",
+      "region": "europe",
+      "line": "According to Pausanias, Eupolus of Thessaly bribed three boxers at Olympia; the fines paid for bronze Zeus statues shaming cheats, whose bases survive."
+    },
+    {
+      "year": 2000,
+      "short": "Cricket fixing",
+      "title": "South Africa’s cricket captain fixing scandal",
+      "region": "africa",
+      "line": "South Africa’s captain admitted taking money from bookmakers in 2000 and was banned for life, exposing match-fixing across international cricket."
+    },
+    {
+      "year": 2006,
+      "short": "Calciopoli",
+      "title": "Italy’s Calciopoli referee scandal",
+      "region": "europe",
+      "line": "Intercepted calls showed club officials influencing referee choices; Juventus was stripped of two league titles and relegated to Serie B."
+    }
+  ],
   "blight": [
+    {
+      "year": 1852,
+      "short": "Madeira mildew",
+      "title": "Powdery mildew wipes out Madeira’s vineyards",
+      "region": "europe",
+      "line": "Oidium spread through the island’s vines, its main export crop, cutting wine output from about 50,000 hectolitres to 600 by 1854."
+    },
+    {
+      "year": 1934,
+      "short": "Fordlândia",
+      "title": "Leaf blight ruins Ford’s Amazon rubber",
+      "region": "latam",
+      "line": "Rubber trees planted close together, unlike scattered wild ones, fell to leaf blight and pests; Ford abandoned the town in 1934."
+    },
     {
       "year": 1946,
       "short": "Victoria oats",
@@ -141,6 +178,20 @@
       "title": "A program beats Japan’s shogi Meijin",
       "region": "china",
       "line": "Reigning Meijin Amahiko Satō, holder of shogi’s oldest title, lost both games of a two-game match to the program Ponanza."
+    },
+    {
+      "year": 2021,
+      "short": "Dr.Fill",
+      "title": "A program wins the top crossword tournament",
+      "region": "us",
+      "line": "Dr.Fill outscored more than 1,100 human solvers at the American Crossword Puzzle Tournament, the first time software topped the field."
+    },
+    {
+      "year": 2022,
+      "short": "NooK bridge",
+      "title": "An AI outplays eight bridge world champions",
+      "region": "europe",
+      "line": "In a two-day Paris test of card play over 800 deals, NooK beat the scores of eight world champion bridge players."
     }
   ],
   "dolly": [
@@ -663,6 +714,13 @@
       "title": "Japan raises its discount rate to 9%",
       "region": "china",
       "line": "Facing galloping inflation after the oil shock, the Bank of Japan lifted its rate from 0.75% to 9% within 1973."
+    },
+    {
+      "year": 1990,
+      "short": "Poland 1990",
+      "title": "Poland’s shock therapy hikes interest rates",
+      "region": "europe",
+      "line": "Facing near-hyperinflation, Poland drastically raised interest rates in January 1990; monthly inflation fell from about 80% to 3.5% by June."
     }
   ],
   "y2k": [
@@ -708,29 +766,6 @@
       "title": "Titus Oates invents the Popish Plot",
       "region": "europe",
       "line": "Oates’s invented Catholic plot to kill Charles II races through London’s pamphlets and broadsides, and at least 22 innocent men are executed."
-    }
-  ],
-  "blacksox": [
-    {
-      "year": -388,
-      "short": "Olympic bribes",
-      "title": "The first recorded Olympic bribery",
-      "region": "europe",
-      "line": "According to Pausanias, Eupolus of Thessaly bribed three boxers at Olympia; the fines paid for bronze Zeus statues shaming cheats, whose bases survive."
-    },
-    {
-      "year": 2000,
-      "short": "Cricket fixing",
-      "title": "South Africa’s cricket captain fixing scandal",
-      "region": "africa",
-      "line": "South Africa’s captain admitted taking money from bookmakers in 2000 and was banned for life, exposing match-fixing across international cricket."
-    },
-    {
-      "year": 2006,
-      "short": "Calciopoli",
-      "title": "Italy’s Calciopoli referee scandal",
-      "region": "europe",
-      "line": "Intercepted calls showed club officials influencing referee choices; Juventus was stripped of two league titles and relegated to Serie B."
     }
   ]
 }

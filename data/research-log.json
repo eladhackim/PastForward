@@ -16,9 +16,9 @@
     "created": "2026-11-23"
   },
   "blight": {
-    "runs": 2,
-    "added": 4,
-    "last": "2026-11-10",
+    "runs": 3,
+    "added": 6,
+    "last": "2026-11-24",
     "created": "2026-10-26"
   },
   "cable": {
@@ -47,9 +47,9 @@
     "last": "2026-11-05"
   },
   "deepblue": {
-    "runs": 2,
-    "added": 3,
-    "last": "2026-11-10"
+    "runs": 3,
+    "added": 5,
+    "last": "2026-11-24"
   },
   "dolly": {
     "runs": 2,
@@ -224,9 +224,9 @@
     "last": "2026-11-14"
   },
   "volcker": {
-    "runs": 2,
-    "added": 3,
-    "last": "2026-11-10"
+    "runs": 3,
+    "added": 4,
+    "last": "2026-11-24"
   },
   "y2k": {
     "runs": 2,

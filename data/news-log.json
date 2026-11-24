@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-11-19",
+  "story": "Bank Indonesia surprises with a rate hike to 6% to defend the rupiah",
+  "url": "https://finansial.bisnis.com/read/20261119/11/2022639/bi-rate-naik-ke-6-stabilitas-rupiah-jadi-prioritas-kebijakan",
+  "outcome": "none",
+  "reviewed": "2026-11-24"
+ },
+ {
+  "date": "2026-11-17",
+  "story": "Turkey raids and seizes Sözcü TV, last major opposition channel",
+  "url": "https://www.al-monitor.com/originals/2026/11/turkey-takes-pro-opposition-tv-channel-sozcu-air-raid-appoints-trustee",
+  "outcome": "watch",
+  "seed": "AD 25, Rome’s senate orders the histories of Cremutius Cordus burned (Tacitus, Annals 4.34-35)",
+  "note": "Same pattern as the Novaya Gazeta watch (2026-11-09): a state squeezes out its last independent outlet. Police raid, trustee appointed, four executives detained; Advanced Television calls it the last opposition station. CPJ and Al-Monitor report it. Then candidates: Rheinische Zeitung 1843 or Frankfurter Zeitung 1943. Echoes: Népszabadság 2016, Apple Daily 2021, Halk TV trustee. Merge with the Novaya Gazeta and Prague public-media watches into one press-freedom rhyme.",
+  "reviewed": "2026-11-24"
+ },
+ {
   "date": "2026-11-16",
   "story": "Five EU countries plan first migrant return hub outside Europe, in Rwanda",
   "url": "https://www.aljazeera.com/news/2026/11/17/why-are-five-eu-countries-reviving-plans-to-deport-migrants-to-rwanda",
