@@ -57,9 +57,9 @@
     "last": "2026-11-12"
   },
   "dotcom": {
-    "runs": 2,
-    "added": 1,
-    "last": "2026-11-11"
+    "runs": 3,
+    "added": 3,
+    "last": "2026-11-25"
   },
   "dreadnought": {
     "runs": 2,
@@ -128,9 +128,9 @@
     "last": "2026-11-16"
   },
   "oil": {
-    "runs": 2,
-    "added": 2,
-    "last": "2026-11-11"
+    "runs": 3,
+    "added": 4,
+    "last": "2026-11-25"
   },
   "phone": {
     "runs": 3,
@@ -143,9 +143,9 @@
     "last": "2026-11-22"
   },
   "railway": {
-    "runs": 2,
-    "added": 4,
-    "last": "2026-11-11"
+    "runs": 3,
+    "added": 6,
+    "last": "2026-11-25"
   },
   "revolution": {
     "runs": 1,

@@ -217,6 +217,20 @@
       "title": "Britain’s Canal Mania peaks and fades",
       "region": "europe",
       "line": "Parliament authorised about twenty new canals in 1793 as shares soared, then Grand Junction stock fell from £472 back to about £100 by 1795."
+    },
+    {
+      "year": 1882,
+      "short": "Brush bubble",
+      "title": "Britain’s electric lighting share bubble bursts",
+      "region": "europe",
+      "line": "Investors pour a record £2.2 million into new electric light firms; within three years nearly all Brush offshoots are liquidated."
+    },
+    {
+      "year": 1983,
+      "short": "1983 tech slump",
+      "title": "High-tech stocks nosedive after IPO boom",
+      "region": "us",
+      "line": "After record high-tech IPOs fund too many PC, software and disk-drive makers, tech shares crash in mid-1983 and languish until 1985."
     }
   ],
   "dreadnought": [
@@ -390,6 +404,22 @@
       "line": "The safety bicycle and air-filled tyre put over a million Americans on wheels by the mid-1890s, with 300 makers racing to supply them."
     }
   ],
+  "oil": [
+    {
+      "year": 1643,
+      "short": "London coal ban",
+      "title": "Parliament cuts off Newcastle’s coal",
+      "region": "europe",
+      "line": "In the Civil War, Parliament bans coal shipments from royalist Newcastle to starve the King’s side, and London’s own fuel runs short."
+    },
+    {
+      "year": 1923,
+      "short": "Ruhr occupation",
+      "title": "France and Belgium seize the Ruhr’s coal",
+      "region": "europe",
+      "line": "After Germany falls behind on coal deliveries, French and Belgian troops occupy the Ruhr; German strikers answer by halting the mines."
+    }
+  ],
   "phone": [
     {
       "year": 1946,
@@ -450,6 +480,20 @@
       "title": "Pascal’s carriages start Paris public transport",
       "region": "europe",
       "line": "From March 1662 Blaise Pascal’s “carrosses à cinq sols” ran fixed routes across Paris, letting anyone ride a shared coach for five sols."
+    },
+    {
+      "year": 1895,
+      "short": "First motor bus",
+      "title": "The first motor bus line opens",
+      "region": "europe",
+      "line": "A Benz bus with eight seats and a 5-horsepower engine starts carrying the public between Siegen and Netphen, Germany."
+    },
+    {
+      "year": 1911,
+      "short": "Zeppelin airline",
+      "title": "Zeppelins start carrying paying passengers",
+      "region": "europe",
+      "line": "DELAG’s airship Schwaben enters passenger service; before 1914 the world’s first airline flies over 34,000 people, 10,197 paying."
     },
     {
       "year": 1962,
@@ -663,6 +707,16 @@
       "title": "Thailand’s Kader toy factory fire",
       "region": "china",
       "line": "Fire at a Thai factory making toys for export kills 188 workers, mostly young women, more than died at Triangle."
+    },
+    {
+      "year": 2026,
+      "short": "Banten 2026",
+      "title": "Indonesian candy factory fire kills 24",
+      "region": "world",
+      "line": "Fire tears through a three-storey candy factory in Banten, Indonesia, killing at least 24 workers and leaving dozens missing.",
+      "date": "2026-11-23",
+      "source": "Euronews",
+      "url": "https://au.news.yahoo.com/least-24-people-killed-indonesia-143922299.html"
     }
   ],
   "trusts": [
