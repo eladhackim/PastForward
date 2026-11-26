@@ -17,11 +17,25 @@
       "line": "On August 10, 1996, Oregon lines arcing into trees cascaded into an outage for about 7.5 million customers across western North America."
     },
     {
+      "year": 2005,
+      "short": "Moscow 2005",
+      "title": "Worn equipment blacks out Moscow",
+      "region": "russia",
+      "line": "A failure at the worn Chagino substation in summer heat cascades across Moscow and four regions, trapping tens of thousands in the metro."
+    },
+    {
       "year": 2009,
       "short": "Itaipu 2009",
       "title": "Itaipu’s shutdown darkens Brazil and Paraguay",
       "region": "latam",
       "line": "A short circuit shut the Itaipu dam for the first time in 25 years, darkening 60 million Brazilians and briefly all of Paraguay."
+    },
+    {
+      "year": 2023,
+      "short": "Pakistan 2023",
+      "title": "Pakistan’s grid fails nationwide",
+      "region": "india",
+      "line": "After units were switched off overnight to save fuel, voltage swings on restart cascade and black out large parts of Pakistan."
     }
   ],
   "blacksox": [
@@ -208,6 +222,20 @@
       "title": "Briggs and King clone frog embryos",
       "region": "us",
       "line": "Robert Briggs and Thomas King moved nuclei into emptied frog eggs, creating what was later recognized as the first animal clone."
+    },
+    {
+      "year": 1969,
+      "short": "Edwards 1969",
+      "title": "Human eggs fertilised in a dish",
+      "region": "europe",
+      "line": "Edwards, Bavister and Steptoe report in Nature the first human eggs fertilised in a dish; Liverpool’s archbishop calls it morally wrong."
+    },
+    {
+      "year": 2001,
+      "short": "Cloned embryos",
+      "title": "A US firm claims cloned human embryos",
+      "region": "us",
+      "line": "Advanced Cell Technology says it cloned human embryos of up to six cells; Bush calls it morally wrong, the Vatican condemns it."
     }
   ],
   "dotcom": [
@@ -329,6 +357,15 @@
       "title": "Iceland’s Eldgjá fissure eruption",
       "region": "europe",
       "line": "Iceland’s largest lava flood veils Europe’s sun; 940 brings one of the coolest summers in 1,500 years, with hunger from Germany to China."
+    }
+  ],
+  "lisbon": [
+    {
+      "year": 1531,
+      "short": "Lisbon 1531",
+      "title": "Gil Vicente rebukes friars after quake",
+      "region": "europe",
+      "line": "Santarém friars called the Lisbon quake God’s punishment and stirred anger at Jews; Gil Vicente scolded them and wrote to the king."
     }
   ],
   "luddites": [
