@@ -336,6 +336,20 @@
   ],
   "hamilton": [
     {
+      "year": 1841,
+      "short": "Canada 1841",
+      "title": "United Canada merges two colonies’ debts",
+      "region": "world",
+      "line": "Britain unites Upper and Lower Canada and pools their debts, so Lower Canada shares the larger canal debt run up upriver."
+    },
+    {
+      "year": 1867,
+      "short": "Austria-Hungary",
+      "title": "Hungary agrees to help pay Austria’s debt",
+      "region": "europe",
+      "line": "In the 1867 Compromise, Hungary agrees to pay part of the interest on the old imperial debt, sharing it within the new dual union."
+    },
+    {
       "year": 1910,
       "short": "South Africa",
       "title": "South Africa’s Union assumes colonial debts",
@@ -379,6 +393,13 @@
   ],
   "mania": [
     {
+      "year": 1890,
+      "short": "Argentina 1890",
+      "title": "Argentina’s boom nearly sinks Barings",
+      "region": "latam",
+      "line": "London money pours into Argentine railways and public works until returns fall short; Barings nearly fails and the Bank of England arranges a rescue."
+    },
+    {
       "year": 1926,
       "short": "Florida 1926",
       "title": "Florida’s land boom goes bust",
@@ -418,11 +439,25 @@
   ],
   "munich": [
     {
+      "year": 1793,
+      "short": "Poland 1793",
+      "title": "Catherine II takes Poland’s eastern lands",
+      "region": "russia",
+      "line": "In the Second Partition Russia annexes Poland’s eastern provinces, and a medal celebrates the ‘restitution’ of Russian regions from Poland."
+    },
+    {
       "year": 1939,
       "short": "Soviet Poland",
       "title": "The Red Army enters eastern Poland",
       "region": "russia",
       "line": "On September 17, 1939, Molotov said Soviet troops entered Poland to protect “blood brothers”, its Ukrainians and Belarusians; Moscow then annexed the region."
+    },
+    {
+      "year": 1977,
+      "short": "Ogaden 1977",
+      "title": "Somalia invades Ethiopia’s Ogaden",
+      "region": "africa",
+      "line": "Somalia invades the Somali-inhabited Ogaden to join it to a Greater Somalia, holding about 90 percent of the region by October."
     }
   ],
   "netscape": [
